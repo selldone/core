@@ -1,4 +1,5 @@
 import { StringToColour } from "../helper/color/ColorGenerator";
+import { ShopTransportations } from "../enums/logistic/ShopTransportations";
 
 declare global {
   interface String {
@@ -15,6 +16,8 @@ declare global {
       bypass?: boolean
     ): string;
     findAllDynamicAugmentKeys(): string[];
+
+    toTransportationObject(): ShopTransportations.IShopTransportations | null;
   }
 }
 
@@ -102,4 +105,8 @@ String.prototype.findAllDynamicAugmentKeys = function (this: string): string[] {
     keys.push(match[1]);
   }
   return keys;
+};
+
+String.prototype.toTransportationObject = function () {
+  return ShopTransportations[this as keyof typeof ShopTransportations];
 };

@@ -1,24 +1,25 @@
 import { i18n } from "@/Applications/Backoffice/lang/i18n_samin";
+import type {Shop} from "../../models/shop/shop.model";
 
 export class ShopCautionHelper {
-  static Generate(shop) {
+  static Generate(shop:Shop) {
     const cautions = [];
 
     // --------------------------------------------- Shop Info ---------------------------------------------
     let score = 10;
-    let message = [];
+    const message = [];
     const info = shop.info;
-    if (info.location) {
+    if (info?.location) {
       score += 10;
     } else {
       message.push(i18n.t("cautions.shop_complete.location_msg"));
     }
-    if (info.days_open) {
+    if (info?.days_open) {
       score += 10;
     } else {
       message.push(i18n.t("cautions.shop_complete.days_open_msg"));
     }
-    if (info.time_open || info.time_close) {
+    if (info?.time_open || info.time_close) {
       score += 10;
     } else {
       message.push(i18n.t("cautions.shop_complete.time_open_msg"));
@@ -188,11 +189,11 @@ export class ShopCautionHelper {
    * @param message can be string or array!
    * @param to
    * @param action
-   * @param score    message must be array!
+   * @param score    message must be arrayed!
    * @returns {{score: *, action: *, to: *, type: *, title: *, message: *}}
    * @constructor
    */
-  static Caution(type, title, message, to, action, score = null) {
+  static Caution(type:'error'|'warning'|'info', title:string, message:string, to:{name:string,params?:Record<string, any>,query?:Record<string, any>}, action:String, score:number|null = null) {
     return {
       type: type,
       title: title,

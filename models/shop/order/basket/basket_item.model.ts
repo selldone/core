@@ -15,10 +15,10 @@
 import { Product } from "../../product/product.model";
 import { Currency } from "../../../../enums/payment/Currency";
 import type { ProductVariant } from "../../product/product_variant.model";
-import type{ SubscriptionPrice } from "../../product/subscription_price.model";
-import type{Offer} from "../../incentives/offer/offer.model";
-import type {ExtraPricing} from "../../extra-pricing/extra-pricing.model";
-import type {Connect} from "../../../connect/connect.model";
+import type { SubscriptionPrice } from "../../product/subscription_price.model";
+import type { Offer } from "../../incentives/offer/offer.model";
+import type { ExtraPricing } from "../../extra-pricing/extra-pricing.model";
+import type { Connect } from "../../../connect/connect.model";
 
 /**
  * TypeScript model for BasketItem
@@ -42,10 +42,10 @@ export interface BasketItem {
   fulfillment_id: number;
 
   // Relations
-  product: Partial<Product>|null;
-  variant: Partial<ProductVariant>|null;
-  returnRequest: Partial<BasketItemReturn>|null;
-  offer: Partial<Offer>|null;
+  product: Partial<Product> | null;
+  variant: Partial<ProductVariant> | null;
+  returnRequest: Partial<BasketItemReturn> | null;
+  offer: Partial<Offer> | null;
   virtualItems: Partial<VirtualItem>[];
   serviceItem: Partial<ServiceItem>;
   fulfillment: Partial<Fulfillment>;
@@ -68,8 +68,6 @@ export interface BasketItem {
   extra_pricing_id?: number | null;
   extraPricing?: Partial<ExtraPricing> | null;
 }
-
-
 
 export namespace BasketItem {
   export interface IPreferences {

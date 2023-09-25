@@ -12,10 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface Guild{
-
-
-}
-export namespace Guild {
-
-}
+export interface Guild {}
+export namespace Guild {}

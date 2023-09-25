@@ -2021,7 +2021,7 @@ export default {
     duplicate_var_name_error: "Can not add variable with same name!",
   },*/
 
-  /** {@see StructuredData} **/
+  /** {@see SArticleStructuredData} **/
   json: {
     add: "Add structure data",
     add_message: "Create new structure data",

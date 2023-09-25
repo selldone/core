@@ -13,7 +13,7 @@
  */
 
 import { Shop } from "../shop.model";
-import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
+import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
 
 /**
  * Model Definition

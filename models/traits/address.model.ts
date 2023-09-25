@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface IAddress{
-    address?:string;
-    no?:string; // Building number
-    unit?:string; // Unit number
+export interface IAddress {
+  address?: string;
+  no?: string; // Building number
+  unit?: string; // Unit number
 }

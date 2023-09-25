@@ -1,5 +1,5 @@
 export class BuyButtonHelper {
-  static ExtractIconCaption(inputString) {
+  static ExtractIconCaption(inputString: string) {
     if (!inputString) return null;
 
     const iconRegex = /{(.*?)}/;

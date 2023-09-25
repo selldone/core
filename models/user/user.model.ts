@@ -41,7 +41,6 @@ export class User {
   /** Key-value pairs for storing metadata (private). Used for keeping third-party customer IDs and other values. */
   meta: { [key: string]: any };
 
-
   /** Timestamp when the user was soft deleted. */
   deleted_at: Date;
 

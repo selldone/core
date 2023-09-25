@@ -1894,7 +1894,7 @@ export default {
     variable_title: "عنوان متغیر",
     duplicate_var_name_error: "نمیتوان دو متغیر با یک نام وارد نمود.",
   },*/
-  /** {@see StructuredData} **/
+  /** {@see SArticleStructuredData} **/
   json: {
     add: "افزودن داده های بیشتر",
     add_message: "نمایش بهتر در نتایج موتورهای جستجو",

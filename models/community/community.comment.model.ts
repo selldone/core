@@ -12,8 +12,46 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+export interface CommunityComment {
+  /** Unique identifier for the comment. */
+  id: number;
 
+  /** Identifier for the associated community. */
+  community_id: number;
 
-export interface CommunityComment{
+  /** Identifier for the associated post. */
+  post_id: number;
 
+  /** Identifier for the user who created the comment. */
+  user_id: number;
+
+  /** The main content of the comment. */
+  body: string;
+
+  /** URL or path to the associated image. */
+  image: string;
+
+  /** Identifier for the parent comment, if this is a reply. */
+  parent_id: number;
+
+  /** Count of replies to this comment. */
+  replies: number;
+
+  /** Count of agrees on the comment. */
+  agrees: number;
+
+  /** Count of disagreements on the comment. */
+  disagrees: number;
+
+  /** Count of reports on the comment. */
+  reports: number;
+
+  /** Flag indicating if the comment is marked as offensive. */
+  offensive: boolean;
+
+  /** Timestamp indicating when the post was created. */
+  created_at: string; // Assuming Carbon translates to a JavaScript Date object.
+
+  /** Timestamp indicating the last update to the post. */
+  updated_at: string; // Same assumption as above.
 }

@@ -1,6 +1,86 @@
-import {StringToColour} from "../../helper/color/ColorGenerator";
+export namespace ShopTransportations {
+  export interface IShopTransportations {
+    code: string;
+    name: string;
+    description: string;
+    icon: string; // Assuming the require function returns a string path
+    default: IDefault;
+    pickup?: true; // Is pickup!
+  }
 
-export const ShopTransportations = {
+  /**
+   * Represents the default configuration for a transportation type.
+   */
+  export interface IDefault {
+    /** Specifies the type of transportation. */
+    type: string;
+
+    /** Indicates whether the transportation type is enabled or not. */
+    enable: boolean;
+
+    /** Specifies the maximum distance (in kilometers or miles) the transportation type can cover. */
+    distance: number;
+
+    /** Specifies the maximum weight (in kilograms or pounds) the transportation type can carry. */
+    max_weight: number;
+
+    /** Specifies the maximum width (in centimeters or inches) of a package for this transportation type. */
+    max_w: number;
+
+    /** Specifies the maximum length (in centimeters or inches) of a package for this transportation type. */
+    max_l: number;
+
+    /** Specifies the maximum height (in centimeters or inches) of a package for this transportation type. */
+    max_h: number;
+
+    /**
+     * Lists the days of the week when this transportation type operates.
+     * E.g., ["Sunday", "Monday", ...]
+     */
+    days: string[];
+
+    /**
+     * Lists the time spans during which this transportation type operates.
+     * E.g., ["Morning", "Evening"]
+     */
+    time_spans: string[];
+
+    /** Indicates whether the transportation type operates during holidays. */
+    holidays: boolean;
+
+    /** Represents a constant value associated with the transportation type. */
+    const: number;
+
+    /** Coefficient for calculating cost based on distance. */
+    distance_cof: number;
+
+    /** Coefficient for calculating cost based on weight. */
+    weight_cof: number;
+
+    /** Coefficient for calculating cost based on price. */
+    price_cof: number;
+
+    /** Coefficient for calculating cost based on a combination of distance and weight. */
+    distance_weight_cof: number;
+
+    /** Indicates whether free shipping is available for this transportation type. */
+    free_shipping: boolean;
+
+    /** Specifies the price limit above which free shipping is available. */
+    free_shipping_limit: number;
+
+    /** Indicates whether cash on delivery is accepted. */
+    cod: boolean;
+
+    /** Indicates whether the shipping cost can be paid upon delivery. */
+    sod: boolean;
+  }
+}
+
+export const ShopTransportations: Record<
+  string,
+  ShopTransportations.IShopTransportations
+> = {
   Motorbike: {
     code: "Motorbike",
     name: "global.transportation_type.motorbike",
@@ -23,7 +103,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -37,9 +117,9 @@ export const ShopTransportations = {
       free_shipping: true,
       free_shipping_limit: 0,
 
-      cod: false,
-      sod: false // پس کرایه
-    }
+      cod: false, // Accept cash on delivery
+      sod: false, // Pay shipping cost on delivery
+    },
   },
 
   Pickup: {
@@ -49,7 +129,7 @@ export const ShopTransportations = {
 
     icon: require("./assets/transportations/pickup.svg"),
 
-    pickup:true, // Is pickup!
+    pickup: true, // Is pickup!
 
     default: {
       type: "Pickup",
@@ -67,7 +147,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -82,21 +162,10 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: false,
-      sod: false
-    }
+      sod: false,
+    },
   },
 
-
-  /* Car: {
-    code: "Car",
-    name: "خودرو",
-    description:
-        "محموله های متوسط در محدوده چند کیلومتری.",
-
-    icon:  require("./../assets/transportations/cargo_s.svg"),
-
-    default:{},
-  },*/
   CargoSmall: {
     code: "CargoSmall",
     name: "global.transportation_type.cargo_small",
@@ -119,7 +188,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -134,8 +203,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: false,
-      sod: false // پس کرایه
-    }
+      sod: false, // پس کرایه
+    },
   },
   Cargo: {
     code: "Cargo",
@@ -160,7 +229,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -175,8 +244,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: false,
-      sod: true
-    }
+      sod: true,
+    },
   },
   Truck: {
     code: "Truck",
@@ -201,7 +270,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -216,8 +285,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: false,
-      sod: true
-    }
+      sod: true,
+    },
   },
   PostFast: {
     code: "PostFast",
@@ -242,7 +311,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -257,8 +326,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: true,
-      sod: false
-    }
+      sod: false,
+    },
   },
   Post: {
     code: "Post",
@@ -282,7 +351,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -297,8 +366,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: true,
-      sod: false
-    }
+      sod: false,
+    },
   },
   Airplane: {
     code: "Airplane",
@@ -323,7 +392,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -338,8 +407,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: false,
-      sod: true
-    }
+      sod: true,
+    },
   },
   Bicycle: {
     code: "Bicycle",
@@ -365,7 +434,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -380,8 +449,8 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: true,
-      sod: false
-    }
+      sod: false,
+    },
   },
   Global: {
     code: "Global",
@@ -406,7 +475,7 @@ export const ShopTransportations = {
         "Tuesday",
         "Wednesday",
         "Thursday",
-        "Saturday"
+        "Saturday",
       ],
       time_spans: ["Morning", "Evening"],
       holidays: false,
@@ -421,12 +490,7 @@ export const ShopTransportations = {
       free_shipping_limit: 0,
 
       cod: false,
-      sod: true
-    }
+      sod: true,
+    },
   },
-
-
-};
-String.prototype.toTransportationObject = function () {
-  return ShopTransportations[this];
 };

@@ -1,4 +1,5 @@
 import { ProductType } from "../../enums/product/ProductType";
+import type { Shop } from "../../models/shop/shop.model";
 
 /**
  * Helper class for retrieving various shop-related configuration options.

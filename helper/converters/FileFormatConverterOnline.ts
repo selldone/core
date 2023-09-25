@@ -1,4 +1,4 @@
-import { UploadHelper } from "../upload/UploadHelper";
+import { UploadHelper } from "@/Components/utils/upload/UploadHelper";
 
 export class FileFormatConverterOnline {
 

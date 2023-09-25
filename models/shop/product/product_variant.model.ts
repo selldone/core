@@ -13,8 +13,8 @@
  */
 
 import { Product } from "./product.model";
-import type{ ProductImage } from "./product-image.model";
-import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
+import type { ProductImage } from "./product-image.model";
+import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
 
 export interface ProductVariant {
   id: number;
@@ -43,7 +43,7 @@ export interface ProductVariant {
   image: string;
   enable: boolean;
   lead: number;
-  extra: Record<string, any>[]; // Assuming it's an array of key-value objects
+  extra: Product.IExtra | null; // Assuming it's an array of key-value objects
   ar: Record<string, any>[]; // Similarly for 'ar'
 
   // Nested models:

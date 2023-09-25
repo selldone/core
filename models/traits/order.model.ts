@@ -12,8 +12,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface IOrder{
-    id: number;
-    shop_id: number;
-    type:'AVO'|'FUL'|'POS'|'HYP'|'BILL'|'PHYSICAL'|'VIRTUAL'|'FILE'|'SERVICE'|'SUBSCRIPTION'
+export interface IOrder {
+  id: number;
+  shop_id: number;
+  type:
+    | "AVO"
+    | "FUL"
+    | "POS"
+    | "HYP"
+    | "BILL"
+    | "PHYSICAL"
+    | "VIRTUAL"
+    | "FILE"
+    | "SERVICE"
+    | "SUBSCRIPTION";
 }

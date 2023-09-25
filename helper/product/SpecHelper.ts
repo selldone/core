@@ -1,15 +1,20 @@
+import { Product } from "../../models/shop/product/product.model";
+
 export class SpecHelper {
-  static CONVERT_SPEC_JSON_TO_ARRAY(spec_json, spec_order) {
+  static CONVERT_SPEC_JSON_TO_ARRAY(
+    spec_json: Product.ISpec,
+    spec_order: string[] | null
+  ) {
     //    console.log('CONVERT_SPEC_JSON_TO_ARRAY', spec_json)
 
     if (Array.isArray(spec_json)) return spec_json; // Old version!
 
     let spec_list = [];
-    for (let key in spec_json) {
-      let value = spec_json[key];
+    for (const key in spec_json) {
+      const value = spec_json[key];
 
       if (Array.isArray(value)) {
-        let array = [key];
+        const array = [key];
         spec_list.push(array.concat(value));
       } else {
         if (value === "group") {
@@ -20,25 +25,24 @@ export class SpecHelper {
 
     // Order the list:
     if (spec_order)
-      spec_list = spec_list.sort(function(a, b) {
-        let val_a = Array.isArray(a) ? a[0] : a.group;
-        let val_b = Array.isArray(b) ? b[0] : b.group;
+      spec_list = spec_list.sort(function (a, b) {
+        const val_a = Array.isArray(a) ? a[0] : a.group;
+        const val_b = Array.isArray(b) ? b[0] : b.group;
 
         return spec_order.indexOf(val_a) - spec_order.indexOf(val_b);
       });
-    //console.log("spec_list", spec_list);
 
     return spec_list;
   }
 
-  static CONVERT_SPEC_ARRAY_TO_JSON(spec_list) {
-    let spec_json = {};
-    let spec_order = [];
+  static CONVERT_SPEC_ARRAY_TO_JSON(spec_list: any[]) {
+    const spec_json: Record<string, any> = {};
+    const spec_order: string[] = [];
 
-    spec_list.forEach(item => {
+    spec_list.forEach((item) => {
       if (Array.isArray(item)) {
         if (item.length > 0) {
-          let list = [];
+          const list = [];
           for (let i = 1; i < item.length; i++) {
             list.push(item[i]);
           }
@@ -52,8 +56,6 @@ export class SpecHelper {
         }
       }
     });
-    //  console.log('spec_json', spec_json)
-    // console.log('spec_order', spec_order)
 
     return { spec_json, spec_order };
   }

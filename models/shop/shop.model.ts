@@ -1,5 +1,6 @@
 import { Currency } from "../../enums/payment/Currency";
 import { ExchangeRate } from "./payment/exchange_rate.model";
+import {WeekDays} from "../../enums/logistic/WeekDays";
 
 /**
  * Represents the main configuration and details for a shop.
@@ -62,6 +63,7 @@ export class Shop {
     countryCode?: string;
     region?: string;
     locality?: string;
+    days_open?:(keyof typeof WeekDays)[]|null;
   };
 
   /** The support mode for the shop. */

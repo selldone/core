@@ -1,4 +1,6 @@
-import {SubscriptionMode} from "../../enums/subscription/SubscriptionMode";
+import { SubscriptionMode } from "../../enums/subscription/SubscriptionMode";
+import type { Shop } from "../../models/shop/shop.model";
+import type { Product } from "../../models/shop/product/product.model";
 
 export class RibbonHelper {
   /**
@@ -8,11 +10,11 @@ export class RibbonHelper {
    * @param product
    * @returns {boolean|*}
    */
-  static hasShipping(shop, product) {
+  static hasShipping(shop: Shop, product: Product) {
     const shop_ribbon = shop.ribbon;
     const product_ribbon = product.ribbon;
 
-    const mode=product_ribbon?.mode && SubscriptionMode[product_ribbon.mode]
+    const mode = product_ribbon?.mode && SubscriptionMode[product_ribbon.mode];
 
     // ═════════════ Check exception modes ═════════════
     if (!mode?.support_shipping) {
@@ -33,7 +35,7 @@ export class RibbonHelper {
    * @param product
    * @returns {boolean|*}
    */
-  static hasBilling(shop, product) {
+  static hasBilling(shop: Shop, product: Product) {
     const shop_ribbon = shop.ribbon;
     const product_ribbon = product.ribbon;
 
@@ -52,11 +54,11 @@ export class RibbonHelper {
    * @param product
    * @returns {boolean|*}
    */
-  static hasCount(shop, product) {
+  static hasCount(shop: Shop, product: Product) {
     const shop_ribbon = shop.ribbon;
     const product_ribbon = product.ribbon;
 
-    const mode=product_ribbon?.mode && SubscriptionMode[product_ribbon.mode]
+    const mode = product_ribbon?.mode && SubscriptionMode[product_ribbon.mode];
 
     // ═════════════ Check exception modes ═════════════
     if (!mode?.support_count) {
@@ -71,12 +73,14 @@ export class RibbonHelper {
     return shop_ribbon?.count;
   }
 
-
-  static getSubscribedPrice( product) {
-
+  static isMembershipSubscribed(
+    product: Product & { subscribed: boolean /*True if customer subscribed*/ }
+  ) {
     const product_ribbon = product.ribbon;
 
-    return  product_ribbon?.mode===SubscriptionMode.Membership.code && product.subscribed;
-
+    return (
+      product_ribbon?.mode === SubscriptionMode.Membership.code &&
+      product.subscribed
+    );
   }
 }
