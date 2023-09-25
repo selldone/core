@@ -12,8 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface IReturn{
-    params?:{[key:string]:any};
-    return:string|null;// Return route name
-
+export interface IReturn {
+  params?: { [key: string]: any };
+  return: string | null; // Return route name
 }
