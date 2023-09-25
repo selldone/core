@@ -1,0 +1,79 @@
+/**
+ * Defines the structure for each application category.
+ */
+interface ApplicationCategory {
+  code: string;
+  name: string;
+  icon: string;
+}
+
+/**
+ * Enumerates various application categories with associated metadata.
+ */
+export const ApplicationCategories: Record<string, ApplicationCategory> = {
+  TRACKING: {
+    code: "TRACKING",
+    name: "global.application_categories.tracking",
+    icon: "fas fa-chart-line",
+  },
+  PAYMENT: {
+    code: "PAYMENT",
+    name: "global.application_categories.payment",
+    icon: "fas fa-wallet",
+  },
+  SEO: {
+    code: "SEO",
+    name: "global.application_categories.seo",
+    icon: "fas fa-trophy",
+  },
+  CRM: {
+    code: "CRM",
+    name: "global.application_categories.crm",
+    icon: "fas fa-users",
+  },
+  TRANSPORTATION: {
+    code: "TRANSPORTATION",
+    name: "global.application_categories.transportation",
+    icon: "fas fa-shipping-fast",
+  },
+  AUTOMATION: {
+    code: "AUTOMATION",
+    name: "global.application_categories.automation",
+    icon: "fas fa-magic",
+  },
+  INVENTORY: {
+    code: "INVENTORY",
+    name: "global.application_categories.inventory",
+    icon: "fas fa-boxes",
+  },
+  ACCOUNTING: {
+    code: "ACCOUNTING",
+    name: "global.application_categories.accounting",
+    icon: "fas fa-cash-register",
+  },
+  MARKETING: {
+    code: "MARKETING",
+    name: "global.application_categories.marketing",
+    icon: "fas fa-funnel-dollar",
+  },
+  ADVERTISING: {
+    code: "ADVERTISING",
+    name: "global.application_categories.advertising",
+    icon: "fas fa-ad",
+  },
+  STAFF: {
+    code: "STAFF",
+    name: "global.application_categories.staff",
+    icon: "fas fa-id-card-alt",
+  },
+  INCENTIVE: {
+    code: "INCENTIVE",
+    name: "global.application_categories.incentive",
+    icon: "fas fa-mug-hot",
+  },
+  SHOP: {
+    code: "SHOP",
+    name: "global.application_categories.shop",
+    icon: "fas fa-store",
+  },
+};
