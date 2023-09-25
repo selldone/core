@@ -1780,7 +1780,7 @@ export default {
     Thursday: "Thursday",
     Friday: "Friday",
   },
-  /** {@see PaymentMethodsForm} **/
+  /** {@see SPaymentForm} **/
   payment_form: {
     title: "Select Payment Method",
     gift_cards_input: "Gift Cards",
