@@ -12,19 +12,30 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import fetchCountries from "./requests/gapi.countries.get";
-import { APIAbstract } from "../server/APIAbstract";
-
-export class Gapi extends APIAbstract {
-  constructor() {
-    super();
-  }
-
-  public fetchCountries = fetchCountries;
+export interface Campaign {
+  id: number;
+  shop_id: number;
+  name: string;
+  enable: boolean;
+  start_at: Date;
+  end_at: Date;
+  auto: boolean; // Auto apply to shop
+  banner: any[]; // You might want to define a more specific type for banner items
+  discount_id: number;
+  page_id: number;
+  notification: any[]; // You might want to define a more specific type for notifications
+  sessions: number; // Sessions count
+  products: number;
+  add_carts: number;
+  buys: number;
+  orders: number; // Approved buys and payment
+  payment: any[]; // You might want to define a more specific type for payment items
+  social: Record<string, number>; // Array of previous links (in social)
+  desktop: number;
+  mobile: number;
+  tablet: number;
 }
 
-//█████████████████████████████████████████████████████████████
-//―――――――――――――――― 🦫 Types ――――――――――――――――
-//█████████████████████████████████████████████████████████████
+export namespace Campaign {
 
-export namespace Gapi {}
+}

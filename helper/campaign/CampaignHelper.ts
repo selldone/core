@@ -1,26 +1,31 @@
+import { PriceHelper } from "../price/PriceHelper";
+import type { Shop } from "../../models/shop/shop.model";
+import { Currency } from "../../enums/payment/Currency";
+import type { Campaign } from "../../models/shop/campaign/campaign.model";
+
 export class CampaignHelper {
-  static isSearch(net) {
+  static isSearch(net: string) {
     return ["google"].includes(net);
   }
-  static isSocialNetwork(net) {
+  static isSocialNetwork(net: string) {
     return net !== "direct" && !this.isSearch(net);
   }
 
-  static GetTotalAmount(instance, payment) {
+  static GetTotalAmount(
+    shop: Shop,
+    to_currency: keyof typeof Currency,
+    payment: Record<string, number>
+  ) {
     let out = 0;
     if (payment) {
       Object.keys(payment).forEach((currency) => {
-        out +=
-          instance.getBuyRateValue(
-            instance.shop,
-            currency,
-            instance.GetUserSelectedCurrency().code
-          ) * payment[currency];
+        const _rate = PriceHelper.getBuyRateValue(shop, currency, to_currency);
+        if (_rate) out += _rate * payment[currency];
       });
     }
     return out;
   }
-  static GetTotalSocials(campaign) {
+  static GetTotalSocials(campaign: Campaign) {
     let out = 0;
     if (campaign.social) {
       Object.keys(campaign.social).forEach((key) => {
@@ -30,11 +35,11 @@ export class CampaignHelper {
     }
     return out;
   }
-  static GetSocialsOnly(campaign, limit = 0) {
-    let out = {};
+  static GetSocialsOnly(campaign: Campaign, limit: number = 0) {
+    const out: Record<string, number> = {};
     if (campaign.social) {
       // 1. Sort values:
-      let sorted = [];
+      let sorted: { key: string; value: number }[] = [];
       Object.keys(campaign.social).forEach((key) => {
         // 2. Filter only social:
         if (!this.isSocialNetwork(key)) return;
@@ -54,13 +59,13 @@ export class CampaignHelper {
     }
     return out;
   }
-  static GetTotalDirects(campaign) {
+  static GetTotalDirects(campaign: Campaign) {
     return campaign.social && campaign.social.direct
       ? campaign.social.direct
       : 0;
   }
 
-  static GetTotalOrganicSearch(campaign) {
+  static GetTotalOrganicSearch(campaign: Campaign) {
     let out = 0;
     if (campaign.social) {
       Object.keys(campaign.social).forEach((key) => {
@@ -71,7 +76,7 @@ export class CampaignHelper {
     return out;
   }
 
-  static GetTotalOther(campaign) {
+  static GetTotalOther(campaign: Campaign) {
     const out =
       campaign.sessions -
       (this.GetTotalSocials(campaign) +

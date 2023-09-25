@@ -44,7 +44,7 @@ export class LRUCache<K, V extends ICacheable | null> {
       this.cache.delete(key);
     }
 
-    if(value)value.__date=new Date()
+    if (value) value.__date = new Date();
     this.cache.set(key, value);
 
     // Check size constraint and remove the oldest (least recently used) item if needed
@@ -61,14 +61,11 @@ export class LRUCache<K, V extends ICacheable | null> {
     this.cache.clear();
   }
 
-  entries(){
-    return this.cache.entries()
+  entries() {
+    return this.cache.entries();
   }
-
 }
 
 interface ICacheable {
   __date?: Date;
-
 }
-

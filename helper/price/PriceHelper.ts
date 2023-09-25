@@ -20,7 +20,7 @@ import type { BasketItem } from "../../models/shop/order/basket/basket_item.mode
 import type { SubscriptionPrice } from "../../models/shop/product/subscription_price.model";
 import type { ProductVariant } from "../../models/shop/product/product_variant.model";
 import type { Valuation } from "../../models/shop/accounting/valuation/valuation.model";
-import type {ExtraPricing} from "../../models/shop/extra-pricing/extra-pricing.model";
+import type { ExtraPricing } from "../../models/shop/extra-pricing/extra-pricing.model";
 
 export class PriceHelper {
   static FixPrecision(val: number, floats: number) {
@@ -144,7 +144,7 @@ export class PriceHelper {
 
   static priceProductByCurrency(
     shop: Shop,
-    product: Product,
+    product: Product & { valuation?: Valuation | null },
     variant: ProductVariant | null,
     to_currency: keyof typeof Currency,
     preferences?: BasketItem.IPreferences | null,
