@@ -1,5 +1,8 @@
 # Selldone Core
 
+* **Mode:** 🌍 Public
+* **Use case:** Fundamental models, types and functions to work with Selldone and create app for both storefront or backoffice.
+
 Welcome to Selldone Core, the foundational JavaScript/TypeScript library for Selldone. This repository provides essential utilities, models, and types that power the Selldone ecosystem.
 
 ## Table of Contents
