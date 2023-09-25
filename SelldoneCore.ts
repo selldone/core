@@ -17,7 +17,8 @@ import GAPI from "./server/GAPI";
 import SetupService from "./server/SetupService";
 
 import "./utils/console/ConsoleStyle";
-
+import CDN from "./server/CDN";
+import URLS from "./server/URLS";
 
 const SDK_VERSION = "0.01";
 //█████████████████████████████████████████████████████████████
@@ -29,6 +30,9 @@ declare global {
   interface Window {
     axios: any;
 
+    CDN: CDN;
+    URLS: URLS;
+
     // APIs
     GAPI: GAPI;
 
@@ -36,7 +40,6 @@ declare global {
     $selldone: {
       gapi: Gapi;
     };
-
   }
 }
 
@@ -65,6 +68,9 @@ export class SelldoneCore {
       console.warn("CSRF token not found!");
     }
     //――――――――――――――――――――――――― Initialize Resources Origin ―――――――――――――――――――――――――
+
+    window.CDN = new CDN();
+    window.URLS = new URLS();
 
     // Define API repositories:
     window.GAPI = new GAPI();

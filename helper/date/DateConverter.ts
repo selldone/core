@@ -167,7 +167,7 @@ export class DateConverter {
    * @param datetimeStr - A datetime string or an object containing a date string.
    * @param keep_only_date - A flag to determine if only the date should be kept.
    *
-   * @returns A Date object representing the local time.
+   * @returns Date object representing the local time.
    */
   static convertToLocalTime(
     datetimeStr: { date: string } | string | null | undefined,

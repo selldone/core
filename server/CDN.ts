@@ -23,22 +23,22 @@ export default class CDN {
     this.storage_direct_thumbnails = SetupService.GetStorageDirectThumbnails();
     this.storage_direct_url = SetupService.GetStorageDirectHost();
 
-    try{
+    try {
       this.shop_cdn_temp_files = SetupService.GetSelldoneCDNTemp_Files();
-    }catch (e){
-      console.warn(e)
+    } catch (e) {
+      console.warn(e);
     }
 
     this.shop_cdn_ar = SetupService.GetSelldoneCDN_AR();
-    try{
-    this.shop_cdn_videos = SetupService.GetSelldoneCDN_Videos();
-  }catch (e){
-    console.warn(e)
-  }
-    try{
-    this.cdn_image_by_id = SetupService.GetSelldoneCDN_ID();
-    }catch (e){
-      console.warn(e)
+    try {
+      this.shop_cdn_videos = SetupService.GetSelldoneCDN_Videos();
+    } catch (e) {
+      console.warn(e);
+    }
+    try {
+      this.cdn_image_by_id = SetupService.GetSelldoneCDN_ID();
+    } catch (e) {
+      console.warn(e);
     }
   }
 
@@ -150,7 +150,7 @@ export default class CDN {
     return `${this.shop_cdn_temp_files}/${file_name}`;
   }
 
-  GET_USER_AVATAR(user_id: number, size:'small' | 'big' | null = "small") {
+  GET_USER_AVATAR(user_id: number, size: "small" | "big" | null = "small") {
     if (!user_id) return null;
 
     return `${this.selldone_service_url}/users/${user_id}/profile/avatar/${size}`;
