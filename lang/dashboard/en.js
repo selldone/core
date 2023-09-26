@@ -296,7 +296,7 @@ export default {
       },
 
       accept_invite_question: "Do you accept this invitation?",
-      /** {@see WidgetShopCard} **/
+      /** {@see SShopCard} **/
 
       shop_card: {
         menu_orders: {
@@ -6081,7 +6081,7 @@ export default {
     },
   },
 
-  /** {@see ShopList} **/
+  /** {@see ShopsListPage} **/
   shops_list: {
     title: "My Shops",
     message:

@@ -269,7 +269,7 @@ export default {
       },
       accept_invite_question: "آیا این دعوت نامه را می پذیرید؟",
 
-      /** {@see WidgetShopCard} **/
+      /** {@see SShopCard} **/
 
       shop_card: {
         menu_orders: {
@@ -6046,7 +6046,7 @@ export default {
     },
   },
 
-  /** {@see ShopList} **/
+  /** {@see ShopsListPage} **/
   shops_list: {
     title: "فروشگاه های من",
     message:
