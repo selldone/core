@@ -24,7 +24,19 @@ export const SmsProviders = [
     description:
       "A sms platform enabling businesses to build and manage SMS, voice, and messaging applications. Ensure you input a valid account SID (ACxxx...) into the SID field.",
     icon: require("@/Components/assets/tradmark/twilio.svg"),
-    tokens: ["Auth token" /*token_1*/, "Account SID" /*token_2*/, "Number" /*token_3*/],
+    tokens: [
+      "Auth token" /*token_1*/,
+      "Account SID" /*token_2*/,
+      "Number" /*token_3*/,
+      "Service SID" /*token_4*/,
+    ],
+    placeholders:[
+        "Find this in your Twilio dashboard! ex. 8754...",
+      "Find this in your Twilio dashboard! ex. AC...",
+      "Find it in your Twilio dashboard! ex. +1...",
+      "Find or create it in your Twilio > Verify > Services! ex. VA...",
+
+    ],
     support_text: true, // Support text mode.
     support_template: false, // Support template mode.
     link: "https://www.twilio.com",
