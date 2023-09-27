@@ -1,8 +1,12 @@
+/**
+ * Print element.
+ *
+ */
 export class Print {
   static PrintCanvas(
     id: string,
     qr_size: number = 400,
-    title: string | null = null
+    title: string | null = null,
   ) {
     const target = document.getElementById(id);
     if (!target) return;
@@ -20,7 +24,9 @@ export class Print {
     } else if (target instanceof SVGSVGElement) {
       try {
         const serializedSvg = new XMLSerializer().serializeToString(target);
-        dataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(serializedSvg);
+        dataUrl =
+          "data:image/svg+xml;charset=utf-8," +
+          encodeURIComponent(serializedSvg);
       } catch (e) {
         console.error(e, target);
       }
@@ -47,7 +53,7 @@ export class Print {
     const printWin = window.open(
       "",
       "",
-      "width=" + qr_size * 1.3 + ",height=" + qr_size * 1.3
+      "width=" + qr_size * 1.3 + ",height=" + qr_size * 1.3,
     );
     if (!printWin) return;
 
@@ -67,7 +73,7 @@ export class Print {
         function () {
           call();
         },
-        true
+        true,
       );
     printWin.document.write(windowContent);
 
