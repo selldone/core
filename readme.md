@@ -1,3 +1,5 @@
+![Selldone Official Storefront App](_docs/images/banner-core.jpg)
+
 # Selldone Core
 
 * **Mode:** 🌍 Public
