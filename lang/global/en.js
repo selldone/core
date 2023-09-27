@@ -1757,7 +1757,7 @@ export default {
       U7: "Product doesn't satisfy the specifications",
     },
   },
-  /** {@see ImageUploader} **/
+  /** {@see SImageUploader} **/
   image_uploader: {
     label: "Drag & Drop or <u>Select file</u>",
     max_size: "Maximum allowed size: {size}",
@@ -1964,7 +1964,7 @@ export default {
   /** {@see RatingInput} **/
   rating_labels: ["Very bad", "Bad", "Normal", "Good", "Excellent"],
 
-  /** {@see MapView} **/
+  /** {@see SMapView} **/
   map_view: {
     address_detail: "Address details",
     change: "Change",

@@ -1626,7 +1626,7 @@ export default {
       U7: "مغایرت با مشخصات اعلام شده توسط فروشنده",
     },
   },
-  /** {@see ImageUploader} **/
+  /** {@see SImageUploader} **/
   image_uploader: {
     label: "بکش و رها کن یا <u>انتخاب فایل</u>",
     max_size: "حداکثر حجم مجاز : {size}",
@@ -1839,7 +1839,7 @@ export default {
   /** {@see RatingInput} **/
   rating_labels: ["خیلی ضعیف", "ضعیف", "معمولی", "خوب", "عالی"],
 
-  /** {@see MapView} **/
+  /** {@see SMapView} **/
   map_view: {
     address_detail: "جزئیات آدرس",
     change: "تغییر",
