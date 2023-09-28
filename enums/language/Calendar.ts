@@ -1,5 +1,3 @@
-
-
 interface ICalendar {
   /**
    * The system or method used to organize and measure time.
@@ -34,10 +32,9 @@ interface ICalendar {
   first_day_of_week: number;
 }
 
-
 /**
  * Calendar configurations containing details of various calendar types.
- */export const Calendar:Record<string, ICalendar>= {
+ */ export const Calendar: Record<string, ICalendar> = {
   /**
    * Georgian Calendar Configuration
    */

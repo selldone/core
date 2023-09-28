@@ -1,6 +1,5 @@
 import { Calendar } from "./Calendar";
 
-
 /**
  * Interface representing the structure of a language configuration.
  */
@@ -63,8 +62,6 @@ export interface ILanguage {
    */
   human?: boolean;
 }
-
-
 
 export const Language: Record<string, ILanguage> = {
   // English
