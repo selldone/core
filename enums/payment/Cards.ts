@@ -14,4 +14,9 @@ export const Cards = {
   bank: require("./assets/payments/bank.svg"),
   wallet :require("./assets/payments/wallet.svg"),
   vpa: require("./assets/payments/vpa.svg"),    // Virtual Payment Address (VPA) Validation
+
+
+  // Especial for Square
+  square_gift_card :require("./assets/payments/square.svg"),
+
 };
