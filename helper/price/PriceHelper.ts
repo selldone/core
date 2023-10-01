@@ -24,8 +24,8 @@ import type { ExtraPricing } from "../../models/shop/extra-pricing/extra-pricing
 
 export class PriceHelper {
   static FixPrecision(val: number, floats: number) {
-    //console.log('FixPrecision',val, floats,parseFloat(val.toFixed(floats)))
-    return parseFloat(val.toFixed(floats));
+    const factor = Math.pow(10, floats);
+    return Math.round(val * factor) / factor;
   }
 
   //――――――――――――――――――――――  Exchange Rates ――――――――――――――――――――
@@ -245,15 +245,21 @@ export class PriceHelper {
 
       // ━━━━━━━━━━━━ 3. Convert to target currency ━━━━━━━━━━━━
       $out = $out * rate;
+      //console.log('before discount --->','rate',rate,'$out',$out,this.FixPrecision($out, floats))
 
       // ━━━━━━━━━━━━ 4. Apply discount: ━━━━━━━━━━━━
-      if (clone_product.discount)
-        $out -= this.getProductDiscountAmountByCurrency(
+      if (clone_product.discount) {
+        const _discount = this.getProductDiscountAmountByCurrency(
           shop,
           clone_product,
           null,
           to_currency
         );
+        $out -= _discount;
+
+        //console.log('after discount --->','discount',_discount,'$out',$out,this.FixPrecision($out, floats))
+      }
+
       //console.log('$out',$out,preferences)
 
       // ━━━━━━━━━━━━ 5. 🍁 Apply valuation (Pricing form) 🍁 ━━━━━━━━━━━━

@@ -46,7 +46,7 @@ export function getCode(name: string): string | undefined {
  * @param code - The country code.
  * @returns - The country name or null if not found.
  */
-export function getCountryName(code: string): string | null {
+export function getCountryName(code: string|null): string | null {
   if (!code) return null;
   return codeMap[code.toLowerCase()] || null;
 }
