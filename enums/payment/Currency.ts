@@ -1950,7 +1950,7 @@ export const Currency: Record<string, ICurrency> = {
     name: "OMR",
     country: "Oman",
     flag: "OM",
-    floats: 2,
+    floats: 3,
     format: "0,0.[00]",
     round_factor: 100,
     gradient: ["#1fb74a", "#49770d"],
