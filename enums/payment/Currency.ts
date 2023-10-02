@@ -1944,6 +1944,20 @@ export const Currency: Record<string, ICurrency> = {
     auto_rate: false,
   },
 
+  OMR: {
+    code: "OMR",
+    enable: true,
+    name: "OMR",
+    country: "Oman",
+    flag: "OM",
+    floats: 2,
+    format: "0,0.[00]",
+    round_factor: 100,
+    gradient: ["#1fb74a", "#49770d"],
+    unicode: "ر.ع.",
+    auto_rate: false,
+  },
+
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   ADA: {
