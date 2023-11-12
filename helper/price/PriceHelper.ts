@@ -426,8 +426,10 @@ export class PriceHelper {
     shop: Shop,
     product: Product,
     variant: ProductVariant | null,
-    to_currency: keyof typeof Currency
+    to_currency?: keyof typeof Currency
   ) {
+    if(!to_currency)to_currency=product.currency;
+
     const price_final = this.priceProductByCurrency(
       shop,
       product,
