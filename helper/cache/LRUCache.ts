@@ -64,6 +64,9 @@ export class LRUCache<K, V extends ICacheable | null> {
   entries() {
     return this.cache.entries();
   }
+  length() {
+    return this.cache.size;
+  }
 }
 
 interface ICacheable {

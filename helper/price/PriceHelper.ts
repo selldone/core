@@ -21,6 +21,7 @@ import type { SubscriptionPrice } from "../../models/shop/product/subscription_p
 import type { ProductVariant } from "../../models/shop/product/product_variant.model";
 import type { Valuation } from "../../models/shop/accounting/valuation/valuation.model";
 import type { ExtraPricing } from "../../models/shop/extra-pricing/extra-pricing.model";
+import StorefrontDebugEvents from "@/Components/debug/StorefrontDebugEvents";
 
 export class PriceHelper {
   static FixPrecision(val: number, floats: number) {
@@ -183,9 +184,13 @@ export class PriceHelper {
       // ━━━━━━━━━━━━ 1. Get exchange rate. ━━━━━━━━━━━━
       const rate = this.getBuyRateValue(shop, variant.currency, to_currency);
       if (!rate) {
-        throw new Error(
-          `Exchange rate ${variant.currency}/${to_currency} not found!`
+        const _error_message = `Exchange rate ${variant.currency}/${to_currency} not found!`;
+        // 🪠 Log error to storefront debugger view!
+        StorefrontDebugEvents.LogWarning(
+          `Exchange ${variant!.currency}/${to_currency}`,
+          _error_message
         );
+        throw new Error(_error_message);
       }
       //console.log('------current_extra_pricing',current_extra_pricing)
       const clone_variant = Object.assign({}, variant);
@@ -223,9 +228,15 @@ export class PriceHelper {
       // ━━━━━━━━━━━━ 1. Get exchange rate. ━━━━━━━━━━━━
       const rate = this.getBuyRateValue(shop, product.currency!, to_currency);
       if (!rate) {
-        throw new Error(
-          `Exchange rate ${product.currency}/${to_currency} not found!`
+        const _error_message = `Exchange rate ${product.currency}/${to_currency} not found!`;
+
+        // 🪠 Log error to storefront debugger view!
+        StorefrontDebugEvents.LogWarning(
+          `Exchange ${product.currency}/${to_currency}`,
+          _error_message
         );
+
+        throw new Error(_error_message);
       }
 
       const clone_product = Object.assign({}, product);
@@ -428,7 +439,7 @@ export class PriceHelper {
     variant: ProductVariant | null,
     to_currency?: keyof typeof Currency
   ) {
-    if(!to_currency)to_currency=product.currency;
+    if (!to_currency) to_currency = product.currency;
 
     const price_final = this.priceProductByCurrency(
       shop,
