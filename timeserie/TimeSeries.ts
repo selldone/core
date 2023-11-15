@@ -84,6 +84,10 @@ export class TimeSeries {
     offset: number,
     days: number
   ) {
+    if(!raw_data)raw_data=[];
+    if(!offset)offset=0;
+    if(!days)days=0;
+
     // Prevent duplicated dates:
     const dates: number[] = [];
     const __raw_data: IRawData[] = [];

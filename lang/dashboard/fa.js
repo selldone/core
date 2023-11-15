@@ -3908,7 +3908,7 @@ export default {
       title: "تاریخچه ذخیره شده صفحه",
     },
 
-    /** {@see VuseBuilder} **/
+    /** {@see SPageEditor} **/
     design: {
       themes: {
         title: "دستیار طراحی صفحات لندینگ",
@@ -5562,7 +5562,7 @@ export default {
     get_off: "تا {percent}% تخفیف بگیرید",
   },
 
-  /** @see VuseStyler **/
+  /** @see SStyler **/
   styler: {
     size_class: "سایز و کلاس",
     delete_bg: "حذف تصویر پس زمینه",

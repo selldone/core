@@ -3926,7 +3926,7 @@ export default {
       title: "Saved History",
     },
 
-    /** {@see VuseBuilder} **/
+    /** {@see SPageEditor} **/
     design: {
       themes: {
         title: "Inline Page Builder",
@@ -5593,7 +5593,7 @@ export default {
     get_off: "GET {percent}% OFF",
   },
 
-  /** @see VuseStyler **/
+  /** @see SStyler **/
   styler: {
     size_class: "Size & Class",
     delete_bg: "Delete background image",

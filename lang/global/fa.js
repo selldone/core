@@ -699,9 +699,9 @@ export default {
     cluster: "خوشه",
     clusters: "خوشه ها",
 
-    subscriptions:"اشتراک ها",
-    spam:"اسپم",
-
+    subscriptions: "اشتراک ها",
+    spam: "اسپم",
+    video: "ویدئو",
   },
 
   difficulties: {

@@ -700,9 +700,9 @@ export default {
     cluster: "Cluster",
     clusters: "Clusters",
 
-    subscriptions:"Subscriptions",
-    spam:"Spam",
-
+    subscriptions: "Subscriptions",
+    spam: "Spam",
+    video: "Video",
   },
   difficulties: {
     very_complicated: "Very complicated",
