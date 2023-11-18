@@ -6929,10 +6929,10 @@ export default {
         "Customized Kitchenware Valuation",
         "Personalized Stationery Pricing",
         "Bespoke Hair Accessory Valuation",
-        "Custom Sports Equipment Pricing"
+        "Custom Sports Equipment Pricing",
       ],
-      structure:{
-        title:[
+      structure: {
+        title: [
           "T-shirt Print Design",
           "Jewelry Metal Type",
           "Shoe Material Choice",
@@ -6952,10 +6952,59 @@ export default {
           "Kitchenware Material",
           "Stationery Paper Type",
           "Hair Accessory Material",
-          "Sports Equipment Size"
-        ]
-      }
+          "Sports Equipment Size",
+        ],
+      },
     },
 
+    /**
+     * Lottery
+     */
+    lottery: {
+      title: [
+        "Spin & Win Big Prizes!",
+        "Fortune Wheel Jackpot",
+        "Lucky Spin Bonanza",
+        "Spin to Win Rewards",
+        "Wheel of Wealth",
+        "Lucky Lottery Extravaganza",
+        "Mega Spin Surprise",
+        "Prize Wheel Fiesta",
+        "Treasure Spin Spectacular",
+        "Spin the Wheel Magic",
+        "Lucky Wheel Galore",
+        "Fortune's Favor",
+        "Wheel of Wonders",
+        "Spin for Riches",
+        "Prize Spinner Delight",
+        "Golden Spin Lottery",
+        "Spin-a-Prize",
+        "Wheel of Fortunes",
+        "Lucky Spin Showcase",
+        "Ultimate Spin Reward",
+      ],
+      description: [
+        "Spin the wheel for a chance to win exclusive discounts!",
+        "Try your luck – amazing prizes await in our fortune wheel!",
+        "Win big with each spin – exciting rewards up for grabs!",
+        "Spin to win! Surprise gifts and offers on every turn.",
+        "Your chance to score big – spin the wheel for instant prizes!",
+        "Exclusive rewards with every spin – will you be the lucky one?",
+        "Spin and win! Uncover hidden gems in our shop's wheel of fortune.",
+        "Get lucky with our wheel – prizes, discounts, and more!",
+        "Every spin's a win – grab your special prize today!",
+        "Turn the wheel for a delightful surprise – what will you win?",
+        "Unleash fortune with a spin – exciting shop rewards await.",
+        "Spin to reveal your prize – discounts, gifts, and more!",
+        "A spin a day keeps the excitement in play – win unique prizes!",
+        "Spin our wheel of fortune for exclusive shop treats.",
+        "Lucky spins bring lucky wins – get your prize now!",
+        "Your spin could unlock amazing shopping rewards!",
+        "Spin for a chance to bag exclusive deals and offers.",
+        "The wheel of fortune is spinning – catch your lucky prize!",
+        "Spin, win, and smile – surprise rewards with every turn.",
+        "Take a spin and let the fortune decide your prize!",
+      ],
+    },
   },
 };
