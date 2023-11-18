@@ -1,4 +1,4 @@
-import { UploadHelper } from "@/Components/utils/upload/UploadHelper";
+import { UploadHelper } from "@components/utils/upload/UploadHelper";
 
 export class FileFormatConverterOnline {
   static VendorConvertToCsv(vue, vendor_id, file, success) {

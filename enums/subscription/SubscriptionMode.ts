@@ -10,7 +10,7 @@ export const SubscriptionMode = {
     code: "SubBox",
     title: "Subscription Box",
     desc: "A simple subscription box with a recurring delivery.",
-    image: require("@/Components/assets/icons/subscription-box.svg"),
+    image: require("@components/assets/icons/subscription-box.svg"),
     delivery_states: PhysicalOrderStates,
     link_type: null,
 
@@ -24,7 +24,7 @@ export const SubscriptionMode = {
     code: "Membership",
     title: "Membership",
     desc: "Subscription for membership. Use this option if this subscription does not need fulfillment. You can upload files and send automated emails to subscribers.",
-    image: require("@/Components/assets/icons/membership.svg"),
+    image: require("@components/assets/icons/membership.svg"),
     delivery_states: null,
     link_type: null,
 

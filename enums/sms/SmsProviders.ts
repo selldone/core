@@ -5,7 +5,7 @@ export const SmsProviders = [
     driver: "default",
     title: "Default",
     description: "Utilize the integrated SMS provider offered by Selldone.",
-    icon: require("@/Components/assets/tradmark/selldone.svg"),
+    icon: require("@components/assets/tradmark/selldone.svg"),
     tokens: [],
     messages: [
       "⚠️ Due to concerns over SMS fraud, this option is currently disabled. If you would like to enable SMS login and order notifications, please add your own custom service provider.",
@@ -23,7 +23,7 @@ export const SmsProviders = [
     title: "Twilio",
     description:
       "A sms platform enabling businesses to build and manage SMS, voice, and messaging applications. Ensure you input a valid account SID (ACxxx...) into the SID field.",
-    icon: require("@/Components/assets/tradmark/twilio.svg"),
+    icon: require("@components/assets/tradmark/twilio.svg"),
     tokens: [
       "Auth token" /*token_1*/,
       "Account SID" /*token_2*/,
@@ -47,7 +47,7 @@ export const SmsProviders = [
     title: "SMS-iT",
     description: "A reliable and efficient SMS messaging service.",
 
-    icon: require("@/Components/assets/tradmark/smsit.png"),
+    icon: require("@components/assets/tradmark/smsit.png"),
     tokens: ["Auth token" /*token_1*/, "Number" /*token_2*/],
     messages: [
       "Make sure you added a phone number and verified it on Smsit.",
@@ -79,7 +79,7 @@ export const SmsProviders = [
     driver: "kavenegar",
     title: "Kavenegar",
     description: "",
-    icon: require("@/Components/assets/tradmark/kavenegar.png"),
+    icon: require("@components/assets/tradmark/kavenegar.png"),
     tokens: ["Auth token" /*token_1*/, "Number" /*token_2*/],
     locals: ["IR"], // Only for some local services : SetupService.LocalServiceCountry()
 

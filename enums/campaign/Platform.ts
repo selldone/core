@@ -24,21 +24,21 @@ export const Platform: Record<string, PlatformType> = {
   web: {
     code: "web",
     title: "Web",
-    icon: require("@/Components/assets/icons/web.svg"),
+    icon: require("@components/assets/icons/web.svg"),
   },
   api: {
     code: "api",
     title: "API",
-    icon: require("@/Components/assets/icons/code.svg"),
+    icon: require("@components/assets/icons/code.svg"),
   },
   android: {
     code: "android",
     title: "Android",
-    icon: require("@/Components/assets/tradmark/android.svg"),
+    icon: require("@components/assets/tradmark/android.svg"),
   },
   ios: {
     code: "ios",
     title: "iOS",
-    icon: require("@/Components/assets/tradmark/apple-b.svg"),
+    icon: require("@components/assets/tradmark/apple-b.svg"),
   },
 };

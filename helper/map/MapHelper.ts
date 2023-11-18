@@ -1,4 +1,4 @@
-import { XapiShop } from "../../../SDKs/storefront/shop/XapiShop";
+import { XapiShop } from "@sdk-storefront/shop/XapiShop";
 import ILocation = XapiShop.ILocation;
 import {IAddress} from "../../models/traits/address.model";
 

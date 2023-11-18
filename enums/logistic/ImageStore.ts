@@ -11,5 +11,5 @@ export const ImageStore = {
   motor_taxi: require("./assets/transportations/motor_taxi.svg"),
   car: require("./assets/transportations/car.svg"),
 
-  box: require("@/Components/assets/icons/box-3d.svg")
+  box: require("@components/assets/icons/box-3d.svg")
 };

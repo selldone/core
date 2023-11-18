@@ -41,7 +41,7 @@ export const InventoryCsvStyler = {
       ...Object.values(ProductType),
       {
         code: "VARIANT",
-        image: require("@/Components/assets/icons/package.svg"),
+        image: require("@components/assets/icons/package.svg"),
       },
     ],
   },

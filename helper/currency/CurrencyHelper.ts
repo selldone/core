@@ -16,7 +16,7 @@ import { LocalStorages } from "../local-storage/LocalStorages";
 import { Currency, type ICurrency } from "../../enums/payment/Currency";
 import SetupService from "../../server/SetupService";
 import { TrackConfig } from "@/Applications/Selldone/plugins/gtag/TrackConfig";
-import CoreMixin from "@/Components/mixin/CoreMixin";
+import CoreMixin from "@components/mixin/CoreMixin";
 
 export class CurrencyHelper {
   static SetUserSelectedCurrency(
