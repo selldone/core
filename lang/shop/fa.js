@@ -73,7 +73,7 @@ export default {
     brand: "برند",
     category: "دسته بندی",
     discount: "تخفیف",
-    track_price: "دنبال کردن قیمت",
+    track_price: "دنبال کردن",
     waiting_for_auction: "منتظر حراجید؟",
     inform_auction: "از حراج با خبرم کن",
     return_in_days: "{days} روز ضمانت بازگشت",
