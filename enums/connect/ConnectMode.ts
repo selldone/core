@@ -1,4 +1,4 @@
-import ProviderWebhooks from "@/Applications/Selldone/pages/connect-provider/enums/ProviderWebhooks";
+import ProviderWebhooks from "@app-selldone/pages/connect-provider/enums/ProviderWebhooks";
 import {ConnectScope} from "./ConnectScope";
 
 export const ConnectMode = {

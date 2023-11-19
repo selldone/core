@@ -24,6 +24,6 @@ export const AppMode: Record<string, AppModeEntry> = {
   PUBLIC: {
     title: "Public",
     code: "PUBLIC",
-    src: require("@/Applications/Selldone/pages/help/assets/public.svg"),
+    src: require("@app-selldone/pages/help/assets/public.svg"),
   },
 };

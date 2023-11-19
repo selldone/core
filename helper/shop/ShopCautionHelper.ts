@@ -1,4 +1,4 @@
-import { i18n } from "@/Applications/Backoffice/lang/i18n_samin";
+import { i18n } from "@app-backoffice/lang/i18n_samin";
 import type {Shop} from "../../models/shop/shop.model";
 
 export class ShopCautionHelper {
