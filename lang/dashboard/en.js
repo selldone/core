@@ -3957,7 +3957,7 @@ export default {
       no_category: "No Categories",
     },
 
-    /** {@see PageBuilderSeo} **/
+    /** {@see SPageBuilderSeo} **/
     seo: {
       message:
         "SEO settings are adjusted automatically by the Selldone SEO engine.",

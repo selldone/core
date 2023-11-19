@@ -3938,7 +3938,7 @@ export default {
       no_category: "بدون دسته بندی",
     },
 
-    /** {@see PageBuilderSeo} **/
+    /** {@see SPageBuilderSeo} **/
     seo: {
       message: "تنظیمات SEO به صورت خودکار توسط موتور SEO سلدان انجام می گیرد.",
     },
