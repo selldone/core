@@ -13,8 +13,8 @@
  */
 
 export class SoundHelper {
-  static tick = new Audio("/sound/tick.mp3");
-  static win = new Audio("/sound/win.mp3");
+  static tick = new Audio(require("./assets/tick.mp3"));
+  static win = new Audio(require("./assets/win.mp3"));
 
   static playTick(volume?: number) {
     try {
