@@ -36,7 +36,7 @@ npm install selldone/core --save
 Here's a basic example to get you started:
 
 ```javascript
-import { SelldoneCore } from "../../core/SelldoneCore";
+import { SelldoneCore } from "@core/SelldoneCore";
 
 SelldoneCore.Setup();
 ```
