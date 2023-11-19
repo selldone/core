@@ -137,7 +137,7 @@ export default {
     },
   },
 
-  /** @see ProductPage **/
+  /** @see StorefrontProfilePage **/
 
   product: {
     review: "بررسی",
@@ -154,7 +154,7 @@ export default {
     related_categories_title: "جستجو در مجموعه های مرتبط",
   },
 
-  /** @see LayoutStorefront **/
+  /** @see SStorefrontLayout **/
   layout_shop: {
     shop_menu: {
       orders_history: "تاریخچه سفارشات",
@@ -352,7 +352,7 @@ export default {
     },
   },
 
-  /** {@see BasketPage} **/
+  /** {@see StorefrontBasketPage} **/
   basket_page: {
     title: "سبد خرید",
     total_price: "مبلغ کل",
@@ -518,7 +518,7 @@ export default {
     },
   },
 
-  /** @see ShopBlogsPage **/
+  /** @see StorefrontBlogsPage **/
   blogs: {
     title: "وبلاگ",
 
@@ -527,7 +527,7 @@ export default {
     topics: "موضوعات",
     suggestions: "پیشنهادها",
   },
-  /** @see ShopProfilePage **/
+  /** @see StorefrontProfilePage **/
   official_pages: {
     about_us: "درباره ما",
     terms: "قوانین و مقرارت",
@@ -535,7 +535,7 @@ export default {
     contact_us: "تماس با ما",
   },
 
-  /** @see ShopContactUs **/
+  /** @see StorefrontContactUsPage **/
   contact_us_form: {
     title: "فرم تماس با ما",
     name: "نام",
@@ -546,7 +546,8 @@ export default {
       success: "پیغام شما ارسال گردید.",
     },
     submitted_title: "از تماس شما متشکریم!",
-    submitted_message: "ما از وقتی که برای تماس با ما صرف کردید، قدردانی می کنیم. پیام شما دریافت شده و تیم ما در حال بررسی آن است. ما در اسرع وقت پاسخ خواهیم داد و از صبر شما در این زمان سپاسگزاریم. علاقه و بازخورد شما برای ما مهم است و ما به تعهد خود برای ارائه بهترین پشتیبانی ممکن، پایبند هستیم."
+    submitted_message:
+      "ما از وقتی که برای تماس با ما صرف کردید، قدردانی می کنیم. پیام شما دریافت شده و تیم ما در حال بررسی آن است. ما در اسرع وقت پاسخ خواهیم داد و از صبر شما در این زمان سپاسگزاریم. علاقه و بازخورد شما برای ما مهم است و ما به تعهد خود برای ارائه بهترین پشتیبانی ممکن، پایبند هستیم.",
   },
 
   /** @see SShopMasterPaymentDialog **/
@@ -589,8 +590,8 @@ export default {
   /** {@see SShopAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SShopAvocadoCustomerOrderList} **/
-  /** {@see AvocadoPage} **/
-  /** {@see AvocadoOrderPage} **/
+  /** {@see StorefrontAvocadoPage} **/
+  /** {@see StorefrontAvocadoOrderPage} **/
 
   avocado: {
     not_enable: "فرم دریافت سفارشات آووکادو فعال نیست!",

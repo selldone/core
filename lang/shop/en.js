@@ -138,7 +138,7 @@ export default {
     },
   },
 
-  /** @see ProductPage **/
+  /** @see StorefrontProfilePage **/
 
   product: {
     review: "Description",
@@ -155,7 +155,7 @@ export default {
     related_categories_title: "Discover in collections",
   },
 
-  /** @see LayoutStorefront **/
+  /** @see SStorefrontLayout **/
   layout_shop: {
     shop_menu: {
       orders_history: "Orders History",
@@ -350,7 +350,7 @@ export default {
       free_shipping: "Free Shipping",
     },
   },
-  /** {@see BasketPage} **/
+  /** {@see StorefrontBasketPage} **/
   basket_page: {
     title: "Shopping Cart",
     total_price: "Total amount",
@@ -511,7 +511,7 @@ export default {
     },
   },
 
-  /** @see ShopBlogsPage **/
+  /** @see StorefrontBlogsPage **/
   blogs: {
     title: "Blog",
     add_new_blog: "New Blog",
@@ -520,7 +520,7 @@ export default {
     suggestions: "Suggestions",
   },
 
-  /** @see ShopProfilePage **/
+  /** @see StorefrontProfilePage **/
   official_pages: {
     about_us: "About us",
     terms: "Terms of use",
@@ -528,7 +528,7 @@ export default {
     contact_us: "Contact us",
   },
 
-  /** @see ShopContactUs **/
+  /** @see StorefrontContactUsPage **/
   contact_us_form: {
     title: "Contact us",
     name: "Name",
@@ -539,7 +539,8 @@ export default {
       success: "Your message has been sent.",
     },
     submitted_title: "Thank You for Reaching Out to Us!",
-    submitted_message:"We appreciate your time in contacting us. Your message has been received and our team is currently reviewing it. We will respond as soon as possible, and we thank you for your patience during this time. Your interest and feedback are important to us, and we are committed to providing you with the best possible support."
+    submitted_message:
+      "We appreciate your time in contacting us. Your message has been received and our team is currently reviewing it. We will respond as soon as possible, and we thank you for your patience during this time. Your interest and feedback are important to us, and we are committed to providing you with the best possible support.",
   },
 
   /** @see SShopMasterPaymentDialog **/
@@ -580,8 +581,8 @@ export default {
   /** {@see SShopAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SShopAvocadoCustomerOrderList} **/
-  /** {@see AvocadoPage} **/
-  /** {@see AvocadoOrderPage} **/
+  /** {@see StorefrontAvocadoPage} **/
+  /** {@see StorefrontAvocadoOrderPage} **/
 
   avocado: {
     not_enable: "The avocado form is not enabled!",
