@@ -30,6 +30,10 @@ export class SoundHelper {
   }
 
   static playWin() {
-    return this.win.play();
+    try {
+      return this.win.play();
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
