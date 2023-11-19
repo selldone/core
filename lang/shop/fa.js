@@ -188,7 +188,7 @@ export default {
     items: "عدد",
   },
 
-  /** {@see HistoryOrdersPhysical} **/
+  /** {@see StorefrontHistoryOrdersPhysicalPage} **/
   history_orders_physical: {
     rejected: "رد شده است",
     table: {
@@ -200,7 +200,7 @@ export default {
     },
   },
 
-  /** {@see OrdersHistoryListTemplate} **/
+  /** {@see SStorefrontOrdersList} **/
   history_orders: {
     table: {
       code: "کد سفارش",
@@ -212,7 +212,7 @@ export default {
     },
   },
 
-  /** {@see UserPagesLayout} **/
+  /** {@see StorefrontUserPagesLayout} **/
   user_page: {
     menu: {
       gift_card: "کارت هدیه",
@@ -225,7 +225,7 @@ export default {
     },
   },
 
-  /** {@see MyPhysicalOrderInfoPage} **/
+  /** {@see StorefrontPhysicalOrderDetailPage} **/
   physical_order_page: {
     title: "سفارش",
 
@@ -314,7 +314,7 @@ export default {
     notifications: "درخواست مرجوعی شما با موفقیت ثبت گردید.",
   },
 
-  /** {@see MyVirtualOrderInfoPage} **/
+  /** {@see StorefrontVirtualOrderDetailPage} **/
   virtual_order_page: {
     title: "سفارش",
     info: {

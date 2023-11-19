@@ -188,7 +188,7 @@ export default {
     items: "Item(s)",
   },
 
-  /** {@see HistoryOrdersPhysical} **/
+  /** {@see StorefrontHistoryOrdersPhysicalPage} **/
   history_orders_physical: {
     rejected: "Rejected",
     table: {
@@ -199,7 +199,7 @@ export default {
       status: "Payment Status",
     },
   },
-  /** {@see OrdersHistoryListTemplate} **/
+  /** {@see SStorefrontOrdersList} **/
   history_orders: {
     table: {
       code: "Order Code",
@@ -211,7 +211,7 @@ export default {
     },
   },
 
-  /** {@see UserPagesLayout} **/
+  /** {@see StorefrontUserPagesLayout} **/
   user_page: {
     menu: {
       gift_card: "Gift Card",
@@ -223,7 +223,7 @@ export default {
       orders: "Orders",
     },
   },
-  /** {@see MyPhysicalOrderInfoPage} **/
+  /** {@see StorefrontPhysicalOrderDetailPage} **/
   physical_order_page: {
     title: "Order",
 
@@ -313,7 +313,7 @@ export default {
     add_action: "Send return request",
     notifications: "Your return request has been successfully registered.",
   },
-  /** {@see MyVirtualOrderInfoPage} **/
+  /** {@see StorefrontVirtualOrderDetailPage} **/
   virtual_order_page: {
     title: "Order",
     info: {
