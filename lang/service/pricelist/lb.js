@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "title": "Start Gratis, Wuesse séier!",
   "sub_title": "Onlimitéiert Zougang zu all Funktiounen ouni Käschten! Nëmmen <b>2% vum Verkaf</b> , just no erfollegräichen Akeef. Hutt Dir vill Verkaf a wëllt d'Fraisen reduzéieren?",

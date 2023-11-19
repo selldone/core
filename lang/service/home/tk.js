@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "local_service": "{Country_name for üçin ýerli hyzmat",
   "local_service_message": "Bu hyzmat diňe “ <u>country_name</u> ” -de ýaşaýan we öz hyzmatlaryny we önümlerini bu ýurtda satýan ulanyjylar üçin döredildi. Size diňe ýerli hyzmatlary ýa-da Selldone halkara hyzmatyny ulanmaga rugsat berilýär. Bu hyzmaty ulanmak üçin talaplary ýerine ýetirmeli bolarsyňyz. <b>{country_name}</b> we <b>Europeanewropa Bileleşiginiň</b> kanunlary.",

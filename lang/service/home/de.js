@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "local_service": "Lokaler Dienst für {country_name}",
   "local_service_message": "Dieser Dienst ist ausschließlich für Benutzer bestimmt, die in <u>{country_name}</u> leben und ihre Dienste und Produkte in diesem Land verkaufen. Sie dürfen nur die lokalen Dienste oder den internationalen Dienst von Selldone nutzen. Um diesen Dienst zu nutzen, müssen Sie sich daran halten die Gesetze von <b>{country_name}</b> und der <b>Europäischen Union</b> .",

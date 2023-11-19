@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "title": "મફત પ્રારંભ કરો, ઝડપથી વધો!",
   "sub_title": "કોઈપણ ખર્ચ વિના તમામ સુવિધાઓની અમર્યાદિત ઍક્સેસ! માત્ર સફળ ખરીદી પછી માત્ર <b>2% વેચાણ</b> . શું તમારી પાસે ઘણું વેચાણ છે અને તમે ફી ઘટાડવા માંગો છો?",

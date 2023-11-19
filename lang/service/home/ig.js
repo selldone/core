@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "local_service": "Ọrụ mpaghara maka {country_name}",
   "local_service_message": "Emebere ọrụ a naanị maka ndị ọrụ bi na <u>{country_name}</u> ma na-ere ọrụ na ngwaahịa ha na obodo a. A na-ahapụ gị ka ị jiri ọrụ mpaghara ma ọ bụ ọrụ mba ofesi Selldone. Iji jiri ọrụ a, a ga-achọrọ ka ị kwado ya. iwu nke <b>{country_name}</b> na <b>European Union</b> .",

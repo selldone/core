@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "local_service": "Inkonzo yasekuhlaleni ye {country_name}",
   "local_service_message": "Le nkonzo yenzelwe kuphela abasebenzisi abahlala e <u>{country_name}</u> kwaye bathengise iinkonzo zabo kunye neemveliso kweli lizwe. Uvunyelwe kuphela ukusebenzisa iinkonzo zasekuhlaleni okanye iinkonzo zamazwe ngamazwe ze-Selldone. Ukusebenzisa le nkonzo, kufuneka uhambelane nale nkonzo. imithetho ye <b>{lizwe_igama}</b> kunye <b>neManyano yaseYurophu</b> .",

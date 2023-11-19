@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "local_service": "Хидмати маҳаллӣ барои {country_name}",
   "local_service_message": "Ин хидмат танҳо барои корбароне тарҳрезӣ шудааст, ки дар <u>{country_name}</u> зиндагӣ мекунанд ва хидматҳо ва маҳсулоти худро дар ин кишвар мефурӯшанд. Шумо танҳо иҷоза доред, ки аз хидматҳои маҳаллӣ ё хидмати байналмилалии Selldone истифода баред. Барои истифода аз ин хадамот, аз шумо талаб карда мешавад, ки қоидаҳоро риоя кунед. қонунҳои <b>{country_name}</b> ва <b>Иттиҳоди Аврупо</b> .",

@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023. Selldone® Business OS™
+ *
+ * Author: M.Pajuhaan
+ * Web: https://selldone.com
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ *
+ * All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
+ * From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
+ * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
+ * Our journey is not just about reaching a destination, but about creating a masterpiece.
+ * Tread carefully, for you're treading on dreams.
+ */
+
 export default {
   "local_service": "Ratonga rohe mo {country_name}",
   "local_service_message": "He mea hoahoa tenei ratonga mo nga kaiwhakamahi e noho ana i <u>{country_name}</u> me te hoko i a raatau ratonga me o raatau hua ki tenei whenua. Ka whakaaetia koe ki te whakamahi i nga ratonga o te rohe, i te ratonga o te ao ranei a Selldone. Hei whakamahi i tenei ratonga, me whai koe nga ture o <b>{country_name}</b> me te <b>Kotahitanga o Europi</b> .",
