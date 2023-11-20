@@ -321,7 +321,7 @@ export default {
     },
   },
 
-  /** {@see UserProfilePage} **/
+  /** {@see StorefrontUserProfilePage} **/
   user_profile: {
     title: "My Personal Information",
     name: "Name",
@@ -414,7 +414,7 @@ export default {
     offer_free: "Get {count}x free",
   },
 
-  /** {@see UserAddressesPage} **/
+  /** {@see StorefrontUserAddressesPage} **/
   addresses_page: {
     title: "My Addresses",
     new_action: "New Address",
@@ -438,21 +438,21 @@ export default {
       address_name_input: "Address (required)",
     },
   },
-  /** {@see UserReturnRequests} **/
+  /** {@see StorefrontUserReturnRequests} **/
   return_requests: {
     title: "Return requests",
   },
-  /** {@see UserFavoritesPage} **/
+  /** {@see StorefrontUserFavoritesPage} **/
   user_favorites: {
     title: "Wishlist",
   },
-  /** {@see UserCommentsPage} **/
+  /** {@see StorefrontUserCommentsPage} **/
   user_comments: {
     title: "My Comments",
     first_post: "First post",
     last_edit: "Last edit",
   },
-  /** {@see UserGiftCardsPage} **/
+  /** {@see StorefrontUserGiftCardsPage} **/
   user_gift_cards: {
     title: "My Gift Cards",
     add_action: "Add card",

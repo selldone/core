@@ -321,7 +321,7 @@ export default {
       title: "محصول خریداری شده",
     },
   },
-  /** {@see UserProfilePage} **/
+  /** {@see StorefrontUserProfilePage} **/
   user_profile: {
     title: "اطلاعات شخصی من",
     name: "نام",
@@ -419,7 +419,7 @@ export default {
     offer: "دریافت {count} عدد با {percent}% تخفیف",
     offer_free: "دریافت {count} عدد رایگان",
   },
-  /** {@see UserAddressesPage} **/
+  /** {@see StorefrontUserAddressesPage} **/
   addresses_page: {
     title: "آدرس های من",
     new_action: "آدرس جدید",
@@ -444,22 +444,22 @@ export default {
     },
   },
 
-  /** {@see UserReturnRequests} **/
+  /** {@see StorefrontUserReturnRequests} **/
   return_requests: {
     title: "درخواست های مرجوعی",
   },
 
-  /** {@see UserFavoritesPage} **/
+  /** {@see StorefrontUserFavoritesPage} **/
   user_favorites: {
     title: "لیست علاقه مندی ها",
   },
-  /** {@see UserCommentsPage} **/
+  /** {@see StorefrontUserCommentsPage} **/
   user_comments: {
     title: "نظرات من",
     first_post: "اولین ارسال",
     last_edit: "آخرین ویرایش",
   },
-  /** {@see UserGiftCardsPage} **/
+  /** {@see StorefrontUserGiftCardsPage} **/
   user_gift_cards: {
     title: "کارت های هدیه من",
     add_action: "افزودن کارت",
