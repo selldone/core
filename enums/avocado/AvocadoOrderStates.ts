@@ -15,8 +15,6 @@
 import type { IOrderState } from "../delivery/DeliveryStateCode";
 import { DeliveryStateCode } from "../delivery/DeliveryStateCode";
 
-
-
 /**
  * Enumerates the various Avocado order states with associated metadata.
  *

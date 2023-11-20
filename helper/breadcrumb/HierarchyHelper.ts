@@ -14,6 +14,7 @@
 
 import { Category } from "../../models/shop/category/category.model";
 import type { Product } from "../../models/shop/product/product.model";
+import {StorefrontRoutesName} from "@core/enums/route/StorefrontRoutesName";
 
 export class HierarchyHelper {
   /**
@@ -176,8 +177,7 @@ export class HierarchyHelper {
       text: root_name,
       icon: root_icon,
       disabled: false,
-      // to: {name: "ShopPage", params: { shop_name: shop_name }, hash: "#"},
-      to: { name: "ShopPage", params: { shop_name: shop_name } },
+      to: { name: StorefrontRoutesName.SHOP_PAGE, params: { shop_name: shop_name } },
       href: "#",
     });
 
@@ -191,7 +191,6 @@ export class HierarchyHelper {
               text: category.title,
               image: category.icon,
               disabled: false,
-              // to: {name: "ShopPage", params: { shop_name: shop_name }, query: {dir: category.id,}}
               to: {
                 name: "ShopCategoryPage",
                 params: { shop_name: shop_name, category_name: category.name },
@@ -205,7 +204,6 @@ export class HierarchyHelper {
             text: category.title,
             image: category.icon,
             disabled: false,
-            // to: {name: "ShopPage", params: { shop_name: shop_name }, query: {dir: category.id,}}
             to: {
               name: "ShopCategoryPage",
               params: { shop_name: shop_name, category_name: category.name },
@@ -219,7 +217,6 @@ export class HierarchyHelper {
           text: category.title,
           image: category.icon,
           disabled: false,
-          // to: {name: "ShopPage", params: { shop_name: shop_name }, query: {dir: category.id,}}
           to: {
             name: "ShopCategoryPage",
             params: { shop_name: shop_name, category_name: category.name },
@@ -235,7 +232,6 @@ export class HierarchyHelper {
           text: category.title,
           image: category.icon,
           disabled: false,
-          //to: {name: "ShopPage", params: { shop_name: shop_name }, query: {dir: category.id,}}
           to: {
             name: "ShopCategoryPage",
             params: { shop_name: shop_name, category_name: category.name },
@@ -265,7 +261,7 @@ export class HierarchyHelper {
       icon: "home",
       disabled: false,
       to: {
-        name: "ShopPage",
+        name: StorefrontRoutesName.SHOP_PAGE,
       },
       href: "#",
     });
