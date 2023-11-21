@@ -12,7 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
 export enum OrderTypeCode {
   Avocado = "AVO",
   Hyper = "HYP",
