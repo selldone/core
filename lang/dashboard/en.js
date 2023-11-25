@@ -5049,6 +5049,8 @@ export default {
 
   landing_categories: {
     raw: "Raw templates",
+    all: "All templates",
+
     marketing: "Marketing & Ads",
     product: "Product introduction",
     health: "Health & Fitness",

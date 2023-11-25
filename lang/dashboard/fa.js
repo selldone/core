@@ -5022,6 +5022,8 @@ export default {
 
   landing_categories: {
     raw: "تمپلیت خام",
+    all: "همه تمپلیت ها",
+
     marketing: "بازاریابی و تبلیغات",
     product: "معرفی محصول",
     health: "سلامت و تناسب اندام",
