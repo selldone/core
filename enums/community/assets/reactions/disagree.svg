@@ -1,16 +1,4 @@
 <?xml version="1.0"?>
-<!--
-  - Copyright (c) 2023. Selldone® Business OS™
-  -
-  - Author: M.Pajuhaan
-  - Web: https://selldone.com
-  - ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  -
-  - All rights reserved. In the weave of time, where traditions and innovations intermingle, this content was crafted.
-  - From the essence of thought, through the corridors of creativity, each word, and sentiment has been molded.
-  - Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
-  - Our journey is not just about reaching a destination, but about creating a masterpiece.
-  - Tread carefully, for you're treading on dreams.
-  -->
+
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 497 497" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g xmlns="http://www.w3.org/2000/svg"><path d="m372 123.5s80 55.964 80 125-80 125-80 125c69.036 0 125-55.964 125-125s-55.964-125-125-125z" fill="#832393" data-original="#e3222e" style="" class=""/><path d="m467 248.5c0-69.036-42.533-125-95-125-69.036 0-125 55.964-125 125s55.964 125 125 125c52.467 0 95-55.964 95-125zm-95 65c-35.899 0-65-29.102-65-65s29.101-65 65-65 65 29.102 65 65-29.101 65-65 65z" fill="#9c27b0" data-original="#ff3333" style="" class=""/><path d="m187 123.5-15 30v190l15 30h22.5c4.142 0 7.5-3.358 7.5-7.5v-235c0-4.142-3.358-7.5-7.5-7.5z" fill="#832393" data-original="#e3222e" style="" class=""/><path d="m157 131v135.577l-94.769-139.786c-1.396-2.059-3.721-3.291-6.208-3.291h-48.523c-4.142 0-7.5 3.358-7.5 7.5v235c0 4.142 3.358 7.5 7.5 7.5h45c4.142 0 7.5-3.358 7.5-7.5v-135.577l94.769 139.786c1.396 2.059 3.721 3.291 6.208 3.291h26.023v-250h-22.5c-4.142 0-7.5 3.358-7.5 7.5z" fill="#9c27b0" data-original="#ff3333" style="" class=""/></g></g></svg>
