@@ -12,6 +12,22 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Enum for all possible statuses in the fulfillment process of an order.
+ *
+ * Usage:
+ * This enum is used to represent the various stages of order processing and delivery.
+ * Depending on the type of order (online, physical, virtual, file, service, subscription, or Avocado),
+ * different states may apply.
+ *
+ * See also:
+ * - {@link PhysicalOrderStates} for order fulfillment status of physical orders.
+ * - {@link VirtualOrderStates} for order fulfillment status of virtual orders.
+ * - {@link FileOrderStates} for order fulfillment status of file orders.
+ * - {@link ServiceOrderStates} for order fulfillment status of service orders.
+ * - {@link SubscriptionOrderStates} for order fulfillment status of subscription orders.
+ * - {@link AvocadoOrderStates} for order fulfillment status of Avocado orders.
+ */
 export enum DeliveryStateCode {
   CheckQueue = "CheckQueue",
   OrderConfirm = "OrderConfirm",

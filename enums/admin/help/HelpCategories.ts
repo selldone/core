@@ -12,11 +12,21 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Represents the help categories available on the official Selldone website.
+ * Each category is an object with a 'code' and a 'name'.
+ * The 'code' is a unique identifier for the category, and the 'name' is a localization key.
+ *
+ * @example
+ * {
+ *   Welcome: { code: "Welcome", name: "helps.categories.Welcome" },
+ *   Setup: { code: "Setup", name: "helps.categories.Setup" },
+ *   // ... other categories
+ * }
+ */
 export const HelpCategories = {
   Welcome: { code: "Welcome", name: "helps.categories.Welcome" },
-
   Setup: { code: "Setup", name: "helps.categories.Setup" },
-
   Product: { code: "Product", name: "helps.categories.Product" },
   Blog: { code: "Blog", name: "helps.categories.Blog" },
   Order: { code: "Order", name: "helps.categories.Order" },
@@ -30,8 +40,6 @@ export const HelpCategories = {
   Access: { code: "Access", name: "helps.categories.Access" },
   Application: { code: "Application", name: "helps.categories.Application" },
   POS: { code: "POS", name: "helps.categories.POS" },
-
   Sell: { code: "Sell", name: "helps.categories.Sell" },
-
   Developer: { code: "Developer", name: "helps.categories.Developer" },
 };

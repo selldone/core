@@ -1733,7 +1733,7 @@ export default {
     sex: "Gender",
   },
 
-  /** {@see ShopSearchBox} **/
+  /** {@see SStorefrontSearchBox} **/
 
   search_box: {
     result: "Search results",

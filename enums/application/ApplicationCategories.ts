@@ -13,18 +13,24 @@
  */
 
 /**
- * Defines the structure for each application category.
+ * Interface representing the structure of an application category.
+ * @interface
+ * @property {string} code - The unique code identifier for the application category.
+ * @property {string} name - The name of the application category, typically used for display purposes.
+ * @property {string} icon - The icon representing the application category, usually a class name for a font icon.
  */
-interface ApplicationCategory {
+interface IApplicationCategory {
   code: string;
   name: string;
   icon: string;
 }
 
 /**
- * Enumerates various application categories with associated metadata.
+ * Enumerates various application categories with associated metadata. This is part of the Selldone open-source library,
+ * enabling developers to build custom storefronts and back offices.
+ * Each category is defined with a unique code, a name for display, and an icon for visual representation.
  */
-export const ApplicationCategories: Record<string, ApplicationCategory> = {
+export const ApplicationCategories: Record<string, IApplicationCategory> = {
   TRACKING: {
     code: "TRACKING",
     name: "global.application_categories.tracking",

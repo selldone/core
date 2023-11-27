@@ -12,6 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Defines the official permission levels for Selldone administrators.
+ *
+ * This enumeration object maps various levels of administrative permissions to their respective
+ * characteristics including a unique code, a descriptive title, and an associated image.
+ *
+ * Note: These permission levels are intended for use in administrative contexts only and should not
+ * be used in storefront or backoffice implementations.
+ *
+ * @enum {Object}
+ */
 export const PermissionLevels = {
   FULL_ACCESS: {
     code: "FULL_ACCESS",

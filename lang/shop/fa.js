@@ -15,7 +15,7 @@
 export default {
   surveys: ["خیلی ضعیف", "ضعیف", "معمولی", "خوب", "عالی"],
 
-  /** @see SShopFooter **/
+  /** @see SStorefrontPrimaryFooter **/
   footer: {
     map: "نقشه",
     email: "ایمیل",

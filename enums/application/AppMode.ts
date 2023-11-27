@@ -13,9 +13,13 @@
  */
 
 /**
- * Defines the structure for the application mode.
+ * Interface representing the structure of an application mode.
+ * @interface IAppMode
+ * @property {string} title - The display title of the application mode.
+ * @property {string} code - A unique code identifier for the application mode.
+ * @property {string} src - The path to the mode's icon or image. This path is typically obtained using a `require` statement.
  */
-interface AppModeEntry {
+interface IAppMode {
   title: string;
   code: string;
   src: string; // This assumes that require() returns a string path. Adjust if it's different.
@@ -23,8 +27,10 @@ interface AppModeEntry {
 
 /**
  * Enumerates various application modes with associated metadata.
+ * This is part of the Selldone open-source library, which enables developers to build custom storefronts and back offices.
+ * Each mode is represented as an object conforming to the IAppMode interface.
  */
-export const AppMode: Record<string, AppModeEntry> = {
+export const AppMode: Record<string, IAppMode> = {
   TEST: {
     title: "Test",
     code: "TEST",

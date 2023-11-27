@@ -1602,7 +1602,7 @@ export default {
     sex: "جنسیت",
   },
 
-  /** {@see ShopSearchBox} **/
+  /** {@see SStorefrontSearchBox} **/
 
   search_box: {
     result: "نتایج جستجو",

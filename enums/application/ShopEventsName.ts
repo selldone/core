@@ -12,8 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const ShopEventsName = {
-  ChangePage: "change-page", // {to,from}
-  ChangeUser: "change-user", // {user}
-  ChangeShop: "change-shop", // {shop}
-};
+/**
+ * Enum representing the names of shop events that can be triggered in the application interface.
+ */
+export enum ShopEventsName {
+  ChangePage = "change-page", // {to,from}
+  ChangeUser = "change-user", // {user}
+  ChangeShop = "change-shop", // {shop}
+}

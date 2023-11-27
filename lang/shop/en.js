@@ -16,7 +16,7 @@ export default {
   /** @see SShopProductRatingView **/
   surveys: ["Very poor", "Poor", "Normal", "Good", "Excellent"],
 
-  /** @see SShopFooter **/
+  /** @see SStorefrontPrimaryFooter **/
   footer: {
     map: "Map",
     email: "Email",

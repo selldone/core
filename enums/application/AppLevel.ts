@@ -13,9 +13,23 @@
  */
 
 /**
- * Represents predefined app levels with their associated titles, levels, and codes.
+ * Interface representing the structure of an app level.
+ * @interface
+ * @property {string} title - The title of the app level, typically used for display purposes.
+ * @property {number} level - The numeric representation of the app level, useful for comparisons and logic based on the level.
+ * @property {string} code - The unique code identifier for the app level.
  */
-export const AppLevel = {
+interface IAppLevel {
+  title: string;
+  level: number;
+  code: string;
+}
+
+/**
+ * Represents predefined app levels with their associated titles, levels, and codes.
+ * This is part of the Selldone open-source library, enabling developers to build custom storefronts and back offices.
+ */
+export const AppLevel: Record<string, IAppLevel> = {
   /**
    * Represents a newbie user level.
    */

@@ -12,25 +12,39 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+// Extending the global Window interface to include $AppsInterface.
+import { ShopEventsName } from "@core/enums/application/ShopEventsName";
+
 declare global {
   interface Window {
     $AppsInterface: AppsInterface;
   }
 }
 
-// Define a type for the listener's callback function.
-type ListenerCallback = (...args: any[]) => void;
+/**
+ * Type definition for the listener's callback function.
+ */
+type IListenerCallback = (...args: any[]) => void;
 
-// Define the structure of the Listeners object.
-interface Listeners {
-  [event_name: string]: ListenerCallback[];
-}
+/**
+ * Type representing the structure of the Listeners object.
+ * Maps ShopEventsName enum values to an array of IListenerCallback functions.
+ */
+type IListener = {
+  [event_name in ShopEventsName]?: IListenerCallback[];
+};
 
 // Define the full $AppsInterface type.
 export interface AppsInterface {
-  Listeners: Listeners;
-  addListener: (event_name: string, callback: ListenerCallback) => void;
-  removeListener: (event_name: string, callback: ListenerCallback) => void;
+  Listeners: IListener;
+  addListener: (
+    event_name: ShopEventsName,
+    callback: IListenerCallback
+  ) => void;
+  removeListener: (
+    event_name: ShopEventsName,
+    callback: IListenerCallback
+  ) => void;
 }
 
 /**
@@ -52,10 +66,13 @@ export default class ShopApplicationInterface {
          * @param {string} event_name - The name of the event.
          * @param {Function} callback - The callback function to execute when the event is triggered.
          */
-        addListener: function (event_name: string, callback: ListenerCallback) {
+        addListener: function (
+          event_name: ShopEventsName,
+          callback: IListenerCallback
+        ) {
           if (!window.$AppsInterface.Listeners[event_name])
             window.$AppsInterface.Listeners[event_name] = [];
-          window.$AppsInterface.Listeners[event_name].push(callback);
+          window.$AppsInterface.Listeners[event_name]!.push(callback);
         },
 
         /**
@@ -65,16 +82,16 @@ export default class ShopApplicationInterface {
          * @param {Function} callback - The callback function to be removed.
          */
         removeListener: function (
-          event_name: string,
-          callback: ListenerCallback
+          event_name: ShopEventsName,
+          callback: IListenerCallback
         ) {
           if (!window.$AppsInterface.Listeners[event_name]) return;
 
           const foundIndex = window.$AppsInterface.Listeners[
             event_name
-          ].findIndex((element) => element === callback);
+          ]!.findIndex((element) => element === callback);
           if (foundIndex >= 0)
-            window.$AppsInterface.Listeners[event_name].splice(foundIndex, 1);
+            window.$AppsInterface.Listeners[event_name]!.splice(foundIndex, 1);
         },
       };
     }
@@ -85,15 +102,16 @@ export default class ShopApplicationInterface {
   /**
    * Triggers an event, executing all the attached listeners with the provided arguments.
    *
-   * @param {string} event_name - The name of the event to trigger.
+   * @param {ShopEventsName} event_name - The name of the event to trigger.
    * @param {...any} args - The arguments to pass to the event listeners.
    */
-  static TriggerEvent(event_name: string, ...args: any[]) {
-    if (window.$AppsInterface.Listeners[event_name])
-      window.$AppsInterface.Listeners[event_name].forEach(
+  static TriggerEvent(event_name: ShopEventsName, ...args: any[]) {
+    if (window.$AppsInterface.Listeners[event_name]) {
+      window.$AppsInterface.Listeners[event_name]!.forEach(
         (callback: Function) => {
           if (callback) callback(...args);
         }
       );
+    }
   }
 }
