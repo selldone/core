@@ -12,6 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import { ApplyAugmentToObject } from "@core/prototypes/ObjectPrototypes";
+
 declare global {
   interface Array<T> {
     limit(max: number): T[];
@@ -33,13 +35,17 @@ declare global {
     unique(): T[];
     uniqueByKey(key: string): T[];
     rotateRight(n: number): T[];
+    applyAugment(
+      augment: { key: string; value: string }[],
+      bypass: boolean
+    ): T[];
   }
 }
 // This is required because we modified global
 export {};
 
 Array.prototype.limit = function (max) {
-  if(max<0)return this;
+  if (max < 0) return this;
   return this.slice(0, max);
 };
 
@@ -109,8 +115,8 @@ Array.prototype.findMin = function (): number {
  *
  */
 Array.prototype.sortByKey = function <T extends Record<string, any>>(
-    key: keyof T,
-    ASC: boolean = false
+  key: keyof T,
+  ASC: boolean = false
 ) {
   return this.sort((a: T, b: T) => {
     if (ASC) return (a[key] as any) - (b[key] as any);
@@ -128,10 +134,10 @@ Array.prototype.sortByKey = function <T extends Record<string, any>>(
  */
 Array.prototype.random = function () {
   return Array(this.length)
-      .fill(null)
-      .map((_, i) => [Math.random(), i])
-      .sort(([a], [b]) => a - b)
-      .map(([, i]) => this[i]);
+    .fill(null)
+    .map((_, i) => [Math.random(), i])
+    .sort(([a], [b]) => a - b)
+    .map(([, i]) => this[i]);
 };
 
 /**
@@ -164,7 +170,6 @@ Array.prototype.add = function (value) {
   return this;
 };
 
-
 /**
  * Toggles an item in the array. If the item already exists, it will be removed.
  * If the item doesn't exist, it will be added.
@@ -190,9 +195,9 @@ Array.prototype.toggle = function <T>(val: T): T[] {
  */
 Array.prototype.move = function (from: number, to: number) {
   this.splice(
-      to - (from > to ? 0 : 1) /*Fix always add before target!*/,
-      0,
-      this.splice(from, 1)[0]
+    to - (from > to ? 0 : 1) /*Fix always add before target!*/,
+    0,
+    this.splice(from, 1)[0]
   );
 };
 
@@ -219,8 +224,6 @@ Array.prototype.moveLeft = function (index: number) {
   if (to < 0) return;
   this.splice(to, 0, this.splice(from, 1)[0]);
 };
-
-
 
 /**
  * Sums the values of a specified key in an array of objects.
@@ -312,7 +315,6 @@ Array.prototype.uniqueByKey = function (key) {
   return Array.from(uniqueItems.values());
 };
 
-
 /**
  * Rotates the array to the right by a specified number of positions.
  * @template T - Type of the elements in the array
@@ -322,4 +324,59 @@ Array.prototype.uniqueByKey = function (key) {
 Array.prototype.rotateRight = function <T>(this: T[], n: number): T[] {
   this.unshift(...this.splice(n, this.length));
   return this;
+};
+
+/**
+ * Applies augmentations to each element of the array. This method is typically
+ * used in dynamic page content scenarios within a page builder.
+ *
+ * The function iterates over each element of the array. If the element is of
+ * type Array, Object, String, or Number, and if it has an `applyAugment` method,
+ * the method is recursively called on that element with the same augmentations.
+ *
+ * If the `bypass` parameter is set to true, a shallow copy of the array is returned
+ * without applying any augmentations.
+ *
+ * @template T - The type of elements in the array.
+ * @param {Array<{ key: string; value: string }>} augment - An array of objects
+ *        specifying the augmentations to apply. Each object in the array should
+ *        have a 'key' and a 'value' property.
+ * @param {boolean} [bypass=false] - If true, the function returns a shallow copy
+ *        of the array without applying any augmentations.
+ * @returns {T[]} A new array with the augmentations applied to each element. If
+ *          bypass is true, returns a shallow copy of the original array.
+ *
+ * @example
+ * // Assume there's an applyAugment method on Array, Object, String, Number
+ * const myArray = [{ name: 'John' }, { name: 'Jane' }];
+ * const augments = [{ key: 'name', value: 'Doe' }];
+ * const augmentedArray = myArray.applyAugment(augments);
+ * // augmentedArray will be [{ name: 'Doe' }, { name: 'Doe' }]
+ */
+Array.prototype.applyAugment = function <T>(
+  augment: { key: string; value: string }[],
+  bypass: boolean = false
+): T[] {
+  const _array = JSON.parse(JSON.stringify(this));
+  if (bypass) {
+    return _array; // Return a shallow copy of the array if bypass is true
+  }
+  // console.log("ARRAY", _array);
+
+  return _array.map((element: T) => {
+    if (
+      Array.isArray(element) ||
+      typeof element === "string" ||
+      element instanceof String ||
+      typeof element === "number" ||
+      element instanceof Number
+    ) {
+      // console.log("Array Item", element, "->", element.applyAugment(augment, bypass),'bypass',bypass);
+      return element.applyAugment(augment, bypass);
+    } else if (element instanceof Object) {
+      return ApplyAugmentToObject(element, augment, bypass);
+    }
+
+    return element;
+  });
 };

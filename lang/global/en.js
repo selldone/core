@@ -1861,7 +1861,7 @@ export default {
     label: "Currency",
   },
 
-  /** {@see SNeedLoginDialog} **/
+  /** {@see SStorefrontNeedLoginDialog} **/
   need_login: {
     title: "Login",
     login_sms: "SMS Login",
@@ -1935,7 +1935,7 @@ export default {
     },
   },
 
-  /** {@see CookieDialog} **/
+  /** {@see SStorefrontCookieDialog} **/
 
   cookie: {
     title: "This website uses cookies",

@@ -12,6 +12,14 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+declare global {
+  interface Object {
+    getNestedValue(key: string): any;
+  }
+}
+// This is required because we modified global
+export {};
+
 /**
  * Extends the `Object` prototype to add a `getNestedValue` method.
  * This method retrieves the value of a nested key within the object.
@@ -42,3 +50,38 @@ Object.defineProperty(Object.prototype, "getNestedValue", {
   },
   enumerable: false,
 });
+
+export function ApplyAugmentToObject(
+  object: { [key: string]: any },
+  augment: { key: string; value: string }[],
+  bypass: boolean = false
+): { [p: string]: any } {
+  const _object = JSON.parse(JSON.stringify(object));
+  if (bypass) {
+    return _object; // Return a shallow copy of the object if bypass is true
+  }
+
+  // Iterate over the properties of the object
+  return Object.entries(_object).reduce(
+    (newObj: { [key: string]: any }, [key, value]) => {
+      // Apply the augment if necessary
+      if (
+        Array.isArray(value) ||
+        typeof value === "string" ||
+        value instanceof String ||
+        typeof value === "number" ||
+        value instanceof Number
+      ) {
+        newObj[key] = value.applyAugment(augment, bypass);
+        // console.log("Object ITem", key, "->",value,'out:', newObj[key]);
+      } else if (value instanceof Object) {
+        newObj[key] = ApplyAugmentToObject(value, augment, bypass);
+      } else {
+        newObj[key] = value;
+      }
+
+      return newObj;
+    },
+    {}
+  );
+}

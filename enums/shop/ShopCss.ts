@@ -16,10 +16,10 @@ export default {
   "s--shop": {
     title: "Main shop page",
     children: {
-      "s--top-banner": {
+      "s--storefront-top-banner": {
         title: "Top campaign banner",
       },
-      "s--master-payment-dialog": {
+      "s--storefront-master-payment-dialog": {
         title: "Main payment dialog",
       },
 

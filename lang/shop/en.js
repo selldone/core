@@ -466,7 +466,7 @@ export default {
     },
   },
 
-  /** {@see SProductsComparisonButton} **/
+  /** {@see SStorefrontProductsComparisonButton} **/
   product_comparison: {
     title: "Compare Products",
     action_button: "Compare",
@@ -543,7 +543,7 @@ export default {
       "We appreciate your time in contacting us. Your message has been received and our team is currently reviewing it. We will respond as soon as possible, and we thank you for your patience during this time. Your interest and feedback are important to us, and we are committed to providing you with the best possible support.",
   },
 
-  /** @see SShopMasterPaymentDialog **/
+  /** @see SStorefrontMasterPaymentDialog **/
   master_payment: {
     notifications: {
       payment_success_title: "Payment Confirmation",
@@ -691,7 +691,7 @@ export default {
     },
   },
 
-  /** @see SShopPrivateAccessCheckView **/
+  /** @see SStorefrontPrivateAccessCheckView **/
   check_access: {
     waiting_message: "Waiting to check access...",
     no_access_message:

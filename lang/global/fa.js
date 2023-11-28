@@ -1734,7 +1734,7 @@ export default {
     label: "ارز",
   },
 
-  /** {@see SNeedLoginDialog} **/
+  /** {@see SStorefrontNeedLoginDialog} **/
   need_login: {
     title: "ورود",
     login_sms: "ورود با تلفن همراه",
@@ -1808,7 +1808,7 @@ export default {
       name: "پادشاه بازار",
     },
   },
-  /** {@see CookieDialog} **/
+  /** {@see SStorefrontCookieDialog} **/
 
   cookie: {
     title: "استفاده از کوکی",

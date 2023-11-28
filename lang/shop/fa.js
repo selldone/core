@@ -472,7 +472,7 @@ export default {
       add_action: "ثبت کارت",
     },
   },
-  /** {@see SProductsComparisonButton} **/
+  /** {@see SStorefrontProductsComparisonButton} **/
   product_comparison: {
     title: "مقایسه محصول",
     action_button: "مقایسه",
@@ -550,7 +550,7 @@ export default {
       "ما از وقتی که برای تماس با ما صرف کردید، قدردانی می کنیم. پیام شما دریافت شده و تیم ما در حال بررسی آن است. ما در اسرع وقت پاسخ خواهیم داد و از صبر شما در این زمان سپاسگزاریم. علاقه و بازخورد شما برای ما مهم است و ما به تعهد خود برای ارائه بهترین پشتیبانی ممکن، پایبند هستیم.",
   },
 
-  /** @see SShopMasterPaymentDialog **/
+  /** @see SStorefrontMasterPaymentDialog **/
   master_payment: {
     notifications: {
       payment_success_title: "تایید پرداخت",
@@ -700,7 +700,7 @@ export default {
     },
   },
 
-  /** @see SShopPrivateAccessCheckView **/
+  /** @see SStorefrontPrivateAccessCheckView **/
   check_access: {
     waiting_message: "در انتظار بررسی دسترسی...",
     no_access_message:
