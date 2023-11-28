@@ -16,14 +16,49 @@ export enum StorefrontRoutesName {
   BLOGS_PAGE = "Blogs",
   AVOCADO_PAGE = "AvocadoPage",
   HYPER_PAGE = "HyperPage",
-  COMMUNITY_PAGE = "CommunityHomePage",
 
   MAP_PRODUCTS_PAGE = "ShopMap",
 
   CUSTOM_HOME_PAGE = "CustomHomePage",
   INSTAGRAM_PAGE = "InstagramPage",
 
-  COMMUNITY_HOME_PAGE = "CommunityHomePage",
-
   SHOP_PAGE = "ShopPage",
+
+  SHOP_CATEGORY_PAGE = "ShopCategoryPage",
+  SHOP_VENDOR_PAGE = "VendorPublicPage",
+
+  PAGE_RENDER = "PageRender",
+
+  INCLUDE_PAGE_RENDER = "IncludePageRender",
+  PRODUCT_PAGE = "ProductPage",
+
+  COMPARISON_PAGE = "ComparisonPage",
+  SHOP_INFO_PAGE_MOBILE = "ShopInfoPageMobile",
+  BASKET_PAGE = "BasketPage",
+  ORDERS_PAGE = "OrdersPage",
+
+  HISTORY_ORDERS_PHYSICAL = "HistoryOrdersPhysical",
+  HISTORY_ORDERS_VIRTUAL = "HistoryOrdersVirtual",
+  HISTORY_ORDERS_FILE = "HistoryOrdersFile",
+  HISTORY_ORDERS_SERVICE = "HistoryOrdersService",
+  HISTORY_ORDERS_SUBSCRIPTION = "HistoryOrdersSubscription",
+  HISTORY_ORDERS_POS = "HistoryOrdersPOS",
+  HISTORY_ORDERS_AVOCADO = "HistoryOrdersAvocado",
+
+  USER_PROFILE_PAGE = "UserProfilePage",
+  USER_ADDRESSES_PAGE = "UserAddressesPage",
+  USER_RETURN_REQUESTS = "UserReturnRequests",
+  USER_FAVORITES_PAGE = "UserFavoritesPage",
+  USER_COMMENTS_PAGE = "UserCommentsPage",
+  USER_GIFTCARDS_PAGE = "UserGiftCardsPage",
+  LOGIN_REDIRECT = "LoginRedirect",
+  SHOP_BLOGS_PAGE = "ShopBlogsPage",
+  AUTHOR_PAGE = "AuthorPage",
+  SHOP_BLOG_PAGE_SLUG = "ShopBlogPageSlug",
+  SHOP_BLOG_PAGE = "ShopBlogPage",
+
+  SHOP_PROFILE_PAGE_ABOUT_US = "ShopProfilePage_AboutUs",
+  SHOP_PROFILE_PAGE_TERMS = "ShopProfilePage_Terms",
+  SHOP_PROFILE_PAGE_PRIVACY = "ShopProfilePage_Privacy",
+  SHOP_CONTACT_US = "ShopContactUs",
 }

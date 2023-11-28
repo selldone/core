@@ -14,7 +14,6 @@
 
 import { Category } from "../../models/shop/category/category.model";
 import type { Product } from "../../models/shop/product/product.model";
-import {StorefrontRoutesName} from "@core/enums/route/StorefrontRoutesName";
 
 export class HierarchyHelper {
   /**
@@ -89,7 +88,6 @@ export class HierarchyHelper {
                   "no-scroll": dialog_mode,
                 },
               },
-              // to: { name: 'ShopCategoryPage', params: { category_name: parent_folders.parent.parent.parent.name } }
             });
           }
 
@@ -109,7 +107,6 @@ export class HierarchyHelper {
                 "no-scroll": dialog_mode,
               },
             },
-            // to: { name: 'ShopCategoryPage', params: { category_name:  parent_folders.parent.parent.name } }
           });
         }
 
@@ -126,7 +123,6 @@ export class HierarchyHelper {
             hash: hash,
             query: { dir: parent_folders.parent.id, "no-scroll": dialog_mode },
           },
-          //to: { name: 'ShopCategoryPage', params: { category_name: parent_folders.parent.name } }
         });
       }
 
@@ -143,7 +139,6 @@ export class HierarchyHelper {
           hash: hash,
           query: { dir: parent_folders.id, "no-scroll": dialog_mode },
         },
-        // to: { name: 'ShopCategoryPage', params: { category_name: parent_folders.name } }
       });
     }
     return out;
@@ -177,7 +172,10 @@ export class HierarchyHelper {
       text: root_name,
       icon: root_icon,
       disabled: false,
-      to: { name: StorefrontRoutesName.SHOP_PAGE, params: { shop_name: shop_name } },
+      to: {
+        name: window.$storefront.routes.SHOP_PAGE,
+        params: { shop_name: shop_name },
+      },
       href: "#",
     });
 
@@ -192,7 +190,7 @@ export class HierarchyHelper {
               image: category.icon,
               disabled: false,
               to: {
-                name: "ShopCategoryPage",
+                name: window.$storefront.routes.SHOP_CATEGORY_PAGE,
                 params: { shop_name: shop_name, category_name: category.name },
               },
             });
@@ -205,7 +203,7 @@ export class HierarchyHelper {
             image: category.icon,
             disabled: false,
             to: {
-              name: "ShopCategoryPage",
+              name: window.$storefront.routes.SHOP_CATEGORY_PAGE,
               params: { shop_name: shop_name, category_name: category.name },
             },
           });
@@ -218,7 +216,7 @@ export class HierarchyHelper {
           image: category.icon,
           disabled: false,
           to: {
-            name: "ShopCategoryPage",
+            name: window.$storefront.routes.SHOP_CATEGORY_PAGE,
             params: { shop_name: shop_name, category_name: category.name },
           },
         });
@@ -233,7 +231,7 @@ export class HierarchyHelper {
           image: category.icon,
           disabled: false,
           to: {
-            name: "ShopCategoryPage",
+            name: window.$storefront.routes.SHOP_CATEGORY_PAGE,
             params: { shop_name: shop_name, category_name: category.name },
           },
         });
@@ -261,7 +259,7 @@ export class HierarchyHelper {
       icon: "home",
       disabled: false,
       to: {
-        name: StorefrontRoutesName.SHOP_PAGE,
+        name: window.$storefront.routes.SHOP_PAGE,
       },
       href: "#",
     });
