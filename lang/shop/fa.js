@@ -137,7 +137,7 @@ export default {
     },
   },
 
-  /** @see StorefrontProfilePage **/
+  /** @see SStorefrontProfilePage **/
 
   product: {
     review: "بررسی",
@@ -188,7 +188,7 @@ export default {
     items: "عدد",
   },
 
-  /** {@see StorefrontHistoryOrdersPhysicalPage} **/
+  /** {@see SStorefrontHistoryOrdersPhysicalPage} **/
   history_orders_physical: {
     rejected: "رد شده است",
     table: {
@@ -212,7 +212,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontUserPagesLayout} **/
+  /** {@see SStorefrontUserPagesLayout} **/
   user_page: {
     menu: {
       gift_card: "کارت هدیه",
@@ -225,7 +225,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontPhysicalOrderDetailPage} **/
+  /** {@see SStorefrontPhysicalOrderDetailPage} **/
   physical_order_page: {
     title: "سفارش",
 
@@ -314,14 +314,14 @@ export default {
     notifications: "درخواست مرجوعی شما با موفقیت ثبت گردید.",
   },
 
-  /** {@see StorefrontVirtualOrderDetailPage} **/
+  /** {@see SStorefrontVirtualOrderDetailPage} **/
   virtual_order_page: {
     title: "سفارش",
     info: {
       title: "محصول خریداری شده",
     },
   },
-  /** {@see StorefrontUserProfilePage} **/
+  /** {@see SStorefrontUserProfilePage} **/
   user_profile: {
     title: "اطلاعات شخصی من",
     name: "نام",
@@ -352,7 +352,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontBasketPage} **/
+  /** {@see SStorefrontBasketPage} **/
   basket_page: {
     title: "سبد خرید",
     total_price: "مبلغ کل",
@@ -419,7 +419,7 @@ export default {
     offer: "دریافت {count} عدد با {percent}% تخفیف",
     offer_free: "دریافت {count} عدد رایگان",
   },
-  /** {@see StorefrontUserAddressesPage} **/
+  /** {@see SStorefrontUserAddressesPage} **/
   addresses_page: {
     title: "آدرس های من",
     new_action: "آدرس جدید",
@@ -444,22 +444,22 @@ export default {
     },
   },
 
-  /** {@see StorefrontUserReturnRequests} **/
+  /** {@see SStorefrontUserReturnRequests} **/
   return_requests: {
     title: "درخواست های مرجوعی",
   },
 
-  /** {@see StorefrontUserFavoritesPage} **/
+  /** {@see SStorefrontUserFavoritesPage} **/
   user_favorites: {
     title: "لیست علاقه مندی ها",
   },
-  /** {@see StorefrontUserCommentsPage} **/
+  /** {@see SStorefrontUserCommentsPage} **/
   user_comments: {
     title: "نظرات من",
     first_post: "اولین ارسال",
     last_edit: "آخرین ویرایش",
   },
-  /** {@see StorefrontUserGiftCardsPage} **/
+  /** {@see SStorefrontUserGiftCardsPage} **/
   user_gift_cards: {
     title: "کارت های هدیه من",
     add_action: "افزودن کارت",
@@ -518,7 +518,7 @@ export default {
     },
   },
 
-  /** @see StorefrontBlogsPage **/
+  /** @see SStorefrontBlogsPage **/
   blogs: {
     title: "وبلاگ",
 
@@ -527,7 +527,7 @@ export default {
     topics: "موضوعات",
     suggestions: "پیشنهادها",
   },
-  /** @see StorefrontProfilePage **/
+  /** @see SStorefrontProfilePage **/
   official_pages: {
     about_us: "درباره ما",
     terms: "قوانین و مقرارت",
@@ -590,8 +590,8 @@ export default {
   /** {@see SShopAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SShopAvocadoCustomerOrderList} **/
-  /** {@see StorefrontAvocadoPage} **/
-  /** {@see StorefrontAvocadoOrderPage} **/
+  /** {@see SStorefrontAvocadoPage} **/
+  /** {@see SStorefrontAvocadoOrderPage} **/
 
   avocado: {
     not_enable: "فرم دریافت سفارشات آووکادو فعال نیست!",

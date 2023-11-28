@@ -138,7 +138,7 @@ export default {
     },
   },
 
-  /** @see StorefrontProfilePage **/
+  /** @see SStorefrontProfilePage **/
 
   product: {
     review: "Description",
@@ -188,7 +188,7 @@ export default {
     items: "Item(s)",
   },
 
-  /** {@see StorefrontHistoryOrdersPhysicalPage} **/
+  /** {@see SStorefrontHistoryOrdersPhysicalPage} **/
   history_orders_physical: {
     rejected: "Rejected",
     table: {
@@ -211,7 +211,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontUserPagesLayout} **/
+  /** {@see SStorefrontUserPagesLayout} **/
   user_page: {
     menu: {
       gift_card: "Gift Card",
@@ -223,7 +223,7 @@ export default {
       orders: "Orders",
     },
   },
-  /** {@see StorefrontPhysicalOrderDetailPage} **/
+  /** {@see SStorefrontPhysicalOrderDetailPage} **/
   physical_order_page: {
     title: "Order",
 
@@ -313,7 +313,7 @@ export default {
     add_action: "Send return request",
     notifications: "Your return request has been successfully registered.",
   },
-  /** {@see StorefrontVirtualOrderDetailPage} **/
+  /** {@see SStorefrontVirtualOrderDetailPage} **/
   virtual_order_page: {
     title: "Order",
     info: {
@@ -321,7 +321,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontUserProfilePage} **/
+  /** {@see SStorefrontUserProfilePage} **/
   user_profile: {
     title: "My Personal Information",
     name: "Name",
@@ -350,7 +350,7 @@ export default {
       free_shipping: "Free Shipping",
     },
   },
-  /** {@see StorefrontBasketPage} **/
+  /** {@see SStorefrontBasketPage} **/
   basket_page: {
     title: "Shopping Cart",
     total_price: "Total amount",
@@ -414,7 +414,7 @@ export default {
     offer_free: "Get {count}x free",
   },
 
-  /** {@see StorefrontUserAddressesPage} **/
+  /** {@see SStorefrontUserAddressesPage} **/
   addresses_page: {
     title: "My Addresses",
     new_action: "New Address",
@@ -438,21 +438,21 @@ export default {
       address_name_input: "Address (required)",
     },
   },
-  /** {@see StorefrontUserReturnRequests} **/
+  /** {@see SStorefrontUserReturnRequests} **/
   return_requests: {
     title: "Return requests",
   },
-  /** {@see StorefrontUserFavoritesPage} **/
+  /** {@see SStorefrontUserFavoritesPage} **/
   user_favorites: {
     title: "Wishlist",
   },
-  /** {@see StorefrontUserCommentsPage} **/
+  /** {@see SStorefrontUserCommentsPage} **/
   user_comments: {
     title: "My Comments",
     first_post: "First post",
     last_edit: "Last edit",
   },
-  /** {@see StorefrontUserGiftCardsPage} **/
+  /** {@see SStorefrontUserGiftCardsPage} **/
   user_gift_cards: {
     title: "My Gift Cards",
     add_action: "Add card",
@@ -511,7 +511,7 @@ export default {
     },
   },
 
-  /** @see StorefrontBlogsPage **/
+  /** @see SStorefrontBlogsPage **/
   blogs: {
     title: "Blog",
     add_new_blog: "New Blog",
@@ -520,7 +520,7 @@ export default {
     suggestions: "Suggestions",
   },
 
-  /** @see StorefrontProfilePage **/
+  /** @see SStorefrontProfilePage **/
   official_pages: {
     about_us: "About us",
     terms: "Terms of use",
@@ -581,8 +581,8 @@ export default {
   /** {@see SShopAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SShopAvocadoCustomerOrderList} **/
-  /** {@see StorefrontAvocadoPage} **/
-  /** {@see StorefrontAvocadoOrderPage} **/
+  /** {@see SStorefrontAvocadoPage} **/
+  /** {@see SStorefrontAvocadoOrderPage} **/
 
   avocado: {
     not_enable: "The avocado form is not enabled!",
