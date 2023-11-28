@@ -42,7 +42,7 @@ export default class SetupService {
   static MainServiceUrl(): string {
     const _val = this.GetMetaValue("service-url");
     if (!_val) {
-      console.error("[service-url] meta tag!")
+      console.error("[service-url] meta tag!");
       throw "The service url is not defined in [service-url] meta tag!";
     }
     return _val;
