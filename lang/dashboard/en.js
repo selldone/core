@@ -5341,7 +5341,7 @@ export default {
   /** {@see ShopEdit_Home} **/
   shop_home_edit: {
     title: "Home page setting",
-    sub_title: "Set your website default page",
+    sub_title: "Configure the default page for your website here. Additionally, you have the option to assign a custom homepage for each domain individually by navigating to the Settings > Domains tab.",
 
     default_home: "Default home page",
     default_home_placeholder: "Shop page is the website home page",
