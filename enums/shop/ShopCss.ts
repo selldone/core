@@ -23,7 +23,7 @@ export default {
         title: "Main payment dialog",
       },
 
-      "s--products-list": {
+      "s--storefront-products-listing": {
         title: "Products list page",
         children: {
           "s--category-card": {

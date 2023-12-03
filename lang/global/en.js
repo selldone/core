@@ -1596,7 +1596,7 @@ export default {
     step_4: "On delivery",
     step_5: "Delivered",
   },
-  /** {@see BasketReturnItemsRequestView} **/
+  /** {@see SBasketReturnItemsList} **/
   basket_return_request_view: {
     title: "Return Request",
     delivery_date: "Delivery date",
@@ -1632,7 +1632,7 @@ export default {
     },
   },
 
-  /** {@see ReturnRequestsList} **/
+  /** {@see SBackofficeReturnRequestsList} **/
   return_request_list: {
     count: "Reference number",
     return_warranty: "Money Back Guarantee",

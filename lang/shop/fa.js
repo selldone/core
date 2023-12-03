@@ -498,7 +498,7 @@ export default {
     },
   },
 
-  /** {@see ProductFilterMenu} **/
+  /** {@see SStorefrontProductsFilterMenu} **/
   product_filter_menu: {
     only_original: "کالاهای اصل",
     only_has_discount: "کالاهای دارای تخفیف",
@@ -575,7 +575,7 @@ export default {
     title_after_end: "پایان یافته",
     title_no_start_end: "بدون بازه زمانی",
   },
-  /** {@see SShopLotteryPrizes} **/
+  /** {@see SStorefrontLotteryPrizes} **/
   lottery_prizes: {
     message:
       "شما می توانید یک کادو را به انتخاب خود، در هر بار سفارش دریافت نمایید.",
@@ -587,9 +587,9 @@ export default {
     add_coupon: "افزودن کوپن",
   },
 
-  /** {@see SShopAvocadoCustomerOrderForm} **/
+  /** {@see SStorefrontAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
-  /** {@see SShopAvocadoCustomerOrderList} **/
+  /** {@see SStorefrontAvocadoCustomerOrderList} **/
   /** {@see SStorefrontAvocadoPage} **/
   /** {@see SStorefrontAvocadoOrderPage} **/
 
@@ -634,7 +634,7 @@ export default {
     },
   },
 
-  /** {@see SShopHyperAddOrderForm} **/
+  /** {@see SStorefrontHyperAddOrderForm} **/
   hyper: {
     title: "ثبت سفارش",
     message:

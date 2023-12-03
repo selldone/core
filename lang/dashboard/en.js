@@ -2930,7 +2930,7 @@ export default {
   },
   /** {@see ShopProcessCenterPhysicalOrderPage_Inputs} **/
   physical_order_inputs: {},
-  /** {@see OrderTimeline} **/
+  /** {@see SBackofficeOrderTimeline} **/
   order_timeline: {
     message_input: "Write a message here...",
     pin_action: "Pin to top",

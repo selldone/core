@@ -491,7 +491,7 @@ export default {
       cross_list: ["No", "Hasn't"],
     },
   },
-  /** {@see ProductFilterMenu} **/
+  /** {@see SStorefrontProductsFilterMenu} **/
   product_filter_menu: {
     only_original: "Only originals",
     only_has_discount: "Only discounted",
@@ -567,7 +567,7 @@ export default {
     title_after_end: "Finished",
     title_no_start_end: "Without time period!",
   },
-  /** {@see SShopLotteryPrizes} **/
+  /** {@see SStorefrontLotteryPrizes} **/
   lottery_prizes: {
     message: "You can receive one gift per order.",
   },
@@ -578,9 +578,9 @@ export default {
     add_coupon: "Add coupon",
   },
 
-  /** {@see SShopAvocadoCustomerOrderForm} **/
+  /** {@see SStorefrontAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
-  /** {@see SShopAvocadoCustomerOrderList} **/
+  /** {@see SStorefrontAvocadoCustomerOrderList} **/
   /** {@see SStorefrontAvocadoPage} **/
   /** {@see SStorefrontAvocadoOrderPage} **/
 
@@ -625,7 +625,7 @@ export default {
     },
   },
 
-  /** {@see SShopHyperAddOrderForm} **/
+  /** {@see SStorefrontHyperAddOrderForm} **/
   hyper: {
     title: "Order creation",
     message:

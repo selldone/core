@@ -2896,7 +2896,7 @@ export default {
   /** {@see ShopProcessCenterPhysicalOrderPage_Inputs} **/
   physical_order_inputs: {},
 
-  /** {@see OrderTimeline} **/
+  /** {@see SBackofficeOrderTimeline} **/
   order_timeline: {
     message_input: "متن پیام",
     pin_action: "چسباندن به بالا",

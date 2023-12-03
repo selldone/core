@@ -1464,7 +1464,7 @@ export default {
     step_5: "تحویل به مشتری",
   },
 
-  /** {@see BasketReturnItemsRequestView} **/
+  /** {@see SBasketReturnItemsList} **/
   basket_return_request_view: {
     title: "درخواست مرجوعی",
     delivery_date: "تاریخ دریافت توسط مشتری",
@@ -1500,7 +1500,7 @@ export default {
     },
   },
 
-  /** {@see ReturnRequestsList} **/
+  /** {@see SBackofficeReturnRequestsList} **/
   return_request_list: {
     count: "تعداد مرجوعی",
     return_warranty: "ضمانت بازگشت",
