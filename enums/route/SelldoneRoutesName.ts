@@ -13,7 +13,9 @@
  */
 
 export enum SelldoneRoutesName {
-    BLOGS_PAGE = "Blogs",
+  // 🟢 Common > Blog
+  BLOGS_PAGE = "Blogs",
+  AUTHOR_PAGE = "AuthorPage",
 
-
+  //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 }
