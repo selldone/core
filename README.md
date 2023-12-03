@@ -1,3 +1,6 @@
+![License](https://img.shields.io/github/license/selldone/core.svg)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e06b6bb638104350a6cbd7cc056ce6c1)](https://app.codacy.com/gh/selldone/core/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 ![Selldone Official Storefront App](_docs/images/banner-core.jpg)
 
 # Selldone Core
