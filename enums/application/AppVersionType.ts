@@ -11,19 +11,8 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-
-export const SmsTemplateMode = {
-  text: {
-    code: "text",
-    title: "Plain Text",
-    desc: "Message will be created from a text with auto replace parameters and send.",
-    icon: "subject",
-  },
-
-  template: {
-    code: "template",
-    title: "Structural Template",
-    desc: "An object will be created from parameters and send to the provider.",
-    icon: "data_object",
-  },
-};
+export enum AppVersionType {
+  PRODUCTION = "production",
+  BETA = "beta",
+  ALPHA = "alpha",
+}

@@ -12,18 +12,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const SmsTemplateMode = {
-  text: {
-    code: "text",
-    title: "Plain Text",
-    desc: "Message will be created from a text with auto replace parameters and send.",
-    icon: "subject",
-  },
+/**
+ * Used in fetching orders
+ */
+export enum OrderType {
+  PHYSICAL = "PHYSICAL",
+  VIRTUAL = "VIRTUAL",
+  SERVICE = "SERVICE",
+  FILE = "FILE",
+  SUBSCRIPTION = "SUBSCRIPTION",
 
-  template: {
-    code: "template",
-    title: "Structural Template",
-    desc: "An object will be created from parameters and send to the provider.",
-    icon: "data_object",
-  },
-};
+  DROPSHIPPING = "DROPSHIPPING",
+  POS = "POS",
+  AVOCADO = "AVOCADO",
+  HYPER = "HYPER",
+}

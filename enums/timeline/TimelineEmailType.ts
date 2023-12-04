@@ -12,12 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export enum OrderTypeCode {
-  Avocado = "AVO",
-  Hyper = "HYP",
-  Physical = "PHYSICAL",
-  Virtual = "VIRTUAL",
-  Service = "SERVICE",
-  File = "FILE",
-  Subscription = "SUBSCRIPTION",
+export enum TimelineEmailType {
+  EMAIL_BUY = "email-buy",
+  EMAIL_PAYMENT = "email-payment",
+  EMAIL_VENDOR = "email-vendor",
 }

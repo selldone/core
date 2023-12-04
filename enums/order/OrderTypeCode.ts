@@ -12,18 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const SmsTemplateMode = {
-  text: {
-    code: "text",
-    title: "Plain Text",
-    desc: "Message will be created from a text with auto replace parameters and send.",
-    icon: "subject",
-  },
+/**
+ * Used in creating unique order id.
+ * It's the possible values in the 'type' field of the basket, pos basket,avocado,...
+ */
+export enum OrderTypeCode {
+  Physical = "PHYSICAL",
+  Virtual = "VIRTUAL",
+  Service = "SERVICE",
+  File = "FILE",
+  Subscription = "SUBSCRIPTION",
 
-  template: {
-    code: "template",
-    title: "Structural Template",
-    desc: "An object will be created from parameters and send to the provider.",
-    icon: "data_object",
-  },
-};
+  Avocado = "AVO",
+  Hyper = "HYP",
+}

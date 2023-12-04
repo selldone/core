@@ -12,18 +12,29 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const SmsTemplateMode = {
-  text: {
-    code: "text",
-    title: "Plain Text",
-    desc: "Message will be created from a text with auto replace parameters and send.",
-    icon: "subject",
-  },
+/**
+ * Represents the types of PDF exports available for orders.
+ * This enum is used to specify the kind of PDF document to be generated
+ * in the context of order processing.
+ *
+ * @enum {string}
+ */
+export enum OrderExportPdfType {
+  /**
+   * The receipt type for an order.
+   * This type represents a customer's order receipt, detailing
+   * the purchase information.
+   *
+   * @type {string}
+   */
+  RECEIPT = "receipt",
 
-  template: {
-    code: "template",
-    title: "Structural Template",
-    desc: "An object will be created from parameters and send to the provider.",
-    icon: "data_object",
-  },
-};
+  /**
+   * The label type for a box.
+   * This type represents a label for a box, typically used
+   * in the packaging and shipping process.
+   *
+   * @type {string}
+   */
+  LABEL = "label",
+}

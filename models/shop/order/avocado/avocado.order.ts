@@ -13,7 +13,7 @@
  */
 
 import type {User} from "../../../user/user.model";
-import {OrderTypeCode} from "../order-type.model";
+import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
 import {AvocadoOrderStates} from "../../../../enums/avocado/AvocadoOrderStates";
 
 export interface Avocado {

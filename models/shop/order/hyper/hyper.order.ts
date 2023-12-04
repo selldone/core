@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {OrderTypeCode} from "../order-type.model";
+import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
 
 export interface Hyper{
     /** Unique identifier of the order. */

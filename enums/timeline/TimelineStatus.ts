@@ -254,14 +254,11 @@ export default {
     text: "timeline.connect-confirmed",
   },
 
-
-
   "email-vendor": {
     icon: "storefront",
     color: "#000000",
     text: "timeline.email-vendor",
   },
-
 
   "vendor-payout": {
     icon: "payments",

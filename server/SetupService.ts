@@ -246,7 +246,7 @@ export default class SetupService {
   static IosApp(): string | null {
     return this.GetMetaValue(
       "ios-app",
-      "https://testflight.apple.com/join/tPZ2uif4"
+      "https://apps.apple.com/us/app/selldone/id1599250815"
     );
   }
 
