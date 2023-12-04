@@ -1813,7 +1813,7 @@ export default {
     auto_save_input: "ذخیره خودکار",
   },
 
-  /** {@see TimeProgressBar} **/
+  /** {@see STimeProgressBar} **/
   time_progress_bar: {
     title_before_start: "مانده تا شروع",
     title_between_start_end: "مانده تا پایان",

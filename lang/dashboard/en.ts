@@ -1856,7 +1856,7 @@ export default {
     auto_save_input: "Auto save",
   },
 
-  /** {@see TimeProgressBar} **/
+  /** {@see STimeProgressBar} **/
   time_progress_bar: {
     title_before_start: "Remaining to the start",
     title_between_start_end: "Remaining to the end",
