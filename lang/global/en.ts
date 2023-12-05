@@ -717,6 +717,7 @@ export default {
     subscriptions: "Subscriptions",
     spam: "Spam",
     video: "Video",
+    ends_in: "Ends in",
   },
   difficulties: {
     very_complicated: "Very complicated",
@@ -1833,7 +1834,7 @@ export default {
     transfer: "Transfer",
     send_to_friend: "Send to friend",
   },
-  /** {@see CountDown} **/
+  /** {@see SCountDown} **/
   count_down: {
     days: "Day",
     hours: "Hour",
@@ -1959,7 +1960,6 @@ export default {
   faq: {
     faq: "Frequently Asked Questions",
     title: "Questions and Answers",
-    sub_title: "What you asked us to do.",
     message:
       "Look for the answer to your question among the answers below. Ask us if questions remain unanswered. ",
     add_question_action: "Ask New Question",

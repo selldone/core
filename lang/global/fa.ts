@@ -716,6 +716,7 @@ export default {
     subscriptions: "اشتراک ها",
     spam: "اسپم",
     video: "ویدئو",
+    ends_in: "تا پایان",
   },
 
   difficulties: {
@@ -1705,7 +1706,7 @@ export default {
     transfer: "انتقال",
     send_to_friend: "ارسال به یک دوست",
   },
-  /** {@see CountDown} **/
+  /** {@see SCountDown} **/
   count_down: {
     days: "روز",
     hours: "ساعت",

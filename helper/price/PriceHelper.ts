@@ -469,7 +469,6 @@ export class PriceHelper {
     variant: ProductVariant | null = null
   ) {
     if (!product) return false;
-    //  console.log("HasDiscountCountDownMode   : " + product + "    variant : " + variant);
 
     if (variant && variant.pricing) {
       if (!variant.dis_start && !variant.dis_end) return false;

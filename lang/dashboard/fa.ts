@@ -2862,7 +2862,7 @@ export default {
     last_days: "{days} روز پیش",
   },
 
-  /** {@see ProductsSelectAdmin} **/
+  /** {@see SBackofficeProductsManagementView} **/
   products_select: {
     move_category: "انتقال دسته بندی<b> {category} </b>به یک دسته دیگر",
     move_product: "انتقال محصول<b> {product} </b>به دسته بندی",
@@ -4033,7 +4033,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopLayout} **/
+  /** {@see SBackofficeAdminShopLayout} **/
 
   admin_shop_layout: {
     download_txt: "دانلود فایل متنی داده ها",

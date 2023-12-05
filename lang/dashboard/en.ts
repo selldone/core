@@ -2899,7 +2899,7 @@ export default {
     today: "Today",
     last_days: "{days} days ago",
   },
-  /** {@see ProductsSelectAdmin} **/
+  /** {@see SBackofficeProductsManagementView} **/
   products_select: {
     move_category: "Move category <b> {category} </b> to another category",
     move_product: "Move product <b> {product} </b> to category",
@@ -4056,7 +4056,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopLayout} **/
+  /** {@see SBackofficeAdminShopLayout} **/
 
   admin_shop_layout: {
     download_txt: "Download data text",
