@@ -178,7 +178,7 @@ export default {
       "orders": "Užsakymai"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Įsakymas",
     "payment": {
       "title": "Mokėjimas",

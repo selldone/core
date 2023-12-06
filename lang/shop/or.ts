@@ -178,7 +178,7 @@ export default {
       "orders": "ଆଦେଶ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ଅର୍ଡର |",
     "payment": {
       "title": "ଦେୟ",

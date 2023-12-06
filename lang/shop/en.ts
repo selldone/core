@@ -224,7 +224,7 @@ export default {
     },
   },
   /** {@see SStorefrontPhysicalOrderDetailPage} **/
-  physical_order_page: {
+  order_page: {
     title: "Order",
 
     /** {@see SShopCustomerOrderPaymentWidget} **/
@@ -249,6 +249,10 @@ export default {
       total_order_price_before_tax: "Pre-tax Total Price",
 
       buyer_payment: "Customer's Paid Amount",
+
+      payment_is_in_require_capture_message:
+        "We have received your payment, but it has not been captured yet.",
+      settle_the_earlier_bill_first: "Settle the earlier bill first!",
     },
     /** {@see SShopCustomerDeliveryInfoWidget} **/
     delivery: {
@@ -567,7 +571,7 @@ export default {
     title_after_end: "Finished",
     title_no_start_end: "Without time period!",
   },
-  /** {@see SStorefrontLotteryPrizes} **/
+  /** {@see SStorefrontLotteryPrizesList} **/
   lottery_prizes: {
     message: "You can receive one gift per order.",
   },

@@ -41,7 +41,10 @@ interface BasketStatusItem {
  * - `Canceled`: The basket was canceled by the user or the system.
  * - `COD`: Represents Cash-On-Delivery, the basket is to be paid for upon delivery.
  */
-export const BasketStatus: Record<string, BasketStatusItem> = {
+export const BasketStatus: Record<
+  "Open" | "Reserved" | "Payed" | "Canceled" | "COD",
+  BasketStatusItem
+> = {
   Open: {
     code: "Open",
     title: "global.basket_status.open",

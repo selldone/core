@@ -178,7 +178,7 @@ export default {
       "orders": "Pesenan"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "dhawuh",
     "payment": {
       "title": "pambayaran",

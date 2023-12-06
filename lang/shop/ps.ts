@@ -178,7 +178,7 @@ export default {
       "orders": "امرونه"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "امر",
     "payment": {
       "title": "تادیه",

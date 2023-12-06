@@ -178,7 +178,7 @@ export default {
       "orders": "შეკვეთები"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "შეკვეთა",
     "payment": {
       "title": "გადახდა",

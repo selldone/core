@@ -178,7 +178,7 @@ export default {
       "orders": "احکامات"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ترتیب",
     "payment": {
       "title": "ادائیگی",

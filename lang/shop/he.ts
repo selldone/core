@@ -178,7 +178,7 @@ export default {
       "orders": "הזמנות"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "להזמין",
     "payment": {
       "title": "תַשְׁלוּם",

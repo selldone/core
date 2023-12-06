@@ -178,7 +178,7 @@ export default {
       "orders": "Iiodolo"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Umyalelo",
     "payment": {
       "title": "Intlawulo",

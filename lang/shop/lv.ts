@@ -178,7 +178,7 @@ export default {
       "orders": "Pasūtījumi"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Pasūtiet",
     "payment": {
       "title": "Maksājums",

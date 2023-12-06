@@ -178,7 +178,7 @@ export default {
       "orders": "คำสั่งซื้อ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "คำสั่ง",
     "payment": {
       "title": "การชำระเงิน",

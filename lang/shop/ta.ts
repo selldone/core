@@ -178,7 +178,7 @@ export default {
       "orders": "ஆர்டர்கள்"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ஆர்டர்",
     "payment": {
       "title": "பணம் செலுத்துதல்",

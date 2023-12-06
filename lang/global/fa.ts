@@ -980,6 +980,8 @@ export default {
     Processing: "درحال پردازش",
     Canceled: "لغو شده",
     Succeeded: "تایید پرداخت",
+    RequireCapture:"نیاز به تایید"
+
   },
 
   placeholders: {
@@ -1452,6 +1454,8 @@ export default {
     cod: "پرداخت در محل",
     receipt_added: "ثبت رسید",
     payment_processing: "پردازش پرداخت",
+    payment_require_capture:'نیاز به تایید',
+
   },
 
   /** {@see BasketDeliveryState} **/
@@ -1689,7 +1693,7 @@ export default {
     },
   },
 
-  /** {@see DiscountField} **/
+  /** {@see SStorefrontDiscountCodeInput} **/
   discount_input: {
     limit: "{percent}% تخفیف تا سقف {limit} {currency}",
     action: "افزودن کد تخفیف",
@@ -1889,7 +1893,7 @@ export default {
     article_not_saved: "مقاله را ذخیره نمایید!",
   },
 
-  /** {@see WheelOfFortune} **/
+  /** {@see SStorefrontLotteryWheelOfFortune} **/
   wheel_fortune: {
     title: "گردونه شانس",
     message:

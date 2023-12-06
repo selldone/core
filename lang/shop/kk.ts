@@ -178,7 +178,7 @@ export default {
       "orders": "Тапсырыстар"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Тапсырыс",
     "payment": {
       "title": "Төлем",

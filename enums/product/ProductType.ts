@@ -53,10 +53,18 @@ interface IProductType {
   colors: string[];
 
   /** States associated with the delivery of the product type. */
-  delivery_states: typeof PhysicalOrderStates | typeof VirtualOrderStates | typeof FileOrderStates | typeof ServiceOrderStates | typeof SubscriptionOrderStates;
+  delivery_states:
+    | typeof PhysicalOrderStates
+    | typeof VirtualOrderStates
+    | typeof FileOrderStates
+    | typeof ServiceOrderStates
+    | typeof SubscriptionOrderStates;
 }
 
-export const ProductType: Record<string, IProductType> = {
+export const ProductType: Record<
+  "PHYSICAL" | "VIRTUAL" | "FILE" | "SERVICE" | "SUBSCRIPTION",
+  IProductType
+> = {
   PHYSICAL: {
     code: "PHYSICAL",
     basket_code: "SM",

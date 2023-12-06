@@ -178,7 +178,7 @@ export default {
       "orders": "Naredbe"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Red",
     "payment": {
       "title": "Plaćanje",

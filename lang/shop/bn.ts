@@ -178,7 +178,7 @@ export default {
       "orders": "আদেশ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "অর্ডার",
     "payment": {
       "title": "অর্থপ্রদান",

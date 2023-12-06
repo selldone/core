@@ -226,7 +226,7 @@ export default {
   },
 
   /** {@see SStorefrontPhysicalOrderDetailPage} **/
-  physical_order_page: {
+  order_page: {
     title: "سفارش",
 
     /** {@see SShopCustomerOrderPaymentWidget} **/
@@ -251,6 +251,10 @@ export default {
       total_order_price_before_tax: "مجموع قبل از اعمال مالیات",
 
       buyer_payment: "مبلغ پرداختی خریدار",
+
+      payment_is_in_require_capture_message:
+        "ما پرداخت شما را تایید کردیم، اما هنوز مبلغ از حساب شما کسر نشده است.",
+      settle_the_earlier_bill_first: "ابتدا صورت حساب قبلی را تسویه کنید!",
     },
     /** {@see SShopCustomerDeliveryInfoWidget} **/
     delivery: {
@@ -575,7 +579,7 @@ export default {
     title_after_end: "پایان یافته",
     title_no_start_end: "بدون بازه زمانی",
   },
-  /** {@see SStorefrontLotteryPrizes} **/
+  /** {@see SStorefrontLotteryPrizesList} **/
   lottery_prizes: {
     message:
       "شما می توانید یک کادو را به انتخاب خود، در هر بار سفارش دریافت نمایید.",

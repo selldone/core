@@ -33,4 +33,9 @@ export const TransactionStatus = {
     icon: "check",
     code: "Succeeded",
   },
+  RequireCapture: {
+    name: "global.transaction_status.RequireCapture",
+    icon: "credit_score",
+    code: "RequireCapture",
+  },
 };

@@ -178,7 +178,7 @@ export default {
       "orders": "명령"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "주문하다",
     "payment": {
       "title": "지불",

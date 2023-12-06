@@ -178,7 +178,7 @@ export default {
       "orders": "Porositë"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Rendit",
     "payment": {
       "title": "Pagesa",

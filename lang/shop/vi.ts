@@ -178,7 +178,7 @@ export default {
       "orders": "Đơn hàng"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Gọi món",
     "payment": {
       "title": "Sự chi trả",

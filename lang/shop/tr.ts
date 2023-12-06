@@ -178,7 +178,7 @@ export default {
       "orders": "Emirler"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Sipariş",
     "payment": {
       "title": "Ödeme",

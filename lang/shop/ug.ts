@@ -178,7 +178,7 @@ export default {
       "orders": "زاكاز"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "زاكاز",
     "payment": {
       "title": "چىقىم قىلىش",

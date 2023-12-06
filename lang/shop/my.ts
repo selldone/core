@@ -178,7 +178,7 @@ export default {
       "orders": "အော်"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "အော်",
     "payment": {
       "title": "ငွေပေးချေမှု",

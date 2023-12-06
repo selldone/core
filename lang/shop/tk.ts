@@ -178,7 +178,7 @@ export default {
       "orders": "Sargytlar"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Sargyt",
     "payment": {
       "title": "Töleg",

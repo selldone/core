@@ -178,7 +178,7 @@ export default {
       "orders": "Megrendelések"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Rendelés",
     "payment": {
       "title": "Fizetés",

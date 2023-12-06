@@ -178,7 +178,7 @@ export default {
       "orders": "Bestellingen"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Volgorde",
     "payment": {
       "title": "Betaling",

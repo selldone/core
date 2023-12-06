@@ -178,7 +178,7 @@ export default {
       "orders": "ఆదేశాలు"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ఆర్డర్ చేయండి",
     "payment": {
       "title": "చెల్లింపు",

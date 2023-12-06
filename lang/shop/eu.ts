@@ -178,7 +178,7 @@ export default {
       "orders": "Aginduak"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Agindu",
     "payment": {
       "title": "Ordainketa",

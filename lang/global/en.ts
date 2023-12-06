@@ -988,6 +988,7 @@ export default {
     Processing: "Processing",
     Canceled: "Canceled",
     Succeeded: "Succeeded",
+    RequireCapture:"Require Capture"
   },
 
   placeholders: {
@@ -1585,6 +1586,7 @@ export default {
     cod: "Pay On Delivery",
     receipt_added: "Receipt added",
     payment_processing: "Payment processing",
+    payment_require_capture:'Require capture',
   },
 
   /** {@see BasketDeliveryState} **/
@@ -1818,7 +1820,7 @@ export default {
       amount: "Amount",
     },
   },
-  /** {@see DiscountField} **/
+  /** {@see SStorefrontDiscountCodeInput} **/
   discount_input: {
     limit: "{percent}% discount up to {limit} {currency}",
     action: "Add Discount Code",
@@ -2014,7 +2016,7 @@ export default {
     article_not_saved: "Save the article!",
   },
 
-  /** {@see WheelOfFortune} **/
+  /** {@see SStorefrontLotteryWheelOfFortune} **/
   wheel_fortune: {
     title: "Play & Win",
     message:

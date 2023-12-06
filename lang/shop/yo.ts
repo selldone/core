@@ -178,7 +178,7 @@ export default {
       "orders": "Awọn ibere"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Bere fun",
     "payment": {
       "title": "Isanwo",

@@ -178,7 +178,7 @@ export default {
       "orders": "Фармонхо"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Тартиб",
     "payment": {
       "title": "Пардохт",

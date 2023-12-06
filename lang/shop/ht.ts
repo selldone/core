@@ -178,7 +178,7 @@ export default {
       "orders": "Lòd"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Lòd",
     "payment": {
       "title": "Peman",

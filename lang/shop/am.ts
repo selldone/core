@@ -178,7 +178,7 @@ export default {
       "orders": "ትዕዛዞች"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ማዘዝ",
     "payment": {
       "title": "ክፍያ",

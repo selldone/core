@@ -178,7 +178,7 @@ export default {
       "orders": "Litaelo"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Taelo",
     "payment": {
       "title": "Tefo",

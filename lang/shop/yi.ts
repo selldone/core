@@ -178,7 +178,7 @@ export default {
       "orders": "אָרדערס"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "סדר",
     "payment": {
       "title": "צאָלונג",

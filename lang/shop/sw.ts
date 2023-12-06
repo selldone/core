@@ -178,7 +178,7 @@ export default {
       "orders": "Maagizo"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Agizo",
     "payment": {
       "title": "Malipo",

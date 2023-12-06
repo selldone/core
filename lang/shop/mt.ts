@@ -178,7 +178,7 @@ export default {
       "orders": "Ordnijiet"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Ordni",
     "payment": {
       "title": "Ħlas",

@@ -178,7 +178,7 @@ export default {
       "orders": "Dalabka"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Dalbo",
     "payment": {
       "title": "Lacag bixinta",

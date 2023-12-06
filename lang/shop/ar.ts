@@ -178,7 +178,7 @@ export default {
       "orders": "الطلب"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "طلب",
     "payment": {
       "title": "نقدا",

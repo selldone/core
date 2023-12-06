@@ -178,7 +178,7 @@ export default {
       "orders": "Amabwiriza"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Tegeka",
     "payment": {
       "title": "Kwishura",

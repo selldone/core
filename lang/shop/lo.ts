@@ -178,7 +178,7 @@ export default {
       "orders": "ຄໍາສັ່ງ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ສັ່ງ",
     "payment": {
       "title": "ການຈ່າຍເງິນ",

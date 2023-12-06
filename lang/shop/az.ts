@@ -178,7 +178,7 @@ export default {
       "orders": "Sifarişlər"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Sifariş verin",
     "payment": {
       "title": "Ödəniş",

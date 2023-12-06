@@ -178,7 +178,7 @@ export default {
       "orders": "Naročila"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Naročite",
     "payment": {
       "title": "Plačilo",

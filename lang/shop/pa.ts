@@ -178,7 +178,7 @@ export default {
       "orders": "ਆਰਡਰ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ਆਰਡਰ",
     "payment": {
       "title": "ਭੁਗਤਾਨ",

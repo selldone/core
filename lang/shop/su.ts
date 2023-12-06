@@ -178,7 +178,7 @@ export default {
       "orders": "Paréntah"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "pesenan",
     "payment": {
       "title": "pangmayaran",

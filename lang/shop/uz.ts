@@ -178,7 +178,7 @@ export default {
       "orders": "Buyurtmalar"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Buyurtma",
     "payment": {
       "title": "To'lov",

@@ -178,7 +178,7 @@ export default {
       "orders": "Nga ota"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Ota",
     "payment": {
       "title": "Utu",

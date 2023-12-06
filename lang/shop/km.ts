@@ -178,7 +178,7 @@ export default {
       "orders": "ការបញ្ជាទិញ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "បញ្ជាទិញ",
     "payment": {
       "title": "ការទូទាត់",

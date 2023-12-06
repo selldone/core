@@ -15,7 +15,6 @@
 import type { IOrderState } from "../delivery/DeliveryStateCode";
 import { DeliveryStateCode } from "../delivery/DeliveryStateCode";
 
-
 /**
  * Defines the various states that a service order can be in.
  */

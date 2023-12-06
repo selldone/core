@@ -178,7 +178,7 @@ export default {
       "orders": "訂單"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "命令",
     "payment": {
       "title": "支付",

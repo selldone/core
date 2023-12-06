@@ -2361,6 +2361,7 @@ export default {
       waiting_for_pay: "Pending payment",
       processing_payment: "Processing payment",
       processing_cancel: "Payment canceled",
+      require_capture:'Require capture',
       paid: "Paid",
       cod_pay_info:
         "When you have received the order from the customer you can confirm payment and complete the order.",
@@ -2628,7 +2629,13 @@ export default {
     public_keys: "Public keys",
     private_keys: "Private keys (confidential)",
     link: "Website",
-    state_title: "Active/Inactive payment method",
+    status_title: "Payment service status",
+    status_message:
+      "Configure the payment method as Active or Inactive. Only methods set as active will be displayed to customers.",
+    manual_title: "Manual / Auto capture payment",
+    manual_message:
+      "When you create a payment, you can place a hold on an eligible payment method to reserve funds that you can capture later. For example, hotels often authorize a payment in full before a guest arrives, then capture the money when the guest checks out.",
+
     gateway_status: "Status",
     wallet: "Blockchain wallet",
     developer_title: "Developer mode",
@@ -5341,7 +5348,8 @@ export default {
   /** {@see ShopEdit_Home} **/
   shop_home_edit: {
     title: "Home page setting",
-    sub_title: "Configure the default page for your website here. Additionally, you have the option to assign a custom homepage for each domain individually by navigating to the Settings > Domains tab.",
+    sub_title:
+      "Configure the default page for your website here. Additionally, you have the option to assign a custom homepage for each domain individually by navigating to the Settings > Domains tab.",
 
     default_home: "Default home page",
     default_home_placeholder: "Shop page is the website home page",

@@ -178,7 +178,7 @@ export default {
       "orders": "Narudžbe"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Narudžba",
     "payment": {
       "title": "Plaćanje",

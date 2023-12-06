@@ -178,7 +178,7 @@ export default {
       "orders": "Tilaukset"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Tilaus",
     "payment": {
       "title": "Maksu",

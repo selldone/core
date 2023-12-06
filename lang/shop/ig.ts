@@ -178,7 +178,7 @@ export default {
       "orders": "Iwu"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Nye iwu",
     "payment": {
       "title": "Ịkwụ ụgwọ",

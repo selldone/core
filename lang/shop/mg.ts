@@ -178,7 +178,7 @@ export default {
       "orders": "Filaharana"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "mba",
     "payment": {
       "title": "FANOMEZANA",

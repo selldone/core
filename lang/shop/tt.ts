@@ -178,7 +178,7 @@ export default {
       "orders": "Заказлар"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Заказ",
     "payment": {
       "title": "Түләү",

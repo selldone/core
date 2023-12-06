@@ -178,7 +178,7 @@ export default {
       "orders": "Pesanan"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Pesanan",
     "payment": {
       "title": "Bayaran",

@@ -178,7 +178,7 @@ export default {
       "orders": "Ordrene"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Rekkefølge",
     "payment": {
       "title": "innbetaling",

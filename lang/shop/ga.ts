@@ -178,7 +178,7 @@ export default {
       "orders": "Orduithe"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Ordú",
     "payment": {
       "title": "Íocaíocht",

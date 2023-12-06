@@ -178,7 +178,7 @@ export default {
       "orders": "Պատվերներ"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Պատվեր",
     "payment": {
       "title": "Վճարում",

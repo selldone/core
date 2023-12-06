@@ -178,7 +178,7 @@ export default {
       "orders": "Oarders"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Oarder",
     "payment": {
       "title": "Betelling",

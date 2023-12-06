@@ -178,7 +178,7 @@ export default {
       "orders": "Tellimused"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Telli",
     "payment": {
       "title": "Makse",

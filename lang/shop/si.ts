@@ -178,7 +178,7 @@ export default {
       "orders": "නියෝග"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "නියෝග",
     "payment": {
       "title": "ගෙවීම",

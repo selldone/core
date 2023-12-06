@@ -178,7 +178,7 @@ export default {
       "orders": "Archebion"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Gorchymyn",
     "payment": {
       "title": "Taliad",

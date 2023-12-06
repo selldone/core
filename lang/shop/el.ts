@@ -178,7 +178,7 @@ export default {
       "orders": "Παραγγελίες"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Σειρά",
     "payment": {
       "title": "Πληρωμή",

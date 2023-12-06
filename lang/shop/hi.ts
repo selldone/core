@@ -178,7 +178,7 @@ export default {
       "orders": "आदेश"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "आदेश",
     "payment": {
       "title": "भुगतान",

@@ -178,7 +178,7 @@ export default {
       "orders": "ಆದೇಶಗಳು"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "ಆದೇಶ",
     "payment": {
       "title": "ಪಾವತಿ",

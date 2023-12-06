@@ -178,7 +178,7 @@ export default {
       "orders": "Ama-oda"
     }
   },
-  "physical_order_page": {
+  "order_page": {
     "title": "Oda",
     "payment": {
       "title": "Inkokhelo",
