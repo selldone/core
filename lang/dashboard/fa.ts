@@ -986,7 +986,7 @@ export default {
         subtitle: "اپلیکیشن های سایت خود را در این بخش مدیریت نمایید.",
         all: "همه",
       },
-      /** {@see AdminShopApps_Store} **/
+      /** {@see SBackofficeAppStoreShop} **/
       store: {
         title: "فروشگاه اپلیکیشن",
         subtitle:

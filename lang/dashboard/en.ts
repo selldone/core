@@ -530,11 +530,7 @@ export default {
           customers: "Total customers",
         },
       },
-      /** {@see ShopPluginsWidget} **/
-      plugins: {
-        title: "Plugins",
-        title_small: "Installed",
-      },
+
 
       /** {@see ShopPerformanceWidget} **/
       performance: {
@@ -1012,11 +1008,11 @@ export default {
       },
       /** {@see AdminShopApps_List} **/
       my_apps: {
-        title: "Store Active Apps",
-        subtitle: "Manage your business applications.",
+        title: "Applications",
+        subtitle: "Discover the ease of managing your business applications with Selldone App Store. Our platform offers a comprehensive suite of tools designed to optimize your business operations. From innovative management solutions to productivity-boosting apps, Selldone provides a seamless experience for businesses seeking efficiency and growth.",
         all: "All",
       },
-      /** {@see AdminShopApps_Store} **/
+      /** {@see SBackofficeAppStoreShop} **/
       store: {
         title: "App store",
         subtitle:
