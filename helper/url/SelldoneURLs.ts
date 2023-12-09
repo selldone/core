@@ -12,10 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "../../server/SetupService";
+import { SetupService } from "@core/server/SetupService";
+import { User } from "@core/models/user/user.model";
 
-export default class SelldoneURLs {
-  static UserProfilePageUrl(user) {
+export class SelldoneURLs {
+  static UserProfilePageUrl(user: User) {
     return `${SetupService.MainServiceUrl()}/selldoners/${user.id}/@${
       user.name
     }`;

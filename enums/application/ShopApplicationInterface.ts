@@ -50,7 +50,7 @@ export interface AppsInterface {
 /**
  * Provides an interface for shop applications to listen to and trigger events.
  */
-export default class ShopApplicationInterface {
+export class ShopApplicationInterface {
   /**
    * Initializes the $AppsInterface on the window object, if not already present.
    */

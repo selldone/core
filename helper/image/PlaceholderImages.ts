@@ -45,7 +45,7 @@ const IMAGES = [
   require("./assets/images/030-cottage.svg"),
 ];
 
-export default class PlaceholderImages {
+export class PlaceholderImages {
   static GetRamonImage() {
     return IMAGES[Math.floor(Math.random() * IMAGES.length)];
   }

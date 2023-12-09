@@ -12,13 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export default class ImageDimension {
+export class ImageDimension {
   /**
    * Calculate aspect ratio of element.
    * @param el
    * @returns number
    */
-  static GetAspect(el) {
+  static GetAspect(el: Element) {
     const positionInfo = el.getBoundingClientRect();
     const height = positionInfo.height;
     const width = positionInfo.width;
@@ -29,26 +29,40 @@ export default class ImageDimension {
   }
 
   /**
+   * Calculates the aspect ratio of an image from a given URL.
    *
-   * @param src
-   * @returns {Promise<unknown>}
-   * @constructor
+   * @param {string} src - The source URL of the image.
+   * @returns {Promise<number>} A promise that resolves with the aspect ratio of the image.
+   *                             The aspect ratio is calculated as (width / height) and
+   *                             rounded to two decimal places. If the image fails to load
+   *                             or the dimensions are not available, the promise is rejected.
    */
-  static GetAspectByUrl(src) {
+  static GetAspectByUrl(src: string): Promise<number> {
     return new Promise((resolve, reject) => {
       const img = new Image();
+
       img.onload = function () {
-        if (!this.width || !this.height) {
-          reject();
+        // Inside this function, 'this' refers to 'img', the Image object.
+        if (
+          !(this as HTMLImageElement).width ||
+          !(this as HTMLImageElement).height
+        ) {
+          reject(new Error("Image dimensions not available."));
         } else {
-          const aspect = Math.round((100 * this.width) / this.height) / 100;
+          const aspect: number =
+            Math.round(
+              (100 * (this as HTMLImageElement).width) /
+                (this as HTMLImageElement).height
+            ) / 100;
           console.log("aspect", aspect);
           resolve(aspect);
         }
       };
+
       img.onerror = function () {
-        reject();
+        reject(new Error("Image failed to load."));
       };
+
       img.src = src;
     });
   }

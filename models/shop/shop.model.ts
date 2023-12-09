@@ -15,6 +15,7 @@
 import { Currency } from "../../enums/payment/Currency";
 import { ExchangeRate } from "./payment/exchange_rate.model";
 import { WeekDays } from "../../enums/logistic/WeekDays";
+import {Domain} from "@core/models/shop/domain/domain.model";
 
 /**
  * Represents the main configuration and details for a shop.
@@ -132,10 +133,10 @@ export class Shop {
   model?: string; // should be elaborated based on BusinessModel
 
   /** Domain details for local configuration. */
-  local?: any[]; // specific type can be added
+  local?: Domain|null; // specific type can be added
 
   /** Domain details for sub-domain configuration. */
-  sub?: any[]; // specific type can be added
+  sub?: Domain|null; // specific type can be added
 
   /** Supported countries for the shop. */
   countries: string[] = [];

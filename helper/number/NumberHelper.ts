@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export default class NumberHelper {
+export class NumberHelper {
   static toEnglishDigits(str: string) {
     str = "" + str;
     // convert persian digits [۰۱۲۳۴۵۶۷۸۹]
@@ -29,13 +29,13 @@ export default class NumberHelper {
     return str;
   }
 
-  static toEnglishNumber(val:string) {
+  static toEnglishNumber(val: string) {
     return Number(this.toEnglishDigits(val));
   }
-  static toEnglishInt(val:string) {
+  static toEnglishInt(val: string) {
     return parseInt(this.toEnglishDigits(val));
   }
-  static toEnglishFloat(val:string, decimal:number) {
+  static toEnglishFloat(val: string, decimal: number) {
     return parseFloat(parseFloat(this.toEnglishDigits(val)).toFixed(decimal));
   }
 }

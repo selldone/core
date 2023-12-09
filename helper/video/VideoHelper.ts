@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export default class VideoHelper {
+export class VideoHelper {
   static GetMime(filePath) {
     if (!filePath) return "video/mp4";
     // Split the filename by periods and get the last part

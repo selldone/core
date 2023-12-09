@@ -15,7 +15,7 @@
 /**
  * Helper class for augmenting arrays.
  */
-export default class AugmentHelper {
+export class AugmentHelper {
   /**
    * Merges two arrays by updating or adding items from the second array to the first.
    *

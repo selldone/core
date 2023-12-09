@@ -12,20 +12,21 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "../../server/SetupService";
+import { SetupService } from "@core/server/SetupService";
+import type { Shop } from "@core/models/shop/shop.model";
+import { Domain } from "@core/models/shop/domain/domain.model";
 
-export default class ShopURLs {
-  static MainShopUrl(shop) {
+export class ShopURLs {
+  static MainShopUrl(shop: Shop & { domains?: Domain[] }) {
     if (shop.domains) {
-      let domain = shop.domains.find((item) => item.primary);
-      if (domain) domain = `https://${domain.domain}`;
-      else
-        domain =
-          shop.sub.enable && shop.sub.primary
-            ? `https://${shop.name}.${SetupService.ShopsDomain()}`
-            : `${SetupService.MainServiceUrl()}/@${shop.name}`;
-
-      return domain;
+      const domain = shop.domains.find((item) => item.primary);
+      if (domain) {
+        return `https://${domain.domain}`;
+      } else {
+        return shop.sub?.enable && shop.sub?.primary
+          ? `https://${shop.name}.${SetupService.ShopsDomain()}`
+          : `${SetupService.MainServiceUrl()}/@${shop.name}`;
+      }
     } else {
       // Return by domain record for shop. (Not realy accurate!)
       return shop.domain

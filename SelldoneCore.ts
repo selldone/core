@@ -13,12 +13,12 @@
  */
 
 import { Gapi } from "./gapi/Gapi";
-import GAPI from "./server/GAPI";
-import SetupService from "./server/SetupService";
+import { GAPI } from "./server/GAPI";
+import { SetupService } from "@core/server/SetupService";
 
 import "./utils/console/ConsoleStyle";
-import CDN from "./server/CDN";
-import URLS from "./server/URLS";
+import {CDN} from "./server/CDN";
+import { URLS } from "@core/server/URLS";
 
 const SDK_VERSION = "0.01";
 //█████████████████████████████████████████████████████████████

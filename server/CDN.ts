@@ -12,10 +12,10 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "./SetupService";
-import PlaceholderImages from "../helper/image/PlaceholderImages";
+import { SetupService } from "@core/server/SetupService";
+import { PlaceholderImages } from "../helper/image/PlaceholderImages";
 
-export default class CDN {
+export class CDN {
   selldone_service_url: string = "";
 
   shop_cdn_images: string = "";

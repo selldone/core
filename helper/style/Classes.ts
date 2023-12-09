@@ -79,7 +79,7 @@ export class ClassesHelper {
   static StandardClasses() {
     if (STANDARD_CLASSES) return STANDARD_CLASSES;
 
-    let out = [];
+    const out = [];
 
     // Extra:
     out.push(

@@ -16,7 +16,7 @@ import { NotificationRepositoryType } from "./NotificationRepositoryType";
 import { CompileMarkdown } from "../../helper/html/HtmlHelper";
 import type { NotificationRepository } from "../../models/notification/notification-repository.model";
 
-export default class NotificationHelper {
+export class NotificationHelper {
   constructor() {}
 
   getIcon(notification: NotificationRepository) {

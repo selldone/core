@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "../../server/SetupService";
+import { SetupService } from "@core/server/SetupService";
 
 interface SocialNetworkEntry {
   code: string;

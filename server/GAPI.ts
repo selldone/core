@@ -12,10 +12,10 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "./SetupService";
+import { SetupService } from "@core/server/SetupService";
 import { Currency } from "../enums/payment/Currency";
 
-export default class GAPI {
+export class GAPI {
   selldone_gapi_url: string = "";
 
   constructor() {

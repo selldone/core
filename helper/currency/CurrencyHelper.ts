@@ -14,7 +14,7 @@
 
 import { LocalStorages } from "../local-storage/LocalStorages";
 import { Currency, type ICurrency } from "../../enums/payment/Currency";
-import SetupService from "../../server/SetupService";
+import { SetupService } from "@core/server/SetupService";
 import { TrackConfig } from "@core/enums/gtag/TrackConfig";
 import CoreMixin from "@components/mixin/CoreMixin";
 

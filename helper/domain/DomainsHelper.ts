@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "../../server/SetupService";
+import { SetupService } from "@core/server/SetupService";
 
 export class DomainsHelper {
   static GetShopDomains(shop, domains, contains_default_domains = true) {

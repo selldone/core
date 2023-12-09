@@ -15,7 +15,7 @@
 /**
  * Provides utility methods to retrieve setup configurations and meta values from the document head.
  */
-export default class SetupService {
+export class SetupService {
   /**
    * Retrieves the content value of a meta tag by its name attribute.
    * @param name - The name attribute of the meta tag.

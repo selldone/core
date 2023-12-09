@@ -219,7 +219,7 @@ export const CssFiltersGallery = [
   },
 ];
 
-export default class CssFilter {
+export class CssFilter {
   static CalcFilter(filter) {
     if (!filter) return null;
 

@@ -85,7 +85,7 @@ export class BackgroundHelper {
   }
 
   static CreateBackgroundImageStyle(bgCustom, bgGradient, bgImage) {
-    let out = [];
+    const out = [];
 
     if (bgCustom) out.push(bgCustom);
 
@@ -105,7 +105,7 @@ export class BackgroundHelper {
   }
 
   static CreateBackgroundSizeStyle(bgCustom, bgGradient, bgImage, bgImageSize) {
-    let out = [];
+    const out = [];
 
     if (bgCustom) out.push("cover");
 

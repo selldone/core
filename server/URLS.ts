@@ -12,11 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import SetupService from "./SetupService";
+import { SetupService } from "@core/server/SetupService";
 import { Shop } from "../models/shop/shop.model";
 import { Product } from "../models/shop/product/product.model";
 
-export default class URLS {
+export class URLS {
   selldone_url = "";
   selldone_iframe_url = ""; // https://iframe.selldone.com
 

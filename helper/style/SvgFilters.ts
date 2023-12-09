@@ -52,8 +52,8 @@ const SVG_FILTERS =
                 result="monoFluffyNoise"
         />
         <feBlend in="SourceGraphic" in2="monoFluffyNoise" mode="screen" />
-    </filter>`+
-`
+    </filter>` +
+  `
   <filter id="filter_gothamish" color-interpolation-filters="sRGB">
       <feComponentTransfer in="SourceGraphic" result="midtoneContrast">
         <feFuncR type="table" tableValues="0 0.05 0.1 0.2 0.3  0.5 0.7 0.8  0.9 0.95 1.0"/>
@@ -70,8 +70,8 @@ const SVG_FILTERS =
      </feComponentTransfer>
   </filter>
 
-`+
-`
+` +
+  `
          <filter id="filter_stained" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence id="b1" type="fractalNoise" baseFrequency="0.075" numOctaves="3"/>
                <feColorMatrix type="matrix" values=".33 .33 .33 0 0 
