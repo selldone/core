@@ -18,6 +18,7 @@ import { ProductCondition } from "../../enums/product/ProductCondition";
 
 export const ProductsCsvHeaders = [
   "Product ID",
+  "Variant ID",
 
   "Title",
   "Title En",
@@ -426,10 +427,19 @@ export const ProductsCsvStyler = {
 };
 
 export class ProductsCsvFormat {
+  static LastError = null;
+
   static CheckValidFile(headers) {
+    this.LastError = null;
     if (!headers) return false;
-    return !ProductsCsvHeaders.some((it) => {
+
+    const _not_available_headers = ProductsCsvHeaders.filter((it) => {
       return !headers.includes(it);
     });
+    if (_not_available_headers.length > 0) {
+      this.LastError = `${_not_available_headers.join(", ")} headers not found`;
+    }
+
+    return _not_available_headers.length === 0;
   }
 }
