@@ -718,6 +718,7 @@ export default {
     spam: "Spam",
     video: "Video",
     ends_in: "Ends in",
+    current: "Current",
   },
   difficulties: {
     very_complicated: "Very complicated",
@@ -988,7 +989,7 @@ export default {
     Processing: "Processing",
     Canceled: "Canceled",
     Succeeded: "Succeeded",
-    RequireCapture:"Require Capture"
+    RequireCapture: "Require Capture",
   },
 
   placeholders: {
@@ -1586,7 +1587,7 @@ export default {
     cod: "Pay On Delivery",
     receipt_added: "Receipt added",
     payment_processing: "Payment processing",
-    payment_require_capture:'Require capture',
+    payment_require_capture: "Require capture",
   },
 
   /** {@see BasketDeliveryState} **/

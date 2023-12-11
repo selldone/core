@@ -518,7 +518,7 @@ export default {
       },
     },
 
-    /** {@see ProductsManagement} **/
+    /** {@see BackofficeProductsManagementPage} **/
     products: {
       title: "لیست محصولات",
       products_list: "لیست محصولات",

@@ -39,7 +39,7 @@ const NEW_PRODUCT: INotificationType = {
     if (!shop) return null;
 
     return {
-      name: "ProductsManagement",
+      name: "BackofficeProductsManagementPage",
       params: { shop_id: shop.id },
       query: {
         search: `new~${date.setStart().toISOString()}~${date.setEnd()

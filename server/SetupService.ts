@@ -296,4 +296,19 @@ export class SetupService {
   static GetCaptchaKey(): string | null {
     return this.GetMetaValue("captcha", null);
   }
+
+
+  // ――――――――――――――――――――――――― 🦋 Dev Kit ―――――――――――――――――――――――――
+  static GetLayoutOperator(): 'official'|'test'|'dev' | null {
+    return this.GetMetaValue("layout-operator", null);
+  }
+  static GetLayoutImage(): string | null {
+    return this.GetMetaValue("layout-image", null);
+  }
+  static GetLayoutVersion(): string | null {
+    return this.GetMetaValue("layout-version", null);
+  }
+  static GetLayoutPackage(): string | null {
+    return this.GetMetaValue("layout-package", null);
+  }
 }

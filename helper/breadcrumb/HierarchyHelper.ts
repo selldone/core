@@ -58,7 +58,7 @@ export class HierarchyHelper {
           ? undefined
           : IS_VENDOR_PANEL
           ? "VendorPageProducts"
-          : "ProductsManagement",
+          : "BackofficeProductsManagementPage",
         hash: hash,
         query: { dir: "", "no-scroll": dialog_mode },
       },
@@ -81,7 +81,7 @@ export class HierarchyHelper {
                   ? undefined
                   : IS_VENDOR_PANEL
                   ? "VendorPageProducts"
-                  : "ProductsManagement",
+                  : "BackofficeProductsManagementPage",
                 hash: hash,
                 query: {
                   dir: parent_folders.parent.parent.parent.id,
@@ -100,7 +100,7 @@ export class HierarchyHelper {
                 ? undefined
                 : IS_VENDOR_PANEL
                 ? "VendorPageProducts"
-                : "ProductsManagement",
+                : "BackofficeProductsManagementPage",
               hash: hash,
               query: {
                 dir: parent_folders.parent.parent.id,
@@ -119,7 +119,7 @@ export class HierarchyHelper {
               ? undefined
               : IS_VENDOR_PANEL
               ? "VendorPageProducts"
-              : "ProductsManagement",
+              : "BackofficeProductsManagementPage",
             hash: hash,
             query: { dir: parent_folders.parent.id, "no-scroll": dialog_mode },
           },
@@ -135,7 +135,7 @@ export class HierarchyHelper {
             ? undefined
             : IS_VENDOR_PANEL
             ? "VendorPageProducts"
-            : "ProductsManagement",
+            : "BackofficeProductsManagementPage",
           hash: hash,
           query: { dir: parent_folders.id, "no-scroll": dialog_mode },
         },

@@ -717,6 +717,8 @@ export default {
     spam: "اسپم",
     video: "ویدئو",
     ends_in: "تا پایان",
+    current: "فعلی",
+
   },
 
   difficulties: {

@@ -544,7 +544,7 @@ export default {
       },
     },
 
-    /** {@see ProductsManagement} **/
+    /** {@see BackofficeProductsManagementPage} **/
     products: {
       title: "Products list",
       products_list: "Back to list",
