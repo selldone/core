@@ -1913,7 +1913,7 @@ export default {
   },
   "PricingTypes": {
     "FIX": {
-      "title": "Fixed pricing",
+      "title": "Fixed Pricing",
       "message": "Mune rudzi urwu rwemitengo, mutengo wechigadzirwa chiyero chakatarwa uye hapana chikonzero chekuti mutengi akumbire mutengo wekuverenga."
     },
     "ESTIMATION": {

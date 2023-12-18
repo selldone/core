@@ -2114,7 +2114,7 @@ export default {
   /** PricingTypes **/
   PricingTypes: {
     FIX: {
-      title: "Fixed pricing",
+      title: "Fixed Pricing",
       message:
         "In this type of pricing, the price of the product is a fixed amount and there is no need for the buyer to request a price calculation.",
     },
