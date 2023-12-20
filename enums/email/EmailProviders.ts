@@ -21,7 +21,7 @@ export const EmailProviders = [
     description:
       "A powerful, developer-focused email service known for its robust API capabilities for sending, receiving, and tracking emails.",
 
-    icon: require("@components/assets/tradmark/mailgun.svg"),
+    icon: require("@components/assets/trademark/mailgun.svg"),
 
     options: {
       host: {
@@ -46,7 +46,7 @@ export const EmailProviders = [
     title: "Postmark",
     description:
       "A fast and reliable email delivery service that specializes in transactional emails, offering detailed analytics and consistent high-speed performance.",
-    icon: require("@components/assets/tradmark/postmark.svg"),
+    icon: require("@components/assets/trademark/postmark.svg"),
     options: {
       endpoint: {
         label: "Stream ID",
@@ -66,7 +66,7 @@ export const EmailProviders = [
     title: "Amazon SES",
     description:
       "Amazon Simple Email Service is a cost-effective, flexible, and scalable email service that enables developers to send mail from within any application.",
-    icon: require("@components/assets/tradmark/amazon-ses.svg"),
+    icon: require("@components/assets/trademark/amazon-ses.svg"),
     options: {
       username: {
         label: "Key",

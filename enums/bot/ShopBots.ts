@@ -15,7 +15,7 @@
 export const ShopBots = [
   {
     driver: "Telegram",
-    icon: require("@components/assets/tradmark/telegram.svg"),
+    icon: require("@components/assets/trademark/telegram.svg"),
     name: "Telegram",
     token: "Bot API Key",
     placeholder: "",
@@ -26,7 +26,7 @@ export const ShopBots = [
   },
   {
     driver: "Slack",
-    icon: require("@components/assets/tradmark/slack.svg"),
+    icon: require("@components/assets/trademark/slack.svg"),
     name: "Slack",
     token: "Token",
     available: false,
@@ -36,7 +36,7 @@ export const ShopBots = [
   },
   {
     driver: "AmazonAlexa",
-    icon: require("@components/assets/tradmark/alexa.svg"),
+    icon: require("@components/assets/trademark/alexa.svg"),
     name: "Amazon Alexa",
     available: false,
     getWebhookURL: (shop_id, secret) => {
@@ -46,7 +46,7 @@ export const ShopBots = [
 
   {
     driver: "CiscoSpark",
-    icon: require("@components/assets/tradmark/cisco.svg"),
+    icon: require("@components/assets/trademark/cisco.svg"),
     name: "Cisco Spark",
     token: "Token",
     token2: "Secret",
@@ -58,7 +58,7 @@ export const ShopBots = [
 
   {
     driver: "Facebook",
-    icon: require("@components/assets/tradmark/facebook-messenger.svg"),
+    icon: require("@components/assets/trademark/facebook-messenger.svg"),
     name: "Facebook Messenger",
     token: "Token",
     token2: "App Secret",
@@ -71,7 +71,7 @@ export const ShopBots = [
 
   {
     driver: "Hangouts",
-    icon: require("@components/assets/tradmark/google-hangouts.svg"),
+    icon: require("@components/assets/trademark/google-hangouts.svg"),
     name: "Hangouts Chat",
     token: "Token",
     available: false,
@@ -81,7 +81,7 @@ export const ShopBots = [
   },
   {
     driver: "HipChat",
-    icon: require("@components/assets/tradmark/hipchat.svg"),
+    icon: require("@components/assets/trademark/hipchat.svg"),
     name: "HipChat",
     available: false,
     getWebhookURL: (shop_id, secret) => {
@@ -90,7 +90,7 @@ export const ShopBots = [
   },
   {
     driver: "BotFramework",
-    icon: require("@components/assets/tradmark/microsoft.svg"),
+    icon: require("@components/assets/trademark/microsoft.svg"),
     name: "Microsoft Bot Framework / Skype",
     token: "API ID",
     token2: "API Key",
@@ -101,7 +101,7 @@ export const ShopBots = [
   },
   /* {
     driver: "Nexmo",
-    icon: require("./../assets/tradmark/nexmo.svg"),
+    icon: require("./../assets/trademark/nexmo.svg"),
     name: "Nexmo",
     token: "Key",
     token2: "Secret",
@@ -111,7 +111,7 @@ export const ShopBots = [
 
   {
     driver: "Twilio",
-    icon: require("@components/assets/tradmark/twilio.svg"),
+    icon: require("@components/assets/trademark/twilio.svg"),
     name: "Twilio",
     token: "Token",
     available: false,
@@ -121,7 +121,7 @@ export const ShopBots = [
   },
   {
     driver: "WeChat",
-    icon: require("@components/assets/tradmark/wechat.svg"),
+    icon: require("@components/assets/trademark/wechat.svg"),
     name: "WeChat",
     token: "App ID",
     token2: "App Key",

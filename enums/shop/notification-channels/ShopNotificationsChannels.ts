@@ -91,7 +91,7 @@ export default [
 
   {
     channel: "Telegram",
-    icon: require("@components/assets/tradmark/telegram.svg"),
+    icon: require("@components/assets/trademark/telegram.svg"),
     name: "Telegram",
     available: true,
     events: [
@@ -103,7 +103,7 @@ export default [
   },
   {
     channel: "Flock",
-    icon: require("@components/assets/tradmark/flock.svg"),
+    icon: require("@components/assets/trademark/flock.svg"),
     name: "Flock",
     available: true,
     events: [
@@ -115,7 +115,7 @@ export default [
   },
   {
     channel: "Slack",
-    icon: require("@components/assets/tradmark/slack.svg"),
+    icon: require("@components/assets/trademark/slack.svg"),
     name: "Slack",
     available: true,
     events: [

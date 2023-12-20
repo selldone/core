@@ -18,7 +18,7 @@ export const ShopPlugin = {
         code: "TagManager",
         name: "Tag Manager",
         description: "",
-        icon: require("@components/assets/tradmark/google-tag-manager.svg"),
+        icon: require("@components/assets/trademark/google-tag-manager.svg"),
         url: "https://tagmanager.google.com",
         to:{name:'AdminShop_Channels_GoogleApp'}
     },
@@ -27,7 +27,7 @@ export const ShopPlugin = {
         code: "VerificationTag",
         name: "Search Console",
         description: "",
-        icon: require("@components/assets/tradmark/search-console.svg"),
+        icon: require("@components/assets/trademark/search-console.svg"),
         url: "https://search.google.com/search-console?",
         to:{name:'AdminShop_Channels_GoogleApp'}
     },
@@ -36,7 +36,7 @@ export const ShopPlugin = {
         code: "FacebookPixel",
         name: "Facebook Pixel",
         description: "",
-        icon: require("@components/assets/tradmark/meta.png"),
+        icon: require("@components/assets/trademark/meta.png"),
         //url: "https://search.google.com/search-console?",
         to:{name:'AdminShop_Channels_FacebookApp'}
     },

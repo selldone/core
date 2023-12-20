@@ -48,11 +48,11 @@ export const Platform: Record<string, PlatformType> = {
   android: {
     code: "android",
     title: "Android",
-    icon: require("@components/assets/tradmark/android.svg"),
+    icon: require("@components/assets/trademark/android.svg"),
   },
   ios: {
     code: "ios",
     title: "iOS",
-    icon: require("@components/assets/tradmark/apple-b.svg"),
+    icon: require("@components/assets/trademark/apple-b.svg"),
   },
 };
