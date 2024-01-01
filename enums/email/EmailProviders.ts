@@ -101,7 +101,7 @@ export const EmailProviders = [
       port: {
         label: "SMTP Port",
         message: "Your SMTP port.",
-        placeholder: "Set the SMTP port, example: 25.",
+        placeholder: "Set the SMTP port, e.g: 25 or 465(SSL) or 587 (TLS)",
       },
       username: {
         label: "SMTP Username",
