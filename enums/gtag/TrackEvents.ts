@@ -17,18 +17,18 @@
 import {Currency} from "@core/enums/payment/Currency";
 
 export class TrackEventOnboarding {
-  static EVENT_ONBOARDING = "onboarding";
+  static EVENT_ONBOARDING = "SD Onboarding";
 
   static OnSelectCategoryStep1(category:string) {
     if (typeof gtag !== "function") return;
-    gtag("event", this.EVENT_ONBOARDING + ":step-1", {
+    gtag("event", this.EVENT_ONBOARDING + ": Step 1", {
       category: category,
     });
     //this.LOG({category});
   }
   static OnConfirmStep2(category:string, currency:keyof typeof Currency, income:number) {
     if (typeof gtag !== "function") return;
-    gtag("event", this.EVENT_ONBOARDING + ":step-2", {
+    gtag("event", this.EVENT_ONBOARDING + ": Step 2", {
       category: category,
       currency: currency,
       income: income,
@@ -37,7 +37,7 @@ export class TrackEventOnboarding {
   }
   static OnCreateStep3(category:string, currency:keyof typeof Currency, income:number, country:string/* alpha-2 country code */) {
     if (typeof gtag !== "function") return;
-    gtag("event", this.EVENT_ONBOARDING + ":step-3", {
+    gtag("event", this.EVENT_ONBOARDING + ": Step 33", {
       category: category,
       currency: currency,
       income: income,

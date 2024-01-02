@@ -392,7 +392,22 @@ export default {
   product_page: {
     title: "The Output After Adding Your First Product.",
     msg: "Bring your ideas to life with just a few clicks.",
-    open_sample_product_link:"Open Live Product",
-    open_templates:'View Templates'
+    open_sample_product_link: "Open Live Product",
+    open_templates: "View Templates",
+  },
+
+  /** {@see CountrySupportBox} */
+  support_box: {
+    country_select_label: "Select your country",
+    we_support_message: "We support {country}",
+    we_limited_support: "We limited support {country}",
+    support_message_long:
+      "Experience seamless online transactions in your country with Selldone! Alongside professional TAX calculations, we offer diverse payment methods including cash, POS, bank transfers, and more. Start building your business on a platform that fully supports your country's needs.",
+    limited_support_message_long:
+      "            Online payments might not be available in your country, but no need to worry! At Selldone, we offer cash payments, bank transfers, and Cash on Delivery (COD) worldwide. You can confidently build your online business with us while adhering to your country's and Europe's regulations. For further details or to inquire about online payment support in your country, please feel free to contact our support team.\n",
+    more_about_selldone_in_country: "About Selldone in this country",
+    support_worldwide_customers: "You can sell your products and services to all customers in <b>all countries</b>!",
+
+
   },
 };

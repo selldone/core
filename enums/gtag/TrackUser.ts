@@ -15,20 +15,19 @@
 /**
  * 🫐 Analytics 🫐
  */
-export class TrackProduct {
-  static EVENT_CATEGORY_PRODUCT = "PRODUCT";
+export class TrackUser {
+  static EVENT_CATEGORY_USER = "USER";
 
-  static EVENT_ACTION_VIEW_PRODUCT = "SD View Product";
+  static EVENT_ACTION_CLICK = "SD Click";
 
-  static onViewProduct(product) {
+  static onClick(label: string) {
     if (typeof gtag !== "function") {
       return;
     }
 
-    gtag("event", this.EVENT_ACTION_VIEW_PRODUCT, {
-      event_category: this.EVENT_CATEGORY_PRODUCT, // 📁 Category
-      shop_id: product?.shop_id, // 🏪 Store
-      type: product?.type,
+    gtag("event", this.EVENT_ACTION_CLICK, {
+      event_category: this.EVENT_CATEGORY_USER, // 📁 Category
+      event_label: label, // 🏷️ Label
     });
   }
 }

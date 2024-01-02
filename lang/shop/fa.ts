@@ -135,6 +135,9 @@ export default {
       inform_add_success: "هر وقت موجود شد خبرتان می کنیم.",
       inform_remove_success: "از لیست در انتظار موجود شدن خارج شدید.",
     },
+    zip_pin_input:"شهر / محله",
+    zip_pin_not_available_msg: "در این مکان موجود نیست!",
+    zip_pin_placeholder: "محل خود را انتخاب کنید..."
   },
 
   /** @see SStorefrontProfilePage **/

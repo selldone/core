@@ -136,6 +136,10 @@ export default {
       inform_add_success: "We'll let you know when it's available.",
       inform_remove_success: "You have been removed from the waiting list.",
     },
+    zip_pin_input:"ZIP / PIN",
+    zip_pin_not_available_msg:"Not available in this location!",
+    zip_pin_placeholder:"Select ZIP/PIN Code..."
+
   },
 
   /** @see SStorefrontProfilePage **/
