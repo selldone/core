@@ -225,7 +225,7 @@ export class DateConverter {
       // In a real-world scenario, you might want to import or directly access it.
       const _calendar = window.$language?.calendar
         ? window.$language.calendar
-        : Calendar.georgian;
+        : Calendar.gregory;
       const options: Intl.DateTimeFormatOptions = small
         ? { calendar: _calendar.calendar, month: "short", day: "numeric" }
         : { calendar: _calendar.calendar, month: "long", day: "numeric" };
@@ -278,7 +278,7 @@ export class DateConverter {
       // Assuming $language is globally available.
       const _calendar = window.$language?.calendar
         ? window.$language.calendar
-        : Calendar.georgian;
+        : Calendar.gregory;
 
       let options: Intl.DateTimeFormatOptions;
 

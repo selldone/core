@@ -218,6 +218,7 @@ export namespace Shop {
   export interface IOption {
     code: string;
     value: any; // This is either an array, boolean, or object. Might need to further sub-divide this type
+
   }
 
   export interface IRibbon {

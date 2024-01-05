@@ -4070,6 +4070,7 @@ export default {
     access: "Access",
     template: "Template",
     feedback: "Feedback",
+    date_time:'Date & Time',
 
     company: "Company",
     company_message: "If you have company and want to publish apps.",

@@ -14,6 +14,7 @@
 
 import { ProductType } from "../../enums/product/ProductType";
 import type { Shop } from "../../models/shop/shop.model";
+import { LabelingModes } from "@core/enums/shop/options/LabelingOptions";
 
 /**
  * Helper class for retrieving various shop-related configuration options.
@@ -39,10 +40,10 @@ export class ShopOptionsHelper {
   }
 
   static GetShippingRestriction(shop: Shop) {
-    const mass_unit_option =
+    const shipping_option =
       shop.options &&
       shop.options.find((e) => e.code === "shipping_restriction");
-    return mass_unit_option ? mass_unit_option.value : false;
+    return shipping_option ? shipping_option.value : false;
   }
 
   static GetAmp(shop: Shop) {
@@ -186,5 +187,16 @@ export class ShopOptionsHelper {
     return variants?.value && !Array.isArray(variants.value)
       ? variants.value
       : {};
+  }
+
+  // █████████████████████████ Custom Orders Labeling █████████████████████████
+  static GetLabeling(shop: Shop): { mode?: keyof typeof LabelingModes,SM?:string,SV?:string,SF?:string,SS?:string,SN?:string,POS?:string,AVO?:string,HYP?:string,BILL?:string,FUL?:string,VND?:string} {
+    const labeling_option: undefined | Shop.IOption =
+      shop.options && shop.options.find((e) => e.code === "labeling");
+    return labeling_option?.value
+      ? labeling_option.value
+      : {
+          mode: LabelingModes.default.code,
+        };
   }
 }

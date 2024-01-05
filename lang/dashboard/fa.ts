@@ -4052,6 +4052,7 @@ export default {
     access: "دسترسی",
     template: "قالب",
     feedback: "بازخورد",
+    date_time:'تاریخ و زمان',
 
     company: "حساب های تجاری",
     company_message:

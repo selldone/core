@@ -37,7 +37,7 @@ export class TrackEventOnboarding {
   }
   static OnCreateStep3(category:string, currency:keyof typeof Currency, income:number, country:string/* alpha-2 country code */) {
     if (typeof gtag !== "function") return;
-    gtag("event", this.EVENT_ONBOARDING + ": Step 33", {
+    gtag("event", this.EVENT_ONBOARDING + ": Step 3", {
       category: category,
       currency: currency,
       income: income,

@@ -12,22 +12,25 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface IOrder {
-  id: number;
-  shop_id: number;
-  label: string | null; // Custom order ID set by seller configuration.
-  type:
-    | "AVO"
-    | "FUL"
-    | "POS"
-    | "HYP"
-    | "BILL"
-    | "PHYSICAL"
-    | "VIRTUAL"
-    | "FILE"
-    | "SERVICE"
-    | "SUBSCRIPTION";
-
-  vendor_id?: number; // Only in the vendor order! We use this to detect it's a vendor order. The type will be PHYSICAL,VIRTUAL,... same as main basket type.
-  basket_id?: number; // Only in the vendor order!
-}
+export const ResetIDPeriod = {
+  none: {
+    code: "none",
+    title: "No Reset",
+    description: "Order IDs will not be reset and will continue to increment indefinitely.",
+  },
+  daily: {
+    code: "daily",
+    title: "Daily Reset",
+    description: "Order IDs will reset to 1 at the start of each day, allowing for a fresh sequence every day.",
+  },
+  monthly: {
+    code: "monthly",
+    title: "Monthly Reset",
+    description: "Order IDs will reset to 1 at the start of each month, providing a new sequence on a monthly basis.",
+  },
+  yearly: {
+    code: "yearly",
+    title: "Yearly Reset",
+    description: "Order IDs will reset to 1 at the start of each year, starting a new sequence annually.",
+  },
+};

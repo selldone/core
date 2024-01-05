@@ -50,7 +50,7 @@ export interface ILanguage {
    * The type of calendar used by the language.
    * This is presumed to reference a type within a `Calendar` object.
    */
-  calendar: typeof Calendar.georgian;
+  calendar: typeof Calendar.gregory;
 
   /**
    * A fuller, more localized version of the language code combined with a country or region code.
@@ -85,7 +85,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "US",
     dir: "ltr",
     title: "English",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "en-US", // Used for calendar
     countries: [
       "AU",
@@ -117,7 +117,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "DE",
     dir: "ltr",
     title: "Deutsch",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "de-DE", // Used for calendar
     countries: ["AT", "CH", "DE", "LI", "LU"],
     vip: true, // Show on local services
@@ -130,7 +130,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "DK",
     dir: "ltr",
     title: "Dansk",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "da-DK", // Used for calendar
     countries: ["DK"],
     vip: true, // Show on local services
@@ -143,7 +143,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "SE",
     dir: "ltr",
     title: "Svenska",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sv-SE", // Used for calendar
     countries: ["FI", "SE"],
     vip: true, // Show on local services
@@ -156,7 +156,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IR",
     dir: "rtl",
     title: "فارسی",
-    calendar: Calendar.jalali,
+    calendar: Calendar.persian,
     full_local: "fa-IR", // Used for calendar
     countries: ["IR", "AF"],
     vip: true, // Show on local services
@@ -169,7 +169,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "CN",
     dir: "ltr",
     title: "中文",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "zh-CN", // Used for calendar
     countries: ["CN", "HK", "MO", "SG", "TW"],
     vip: true, // Show on local services
@@ -181,7 +181,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "TW",
     dir: "ltr",
     title: "中文(台灣)",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "zh-tw", // Used for calendar
     countries: ["TW", "CN", "HK", "MO", "SG"],
   },
@@ -193,7 +193,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ES",
     dir: "ltr",
     title: "Español",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "es-ES", // Used for calendar
     countries: [
       "AR",
@@ -226,7 +226,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "हिंदी",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "hi-IN", // Used for calendar
     countries: ["IN"],
     vip: true, // Show on local services
@@ -239,7 +239,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "SA",
     dir: "rtl",
     title: "عربي",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ar-AE", // Used for calendar
     countries: [
       "AE",
@@ -270,7 +270,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "FR",
     dir: "ltr",
     title: "français",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "fr-FR", // Used for calendar
     countries: ["BE", "CA", "CH", "FR", "LU", "MC"],
     vip: true, // Show on local services
@@ -283,7 +283,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "TR",
     dir: "ltr",
     title: "Türk",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "tr-TR", // Used for calendar
     countries: ["TR"],
     vip: true, // Show on local services
@@ -296,7 +296,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "PT",
     dir: "ltr",
     title: "português",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "pt-PT", // Used for calendar
     countries: ["BR", "PT"],
     vip: true, // Show on local services
@@ -309,7 +309,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ID",
     dir: "ltr",
     title: "Indonesian",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "id-ID", // Used for calendar
     countries: ["ID"],
     vip: true, // Show on local services
@@ -321,7 +321,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "PK",
     dir: "rtl",
     title: "اردو",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ur-PK", // Used for calendar
     countries: ["PK"],
     vip: true, // Show on local services
@@ -334,7 +334,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "ਪੰਜਾਬੀਆਂ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "pa-IN", // Used for calendar
     countries: ["IN"],
     vip: true, // Show on local services
@@ -347,7 +347,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "JP",
     dir: "ltr",
     title: "日本",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ja-JP", // Used for calendar
     countries: ["JP"],
     vip: true, // Show on local services
@@ -360,7 +360,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "RU",
     dir: "ltr",
     title: "Pусский",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ru-RU", // Used for calendar
     countries: ["RU"],
     vip: true, // Show on local services
@@ -373,7 +373,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "BD",
     dir: "ltr",
     title: "বাংলা",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "bn-BD", // Used for calendar
     countries: ["BD", "IN"],
     vip: true, // Show on local services
@@ -388,7 +388,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ZA",
     dir: "ltr",
     title: "Afrikaans",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "af-ZA", // Used for calendar
     countries: ["ZA"],
   },
@@ -400,7 +400,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "AL",
     dir: "ltr",
     title: "Shqip",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sq-AL", // Used for calendar
     countries: ["AL"],
   },
@@ -412,7 +412,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "AZ",
     dir: "rtl",
     title: "Azərbaycanca",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "az-AZ", // Used for calendar
     countries: ["AZ"],
   },
@@ -424,7 +424,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ET",
     dir: "ltr",
     title: "አማርኛ ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "am-ET", // Used for calendar
     countries: ["ET"],
   },
@@ -436,7 +436,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "AM",
     dir: "ltr",
     title: "Հայերեն",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "hy-AM", // Used for calendar
     countries: ["AM"],
   },
@@ -448,7 +448,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "BY",
     dir: "ltr",
     title: "Беларуская",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "be-BY", // Used for calendar
     countries: ["BY"],
   },
@@ -460,7 +460,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ES",
     dir: "ltr",
     title: "Euskara",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "eu-ES", // Used for calendar
     countries: ["ES"],
   },
@@ -472,7 +472,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "BG",
     dir: "ltr",
     title: "Български",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "bg-BG", // Used for calendar
     countries: ["BG"],
   },
@@ -484,7 +484,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "BA",
     dir: "ltr",
     title: "Bosanski",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "bs-BA", // Used for calendar
     countries: ["BA"],
   },
@@ -496,7 +496,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "FR",
     dir: "ltr",
     title: "Corsu",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "co-FR", // Used for calendar
     countries: ["FR"],
   },
@@ -508,7 +508,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "AD",
     dir: "ltr",
     title: "Català",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ca-AD", // Used for calendar
     countries: ["AD", "ES"],
   },
@@ -520,7 +520,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "HR",
     dir: "ltr",
     title: "Hrvatski",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "hr-HR", // Used for calendar
     countries: ["HR", "BA"],
   },
@@ -532,7 +532,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "CZ",
     dir: "ltr",
     title: "Česky",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "cs-CZ", // Used for calendar
     countries: ["CZ"],
   },
@@ -544,7 +544,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "BE",
     dir: "ltr",
     title: "Nederlands",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "nl-BE", // Used for calendar
     countries: ["BE", "NL"],
   },
@@ -556,7 +556,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "EE",
     dir: "ltr",
     title: "Eesti",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "et-EE", // Used for calendar
     countries: ["EE"],
   },
@@ -568,7 +568,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "FI",
     dir: "ltr",
     title: "Finnish",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "fi-FI", // Used for calendar
     countries: ["FI"],
   },
@@ -580,7 +580,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NL",
     dir: "ltr",
     title: "Frysk",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "fy-NL", // Used for calendar
     countries: ["NL"],
   },
@@ -592,7 +592,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ES",
     dir: "ltr",
     title: "Galego",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "gl-ES", // Used for calendar
     countries: ["ES"],
   },
@@ -604,7 +604,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "GE",
     dir: "ltr",
     title: "ქართული",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ka-GE", // Used for calendar
     countries: ["GE"],
   },
@@ -615,7 +615,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "CY",
     dir: "ltr",
     title: "Ελληνικά",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "el-CY", // Used for calendar
     countries: ["CY", "GR"],
   },
@@ -626,7 +626,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "ગુજરાતી",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "gu-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -637,7 +637,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "HT",
     dir: "ltr",
     title: "Krèyol ayisyen",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ht-HT", // Used for calendar
     countries: ["HT"],
   },
@@ -649,7 +649,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NG",
     dir: "rtl",
     title: "هَوُسَ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ha-NG", // Used for calendar
     countries: ["NG"],
   },
@@ -661,7 +661,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IL",
     dir: "rtl",
     title: "עברית",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "he-IL", // Used for calendar
     countries: ["IL"],
   },
@@ -673,7 +673,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "HU",
     dir: "ltr",
     title: "Magyar",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "hu-HU", // Used for calendar
     countries: ["HU"],
   },
@@ -685,7 +685,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IS",
     dir: "ltr",
     title: "Íslenska",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "is-IS", // Used for calendar
     countries: ["IS"],
   },
@@ -697,7 +697,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NG",
     dir: "ltr",
     title: "Igbo",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ig-NG", // Used for calendar
     countries: ["NG"],
   },
@@ -709,7 +709,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IE",
     dir: "ltr",
     title: "Gaeilge",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ga-IE", // Used for calendar
     countries: ["IE"],
   },
@@ -721,7 +721,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IT",
     dir: "ltr",
     title: "Italiano",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "it-IT", // Used for calendar
     countries: ["IT", "CH"],
   },
@@ -732,7 +732,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ID",
     dir: "ltr",
     title: "Basa Jawa",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "jv-ID", // Used for calendar
     countries: ["ID"],
   },
@@ -744,7 +744,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "ಕನ್ನಡ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "kn-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -756,7 +756,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "KZ",
     dir: "ltr",
     title: "Қазақша",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "kk-KZ", // Used for calendar
     countries: ["KZ"],
   },
@@ -768,7 +768,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "KH",
     dir: "ltr",
     title: "ភាសាខ្មែរ ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "km-KH", // Used for calendar
     countries: ["KH"],
   },
@@ -780,7 +780,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "RW",
     dir: "ltr",
     title: "Kinyarwandi",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "rw-RW", // Used for calendar
     countries: ["RW"],
   },
@@ -792,7 +792,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "KR",
     dir: "ltr",
     title: "한국어",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ko-KR", // Used for calendar
     countries: ["KR"],
   },
@@ -804,7 +804,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IQ",
     dir: "rtl",
     title: "Kurdî",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ku-IQ", // Used for calendar
     countries: ["IQ"],
   },
@@ -816,7 +816,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "KG",
     dir: "ltr",
     title: "Кыргызча",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ky-KG", // Used for calendar
     countries: ["KG"],
   },
@@ -828,7 +828,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "LA",
     dir: "ltr",
     title: "ລາວ / Pha xa lao",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "lo-LA", // Used for calendar
     countries: ["LA"],
   },
@@ -840,7 +840,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "LV",
     dir: "ltr",
     title: "Latviešu",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "lv-LV", // Used for calendar
     countries: ["LV"],
   },
@@ -851,7 +851,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "LT",
     dir: "ltr",
     title: "Lietuvių",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "lt-LT", // Used for calendar
     countries: ["LT"],
   },
@@ -862,7 +862,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "LU",
     dir: "ltr",
     title: "Lëtzebuergesch",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "lb-LU", // Used for calendar
     countries: ["LU"],
   },
@@ -873,7 +873,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MK",
     dir: "ltr",
     title: "Македонски",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "mk-MK", // Used for calendar
     countries: ["MK"],
   },
@@ -884,7 +884,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MG",
     dir: "ltr",
     title: "Malagasy",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "mg-MG", // Used for calendar
     countries: ["MG"],
   },
@@ -895,7 +895,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MY",
     dir: "ltr",
     title: "Bahasa Melayu",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ms-MY", // Used for calendar
     countries: ["MY", "BN"],
   },
@@ -907,7 +907,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "മലയാളം",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ml-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -919,7 +919,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MT",
     dir: "ltr",
     title: "bil-Malti",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "mt-MT", // Used for calendar
     countries: ["MT"],
   },
@@ -931,7 +931,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NZ",
     dir: "ltr",
     title: "Māori",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "mi-NZ", // Used for calendar
     countries: ["NZ"],
   },
@@ -943,7 +943,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "मराठी",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "mr-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -955,7 +955,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MN",
     dir: "ltr",
     title: "Монгол",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "mn-MN", // Used for calendar
     countries: ["MN"],
   },
@@ -966,7 +966,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MM",
     dir: "ltr",
     title: "Myanmasa",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "my-MM", // Used for calendar
     countries: ["MM"],
   },
@@ -978,7 +978,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NP",
     dir: "ltr",
     title: "नेपाली",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ne-NP", // Used for calendar
     countries: ["NP"],
   },
@@ -989,7 +989,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NO",
     dir: "ltr",
     title: "Norsk",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "no-NO", // Used for calendar
     countries: ["NO"],
   },
@@ -1000,7 +1000,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "MW",
     dir: "ltr",
     title: "Chi-Chewa",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ny-MW", // Used for calendar
     countries: ["MW", "ZM"],
   },
@@ -1011,7 +1011,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "ଓଡ଼ିଆ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "or-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -1023,7 +1023,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "AF",
     dir: "rtl",
     title: "پښتو",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ps-AF", // Used for calendar
     countries: ["AF"],
   },
@@ -1035,7 +1035,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "PL",
     dir: "ltr",
     title: "Polski",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "pl-PL", // Used for calendar
     countries: ["PL"],
   },
@@ -1046,7 +1046,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "RO",
     dir: "ltr",
     title: "Română",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ro-RO", // Used for calendar
     countries: ["RO", "MO"],
   },
@@ -1057,7 +1057,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "RS",
     dir: "ltr",
     title: "Српски",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sr-RS", // Used for calendar
     countries: ["BA", "CS", "ME", "RS"],
   },
@@ -1069,7 +1069,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "LS",
     dir: "ltr",
     title: "Sesotho",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "st-LS", // Used for calendar
     countries: ["ZA", "LS", "ZW"],
   },
@@ -1080,7 +1080,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ZW",
     dir: "ltr",
     title: "chiShona",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sn-ZW", // Used for calendar
     countries: ["ZW", "MZ"],
   },
@@ -1091,7 +1091,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "LK",
     dir: "ltr",
     title: "සිංහල",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "si-LK", // Used for calendar
     countries: ["LK"],
   },
@@ -1102,7 +1102,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "SK",
     dir: "ltr",
     title: "Slovenčina",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sk-SK", // Used for calendar
     countries: ["SK"],
   },
@@ -1113,7 +1113,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "SI",
     dir: "ltr",
     title: "Slovenščina",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sl-SI", // Used for calendar
     countries: ["SI"],
   },
@@ -1124,7 +1124,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "SO",
     dir: "ltr",
     title: "Soomaaliga",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "so-SO", // Used for calendar
     countries: ["SO", "ET", "KE"],
   },
@@ -1136,7 +1136,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "Basa Sunda",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "su-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -1148,7 +1148,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "KE",
     dir: "ltr",
     title: "Kiswahili",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "sw-KE", // Used for calendar
     countries: ["KE"],
   },
@@ -1159,7 +1159,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "TJ",
     dir: "ltr",
     title: "Тоҷикӣ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "tg-TJ", // Used for calendar
     countries: ["TJ"],
   },
@@ -1170,7 +1170,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "தமிழ்",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ta-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -1181,7 +1181,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "RU",
     dir: "ltr",
     title: "Tatarça",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "tt-RU", // Used for calendar
     countries: ["RU"],
   },
@@ -1192,7 +1192,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "IN",
     dir: "ltr",
     title: "తెలుగు",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "te-IN", // Used for calendar
     countries: ["IN"],
   },
@@ -1204,7 +1204,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "TH",
     dir: "ltr",
     title: "ไทย",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "th-TH", // Used for calendar
     countries: ["TH"],
   },
@@ -1215,7 +1215,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "TM",
     dir: "ltr",
     title: "Туркмен",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "tk-TM", // Used for calendar
     countries: ["TM"],
   },
@@ -1226,7 +1226,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "UA",
     dir: "ltr",
     title: "Українська",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "uk-UA", // Used for calendar
     countries: ["UA"],
   },
@@ -1238,7 +1238,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "CN",
     dir: "ltr",
     title: "Uyƣurqə",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "ug-CN", // Used for calendar
     countries: ["CN"],
   },
@@ -1249,7 +1249,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "UZ",
     dir: "ltr",
     title: "Ўзбек",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "uz-UZ", // Used for calendar
     countries: ["BO", "EC", "PE", "UZ"],
   },
@@ -1260,7 +1260,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "VN",
     dir: "ltr",
     title: "Tiếng Việt",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "vi-VN", // Used for calendar
     countries: ["VN"],
   },
@@ -1271,7 +1271,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "GB",
     dir: "ltr",
     title: "Cymraeg",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "cy-GB", // Used for calendar
     countries: ["GB"],
   },
@@ -1282,7 +1282,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ZA",
     dir: "ltr",
     title: "isiXhosa",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "xh-ZA", // Used for calendar
     countries: ["ZA"],
   },
@@ -1294,7 +1294,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "RU",
     dir: "rtl",
     title: "ייִדיש ",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "yi-RU", // Used for calendar
     countries: ["RU"],
   },
@@ -1305,7 +1305,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "NG",
     dir: "ltr",
     title: "Yorùbá",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "yo-NG", // Used for calendar
     countries: ["NG"],
   },
@@ -1316,7 +1316,7 @@ export const Language: Record<string, ILanguage> = {
     flag: "ZA",
     dir: "ltr",
     title: "isiZulu",
-    calendar: Calendar.georgian,
+    calendar: Calendar.gregory,
     full_local: "zu-ZA", // Used for calendar
     countries: ["ZA"],
   },
