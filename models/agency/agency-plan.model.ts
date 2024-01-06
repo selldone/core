@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface AgencyClient {
+export interface AgencyPlan {
   /**
    * Unique identifier for the client.
    */
@@ -23,47 +23,9 @@ export interface AgencyClient {
    */
   agency_id: number;
 
-  /**
-   * Identifier for the affiliate. This is assigned only when a client is created for the first time.
-   * It indicates who originally introduced this client.
-   */
-  affiliate_id?: number | null;
+  staff: number;
 
-  /**
-   * Identifier for the associated user.
-   */
-  user_id?: number | null;
-
-  /**
-   * The last assigned plan identifier for the client.
-   */
-  plan_id: number;
-
-  /**
-   * The expiration date for the purchased plan. A value of `null` indicates a lifetime deal.
-   */
-  expire_at?: string | null;
-
-  /**
-   * UUID provided by our partners.
-   */
-  uuid: string;
-
-  /**
-   * Email used for activation on the partner’s side.
-   */
-  email: string;
-
-  /**
-   * Count of added free stores.
-   */
-  giveaways: number;
-
-  /**
-   * Indicates if the entity is in test mode.
-   * For instances created by an agency before transferring to a real client.
-   */
-  test: boolean;
+  domains:number;
 
   /**
    * Timestamp indicating when the entity was last updated.

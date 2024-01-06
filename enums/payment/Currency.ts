@@ -23,7 +23,7 @@
  * @property {string} [alt_name] - An alternative or localized name for the currency, if available.
  * @property {number} [alt_factor] - An alternative or localized factor for the currency, if available. like 0.1
  * @property {string} country - The country associated with the currency (e.g. 'USA', 'Euro').
- * @property {string} flag - The flag or code representing the country (e.g. 'US', 'EU').
+ * @property {string} [flag] - The flag or code representing the country (e.g. 'US', 'EU').
  * @property {string} [icon] - The path to the currency's icon, if available.
  * @property {number} floats - The number of decimal places for the currency (commonly 2 for most currencies).
  * @property {string} format - The format string to represent the currency (e.g. '0,0.[00]').
@@ -31,8 +31,8 @@
  * @property {[string, string]} gradient - An array of two colors representing a gradient for the currency UI or display.
  * @property {string} unicode - The Unicode character representation of the currency (e.g. '$', '€').
  * @property {boolean} auto_rate - Indicates whether the currency supports auto rate conversion or not.
+ * @property {boolean} [at_end] - Optional. Indicates whether the currency sign should be placed at the end of the amount.
  */
-
 export type ICurrency = {
   code: string;
   enable: boolean;
@@ -51,7 +51,7 @@ export type ICurrency = {
   at_end?: boolean; // Force sign be at end
 };
 
-export const Currency: Record<string, ICurrency> = {
+const CurrencyRepository: Record<string, ICurrency> = {
   USD: {
     code: "USD",
     enable: true,
@@ -1972,6 +1972,35 @@ export const Currency: Record<string, ICurrency> = {
     auto_rate: false,
   },
 
+  // Add KWD
+  KWD: {
+    code: "KWD",
+    enable: true,
+    name: "KWD",
+    country: "Kuwait",
+    flag: "KW",
+    floats: 3,
+    format: "0,0.[00]",
+    round_factor: 100,
+    gradient: ["#b71f1f", "#770d42"],
+    unicode: "د.ك",
+    auto_rate: false,
+  },
+
+  BTN: {
+    code: "BTN",
+    enable: true,
+    name: "BTN",
+    country: "Bhutan",
+    flag: "BT",
+    floats: 2,
+    format: "0,0.[00]",
+    round_factor: 100,
+    gradient: ["#ffc813", "#d3600e"],
+    unicode: "Nu.",
+    auto_rate: false,
+  },
+
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   ADA: {
@@ -2042,3 +2071,10 @@ export const Currency: Record<string, ICurrency> = {
     auto_rate: false,
   },
 };
+
+// Convert the object into an array of entries, sort by key, and reconstruct it into an object
+export const Currency: Record<string, ICurrency> = Object.entries(
+  CurrencyRepository
+)
+  .sort(([key1], [key2]) => key1.localeCompare(key2))
+  .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});

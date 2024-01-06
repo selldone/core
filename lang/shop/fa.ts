@@ -747,4 +747,9 @@ export default {
       same_category_subtitle: "موارد جذاب بیشتری در این دسته بندی پیدا کنید.",
     },
   },
+
+  /** {@see SShopProductCrossSellList} **/
+  cross_selling: {
+    title:'محصولات پیشنهادی با {product}'
+  }
 };

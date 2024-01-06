@@ -1230,6 +1230,8 @@ export default {
     ZWD: "ZWD",
     IQD: "IQD",
     SYP: "SYP",
+    KWD: "KWD",
+    BTN: "BTN",
   },
 
   variants: {

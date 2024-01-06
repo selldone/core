@@ -13,6 +13,11 @@
  */
 
 import { BusinessModel } from "./BusinessModel";
+import { Shop } from "@core/models/shop/shop.model";
+import { AgencyClient } from "@core/models/agency/agency-client.model";
+import { Agency } from "@core/models/agency/agency.model";
+import { AgencyPlan } from "@core/models/agency/agency-plan.model";
+import { Domain } from "@core/models/shop/domain/domain.model";
 
 export const ShopLicense = {
   // wage_factor: wage_factor*gateway wage percent!             wage_percent: default payment wage of selldone!
@@ -134,7 +139,7 @@ export const ShopLicenseLimits = {
     emails: 1000,
     lotteries: 120,
     "transportation-persons": 200,
-    "importing-que": 10000,
+    "importing-que": 15000,
     "importing-que-batch-size": 200,
     reselling: true,
     "drop-shipping": true,
@@ -150,20 +155,24 @@ export const ShopLicenseLimits = {
 
 export class Eligible {
   //――――――――――――――――――― Domain ――――――――――――――――――
-  static CanAddNewDomain(shop) {
-    let limit = this.DomainsLimit(shop);
+  static CanAddNewDomain(shop: Shop & { domains: Domain[] }) {
+    const limit = this.DomainsLimit(shop);
     return shop.domains.length < limit;
   }
-  static CanEditDomain(shop, domain_id) {
+  static CanEditDomain(shop: Shop & { domains: Domain[] }, domain_id: number) {
     const domain_index = shop.domains.findIndex((it) => it.id === domain_id);
 
-    let limit = this.DomainsLimit(shop);
+    const limit = this.DomainsLimit(shop);
     return shop.domains.length <= limit || domain_index < limit;
   }
 
-  static DomainsLimit(shop) {
+  static DomainsLimit(
+    shop: Shop & {
+      agency_client?: AgencyClient & { agency?: Agency; plan?: AgencyPlan };
+    }
+  ) {
     // Default plan limit:
-    let limit = ShopLicenseLimits[shop.license].domains;
+    let limit = ShopLicenseLimits[shop.license!].domains;
     // Override limit by partners plans:
     if (
       shop.agency_client &&
@@ -176,18 +185,22 @@ export class Eligible {
     return limit;
   }
   //――――――――――――――――――― Staff ――――――――――――――――――
-  static CanAddNewStaff(shop, staff_count) {
-    let limit = this.StaffLimit(shop);
+  static CanAddNewStaff(shop: Shop, staff_count: number) {
+    const limit = this.StaffLimit(shop);
     return staff_count < limit;
   }
-  static CanEditStaff(shop, staff_count) {
-    let limit = this.StaffLimit(shop);
+  static CanEditStaff(shop: Shop, staff_count: number) {
+    const limit = this.StaffLimit(shop);
     return staff_count <= limit;
   }
 
-  static StaffLimit(shop) {
+  static StaffLimit(
+    shop: Shop & {
+      agency_client?: AgencyClient & { agency?: Agency; plan?: AgencyPlan };
+    }
+  ) {
     // Default plan limit:
-    let limit = ShopLicenseLimits[shop.license].staff;
+    let limit = ShopLicenseLimits[shop.license!].staff;
     // Override limit by partners plans:
     if (
       shop.agency_client &&
@@ -200,134 +213,141 @@ export class Eligible {
     return limit;
   }
   //――――――――――――――――――― DiscountCode ――――――――――――――――――
-  static CanAddNewDiscountCode(shop, discount_codes_count) {
+  static CanAddNewDiscountCode(shop: Shop, discount_codes_count: number) {
     return (
-      discount_codes_count < ShopLicenseLimits[shop.license]["discount-codes"]
+      discount_codes_count < ShopLicenseLimits[shop.license!]["discount-codes"]
     );
   }
-  static CanEditDiscountCode(shop, discount_codes_count) {
+  static CanEditDiscountCode(shop: Shop, discount_codes_count: number) {
     return (
-      discount_codes_count <= ShopLicenseLimits[shop.license]["discount-codes"]
+      discount_codes_count <= ShopLicenseLimits[shop.license!]["discount-codes"]
     );
   }
 
   //――――――――――――――――――― Coupon ――――――――――――――――――
-  static CanAddNewCoupon(shop, coupons_count) {
-    return coupons_count < ShopLicenseLimits[shop.license].coupons;
+  static CanAddNewCoupon(shop: Shop, coupons_count: number) {
+    return coupons_count < ShopLicenseLimits[shop.license!].coupons;
   }
-  static CanEditCoupon(shop, coupons_count) {
-    return coupons_count <= ShopLicenseLimits[shop.license].coupons;
+  static CanEditCoupon(shop: Shop, coupons_count: number) {
+    return coupons_count <= ShopLicenseLimits[shop.license!].coupons;
   }
 
   //――――――――――――――――――― Offer ――――――――――――――――――
-  static CanAddNewOffer(shop, offers_count) {
-    return offers_count < ShopLicenseLimits[shop.license].coupons;
+  static CanAddNewOffer(shop: Shop, offers_count: number) {
+    return offers_count < ShopLicenseLimits[shop.license!].coupons;
   }
-  static CanEditOffer(shop, offers_count) {
-    return offers_count <= ShopLicenseLimits[shop.license].coupons;
+  static CanEditOffer(shop: Shop, offers_count: number) {
+    return offers_count <= ShopLicenseLimits[shop.license!].coupons;
   }
 
   //――――――――――――――――――― GiftCard ――――――――――――――――――
-  static CanAddNewGiftCardType(shop, gift_card_types_count) {
+  static CanAddNewGiftCardType(shop: Shop, gift_card_types_count: number) {
     return (
-      gift_card_types_count < ShopLicenseLimits[shop.license]["gift-card-types"]
+      gift_card_types_count <
+      ShopLicenseLimits[shop.license!]["gift-card-types"]
     );
   }
-  static CanEditGiftCardType(shop, gift_card_types_count) {
+  static CanEditGiftCardType(shop: Shop, gift_card_types_count: number) {
     return (
       gift_card_types_count <=
-      ShopLicenseLimits[shop.license]["gift-card-types"]
+      ShopLicenseLimits[shop.license!]["gift-card-types"]
     );
   }
 
   //――――――――――――――――――― Campaign ――――――――――――――――――
-  static CanAddNewCampaign(shop, campaigns_count) {
-    return campaigns_count < ShopLicenseLimits[shop.license].campaigns;
+  static CanAddNewCampaign(shop: Shop, campaigns_count: number) {
+    return campaigns_count < ShopLicenseLimits[shop.license!].campaigns;
   }
-  static CanEditCampaign(shop, campaigns_count) {
-    return campaigns_count <= ShopLicenseLimits[shop.license].campaigns;
+  static CanEditCampaign(shop: Shop, campaigns_count: number) {
+    return campaigns_count <= ShopLicenseLimits[shop.license!].campaigns;
   }
 
   //――――――――――――――――――― Affiliate ――――――――――――――――――
-  static CanAddNewAffiliate(shop, affiliates_count) {
-    return affiliates_count < ShopLicenseLimits[shop.license].affiliates;
+  static CanAddNewAffiliate(shop: Shop, affiliates_count: number) {
+    return affiliates_count < ShopLicenseLimits[shop.license!].affiliates;
   }
-  static CanEditAffiliate(shop, affiliates_count) {
-    return affiliates_count <= ShopLicenseLimits[shop.license].affiliates;
+  static CanEditAffiliate(shop: Shop, affiliates_count: number) {
+    return affiliates_count <= ShopLicenseLimits[shop.license!].affiliates;
   }
 
   //――――――――――――――――――― Email ――――――――――――――――――
-  static CanAddNewEmail(shop, emails_count) {
-    return emails_count < ShopLicenseLimits[shop.license].emails;
+  static CanAddNewEmail(shop: Shop, emails_count: number) {
+    return emails_count < ShopLicenseLimits[shop.license!].emails;
   }
-  static CanEditEmail(shop, emails_count) {
-    return emails_count <= ShopLicenseLimits[shop.license].emails;
+  static CanEditEmail(shop: Shop, emails_count: number) {
+    return emails_count <= ShopLicenseLimits[shop.license!].emails;
   }
 
   //――――――――――――――――――― Product > 3D AR ――――――――――――――――――
-  static CanAdd3DModel(shop) {
+  static CanAdd3DModel(shop: Shop) {
     return shop.license !== ShopLicense.FREE.code;
   }
 
   //――――――――――――――――――― Lottery ――――――――――――――――――
-  static CanAddNewLottery(shop, lotteries_count) {
-    return lotteries_count < ShopLicenseLimits[shop.license].lotteries;
+  static CanAddNewLottery(shop: Shop, lotteries_count: number) {
+    return lotteries_count < ShopLicenseLimits[shop.license!].lotteries;
   }
-  static CanEditLottery(shop, lotteries_count) {
-    return lotteries_count <= ShopLicenseLimits[shop.license].lotteries;
+  static CanEditLottery(shop: Shop, lotteries_count: number) {
+    return lotteries_count <= ShopLicenseLimits[shop.license!].lotteries;
   }
 
   //――――――――――――――――――― Transportation Person ――――――――――――――――――
-  static CanAddNewTransportationPerson(shop, transportation_persons_count) {
+  static CanAddNewTransportationPerson(
+    shop: Shop,
+    transportation_persons_count: number
+  ) {
     return (
       transportation_persons_count <
-      ShopLicenseLimits[shop.license]["transportation-persons"]
+      ShopLicenseLimits[shop.license!]["transportation-persons"]
     );
   }
-  static CanEditTransportationPerson(shop, transportation_persons_count) {
+  static CanEditTransportationPerson(
+    shop: Shop,
+    transportation_persons_count: number
+  ) {
     return (
       transportation_persons_count <=
-      ShopLicenseLimits[shop.license]["transportation-persons"]
+      ShopLicenseLimits[shop.license!]["transportation-persons"]
     );
   }
 
   //――――――――――――――――――― Import Que Limit ――――――――――――――――――
-  static getImportQueLimit(shop) {
-    return ShopLicenseLimits[shop.license]["importing-que"];
+  static getImportQueLimit(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["importing-que"];
   }
-  static getMaxImportProductsBatchSize(shop) {
-    return ShopLicenseLimits[shop.license]["importing-que-batch-size"];
+  static getMaxImportProductsBatchSize(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["importing-que-batch-size"];
   }
   //――――――――――――――――――― Drop Shipping ――――――――――――――――――
-  static CanDropShip(shop) {
+  static CanDropShip(shop: Shop) {
     return (
       shop.drop_shipping &&
-      ShopLicenseLimits[shop.license]["drop-shipping"] &&
+      ShopLicenseLimits[shop.license!]["drop-shipping"] &&
       shop.model === BusinessModel.WHOLESALER.code
     );
   }
-  static CanReselling(shop) {
-    return ShopLicenseLimits[shop.license]["reselling"];
+  static CanReselling(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["reselling"];
   }
 
   //――――――――――――――――――― File Sell ――――――――――――――――――
-  static GetFileUploadLimitMB(shop) {
-    return ShopLicenseLimits[shop.license]["max-file-size"];
+  static GetFileUploadLimitMB(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["max-file-size"];
   }
-  static GetMaxCapacityMB(shop) {
-    return ShopLicenseLimits[shop.license]["capacity"];
+  static GetMaxCapacityMB(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["capacity"];
   }
 
   //――――――――――――――――――― 🦠 Connect ――――――――――――――――――
-  static CanAddNewConnect(shop, connects_count) {
-    return connects_count < ShopLicenseLimits[shop.license]["connects-count"];
+  static CanAddNewConnect(shop: Shop, connects_count: number) {
+    return connects_count < ShopLicenseLimits[shop.license!]["connects-count"];
   }
 
   //――――――――――――――――――― Tax Profiles ――――――――――――――――――
-  static CanAddTaxProfile(shop, profiles_count) {
-    return profiles_count < ShopLicenseLimits[shop.license]["tax-profiles"];
+  static CanAddTaxProfile(shop: Shop, profiles_count: number) {
+    return profiles_count < ShopLicenseLimits[shop.license!]["tax-profiles"];
   }
-  static GetTaxProfilesLimit(shop) {
-    return ShopLicenseLimits[shop.license]["tax-profiles"];
+  static GetTaxProfilesLimit(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["tax-profiles"];
   }
 }

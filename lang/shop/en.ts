@@ -739,4 +739,10 @@ export default {
       same_category_subtitle: "Find more remarkable items in this category.",
     },
   },
+
+  /** {@see SShopProductCrossSellList} **/
+  cross_selling: {
+    title:'Order {product} with'
+  }
+
 };

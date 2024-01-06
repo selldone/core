@@ -16,6 +16,7 @@ import { Currency } from "../../enums/payment/Currency";
 import { ExchangeRate } from "./payment/exchange_rate.model";
 import { WeekDays } from "../../enums/logistic/WeekDays";
 import {Domain} from "@core/models/shop/domain/domain.model";
+import {ShopLicenseLimits} from "@core/enums/shop/ShopLicense";
 
 /**
  * Represents the main configuration and details for a shop.
@@ -58,7 +59,7 @@ export class Shop {
   restriction?: string; // should be elaborated based on the ShopRestriction
 
   /** The licensing code for the shop. */
-  license?: string; // should be elaborated based on ShopLicenseCode
+  license?: keyof typeof ShopLicenseLimits; // should be elaborated based on ShopLicenseCode
 
   /** The storage capacity of the shop in KB. */
   capacity?: number;
