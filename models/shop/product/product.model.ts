@@ -12,102 +12,177 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "../../../enums/payment/Currency";
-import { SubscriptionMode } from "../../../enums/subscription/SubscriptionMode";
+import { Currency } from "@core/enums/payment/Currency";
+import { SubscriptionMode } from "@core/enums/subscription/SubscriptionMode";
 
 export class Product implements Product.IProduct {
-  // Define class properties
+  /** @property {number} id - The unique identifier for the product. */
   id!: number;
+
+  /** @property {number} shop_id - The identifier for the shop that owns the product. */
   shop_id!: number;
 
+  /** @property {string} [action] - Product buy call to action. */
   action?: string;
+
+  /** @property {Product.IAR} [ar] - AR 3D model. Created by the system. */
   ar?: Product.IAR;
   /**
-   * Keep badge ids!
+   * @property {number[] | null} [badges] - Keep badge ids.
+   * An array of badge identifiers associated with the product.
    */
   badges?: number[] | null;
+  /** @property {boolean} [best_content] - System Flag. Indicates if this product has great ranked content. */
   best_content?: boolean;
+  /** @property {boolean} [best_seller] - System Flag. Indicates if this is the bestseller product. */
   best_seller?: boolean;
+  /** @property {string} [blog] - A link to external resources. This link will be shown on the product page. */
   blog?: string;
+  /** @property {string} [brand] - The brand name of the product. */
   brand?: string;
+  /** @property {number} [category_id] - The identifier for the product's category. */
   category_id?: number;
+  /** @property {number} commission - The commission on the product, defaults to 0. */
   commission: number = 0;
-  condition: Product.ProductCondition = Product.ProductCondition.NEW;
-  connect_id?: number;
-  cons?: Record<string, string>;
-  currency!: keyof typeof Currency;
-  dis_end!: string | null;
-  dis_start!: string | null;
-  discount!: number;
-  extra?: Product.IExtra;
-  for_auction?: number;
-  for_available?: number;
-  gpc?: string;
-  gtin?: string;
-  guide_id?: number;
-  hsn?: string;
-  inputs?: any[];
-  lead?: string;
-  map_id?: number;
-  message?: string;
-  mpn?: string;
-  note?: any;
   /**
-   * Officer user id
+   * @property {Product.ProductCondition} condition - The condition of the product, defaults to NEW.
+   * Can be 'NEW', 'USED', 'REFURBISHED', etc.
    */
+  condition: Product.ProductCondition = Product.ProductCondition.NEW;
+  /** @property {number} [connect_id] - This product was created by this connect provider. */
+  connect_id?: number;
+  /** @property {Record<string, string>} [cons] - The list of disadvantages. */
+  cons?: Record<string, string>;
+  /** @property {keyof typeof Currency} currency - The currency code, e.g., 'USD', 'EUR'. */
+  currency!: keyof typeof Currency;
+  /** @property {string | null} [dis_end] - The end date for the product discount. */
+  dis_end!: string | null;
+  /** @property {string | null} [dis_start] - The start date for the product discount. */
+  dis_start!: string | null;
+  /** @property {number} discount - The discount amount on the product. */
+  discount!: number;
+  /** @property {Product.IExtra} [extra] - Additional details about the product. */
+  extra?: Product.IExtra;
+  /** @property {number} [for_auction] - Total users who wait for auction. */
+  for_auction?: number;
+  /** @property {number} [for_available] - Total users who wait to available. */
+  for_available?: number;
+
+  /** @property {string} [gpc] - The Global Product Classification code for the product. */
+  gpc?: string;
+  /** @property {string} [gtin] - The Global Trade Item Number for the product. */
+  gtin?: string;
+  /** @property {number} [guide_id] - Assigned guide profile ID. This guide will be shown on the product page. */
+  guide_id?: number;
+  /** @property {string} [hsn] - Harmonized System Nomenclature code for international trade. */
+  hsn?: string;
+  /** @property {any[]} [inputs] - The structure of input form for extra information about purchased product. */
+  inputs?: any[];
+  /** @property {string} [lead] - Lead time required for the product. */
+  lead?: string;
+  /** @property {number} [map_id] - Assigned location tag on the map. */
+  map_id?: number;
+  /** @property {string} [message] - This note will be shown to the customer in the product and basket page. */
+  message?: string;
+  /** @property {string} [mpn] - The Manufacturer Part Number for the product. */
+  mpn?: string;
+  /** @property {any} [note] - General note or additional information about the product. */
+  note?: any;
+  /** @property {number} [officer] - Officer user id. The user who creates this product. */
   officer?: number;
+  /** @property {number} [order] - The order index to custom sort products. */
   order?: number;
+  /** @property {boolean} [original] - Indicates if the product is original. */
   original?: boolean;
+  /** @property {any[]} [outputs] - The structure of output form for virtual items purchase. */
   outputs?: any[];
+  /** @property {number} [parent_id] - For middle sellers, the main product in drop-shipping supplier store. */
   parent_id?: number;
+  /** @property {number} price - The price of the product. */
   price!: number;
+  /** @property {Product.PriceInputType} [price_input] - The type of input used for the product price. */
   price_input?: Product.PriceInputType;
+  /** @property {string} [price_label] - Add extra info about price like ($1.5/Fl Oz). */
   price_label?: string;
+  /** @property {Product.ProductPricing} [pricing] - The pricing strategy for the product. */
   pricing?: Product.ProductPricing;
+  /** @property {Record<string, string>} [pros] - The list of advantages or positive aspects. */
   pros?: Record<string, string>;
+  /** @property {number} [quantity] - The available quantity of the product. */
   quantity?: number;
+  /** @property {number} rate - The average rating of the product. */
   rate?: number;
+  /** @property {number} rate_count - The total number of buyers who rated this product. */
   rate_count?: number;
+  /** @property {number} [repository_id] - This product was created from products repository. */
   repository_id?: number;
+  /** @property {boolean} [reselling] - Indicates if the product is available for drop-shipping. */
   reselling?: boolean;
+  /** @property {number} [reselling_count] - Total number of products sold by resellers. */
   reselling_count?: number;
+  /** @property {number} [reselling_shops] - Total number of shops reselling this product. */
   reselling_shops?: number;
+  /** @property {number} [return_policy_id] - Assigned return policy profile ID. */
   return_policy_id?: number;
+  /** @property {number} [return_warranty] - The duration in hours to return goods after receiving order by buyer. */
   return_warranty?: number;
+  /** @property {Product.IRibbon} [ribbon] - Keep ribbon configurations. */
   ribbon?: Product.IRibbon;
+  /** @property {number} [sells] - Total sales of this product. */
   sells?: number;
+
   /**
    * Custom sipping price (for drop-shipping suppliers only)
    * e.g. {"EE":22,"PS":23,"TL":22,"EH":0,"DK":0,"SE":0,"FR":0,"US":0,"GB":0,"AE":0,"TN":0,"NL":0}
    */
   shipping?: Record<string, number> | null;
+  /** @property {number} [shipping_id] - Assigned shipping profile ID. */
   shipping_id?: number;
+  /** @property {string} [sku] - Stock Keeping Unit identifier for the product. */
   sku?: string;
+  /** @property {string} [slug] - The slug to create SEO friendly URL. */
   slug?: string;
+  /** @property {Product.ISpec} [spec] - A JSON of key/value pairs representing the product specifications. */
   spec?: Product.ISpec;
+  /** @property {object[] | null} [spec_order] - The list of keys in spec to define the order of items in the table. */
   spec_order?: object[] | null;
+  /** @property {Product.ProductStatus} [status] - Can be 'Open', or 'Close'. Indicates the availability of the product. */
   status?: Product.ProductStatus;
+  /** @property {{ contain: boolean }} [style] - Style of the product. */
   style?: { contain: boolean };
+  /** @property {string[]} [tags] - List of product tags. */
   tags?: string[];
+  /** @property {number} [tax_id] - Assigned tax profile ID. */
   tax_id?: number;
+  /** @property {string} [title] - Title of the product. */
   title?: string;
+  /** @property {string} [title_en] - Subtitle of the product, preferably in English. */
   title_en?: string;
+  /** @property {Product.ProductType} [type] - The type of product. */
   type?: Product.ProductType;
+  /** @property {string} [unit] - Custom product unit (e.g., cm, litre, bottle). */
   unit?: string;
+  /** @property {boolean} ["unit_float"] - Indicates if a fractional unit can be ordered (e.g., 3.5 kg of fruit). */
   unit_float?: boolean;
+  /** @property {number} [valuation_id] - Identifier for the valuation method used. */
   valuation_id?: number;
+  /** @property {Product.IVariant[] | null} [variants] - A list of variants of the product. */
   variants?: Product.IVariant[] | null;
+  /** @property {number} [vendor_id] - The identifier for the vendor of the product. */
   vendor_id?: number;
-  /**
-   * Youtube video ID.
-   * e.g. ZGbxEgSIyWE
-   */
+
+  /** @property {string} [video] - Youtube video ID for the product. e.g. ZGbxEgSIyWE */
   video?: string;
+  /** @property {number} [visits] - Total number of visits to the product page. */
   visits?: number;
+  /** @property {string} [warranty] - A short warranty condition and name. */
   warranty?: string;
+  /** @property {number} [warranty_id] - Assigned warranty profile ID. */
   warranty_id?: number;
+  /** @property {Record<string, Array<string>>} [locations] - Specific locations associated with the product. */
   locations?: Record<string, Array<string>>;
 
+  /** @property {string | null} [icon] - Optional icon for the product. */
   icon?: string | null;
 
   constructor(
