@@ -194,9 +194,10 @@ export default {
       "Auto tax calculation based on customer's location, B2B/B2C sales, and override tax rules ability for countries and states.",
 
     tax_profiles: "Tax profiles - Professional",
-    tax_profiles_info:'You can set dedicated sales tax rules for products by creating tax profiles.',
-    extra_tax_profiles:"Extra {count} profiles.",
-    tax_profile_fee:"0.0% fee (totally free service)",
+    tax_profiles_info:
+      "You can set dedicated sales tax rules for products by creating tax profiles.",
+    extra_tax_profiles: "Extra {count} profiles.",
+    tax_profile_fee: "0.0% fee (totally free service)",
     tax_pro: "Pro.",
   },
   gateways: {
@@ -473,4 +474,21 @@ export default {
     subtitle:
       "Connect to dropshipping suppliers with one click. You can connect to POD like Prinful or Import Woocomerce store for free.",
   },
+  ai: {
+    title: "AI",
+    sub_title: "Copilot and AI assistant features.",
+    bg_remove: "AI Remove Background",
+    bg_remove_info: "Auto remove background from images.",
+    content_creation: "AI Content Creation",
+    content_creation_info: "Create content for products automatically.",
+    add_product: "AI Product Assistance",
+    add_product_info: "Add product automatically by image and voice.",
+    magic_ai_buttons: "Magic AI Buttons",
+    magic_ai_buttons_info:
+      "Auto remove background, bulk translate, generate content and more with one click.",
+    translate: "AI Translate",
+    translate_info: "Translate content to any language.",
+  },
+
+
 };

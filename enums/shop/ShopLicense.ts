@@ -28,6 +28,7 @@ export const ShopLicense = {
     wage_factor: 1,
     icon: require("./assets/license/free.svg"),
     file_sell_percent: 30,
+    quota_multiple:1,   // Multiple of quota
   },
   STARTUP: {
     code: "STARTUP",
@@ -36,6 +37,7 @@ export const ShopLicense = {
     wage_factor: 0.75,
     icon: require("./assets/license/startup.svg"),
     file_sell_percent: 20,
+    quota_multiple:2,   // Multiple of quota
   },
   COMPANY: {
     code: "COMPANY",
@@ -44,6 +46,7 @@ export const ShopLicense = {
     wage_factor: 0.5,
     icon: require("./assets/license/company.svg"),
     file_sell_percent: 7,
+    quota_multiple:3,   // Multiple of quota
   },
   ENTERPRISE: {
     code: "ENTERPRISE",
@@ -52,6 +55,7 @@ export const ShopLicense = {
     wage_factor: 0.25,
     icon: require("./assets/license/enterprise.svg"),
     file_sell_percent: 3,
+    quota_multiple:10,   // Multiple of quota
   },
 };
 
