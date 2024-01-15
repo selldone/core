@@ -743,6 +743,14 @@ export default {
   /** {@see SShopProductCrossSellList} **/
   cross_selling: {
     title:'Order {product} with'
-  }
+  },
+
+
+  /** {@see SSmartSelectVendor} **/
+  select_vendor: {
+    item_title:'View store of {vendor}'
+  },
+
+
 
 };

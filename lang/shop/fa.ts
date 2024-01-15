@@ -751,5 +751,12 @@ export default {
   /** {@see SShopProductCrossSellList} **/
   cross_selling: {
     title:'محصولات پیشنهادی با {product}'
-  }
+  },
+
+  /** {@see SSmartSelectVendor} **/
+  select_vendor: {
+    item_title:'مشاهده فروشگاه {vendor}'
+  },
+
+
 };

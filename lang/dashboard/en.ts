@@ -2176,6 +2176,8 @@ export default {
       "Do not use non-English characters, spaces or letters, if used, the store name may not be displayed properly.",
     description_input: "Store description",
     description_input_message: "Write a brief description about your business.",
+    description_input_tips:
+        "This description will appear in your store's footer and will also be used as the default meta tag description for your store pages.",
     address_input: "Store Address",
     address_input_message: "Enter exact store location address",
 
