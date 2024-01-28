@@ -26,26 +26,26 @@ export const PhysicalOrderStates: Record<DeliveryStateCode, IOrderState> = {
   CheckQueue: {
     code: "CheckQueue",
     name: "global.delivery_state.check_queue",
-    icon: "fas fa-shopping-basket",
+    icon: "fa:fas fa-shopping-basket",
   },
   OrderConfirm: {
     code: "OrderConfirm",
     name: "global.delivery_state.order_confirm",
-    icon: "fas fa-check",
+    icon: "fa:fas fa-check",
   },
   PreparingOrder: {
     code: "PreparingOrder",
     name: "global.delivery_state.preparing_order",
-    icon: "fas fa-box-open",
+    icon: "fa:fas fa-box-open",
   },
   SentOrder: {
     code: "SentOrder",
     name: "global.delivery_state.sent_order",
-    icon: "fas fa-shipping-fast",
+    icon: "fa:fas fa-shipping-fast",
   },
   ToCustomer: {
     code: "ToCustomer",
     name: "global.delivery_state.to_customer",
-    icon: "fas fa-check-double",
+    icon: "fa:fas fa-check-double",
   },
 };

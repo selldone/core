@@ -104,7 +104,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     code: "Selldone",
     name: "global.social_network.selldone",
     host: SetupService.MainServiceUrl() + "/",
-    icon: "fas fa-store",
+    icon: "fa:fas fa-store",
     title: "global.social_network.selldone",
     image: require("@components/assets/trademark/selldone.svg"),
     color: "#70557e",

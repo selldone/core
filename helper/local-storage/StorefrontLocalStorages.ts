@@ -14,7 +14,7 @@
 
 import { ProductType } from "../../enums/product/ProductType";
 
-export class LocalStorages {
+export class StorefrontLocalStorages {
   static GetUserCurrencyPath($localstorage_base_path: string): string {
     return `${$localstorage_base_path}user-currency`;
   }

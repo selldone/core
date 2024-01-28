@@ -12,8 +12,39 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import Vue from "vue";
-export const EventBus: Vue = new Vue();
+
+// EventBus.js
+import { reactive, toRefs } from 'vue';
+
+export const EventBus = (() => {
+  const events = reactive(new Map());
+
+  function $emit(event, ...args) {
+    if (events[event]) {
+      events[event].forEach((callback) => callback(...args));
+}
+
+}
+
+function $on(event, callback) {
+  if (!events[event]) {
+    events[event] = new Set();
+  }
+  events[event].add(callback);
+}
+
+function $off(event, callback) {
+  if (events[event]) {
+    events[event].delete(callback);
+    if (events[event].size === 0) {
+      events.delete(event);
+    }
+  }
+}
+
+return { $emit, $on, $off };
+})();
+
 
 export enum EventName {
   // ━━━━━━━━━━━━━━━ Common in storefront & backoffice ━━━━━━━━━━━━━━━

@@ -16,86 +16,86 @@ const ProductSection = {
   cross: {
     code: "cross",
     title: "global.commons.cross_sell",
-    icon: "fas fa-random",
+    icon: "fa:fas fa-random",
   },
-  offer: { code: "offer", title: "global.commons.offer", icon: "fas fa-tag" },
+  offer: { code: "offer", title: "global.commons.offer", icon: "fa:fas fa-tag" },
 
   spec: {
     code: "spec",
     title: "global.commons.spec",
-    icon: "fas fa-sliders-h",
+    icon: "fa:fas fa-sliders-h",
   },
   includes: {
     code: "includes",
     title: "global.commons.included_in_the_product",
-    icon: "fas fa-box-open",
+    icon: "fa:fas fa-box-open",
   },
 
   pros: {
     code: "pros",
     title: "global.commons.pros_and_cons",
-    icon: "fas fa-balance-scale",
+    icon: "fa:fas fa-balance-scale",
   },
   review: {
     code: "review",
     title: "global.commons.description",
-    icon: "fas fa-feather-alt",
+    icon: "fa:fas fa-feather-alt",
   },
 
   contents: {
     code: "contents",
     title: "global.commons.contents",
-    icon: "fas fa-folder",
+    icon: "fa:fas fa-folder",
   },
   files: {
     code: "files",
     title: "global.commons.files_list",
-    icon: "fas fa-file",
+    icon: "fa:fas fa-file",
   },
 
   shipping: {
     code: "shipping",
     title: "global.commons.shipping",
-    icon: "fas fa-shipping-fast",
+    icon: "fa:fas fa-shipping-fast",
   },
   warranty: {
     code: "warranty",
     title: "global.commons.warranty",
-    icon: "fas fa-certificate",
+    icon: "fa:fas fa-certificate",
   },
   return_policy: {
     code: "return-policy",
     title: "global.commons.return_policy",
-    icon: "fas fa-people-carry",
+    icon: "fa:fas fa-people-carry",
   },
   guide: {
     code: "guide",
     title: "global.commons.guide",
-    icon: "fas fa-life-ring",
+    icon: "fa:fas fa-life-ring",
   },
 
-  page: { code: "page", title: "global.commons.page", icon: "fas fa-file" },
+  page: { code: "page", title: "global.commons.page", icon: "fa:fas fa-file" },
 
   comments: {
     code: "comments",
     title: "global.commons.reviews",
-    icon: "fas fa-comments",
+    icon: "fa:fas fa-comments",
   },
 
   related_products: {
     code: "related-products",
     title: "global.commons.related_products",
-    icon: "fas fa-link",
+    icon: "fa:fas fa-link",
   },
   related_categories: {
     code: "related-categories",
     title: "global.commons.related_categories",
-    icon: "fas fa-tags",
+    icon: "fa:fas fa-tags",
   },
   badges: {
     code: "badges",
     title: "global.commons.badges",
-    icon: "fas fa-award",
+    icon: "fa:fas fa-award",
   },
 };
 export default ProductSection;

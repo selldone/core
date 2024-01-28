@@ -19,7 +19,7 @@ export const ProductStatus = {
     name: "product_status.open.name",
     title: "product_status.open.title",
     description: "product_status.open.description",
-    icon: "point_of_sale add storefront",
+    icon: "point_of_sale storefront",
     color: "success",
   },
   Close: {

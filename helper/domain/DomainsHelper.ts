@@ -12,10 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@core/server/SetupService";
+import {SetupService} from "@core/server/SetupService";
+import {Shop} from "@core/models/shop/shop.model";
 
 export class DomainsHelper {
-  static GetShopDomains(shop, domains, contains_default_domains = true) {
+  static GetShopDomains(shop: Shop, domains, contains_default_domains = true) {
     let out = contains_default_domains
       ? [
           {
@@ -26,7 +27,7 @@ export class DomainsHelper {
             primary: shop.local ? shop.local.primary : false,
             official: "local",
             name: `@${shop.name}`,
-            ssl:true,
+            ssl: true,
           },
           {
             url: `https://${shop.name}.${SetupService.ShopsDomain()}`,
@@ -38,8 +39,7 @@ export class DomainsHelper {
             primary: shop.sub ? shop.sub.primary : false,
             official: "sub",
             name: "Sub domain",
-            ssl:true,
-
+            ssl: true,
           },
         ]
       : [];
@@ -55,9 +55,9 @@ export class DomainsHelper {
         domain: item,
         name: item.domain,
         affiliate_id: item.affiliate_id,
-        ssl:item.ssl,
-        error:item.error,
-
+        ssl: item.ssl,
+        error: item.error,
+        certificate: item.certificate,
       });
     });
 

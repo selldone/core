@@ -58,7 +58,7 @@ export default {
     },
     "social": {
       "title": "Kugurisha Imibereho",
-      "subtitle": "Avoka | Tangira kugurisha kumurongo umwe",
+      "subtitle": "Avoka ┆ Tangira kugurisha kumurongo umwe",
       "custom_form": "Ifishi yo gutumiza",
       "step1": "Gusohora kwa Avoka",
       "step2": "Ikibazo na fagitire",

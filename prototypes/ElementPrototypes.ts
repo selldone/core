@@ -62,6 +62,7 @@ HTMLTextAreaElement.prototype.insertAtCaret = function (text: string): string {
 interface HTMLElement {
   insertAtCaret(text: string): string;
 }
+
 /**
  * Inserts the provided text at the caret position. If there's a text selection,
  * this function will replace the selected text with the provided text.
@@ -71,75 +72,75 @@ interface HTMLElement {
  *
  * @returns - The inserted text or the innerHTML of the element if the insertion fails.
  */
-HTMLElement.prototype.insertAtCaret =
-  HTMLParagraphElement.prototype.insertAtCaret = function (
-    this: HTMLElement | HTMLParagraphElement,
-    text: string
-  ): string {
-    text = text || "";
+HTMLElement.prototype.insertAtCaret = function (this: HTMLElement, text: string): string {
+  text = text || "";
 
-    if (document.getSelection) {
-      // Modern browsers.
-      const sel = document.getSelection();
-      if (sel?.getRangeAt && sel.rangeCount) {
-        const range = sel.getRangeAt(0);
-        range.deleteContents();
+  const sel = window.getSelection();
+  if (sel && sel.rangeCount > 0) {
+    const range = sel.getRangeAt(0);
 
-        // Add new content to the selection range.
-        let lastNode: Node | null = null;
-        const list = text.split("\n").reverse(); // Add last to first! (insertNode)
+    // Check if the selection is inside this element
+    if (this.contains(range.commonAncestorContainer)) {
+      range.deleteContents();
 
-        for (let i = 0; i < list.length; i++) {
-          const l = list[i];
-          const node = document.createTextNode(l);
-          range.insertNode(node);
+      let lastNode: Node | null = null;
+      const list = text.split("\n").reverse(); // Add last to first! (insertNode)
 
-          if (i < list.length - 1) {
-            const nodeBr = document.createElement("br");
-            range.insertNode(nodeBr);
-          }
+      for (let i = 0; i < list.length; i++) {
+        const l = list[i];
+        const node = document.createTextNode(l);
+        range.insertNode(node);
 
-          lastNode = node;
+        if (i < list.length - 1) {
+          const nodeBr = document.createElement("br");
+          range.insertNode(nodeBr);
         }
 
-        const nRange = new Range();
-        nRange.setStartAfter(lastNode as Node);
-        nRange.setEndAfter(lastNode as Node);
-        sel.removeAllRanges();
-        sel.addRange(nRange);
-
-        return "";
+        lastNode = node;
       }
+
+      const nRange = new Range();
+      nRange.setStartAfter(lastNode as Node);
+      nRange.setEndAfter(lastNode as Node);
+      sel.removeAllRanges();
+      sel.addRange(nRange);
+
+      //return "";
+    }else {
+      // If the caret is not valid in the element, append the text to the end
+      this.innerHTML += text;
+    }
+    return this.innerHTML;
+
+  }
+
+  // For older browsers (like IE).
+  else {
+    // @ts-ignore
+    if (document.selection) {
+      this.focus();
+      // @ts-ignore
+      const sel = document.selection.createRange();
+      sel.text = text;
+      return text;
+    } else {
+      this.innerHTML += text;
       return this.innerHTML;
     }
-
-    // For older browsers (like IE).
-    else {
-      // @ts-ignore
-      if (document.selection) {
-        this.focus();
-        // @ts-ignore
-        const sel = document.selection.createRange();
-        sel.text = text;
-        return text;
-      } else {
-        this.innerHTML += text;
-        return this.innerHTML;
-      }
-    }
-  };
+  }
+};
 
 interface Document {
   selectionAddTag(
     this: Document,
     type: string,
-    oppositeType: string | null
+    oppositeType: string | null,
   ): void;
 
   selectionSetStyle(
     this: Document,
     property: keyof CSSStyleDeclaration,
-    value: string
+    value: string,
   ): void;
 }
 
@@ -154,7 +155,7 @@ interface Document {
 Document.prototype.selectionAddTag = function (
   this: Document,
   type: string,
-  oppositeType: string | null = null
+  oppositeType: string | null = null,
 ): void {
   console.log("selectionAddTag", type);
 
@@ -200,7 +201,7 @@ Not tested!
 Document.prototype.selectionSetStyle = function (
   this: Document,
   property: keyof CSSStyleDeclaration,
-  value: string
+  value: string,
 ): void {
   if (!document.getSelection) return;
 

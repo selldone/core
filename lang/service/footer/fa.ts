@@ -13,7 +13,7 @@
  */
 
 export default {
-  /** @see SaminFooter **/
+  /** @see OLayoutFooter **/
   footer: {
     title: "سیستم عامل  کسب و کار شما برای فروش آنلاین",
     message:
@@ -86,7 +86,7 @@ export default {
   },
 
   admin_footer: {
-    title: "منوی تنظیمات سریع:",
+    title: "منوی تنظیمات سریع",
     boost_mode: "حالت سریع",
     normal_mode: "حالت عادی",
     boost_message: "سرعت اینترنت تان کم است؟",

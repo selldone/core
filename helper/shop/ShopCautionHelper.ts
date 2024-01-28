@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { i18n } from "@app-backoffice/lang/i18n_samin";
+import { i18n } from "@app-backoffice/lang/i18n_backoffice";
 import type {Shop} from "../../models/shop/shop.model";
 
 export class ShopCautionHelper {
@@ -26,47 +26,47 @@ export class ShopCautionHelper {
     if (info?.location) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.location_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.location_msg"));
     }
     if (info?.days_open) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.days_open_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.days_open_msg"));
     }
     if (info?.time_open || info.time_close) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.time_open_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.time_open_msg"));
     }
     if (shop.description) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.description_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.description_msg"));
     }
     if (shop.icon) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.icon_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.icon_msg"));
     }
     if (shop.shop_gateways && shop.shop_gateways.length) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.shop_gateways_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.shop_gateways_msg"));
     }
     if (shop.socials && shop.socials.length) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.socials_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.socials_msg"));
     }
     if (shop.clubs && shop.clubs.length) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.clubs_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.clubs_msg"));
     }
     if (shop.domains && shop.domains.length) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.domains_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.domains_msg"));
     }
     if (
       (shop.domains && shop.domains.length) ||
@@ -74,17 +74,17 @@ export class ShopCautionHelper {
     ) {
       score += 10;
     } else {
-      message.push(i18n.t("cautions.shop_complete.primary_msg"));
+      message.push(i18n.global.t("cautions.shop_complete.primary_msg"));
     }
 
     if (score < 100) {
       cautions.push(
         this.Caution(
           "warning",
-          i18n.t("cautions.shop_complete.title"),
+          i18n.global.t("cautions.shop_complete.title"),
           message,
           { name: "ShopEdit_Info" },
-          i18n.t("cautions.shop_complete.action"),
+          i18n.global.t("cautions.shop_complete.action"),
           score
         )
       );
@@ -96,10 +96,10 @@ export class ShopCautionHelper {
       cautions.push(
         this.Caution(
           "error",
-          i18n.t("cautions.no_payment_method.title"),
-          i18n.t("cautions.no_payment_method.message"),
+          i18n.global.t("cautions.no_payment_method.title"),
+          i18n.global.t("cautions.no_payment_method.message"),
           { name: "AdminShopFinanceGateway" },
-          i18n.t("cautions.no_payment_method.action")
+          i18n.global.t("cautions.no_payment_method.action")
         )
       );
     } else {
@@ -115,12 +115,12 @@ export class ShopCautionHelper {
           cautions.push(
             this.Caution(
               "error",
-              i18n.t("cautions.link_account.title"),
-              i18n.t("cautions.link_account.message", {
+              i18n.global.t("cautions.link_account.title"),
+              i18n.global.t("cautions.link_account.message", {
                 currency: currency,
               }),
               { name: "AdminShopFinance_Bill" },
-              i18n.t("cautions.link_account.action")
+              i18n.global.t("cautions.link_account.action")
             )
           );
         }
@@ -133,10 +133,10 @@ export class ShopCautionHelper {
       cautions.push(
         this.Caution(
           "error",
-          i18n.t("cautions.no_currency.title"),
-          i18n.t("cautions.no_currency.message"),
+          i18n.global.t("cautions.no_currency.title"),
+          i18n.global.t("cautions.no_currency.message"),
           { name: "AdminShopFinanceExchangeRate" },
-          i18n.t("cautions.no_currency.action")
+          i18n.global.t("cautions.no_currency.action")
         )
       );
     }
@@ -148,8 +148,8 @@ export class ShopCautionHelper {
       cautions.push(
         this.Caution(
           "info",
-          i18n.t("cautions.no_domain.title"),
-          i18n.t("cautions.no_domain.message"),
+          i18n.global.t("cautions.no_domain.title"),
+          i18n.global.t("cautions.no_domain.message"),
           null,
           null
         )
@@ -161,8 +161,8 @@ export class ShopCautionHelper {
           cautions.push(
             this.Caution(
               "warning",
-              i18n.t("cautions.domain_not_approved.title"),
-              i18n.t("cautions.domain_not_approved.message", {
+              i18n.global.t("cautions.domain_not_approved.title"),
+              i18n.global.t("cautions.domain_not_approved.message", {
                 domain: domain.domain,
               }),
               null,
@@ -181,8 +181,8 @@ export class ShopCautionHelper {
       cautions.push(
         this.Caution(
           "error",
-          i18n.t("cautions.no_primary_domain.title"),
-          i18n.t("cautions.no_primary_domain.message"),
+          i18n.global.t("cautions.no_primary_domain.title"),
+          i18n.global.t("cautions.no_primary_domain.message"),
           null,
           null
         )

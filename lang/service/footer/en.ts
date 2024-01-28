@@ -13,7 +13,7 @@
  */
 
 export default {
-  /** @see SaminFooter **/
+  /** @see OLayoutFooter **/
   footer: {
     title: "The #1 operating system for fast-growing companies",
     message:
@@ -85,7 +85,7 @@ export default {
   },
 
   admin_footer: {
-    title: "Quick access menu:",
+    title: "Quick access menu",
     boost_mode: "Boost",
     normal_mode: "Normal",
     boost_message: "Poor internet connection and need boost?",

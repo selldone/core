@@ -39,19 +39,19 @@ export const DeviceType: DeviceTypeItem[] = [
   {
     code: "desktop",
     title: "device_types.desktop",
-    icon: "fas fa-desktop",
+    icon: "fa:fas fa-desktop",
     color: "#FFA000",
   },
   {
     code: "mobile",
     title: "device_types.mobile",
-    icon: "fas fa-mobile-alt",
+    icon: "fa:fas fa-mobile-alt",
     color: "#E91E63",
   },
   {
     code: "tablet",
     title: "device_types.tablet",
-    icon: "fas fa-tablet-alt",
+    icon: "fa:fas fa-tablet-alt",
     color: "#9C27B0",
   },
 ];

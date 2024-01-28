@@ -310,9 +310,9 @@ export default {
     cost_timeline: "هزینه و زمانبندی",
     timespan: "مدت زمان اجرا",
     cost: "مبلغ قرارداد",
-    pay_now_action: "موافقم | پرداخت مبلغ",
-    complete_action: "بله | تایید و تکمیل سفارش",
-    reject_action: "خیر | رد تکمیل سفارش",
+    pay_now_action: "موافقم ┆ پرداخت مبلغ",
+    complete_action: "بله ┆ تایید و تکمیل سفارش",
+    reject_action: "خیر ┆ رد تکمیل سفارش",
     all_tasks_completed_message:
       "شما تمام تسک های تعریف شده را کامل کرده اید. در صورتی که این کار را تمام کرده اید کلید تکمیل سفارش را بزنید. پس از این مرحله مشتری بایستی تحویل کار را تایید نماید.",
     waiting_complete_by_customer_message:

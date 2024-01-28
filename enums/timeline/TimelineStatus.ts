@@ -14,21 +14,21 @@
 
 export default {
   note: {
-    icon: "fas fa-sticky-note",
+    icon: "fa:fas fa-sticky-note",
     color: "#FFA000",
     editable: true,
     text: "timeline.note",
     iclass: "bg-sunny-morning",
   },
   info: {
-    icon: "fas fa-info-circle",
+    icon: "fa:fas fa-info-circle",
     color: "#667eea",
     editable: false,
     text: "timeline.info",
     iclass: "bg-plum",
   },
   error: {
-    icon: "fas fa-exclamation-circle",
+    icon: "fa:fas fa-exclamation-circle",
     color: "#f78ca0",
     editable: false,
     text: "timeline.error",
@@ -36,42 +36,42 @@ export default {
   },
 
   buy: {
-    icon: "fas fa-shopping-basket",
+    icon: "fa:fas fa-shopping-basket",
     color: "#4facfe",
     editable: false,
     text: "timeline.buy",
     iclass: "bg-malibu-beach",
   },
   payment: {
-    icon: "fas fa-dollar-sign",
+    icon: "fa:fas fa-dollar-sign",
     color: "#96e6a1",
     editable: false,
     text: "timeline.payment",
     iclass: "bg-dusty-grass",
   },
   confirm: {
-    icon: "fas fa-check",
+    icon: "fa:fas fa-check",
     color: "#13547a",
     editable: false,
     text: "timeline.confirm",
     iclass: "bg-aqua-splash",
   },
   prepare: {
-    icon: "fas fa-box-open",
+    icon: "fa:fas fa-box-open",
     color: "#a7a6cb",
     editable: false,
     text: "timeline.prepare",
     iclass: "bg-polite-rumors",
   },
   send: {
-    icon: "fas fa-shipping-fast",
+    icon: "fa:fas fa-shipping-fast",
     color: "#9795f0",
     editable: false,
     text: "timeline.send",
     iclass: "bg-teen-notebook",
   },
   delivered: {
-    icon: "fas fa-check-double",
+    icon: "fa:fas fa-check-double",
     color: "#505285",
     editable: false,
     text: "timeline.delivered",
@@ -79,7 +79,7 @@ export default {
   },
 
   "fill-inputs": {
-    icon: "fas fa-user-edit",
+    icon: "fa:fas fa-user-edit",
     color: "#c79081",
     editable: false,
     text: "timeline.fill-inputs",
@@ -87,49 +87,49 @@ export default {
   },
 
   "return-add": {
-    icon: "fas fa-undo",
+    icon: "fa:fas fa-undo",
     color: "#09203f",
     editable: false,
     text: "timeline.return-add",
     iclass: "bg-eternal-constance",
   },
   "return-accept": {
-    icon: "fas fa-check",
+    icon: "fa:fas fa-check",
     color: "#abecd6",
     editable: false,
     text: "timeline.return-accept",
     iclass: "bg-over-sun",
   },
   "return-reject": {
-    icon: "fas fa-times",
+    icon: "fa:fas fa-times",
     color: "#D32F2F",
     editable: false,
     text: "timeline.return-reject",
     iclass: "bg-crystal-river",
   },
   "reject-order": {
-    icon: "fas fa-times",
+    icon: "fa:fas fa-times",
     color: "#D32F2F",
     editable: false,
     text: "timeline.reject-order",
     iclass: "bg-red-soft",
   },
   "reject-order-clear": {
-    icon: "fas fa-eraser",
+    icon: "fa:fas fa-eraser",
     color: "#65379B",
     editable: false,
     text: "timeline.reject-order-clear",
     iclass: "bg-lily-meadow",
   },
   "email-buy": {
-    icon: "fas fa-envelope",
+    icon: "fa:fas fa-envelope",
     color: "#1976D2",
     editable: false,
     text: "timeline.email-buy",
     iclass: "bg-blue-soft",
   },
   "email-payment": {
-    icon: "fas fa-envelope",
+    icon: "fa:fas fa-envelope",
     color: "#00796B",
     editable: false,
     text: "timeline.email-payment",
@@ -137,7 +137,7 @@ export default {
   },
 
   "delivery-returned": {
-    icon: "fas fa-truck-loading",
+    icon: "fa:fas fa-truck-loading",
     color: "#FFA000",
     editable: false,
     text: "timeline.delivery-returned",
@@ -145,7 +145,7 @@ export default {
   },
 
   "delivery-canceled": {
-    icon: "fas fa-times",
+    icon: "fa:fas fa-times",
     color: "#D32F2F",
     editable: false,
     text: "timeline.delivery-canceled",

@@ -20,15 +20,17 @@ let LAST_LANGUAGE: ILanguage | null = null;
 let COLORS_LANGUAGES_LIST: { name: string; hex: string; distance?: number }[];
 
 const ColorNamer = function (color: string) {
-  const cacheKey = color + window.$language;
+  const cacheKey = color + window.$language.code;
+
   if (COLORS_NAME_CACHE[cacheKey]) {
     // console.log("getNameOfColor FIND IN CACHE", color);
     return COLORS_NAME_CACHE[cacheKey];
   }
 
   // Check color is valid:
+  let color_obj;
   try {
-    const color_obj = chroma(color);
+    color_obj = chroma(color);
   } catch (e) {
     console.error("❌ Color Name Generator ● Invalid color", color, e);
     return null;
@@ -39,8 +41,8 @@ const ColorNamer = function (color: string) {
   const result = COLORS_LANGUAGES_LIST.map((item) => {
     try {
       const distanceValue = deltaE
-        ? chroma.deltaE(color, item.hex)
-        : chroma.distance(color, item.hex);
+        ? chroma.deltaE(color_obj, item.hex)
+        : chroma.distance(color_obj, item.hex);
 
       return {
         ...item,

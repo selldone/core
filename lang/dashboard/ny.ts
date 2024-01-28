@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone | Bizinesi Yogwirira Ntchito Kwa Makampani Akukula Mwachangu",
+    "home": "Selldone ┆ Bizinesi Yogwirira Ntchito Kwa Makampani Akukula Mwachangu",
     "login": "Lowani muakaunti",
     "register": "Register",
     "auth_2fa": "2 Factor Authenticate 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Masitolo Anga",
     "roles": "Maudindo anga",
     "wallet": "Wallet Wanga",
-    "personal_info": "Zambiri Zaumwini | KYC",
+    "personal_info": "Zambiri Zaumwini ┆ KYC",
     "companies": "Makampani Anga",
     "access_control": "Access Control",
     "security_center": "Security Center",
     "gifts": {
-      "received": "Mphatso | Adalandira",
-      "send": "Mphatso | Kutumizidwa"
+      "received": "Mphatso ┆ Adalandira",
+      "send": "Mphatso ┆ Kutumizidwa"
     },
     "monetization": {
-      "linked_accounts": "Kupanga ndalama | Maakaunti Ogwirizana",
-      "plans": "Kupanga ndalama | Plan & Links"
+      "linked_accounts": "Kupanga ndalama ┆ Maakaunti Ogwirizana",
+      "plans": "Kupanga ndalama ┆ Plan & Links"
     },
     "affiliate": "Wothandizira",
     "avocado": "Avocado - Modern Social Sales Channel",
     "guild": "Gulu - Collective Sales Channel",
-    "partners_login": "Othandizira | Kulowa kwa kasitomala"
+    "partners_login": "Othandizira ┆ Kulowa kwa kasitomala"
   },
   "blank_is_all_products": "Osasowa kanthu kuti muphatikizepo zinthu zonse!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Panthawi yokonza dongosolo, ndalama zomwe zimaperekedwa zimatha kusiyana ndi zomwe zalamulidwa. Dongosololi limawerengera zokha kusiyana uku ndikulemba ngati ngongole yanu kwa kasitomala, yomwe ingagwiritsidwe ntchito pamadongosolo otsatirawa.",
       "status_list": {
         "active": {
-          "title": "Ntchito | Zogulitsa Paintaneti & Paintaneti",
+          "title": "Ntchito ┆ Zogulitsa Paintaneti & Paintaneti",
           "description": "Izi zitha kupezeka pamaoda apa intaneti."
         },
         "inactive": {
-          "title": "Zopanda ntchito | Zogulitsa Zapaintaneti Pokha",
+          "title": "Zopanda ntchito ┆ Zogulitsa Zapaintaneti Pokha",
           "description": "Izi sizipezeka pamaoda apa intaneti."
         }
       },
@@ -1669,7 +1669,7 @@ export default {
         "simple": "Zosavuta",
         "dark_input": "Mutu wakuda?",
         "icon_input": "Chizindikiro",
-        "icon_input_hint": "Zida Zopangira Chizindikiro Dzina kapena Fontawsom: fas fa-star",
+        "icon_input_hint": "Zida Zopangira Chizindikiro Dzina kapena Fontawsom: fa:fas fa-star",
         "anim_input": "Makanema Adilesi",
         "anim_input_message": "Lottie makanema ojambula pa URL",
         "preview": "Kuwoneratu",
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Lamuloli linaimitsidwa. {reason}",
     "connect-remove-hold": "Lamuloli lidachotsedwa. {reason}",
     "connect-confirmed": "Lamuloli linatsimikiziridwa.",
-    "email-vendor": "🔔 Imelo yodziwitsa za kuyitanitsa yatumizidwa kwa <b>{vendor}</b> | {email}.",
+    "email-vendor": "🔔 Imelo yodziwitsa za kuyitanitsa yatumizidwa kwa <b>{vendor}</b> ┆ {email}.",
     "vendor-payout": "💸 Kulipira kwa ogulitsa."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Calculator | Gwirizanani ndi bizinesi yanu",
+    "title": "Calculator ┆ Gwirizanani ndi bizinesi yanu",
     "description": "Werengani ndikusankha dongosolo labwino kwambiri kutengera zomwe mumagulitsa pamwezi:",
     "sale_input": "Ndalama zogulitsa pamwezi",
     "hypernova_plan": "Lemberani ku Hypernova %0!",
@@ -3182,7 +3182,7 @@ export default {
     "products_views": "Onani Zamalonda"
   },
   "shop_visitors_widget": {
-    "title": "Visitors Analytics",
+    "title": "Acquisition Analytics",
     "new_visitors": "Alendo atsopano",
     "amp": "Mawonedwe a AMP",
     "returning_visitors": "Alendo obwerera",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Sungani malo Zikhazikiko",
     "save_alert": "Zokonda sizinasungidwe!",
     "pos_tax_setting": "Zokonda za POS Tax",
-    "tax_exclude_title": "Ochotsedwa | Misonkho idzawonjezedwa potuluka",
+    "tax_exclude_title": "Ochotsedwa ┆ Misonkho idzawonjezedwa potuluka",
     "tax_excluded_message": "Misonkho idzawerengedwa malipiro asanaperekedwe panthawi yolipira ndikuwonjezedwa pamtengo wamisonkho womwe sunaphatikizidwe malinga ndi umboni wa kasitomala wanu."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Yogwira",
-      "title": "Ntchito | Zogulitsa Paintaneti & Paintaneti",
+      "title": "Ntchito ┆ Zogulitsa Paintaneti & Paintaneti",
       "description": "Izi zitha kupezeka pamaoda apa intaneti."
     },
     "close": {
       "name": "osagwira ntchito",
-      "title": "Zopanda ntchito | Zogulitsa Zapaintaneti Pokha",
+      "title": "Zopanda ntchito ┆ Zogulitsa Zapaintaneti Pokha",
       "description": "Izi sizipezeka pamaoda apa intaneti."
     },
     "pending": {

@@ -197,7 +197,7 @@ export default {
     "copyright": "D'Benotzung vum Inhalt nëmme fir net-kommerziell Zwecker a mat Referenz op d'Quell (Link mat Selldone.com). All Rechter reservéiert ze Selldone Group."
   },
   "admin_footer": {
-    "title": "Quick Access Menu:",
+    "title": "Quick Access Menu",
     "boost_mode": "Boost",
     "normal_mode": "Normal",
     "boost_message": "Schlecht Internetverbindung a brauch Boost?",

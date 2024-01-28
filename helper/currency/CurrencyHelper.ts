@@ -12,32 +12,36 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { LocalStorages } from "../local-storage/LocalStorages";
-import { Currency, type ICurrency } from "../../enums/payment/Currency";
-import { SetupService } from "@core/server/SetupService";
-import { TrackConfig } from "@core/enums/gtag/TrackConfig";
+import {StorefrontLocalStorages} from "../local-storage/StorefrontLocalStorages";
+import {Currency, type ICurrency} from "../../enums/payment/Currency";
+import {SetupService} from "@core/server/SetupService";
+import {TrackConfig} from "@core/enums/gtag/TrackConfig";
 import CoreMixin from "@components/mixin/CoreMixin";
 
 export class CurrencyHelper {
   static SetUserSelectedCurrency(
     that: InstanceType<typeof CoreMixin>,
-    currency: keyof typeof Currency
+    currency: keyof typeof Currency,
   ) {
     localStorage.setItem(
       // @ts-ignore
-      LocalStorages.GetUserCurrencyPath(that.$localstorage_base_path()),
-      currency
+      StorefrontLocalStorages.GetUserCurrencyPath(
+        that.$localstorage_base_path(),
+      ),
+      currency,
     );
     TrackConfig.SetCurrency(currency);
     //  that.$store.commit("setUserCurrency", currency);
   }
 
   static GetUserSelectedCurrency(
-    that: InstanceType<typeof CoreMixin>
+    that: InstanceType<typeof CoreMixin>,
   ): ICurrency {
     const user_currency = localStorage.getItem(
       // @ts-ignore
-      LocalStorages.GetUserCurrencyPath(that.$localstorage_base_path())
+      StorefrontLocalStorages.GetUserCurrencyPath(
+        that.$localstorage_base_path(),
+      ),
     );
     if (user_currency && Currency[user_currency]) {
       return Currency[user_currency];
@@ -50,7 +54,7 @@ export class CurrencyHelper {
 
   static GetUserSelectedCurrencyFactor(
     that: InstanceType<typeof CoreMixin>,
-    opt_currency: keyof typeof Currency | null = null
+    opt_currency: keyof typeof Currency | null = null,
   ): number {
     if (opt_currency)
       return Currency[opt_currency].alt_name
@@ -65,7 +69,7 @@ export class CurrencyHelper {
   static GetUserSelectedCurrencyName(
     that: InstanceType<typeof CoreMixin>,
     opt_currency: keyof typeof Currency | null = null,
-    unicode = false
+    unicode = false,
   ): string {
     if (opt_currency) {
       // If currency not exist anymore:
@@ -77,8 +81,8 @@ export class CurrencyHelper {
           .alt_name /*Not for alt mode like IRR! Toman/Rial!*/
         ? Currency[opt_currency].unicode
         : Currency[opt_currency].alt_name
-        ? Currency[opt_currency].alt_name!
-        : Currency[opt_currency].name!;
+          ? Currency[opt_currency].alt_name!
+          : Currency[opt_currency].name!;
     }
 
     // Default currency set by user:
@@ -87,13 +91,13 @@ export class CurrencyHelper {
     return unicode && default_currency.unicode && !default_currency.alt_name
       ? default_currency.unicode
       : default_currency.alt_name
-      ? default_currency.alt_name
-      : default_currency.name;
+        ? default_currency.alt_name
+        : default_currency.name;
   }
 
   static GetUserSelectedCurrencyFloats(
     that: InstanceType<typeof CoreMixin>,
-    opt_currency: keyof typeof Currency | null = null
+    opt_currency: keyof typeof Currency | null = null,
   ) {
     if (opt_currency) return Currency[opt_currency].floats;
 
@@ -102,7 +106,7 @@ export class CurrencyHelper {
 
   static GetUserSelectedCurrencyRoundFactor(
     that: InstanceType<typeof CoreMixin>,
-    opt_currency: keyof typeof Currency | null = null
+    opt_currency: keyof typeof Currency | null = null,
   ) {
     if (opt_currency) return Currency[opt_currency].round_factor;
 
@@ -111,7 +115,7 @@ export class CurrencyHelper {
 
   static GetUserSelectedCurrencyFormat(
     that: InstanceType<typeof CoreMixin>,
-    opt_currency: keyof typeof Currency | null = null
+    opt_currency: keyof typeof Currency | null = null,
   ) {
     if (opt_currency) return Currency[opt_currency].format;
 
@@ -120,7 +124,7 @@ export class CurrencyHelper {
 
   static GetUserSelectedCurrencyUnicode(
     that: InstanceType<typeof CoreMixin>,
-    opt_currency: keyof typeof Currency | null = null
+    opt_currency: keyof typeof Currency | null = null,
   ) {
     if (opt_currency) return Currency[opt_currency].unicode;
 
@@ -136,7 +140,7 @@ export class CurrencyHelper {
    */
   static GetUserSelectedCurrencySignAtEnd(
     that: InstanceType<typeof CoreMixin>,
-    opt_currency: keyof typeof Currency | null = null
+    opt_currency: keyof typeof Currency | null = null,
   ) {
     if (opt_currency) return !!Currency[opt_currency].at_end;
 
@@ -154,7 +158,7 @@ export class CurrencyHelper {
   static ConvertToString(
     amount: number,
     currency: keyof typeof Currency,
-    local: string = "en-US"
+    local: string = "en-US",
   ) {
     if (!currency) return amount;
     if (!amount) return amount + " " + currency;
@@ -166,7 +170,7 @@ export class CurrencyHelper {
   }
 
   static NeedToSHowCurrencyFlag(
-    availableCurrencies: (keyof typeof Currency)[]
+    availableCurrencies: (keyof typeof Currency)[],
   ): boolean {
     if (!availableCurrencies?.length) return false;
     const unicodeCount: Record<string, number> = {}; // Define the type explicitly for clarity
@@ -182,4 +186,11 @@ export class CurrencyHelper {
 
     return false;
   }
+
+  static GetCountryByCurrencyCode(currencyCode: keyof typeof Currency|null): string | null {
+    if(!currencyCode)return null;
+    const currency = Currency[currencyCode];
+    return currency ? currency.country : null;
+  }
+
 }

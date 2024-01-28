@@ -15,6 +15,7 @@
 import { DateConverter } from "../helper/date/DateConverter";
 import ExcelConverter from "../helper/converters/ExcelConverter";
 import { Currency } from "../enums/payment/Currency";
+import _ from "lodash-es";
 
 export interface IRawData extends Record<string, any> {
   id: number;
@@ -167,11 +168,32 @@ export class TimeSeries {
     return this._lastMonthData;
   }
 
+  /**
+   * Get data of the last date in the time series.
+   */
   todayDataOffset() {
     return this._todayDataOffset;
   }
+
+  /**
+   * Check if todayDataOffset is not empty.
+   */
+  hasTodayDataOffset(){
+    return !_.isEmpty(this.todayDataOffset());
+  }
+
+  /**
+   * Get data of the one day before last date (second last data) in the time series.
+   */
   yesterdayDataOffset() {
     return this._yesterdayDataOffset;
+  }
+
+  /**
+   * Check if yesterdayDataOffset is not empty.
+   */
+  hasYesterdayData(){
+    return !_.isEmpty(this.yesterdayDataOffset());
   }
 
   /**
@@ -535,11 +557,14 @@ export class TimeSeries {
   ) {
     let out = 0;
     this.raw_data.forEach((item) => {
-      const _date = DateConverter.convertToLocalTime(item[time_key], true);
-      if (!_date) return;
+      if(start_date || end_date){
+        const _date = DateConverter.convertToLocalTime(item[time_key], true);
+        if (!_date) return;
 
-      if (start_date && _date.getTime() < start_date.getTime()) return;
-      if (end_date && _date.getTime() > end_date.getTime()) return;
+        if (start_date && _date.getTime() < start_date.getTime()) return;
+        if (end_date && _date.getTime() > end_date.getTime()) return;
+      }
+
 
       out += item[key] ? item[key] : 0;
     });

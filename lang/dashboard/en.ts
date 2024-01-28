@@ -73,7 +73,7 @@ export default {
 
   // ------------------ Pages Title ------------------
   page_titles: {
-    home: "Selldone | The Business Operating System For Fast-growing Companies",
+    home: "Selldone ┆ The Business Operating System For Fast-growing Companies",
     login: "Login",
     register: "Register",
     auth_2fa: "2 factor Authenticate 🔐",
@@ -83,22 +83,22 @@ export default {
     my_stores: "My Stores",
     roles: "My Roles",
     wallet: "My Wallets",
-    personal_info: "Personal Info | KYC",
+    personal_info: "Personal Info ┆ KYC",
     companies: "My Companies",
     access_control: "Access Control",
     security_center: "Security Center",
     gifts: {
-      received: "Gifts | Received",
-      send: "Gifts | Sent",
+      received: "Gifts ┆ Received",
+      send: "Gifts ┆ Sent",
     },
     monetization: {
-      linked_accounts: "Monetization | Linked Accounts",
-      plans: "Monetization | Plan & Links",
+      linked_accounts: "Monetization ┆ Linked Accounts",
+      plans: "Monetization ┆ Plan & Links",
     },
     affiliate: "Affiliate",
     avocado: "Avocado — Modern Social Sales Channel",
     guild: "Guild — Collective Sales Channel",
-    partners_login: "Partners | Client login",
+    partners_login: "Partners ┆ Client login",
   },
 
   /** NOT USED! */
@@ -277,7 +277,7 @@ export default {
       "One of the key features of Selldone is providing robust and secure APIs to manage and connect stores to other services such as warehousing, accounting, etc. You can also design custom apps and web apps for your store. Without having to worry about server and data management. Just use the domain APIs. You will have all the process of managing users, authentication and other domain features.",
   },
 
-  /** {@see UserDashboardPage} **/
+  /** {@see SShuttle} **/
   user_dashboard: {
     title: "My shuttle",
     subtitle: "Comprehensive overview of my businesses.",
@@ -310,7 +310,7 @@ export default {
       },
 
       accept_invite_question: "Do you accept this invitation?",
-      /** {@see SShopCard} **/
+      /** {@see BShopCard} **/
 
       shop_card: {
         menu_orders: {
@@ -323,7 +323,7 @@ export default {
         status: "Status",
         license: "License",
         volume: "Used space",
-        expire: "License Expired",
+        expire: "License expiration",
         products: "Products",
         page_views: "Views",
         user_behavior: "Customer behavior",
@@ -338,7 +338,7 @@ export default {
   },
 
   widgets: {
-    /** {@see OverviewWidget} **/
+    /** {@see SShopDashboardFeedbacks} **/
     overview: {
       title: "Customers feedback",
       title_small: "overview",
@@ -354,7 +354,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopPage} **/
+  /** {@see BPageShop} **/
   admin_shop: {
     title: "Store",
     menu: {
@@ -382,17 +382,17 @@ export default {
       localization: "Localization",
     },
 
-    /** {@see ShopDashboard} **/
+    /** {@see SShopDashboard} **/
     dashboard: {
       title: "Shop dashboard",
-      online_staff: "Online staff(s)",
+      online_staff: "Online staff",
 
       notify_referral: {
         message: "Send your invitation link to friends and get free vouchers.",
         action: "My referral link",
       },
 
-      /** {@see ShopInfoWidget} **/
+      /** {@see SShopDashboardTechnical} **/
       info: {
         title: "Technical",
         subtitle: "Technical overview of your business OS.",
@@ -465,7 +465,7 @@ export default {
         },
       },
 
-      /** {@see ShopActiveOrdersWidget} **/
+      /** {@see SShopDashboardOrders} **/
       active_orders: {
         title: "Orders",
         title_small:
@@ -477,14 +477,14 @@ export default {
         service: "Service orders",
         subscription: "Subscription orders",
       },
-      /** {@see ShopProductsOverviewWidget} **/
+      /** {@see SShopDashboardProducts} **/
       products: {
         title: "Inventory",
         title_small: "Products, Services, Files",
 
         total_products: "Total product types",
       },
-      /** {@see ShopFinanceWidget} **/
+      /** {@see SShopDashboardFinance} **/
       finance: {
         title: "Financial",
         title_small: "Financial report",
@@ -514,7 +514,7 @@ export default {
           pay: "Pay",
         },
       },
-      /** {@see ShopUsersWidget} **/
+      /** {@see SShopDashboardCustomers} **/
       customers: {
         title: "Shop customers",
         title_small: "Conversion report",
@@ -532,7 +532,7 @@ export default {
       },
 
 
-      /** {@see ShopPerformanceWidget} **/
+      /** {@see SShopDashboardPerformance} **/
       performance: {
         title: "Today",
         title_small: "Users and sales overview",
@@ -544,7 +544,7 @@ export default {
       },
     },
 
-    /** {@see BackofficeProductsManagementPage} **/
+    /** {@see BPageShopProductsList} **/
     products: {
       title: "Products list",
       products_list: "Back to list",
@@ -585,12 +585,12 @@ export default {
       },
     },
 
-    /** {@see AdminShop_Blogs}  **/
+    /** {@see BPageShopBlogs}  **/
     blogs: {
       new: "Write new",
       blogs: "Blog",
 
-      /** {@see AdminShopBlogsList} **/
+      /** {@see BPageShopBlogsList} **/
       list: {
         title: "My Articles",
         subtitle:
@@ -1293,12 +1293,12 @@ export default {
     }, // End of edit
   }, // End of admin_shop
 
-  /** {@see CategorySelect} **/
+  /** {@see BShopCategoryInput} **/
   category_select: {
     category_input_no_category: "No category",
   },
 
-  /** {@see AddProduct} **/
+  /** {@see BProductAdd} **/
   add_product: {
     title_new: "New product",
     title_new_category: "New category",
@@ -2055,7 +2055,7 @@ export default {
         simple: "Simple",
         dark_input: "Dark theme?",
         icon_input: "Icon",
-        icon_input_hint: "Material Design Icon Name or Fontawsom: fas fa-star",
+        icon_input_hint: "Material Design Icon Name or Fontawsom: fa:fas fa-star",
         anim_input: "Animation Address",
         anim_input_message: "Lottie animation file URL",
         preview: "Preview",
@@ -2084,7 +2084,7 @@ export default {
     },
   },
 
-  /** {@see AddCategory} **/
+  /** {@see SShopCategoryAdd} **/
   add_category: {
     title_edit: "Edit category",
     title_update: "Add new category",
@@ -2126,7 +2126,7 @@ export default {
       edit_success: "Category edited.",
       delete_success: "Deleted {title}.",
     },
-    /** {@see CategoriesManagementFilter} **/
+    /** {@see SShopCategoryFilter} **/
     edit_filter: {
       spec_input: "Technical Specifications List",
       spec_input_message:
@@ -2895,7 +2895,7 @@ export default {
     "connect-confirmed": "The order was confirmed.",
 
     "email-vendor":
-      "🔔 Order inform email has been sent to <b>{vendor}</b> | {email}.",
+      "🔔 Order inform email has been sent to <b>{vendor}</b> ┆ {email}.",
     "vendor-payout": "💸 Payout to vendor.",
   },
 
@@ -3798,7 +3798,7 @@ export default {
 
   /** {@see PriceCalculator} **/
   price_calculator: {
-    title: "Calculator | Fit to your business",
+    title: "Calculator ┆ Fit to your business",
     description:
       "Calculate and choose the best plan based on your monthly sales:",
     sale_input: "Monthly sales amount",
@@ -3826,9 +3826,9 @@ export default {
     buys: "Buy",
     products_views: "View Product",
   },
-  /** {@see ShopVisitorsWidget} **/
+  /** {@see SShopDashboardAcquisition} **/
   shop_visitors_widget: {
-    title: "Visitors Analytics",
+    title: "Acquisition Analytics",
     new_visitors: "New visitors",
     amp: "AMP views",
     returning_visitors: "Returning visitors",
@@ -4061,13 +4061,13 @@ export default {
     },
   },
 
-  /** {@see SBackofficeAdminShopLayout} **/
+  /** {@see BLayoutBackofficeShop} **/
 
   admin_shop_layout: {
     download_txt: "Download data text",
     download_excel: "Download data excel",
   },
-  /** {@see UserPreferences} **/
+  /** {@see SUserPreferences} **/
   user_preferences: {
     access: "Access",
     template: "Template",
@@ -4115,7 +4115,7 @@ export default {
     not_original: "Not original",
   },
 
-  /** @see AddProductStudio **/
+  /** @see BProductAddStudio **/
   product_studio: {
     add_mode: "Add more details",
     add_by_sku: "Add by SKU",
@@ -4732,13 +4732,13 @@ export default {
     tax_number_message:
       "Enter your tax number. This registration number will be recorded in the buyer's invoice.",
 
-    tax_included_in_price_input: "Included | Tax included in products price",
+    tax_included_in_price_input: "Included ┆ Tax included in products price",
     tax_included_in_price_message:
       "Select this option if you include the tax amount in the price of your product. The tax amount will be calculated with the following formula.",
     tax_included_in_price_formula:
       "Tax = (price * VAT) / (1 + VAT), for example, the amount of tax for a product at a price of 100$ with a value added rate of 10% becomes 9.09$.",
 
-    tax_exclude_title: "Excluded | Tax will be added at checkout",
+    tax_exclude_title: "Excluded ┆ Tax will be added at checkout",
     tax_excluded_message:
       "The taxes will be calculated before the payments during the checkout and added to the excluded tax price depending on your customer evidence.",
 
@@ -4985,7 +4985,7 @@ export default {
     },
   },
 
-  /** {@see ProductsManagement_Importer**/
+  /** {@see BPageShopProductsImporter**/
   exporter: {
     title: "Export data",
     subtitle:
@@ -4995,7 +4995,7 @@ export default {
       "You will receive a list of all the {type} in the store along with complete information in Excel format.",
     csv: "You will receive a list of all the {type} in the store along with complete information in CSV format. This format is in accordance with the standard format of Selldone for importing {type} into the store.",
   },
-  /** {@see ProductsManagement_Importer**/
+  /** {@see BPageShopProductsImporter**/
   importer: {
     category: {
       title: "Import categories",
@@ -5943,7 +5943,7 @@ export default {
     },
   },
 
-  /** {@see ShopActiveAvocadosWidget} **/
+  /** {@see SShopDashboardOrdersAvocado} **/
   avocado_orders: {
     title: "Avocado",
     title_small: "Social Media Sales",
@@ -5991,7 +5991,7 @@ export default {
     configuration: "Hyper Settings",
   },
 
-  /** {@see ShopActiveHyperWidget} **/
+  /** {@see SShopDashboardOrdersHyper} **/
   hyper_orders: {
     title: "Hyper",
     title_small: "Sales Report",
@@ -6022,7 +6022,7 @@ export default {
     account_msg: "Charge will be applied to this account",
   },
 
-  /** {@see SelldoneApplicationsWidget} **/
+  /** {@see SShopDashboardApplications} **/
   selldone_applications: {
     title: "Don't miss your orders! ",
     msg: "Manage your business anywhere & anytime.",
@@ -6091,7 +6091,7 @@ export default {
       "You can install up to 10 language packs in your store. Contact us if you need to install more packages.",
   },
 
-  /** {@see InviteFriendsDialog} **/
+  /** {@see SInviteFriendsDialog} **/
   invite_friends: {
     title: "Tell about your business to the world and make money!",
     msg: "Refer Selldone to your friends. When they sign up, they'll receive a $99 Company voucher. After they make their first transaction, you'll earn a $15 Startup voucher and receive 5% from all license and transaction fees of new users. For more opportunities, check out our affiliate page.",
@@ -6104,7 +6104,7 @@ export default {
     },
   },
 
-  /** {@see ShopsListPage} **/
+  /** {@see SShuttleShopsListPage} **/
   shops_list: {
     title: "My Shops",
     message:
@@ -6130,7 +6130,7 @@ export default {
     drop_orders_here: "Drop orders here...",
   },
 
-  /** {@see AdminShop_Blog_Categories} **/
+  /** {@see BPageShopBlogsCategories} **/
   blog_category: {
     title: "Blog Categories",
     add_action: "Add new category",
@@ -6383,7 +6383,7 @@ export default {
     },
   },
 
-  /** {@see ShopExternalServicesWidget} **/
+  /** {@see SShopDashboardExternalService} **/
   external_services: {
     title: "External services",
     subtitle:
@@ -6410,12 +6410,12 @@ export default {
   product_status: {
     open: {
       name: "Active",
-      title: "Active | Online & Offline Sales",
+      title: "Active ┆ Online & Offline Sales",
       description: "This product will be available for online orders.",
     },
     close: {
       name: "Inactive",
-      title: "Inactive | Only Offline Sales",
+      title: "Inactive ┆ Only Offline Sales",
       description: "This product will not be available for online orders.",
     },
     pending: {

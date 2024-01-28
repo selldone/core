@@ -112,7 +112,7 @@ export class ClassesHelper {
         "rounded-pill",
         "rounded-circle",
 
-        "m-auto",
+        "ma-auto",
         "mx-auto",
         "my-auto",
 

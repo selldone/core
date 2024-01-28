@@ -20,7 +20,7 @@ import "./utils/console/ConsoleStyle";
 import {CDN} from "./server/CDN";
 import { URLS } from "@core/server/URLS";
 
-const SDK_VERSION = "0.01";
+const SDK_VERSION = "0.02";
 //█████████████████████████████████████████████████████████████
 //―――――――――――――― Global Types ―――――――――――――――
 //█████████████████████████████████████████████████████████████

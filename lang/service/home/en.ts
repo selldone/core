@@ -147,6 +147,11 @@ export default {
       pos: "Point of Sale",
       blog: "Blog & CMS",
       community: "Community & Forum",
+
+      ecommerce_desc:"Sell your products and services online.",
+        pos_desc:"Sell your products and services in-person.",
+        blog_desc:"Powerful CMS to publish your articles and posts.",
+        community_desc:"Create your own community and forum.",
     },
 
     job: {

@@ -64,7 +64,7 @@ export abstract class APIAbstract {
 
     if (!this.axiosInstance)
       console.error(
-        "⚠ The Axios instance is missing! Ensure you initialize Axios before using the Selldone® APIs interface!"
+        "⚠ The Axios instance is missing! Ensure you initialize Axios before using the Selldone® APIs interface!",
       );
   }
 
@@ -76,7 +76,7 @@ export abstract class APIAbstract {
    *
    * @example
    *
-   * window.$backoffice.product.optimize(120).get('someEndpoint');  // Will use cache if data is less than 120 seconds old.
+   * window.$backoffice.product.optimize(120).get('someEndpoint').cache(handleSuccessResponse).then(handleSuccessResponse);  // Will use cache if data is less than 120 seconds old.
    *
    */
   optimize(duration?: number) {
@@ -153,7 +153,7 @@ export abstract class APIAbstract {
     params: any,
     onSuccess: (data: any) => void,
     onError?: (error: IErrorResponse | AxiosError) => void,
-    options?: DebounceGetOptions
+    options?: DebounceGetOptions,
   ): void {
     const { max_valid_status_code = null, debounce_time = null } =
       options || {};
@@ -183,7 +183,7 @@ export abstract class APIAbstract {
             if (onError) onError(error);
           });
       },
-      debounce_time ? debounce_time : this.debounceTime
+      debounce_time ? debounce_time : this.debounceTime,
     );
 
     debouncedFunction();
@@ -224,7 +224,7 @@ export abstract class APIAbstract {
   protected postNow<T = any>(
     url: string,
     params: any,
-    options?: PostOptions
+    options?: PostOptions,
   ): Promise<T> {
     // <- Return type set to Promise<any>
     const { query = {} } = options || {};
@@ -290,8 +290,8 @@ export abstract class APIAbstract {
     url: string,
     query: Record<string, any> | null = {}, // default value set to an empty object
     __deep_cache_founder_function?: (
-      caches: LRUCache<string, (any & { __date?: Date }) | null>
-    ) => any | null
+      caches: LRUCache<string, (any & { __date?: Date }) | null>,
+    ) => any | null,
   ): IExtendedPromiseWithCache<T> {
     // ━━━━━━━━━━━━ Cache key ━━━━━━━━━━━━
 
@@ -308,14 +308,14 @@ export abstract class APIAbstract {
         if (__cached_value?.__date) {
           const cachedDate = __cached_value.__date;
           const secondsAgo = new Date(
-            Date.now() - this.optimizer_cache_duration * 1000
+            Date.now() - this.optimizer_cache_duration * 1000,
           );
           if (cachedDate > secondsAgo) {
             console.log(
               "🏀 Turbo",
               "Duration:",
               this.optimizer_cache_duration,
-              "s"
+              "s",
             );
             // If the cached date is older than 10 seconds, return a fake promise
             const _out: IExtendedPromiseWithCache<any> =
@@ -379,7 +379,7 @@ export abstract class APIAbstract {
           throw undefined; // Important to not call then! then() is for success response only.
         } else {
           // Handle other errors
-          console.error(error);
+          console.error("❌ Other errors:",error);
           throw error; // <- Propagate the error for further chaining
         }
       });
@@ -388,6 +388,8 @@ export abstract class APIAbstract {
 
     return out;
   }
+
+
 
   /**
    * Executes a PUT HTTP request using the provided URL, parameters, and optional configurations.
@@ -411,8 +413,8 @@ export abstract class APIAbstract {
    */
   protected putNow<T = any>(
     url: string,
-    params: any,
-    options?: PostOptions
+    params?: any,
+    options?: PostOptions,
   ): Promise<T> {
     // <- Return type set to Promise<any>
     const { query = {} } = options || {};
@@ -438,7 +440,7 @@ export abstract class APIAbstract {
 
   protected deleteNow<T = any>(
     url: string,
-    query: Record<string, any> | null = {} // default value set to an empty object
+    query: Record<string, any> | null = {}, // default value set to an empty object
   ): Promise<T> {
     return this.axiosInstance
       .delete(url, {
@@ -464,7 +466,7 @@ export abstract class APIAbstract {
     if (!query) return null;
     return Object.entries(query)
       .filter(
-        ([_, value]) => value !== null && value !== undefined && value !== ""
+        ([_, value]) => value !== null && value !== undefined && value !== "",
       )
       .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
   }
@@ -482,7 +484,7 @@ interface IExtendedPromiseWithCache<T> extends Promise<T> {
   __cache_key?: string;
   __cache_callback_disabled?: boolean;
   __deep_cache_founder_function?: (
-    caches: LRUCache<string, (CancelTokenSource & { __date?: Date }) | null>
+    caches: LRUCache<string, (CancelTokenSource & { __date?: Date }) | null>,
   ) => any | null;
 
   /**
@@ -509,12 +511,12 @@ const __CANCELLATION = new LRUCache<
 // Adding the cache method to the Promise prototype
 Promise.prototype.cache = function (
   this: IExtendedPromiseWithCache<any>,
-  cacheResponse: (value: any) => void
+  cacheResponse: (value: any) => void,
 ) {
   if (this.__cache_callback_disabled) return this; // If no server request sent!
   if (!this.__cache_key) {
     console.error(
-      "⚠ Always call cache() before then()! We have no idea about the cache key now."
+      "⚠ Always call cache() before then()! We have no idea about the cache key now.",
     );
     return;
   }
