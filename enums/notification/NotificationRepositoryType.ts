@@ -12,7 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ProductType } from "../product/ProductType";
+import {ProductType} from "../product/ProductType";
+
 /**
  * Defines the structure for notification type.
  */
@@ -42,7 +43,8 @@ const NEW_PRODUCT: INotificationType = {
       name: "BPageShopProductsList",
       params: { shop_id: shop.id },
       query: {
-        search: `new~${date.setStart().toISOString()}~${date.setEnd()
+        search: `new~${date.setStart().toISOString()}~${date
+          .setEnd()
           .toISOString()}` /*Return for only this day!*/,
       },
     };
@@ -80,24 +82,24 @@ const MENTION_NOTE: INotificationType = {
           query: { element_id: notification.data.note.element_id },
         }
       : notification.data?.note?.target_type === "page"
-      ? {
-          name: "ShopPageBuilderPage",
-          params: {
-            shop_id: shop.id,
-            page_id: notification.data.note.target_id,
-          },
-          query: { element_id: notification.data.note.element_id },
-        }
-      : notification.data?.note?.target_type === "popup"
-      ? {
-          name: "ShopPopupBuilderPage",
-          params: {
-            shop_id: shop.id,
-            popup_id: notification.data.note.target_id,
-          },
-          query: { element_id: notification.data.note.element_id },
-        }
-      : null;
+        ? {
+            name: "ShopPageBuilderPage",
+            params: {
+              shop_id: shop.id,
+              page_id: notification.data.note.target_id,
+            },
+            query: { element_id: notification.data.note.element_id },
+          }
+        : notification.data?.note?.target_type === "popup"
+          ? {
+              name: "ShopPopupBuilderPage",
+              params: {
+                shop_id: shop.id,
+                popup_id: notification.data.note.target_id,
+              },
+              query: { element_id: notification.data.note.element_id },
+            }
+          : null;
   },
   color: "#FFA000",
 };
@@ -118,22 +120,22 @@ const MENTION_TIMELINE: INotificationType = {
       basket.type === ProductType.PHYSICAL.code
         ? "ShopProcessCenterPhysicalOrderPage_Timeline"
         : basket.type === ProductType.VIRTUAL.code
-        ? "ShopProcessCenterVirtualOrderPage_Timeline"
-        : basket.type === ProductType.FILE.code
-        ? "ShopProcessCenterFileOrderPage_Timeline"
-        : basket.type === ProductType.SERVICE.code
-        ? "ShopProcessCenterServiceOrderPage_Timeline"
-        : basket.type === ProductType.SUBSCRIPTION.code
-        ? "ShopProcessCenterSubscriptionOrderPage_Timeline"
-        : basket.type === "AVO"
-        ? "ShopProcessCenterAvocadoOrderPage_Timeline"
-        : basket.type === "HYP"
-        ? "ShopProcessCenterHyperOrderPage_Timeline"
-        : basket.type === "POS"
-        ? "ShopProcessCenterPOSOrderPage_Timeline"
-        : basket.type === "FUL"
-        ? "ShopProcessCenterDropShippingOrderPage_Timeline"
-        : null;
+          ? "ShopProcessCenterVirtualOrderPage_Timeline"
+          : basket.type === ProductType.FILE.code
+            ? "ShopProcessCenterFileOrderPage_Timeline"
+            : basket.type === ProductType.SERVICE.code
+              ? "ShopProcessCenterServiceOrderPage_Timeline"
+              : basket.type === ProductType.SUBSCRIPTION.code
+                ? "ShopProcessCenterSubscriptionOrderPage_Timeline"
+                : basket.type === "AVO"
+                  ? "ShopProcessCenterAvocadoOrderPage_Timeline"
+                  : basket.type === "HYP"
+                    ? "ShopProcessCenterHyperOrderPage_Timeline"
+                    : basket.type === "POS"
+                      ? "ShopProcessCenterPOSOrderPage_Timeline"
+                      : basket.type === "FUL"
+                        ? "ShopProcessCenterDropShippingOrderPage_Timeline"
+                        : null;
     return { name: name, params: { shop_id: shop.id, basket_id: basket.id } };
   },
   color: "#303F9F",

@@ -616,7 +616,7 @@ export default {
 
     /** {@see ShopProcessCenter} **/
     orders: {
-      /** {@see ShopProcessCenterTemplate} **/
+      /** {@see BShopProcessCenterList} **/
       physical: {
         waiting_message: "Receiving information ... please wait",
         rejected: "Rejected",
@@ -875,7 +875,7 @@ export default {
       },
     }, // End of logistic
 
-    /** {@see ShopUsers} **/
+    /** {@see BPageShopCrm} **/
     users: {
       menu: {
         customers: "Customers",
@@ -1298,7 +1298,7 @@ export default {
     category_input_no_category: "No category",
   },
 
-  /** {@see BProductAdd} **/
+  /** {@see BProductAddFull} **/
   add_product: {
     title_new: "New product",
     title_new_category: "New category",
@@ -5032,7 +5032,7 @@ export default {
     max_items_limit: "Maximum items limit",
     total_items: "Total items",
 
-    /** {@see CustomerImportView**/
+    /** {@see BShopCustomerImporter**/
     customer: {
       title: "Import customers",
       subtitle:
@@ -5201,7 +5201,7 @@ export default {
     },
   },
 
-  /** {@see ShopUsers_Customers**/
+  /** {@see BPageShopCrmCustomers**/
   shop_customers: {
     title: "Customers Management",
 
@@ -5508,7 +5508,7 @@ export default {
     total_7_days: "Total orders in last 7 days",
   },
 
-  /** @see DropShippingSelectProducts **/
+  /** @see BProductAddDropshipping **/
   dropshipping_products: {
     no_shops:
       "Sorry, no store found. There will be more stores in the future so you can put their products in your store.",

@@ -589,7 +589,7 @@ export default {
 
     /** {@see ShopProcessCenter} **/
     orders: {
-      /** {@see ShopProcessCenterTemplate} **/
+      /** {@see BShopProcessCenterList} **/
       physical: {
         waiting_message: "در حال دریافت اطلاعات... لطفا منتظر بمانید",
         rejected: "رد شده است",
@@ -846,7 +846,7 @@ export default {
       },
     }, // End of logistic
 
-    /** {@see ShopUsers} **/
+    /** {@see BPageShopCrm} **/
     users: {
       menu: {
         customers: "مشتریان",
@@ -1274,7 +1274,7 @@ export default {
     category_input_no_category: "بدون دسته بندی",
   },
 
-  /** {@see BProductAdd} **/
+  /** {@see BProductAddFull} **/
   add_product: {
     title_new: "محصول جدید",
     title_new_category: "دسته بندی جدید",
@@ -5178,7 +5178,7 @@ export default {
         "با یک کلیک بات فروشگاهی برای خود خواهید ساخت. مشتریانتان از طریق این بات قادر به خرید از شما خواهند بود.",
     },
   },
-  /** {@see ShopUsers_Customers**/
+  /** {@see BPageShopCrmCustomers**/
   shop_customers: {
     title: "مدیریت کاربران",
 
@@ -5480,7 +5480,7 @@ export default {
     yesterday_order_count: "تعداد سفارشات دیروز",
     total_7_days: "مجموع سفارشات 7 روز اخیر",
   },
-  /** @see DropShippingSelectProducts **/
+  /** @see BProductAddDropshipping **/
   dropshipping_products: {
     no_shops:
       "متاسفانه فروشگاهی یافت نشد. در آینده فروشگاه های بیشتری وجود خواهند داشت تا شما محصولات آن ها را در فروشگاه خود قرار دهید.",

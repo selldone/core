@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import type { IOrderState } from "../delivery/DeliveryStateCode";
-import { DeliveryStateCode } from "../delivery/DeliveryStateCode";
+import type {IOrderState} from "../delivery/DeliveryStateCode";
+import {DeliveryStateCode} from "../delivery/DeliveryStateCode";
 
 /**
  * Enumerates the possible states of a physical order and their associated metadata.
