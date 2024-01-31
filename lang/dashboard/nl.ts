@@ -2378,7 +2378,7 @@ export default {
     "move_category": "Verplaats categorie <b>{category}</b> naar een andere categorie",
     "move_product": "Verplaats product <b>{product}</b> naar categorie",
     "product_menu": {
-      "dashboard": "Productdashboard",
+      "dashboard": "BPageProductDashboard",
       "inventory": "Inventaris en varianten"
     },
     "notifications": {

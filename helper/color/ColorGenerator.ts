@@ -26,7 +26,7 @@ function calculatePoint(
     colorStart: number;
     colorEnd: number;
     useEndAsStart?: boolean;
-  }
+  },
 ): number {
   const { colorStart, colorEnd, useEndAsStart } = colorRangeInfo;
   return useEndAsStart
@@ -44,7 +44,7 @@ function calculatePoint(
 export function interpolateColors(
   dataLength: number,
   colorScale: (point: number) => string,
-  colorRangeInfo: { colorStart: number; colorEnd: number }
+  colorRangeInfo: { colorStart: number; colorEnd: number },
 ): string[] {
   const { colorStart, colorEnd } = colorRangeInfo;
   const colorRange = colorEnd - colorStart;
@@ -59,6 +59,7 @@ export function interpolateColors(
 
   return colorArray;
 }
+
 export const colorSet1: string[] = [
   "#e6194B",
   "#3cb44b",
@@ -145,6 +146,7 @@ export const standardDesignColor: string[] = [
   "#000",
   "#fff",
 ];
+
 /**
  * Convert a string to a color.
  * @param str The input string.

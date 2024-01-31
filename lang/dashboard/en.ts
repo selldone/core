@@ -182,7 +182,7 @@ export default {
     },
   },
 
-  /** @see SupportMenu **/
+  /** @see BSupportMenu **/
   support: {
     request: "Request support",
 
@@ -1571,7 +1571,7 @@ export default {
     },
   },
 
-  /** {@see ProductAdminPage} **/
+  /** {@see BPageProduct} **/
   product_admin: {
     products_list: "Product List",
     product: "Product",
@@ -1586,9 +1586,9 @@ export default {
       drop_shipping: "Dropshipping",
     },
 
-    /** {@see ProductDashboard} **/
+    /** {@see BPageProductDashboard} **/
     dashboard: {
-      /** {@see ProductInfoWidget} **/
+      /** {@see BProductInfoAbstractView} **/
       info: {
         title: "Profile",
         title_small: "Product",
@@ -1599,7 +1599,7 @@ export default {
         outputs: "Output information",
         user_data_form: "Buyer Information Form",
       },
-      /** {@see ProductActiveOrdersWidget} **/
+      /** {@see BProductOrdersAbstractView} **/
       orders: {
         title: "Orders",
         title_small: "Unprocessed",
@@ -1609,7 +1609,7 @@ export default {
         virtual_orders_title: "This product's orders awaiting completion", // todo: remove!?
       },
 
-      /** {@see ProductInventoryWidget} **/
+      /** {@see BProductInventoryAbstractView} **/
       inventory: {
         title: "Inventory",
         title_small: "Warehouse",
@@ -5527,7 +5527,7 @@ export default {
     },
   },
 
-  /** @see ProductDropShippingMiddleSellerWidget **/
+  /** @see BProductDropshippingAbstractView **/
   product_dropshipping: {
     need_re_enable:
       "This product has been changed by the original seller, these price changes have disabled the product in your store. Check the changes and if you agree to reactivate the product, press the button below.",

@@ -45,29 +45,7 @@ export class StorefrontLocalStorages {
   static GetSeenPopups($localstorage_base_path: string): string {
     return `${$localstorage_base_path}seen-pops`;
   }
-  // ▀▀▀▀▀▀▀▀▀ Product Cache Tags ▀▀▀▀▀▀▀▀▀
 
-  static GetProductCachedTags(
-    $localstorage_base_path: string
-  ): string[] | null {
-    const val = localStorage.getItem(`${$localstorage_base_path}product-tags`);
-    if (!val) return null;
-    return val.split(",");
-  }
-
-  static SetProductCachedTags(
-    $localstorage_base_path: string,
-    tags: string[]
-  ): void {
-    if (!tags || !Array.isArray(tags)) return;
-    const val = this.GetProductCachedTags($localstorage_base_path) || [];
-    val.unshift(...tags);
-    const uniqueTags = Array.from(new Set(val)).slice(0, 20);
-    localStorage.setItem(
-      `${$localstorage_base_path}product-tags`,
-      uniqueTags.join(",")
-    );
-  }
 
   // ▀▀▀▀▀▀▀▀▀ 🥶 Guest ▀▀▀▀▀▀▀▀▀
   static SetShopGuestCode(code: string): void {

@@ -719,6 +719,7 @@ export default {
     video: "Video",
     ends_in: "Ends in",
     current: "Current",
+    important:'Important',
   },
   difficulties: {
     very_complicated: "Very complicated",

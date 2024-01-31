@@ -74,7 +74,7 @@ const MENTION_NOTE: INotificationType = {
     if (!shop) return null;
     return notification.data?.note?.target_type === "product"
       ? {
-          name: "ProductDashboard",
+          name: "BPageProductDashboard",
           params: {
             shop_id: shop.id,
             product_id: notification.data.note.target_id,

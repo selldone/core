@@ -718,6 +718,7 @@ export default {
     video: "ویدئو",
     ends_in: "تا پایان",
     current: "فعلی",
+    important:'مهم',
 
   },
 

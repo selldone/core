@@ -156,7 +156,7 @@ export default {
     },
   },
 
-  /** @see SupportMenu **/
+  /** @see BSupportMenu **/
   support: {
     request: "درخواست پشتیبانی",
 
@@ -1528,7 +1528,7 @@ export default {
     },
   },
 
-  /** {@see ProductAdminPage} **/
+  /** {@see BPageProduct} **/
   product_admin: {
     products_list: "لیست محصولات",
     product: "محصول",
@@ -1543,9 +1543,9 @@ export default {
       drop_shipping: "دراپ شیپینگ",
     },
 
-    /** {@see ProductDashboard} **/
+    /** {@see BPageProductDashboard} **/
     dashboard: {
-      /** {@see ProductInfoWidget} **/
+      /** {@see BProductInfoAbstractView} **/
       info: {
         title: "مشخصات",
         title_small: "محصول",
@@ -1556,7 +1556,7 @@ export default {
         outputs: "اطلاعات خروجی",
         user_data_form: "فرم اطلاعات خریدار",
       },
-      /** {@see ProductActiveOrdersWidget} **/
+      /** {@see BProductOrdersAbstractView} **/
       orders: {
         title: "سفارشات",
         title_small: "پردازش نشده",
@@ -1566,7 +1566,7 @@ export default {
         virtual_orders_title: "سفارشات این کالا که در انتظار تکمیل هستند",
       },
 
-      /** {@see ProductInventoryWidget} **/
+      /** {@see BProductInventoryAbstractView} **/
       inventory: {
         title: "موجودی",
         title_small: "انبار",
@@ -5498,7 +5498,7 @@ export default {
     },
   },
 
-  /** @see ProductDropShippingMiddleSellerWidget **/
+  /** @see BProductDropshippingAbstractView **/
   product_dropshipping: {
     need_re_enable:
       "این کالا توسط فروشنده اصلی تغییر کرده است، این تغییرات در قیمت موجب غیر فعال شدن محصول در فروشگاه شما شده است. تغییرات را بررسی نمایید و در صورت موافقت با فعال شدن مجدد محصول، کلید زیر را بزنید.",
