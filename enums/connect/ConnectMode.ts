@@ -26,13 +26,12 @@ export const ConnectMode = {
       ProviderWebhooks.sync_product,
       ProviderWebhooks.sync_customers,
     ],
-    access:[
+    access: [
       ConnectScope.read_categories,
       ConnectScope.read_products,
       ConnectScope.read_customers,
-
     ],
-    available:false,
+    available: false,
   },
   Dropshipping: {
     code: "Dropshipping",
@@ -47,14 +46,13 @@ export const ConnectMode = {
       ProviderWebhooks.get_order,
       ProviderWebhooks.cancel_order,
     ],
-    access:[
+    access: [
       ConnectScope.read_categories,
       ConnectScope.read_products,
       ConnectScope.read_orders,
       ConnectScope.write_orders,
-
     ],
-    available:true,   // Available for public to select as provider mode
+    available: true, // Available for public to select as provider mode
   },
   Marketplace: {
     code: "Marketplace",
@@ -68,12 +66,8 @@ export const ConnectMode = {
       ProviderWebhooks.cancel_order,
     ],
 
-    access:[
-      ConnectScope.read_orders,
-      ConnectScope.write_orders,
-
-    ],
-    available:false,
+    access: [ConnectScope.read_orders, ConnectScope.write_orders],
+    available: false,
   },
   Accounting: {
     code: "Accounting",
@@ -84,14 +78,13 @@ export const ConnectMode = {
       ProviderWebhooks.create_order,
       ProviderWebhooks.cancel_order,
     ],
-    access:[
+    access: [
       ConnectScope.write_products,
       ConnectScope.write_categories,
       ConnectScope.write_orders,
       ConnectScope.write_customers,
-
     ],
-    available:false,
+    available: false,
   },
   Other: {
     code: "Other",
@@ -107,7 +100,7 @@ export const ConnectMode = {
       ProviderWebhooks.cancel_order,
       ProviderWebhooks.sync_customers,
     ],
-    access:[
+    access: [
       ConnectScope.read_categories,
       ConnectScope.write_categories,
       ConnectScope.read_products,
@@ -116,8 +109,7 @@ export const ConnectMode = {
       ConnectScope.write_orders,
       ConnectScope.read_customers,
       ConnectScope.write_customers,
-
     ],
-    available:false,
+    available: false,
   },
 };

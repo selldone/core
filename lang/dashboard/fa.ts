@@ -1561,9 +1561,8 @@ export default {
         title: "سفارشات",
         title_small: "پردازش نشده",
         physical_orders_title: "سبدهای خریدی که این کالا در آن ها وجود دارد",
-        send_30days_title: "تعداد ارسال در 30 روز اخیر",
-        downloads_30days_title: "تعداد دانلودها در 30 روز اخیر",
-        virtual_orders_title: "سفارشات این کالا که در انتظار تکمیل هستند",
+        send_count_in_period: "تعداد ارسال بین {start} ~ {end}",
+        downloads_count_in_period: "تعداد دانلودها بین {start} ~ {end}",
       },
 
       /** {@see BProductInventoryAbstractView} **/
@@ -1572,7 +1571,7 @@ export default {
         title_small: "انبار",
         total_sell: "تعداد کل فروش",
         total_sell_today: "فروش امروز",
-        total_sell_30days: "فروش ۳۰ روز اخیر",
+        total_sell_timespan: "مجموع فروش در بازه  {start} ~ {end}",
         chart: {
           labels: ["موجودی", "فروش"],
         },
@@ -1580,10 +1579,10 @@ export default {
         subscribers_title_small: "مجموع سفارشات مشترک شده",
       },
 
-      /** {@see ProductFinanceWidget} **/
+      /** {@see BProductFinanceCharts} **/
       finance: {
         title: "مالی",
-        title_small: "گزارش خرید ۱ ماه اخیر",
+        title_small: "گزارش خرید از {start} تا {end}.",
         select_mode_title: "نمایش بر اساس",
         modes: {
           sell: "فروش",
@@ -5354,7 +5353,7 @@ export default {
     link_account_caution:
       "شما بایستی یک حساب در کیف پولتان با ارز ({currency}) را به فروشگاه خود اضافه نمایید! کلیک نمایید..",
   },
-  /** {@see ProductSellWidget} **/
+  /** {@see BProductOrderSalesPerformance} **/
   product_sell_widget: {
     title: "بازدهی فروش محصول",
   },

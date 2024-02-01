@@ -1603,10 +1603,9 @@ export default {
       orders: {
         title: "Orders",
         title_small: "Unprocessed",
-        physical_orders_title: "Shopping Carts With This Product",
-        send_30days_title: "Shipped orders in last 30 days",
-        downloads_30days_title: "File downloaded number in last 30 days",
-        virtual_orders_title: "This product's orders awaiting completion", // todo: remove!?
+        physical_orders_title: "Shopping carts with this product",
+        send_count_in_period: "Shipped orders between {start} ~ {end}",
+        downloads_count_in_period: "File downloaded count between {start} ~ {end}",
       },
 
       /** {@see BProductInventoryAbstractView} **/
@@ -1615,7 +1614,7 @@ export default {
         title_small: "Warehouse",
         total_sell: "Total Sales",
         total_sell_today: "Today Sales",
-        total_sell_30days: "Last 4 Days Sales",
+        total_sell_timespan: "Total Sales between {start} ~ {end}",
         chart: {
           labels: ["Inventory", "Sale"],
         },
@@ -1623,10 +1622,10 @@ export default {
         subscribers_title_small: "Total subscribed orders",
       },
 
-      /** {@see ProductFinanceWidget} **/
+      /** {@see BProductFinanceCharts} **/
       finance: {
         title: "Financial",
-        title_small: "Last 6 Month Purchase Report",
+        title_small: "Purchase Report between  {start} ~ {end}.",
         select_mode_title: "Show By",
         modes: {
           sell: "Sale",
@@ -5382,7 +5381,7 @@ export default {
       "Link an account ({currency}) to your shop! Click here..",
   },
 
-  /** {@see ProductSellWidget} **/
+  /** {@see BProductOrderSalesPerformance} **/
   product_sell_widget: {
     title: "Product sales performance",
   },
