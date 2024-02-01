@@ -338,7 +338,7 @@ export default {
   },
 
   widgets: {
-    /** {@see SShopDashboardFeedbacks} **/
+    /** {@see BShopDashboardFeedbackCharts} **/
     overview: {
       title: "Customers feedback",
       title_small: "overview",
@@ -1507,7 +1507,7 @@ export default {
           "First, upload your product video on Youtube, and then put the video URL here.",
       },
     },
-    /** {@see ProductEditPrice} **/
+    /** {@see BProductEditPrice} **/
     pricing: {
       edit_price: "Pricing",
       price_input: "Price",
@@ -1641,11 +1641,11 @@ export default {
         sell_yesterday: "Yesterday sales",
       },
 
-      /** {@see ProductSurveyWidget} **/
+      /** {@see BProductRatingCharts} **/
       survey: {
         title: "Product Rating",
         title_small: "Customer Satisfaction Report",
-        total_participation: "Total number of contributions",
+        total_participation: "Total contributions",
         today_participation: "Today ratings",
         last7days_participation: "Last 7 days contributions",
         chart: {
@@ -1655,7 +1655,7 @@ export default {
         },
       },
 
-      /** {@see ProductInformWidget} **/
+      /** {@see BProductMarketingAbstractView} **/
       inform: {
         title: "Customer Expectations",
         title_small: "Waiting for discounts or availability.",
@@ -1667,9 +1667,9 @@ export default {
       },
     },
 
-    /** {@see ProductInventoryPage} **/
+    /** {@see BPageProductInventory} **/
     inventory: {
-      /** {@see ProductVariantsList} **/
+      /** {@see BProductInventoryManagement} **/
       variants: {
         inventory_list: "Inventory list",
         add_variant: "Add variant",
@@ -1690,7 +1690,7 @@ export default {
         },
       },
 
-      /** {@see VirtualItemsList} **/
+      /** {@see BProductInventoryManagementVirtual} **/
       variant_item: {
         price: "price",
         same_as_product: "Similar to the main product",
@@ -1700,7 +1700,7 @@ export default {
           message: "Do you want to delete this variant?",
         },
       },
-      /** {@see ProductVariantAddEdit} **/
+      /** {@see BProductVariantAdd} **/
       variant_add_edit: {
         title: "Defining Product Variant",
         message: "Unique Product Variant Code",
@@ -1748,7 +1748,7 @@ export default {
       "Set product packaging and preparation time for all variants.",
   },
 
-  /** {@see ProductImagesList} **/
+  /** {@see BProductImagesGallery} **/
   product_images_list: {
     upload_button: "More Product Images",
     upload_an_image: "Select an image.",
@@ -2214,7 +2214,7 @@ export default {
     },
   },
 
-  /** {@see VirtualItemsList} **/
+  /** {@see BProductInventoryManagementVirtual} **/
   virtual_items_list: {
     add_virtual_item: "Add virtual item",
     add_virtual_item_desc:
@@ -5997,7 +5997,7 @@ export default {
     hyper: "Received Orders",
   },
 
-  /** {@see ProductFilesManagement} **/
+  /** {@see BProductInventoryManagementFile} **/
   product_file: {
     no_file: "No file uploaded yet!",
     delete_dialog: {

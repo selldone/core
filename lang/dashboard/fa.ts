@@ -311,7 +311,7 @@ export default {
   },
 
   widgets: {
-    /** {@see SShopDashboardFeedbacks} **/
+    /** {@see BShopDashboardFeedbackCharts} **/
     overview: {
       title: "نظرات کاربران",
       title_small: "نمای کلی",
@@ -1466,7 +1466,7 @@ export default {
           "ابتدا ویدیوی محصول خود را در یوتیوب آپلود کنید و سپس آدرس ویدیو یا شناسه ویدیو را در اینجا قرار دهید.",
       },
     },
-    /** {@see ProductEditPrice} **/
+    /** {@see BProductEditPrice} **/
     pricing: {
       edit_price: "قیمت گذاری",
       price_input: "قیمت",
@@ -1598,11 +1598,11 @@ export default {
         sell_yesterday: "فروش دیروز",
       },
 
-      /** {@see ProductSurveyWidget} **/
+      /** {@see BProductRatingCharts} **/
       survey: {
         title: "امتیاز محصول",
         title_small: "گزارش رضایت خریداران",
-        total_participation: "تعداد کل مشارکت",
+        total_participation: "کل مشارکت",
         today_participation: "مشارکت امروز",
         last7days_participation: "مشارکت هفت روز اخیر",
         chart: {
@@ -1612,7 +1612,7 @@ export default {
         },
       },
 
-      /** {@see ProductInformWidget} **/
+      /** {@see BProductMarketingAbstractView} **/
       inform: {
         title: "انتظارات مشتریان",
         title_small: "در انتظار تخفیف یا موجود شدن",
@@ -1624,9 +1624,9 @@ export default {
       },
     },
 
-    /** {@see ProductInventoryPage} **/
+    /** {@see BPageProductInventory} **/
     inventory: {
-      /** {@see ProductVariantsList} **/
+      /** {@see BProductInventoryManagement} **/
       variants: {
         inventory_list: "لیست موجودی",
         add_variant: "افزودن تنوع محصول",
@@ -1647,7 +1647,7 @@ export default {
         },
       },
 
-      /** {@see VirtualItemsList} **/
+      /** {@see BProductInventoryManagementVirtual} **/
       variant_item: {
         price: "قیمت",
         same_as_product: "مشابه محصول اصلی",
@@ -1657,7 +1657,7 @@ export default {
           message: "آیا می خواهید این دسته از کالا را حذف نمایید؟",
         },
       },
-      /** {@see ProductVariantAddEdit} **/
+      /** {@see BProductVariantAdd} **/
       variant_add_edit: {
         title: "تعریف تنوع محصول",
         message: "شماره یکتای نوع محصول",
@@ -1706,7 +1706,7 @@ export default {
       "زمان بسته بندی و آماده سازی محصول را برای همه تنوع ها تنظیم کنید.",
   },
 
-  /** {@see ProductImagesList} **/
+  /** {@see BProductImagesGallery} **/
   product_images_list: {
     upload_button: "تصویرهای بیشتر محصول",
     upload_an_image: "یک تصویر انتخاب نمایید.",
@@ -2172,7 +2172,7 @@ export default {
     },
   },
 
-  /** {@see VirtualItemsList} **/
+  /** {@see BProductInventoryManagementVirtual} **/
   virtual_items_list: {
     add_virtual_item: "افزودن آیتم مجازی",
     add_virtual_item_desc:
@@ -5963,7 +5963,7 @@ export default {
     hyper: "سفارشات دریافتی",
   },
 
-  /** {@see ProductFilesManagement} **/
+  /** {@see BProductInventoryManagementFile} **/
   product_file: {
     no_file: "هیچ فایلی آپلود نشده است!",
     delete_dialog: {
