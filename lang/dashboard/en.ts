@@ -1721,7 +1721,7 @@ export default {
       },
     },
 
-    /** {@see ProductAdminEditArticle} **/
+    /** {@see BPageProductArticle} **/
     edit_article: {
       menu: {
         tags: "Tags",
