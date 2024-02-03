@@ -2240,7 +2240,7 @@ export default {
     },
   },
 
-  /** {@see AddVirtualItem} **/
+  /** {@see BProductVirtualItemAdd} **/
   add_virtual_item: {
     title_edit: "Edit values",
     title_add: "Add item to product",

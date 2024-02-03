@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@core/server/SetupService";
-import { Shop } from "../models/shop/shop.model";
-import { Product } from "../models/shop/product/product.model";
+import {SetupService} from "@core/server/SetupService";
+import {Shop} from "../models/shop/shop.model";
+import {Product} from "../models/shop/product/product.model";
 
 export class URLS {
   selldone_url = "";
@@ -29,6 +29,7 @@ export class URLS {
   MainServiceUrl() {
     return `${this.selldone_url}`;
   }
+
   StripeLandingLoginPage() {
     return `${this.selldone_url}/stripe/login`;
   }
@@ -49,7 +50,7 @@ export class URLS {
     shop_name: string,
     product_id: string | number,
     variant_id: string | number,
-    folder_name: string
+    folder_name: string,
   ) {
     return `${this.selldone_iframe_url}/@${shop_name}/ar/${product_id}/${variant_id}/${folder_name}`;
   }
@@ -57,6 +58,7 @@ export class URLS {
   CommunityPostUrl(base_url: string, post_id: string | number) {
     return `${base_url}/community/posts/${post_id}`;
   }
+
   CommunityPostEmbedUrl(base_url: string, post_id: string | number) {
     return `${base_url}/community/posts/${post_id}/embed`;
   }
