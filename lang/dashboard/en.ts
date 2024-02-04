@@ -5544,7 +5544,7 @@ export default {
     },
   },
 
-  /** @see ProductDropShippingPage **/
+  /** @see BPageProductDropshipping **/
   product_dropshipping_admin: {
     title: "Dropshipping",
     save_alert:
@@ -5970,7 +5970,7 @@ export default {
     tax_add_messages: "Tax should be added to the final price.",
   },
 
-  /** {@see ProductHyperPage} **/
+  /** {@see BPageProductHyper} **/
   /** {@see AdminShop_Channels_Hyper} **/
   hyper: {
     name: "Hyper",

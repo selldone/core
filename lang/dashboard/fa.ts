@@ -5514,7 +5514,7 @@ export default {
         "اطلاعات این محصول با اطلاعات محصول اصلی به روز رسانی شد.",
     },
   },
-  /** @see ProductDropShippingPage **/
+  /** @see BPageProductDropshipping **/
   product_dropshipping_admin: {
     title: "دراپ شیپینگ",
     save_alert:
@@ -5937,7 +5937,7 @@ export default {
     tax_add_messages: "مالیات به مبلغ نهایی افزوده شود.",
   },
 
-  /** {@see ProductHyperPage} **/
+  /** {@see BPageProductHyper} **/
   /** {@see AdminShop_Channels_Hyper} **/
   hyper: {
     name: "هایپر",
