@@ -73,7 +73,7 @@ export default {
 
   // ------------------ Pages Title ------------------
   page_titles: {
-    home: "Selldone ┆ The Business Operating System For Fast-growing Companies",
+    home: "Selldone ╏ The Business Operating System For Fast-growing Companies",
     login: "Login",
     register: "Register",
     auth_2fa: "2 factor Authenticate 🔐",
@@ -83,22 +83,22 @@ export default {
     my_stores: "My Stores",
     roles: "My Roles",
     wallet: "My Wallets",
-    personal_info: "Personal Info ┆ KYC",
+    personal_info: "Personal Info ╏ KYC",
     companies: "My Companies",
     access_control: "Access Control",
     security_center: "Security Center",
     gifts: {
-      received: "Gifts ┆ Received",
-      send: "Gifts ┆ Sent",
+      received: "Gifts ╏ Received",
+      send: "Gifts ╏ Sent",
     },
     monetization: {
-      linked_accounts: "Monetization ┆ Linked Accounts",
-      plans: "Monetization ┆ Plan & Links",
+      linked_accounts: "Monetization ╏ Linked Accounts",
+      plans: "Monetization ╏ Plan & Links",
     },
     affiliate: "Affiliate",
     avocado: "Avocado — Modern Social Sales Channel",
     guild: "Guild — Collective Sales Channel",
-    partners_login: "Partners ┆ Client login",
+    partners_login: "Partners ╏ Client login",
   },
 
   /** NOT USED! */
@@ -530,7 +530,6 @@ export default {
           customers: "Total customers",
         },
       },
-
 
       /** {@see SShopDashboardPerformance} **/
       performance: {
@@ -1009,7 +1008,8 @@ export default {
       /** {@see AdminShopApps_List} **/
       my_apps: {
         title: "Applications",
-        subtitle: "Discover the ease of managing your business applications with Selldone App Store. Our platform offers a comprehensive suite of tools designed to optimize your business operations. From innovative management solutions to productivity-boosting apps, Selldone provides a seamless experience for businesses seeking efficiency and growth.",
+        subtitle:
+          "Discover the ease of managing your business applications with Selldone App Store. Our platform offers a comprehensive suite of tools designed to optimize your business operations. From innovative management solutions to productivity-boosting apps, Selldone provides a seamless experience for businesses seeking efficiency and growth.",
         all: "All",
       },
       /** {@see SBackofficeAppStoreShop} **/
@@ -1327,7 +1327,7 @@ export default {
       title: "Choose your product or service type.",
     },
 
-    /** {@see ProductEditInfo} **/
+    /** {@see BProductEditInfo} **/
     edit_info: {
       category_input: "Category",
       product_name: "Product name*",
@@ -1384,7 +1384,7 @@ export default {
       },
     },
 
-    /** {@see ProductEditRatingsProsCons} **/
+    /** {@see BProductEditFeatures} **/
     rating_pros_cons: {
       title: "Survey",
       message:
@@ -1453,7 +1453,7 @@ export default {
       },
     },
 
-    /** {@see ProductEditSpec} **/
+    /** {@see BProductEditInputs} **/
     edit_spec: {
       title: "Technical Specifications",
       sub_title: "You can import technical secifications of similar products.",
@@ -1486,7 +1486,7 @@ export default {
         spec_saved_success: "Product specifications saved.",
       },
     },
-    /** {@see ProductEditImages} **/
+    /** {@see BProductEditImages} **/
     edit_images: {
       title: "Main image",
       main_image_input_nodata: "Upload product image.",
@@ -1546,7 +1546,7 @@ export default {
       inputs_form: "Input Form Structure",
     },
 
-    /** {@see ProductEditExtra} **/
+    /** {@see BProductEditExtra} **/
     extra_edit: {
       physical: {
         title: "Shipping Information",
@@ -1605,7 +1605,8 @@ export default {
         title_small: "Unprocessed",
         physical_orders_title: "Shopping carts with this product",
         send_count_in_period: "Shipped orders between {start} ~ {end}",
-        downloads_count_in_period: "File downloaded count between {start} ~ {end}",
+        downloads_count_in_period:
+          "File downloaded count between {start} ~ {end}",
       },
 
       /** {@see BProductInventoryAbstractView} **/
@@ -2054,7 +2055,8 @@ export default {
         simple: "Simple",
         dark_input: "Dark theme?",
         icon_input: "Icon",
-        icon_input_hint: "Material Design Icon Name or Fontawsom: fa:fas fa-star",
+        icon_input_hint:
+          "Material Design Icon Name or Fontawsom: fa:fas fa-star",
         anim_input: "Animation Address",
         anim_input_message: "Lottie animation file URL",
         preview: "Preview",
@@ -2176,7 +2178,7 @@ export default {
     description_input: "Store description",
     description_input_message: "Write a brief description about your business.",
     description_input_tips:
-        "This description will appear in your store's footer and will also be used as the default meta tag description for your store pages.",
+      "This description will appear in your store's footer and will also be used as the default meta tag description for your store pages.",
     address_input: "Store Address",
     address_input_message: "Enter exact store location address",
 
@@ -2358,7 +2360,7 @@ export default {
       waiting_for_pay: "Pending payment",
       processing_payment: "Processing payment",
       processing_cancel: "Payment canceled",
-      require_capture:'Require capture',
+      require_capture: "Require capture",
       paid: "Paid",
       cod_pay_info:
         "When you have received the order from the customer you can confirm payment and complete the order.",
@@ -2894,7 +2896,7 @@ export default {
     "connect-confirmed": "The order was confirmed.",
 
     "email-vendor":
-      "🔔 Order inform email has been sent to <b>{vendor}</b> ┆ {email}.",
+      "🔔 Order inform email has been sent to <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Payout to vendor.",
   },
 
@@ -3797,7 +3799,7 @@ export default {
 
   /** {@see PriceCalculator} **/
   price_calculator: {
-    title: "Calculator ┆ Fit to your business",
+    title: "Calculator ╏ Fit to your business",
     description:
       "Calculate and choose the best plan based on your monthly sales:",
     sale_input: "Monthly sales amount",
@@ -4071,7 +4073,7 @@ export default {
     access: "Access",
     template: "Template",
     feedback: "Feedback",
-    date_time:'Date & Time',
+    date_time: "Date & Time",
 
     company: "Company",
     company_message: "If you have company and want to publish apps.",
@@ -4731,13 +4733,13 @@ export default {
     tax_number_message:
       "Enter your tax number. This registration number will be recorded in the buyer's invoice.",
 
-    tax_included_in_price_input: "Included ┆ Tax included in products price",
+    tax_included_in_price_input: "Included ╏ Tax included in products price",
     tax_included_in_price_message:
       "Select this option if you include the tax amount in the price of your product. The tax amount will be calculated with the following formula.",
     tax_included_in_price_formula:
       "Tax = (price * VAT) / (1 + VAT), for example, the amount of tax for a product at a price of 100$ with a value added rate of 10% becomes 9.09$.",
 
-    tax_exclude_title: "Excluded ┆ Tax will be added at checkout",
+    tax_exclude_title: "Excluded ╏ Tax will be added at checkout",
     tax_excluded_message:
       "The taxes will be calculated before the payments during the checkout and added to the excluded tax price depending on your customer evidence.",
 
@@ -5823,7 +5825,7 @@ export default {
     },
   },
 
-  /** {@see ProductEditOutputs} **/
+  /** {@see BProductEditOutputs} **/
   product_outputs: {
     outputs_form: "Output Form structure",
 
@@ -6409,12 +6411,12 @@ export default {
   product_status: {
     open: {
       name: "Active",
-      title: "Active ┆ Online & Offline Sales",
+      title: "Active ╏ Online & Offline Sales",
       description: "This product will be available for online orders.",
     },
     close: {
       name: "Inactive",
-      title: "Inactive ┆ Only Offline Sales",
+      title: "Inactive ╏ Only Offline Sales",
       description: "This product will not be available for online orders.",
     },
     pending: {
@@ -7028,5 +7030,39 @@ export default {
         "Take a spin and let the fortune decide your prize!",
       ],
     },
+
+    /**
+     * Subscription Price
+     */
+    subscription_price: {
+      title: [
+        "Basic Access",
+        "Premium Membership",
+        "Gold Package",
+        "Silver Plan",
+        "Platinum Subscription",
+        "Enterprise Tier",
+        "Starter Bundle",
+        "Unlimited Offer",
+        "Family Pack",
+        "Professional Suite",
+      ],
+      description: [
+        "Ideal for individuals exploring the basics.",
+        "Access to all premium features and content.",
+        "Exclusive benefits and priority support.",
+        "A balanced package for regular users.",
+        "Ultimate access with top-tier perks.",
+        "Custom solutions for large organizations.",
+        "An affordable entry-level option.",
+        "No limits on usage, for the power user.",
+        "A special plan for families, up to 4 members.",
+        "Designed for professionals seeking advanced tools.",
+      ],
+    },
+
+
+
+
   },
 };

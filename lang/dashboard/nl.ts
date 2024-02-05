@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Verkocht ┆ Het zakelijke besturingssysteem voor snelgroeiende bedrijven",
+    "home": "Verkocht ╏ Het zakelijke besturingssysteem voor snelgroeiende bedrijven",
     "login": "Log in",
     "register": "Register",
     "auth_2fa": "2-factor authenticatie",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Mijn winkels",
     "roles": "Mijn rollen",
     "wallet": "Mijn portemonnee",
-    "personal_info": "Persoonlijke informatie ┆ KYC",
+    "personal_info": "Persoonlijke informatie ╏ KYC",
     "companies": "Mijn bedrijven",
     "access_control": "Toegangscontrole",
     "security_center": "Beveiligings centrum",
     "gifts": {
-      "received": "Geschenken ┆ Hebben ontvangen",
-      "send": "Geschenken ┆ Verzonden"
+      "received": "Geschenken ╏ Hebben ontvangen",
+      "send": "Geschenken ╏ Verzonden"
     },
     "monetization": {
-      "linked_accounts": "Inkomsten genereren ┆ Gelinkte accounts",
-      "plans": "Inkomsten genereren ┆ Plan & Links"
+      "linked_accounts": "Inkomsten genereren ╏ Gelinkte accounts",
+      "plans": "Inkomsten genereren ╏ Plan & Links"
     },
     "affiliate": "partner",
     "avocado": "Avocado — Modern sociaal verkoopkanaal",
     "guild": "Gilde — Collectief verkoopkanaal",
-    "partners_login": "Partners ┆ Klant login"
+    "partners_login": "Partners ╏ Klant login"
   },
   "blank_is_all_products": "Laat leeg om alle producten op te nemen!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Tijdens de orderverwerking kan het geleverde bedrag afwijken van het bestelde bedrag. Het systeem berekent dit verschil automatisch en registreert het als uw schuld aan de klant, die kan worden verrekend met de volgende bestellingen.",
       "status_list": {
         "active": {
-          "title": "Actief ┆ Online en offline verkoop",
+          "title": "Actief ╏ Online en offline verkoop",
           "description": "Dit product zal beschikbaar zijn voor online bestellingen."
         },
         "inactive": {
-          "title": "Inactief ┆ Alleen offline verkoop",
+          "title": "Inactief ╏ Alleen offline verkoop",
           "description": "Dit product is niet beschikbaar voor online bestellingen."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "De bestelling werd in de wacht gezet. {reason}",
     "connect-remove-hold": "De bestelling is uit de wacht gehaald. {reason}",
     "connect-confirmed": "De bestelling is bevestigd.",
-    "email-vendor": "🔔 Bestelinformatie e-mail is verzonden naar <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Bestelinformatie e-mail is verzonden naar <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Uitbetaling aan leverancier."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Rekenmachine ┆ Passend bij uw bedrijf",
+    "title": "Rekenmachine ╏ Passend bij uw bedrijf",
     "description": "Bereken en kies het beste abonnement op basis van uw maandelijkse verkopen:",
     "sale_input": "Maandelijks verkoopbedrag",
     "hypernova_plan": "Vraag Hypernova %0 aan!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Winkellocaties Instellingen",
     "save_alert": "Instellingen worden niet opgeslagen!",
     "pos_tax_setting": "POS BTW-instellingen",
-    "tax_exclude_title": "Uitgesloten ┆ Belasting wordt toegevoegd bij het afrekenen",
+    "tax_exclude_title": "Uitgesloten ╏ Belasting wordt toegevoegd bij het afrekenen",
     "tax_excluded_message": "De belastingen worden berekend vóór de betalingen tijdens het afrekenen en opgeteld bij de prijs van de uitgesloten belastingen, afhankelijk van uw klantbewijs."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Actief",
-      "title": "Actief ┆ Online en offline verkoop",
+      "title": "Actief ╏ Online en offline verkoop",
       "description": "Dit product zal beschikbaar zijn voor online bestellingen."
     },
     "close": {
       "name": "inactief",
-      "title": "Inactief ┆ Alleen offline verkoop",
+      "title": "Inactief ╏ Alleen offline verkoop",
       "description": "Dit product is niet beschikbaar voor online bestellingen."
     },
     "pending": {

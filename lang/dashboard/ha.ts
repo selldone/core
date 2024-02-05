@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Tsarin Ayyukan Kasuwanci Don Kamfanoni masu tasowa da sauri",
+    "home": "Selldone ╏ Tsarin Ayyukan Kasuwanci Don Kamfanoni masu tasowa da sauri",
     "login": "shiga",
     "register": "Yi rijista",
     "auth_2fa": "2 Factor Authenticate 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Katunana",
     "roles": "Matsayina",
     "wallet": "Wallet na",
-    "personal_info": "Bayanan sirri ┆ KYC",
+    "personal_info": "Bayanan sirri ╏ KYC",
     "companies": "Kamfanonina",
     "access_control": "Ikon shiga",
     "security_center": "Cibiyar Tsaro",
     "gifts": {
-      "received": "Kyauta ┆ An karɓa",
-      "send": "Kyauta ┆ An aika"
+      "received": "Kyauta ╏ An karɓa",
+      "send": "Kyauta ╏ An aika"
     },
     "monetization": {
-      "linked_accounts": "Samun Kudi ┆ Lissafi masu alaƙa",
-      "plans": "Samun Kudi ┆ Shirye-shiryen & Hanyoyin haɗi"
+      "linked_accounts": "Samun Kudi ╏ Lissafi masu alaƙa",
+      "plans": "Samun Kudi ╏ Shirye-shiryen & Hanyoyin haɗi"
     },
     "affiliate": "Alaka",
     "avocado": "Avocado - Tashar Talla ta Zamani ta Zamani",
     "guild": "Guild - Tashar Talla ta Gari",
-    "partners_login": "Abokan Hulɗa ┆ Shigar abokin ciniki"
+    "partners_login": "Abokan Hulɗa ╏ Shigar abokin ciniki"
   },
   "blank_is_all_products": "Bar komai don haɗa duk samfuran!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Yayin sarrafa oda, adadin da aka kawo zai iya bambanta da adadin da aka umarce. Tsarin yana lissafin wannan bambanci ta atomatik kuma ya rubuta shi azaman bashin ku ga abokin ciniki, wanda za'a iya amfani da shi zuwa umarni na gaba.",
       "status_list": {
         "active": {
-          "title": "Mai aiki ┆ Kan layi & Kasuwancin Wasa",
+          "title": "Mai aiki ╏ Kan layi & Kasuwancin Wasa",
           "description": "Wannan samfurin zai kasance don yin odar kan layi."
         },
         "inactive": {
-          "title": "Ba aiki ┆ Tallace-tallacen Wajen Layi Kawai",
+          "title": "Ba aiki ╏ Tallace-tallacen Wajen Layi Kawai",
           "description": "Wannan samfurin ba zai kasance don yin odar kan layi ba."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "An ajiye odar. {reason}",
     "connect-remove-hold": "An cire odar daga riƙo. {reason}",
     "connect-confirmed": "An tabbatar da odar.",
-    "email-vendor": "🔔 An aika da sanarwar imel zuwa ga <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 An aika da sanarwar imel zuwa ga <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Biyan kuɗi ga mai siyarwa."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kalkuleta ┆ Daidai da kasuwancin ku",
+    "title": "Kalkuleta ╏ Daidai da kasuwancin ku",
     "description": "Yi ƙididdigewa kuma zaɓi mafi kyawun tsari dangane da tallace-tallacenku na wata-wata:",
     "sale_input": "Adadin tallace-tallace na wata-wata",
     "hypernova_plan": "Aiwatar don Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Ajiye Wuraren Saituna",
     "save_alert": "Ba a adana saituna!",
     "pos_tax_setting": "Saitunan Harajin POS",
-    "tax_exclude_title": "Banda ┆ Za a ƙara haraji a wurin biya",
+    "tax_exclude_title": "Banda ╏ Za a ƙara haraji a wurin biya",
     "tax_excluded_message": "Za a ƙididdige harajin kafin biyan kuɗi yayin biyan kuɗi kuma a ƙara zuwa farashin harajin da ba a haɗa shi ba dangane da shaidar abokin ciniki."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Mai aiki",
-      "title": "Mai aiki ┆ Kan layi & Kasuwancin Wasa",
+      "title": "Mai aiki ╏ Kan layi & Kasuwancin Wasa",
       "description": "Wannan samfurin zai kasance don yin odar kan layi."
     },
     "close": {
       "name": "mara aiki",
-      "title": "Ba aiki ┆ Tallace-tallacen Wajen Layi Kawai",
+      "title": "Ba aiki ╏ Tallace-tallacen Wajen Layi Kawai",
       "description": "Wannan samfurin ba zai kasance don yin odar kan layi ba."
     },
     "pending": {

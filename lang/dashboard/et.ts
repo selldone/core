@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Müüdud ┆ Ärioperatsioonisüsteem kiiresti kasvavatele ettevõtetele",
+    "home": "Müüdud ╏ Ärioperatsioonisüsteem kiiresti kasvavatele ettevõtetele",
     "login": "Logi sisse",
     "register": "Registreeri",
     "auth_2fa": "2-faktoriline autentimine 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Minu poed",
     "roles": "Minu rollid",
     "wallet": "Minu rahakott",
-    "personal_info": "Isiklik teave ┆ KYC",
+    "personal_info": "Isiklik teave ╏ KYC",
     "companies": "Minu ettevõtted",
     "access_control": "Juurdepääsukontroll",
     "security_center": "Turvakeskus",
     "gifts": {
-      "received": "Kingitused ┆ Vastu võetud",
-      "send": "Kingitused ┆ Saadetud"
+      "received": "Kingitused ╏ Vastu võetud",
+      "send": "Kingitused ╏ Saadetud"
     },
     "monetization": {
-      "linked_accounts": "Monetiseerimine ┆ Lingitud kontod",
-      "plans": "Monetiseerimine ┆ Plaan ja lingid"
+      "linked_accounts": "Monetiseerimine ╏ Lingitud kontod",
+      "plans": "Monetiseerimine ╏ Plaan ja lingid"
     },
     "affiliate": "Sidusettevõte",
     "avocado": "Avokaado – kaasaegne sotsiaalne müügikanal",
     "guild": "Gild – kollektiivne müügikanal",
-    "partners_login": "Partnerid ┆ Kliendi sisselogimine"
+    "partners_login": "Partnerid ╏ Kliendi sisselogimine"
   },
   "blank_is_all_products": "Kõikide toodete kaasamiseks jätke tühjaks!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Tellimuse töötlemisel võib tarnitud summa erineda tellitud summast. Süsteem arvutab selle vahe automaatselt välja ja kajastab selle Sinu võlgnevusena kliendi ees, mida saab rakendada järgmistele tellimustele.",
       "status_list": {
         "active": {
-          "title": "Aktiivne ┆ Interneti- ja võrgumüük",
+          "title": "Aktiivne ╏ Interneti- ja võrgumüük",
           "description": "See toode on saadaval veebitellimuste jaoks."
         },
         "inactive": {
-          "title": "Mitteaktiivne ┆ Ainult võrguühenduseta müük",
+          "title": "Mitteaktiivne ╏ Ainult võrguühenduseta müük",
           "description": "See toode ei ole saadaval veebipõhiste tellimuste jaoks."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Tellimus pandi ootele. {reason}",
     "connect-remove-hold": "Tellimus eemaldati ootel. {reason}",
     "connect-confirmed": "Tellimus kinnitati.",
-    "email-vendor": "🔔 Tellimuse teavitusmeil on saadetud aadressile <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Tellimuse teavitusmeil on saadetud aadressile <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Väljamakse müüjale."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kalkulaator ┆ Sobib teie ettevõttele",
+    "title": "Kalkulaator ╏ Sobib teie ettevõttele",
     "description": "Arvutage ja valige oma igakuise müügi põhjal parim plaan:",
     "sale_input": "Igakuine müügisumma",
     "hypernova_plan": "Taotle Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Kaupluse asukohad Seaded",
     "save_alert": "Seadeid ei salvestata!",
     "pos_tax_setting": "POS-maksu seaded",
-    "tax_exclude_title": "Välistatud ┆ Kassas lisandub maks",
+    "tax_exclude_title": "Välistatud ╏ Kassas lisandub maks",
     "tax_excluded_message": "Maksud arvutatakse enne makse sooritamist kassas ja lisatakse maksuvabale hinnale sõltuvalt teie kliendi tõenditest."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Aktiivne",
-      "title": "Aktiivne ┆ Interneti- ja võrgumüük",
+      "title": "Aktiivne ╏ Interneti- ja võrgumüük",
       "description": "See toode on saadaval veebitellimuste jaoks."
     },
     "close": {
       "name": "mitteaktiivne",
-      "title": "Mitteaktiivne ┆ Ainult võrguühenduseta müük",
+      "title": "Mitteaktiivne ╏ Ainult võrguühenduseta müük",
       "description": "See toode ei ole saadaval veebipõhiste tellimuste jaoks."
     },
     "pending": {

@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "注文は保留されました。 {reason}",
     "connect-remove-hold": "注文は保留から削除されました。 {reason}",
     "connect-confirmed": "注文が確認されました。",
-    "email-vendor": "🔔 注文通知メールが<b>{vendor}</b>に送信されました ┆ {email}。",
+    "email-vendor": "🔔 注文通知メールが<b>{vendor}</b>に送信されました ╏ {email}。",
     "vendor-payout": "💸ベンダーへの支払い。"
   },
   "inline_chart": {

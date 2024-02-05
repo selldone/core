@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Tez rivojlanayotgan kompaniyalar uchun biznes operatsion tizimi",
+    "home": "Selldone ╏ Tez rivojlanayotgan kompaniyalar uchun biznes operatsion tizimi",
     "login": "tizimga kirish",
     "register": "Roʻyxatdan oʻtish",
     "auth_2fa": "2 faktorli autentifikatsiya 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Mening do'konlarim",
     "roles": "Mening rollarim",
     "wallet": "Mening hamyonim",
-    "personal_info": "Shaxsiy ma'lumotlar ┆ KYC",
+    "personal_info": "Shaxsiy ma'lumotlar ╏ KYC",
     "companies": "Mening kompaniyalarim",
     "access_control": "Kirish nazorati",
     "security_center": "Xavfsizlik markazi",
     "gifts": {
-      "received": "Sovg'alar ┆ Qabul qildi",
-      "send": "Sovg'alar ┆ Yuborildi"
+      "received": "Sovg'alar ╏ Qabul qildi",
+      "send": "Sovg'alar ╏ Yuborildi"
     },
     "monetization": {
-      "linked_accounts": "Monetizatsiya ┆ Bog'langan hisoblar",
-      "plans": "Monetizatsiya ┆ Reja va havolalar"
+      "linked_accounts": "Monetizatsiya ╏ Bog'langan hisoblar",
+      "plans": "Monetizatsiya ╏ Reja va havolalar"
     },
     "affiliate": "Hamkor",
     "avocado": "Avokado - Zamonaviy ijtimoiy savdo kanali",
     "guild": "Gildiya - Kollektiv savdo kanali",
-    "partners_login": "Hamkorlar ┆ Mijoz login"
+    "partners_login": "Hamkorlar ╏ Mijoz login"
   },
   "blank_is_all_products": "Barcha mahsulotlarni kiritish uchun bo'sh qoldiring!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Buyurtmani qayta ishlash jarayonida yetkazib berilgan miqdor buyurtma qilingan summadan farq qilishi mumkin. Tizim ushbu farqni avtomatik ravishda hisoblab chiqadi va uni mijoz oldidagi qarzingiz sifatida qayd etadi, bu keyingi buyurtmalarga nisbatan qo'llanilishi mumkin.",
       "status_list": {
         "active": {
-          "title": "Faol ┆ Onlayn va oflayn savdo",
+          "title": "Faol ╏ Onlayn va oflayn savdo",
           "description": "Ushbu mahsulot onlayn buyurtmalar uchun mavjud bo'ladi."
         },
         "inactive": {
-          "title": "Faol emas ┆ Faqat oflayn savdo",
+          "title": "Faol emas ╏ Faqat oflayn savdo",
           "description": "Ushbu mahsulot onlayn buyurtmalar uchun mavjud bo'lmaydi."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Buyurtma to'xtatildi. {reason}",
     "connect-remove-hold": "Buyurtma kutishdan olib tashlandi. {reason}",
     "connect-confirmed": "Buyurtma tasdiqlandi.",
-    "email-vendor": "🔔 Buyurtma toʻgʻrisida maʼlumot elektron pochta manziliga yuborildi <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Buyurtma toʻgʻrisida maʼlumot elektron pochta manziliga yuborildi <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Sotuvchiga to'lov."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kalkulyator ┆ Sizning biznesingizga mos",
+    "title": "Kalkulyator ╏ Sizning biznesingizga mos",
     "description": "Oylik savdolaringiz asosida eng yaxshi rejani hisoblang va tanlang:",
     "sale_input": "Oylik savdo miqdori",
     "hypernova_plan": "Hypernova %0 uchun ariza topshiring!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Joylashuvlarni saqlash sozlamalari",
     "save_alert": "Sozlamalar saqlanmaydi!",
     "pos_tax_setting": "POS soliq sozlamalari",
-    "tax_exclude_title": "Chiqarilgan ┆ To'lov vaqtida soliq qo'shiladi",
+    "tax_exclude_title": "Chiqarilgan ╏ To'lov vaqtida soliq qo'shiladi",
     "tax_excluded_message": "Soliqlar hisob-kitob paytida to'lovlardan oldin hisoblab chiqiladi va sizning mijozingizning dalillariga qarab chiqarib tashlangan soliq narxiga qo'shiladi."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Faol",
-      "title": "Faol ┆ Onlayn va oflayn savdo",
+      "title": "Faol ╏ Onlayn va oflayn savdo",
       "description": "Ushbu mahsulot onlayn buyurtmalar uchun mavjud bo'ladi."
     },
     "close": {
       "name": "harakatsiz",
-      "title": "Faol emas ┆ Faqat oflayn savdo",
+      "title": "Faol emas ╏ Faqat oflayn savdo",
       "description": "Ushbu mahsulot onlayn buyurtmalar uchun mavjud bo'lmaydi."
     },
     "pending": {

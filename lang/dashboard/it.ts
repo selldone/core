@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Il sistema operativo aziendale per le aziende in rapida crescita",
+    "home": "Selldone ╏ Il sistema operativo aziendale per le aziende in rapida crescita",
     "login": "Accedi",
     "register": "Registrati",
     "auth_2fa": "Autenticazione a 2 fattori 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "I miei negozi",
     "roles": "I miei ruoli",
     "wallet": "Il mio portafoglio",
-    "personal_info": "Informazioni personali ┆ KYC",
+    "personal_info": "Informazioni personali ╏ KYC",
     "companies": "Le mie aziende",
     "access_control": "Controllo accessi",
     "security_center": "Centro di sicurezza",
     "gifts": {
-      "received": "Regali ┆ Ricevuto",
-      "send": "Regali ┆ Inviati"
+      "received": "Regali ╏ Ricevuto",
+      "send": "Regali ╏ Inviati"
     },
     "monetization": {
-      "linked_accounts": "Monetizzazione ┆ Account collegati",
-      "plans": "Monetizzazione ┆ Piano e collegamenti"
+      "linked_accounts": "Monetizzazione ╏ Account collegati",
+      "plans": "Monetizzazione ╏ Piano e collegamenti"
     },
     "affiliate": "Affiliato",
     "avocado": "Avocado — Canale di vendita sociale moderno",
     "guild": "Gilda — Canale di vendita collettivo",
-    "partners_login": "Partner ┆ Accesso cliente"
+    "partners_login": "Partner ╏ Accesso cliente"
   },
   "blank_is_all_products": "Lascia vuoto per includere tutti i prodotti!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Durante l'elaborazione dell'ordine, l'importo consegnato potrebbe differire dall'importo ordinato. Il sistema calcola automaticamente questa differenza e la registra come tuo debito verso il cliente, che può essere applicato agli ordini successivi.",
       "status_list": {
         "active": {
-          "title": "Attivo ┆ Vendite online e offline",
+          "title": "Attivo ╏ Vendite online e offline",
           "description": "Questo prodotto sarà disponibile per gli ordini online."
         },
         "inactive": {
-          "title": "inattivo ┆ Solo vendite offline",
+          "title": "inattivo ╏ Solo vendite offline",
           "description": "Questo prodotto non sarà disponibile per gli ordini online."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "L'ordine è stato sospeso. {reason}",
     "connect-remove-hold": "L'ordine è stato rimosso dalla sospensione. {reason}",
     "connect-confirmed": "L'ordine è stato confermato.",
-    "email-vendor": "🔔 L'e-mail di notifica dell'ordine è stata inviata a <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 L'e-mail di notifica dell'ordine è stata inviata a <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Pagamento al venditore."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Calcolatrice ┆ Adatta alla tua attività",
+    "title": "Calcolatrice ╏ Adatta alla tua attività",
     "description": "Calcola e scegli il miglior piano in base alle tue vendite mensili:",
     "sale_input": "Importo mensile delle vendite",
     "hypernova_plan": "Richiedi Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Impostazioni delle posizioni dei negozi",
     "save_alert": "Le impostazioni non vengono salvate!",
     "pos_tax_setting": "Impostazioni fiscali POS",
-    "tax_exclude_title": "Escluso ┆ L'imposta verrà aggiunta al momento del pagamento",
+    "tax_exclude_title": "Escluso ╏ L'imposta verrà aggiunta al momento del pagamento",
     "tax_excluded_message": "Le tasse verranno calcolate prima dei pagamenti durante il checkout e aggiunte al prezzo IVA esclusa in base alle prove del cliente."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Attivo",
-      "title": "Attivo ┆ Vendite online e offline",
+      "title": "Attivo ╏ Vendite online e offline",
       "description": "Questo prodotto sarà disponibile per gli ordini online."
     },
     "close": {
       "name": "inattivo",
-      "title": "inattivo ┆ Solo vendite offline",
+      "title": "inattivo ╏ Solo vendite offline",
       "description": "Questo prodotto non sarà disponibile per gli ordini online."
     },
     "pending": {

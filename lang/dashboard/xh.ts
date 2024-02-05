@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Inkqubo yokuSebenza kweShishini kwiiNkampani ezikhula ngokukhawuleza",
+    "home": "Selldone ╏ Inkqubo yokuSebenza kweShishini kwiiNkampani ezikhula ngokukhawuleza",
     "login": "Ngema",
     "register": "Bhalisa",
     "auth_2fa": "2 into eqinisekisayo 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Iivenkile Zam",
     "roles": "Iindima zam",
     "wallet": "Isipaji sam",
-    "personal_info": "Ulwazi Lomntu ┆ I-KYC",
+    "personal_info": "Ulwazi Lomntu ╏ I-KYC",
     "companies": "IiNkampani zam",
     "access_control": "Ulawulo lokuFikelela",
     "security_center": "Iziko loKhuseleko",
     "gifts": {
-      "received": "Izipho ┆ Yamkelwe",
-      "send": "Izipho ┆ Ithunyelwe"
+      "received": "Izipho ╏ Yamkelwe",
+      "send": "Izipho ╏ Ithunyelwe"
     },
     "monetization": {
-      "linked_accounts": "Ukwenza imali ┆ Iiakhawunti eziDityanisiweyo",
-      "plans": "Ukwenza imali ┆ Isicwangciso & Unxulumano"
+      "linked_accounts": "Ukwenza imali ╏ Iiakhawunti eziDityanisiweyo",
+      "plans": "Ukwenza imali ╏ Isicwangciso & Unxulumano"
     },
     "affiliate": "Affiliate",
     "avocado": "Iavokhado — Ijelo lezentengiso lezeNtlalo langoku",
     "guild": "Umbutho - Umjelo woThengiso oDibeneyo",
-    "partners_login": "Amaqabane ┆ Ukungena komthengi"
+    "partners_login": "Amaqabane ╏ Ukungena komthengi"
   },
   "blank_is_all_products": "Shiya kungenanto ukubandakanya zonke iimveliso!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Ngethuba lokucwangciswa kwe-oda, isixa esizisiweyo sinokuhluka kwisixa esimiselweyo. Inkqubo ibala ngokuzenzekelayo lo mahluko kwaye irekhode njengetyala lakho kumthengi, elinokuthi lisetyenziswe kwii-odolo ezilandelayo.",
       "status_list": {
         "active": {
-          "title": "Iyasebenza ┆ Intengiso kwi-Intanethi kunye neOffline",
+          "title": "Iyasebenza ╏ Intengiso kwi-Intanethi kunye neOffline",
           "description": "Le mveliso iya kufumaneka kwiiodolo ze-intanethi."
         },
         "inactive": {
-          "title": "Ayisebenzi ┆ Kuphela iNtengiso ngaphandle kweintanethi",
+          "title": "Ayisebenzi ╏ Kuphela iNtengiso ngaphandle kweintanethi",
           "description": "Le mveliso ayizukufumaneka kwiiodolo ze-intanethi."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Umyalelo uye wamiswa. {reason}",
     "connect-remove-hold": "Umyalelo ususiwe ekubanjweni. {reason}",
     "connect-confirmed": "Umyalelo waqinisekiswa.",
-    "email-vendor": "🔔 I-imeyile yokwazisa nge-odolo ithunyelwe ku- <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 I-imeyile yokwazisa nge-odolo ithunyelwe ku- <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Intlawulo kumthengisi."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Isibali-manani ┆ Ilungele ishishini lakho",
+    "title": "Isibali-manani ╏ Ilungele ishishini lakho",
     "description": "Bala kwaye ukhethe esona sicwangciso sisekwe kwintengiso yakho yenyanga:",
     "sale_input": "Imali yentengiso yenyanga",
     "hypernova_plan": "Faka isicelo seHypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Gcina iindawo Useto",
     "save_alert": "Iisetingi azigcinwanga!",
     "pos_tax_setting": "Iisetingi zeRhafu ye-POS",
-    "tax_exclude_title": "Ayibandakanywanga ┆ Irhafu iya kongezwa ekuphumeni",
+    "tax_exclude_title": "Ayibandakanywanga ╏ Irhafu iya kongezwa ekuphumeni",
     "tax_excluded_message": "Iirhafu ziya kubalwa phambi kweentlawulo ngexesha lokuphuma kwaye zongezwe kwixabiso lerhafu elingabandakanyiyo ngokuxhomekeke kubungqina bakho bomthengi."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Iyasebenza",
-      "title": "Iyasebenza ┆ Intengiso kwi-Intanethi kunye neOffline",
+      "title": "Iyasebenza ╏ Intengiso kwi-Intanethi kunye neOffline",
       "description": "Le mveliso iya kufumaneka kwiiodolo ze-intanethi."
     },
     "close": {
       "name": "engasebenziyo",
-      "title": "Ayisebenzi ┆ Kuphela iNtengiso ngaphandle kweintanethi",
+      "title": "Ayisebenzi ╏ Kuphela iNtengiso ngaphandle kweintanethi",
       "description": "Le mveliso ayizukufumaneka kwiiodolo ze-intanethi."
     },
     "pending": {

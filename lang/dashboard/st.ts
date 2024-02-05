@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Sistimi ea Ts'ebetso ea Khoebo Bakeng sa Likhamphani tse holang ka potlako",
+    "home": "Selldone ╏ Sistimi ea Ts'ebetso ea Khoebo Bakeng sa Likhamphani tse holang ka potlako",
     "login": "kena",
     "register": "Ngodisa",
     "auth_2fa": "2 factor Netefatsa 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Mabenkele a Ka",
     "roles": "Likarolo tsa ka",
     "wallet": "Sepache sa ka",
-    "personal_info": "Litaba tsa hau ┆ KYC",
+    "personal_info": "Litaba tsa hau ╏ KYC",
     "companies": "Lik'hamphani Tsa Ka",
     "access_control": "Taolo ea ho fihlella",
     "security_center": "Setsi sa Tšireletso",
     "gifts": {
-      "received": "Limpho ┆ E amohetse",
-      "send": "Limpho ┆ E rometsoe"
+      "received": "Limpho ╏ E amohetse",
+      "send": "Limpho ╏ E rometsoe"
     },
     "monetization": {
-      "linked_accounts": "Ho etsa chelete ┆ Liakhaonto Tse Hokahantsoeng",
-      "plans": "Ho etsa chelete ┆ Moralo & Lihokelo"
+      "linked_accounts": "Ho etsa chelete ╏ Liakhaonto Tse Hokahantsoeng",
+      "plans": "Ho etsa chelete ╏ Moralo & Lihokelo"
     },
     "affiliate": "Affiliate",
     "avocado": "Avocado - Setsi sa Kajeno sa Khoebo ea Sechaba",
     "guild": "Mokhatlo - Collective Sales Channel",
-    "partners_login": "Balekane ┆ Ho kena ho moreki"
+    "partners_login": "Balekane ╏ Ho kena ho moreki"
   },
   "blank_is_all_products": "Tlohela letho ho kenyelletsa lihlahisoa tsohle!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Nakong ea ts'ebetso ea taelo, chelete e fanoeng e ka 'na ea fapana le chelete e laetsoeng. Sistimi e bala phapang ena ka bo eona ebe e e tlaleha e le molato oa hau ho moreki, o ka sebelisoang ho litaelo tse latelang.",
       "status_list": {
         "active": {
-          "title": "E sebetsa ┆ Marang-rang & Offline Thekiso",
+          "title": "E sebetsa ╏ Marang-rang & Offline Thekiso",
           "description": "Sehlahisoa sena se tla fumaneha bakeng sa liodara tsa inthaneteng."
         },
         "inactive": {
-          "title": "E sa sebetseng ┆ Feela Offline Thekiso",
+          "title": "E sa sebetseng ╏ Feela Offline Thekiso",
           "description": "Sehlahisoa sena se ke ke sa fumaneha bakeng sa liodara tsa Marang-rang."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Taelo e ile ea emisoa. {reason}",
     "connect-remove-hold": "Taelo e ile ea tlosoa. {reason}",
     "connect-confirmed": "Taelo e ile ea tiisoa.",
-    "email-vendor": "🔔 lengolo-tsoibila la tsebiso e rometsoe ho <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 lengolo-tsoibila la tsebiso e rometsoe ho <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Tefo ho morekisi."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Calculator ┆ E lumellana le khoebo ea hau",
+    "title": "Calculator ╏ E lumellana le khoebo ea hau",
     "description": "Bala 'me u khethe moralo o motle ho latela thekiso ea hau ea khoeli le khoeli:",
     "sale_input": "Chelete ea khoeli le khoeli ea thekiso",
     "hypernova_plan": "Etsa kopo bakeng sa Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Libaka tsa polokelo Litlhophiso",
     "save_alert": "Litlhophiso ha lia bolokoa!",
     "pos_tax_setting": "Litlhophiso tsa Lekhetho la POS",
-    "tax_exclude_title": "Ha e kenyelelitsoe ┆ Lekhetho le tla eketsoa ha u lefa",
+    "tax_exclude_title": "Ha e kenyelelitsoe ╏ Lekhetho le tla eketsoa ha u lefa",
     "tax_excluded_message": "Makhetho a tla baloa pele ho litefo nakong ea ho lefa 'me a ekeletsoe theko ea lekhetho e sa kenyelelitsoeng ho latela bopaki ba bareki ba hau."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "E sebetsa",
-      "title": "E sebetsa ┆ Marang-rang & Offline Thekiso",
+      "title": "E sebetsa ╏ Marang-rang & Offline Thekiso",
       "description": "Sehlahisoa sena se tla fumaneha bakeng sa liodara tsa inthaneteng."
     },
     "close": {
       "name": "e sa sebetseng",
-      "title": "E sa sebetseng ┆ Feela Offline Thekiso",
+      "title": "E sa sebetseng ╏ Feela Offline Thekiso",
       "description": "Sehlahisoa sena se ke ke sa fumaneha bakeng sa liodara tsa Marang-rang."
     },
     "pending": {

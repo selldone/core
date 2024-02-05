@@ -18,7 +18,7 @@ export default {
     "Unlimited access to all features at no cost! Only<b> 2% of sale</b>, just after successful purchases. Do you have a lot of sales and want to reduce the fees?",
   show_detail_list: "Show details list",
   plan_free_detail:
-    "<b class='text-capitalize'>An operating system for fast-growing businesses</b> ┆ Start your business by our free plan. Everything you need to start and launch your eCommerce website is ready here. Selldone provides all software, tools, and cloud hosting solution by free subscription plan. Selldone additionally takes care of all software updates and security considerations. So you can focus all your efforts on selling and not worry about technical issues and costs.",
+    "<b class='text-capitalize'>An operating system for fast-growing businesses</b> ╏ Start your business by our free plan. Everything you need to start and launch your eCommerce website is ready here. Selldone provides all software, tools, and cloud hosting solution by free subscription plan. Selldone additionally takes care of all software updates and security considerations. So you can focus all your efforts on selling and not worry about technical issues and costs.",
   pay_monthly: "Pay monthly",
   pay_yearly: "Pay yearly",
   pay_yearly_off: "30% off",

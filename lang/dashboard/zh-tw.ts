@@ -2364,7 +2364,7 @@ export default {
     "connect-remove-hold": "訂單已解除保留。 {reason}",
     "connect-action-cancel": "請求取消訂單。 {reason}",
     "connect-confirmed": "訂單得到確認。",
-    "email-vendor": "🔔 訂單通知郵件已發送至<b>{vendor}</b> ┆ {email}。",
+    "email-vendor": "🔔 訂單通知郵件已發送至<b>{vendor}</b> ╏ {email}。",
     "vendor-payout": "💸 支付給供應商。"
   },
   "inline_chart": {

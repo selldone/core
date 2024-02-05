@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Seldone ┆ Te Pūnaha Whakahaere Pakihi Mo nga Kamupene Tere Tipu",
+    "home": "Seldone ╏ Te Pūnaha Whakahaere Pakihi Mo nga Kamupene Tere Tipu",
     "login": "takiuru",
     "register": "Rehita",
     "auth_2fa": "2 take Motuhēhē 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Aku Toa",
     "roles": "Ko aku mahi",
     "wallet": "Taku Pukoro",
-    "personal_info": "Mōhiohio Whaiaro ┆ KYC",
+    "personal_info": "Mōhiohio Whaiaro ╏ KYC",
     "companies": "Aku Kamupene",
     "access_control": "Mana Uru",
     "security_center": "Pokapū Haumarutanga",
     "gifts": {
-      "received": "Koha ┆ Kua riro",
-      "send": "Koha ┆ Tukuna"
+      "received": "Koha ╏ Kua riro",
+      "send": "Koha ╏ Tukuna"
     },
     "monetization": {
-      "linked_accounts": "Monetization ┆ Nga Kaute Hononga",
-      "plans": "Monetization ┆ Mahere & Hononga"
+      "linked_accounts": "Monetization ╏ Nga Kaute Hononga",
+      "plans": "Monetization ╏ Mahere & Hononga"
     },
     "affiliate": "Hononga",
     "avocado": "Awhekātō — Hongere Hokohoko Hapori Hou",
     "guild": "Guild — Hoera Hokohoko Huihuinga",
-    "partners_login": "Nga hoa ┆ Takiuru kiritaki"
+    "partners_login": "Nga hoa ╏ Takiuru kiritaki"
   },
   "blank_is_all_products": "Waiho kia tuwhera ki te whakauru i nga hua katoa!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "I te wa o te tukatuka ota, ka rereke pea te moni kua tukuna mai i te moni kua whakahaua. Ka tātai aunoatia e te punaha tenei rereketanga ka tuhia hei nama ki te kaihoko, ka taea te tono ki nga ota e whai ake nei.",
       "status_list": {
         "active": {
-          "title": "Hohe ┆ Hokonga Tuihono & Tuimotu",
+          "title": "Hohe ╏ Hokonga Tuihono & Tuimotu",
           "description": "Ka waatea tenei hua mo nga ota ipurangi."
         },
         "inactive": {
-          "title": "Hohekore ┆ Hoko Tuimotu anake",
+          "title": "Hohekore ╏ Hoko Tuimotu anake",
           "description": "Kaore tenei hua e waatea mo nga ota ipurangi."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Ka mau te ota. {reason}",
     "connect-remove-hold": "I tangohia te ota mai i te pupuri. {reason}",
     "connect-confirmed": "I whakapumautia te ota.",
-    "email-vendor": "🔔 Kua tukuna he imeera whakamohio ki a <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Kua tukuna he imeera whakamohio ki a <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Utu ki te kaihoko."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Tatau ┆ Whakauru ki to pakihi",
+    "title": "Tatau ╏ Whakauru ki to pakihi",
     "description": "Tatauhia me te whiriwhiri i te mahere pai i runga i o hokonga marama:",
     "sale_input": "Te moni hoko ia marama",
     "hypernova_plan": "Tonoa mo Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Rokiroki Tautuhinga Tautuhinga",
     "save_alert": "Kaore i te tiakina nga tautuhinga!",
     "pos_tax_setting": "Tautuhinga Taake POS",
-    "tax_exclude_title": "Kua wehea ┆ Ka taapirihia te taake i te wa o te utu",
+    "tax_exclude_title": "Kua wehea ╏ Ka taapirihia te taake i te wa o te utu",
     "tax_excluded_message": "Ko nga taake ka tatauhia i mua i nga utu i te wa o te tirotiro ka taapiri atu ki te utu taake kua whakakorehia i runga i nga taunakitanga a to kaihoko."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Hohe",
-      "title": "Hohe ┆ Hokonga Tuihono & Tuimotu",
+      "title": "Hohe ╏ Hokonga Tuihono & Tuimotu",
       "description": "Ka waatea tenei hua mo nga ota ipurangi."
     },
     "close": {
       "name": "hohekore",
-      "title": "Hohekore ┆ Hoko Tuimotu anake",
+      "title": "Hohekore ╏ Hoko Tuimotu anake",
       "description": "Kaore tenei hua e waatea mo nga ota ipurangi."
     },
     "pending": {

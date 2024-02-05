@@ -318,9 +318,9 @@ export default {
     cost_timeline: "Cost & Timeline",
     timespan: "Duration of the contract",
     cost: "Contract cost",
-    pay_now_action: "I agree ┆ Pay now",
-    complete_action: "Yes ┆ Finish contract",
-    reject_action: "No ┆ Completion not approved",
+    pay_now_action: "I agree ╏ Pay now",
+    complete_action: "Yes ╏ Finish contract",
+    reject_action: "No ╏ Completion not approved",
     all_tasks_completed_message:
       "You have completed all the defined tasks. If you have finished this, press the order completion key. After this step, the customer must confirm the delivery of the work.",
     waiting_complete_by_customer_message:

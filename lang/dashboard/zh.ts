@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "订单被搁置。 {reason}",
     "connect-remove-hold": "订单已解除保留。 {reason}",
     "connect-confirmed": "订单得到确认。",
-    "email-vendor": "🔔 订单通知邮件已发送至<b>{vendor}</b> ┆ {email}。",
+    "email-vendor": "🔔 订单通知邮件已发送至<b>{vendor}</b> ╏ {email}。",
     "vendor-payout": "💸 支付给供应商。"
   },
   "inline_chart": {

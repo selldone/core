@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Imeuzwa ┆ Mfumo wa Uendeshaji wa Biashara kwa Makampuni yanayokua haraka",
+    "home": "Imeuzwa ╏ Mfumo wa Uendeshaji wa Biashara kwa Makampuni yanayokua haraka",
     "login": "Ingia",
     "register": "Sajili",
     "auth_2fa": "Sababu 2 Thibitisha 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Maduka Yangu",
     "roles": "Majukumu yangu",
     "wallet": "Mkoba Wangu",
-    "personal_info": "Taarifa za Kibinafsi ┆ KYC",
+    "personal_info": "Taarifa za Kibinafsi ╏ KYC",
     "companies": "Makampuni Yangu",
     "access_control": "Udhibiti wa Ufikiaji",
     "security_center": "Kituo cha Usalama",
     "gifts": {
-      "received": "Zawadi ┆ Imepokelewa",
-      "send": "Zawadi ┆ Imetumwa"
+      "received": "Zawadi ╏ Imepokelewa",
+      "send": "Zawadi ╏ Imetumwa"
     },
     "monetization": {
-      "linked_accounts": "Uchumaji wa mapato ┆ Akaunti Zilizounganishwa",
-      "plans": "Uchumaji wa mapato ┆ Mpango & Viungo"
+      "linked_accounts": "Uchumaji wa mapato ╏ Akaunti Zilizounganishwa",
+      "plans": "Uchumaji wa mapato ╏ Mpango & Viungo"
     },
     "affiliate": "Mshirika",
     "avocado": "Parachichi — Mkondo wa Kisasa wa Mauzo ya Kijamii",
     "guild": "Chama - Kituo cha Uuzaji cha Pamoja",
-    "partners_login": "Washirika ┆ Kuingia kwa mteja"
+    "partners_login": "Washirika ╏ Kuingia kwa mteja"
   },
   "blank_is_all_products": "Acha wazi ili kujumuisha bidhaa zote!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Wakati wa usindikaji wa utaratibu, kiasi kilichotolewa kinaweza kutofautiana na kiasi kilichoagizwa. Mfumo huhesabu tofauti hii kiotomatiki na kuirekodi kama deni lako kwa mteja, ambayo inaweza kutumika kwa maagizo yanayofuata.",
       "status_list": {
         "active": {
-          "title": "Inayotumika ┆ Mauzo ya Mtandaoni na Nje ya Mtandao",
+          "title": "Inayotumika ╏ Mauzo ya Mtandaoni na Nje ya Mtandao",
           "description": "Bidhaa hii itapatikana kwa maagizo ya mtandaoni."
         },
         "inactive": {
-          "title": "Isiyotumika ┆ Mauzo ya Nje ya Mtandao Pekee",
+          "title": "Isiyotumika ╏ Mauzo ya Nje ya Mtandao Pekee",
           "description": "Bidhaa hii haitapatikana kwa maagizo ya mtandaoni."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Agizo hilo lilisitishwa. {reason}",
     "connect-remove-hold": "Agizo liliondolewa kutoka kushikilia. {reason}",
     "connect-confirmed": "Agizo hilo lilithibitishwa.",
-    "email-vendor": "🔔 Barua pepe ya taarifa ya agizo imetumwa kwa <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Barua pepe ya taarifa ya agizo imetumwa kwa <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Malipo kwa muuzaji."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kikokotoo ┆ Inafaa kwa biashara yako",
+    "title": "Kikokotoo ╏ Inafaa kwa biashara yako",
     "description": "Piga hesabu na uchague mpango bora zaidi kulingana na mauzo yako ya kila mwezi:",
     "sale_input": "Kiasi cha mauzo ya kila mwezi",
     "hypernova_plan": "Tuma ombi la Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Hifadhi Mipangilio ya Maeneo",
     "save_alert": "Mipangilio haijahifadhiwa!",
     "pos_tax_setting": "Mipangilio ya Kodi ya POS",
-    "tax_exclude_title": "Isiyojumuishwa ┆ Kodi itaongezwa wakati wa kulipa",
+    "tax_exclude_title": "Isiyojumuishwa ╏ Kodi itaongezwa wakati wa kulipa",
     "tax_excluded_message": "Kodi zitahesabiwa kabla ya malipo wakati wa kulipa na kuongezwa kwa bei ya kodi isiyojumuishwa kulingana na ushahidi wa mteja wako."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Inayotumika",
-      "title": "Inayotumika ┆ Mauzo ya Mtandaoni na Nje ya Mtandao",
+      "title": "Inayotumika ╏ Mauzo ya Mtandaoni na Nje ya Mtandao",
       "description": "Bidhaa hii itapatikana kwa maagizo ya mtandaoni."
     },
     "close": {
       "name": "asiyefanya kazi",
-      "title": "Isiyotumika ┆ Mauzo ya Nje ya Mtandao Pekee",
+      "title": "Isiyotumika ╏ Mauzo ya Nje ya Mtandao Pekee",
       "description": "Bidhaa hii haitapatikana kwa maagizo ya mtandaoni."
     },
     "pending": {

@@ -16,101 +16,100 @@
  * 🛹 Map Tag
  */
 export interface MapTag {
-    /**
-     * ID of the map tag
-     */
-    id: number;
+  /**
+   * ID of the map tag
+   */
+  id: number;
 
-    /**
-     * ID representing the associated shop
-     */
-    shop_id: number;
+  /**
+   * ID representing the associated shop
+   */
+  shop_id: number;
 
-    /**
-     * ID of the user who added or last modified this tag
-     */
-    user_id: number;
+  /**
+   * ID of the user who added or last modified this tag
+   */
+  user_id: number;
 
-    /**
-     * Tags used for creating filters
-     */
-    tags: any[];  // Specify a more specific type if possible.
+  /**
+   * Tags used for creating filters
+   */
+  tags: any[]; // Specify a more specific type if possible.
 
-    /**
-     * Title of the map tag
-     */
-    title: string;
+  /**
+   * Title of the map tag
+   */
+  title: string;
 
-    /**
-     * Country code
-     */
-    country: string;
+  /**
+   * Country code
+   */
+  country: string;
 
-    /**
-     * State or province
-     */
-    state: string;
+  /**
+   * State or province
+   */
+  state: string;
 
-    /**
-     * City name
-     */
-    city: string;
+  /**
+   * City name
+   */
+  city: string;
 
-    /**
-     * Address details
-     */
-    address: string;
+  /**
+   * Address details
+   */
+  address: string;
 
-    /**
-     * Geolocation details. Typically [latitude, longitude]
-     */
-    location: [number, number];
+  /**
+   * Geolocation details. Typically [latitude, longitude]
+   */
+  location: [number, number];
 
-    /**
-     * Building number
-     */
-    no: number;
+  /**
+   * Building number
+   */
+  no: number;
 
-    /**
-     * Building unit
-     */
-    unit: number;
+  /**
+   * Building unit
+   */
+  unit: number;
 
-    /**
-     * Name associated with the map tag
-     */
-    name: string;
+  /**
+   * Name associated with the map tag
+   */
+  name: string;
 
-    /**
-     * Phone number associated with the map tag
-     */
-    phone: string;
+  /**
+   * Phone number associated with the map tag
+   */
+  phone: string;
 
-    /**
-     * Message associated with the map tag
-     */
-    message: string;
+  /**
+   * Message associated with the map tag
+   */
+  message: string;
 
-    /**
-     * Postal code
-     */
-    postal: string;
+  /**
+   * Postal code
+   */
+  postal: string;
 
-    /**
-     * Latitude coordinate
-     */
-    lat: number;
+  /**
+   * Latitude coordinate
+   */
+  lat: number;
 
-    /**
-     * Longitude coordinate
-     */
-    lng: number;
+  /**
+   * Longitude coordinate
+   */
+  lng: number;
 
-    /**
-     * Range (not clear from context what this represents, so added a generic description)
-     */
-    range: number;
+  /**
+   * Range (not clear from context what this represents, so added a generic description)
+   */
+  range: number;
 }
-export namespace MapTag {
 
-}
+export namespace MapTag {}

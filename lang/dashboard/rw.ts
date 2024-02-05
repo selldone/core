@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Sisitemu ikora yubucuruzi kumasosiyete akura vuba",
+    "home": "Selldone ╏ Sisitemu ikora yubucuruzi kumasosiyete akura vuba",
     "login": "injira",
     "register": "Iyandikishe",
     "auth_2fa": "Ibintu 2 Kwemeza 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Amaduka yanjye",
     "roles": "Inshingano zanjye",
     "wallet": "Umufuka wanjye",
-    "personal_info": "Amakuru yihariye ┆ KYC",
+    "personal_info": "Amakuru yihariye ╏ KYC",
     "companies": "Ibigo byanjye",
     "access_control": "Igenzura",
     "security_center": "Ikigo cy’umutekano",
     "gifts": {
-      "received": "Impano ┆ Yakiriwe",
-      "send": "Impano ┆ Yoherejwe"
+      "received": "Impano ╏ Yakiriwe",
+      "send": "Impano ╏ Yoherejwe"
     },
     "monetization": {
-      "linked_accounts": "Gukoresha amafaranga ┆ Konti Ihujwe",
-      "plans": "Gukoresha amafaranga ┆ Gahunda & Ihuza"
+      "linked_accounts": "Gukoresha amafaranga ╏ Konti Ihujwe",
+      "plans": "Gukoresha amafaranga ╏ Gahunda & Ihuza"
     },
     "affiliate": "Ishyirahamwe",
     "avocado": "Avoka - Umuyoboro wa kijyambere wo kugurisha",
     "guild": "Guild - Umuyoboro wo kugurisha hamwe",
-    "partners_login": "Abafatanyabikorwa ┆ Kwinjira kw'abakiriya"
+    "partners_login": "Abafatanyabikorwa ╏ Kwinjira kw'abakiriya"
   },
   "blank_is_all_products": "Kureka ubusa kugirango ushiremo ibicuruzwa byose!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Mugihe cyo gutumiza ibicuruzwa, amafaranga yatanzwe arashobora gutandukana numubare wateganijwe. Sisitemu ihita ibara itandukaniro kandi ikabyandika nkumwenda wawe kubakiriya, ushobora gukoreshwa mubikurikira.",
       "status_list": {
         "active": {
-          "title": "Igikorwa ┆ Kugurisha kumurongo no kumurongo",
+          "title": "Igikorwa ╏ Kugurisha kumurongo no kumurongo",
           "description": "Ibicuruzwa bizaboneka kubitumiza kumurongo."
         },
         "inactive": {
-          "title": "Kudakora ┆ Gusa kugurisha kumurongo",
+          "title": "Kudakora ╏ Gusa kugurisha kumurongo",
           "description": "Iki gicuruzwa ntikizaboneka kubitumiza kumurongo."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Itegeko ryahagaritswe. {reason}",
     "connect-remove-hold": "Itegeko ryakuweho. {reason}",
     "connect-confirmed": "Icyemezo cyaremejwe.",
-    "email-vendor": "🔔 Tegeka kumenyesha imeri yoherejwe kuri <b>{vendor}</b> ┆ imeri}.",
+    "email-vendor": "🔔 Tegeka kumenyesha imeri yoherejwe kuri <b>{vendor}</b> ╏ imeri}.",
     "vendor-payout": "Kwishura umucuruzi."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kubara ┆ Bihuye nubucuruzi bwawe",
+    "title": "Kubara ╏ Bihuye nubucuruzi bwawe",
     "description": "Kubara no guhitamo gahunda nziza ukurikije ibicuruzwa byawe bya buri kwezi:",
     "sale_input": "Amafaranga yo kugurisha buri kwezi",
     "hypernova_plan": "Saba Hypernova% 0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Ahantu ho kubika Igenamiterere",
     "save_alert": "Igenamiterere ntabwo ryabitswe!",
     "pos_tax_setting": "POS Igenamiterere ry'Imisoro",
-    "tax_exclude_title": "Ukuyemo ┆ Umusoro uzongerwaho kuri cheque",
+    "tax_exclude_title": "Ukuyemo ╏ Umusoro uzongerwaho kuri cheque",
     "tax_excluded_message": "Imisoro izabarwa mbere yo kwishyura mugihe cya cheque hanyuma yongerwe kubiciro byimisoro usibye ukurikije ibimenyetso byabakiriya bawe."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Bikora",
-      "title": "Igikorwa ┆ Kugurisha kumurongo no kumurongo",
+      "title": "Igikorwa ╏ Kugurisha kumurongo no kumurongo",
       "description": "Ibicuruzwa bizaboneka kubitumiza kumurongo."
     },
     "close": {
       "name": "idakora",
-      "title": "Kudakora ┆ Gusa kugurisha kumurongo",
+      "title": "Kudakora ╏ Gusa kugurisha kumurongo",
       "description": "Iki gicuruzwa ntikizaboneka kubitumiza kumurongo."
     },
     "pending": {

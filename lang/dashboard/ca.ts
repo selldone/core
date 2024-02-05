@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ El sistema operatiu empresarial per a empreses de ràpid creixement",
+    "home": "Selldone ╏ El sistema operatiu empresarial per a empreses de ràpid creixement",
     "login": "iniciar Sessió",
     "register": "Registra't",
     "auth_2fa": "Autenticació de 2 factors 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Les meves botigues",
     "roles": "Els meus papers",
     "wallet": "La meva cartera",
-    "personal_info": "Informació personal ┆ KYC",
+    "personal_info": "Informació personal ╏ KYC",
     "companies": "Les meves empreses",
     "access_control": "Control d'accés",
     "security_center": "Centre de seguretat",
     "gifts": {
-      "received": "Regals ┆ Rebut",
-      "send": "Regals ┆ Enviat"
+      "received": "Regals ╏ Rebut",
+      "send": "Regals ╏ Enviat"
     },
     "monetization": {
-      "linked_accounts": "Monetització ┆ Comptes enllaçats",
-      "plans": "Monetització ┆ Pla i enllaços"
+      "linked_accounts": "Monetització ╏ Comptes enllaçats",
+      "plans": "Monetització ╏ Pla i enllaços"
     },
     "affiliate": "Afiliat",
     "avocado": "Alvocat: canal modern de vendes socials",
     "guild": "Gremi — Canal de vendes col·lectives",
-    "partners_login": "Socis ┆ Inici de sessió del client"
+    "partners_login": "Socis ╏ Inici de sessió del client"
   },
   "blank_is_all_products": "Deixa en blanc per incloure tots els productes!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Durant el processament de la comanda, l'import lliurat pot diferir de l'import demanat. El sistema calcula automàticament aquesta diferència i la registra com a deute amb el client, que es pot aplicar a les properes comandes.",
       "status_list": {
         "active": {
-          "title": "Actiu ┆ Vendes en línia i fora de línia",
+          "title": "Actiu ╏ Vendes en línia i fora de línia",
           "description": "Aquest producte estarà disponible per a comandes en línia."
         },
         "inactive": {
-          "title": "Inactiu ┆ Només vendes fora de línia",
+          "title": "Inactiu ╏ Només vendes fora de línia",
           "description": "Aquest producte no estarà disponible per a comandes en línia."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "L'ordre es va posar en suspens. {reason}",
     "connect-remove-hold": "L'ordre s'ha eliminat de la retenció. {reason}",
     "connect-confirmed": "La comanda es va confirmar.",
-    "email-vendor": "🔔 S'ha enviat un correu electrònic d'informació de la comanda a <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 S'ha enviat un correu electrònic d'informació de la comanda a <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Pagament al venedor."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Calculadora ┆ Adequat al teu negoci",
+    "title": "Calculadora ╏ Adequat al teu negoci",
     "description": "Calcula i tria el millor pla en funció de les teves vendes mensuals:",
     "sale_input": "Import de vendes mensuals",
     "hypernova_plan": "Sol·liciteu Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Configuració d'ubicacions de la botiga",
     "save_alert": "La configuració no es desa!",
     "pos_tax_setting": "Configuració d'impostos TPV",
-    "tax_exclude_title": "Exclòs ┆ L'impost s'afegirà a la compra",
+    "tax_exclude_title": "Exclòs ╏ L'impost s'afegirà a la compra",
     "tax_excluded_message": "Els impostos es calcularan abans dels pagaments durant la compra i s'afegiran al preu de l'impost exclòs en funció de l'evidència del client."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Actiu",
-      "title": "Actiu ┆ Vendes en línia i fora de línia",
+      "title": "Actiu ╏ Vendes en línia i fora de línia",
       "description": "Aquest producte estarà disponible per a comandes en línia."
     },
     "close": {
       "name": "inactiu",
-      "title": "Inactiu ┆ Només vendes fora de línia",
+      "title": "Inactiu ╏ Només vendes fora de línia",
       "description": "Aquest producte no estarà disponible per a comandes en línia."
     },
     "pending": {

@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Terjual habis ┆ Sistem Operasi Bisnis Untuk Perusahaan yang Berkembang Cepat",
+    "home": "Terjual habis ╏ Sistem Operasi Bisnis Untuk Perusahaan yang Berkembang Cepat",
     "login": "Gabung",
     "register": "Daftar",
     "auth_2fa": "2 faktor Otentikasi",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Toko Saya",
     "roles": "Peran saya",
     "wallet": "Dompetku",
-    "personal_info": "Info Pribadi ┆ KYC",
+    "personal_info": "Info Pribadi ╏ KYC",
     "companies": "Perusahaan saya",
     "access_control": "Kontrol akses",
     "security_center": "Pusat Keamanan",
     "gifts": {
-      "received": "Hadiah ┆ Diterima",
-      "send": "Hadiah ┆ Terkirim"
+      "received": "Hadiah ╏ Diterima",
+      "send": "Hadiah ╏ Terkirim"
     },
     "monetization": {
-      "linked_accounts": "Monetisasi ┆ Akun Tertaut",
-      "plans": "Monetisasi ┆ Rencana & Tautan"
+      "linked_accounts": "Monetisasi ╏ Akun Tertaut",
+      "plans": "Monetisasi ╏ Rencana & Tautan"
     },
     "affiliate": "Afiliasi",
     "avocado": "Alpukat — Saluran Penjualan Sosial Modern",
     "guild": "Guild — Saluran Penjualan Kolektif",
-    "partners_login": "Mitra ┆ Login klien"
+    "partners_login": "Mitra ╏ Login klien"
   },
   "blank_is_all_products": "Biarkan kosong untuk memasukkan semua produk!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Selama pemrosesan pesanan, jumlah yang dikirim mungkin berbeda dari jumlah yang dipesan. Sistem secara otomatis menghitung selisih ini dan mencatatnya sebagai hutang Anda kepada pelanggan, yang dapat diterapkan pada pesanan berikutnya.",
       "status_list": {
         "active": {
-          "title": "Aktif ┆ Penjualan Online & Offline",
+          "title": "Aktif ╏ Penjualan Online & Offline",
           "description": "Produk ini akan tersedia untuk pesanan online."
         },
         "inactive": {
-          "title": "Tidak aktif ┆ Hanya Penjualan Offline",
+          "title": "Tidak aktif ╏ Hanya Penjualan Offline",
           "description": "Produk ini tidak akan tersedia untuk pesanan online."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Perintah itu ditunda. {reason}",
     "connect-remove-hold": "Pesanan telah dihapus dari penangguhan. {reason}",
     "connect-confirmed": "Pesanan telah dikonfirmasi.",
-    "email-vendor": "Email informasi pemesanan telah dikirim ke <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "Email informasi pemesanan telah dikirim ke <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Pembayaran ke vendor."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kalkulator ┆ Sesuai dengan bisnis Anda",
+    "title": "Kalkulator ╏ Sesuai dengan bisnis Anda",
     "description": "Hitung dan pilih paket terbaik berdasarkan penjualan bulanan Anda:",
     "sale_input": "Jumlah penjualan bulanan",
     "hypernova_plan": "Terapkan untuk Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Pengaturan lokasi toko",
     "save_alert": "Pengaturan tidak disimpan!",
     "pos_tax_setting": "Pengaturan Pajak POS",
-    "tax_exclude_title": "Tidak termasuk ┆ Pajak akan ditambahkan saat checkout",
+    "tax_exclude_title": "Tidak termasuk ╏ Pajak akan ditambahkan saat checkout",
     "tax_excluded_message": "Pajak akan dihitung sebelum pembayaran selama checkout dan ditambahkan ke harga tidak termasuk pajak tergantung pada bukti pelanggan Anda."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Aktif",
-      "title": "Aktif ┆ Penjualan Online & Offline",
+      "title": "Aktif ╏ Penjualan Online & Offline",
       "description": "Produk ini akan tersedia untuk pesanan online."
     },
     "close": {
       "name": "tidak aktif",
-      "title": "Tidak aktif ┆ Hanya Penjualan Offline",
+      "title": "Tidak aktif ╏ Hanya Penjualan Offline",
       "description": "Produk ini tidak akan tersedia untuk pesanan online."
     },
     "pending": {

@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Stýrikerfi fyrirtækja fyrir ört vaxandi fyrirtæki",
+    "home": "Selldone ╏ Stýrikerfi fyrirtækja fyrir ört vaxandi fyrirtæki",
     "login": "skrá inn",
     "register": "Skráðu þig",
     "auth_2fa": "2 þáttur Authenticate 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Verslanir mínar",
     "roles": "Hlutverkin mín",
     "wallet": "Veskið mitt",
-    "personal_info": "Persónulegar upplýsingar ┆ KYC",
+    "personal_info": "Persónulegar upplýsingar ╏ KYC",
     "companies": "Fyrirtækin mín",
     "access_control": "Aðgangsstýring",
     "security_center": "Öryggismiðstöð",
     "gifts": {
-      "received": "Gjafir ┆ Tekið á móti",
-      "send": "Gjafir ┆ Sent"
+      "received": "Gjafir ╏ Tekið á móti",
+      "send": "Gjafir ╏ Sent"
     },
     "monetization": {
-      "linked_accounts": "Tekjuöflun ┆ Tengdir reikningar",
-      "plans": "Tekjuöflun ┆ Áætlun og tenglar"
+      "linked_accounts": "Tekjuöflun ╏ Tengdir reikningar",
+      "plans": "Tekjuöflun ╏ Áætlun og tenglar"
     },
     "affiliate": "Samstarfsaðili",
     "avocado": "Avókadó - Nútíma samfélagssölurás",
     "guild": "Guild - Sameiginleg sölurás",
-    "partners_login": "Samstarfsaðilar ┆ Innskráning viðskiptavinar"
+    "partners_login": "Samstarfsaðilar ╏ Innskráning viðskiptavinar"
   },
   "blank_is_all_products": "Skildu eftir autt til að innihalda allar vörur!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Við vinnslu pöntunar getur afhent upphæð verið önnur en pantaða upphæð. Kerfið reiknar sjálfkrafa þennan mismun og skráir hann sem skuld þína við viðskiptavininn, sem hægt er að nota á næstu pantanir.",
       "status_list": {
         "active": {
-          "title": "Virkur ┆ Sala á netinu og utan nets",
+          "title": "Virkur ╏ Sala á netinu og utan nets",
           "description": "Þessi vara verður fáanleg fyrir netpantanir."
         },
         "inactive": {
-          "title": "Óvirkt ┆ Aðeins sala án nettengingar",
+          "title": "Óvirkt ╏ Aðeins sala án nettengingar",
           "description": "Þessi vara verður ekki fáanleg fyrir netpantanir."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Pöntunin var sett í bið. {reason}",
     "connect-remove-hold": "Pöntunin var fjarlægð úr bið. {reason}",
     "connect-confirmed": "Pöntunin var staðfest.",
-    "email-vendor": "🔔 Tölvupóstur með pöntunarupplýsingum hefur verið sendur til <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Tölvupóstur með pöntunarupplýsingum hefur verið sendur til <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Útborgun til söluaðila."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Reiknivél ┆ Passa við fyrirtæki þitt",
+    "title": "Reiknivél ╏ Passa við fyrirtæki þitt",
     "description": "Reiknaðu og veldu bestu áætlunina út frá mánaðarlegri sölu þinni:",
     "sale_input": "Mánaðarleg söluupphæð",
     "hypernova_plan": "Sæktu um Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Stillingar fyrir staðsetningar",
     "save_alert": "Stillingar eru ekki vistaðar!",
     "pos_tax_setting": "Stillingar POS skatta",
-    "tax_exclude_title": "Undanskilið ┆ Skattur bætist við við útritun",
+    "tax_exclude_title": "Undanskilið ╏ Skattur bætist við við útritun",
     "tax_excluded_message": "Skattarnir verða reiknaðir út fyrir greiðslur við greiðslu og bætt við undanskilið skattverð eftir sönnunargögnum viðskiptavinarins."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Virkur",
-      "title": "Virkur ┆ Sala á netinu og utan nets",
+      "title": "Virkur ╏ Sala á netinu og utan nets",
       "description": "Þessi vara verður fáanleg fyrir netpantanir."
     },
     "close": {
       "name": "óvirkt",
-      "title": "Óvirkt ┆ Aðeins sala án nettengingar",
+      "title": "Óvirkt ╏ Aðeins sala án nettengingar",
       "description": "Þessi vara verður ekki fáanleg fyrir netpantanir."
     },
     "pending": {

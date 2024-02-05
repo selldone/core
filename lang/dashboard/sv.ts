@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Selldone ┆ Affärsoperativsystemet för snabbväxande företag",
+    "home": "Selldone ╏ Affärsoperativsystemet för snabbväxande företag",
     "login": "Logga in",
     "register": "Registrera",
     "auth_2fa": "2-faktors autentisera 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Mina butiker",
     "roles": "Mina roller",
     "wallet": "Min plånbok",
-    "personal_info": "Personlig information ┆ KYC",
+    "personal_info": "Personlig information ╏ KYC",
     "companies": "Mina företag",
     "access_control": "Åtkomstkontroll",
     "security_center": "Säkerhetscenter",
     "gifts": {
-      "received": "Gåvor ┆ Mottagen",
-      "send": "Gåvor ┆ Skickat"
+      "received": "Gåvor ╏ Mottagen",
+      "send": "Gåvor ╏ Skickat"
     },
     "monetization": {
-      "linked_accounts": "Intäktsgenerering ┆ Länkade konton",
-      "plans": "Intäktsgenerering ┆ Plan och länkar"
+      "linked_accounts": "Intäktsgenerering ╏ Länkade konton",
+      "plans": "Intäktsgenerering ╏ Plan och länkar"
     },
     "affiliate": "Dotterbolag",
     "avocado": "Avokado — Modern social försäljningskanal",
     "guild": "Guild — Kollektiv försäljningskanal",
-    "partners_login": "Partners ┆ Klient inloggning"
+    "partners_login": "Partners ╏ Klient inloggning"
   },
   "blank_is_all_products": "Lämna tomt för att inkludera alla produkter!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Under orderhanteringen kan det levererade beloppet skilja sig från det beställda beloppet. Systemet beräknar automatiskt denna skillnad och registrerar den som din skuld till kunden, som kan appliceras på nästa order.",
       "status_list": {
         "active": {
-          "title": "Aktiv ┆ Online- och offlineförsäljning",
+          "title": "Aktiv ╏ Online- och offlineförsäljning",
           "description": "Denna produkt kommer att vara tillgänglig för onlinebeställningar."
         },
         "inactive": {
-          "title": "Inaktiv ┆ Endast offlineförsäljning",
+          "title": "Inaktiv ╏ Endast offlineförsäljning",
           "description": "Denna produkt kommer inte att vara tillgänglig för onlinebeställningar."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Beställningen lades på is. {reason}",
     "connect-remove-hold": "Beställningen togs bort från spärren. {reason}",
     "connect-confirmed": "Beställningen bekräftades.",
-    "email-vendor": "🔔 Beställningsinformation e-post har skickats till <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 Beställningsinformation e-post har skickats till <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Utbetalning till leverantör."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kalkylator ┆ Passar ditt företag",
+    "title": "Kalkylator ╏ Passar ditt företag",
     "description": "Beräkna och välj den bästa planen baserat på din månatliga försäljning:",
     "sale_input": "Månatligt försäljningsbelopp",
     "hypernova_plan": "Ansök om Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Inställningar för butiksplatser",
     "save_alert": "Inställningarna sparas inte!",
     "pos_tax_setting": "POS-skattinställningar",
-    "tax_exclude_title": "Utesluten ┆ Skatt tillkommer i kassan",
+    "tax_exclude_title": "Utesluten ╏ Skatt tillkommer i kassan",
     "tax_excluded_message": "Skatterna kommer att beräknas före betalningarna under kassan och läggas till det exkluderade momspriset beroende på dina kundbevis."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Aktiva",
-      "title": "Aktiv ┆ Online- och offlineförsäljning",
+      "title": "Aktiv ╏ Online- och offlineförsäljning",
       "description": "Denna produkt kommer att vara tillgänglig för onlinebeställningar."
     },
     "close": {
       "name": "inaktiv",
-      "title": "Inaktiv ┆ Endast offlineförsäljning",
+      "title": "Inaktiv ╏ Endast offlineförsäljning",
       "description": "Denna produkt kommer inte att vara tillgänglig för onlinebeställningar."
     },
     "pending": {

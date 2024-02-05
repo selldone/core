@@ -41,7 +41,7 @@ export default {
   "Reddit": "Reddit",
   "Github": "Github",
   "page_titles": {
-    "home": "Seldone ┆ Sistem Operasi Perniagaan Untuk Syarikat yang Berkembang Pantas",
+    "home": "Seldone ╏ Sistem Operasi Perniagaan Untuk Syarikat yang Berkembang Pantas",
     "login": "log masuk",
     "register": "Daftar",
     "auth_2fa": "2 faktor Kesahihan 🔐",
@@ -51,22 +51,22 @@ export default {
     "my_stores": "Kedai Saya",
     "roles": "Peranan saya",
     "wallet": "Dompet saya",
-    "personal_info": "Maklumat Peribadi ┆ KYC",
+    "personal_info": "Maklumat Peribadi ╏ KYC",
     "companies": "Syarikat Saya",
     "access_control": "Kawalan Akses",
     "security_center": "Pusat Keselamatan",
     "gifts": {
-      "received": "Hadiah ┆ Menerima",
-      "send": "Hadiah ┆ Dihantar"
+      "received": "Hadiah ╏ Menerima",
+      "send": "Hadiah ╏ Dihantar"
     },
     "monetization": {
-      "linked_accounts": "Pengewangan ┆ Akaun Terpaut",
-      "plans": "Pengewangan ┆ Pelan & Pautan"
+      "linked_accounts": "Pengewangan ╏ Akaun Terpaut",
+      "plans": "Pengewangan ╏ Pelan & Pautan"
     },
     "affiliate": "ahli gabungan",
     "avocado": "Avocado — Saluran Jualan Sosial Moden",
     "guild": "Guild — Saluran Jualan Kolektif",
-    "partners_login": "Rakan kongsi ┆ Log masuk pelanggan"
+    "partners_login": "Rakan kongsi ╏ Log masuk pelanggan"
   },
   "blank_is_all_products": "Biarkan kosong untuk memasukkan semua produk!",
   "cautions": {
@@ -1087,11 +1087,11 @@ export default {
       "unit_float_message": "Semasa pemprosesan pesanan, jumlah yang dihantar mungkin berbeza daripada jumlah yang dipesan. Sistem mengira perbezaan ini secara automatik dan merekodkannya sebagai hutang anda kepada pelanggan, yang boleh digunakan untuk pesanan seterusnya.",
       "status_list": {
         "active": {
-          "title": "Aktif ┆ Jualan Dalam Talian & Luar Talian",
+          "title": "Aktif ╏ Jualan Dalam Talian & Luar Talian",
           "description": "Produk ini akan tersedia untuk pesanan dalam talian."
         },
         "inactive": {
-          "title": "Tidak aktif ┆ Hanya Jualan Luar Talian",
+          "title": "Tidak aktif ╏ Hanya Jualan Luar Talian",
           "description": "Produk ini tidak akan tersedia untuk pesanan dalam talian."
         }
       },
@@ -2367,7 +2367,7 @@ export default {
     "connect-put-hold": "Perintah itu ditangguhkan. {reason}",
     "connect-remove-hold": "Pesanan telah dialih keluar daripada penahanan. {reason}",
     "connect-confirmed": "Perintah itu disahkan.",
-    "email-vendor": "🔔 E-mel maklumkan pesanan telah dihantar kepada <b>{vendor}</b> ┆ {email}.",
+    "email-vendor": "🔔 E-mel maklumkan pesanan telah dihantar kepada <b>{vendor}</b> ╏ {email}.",
     "vendor-payout": "💸 Bayaran kepada vendor."
   },
   "inline_chart": {
@@ -3159,7 +3159,7 @@ export default {
     }
   },
   "price_calculator": {
-    "title": "Kalkulator ┆ Sesuai dengan perniagaan anda",
+    "title": "Kalkulator ╏ Sesuai dengan perniagaan anda",
     "description": "Kira dan pilih pelan terbaik berdasarkan jualan bulanan anda:",
     "sale_input": "Jumlah jualan bulanan",
     "hypernova_plan": "Mohon untuk Hypernova %0!",
@@ -3931,7 +3931,7 @@ export default {
     "locations_action": "Tetapan lokasi kedai",
     "save_alert": "Tetapan tidak disimpan!",
     "pos_tax_setting": "Tetapan Cukai POS",
-    "tax_exclude_title": "Dikecualikan ┆ Cukai akan ditambah semasa pembayaran",
+    "tax_exclude_title": "Dikecualikan ╏ Cukai akan ditambah semasa pembayaran",
     "tax_excluded_message": "Cukai akan dikira sebelum pembayaran semasa pembayaran dan ditambah pada harga cukai yang dikecualikan bergantung pada bukti pelanggan anda."
   },
   "transportation_page": {
@@ -5238,12 +5238,12 @@ export default {
   "product_status": {
     "open": {
       "name": "Aktif",
-      "title": "Aktif ┆ Jualan Dalam Talian & Luar Talian",
+      "title": "Aktif ╏ Jualan Dalam Talian & Luar Talian",
       "description": "Produk ini akan tersedia untuk pesanan dalam talian."
     },
     "close": {
       "name": "tidak aktif",
-      "title": "Tidak aktif ┆ Hanya Jualan Luar Talian",
+      "title": "Tidak aktif ╏ Hanya Jualan Luar Talian",
       "description": "Produk ini tidak akan tersedia untuk pesanan dalam talian."
     },
     "pending": {
