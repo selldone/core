@@ -4685,7 +4685,7 @@ export default {
     blogs_title: "مطالب مرتبط در وبلاگ سلدان",
   },
 
-  /** {@see AdminShopFinance_Tax**/
+  /** {@see BPageShopFinanceTax**/
   shop_tax: {
     region: "ناحیه",
     label: "برچسب",

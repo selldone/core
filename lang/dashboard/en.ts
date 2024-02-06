@@ -4705,7 +4705,7 @@ export default {
     blogs_title: "Related Content in Selldone Blog",
   },
 
-  /** {@see AdminShopFinance_Tax**/
+  /** {@see BPageShopFinanceTax**/
   shop_tax: {
     region: "Region",
     label: "Label",
