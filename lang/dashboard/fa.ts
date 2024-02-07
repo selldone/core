@@ -1807,7 +1807,7 @@ export default {
     },
   },
 
-  /** {@see ProductSpecView} **/
+  /** {@see BProductSpecTable} **/
   spec_view: {
     auto_save_input: "ذخیره خودکار",
   },

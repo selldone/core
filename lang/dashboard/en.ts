@@ -1847,7 +1847,7 @@ export default {
     },
   },
 
-  /** {@see ProductSpecView} **/
+  /** {@see BProductSpecTable} **/
   spec_view: {
     auto_save_input: "Auto save",
   },
@@ -7062,6 +7062,30 @@ export default {
     },
 
 
+    spec:{
+      group:[
+        "Technical Specifications",
+        "Physical Dimensions",
+        "Performance Features",
+        "Connectivity Options",
+        "Power Requirements",
+        "Material and Build Quality",
+        "Color and Finish Options",
+        "Storage and Memory",
+        "Operating System Compatibility",
+        "Safety and Compliance",
+        "Package Contents",
+        "Warranty and Support",
+        "Brand and Manufacturer",
+        "Environmental Friendliness",
+        "Energy Efficiency",
+        "Care and Maintenance",
+        "Customization Options",
+        "Included Accessories",
+        "User Ratings and Reviews",
+        "Pricing and Availability"
+      ]
+    }
 
 
   },
