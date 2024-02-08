@@ -12,32 +12,51 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ApplyAugmentToObject } from "@core/prototypes/ObjectPrototypes";
+import {ApplyAugmentToObject} from "@core/prototypes/ObjectPrototypes";
 
 declare global {
   interface Array<T> {
     limit(max: number): T[];
+
     insert(index: number, item: T): void;
+
     findMax(this: number[]): number;
+
     findMin(this: number[]): number;
+
     sortByKey(key: string, ASC?: boolean): T[];
+
     random(): T[];
+
     remove(val: T): T[];
+
     add(val: T): T[];
-    toggle(val: T): T[];
+
+    toggle(val: T, key?: string): T[];
+
     move(from: number, to: number): void;
+
     moveRight(index: number): void;
+
     moveLeft(index: number): void;
+
     sumByKey(key: string): number;
+
     minByKey(key: string): T;
+
     maxByKey(key: string): T;
+
     countUnique(key: string): number;
+
     unique(): T[];
+
     uniqueByKey(key: string): T[];
+
     rotateRight(n: number): T[];
+
     applyAugment(
       augment: { key: string; value: string }[],
-      bypass: boolean
+      bypass: boolean,
     ): T[];
   }
 }
@@ -116,7 +135,7 @@ Array.prototype.findMin = function (): number {
  */
 Array.prototype.sortByKey = function <T extends Record<string, any>>(
   key: keyof T,
-  ASC: boolean = false
+  ASC: boolean = false,
 ) {
   return this.sort((a: T, b: T) => {
     if (ASC) return (a[key] as any) - (b[key] as any);
@@ -176,10 +195,11 @@ Array.prototype.add = function (value) {
  *
  * @template T - The type of the array elements.
  * @param {T} val - The item to toggle.
+ * @param key
  * @returns {T[]} - The modified array.
  */
-Array.prototype.toggle = function <T>(val: T): T[] {
-  if (!this.some((e: T) => e === val)) {
+Array.prototype.toggle = function <T>(val: T, key?: keyof T): T[] {
+  if (!this.some((e: T) => e === val || (key && e[key] === val[key]))) {
     this.push(val);
   } else {
     this.splice(this.indexOf(val), 1);
@@ -197,7 +217,7 @@ Array.prototype.move = function (from: number, to: number) {
   this.splice(
     to - (from > to ? 0 : 1) /*Fix always add before target!*/,
     0,
-    this.splice(from, 1)[0]
+    this.splice(from, 1)[0],
   );
 };
 
@@ -232,7 +252,7 @@ Array.prototype.moveLeft = function (index: number) {
  * @returns {number} Sum of the property values
  */
 Array.prototype.sumByKey = function <T extends Record<string, any>>(
-  key: keyof T
+  key: keyof T,
 ) {
   let sum = 0;
   this.forEach((i: T) => (sum += i[key]));
@@ -246,7 +266,7 @@ Array.prototype.sumByKey = function <T extends Record<string, any>>(
  * @returns {T | null} Object with the minimum value or null if the array is empty
  */
 Array.prototype.minByKey = function <T extends Record<string, any>>(
-  key: keyof T
+  key: keyof T,
 ) {
   if (!this.length) return null;
   let min = this[0];
@@ -261,7 +281,7 @@ Array.prototype.minByKey = function <T extends Record<string, any>>(
  * @returns {T | null} Object with the maximum value or null if the array is empty
  */
 Array.prototype.maxByKey = function <T extends Record<string, any>>(
-  key: keyof T
+  key: keyof T,
 ) {
   if (!this.length) return null;
   let max = this[0];
@@ -276,7 +296,7 @@ Array.prototype.maxByKey = function <T extends Record<string, any>>(
  * @returns {number} Number of unique values
  */
 Array.prototype.countUnique = function <T extends Record<string, any>>(
-  key: keyof T
+  key: keyof T,
 ) {
   if (!this.length) return 0;
   const keep: any[] = [];
@@ -355,7 +375,7 @@ Array.prototype.rotateRight = function <T>(this: T[], n: number): T[] {
  */
 Array.prototype.applyAugment = function <T>(
   augment: { key: string; value: string }[],
-  bypass: boolean = false
+  bypass: boolean = false,
 ): T[] {
   const _array = JSON.parse(JSON.stringify(this));
   if (bypass) {

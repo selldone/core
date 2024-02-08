@@ -118,7 +118,7 @@ const MENTION_TIMELINE: INotificationType = {
     if (!basket || !shop) return null;
     const name =
       basket.type === ProductType.PHYSICAL.code
-        ? "ShopProcessCenterPhysicalOrderPage_Timeline"
+        ? "BPageOrderPhysicalTimeline"
         : basket.type === ProductType.VIRTUAL.code
           ? "ShopProcessCenterVirtualOrderPage_Timeline"
           : basket.type === ProductType.FILE.code

@@ -587,9 +587,9 @@ export default {
       },
     },
 
-    /** {@see ShopProcessCenter} **/
+    /** {@see BPageShopOrders} **/
     orders: {
-      /** {@see BShopProcessCenterList} **/
+      /** {@see BProcessCenterList} **/
       physical: {
         waiting_message: "در حال دریافت اطلاعات... لطفا منتظر بمانید",
         rejected: "رد شده است",
@@ -606,7 +606,7 @@ export default {
         },
       },
 
-      /** {@see ShopProcessCenter_Virtual} **/
+      /** {@see BPageShopOrdersVirtual} **/
       virtual: {
         waiting_message: "در حال دریافت اطلاعات... لطفا منتظر بمانید",
 
@@ -2259,7 +2259,7 @@ export default {
     },
   },
 
-  /** {@see OrderPageDashboardTemplate} **/
+  /** {@see BOrderDashboard} **/
   process_order_page_dashboard: {
     title: "پردازش سفارشات",
     cancel_order_action: "لغو سفارش",
@@ -2282,7 +2282,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterPhysicalOrderPage} **/
+  /** {@see BPageOrderPhysical} **/
   /** {@see ShopProcessCenterVirtualOrderPage} **/
   /** {@see ShopProcessCenterFileOrderPage} **/
   /** {@see ShopProcessCenterServiceOrderPage} **/
@@ -2426,7 +2426,7 @@ export default {
         pay_fail_message: "پرداخت تایید نمی شود.",
       },
     },
-    /** {@see OrderBasketListWidget} **/
+    /** {@see BOrderDashboardCart} **/
     basket_list: {
       checklist: [
         "بررسی موجودی کالا.",
@@ -2442,7 +2442,7 @@ export default {
         "مشتری شما یک محصول برنده شده است. این محصول را به همراه سفارش، ارسال نمایید.",
     },
 
-    /** {@see OrderPreparingWidget} **/
+    /** {@see BOrderDashboardPreparing} **/
     preparing: {
       title: "آماده سازی",
       packing_weight: "وزن بسته بندی",
@@ -2897,7 +2897,7 @@ export default {
   virtual_order_timeline: {
     title: "جدول زمانی",
   },
-  /** {@see ShopProcessCenterPhysicalOrderPage_Timeline} **/
+  /** {@see BPageOrderPhysicalTimeline} **/
   physical_order_timeline: {
     title: "جدول زمانی",
   },
@@ -5267,7 +5267,7 @@ export default {
     weekly_report: "📈 گزارش هفتگی",
   },
 
-  /** {@see OrderDeliveryWidget} **/
+  /** {@see BOrderDashboardDelivery} **/
   order_delivery: {
     title: "ارسال",
     add_to_delivery_que_action: "افزودن به لیست ارسال مرسولات",
@@ -5358,7 +5358,7 @@ export default {
     title: "بازدهی فروش محصول",
   },
 
-  /** {@see OrderFulfillmentWidget} **/
+  /** {@see BOrderDashboardDropshippingFulfillment} **/
   fulfilment_order_widget: {
     title: "وضعیت فروش دراپ شیپینگ",
     check_action: "تایید دراپ شیپینگ",
@@ -6144,7 +6144,7 @@ export default {
     message: "دسترسی زودهنگام برای توسعه دهندگان بازی",
   },
 
-  /** {@see ShopProcessCenterBulkExportActionsBasket} **/
+  /** {@see BProcessCenterBulkExport} **/
   orders_bulk_export: {
     title: "دستیار سفارشات",
     timespan: {

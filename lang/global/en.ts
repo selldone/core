@@ -1625,7 +1625,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterBasketList} **/
+  /** {@see BOrderCart} **/
   basket_list: {
     return_count: "Return: {count} number",
     table: {

@@ -613,9 +613,9 @@ export default {
       },
     },
 
-    /** {@see ShopProcessCenter} **/
+    /** {@see ShopPBPageShopOrdersrocessCenter} **/
     orders: {
-      /** {@see BShopProcessCenterList} **/
+      /** {@see BProcessCenterList} **/
       physical: {
         waiting_message: "Receiving information ... please wait",
         rejected: "Rejected",
@@ -632,7 +632,7 @@ export default {
         },
       },
 
-      /** {@see ShopProcessCenter_Virtual} **/
+      /** {@see BPageShopOrdersVirtual} **/
       virtual: {
         waiting_message: "Receiving information ... please wait",
 
@@ -2303,7 +2303,7 @@ export default {
     },
   },
 
-  /** {@see OrderPageDashboardTemplate} **/
+  /** {@see BOrderDashboard} **/
   process_order_page_dashboard: {
     title: "Order Processing",
     cancel_order_action: "Cancel Order",
@@ -2325,7 +2325,7 @@ export default {
       set_tracking_success: "Order Track ID saved successfully.",
     },
   },
-  /** {@see ShopProcessCenterPhysicalOrderPage} **/
+  /** {@see BPageOrderPhysical} **/
   /** {@see ShopProcessCenterVirtualOrderPage} **/
   /** {@see ShopProcessCenterFileOrderPage} **/
   /** {@see ShopProcessCenterServiceOrderPage} **/
@@ -2469,7 +2469,7 @@ export default {
         pay_fail_message: "Payment cannot be approved!",
       },
     },
-    /** {@see OrderBasketListWidget} **/
+    /** {@see BOrderDashboardCart} **/
     basket_list: {
       checklist: [
         "Check inventory.",
@@ -2484,7 +2484,7 @@ export default {
       lottery_prize_inform:
         "Your customer win 1x of this product. Send  gift with this order.",
     },
-    /** {@see OrderPreparingWidget} **/
+    /** {@see BOrderDashboardPreparing} **/
     preparing: {
       title: "Preparation",
       packing_weight: "Packing Weight",
@@ -2930,7 +2930,7 @@ export default {
   virtual_order_timeline: {
     title: "Timeline",
   },
-  /** {@see ShopProcessCenterPhysicalOrderPage_Timeline} **/
+  /** {@see BPageOrderPhysicalTimeline} **/
   physical_order_timeline: {
     title: "Timeline",
   },
@@ -5295,7 +5295,7 @@ export default {
     weekly_report: "📈 Weekly Reports",
   },
 
-  /** {@see OrderDeliveryWidget} **/
+  /** {@see BOrderDashboardDelivery} **/
   order_delivery: {
     title: "Delivery",
     add_to_delivery_que_action: "Add to shipping queue",
@@ -5388,7 +5388,7 @@ export default {
     title: "Product sales performance",
   },
 
-  /** {@see OrderFulfillmentWidget} **/
+  /** {@see BOrderDashboardDropshippingFulfillment} **/
   fulfilment_order_widget: {
     title: "Dropshipping fulfillment",
     check_action: "Accept dropshipping",
@@ -6180,7 +6180,7 @@ export default {
     message: "Early Access For Game Developers",
   },
 
-  /** {@see ShopProcessCenterBulkExportActionsBasket} **/
+  /** {@see BProcessCenterBulkExport} **/
   orders_bulk_export: {
     title: "Orders Assistant",
     timespan: {

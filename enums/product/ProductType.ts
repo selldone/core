@@ -73,8 +73,8 @@ export const ProductType: Record<
     basket: require("@core/assets/order-types/basket-physical.svg"),
     description: "global.product_types.physical_description",
     enable: true,
-    process_page: "ShopProcessCenter_Physical",
-    order_page: "ShopProcessCenterPhysicalOrderPage_Dashboard",
+    process_page: "BPageShopOrdersPhysical",
+    order_page: "BPageOrderPhysicalDashboard",
 
     color: "#689F38",
     colors: ["#689F38", "#AFB42B"],
@@ -88,7 +88,7 @@ export const ProductType: Record<
     basket: require("@core/assets/order-types/basket-virtual.svg"),
     description: "global.product_types.virtual_description",
     enable: true,
-    process_page: "ShopProcessCenter_Virtual",
+    process_page: "BPageShopOrdersVirtual",
     order_page: "ShopProcessCenterVirtualOrderPage_Dashboard",
 
     color: "#2196F3",
@@ -103,7 +103,7 @@ export const ProductType: Record<
     basket: require("@core/assets/order-types/basket-file.svg"),
     description: "global.product_types.file_description",
     enable: true,
-    process_page: "ShopProcessCenter_File",
+    process_page: "BPageShopOrdersFile",
     order_page: "ShopProcessCenterFileOrderPage_Dashboard",
 
     color: "#F57C00",
@@ -118,7 +118,7 @@ export const ProductType: Record<
     basket: require("@core/assets/order-types/basket-service.svg"),
     description: "global.product_types.service_description",
     enable: true,
-    process_page: "ShopProcessCenter_Service",
+    process_page: "BPageShopOrdersService",
     order_page: "ShopProcessCenterServiceOrderPage_Dashboard",
 
     color: "#E91E63",
@@ -134,7 +134,7 @@ export const ProductType: Record<
     basket: require("@core/assets/order-types/basket-subscription.svg"),
     description: "global.product_types.subscription_description",
     enable: true,
-    process_page: "ShopProcessCenter_Subscription",
+    process_page: "BPageShopOrdersSubscription",
     order_page: "ShopProcessCenterSubscriptionOrderPage_Dashboard",
 
     color: "#673AB7",

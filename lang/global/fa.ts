@@ -1619,7 +1619,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterBasketList} **/
+  /** {@see BOrderCart} **/
   basket_list: {
     return_count: "مرجوعی: {count} عدد",
     table: {
