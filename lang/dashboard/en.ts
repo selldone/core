@@ -2267,13 +2267,8 @@ export default {
       order: "Order",
     },
 
-    /** {@see OrderVirtualListWidget} **/
-    list_widget: {
-      title: "Order Specifications",
-      product_name: "Product Name",
-    },
 
-    /** {@see VirtualOutputsWidget} **/
+    /** {@see BOrderVirtualItem} **/
     outputs_widget: {
       title: "Output form",
       table: {
@@ -2292,7 +2287,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterFileOrderPage} **/
+  /** {@see BPageOrderFile} **/
   file_process_center: {
     title: "Processing Center",
     sub_title: "Order Processing",
@@ -2327,8 +2322,8 @@ export default {
   },
   /** {@see BPageOrderPhysical} **/
   /** {@see ShopProcessCenterVirtualOrderPage} **/
-  /** {@see ShopProcessCenterFileOrderPage} **/
-  /** {@see ShopProcessCenterServiceOrderPage} **/
+  /** {@see BPageOrderFile} **/
+  /** {@see BPageOrderService} **/
   process_center: {
     title: "Processing Center",
 
@@ -2918,15 +2913,15 @@ export default {
       change_category_success: "Product category edited.",
     },
   },
-  /** {@see ShopProcessCenterPhysicalOrderPage_Track} **/
+  /** {@see BPageOrderPhysicalTrack} **/
   physical_order_track: {
     title: "Risk Reports and Assessments",
   },
-  /** {@see ShopProcessCenterVirtualOrderPage_Track} **/
+  /** {@see BPageOrderVirtualTrack} **/
   virtual_order_track: {
     title: "Risk Reports and Assessments",
   },
-  /** {@see ShopProcessCenterVirtualOrderPage_Timeline} **/
+  /** {@see BPageOrderVirtualTimeline} **/
   virtual_order_timeline: {
     title: "Timeline",
   },
@@ -2934,7 +2929,7 @@ export default {
   physical_order_timeline: {
     title: "Timeline",
   },
-  /** {@see ShopProcessCenterPhysicalOrderPage_Inputs} **/
+  /** {@see BPageOrderPhysicalInput} **/
   physical_order_inputs: {},
   /** {@see SBackofficeOrderTimeline} **/
   order_timeline: {
@@ -4934,7 +4929,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterPOSOrderPage**/
+  /** {@see BPageOrderPos**/
   pos_process_center: {
     title: "POS order processing center",
     menu: {
@@ -5815,7 +5810,7 @@ export default {
     start_service: "Start service",
     end_service: "Finish",
   },
-  /** @see ServiceTasksTableWidget **/
+  /** @see BOrderDashboardServiceTasks **/
   service_tasks: {
     notification_finish: {
       title: "Finish of service",
@@ -6112,7 +6107,7 @@ export default {
       "Here is a list of your owned shops, authorized shops, and sample shops. To hide sample shops, navigate to the bottom of the page and select the preferences.",
   },
 
-  /** {@see DeliveryServiceProcessingTable} **/
+  /** {@see BTransportationServiceLabels} **/
   shipping: {
     warehouse_error:
       "Set your warehouse first! This address will be used as the origin of shipping.",

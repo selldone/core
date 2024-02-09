@@ -120,19 +120,19 @@ const MENTION_TIMELINE: INotificationType = {
       basket.type === ProductType.PHYSICAL.code
         ? "BPageOrderPhysicalTimeline"
         : basket.type === ProductType.VIRTUAL.code
-          ? "ShopProcessCenterVirtualOrderPage_Timeline"
+          ? "BPageOrderVirtualTimeline"
           : basket.type === ProductType.FILE.code
             ? "ShopProcessCenterFileOrderPage_Timeline"
             : basket.type === ProductType.SERVICE.code
-              ? "ShopProcessCenterServiceOrderPage_Timeline"
+              ? "BPageOrderServiceTimeline"
               : basket.type === ProductType.SUBSCRIPTION.code
-                ? "ShopProcessCenterSubscriptionOrderPage_Timeline"
+                ? "BPageOrderSubscriptionTimeline"
                 : basket.type === "AVO"
                   ? "ShopProcessCenterAvocadoOrderPage_Timeline"
                   : basket.type === "HYP"
                     ? "ShopProcessCenterHyperOrderPage_Timeline"
                     : basket.type === "POS"
-                      ? "ShopProcessCenterPOSOrderPage_Timeline"
+                      ? "BPageOrderPosTimeline"
                       : basket.type === "FUL"
                         ? "ShopProcessCenterDropShippingOrderPage_Timeline"
                         : null;

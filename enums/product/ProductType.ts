@@ -89,7 +89,7 @@ export const ProductType: Record<
     description: "global.product_types.virtual_description",
     enable: true,
     process_page: "BPageShopOrdersVirtual",
-    order_page: "ShopProcessCenterVirtualOrderPage_Dashboard",
+    order_page: "BPageOrderVirtualDashboard",
 
     color: "#2196F3",
     colors: ["#2196F3", "#0097A7"],
@@ -104,7 +104,7 @@ export const ProductType: Record<
     description: "global.product_types.file_description",
     enable: true,
     process_page: "BPageShopOrdersFile",
-    order_page: "ShopProcessCenterFileOrderPage_Dashboard",
+    order_page: "BPageOrderFileDashboard",
 
     color: "#F57C00",
     colors: ["#F57C00", "#FBC02D"],
@@ -119,7 +119,7 @@ export const ProductType: Record<
     description: "global.product_types.service_description",
     enable: true,
     process_page: "BPageShopOrdersService",
-    order_page: "ShopProcessCenterServiceOrderPage_Dashboard",
+    order_page: "BPageOrderServiceDashboard",
 
     color: "#E91E63",
     colors: ["#E91E63", "#C2185B"],
@@ -135,7 +135,7 @@ export const ProductType: Record<
     description: "global.product_types.subscription_description",
     enable: true,
     process_page: "BPageShopOrdersSubscription",
-    order_page: "ShopProcessCenterSubscriptionOrderPage_Dashboard",
+    order_page: "BPageOrderSubscriptionDashboard",
 
     color: "#673AB7",
     colors: ["#673AB7", "#512DA8"],

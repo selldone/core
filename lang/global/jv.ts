@@ -1467,7 +1467,7 @@ export default {
     "reserved": "dilindhungi",
     "paid": "Dibayar",
     "canceled": "dibatalake",
-    "cod": "Pay On Delivery",
+    "cod": "COD",
     "receipt_added": "Resi ditambahake",
     "payment_processing": "Proses pambayaran"
   },

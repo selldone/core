@@ -1467,7 +1467,7 @@ export default {
     "reserved": "Reserved",
     "paid": "Yakabhadharwa",
     "canceled": "Kanzurwa",
-    "cod": "Pay On Delivery",
+    "cod": "COD",
     "receipt_added": "Receipt yakawedzerwa",
     "payment_processing": "Payment processing"
   },

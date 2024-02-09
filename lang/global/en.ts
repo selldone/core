@@ -1587,7 +1587,7 @@ export default {
     reserved: "Reserved",
     paid: "Paid",
     canceled: "Canceled",
-    cod: "Pay On Delivery",
+    cod: "COD",
     receipt_added: "Receipt added",
     payment_processing: "Payment processing",
     payment_require_capture: "Require capture",
@@ -1603,7 +1603,7 @@ export default {
     step_4: "On delivery",
     step_5: "Delivered",
   },
-  /** {@see SBasketReturnItemsList} **/
+  /** {@see SOrderBasketReturn} **/
   basket_return_request_view: {
     title: "Return Request",
     delivery_date: "Delivery date",

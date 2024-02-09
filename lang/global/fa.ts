@@ -1597,7 +1597,7 @@ export default {
     step_5: "تحویل به مشتری",
   },
 
-  /** {@see SBasketReturnItemsList} **/
+  /** {@see SOrderBasketReturn} **/
   basket_return_request_view: {
     title: "درخواست مرجوعی",
     delivery_date: "تاریخ دریافت توسط مشتری",

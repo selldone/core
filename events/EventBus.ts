@@ -11,40 +11,38 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+// EventBus.ts
+import {reactive} from "vue";
 
-
-// EventBus.js
-import { reactive, toRefs } from 'vue';
+type Callback = (...args: any[]) => void;
 
 export const EventBus = (() => {
-  const events = reactive(new Map());
+  const events = reactive(new Map<string, Set<Callback>>());
 
-  function $emit(event, ...args) {
-    if (events[event]) {
-      events[event].forEach((callback) => callback(...args));
-}
-
-}
-
-function $on(event, callback) {
-  if (!events[event]) {
-    events[event] = new Set();
-  }
-  events[event].add(callback);
-}
-
-function $off(event, callback) {
-  if (events[event]) {
-    events[event].delete(callback);
-    if (events[event].size === 0) {
-      events.delete(event);
+  function $emit(event: string, ...args: any[]) {
+    if (events.has(event)) {
+      events.get(event)!.forEach((callback) => callback(...args));
     }
   }
-}
 
-return { $emit, $on, $off };
+  function $on(event: string, callback: Callback) {
+    if (!events.has(event)) {
+      events.set(event, new Set());
+    }
+    events.get(event)!.add(callback);
+  }
+
+  function $off(event: string, callback: Callback) {
+    if (events.has(event)) {
+      events.get(event)!.delete(callback);
+      if (events.get(event)!.size === 0) {
+        events.delete(event);
+      }
+    }
+  }
+
+  return { $emit, $on, $off };
 })();
-
 
 export enum EventName {
   // ━━━━━━━━━━━━━━━ Common in storefront & backoffice ━━━━━━━━━━━━━━━

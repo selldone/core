@@ -2223,13 +2223,9 @@ export default {
       order: "سفارش",
     },
 
-    /** {@see OrderVirtualListWidget} **/
-    list_widget: {
-      title: "مشخصات سفارش",
-      product_name: "نام محصول",
-    },
 
-    /** {@see VirtualOutputsWidget} **/
+
+    /** {@see BOrderVirtualItem} **/
     outputs_widget: {
       title: "اطلاعات خروجی",
       table: {
@@ -2248,7 +2244,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterFileOrderPage} **/
+  /** {@see BPageOrderFile} **/
   file_process_center: {
     title: "مرکز پردازش",
     sub_title: "پردازش سفارش",
@@ -2284,8 +2280,8 @@ export default {
 
   /** {@see BPageOrderPhysical} **/
   /** {@see ShopProcessCenterVirtualOrderPage} **/
-  /** {@see ShopProcessCenterFileOrderPage} **/
-  /** {@see ShopProcessCenterServiceOrderPage} **/
+  /** {@see BPageOrderFile} **/
+  /** {@see BPageOrderService} **/
   process_center: {
     title: "مرکز پردازش",
     sub_title: "پردازش سفارش",
@@ -2885,15 +2881,15 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterPhysicalOrderPage_Track} **/
+  /** {@see BPageOrderPhysicalTrack} **/
   physical_order_track: {
     title: "گزارشات و ارزیابی ریسک",
   },
-  /** {@see ShopProcessCenterVirtualOrderPage_Track} **/
+  /** {@see BPageOrderVirtualTrack} **/
   virtual_order_track: {
     title: "گزارشات و ارزیابی ریسک",
   },
-  /** {@see ShopProcessCenterVirtualOrderPage_Timeline} **/
+  /** {@see BPageOrderVirtualTimeline} **/
   virtual_order_timeline: {
     title: "جدول زمانی",
   },
@@ -2902,7 +2898,7 @@ export default {
     title: "جدول زمانی",
   },
 
-  /** {@see ShopProcessCenterPhysicalOrderPage_Inputs} **/
+  /** {@see BPageOrderPhysicalInput} **/
   physical_order_inputs: {},
 
   /** {@see SBackofficeOrderTimeline} **/
@@ -4916,7 +4912,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterPOSOrderPage**/
+  /** {@see BPageOrderPos**/
   pos_process_center: {
     title: "سفارش صندوق",
     menu: {
@@ -5778,7 +5774,7 @@ export default {
     start_service: "شروع انجام خدمت",
     end_service: "پایان خدمت",
   },
-  /** @see ServiceTasksTableWidget **/
+  /** @see BOrderDashboardServiceTasks **/
   service_tasks: {
     notification_finish: {
       title: "اتمام خدمت",
@@ -6077,7 +6073,7 @@ export default {
       "لیست فروشگاه های من، فروشگاه های دارای دسترسی و فروشگاه های نمونه.",
   },
 
-  /** {@see DeliveryServiceProcessingTable} **/
+  /** {@see BTransportationServiceLabels} **/
   shipping: {
     warehouse_error:
       "ابتدا انبار خود را تنظیم کنید! این آدرس به عنوان مبدأ حمل و نقل استفاده خواهد شد.",
