@@ -13,6 +13,10 @@
  */
 
 export interface IReturn {
-  params?: { [key: string]: any };
-  return: string | null; // Return route name
+  ROUTE_PARAMS?: { [key: string]: any };
+  ROUTE_NAME: string | null; // Return route name
+  HIGHLIGHT_ID?: number | null; // Item id to highlight
+
+  // Index signature for additional properties
+  [key: string]: any;
 }

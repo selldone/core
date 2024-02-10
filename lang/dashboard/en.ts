@@ -4801,7 +4801,7 @@ export default {
       success_payment: "COD payment confirmed successfully.",
     },
   },
-  /** {@see DeliveryPersonPage**/
+  /** {@see BPageCourier**/
   delivery_person: {
     actions_title: "Courier Settings",
     action_delivered: "Shipped",
@@ -5298,7 +5298,7 @@ export default {
     message:
       "Once the package has been handed over to the shipping courier, please click the <b>Confirm Delivery</b> button.",
     message_add_to_service:
-      "Click the following button if you want to send this package by a <b>delivery service</b>.",
+      "Press the button below to add your order to the shipping queue and dispatch the package via a <b>delivery service</b>.",
     action: "Delivery Confirmation",
     pickup_action: "Pickup confirmation",
 
@@ -5946,7 +5946,7 @@ export default {
     pending_orders: "Active orders",
     avocado: "Order Avocado",
   },
-  /** {@see AvocadoAddEdit} **/
+  /** {@see BAvocadoInvoice} **/
   avocado_process: {
     step1: "Pricing",
     step1_msg:
@@ -7080,6 +7080,53 @@ export default {
         "User Ratings and Reviews",
         "Pricing and Availability"
       ]
+    },
+
+    avocado:{
+      title:[
+        "Purchase Receipt",
+        "Sale Confirmation",
+        "Order Invoice",
+        "Payment Invoice",
+        "Customer Receipt",
+        "Transaction Summary",
+        "Billing Statement",
+        "Checkout Receipt",
+        "Order Summary",
+        "Purchase Order Invoice",
+        "Sales Receipt",
+        "Retail Invoice",
+        "E-Receipt",
+        "Service Invoice",
+        "Product Invoice",
+        "Payment Receipt",
+        "Order Confirmation",
+        "Billing Invoice",
+        "Checkout Invoice",
+        "Customer Invoice"
+      ],
+      message:[
+        "Thank you for your purchase!",
+        "We appreciate your business.",
+        "Your order is on its way!",
+        "Thanks for shopping with us.",
+        "Looking forward to serving you again.",
+        "Your satisfaction is our top priority.",
+        "Don't forget to rate your experience.",
+        "Thank you for supporting our store.",
+        "We hope you enjoy your new purchase!",
+        "Save your invoice for future reference.",
+        "Visit us again for more great products.",
+        "Stay connected for exclusive offers.",
+        "Thank you for being a valued customer.",
+        "We're here to help if you need assistance.",
+        "Your feedback helps us improve.",
+        "Enjoy a special discount on your next purchase.",
+        "You've made a great choice!",
+        "Thank you for your trust in us.",
+        "Looking forward to your feedback.",
+        "A heartfelt thank you from our team."
+      ],
     }
 
 

@@ -128,7 +128,7 @@ const MENTION_TIMELINE: INotificationType = {
               : basket.type === ProductType.SUBSCRIPTION.code
                 ? "BPageOrderSubscriptionTimeline"
                 : basket.type === "AVO"
-                  ? "ShopProcessCenterAvocadoOrderPage_Timeline"
+                  ? "BPageOrderAvocadoTimeline"
                   : basket.type === "HYP"
                     ? "ShopProcessCenterHyperOrderPage_Timeline"
                     : basket.type === "POS"
