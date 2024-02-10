@@ -5184,7 +5184,7 @@ export default {
     },
   },
 
-  /** {@see AdminShop_Channels_Bots**/
+  /** {@see BPageShopChannelBots**/
   shop_bots: {
     not_set: "Not Set!",
     tokens: "Token(s)",
@@ -5968,7 +5968,7 @@ export default {
   },
 
   /** {@see BPageProductHyper} **/
-  /** {@see AdminShop_Channels_Hyper} **/
+  /** {@see BPageShopChannelHyper} **/
   hyper: {
     name: "Hyper",
     print_label:

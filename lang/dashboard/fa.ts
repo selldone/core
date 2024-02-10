@@ -5160,7 +5160,7 @@ export default {
     },
   },
 
-  /** {@see AdminShop_Channels_Bots**/
+  /** {@see BPageShopChannelBots**/
   shop_bots: {
     not_set: "تنظیم نشده!",
     tokens: "توکن (ها)",
@@ -5721,7 +5721,7 @@ export default {
   },
 
   /** @see InstagramViewMedias **/
-  /** @see AdminShop_Channels_Instagram **/
+  /** @see BPageShopChannelInstagram **/
   instagram: {
     title: "فروش در اینستاگرام",
     message:
@@ -5933,7 +5933,7 @@ export default {
   },
 
   /** {@see BPageProductHyper} **/
-  /** {@see AdminShop_Channels_Hyper} **/
+  /** {@see BPageShopChannelHyper} **/
   hyper: {
     name: "هایپر",
     print_label: "لیبل زیر را پرینت کرده و در مقابل محصول بگذارید",

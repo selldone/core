@@ -20,7 +20,7 @@ export const ShopPlugin = {
         description: "",
         icon: require("@components/assets/trademark/google-tag-manager.svg"),
         url: "https://tagmanager.google.com",
-        to:{name:'AdminShop_Channels_GoogleApp'}
+        to:{name:'BPageShopChannelGoogle'}
     },
 
     VerificationTag: {
@@ -29,7 +29,7 @@ export const ShopPlugin = {
         description: "",
         icon: require("@components/assets/trademark/search-console.svg"),
         url: "https://search.google.com/search-console?",
-        to:{name:'AdminShop_Channels_GoogleApp'}
+        to:{name:'BPageShopChannelGoogle'}
     },
 
     FacebookPixel: {
@@ -38,7 +38,7 @@ export const ShopPlugin = {
         description: "",
         icon: require("@components/assets/trademark/meta.png"),
         //url: "https://search.google.com/search-console?",
-        to:{name:'AdminShop_Channels_FacebookApp'}
+        to:{name:'BPageShopChannelMeta'}
     },
 
 
