@@ -80,6 +80,8 @@ export class Shop {
     region?: string;
     locality?: string;
     days_open?: (keyof typeof WeekDays)[] | null;
+    time_open?: string;
+    time_close?: string;
   };
 
   /** The support mode for the shop. */

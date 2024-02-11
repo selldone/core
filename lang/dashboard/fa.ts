@@ -311,7 +311,7 @@ export default {
   },
 
   widgets: {
-    /** {@see BShopDashboardFeedbackCharts} **/
+    /** {@see BDashboardFeedback} **/
     overview: {
       title: "نظرات کاربران",
       title_small: "نمای کلی",
@@ -366,7 +366,7 @@ export default {
         action: "لینک دعوت من",
       },
 
-      /** {@see SShopDashboardTechnical} **/
+      /** {@see BDashboardShopTechnical} **/
       info: {
         title: "مشخصات",
         subtitle:
@@ -394,7 +394,7 @@ export default {
         hide_domains: "مخفی کردن دامنه ها",
         show_domains: "نمایش دامنه های من",
 
-        /** {@see ShopDomains} **/
+        /** {@see BDomainsList} **/
         table: {
           primary: "اصلی",
           url: "آدرس",
@@ -438,7 +438,7 @@ export default {
             "آیا می خواهید این دامنه را حذف نمایید؟ دقت نمایید برای جلوگیری از سوء استفاده دیگران مقادیر رکورد DNS دامنه خود را به حالت قبل بازگردانید.",
         },
       },
-      /** {@see SShopDashboardOrders} **/
+      /** {@see BDashboardShopOrders} **/
       active_orders: {
         title: "سفارشات",
         title_small: "در صف انتظار",
@@ -448,13 +448,13 @@ export default {
         file: "سفارش فایل",
         service: "سفارش خدمات",
       },
-      /** {@see SShopDashboardProducts} **/
+      /** {@see BDashboardShopProducts} **/
       products: {
         title: "محصولات",
         title_small: "کالا، خدمات، فایل",
         total_products: "تعداد تنوع کالا",
       },
-      /** {@see SShopDashboardFinance} **/
+      /** {@see BDashboardShopFinance} **/
       finance: {
         title: "مالی",
         title_small: "گزارش مالی",
@@ -484,7 +484,7 @@ export default {
           pay: "پرداخت",
         },
       },
-      /** {@see SShopDashboardCustomers} **/
+      /** {@see BDashboardShopCustomers} **/
       customers: {
         title: "کاربران فروشگاه",
         title_small: "گزارش فعالیت",
@@ -506,7 +506,7 @@ export default {
         title_small: "نصب شده",
       },
 
-      /** {@see SShopDashboardPerformance} **/
+      /** {@see BDashboardShopPerformance} **/
       performance: {
         title: "امروز",
         title_small: "تعداد کاربران و فروش",
@@ -622,7 +622,7 @@ export default {
       },
     },
 
-    /** {@see AdminShopFinance} **/
+    /** {@see BPageShopFinance} **/
     auditing: {
       menu: {
         exchange: "نرخ ارز",
@@ -635,7 +635,7 @@ export default {
         valuations: "قیمت گذاری",
       },
 
-      /** {@see AdminShopFinance_Bill} **/
+      /** {@see BPageShopFinanceBill} **/
       invoice: {
         title: "حساب های پرداخت فروشگاه",
         subtitle:
@@ -3019,7 +3019,7 @@ export default {
     },
   },
 
-  /** {@see AccountList} **/
+  /** {@see BAccountInput} **/
   account_list: {
     account_input: "شماره حساب",
     account_input_message: "مبالغ هدایا برای این ارز به این حساب واریز میگردد.",
@@ -3805,7 +3805,7 @@ export default {
     products_views: "نمایش محصول",
   },
 
-  /** {@see SShopDashboardAcquisition} **/
+  /** {@see BDashboardShopAcquisition} **/
   shop_visitors_widget: {
     title: "گزارش بازدید کنندگان",
     new_visitors: "بازدید کننده جدید",
@@ -5222,7 +5222,7 @@ export default {
       "برخی از اپلیکیشن ها نیازی به واسط کاربری در بخش ادمین خود ندارند. ممکن است این اپلیکیشن تنها کدی را به بخش هدر سایت فروشگاه شما اضافه نماید.",
     header: "کد هدر",
   },
-  /** {@see AdminShopFinance_Report**/
+  /** {@see BPageShopFinanceReport**/
   finance_report: {
     export_title: "دریافت داده های مالی",
     export_sub_title: "دانلود فایل اکسل لیست فروش ها",
@@ -5903,7 +5903,7 @@ export default {
     },
   },
 
-  /** {@see SShopDashboardOrdersAvocado} **/
+  /** {@see BDashboardShopOrdersAvocado} **/
   avocado_orders: {
     title: "سرویس فروش آووکادو",
     title_small: "گزارش سفارشات",
@@ -5951,7 +5951,7 @@ export default {
     configuration: "تنظیمات هایپر",
   },
 
-  /** {@see SShopDashboardOrdersHyper} **/
+  /** {@see BDashboardShopOrdersHyper} **/
   hyper_orders: {
     title: "سرویس فروش هایپر",
     title_small: "گزارش فروش",
@@ -5983,7 +5983,7 @@ export default {
     account_msg: "حسابی که قصد واریز شارژ هدیه را دارید انتخاب نمایید.",
   },
 
-  /** {@see SShopDashboardApplications} **/
+  /** {@see BDashboardShopApplications} **/
   selldone_applications: {
     title: "از سفارشات جدید در لحظه خبردار شوید!",
     msg: "کسب و کار خود را در هر مکان و هر زمان مدیریت کنید.",
@@ -6326,7 +6326,7 @@ export default {
 
   vendor_page: {},
 
-  /** {@see ShopDomains} **/
+  /** {@see BDomainsList} **/
   domains: {
     message:
       "چندین دامنه را به سیستم عامل کسب و کار خود متصل کنید و همه آنها را در یک مکان مدیریت کنید. می توانید از ویژگی چند دامنه برای ایجاد دامنه های اختصاصی برای هر قسمت از وب سایت خود مانند وبلاگ و انجمن استفاده کنید یا از دامنه های اختصاصی برای  هر یک از شرکای تجاری خود  و افیلیت ها استفاده کنید.",
@@ -6991,6 +6991,35 @@ export default {
         "از طرف تیم، صمیمانه سپاسگزاریم.",
       ],
     },
+
+    /**
+     * Map Tag
+     */
+    map_tag:{
+      title:[
+        "ویترین املاک",
+        "میدان فروشندگان",
+        "خانه‌های برگزیده",
+        "بازار محلی",
+        "تازه‌های ورود",
+        "باغ‌های املاک",
+        "منطقه خرید",
+        "کوچه صنعتگران",
+        "املاک لوکس",
+        "مرکز اجاره",
+        "خانه‌های باز",
+        "نوآوری‌های فناوری",
+        "خیابان مد",
+        "گوشه صنایع دستی",
+        "محوطه غذا",
+        "گوشه کتاب",
+        "تقاطع جواهرات",
+        "خیابان عتیقه‌جات",
+        "منطقه تناسب اندام"
+      ]
+    }
+
+
 
 
 

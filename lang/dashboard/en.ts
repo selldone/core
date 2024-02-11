@@ -338,7 +338,7 @@ export default {
   },
 
   widgets: {
-    /** {@see BShopDashboardFeedbackCharts} **/
+    /** {@see BDashboardFeedback} **/
     overview: {
       title: "Customers feedback",
       title_small: "overview",
@@ -382,7 +382,7 @@ export default {
       localization: "Localization",
     },
 
-    /** {@see SShopDashboard} **/
+    /** {@see BPageShopDashboard} **/
     dashboard: {
       title: "Shop dashboard",
       online_staff: "Online staff",
@@ -392,7 +392,7 @@ export default {
         action: "My referral link",
       },
 
-      /** {@see SShopDashboardTechnical} **/
+      /** {@see BDashboardShopTechnical} **/
       info: {
         title: "Technical",
         subtitle: "Technical overview of your business OS.",
@@ -419,7 +419,7 @@ export default {
         hide_domains: "Hide my domains",
         show_domains: "Show my domains",
 
-        /** {@see ShopDomains} **/
+        /** {@see BDomainsList} **/
         table: {
           primary: "Primary",
           url: "Url",
@@ -465,7 +465,7 @@ export default {
         },
       },
 
-      /** {@see SShopDashboardOrders} **/
+      /** {@see BDashboardShopOrders} **/
       active_orders: {
         title: "Orders",
         title_small:
@@ -477,14 +477,14 @@ export default {
         service: "Service orders",
         subscription: "Subscription orders",
       },
-      /** {@see SShopDashboardProducts} **/
+      /** {@see BDashboardShopProducts} **/
       products: {
         title: "Inventory",
         title_small: "Products, Services, Files",
 
         total_products: "Total product types",
       },
-      /** {@see SShopDashboardFinance} **/
+      /** {@see BDashboardShopFinance} **/
       finance: {
         title: "Financial",
         title_small: "Financial report",
@@ -514,7 +514,7 @@ export default {
           pay: "Pay",
         },
       },
-      /** {@see SShopDashboardCustomers} **/
+      /** {@see BDashboardShopCustomers} **/
       customers: {
         title: "Shop customers",
         title_small: "Conversion report",
@@ -531,7 +531,7 @@ export default {
         },
       },
 
-      /** {@see SShopDashboardPerformance} **/
+      /** {@see BDashboardShopPerformance} **/
       performance: {
         title: "Today",
         title_small: "Users and sales overview",
@@ -648,7 +648,7 @@ export default {
       },
     },
 
-    /** {@see AdminShopFinance} **/
+    /** {@see BPageShopFinance} **/
     auditing: {
       menu: {
         exchange: "Exchange",
@@ -661,7 +661,7 @@ export default {
         valuations: "Valuations",
       },
 
-      /** {@see AdminShopFinance_Bill} **/
+      /** {@see BPageShopFinanceBill} **/
       invoice: {
         title: "Shop Linked Wallets",
         subtitle:
@@ -685,7 +685,7 @@ export default {
         add_account_dialog: {
           title: "Connecting credit account to store",
           subtitle:
-            "When you open a wallet account with Selldone, we will give you a virtual credit card and account like any other credit card. Selldone sales fee will be deducted from this account, but if your account balance is not enough, this amount will be owed. You can use Selldone services as much as you need.",
+            "Upon opening a wallet account with Selldone, you will receive a virtual credit card. The Selldone service fee will be charged to this account. However, if your account balance is insufficient, the fee will become a payable debt.",
           account_number: "Account Number",
           account_number_input_message:
             "The store will be linked to this account. This account will be used for fees and costs. ",
@@ -3048,7 +3048,7 @@ export default {
     },
   },
 
-  /** {@see AccountList} **/
+  /** {@see BAccountInput} **/
   account_list: {
     account_input: "Account Number",
     account_input_message:
@@ -3822,7 +3822,7 @@ export default {
     buys: "Buy",
     products_views: "View Product",
   },
-  /** {@see SShopDashboardAcquisition} **/
+  /** {@see BDashboardShopAcquisition} **/
   shop_visitors_widget: {
     title: "Acquisition Analytics",
     new_visitors: "New visitors",
@@ -5249,7 +5249,7 @@ export default {
       "Some applications do not require a user interface in their admin area. This application may only add code to the header section of your store website.",
     header: "Header code",
   },
-  /** {@see AdminShopFinance_Report**/
+  /** {@see BPageShopFinanceReport**/
   finance_report: {
     export_title: "Export financial data",
     export_sub_title:
@@ -5939,7 +5939,7 @@ export default {
     },
   },
 
-  /** {@see SShopDashboardOrdersAvocado} **/
+  /** {@see BDashboardShopOrdersAvocado} **/
   avocado_orders: {
     title: "Avocado",
     title_small: "Social Media Sales",
@@ -5987,7 +5987,7 @@ export default {
     configuration: "Hyper Settings",
   },
 
-  /** {@see SShopDashboardOrdersHyper} **/
+  /** {@see BDashboardShopOrdersHyper} **/
   hyper_orders: {
     title: "Hyper",
     title_small: "Sales Report",
@@ -6018,7 +6018,7 @@ export default {
     account_msg: "Charge will be applied to this account",
   },
 
-  /** {@see SShopDashboardApplications} **/
+  /** {@see BDashboardShopApplications} **/
   selldone_applications: {
     title: "Don't miss your orders! ",
     msg: "Manage your business anywhere & anytime.",
@@ -6364,7 +6364,7 @@ export default {
 
   vendor_page: {},
 
-  /** {@see ShopDomains} **/
+  /** {@see BDomainsList} **/
   domains: {
     message:
       "Connect multiple domains to your business OS and manage all of them in one place. You can use the multiple domains feature to create dedicated domains for each part of your website, like blog and community, or use different domains for your affiliates.",
@@ -6379,7 +6379,7 @@ export default {
     },
   },
 
-  /** {@see SShopDashboardExternalService} **/
+  /** {@see BDashboardShopExternalServices} **/
   external_services: {
     title: "External services",
     subtitle:
@@ -7127,6 +7127,33 @@ export default {
         "Looking forward to your feedback.",
         "A heartfelt thank you from our team."
       ],
+    },
+
+    /**
+     * Map Tag
+     */
+    map_tag:{
+      title:[
+        "Property Showcase",
+        "Vendor Plaza",
+        "Featured Homes",
+        "Local Market",
+        "New Arrivals",
+        "Estate Gardens",
+        "Shopping District",
+        "Artisan Alley",
+        "Luxury Estates",
+        "Rental Hub",
+        "Open Houses",
+        "Tech Innovations",
+        "Fashion Lane",
+        "Crafts Corner",
+        "Food Court",
+        "Book Nook",
+        "Jewelry Junction",
+        "Antique Avenue",
+        "Fitness Zone"
+      ]
     }
 
 
