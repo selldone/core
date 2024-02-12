@@ -4225,7 +4225,7 @@ export default {
       count: "تعداد",
       unit: "عدد",
     },
-    /** {@see DiscountCodeEditForm} **/
+    /** {@see BDiscountCodeAdd} **/
     dialog: {
       title_edit: "ویرایش کد تخفیف",
       title_add: "کد تخفیف جدید",

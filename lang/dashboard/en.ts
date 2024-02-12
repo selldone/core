@@ -4252,7 +4252,7 @@ export default {
       count: "Count",
       unit: "item(s)",
     },
-    /** {@see DiscountCodeEditForm} **/
+    /** {@see BDiscountCodeAdd} **/
     dialog: {
       title_edit: "Edit discount code",
       title_add: "Add new discount code",
