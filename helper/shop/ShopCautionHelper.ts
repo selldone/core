@@ -111,7 +111,7 @@ export class ShopCautionHelper {
           "error",
           i18n.global.t("cautions.no_payment_method.title"),
           i18n.global.t("cautions.no_payment_method.message"),
-          { name: "AdminShopFinanceGateway" },
+          { name: "BPageShopFinanceGateways" },
           i18n.global.t("cautions.no_payment_method.action"),
         ),
       );
@@ -151,7 +151,7 @@ export class ShopCautionHelper {
           "error",
           i18n.global.t("cautions.no_currency.title"),
           i18n.global.t("cautions.no_currency.message"),
-          { name: "AdminShopFinanceExchangeRate" },
+          { name: "BPageShopFinanceExchange" },
           i18n.global.t("cautions.no_currency.action"),
         ),
       );

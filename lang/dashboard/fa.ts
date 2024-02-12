@@ -681,7 +681,7 @@ export default {
           "برای جلوگیری از قطع سرویس، حساب خود را شارژ نمایید!",
       },
 
-      /** {@see AdminShopFinanceGateway} **/
+      /** {@see BPageShopFinanceGateways} **/
       gateway: {
         title: "درگاه های پرداخت",
         sub_title:
@@ -698,7 +698,7 @@ export default {
         },
       },
 
-      /** {@see AdminShopFinanceExchangeRate} **/
+      /** {@see BPageShopFinanceExchange} **/
       exchange: {
         title: "ارزهای فعال فروشگاه",
         subtitle:
@@ -4196,7 +4196,7 @@ export default {
     },
   },
 
-  /** @see AdminShopIncentives **/
+  /** @see BPageShopIncentives **/
   incentives: {
     discount_code: "کد تخفیف",
     coupon: "کوپن",
@@ -4205,7 +4205,7 @@ export default {
     lottery: "بازی",
   },
 
-  /** {@see AdminShopDiscountCode} **/
+  /** {@see BPageShopIncentivesDiscountCode} **/
   discount_codes: {
     title: "کد تخفیف",
     sub_title:
@@ -4263,7 +4263,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopGiftCard} **/
+  /** {@see BPageShopIncentivesGiftcard} **/
   gift_cards: {
     title: "کارت هدیه",
     sub_title:
@@ -4295,7 +4295,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopCoupon} **/
+  /** {@see BPageShopIncentivesCoupon} **/
   coupons: {
     title: "کوپن ها",
     sub_title:
@@ -4382,7 +4382,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopOffer} **/
+  /** {@see BPageShopIncentivesOffer} **/
   offers: {
     title: "پیشنهاد ویژه",
     sub_title:
@@ -4559,7 +4559,7 @@ export default {
   /** {@see Affiliate**/
   user_affiliates: {},
 
-  /** {@see AdminShopLottery**/
+  /** {@see BPageShopIncentivesLottery**/
   shop_lotteries: {
     title: "بازی",
     sub_title:
@@ -5343,7 +5343,7 @@ export default {
     note: "یادداشت",
     date: "تاریخ",
   },
-  /** {@see WidgetShopGateway} **/
+  /** {@see BGatewayCard} **/
   widget_shop_gateway: {
     link_account_caution:
       "شما بایستی یک حساب در کیف پولتان با ارز ({currency}) را به فروشگاه خود اضافه نمایید! کلیک نمایید..",
@@ -5441,7 +5441,7 @@ export default {
     },
   },
 
-  /** @see AdminShopFinance_DropShippingCheckout **/
+  /** @see BPageShopFinanceResellerFulfillment **/
   dropship_checkout: {
     pay_dialog: {
       title: "پرداخت مبلغ سفارش عمده فروش",
@@ -5457,7 +5457,7 @@ export default {
     },
   },
 
-  /** @see AdminShopFinance_DropShippingAccounts **/
+  /** @see BPageShopFinanceResellerWallets **/
   dropship_accounts: {
     charge_account: "شارژ حساب",
     charge_dialog: {

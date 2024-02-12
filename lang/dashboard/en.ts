@@ -708,7 +708,7 @@ export default {
           "Charge your account to prevent service suspension!",
       },
 
-      /** {@see AdminShopFinanceGateway} **/
+      /** {@see BPageShopFinanceGateways} **/
       gateway: {
         title: "Payment Methods",
         sub_title:
@@ -725,7 +725,7 @@ export default {
         },
       },
 
-      /** {@see AdminShopFinanceExchangeRate} **/
+      /** {@see BPageShopFinanceExchange} **/
       exchange: {
         title: "Store Active Currencies",
         subtitle:
@@ -4223,7 +4223,7 @@ export default {
     },
   },
 
-  /** @see AdminShopIncentives **/
+  /** @see BPageShopIncentives **/
   incentives: {
     discount_code: "Discount",
     coupon: "Coupon",
@@ -4232,7 +4232,7 @@ export default {
     lottery: "Lottery",
   },
 
-  /** {@see AdminShopDiscountCode} **/
+  /** {@see BPageShopIncentivesDiscountCode} **/
   discount_codes: {
     title: "Discount Codes",
     sub_title:
@@ -4290,7 +4290,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopGiftCard} **/
+  /** {@see BPageShopIncentivesGiftcard} **/
   gift_cards: {
     title: "Gift Card",
     sub_title:
@@ -4322,7 +4322,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopCoupon} **/
+  /** {@see BPageShopIncentivesCoupon} **/
   coupons: {
     title: "Coupons",
     sub_title:
@@ -4405,7 +4405,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopOffer} **/
+  /** {@see BPageShopIncentivesOffer} **/
   offers: {
     title: "Offers",
     sub_title:
@@ -4575,7 +4575,7 @@ export default {
   },
   /** {@see Affiliate**/
   user_affiliates: {},
-  /** {@see AdminShopLottery**/
+  /** {@see BPageShopIncentivesLottery**/
   shop_lotteries: {
     title: "Lottery",
     sub_title:
@@ -5372,7 +5372,7 @@ export default {
     date: "Date",
   },
 
-  /** {@see WidgetShopGateway} **/
+  /** {@see BGatewayCard} **/
   widget_shop_gateway: {
     link_account_caution:
       "Link an account ({currency}) to your shop! Click here..",
@@ -5471,7 +5471,7 @@ export default {
     },
   },
 
-  /** @see AdminShopFinance_DropShippingCheckout **/
+  /** @see BPageShopFinanceResellerFulfillment **/
   dropship_checkout: {
     pay_dialog: {
       title: "Reseller orders payment",
@@ -5486,7 +5486,7 @@ export default {
         "Your payment for these orders confirmed and completed successfully.",
     },
   },
-  /** @see AdminShopFinance_DropShippingAccounts **/
+  /** @see BPageShopFinanceResellerWallets **/
   dropship_accounts: {
     charge_account: "Charge account",
     charge_dialog: {
