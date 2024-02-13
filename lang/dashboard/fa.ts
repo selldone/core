@@ -744,9 +744,9 @@ export default {
       },
     }, // End of auditing
 
-    /** {@see AdminShopLogistics} **/
+    /** {@see BPageShopLogistic} **/
     logistic: {
-      /** {@see AdminShopLogistics_Warehouse} **/
+      /** {@see BPageShopLogisticWarehouse} **/
       warehouses: {
         title: "انبارها",
         subtitle: "لیست انبارهای من.",
@@ -773,7 +773,7 @@ export default {
         includes: "محتویات",
       },
 
-      /** {@see AdminShopLogistics_Inventory} **/
+      /** {@see BPageShopLogisticInventory} **/
       warehouse: {
         title: "انبار فروشگاه",
         sub_title: "این آدرس به عنوان مبدا ارسال مرسولات در نظر گرفته می شود.",
@@ -784,7 +784,7 @@ export default {
         },
       },
 
-      /** {@see AdminShopLogistics_Transportations} **/
+      /** {@see BPageShopLogisticShipping} **/
       delivery: {
         title: "روش های ارسال مرسولات",
 
@@ -904,7 +904,7 @@ export default {
       },
     }, // End of users
 
-    /** {@see AdminShopMarketing} **/
+    /** {@see BPageShopMarketing} **/
     marketing: {
       menu: {
         campaigns: "کمپین ها",
@@ -914,7 +914,7 @@ export default {
         funnel: "فیلتر",
       },
 
-      /** {@see AdminShopMarketing_Campaign} **/
+      /** {@see BPageShopMarketingCampaign} **/
       campaign: {
         name_input_name: "نام کمپین",
         name_input_placeholder: "عنوان کمیپن خود را وارد نمایید.",
@@ -1724,7 +1724,7 @@ export default {
     discount: "تخفیف",
   },
 
-  /** {@see GiftCardTypeEdit} **/
+  /** {@see BGiftcardTypeAdd} **/
   gift_card_type_edit: {
     title_input: "عنوان",
     color_input: "رنگ کارت",
@@ -1742,7 +1742,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopLogisticsWarehouseEditor} **/
+  /** {@see BInventoryWarehouse} **/
   shop_warehouse_edit: {
     title: "افزودن انبار",
     message: "آدرس و مشخصات انبار خود را جهت محاسبه هزینه ارسال وارد نمایید.",
@@ -1759,7 +1759,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopLogisticsWarehouseInventoryList} **/
+  /** {@see BPageShopLogisticInventoryList} **/
   inventory_list: {
     search_input: "جستجو در محصولات...",
     search_input_title: "جستجو در میان کالاهای فروشگاه",
@@ -4106,7 +4106,7 @@ export default {
     title: "قراردادهای همکاری در فروش",
     message: "لیست قراردادهای همکاری در فروش من با فروشگاه ها.",
   },
-  /** @see AdminShopMarketing_Affiliate **/
+  /** @see BPageShopMarketingAffiliate **/
   affiliates: {
     title: "همکاران فروش",
     subtitle:
@@ -4319,7 +4319,7 @@ export default {
     },
   },
 
-  /** {@see CouponEditForm} **/
+  /** {@see BCouponAdd} **/
   coupon_edit: {
     title_edit: "ویرایش کوپن",
     title_add: "کوپن جدید",
@@ -4470,7 +4470,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopMarketing_EmailMarketing} **/
+  /** {@see BPageShopMarketingEmail} **/
   emails: {
     title: "ایمیل مارکتینگ",
     subtitle:
@@ -4581,7 +4581,7 @@ export default {
     },
   },
 
-  /** {@see LotteryEditForm**/
+  /** {@see BLotteryAdd**/
   lottery_edit: {
     title_edit: "ویرایش جایزه",
     title_add: "جایزه جدید",
@@ -5011,7 +5011,7 @@ export default {
     max_items_limit: "محدودیت بیشترین تعداد",
     total_items: "تعداد آیتم ها",
   },
-  /** {@see AdminShopMarketingCampaign**/
+  /** {@see BPageShopMarketingCampaign**/
   campaigns: {
     title: "کمپین ها",
     subtitle:
@@ -6160,7 +6160,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopMarketing_Funnels} **/
+  /** {@see BPageShopMarketingFunnel} **/
   customers_funnel: {
     title: "جمعیت شناسی مشتریان",
     subtitle:
@@ -6332,7 +6332,7 @@ export default {
       "چندین دامنه را به سیستم عامل کسب و کار خود متصل کنید و همه آنها را در یک مکان مدیریت کنید. می توانید از ویژگی چند دامنه برای ایجاد دامنه های اختصاصی برای هر قسمت از وب سایت خود مانند وبلاگ و انجمن استفاده کنید یا از دامنه های اختصاصی برای  هر یک از شرکای تجاری خود  و افیلیت ها استفاده کنید.",
   },
 
-  /** {@see TeamNoteButton}   {@see TeamNoteDialog} **/
+  /** {@see BNoteButton}   {@see BNoteDialog} **/
   notes: {
     add_action: "اضافه کردن یادداشت برای تیم",
     notifications: {

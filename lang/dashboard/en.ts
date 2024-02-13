@@ -771,9 +771,9 @@ export default {
       },
     }, // End of auditing
 
-    /** {@see AdminShopLogistics} **/
+    /** {@see BPageShopLogistic} **/
     logistic: {
-      /** {@see AdminShopLogistics_Warehouse} **/
+      /** {@see BPageShopLogisticWarehouse} **/
       warehouses: {
         title: "Warehouses",
         subtitle: "List of my warehouses.",
@@ -801,7 +801,7 @@ export default {
         includes: "Includes",
       },
 
-      /** {@see AdminShopLogistics_Inventory} **/
+      /** {@see BPageShopLogisticInventory} **/
       warehouse: {
         title: "Store Warehouse",
         sub_title: "This address is used as the origin of the shipping.",
@@ -812,7 +812,7 @@ export default {
         },
       },
 
-      /** {@see AdminShopLogistics_Transportations} **/
+      /** {@see BPageShopLogisticShipping} **/
       delivery: {
         title: "Shipping Methods",
 
@@ -931,7 +931,7 @@ export default {
       },
     }, // End of users
 
-    /** {@see AdminShopMarketing} **/
+    /** {@see BPageShopMarketing} **/
     marketing: {
       menu: {
         campaigns: "Campaigns",
@@ -941,7 +941,7 @@ export default {
         funnel: "Funnel",
       },
 
-      /** {@see AdminShopMarketing_Campaign} **/
+      /** {@see BPageShopMarketingCampaign} **/
       campaign: {
         name_input_name: "Campaign Name",
         name_input_placeholder: "Enter your campaign title.",
@@ -1767,7 +1767,7 @@ export default {
     discount: "Discount",
   },
 
-  /** {@see GiftCardTypeEdit} **/
+  /** {@see BGiftcardTypeAdd} **/
   gift_card_type_edit: {
     title_input: "Title",
     color_input: "Card color",
@@ -1784,7 +1784,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopLogisticsWarehouseEditor} **/
+  /** {@see BInventoryWarehouse} **/
   shop_warehouse_edit: {
     title: "Add Warehouse",
     message:
@@ -1802,7 +1802,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopLogisticsWarehouseInventoryList} **/
+  /** {@see BPageShopLogisticInventoryList} **/
   inventory_list: {
     search_input: "Product Search...",
     search_input_title: "Search among store products",
@@ -4128,7 +4128,7 @@ export default {
       "This is a list of affiliate partnerships with other stores. When store owners designate you as an affiliate, you can view your commissions, order details, and related statistics here.",
   },
 
-  /** @see AdminShopMarketing_Affiliate **/
+  /** @see BPageShopMarketingAffiliate **/
   affiliates: {
     title: "Affiliate Partners",
     subtitle:
@@ -4345,7 +4345,7 @@ export default {
       delete_success: "Coupon has been deleted successfully.",
     },
   },
-  /** {@see CouponEditForm} **/
+  /** {@see BCouponAdd} **/
   coupon_edit: {
     title_edit: "Edit coupon",
     title_add: "New coupon",
@@ -4488,7 +4488,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopMarketing_EmailMarketing} **/
+  /** {@see BPageShopMarketingEmail} **/
   emails: {
     title: "Email Marketing",
     subtitle:
@@ -4597,7 +4597,7 @@ export default {
     },
   },
 
-  /** {@see LotteryEditForm**/
+  /** {@see BLotteryAdd**/
   lottery_edit: {
     title_edit: "Edit lottery item",
     title_add: "New lottery item",
@@ -5035,7 +5035,7 @@ export default {
         "Upload CSV files of customers here. Make sure you follow the standard format, and also, you have to follow privacy rules.",
     },
   },
-  /** {@see AdminShopMarketingCampaign**/
+  /** {@see BPageShopMarketingCampaign**/
   campaigns: {
     title: "Campaigns",
     subtitle:
@@ -6196,7 +6196,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopMarketing_Funnels} **/
+  /** {@see BPageShopMarketingFunnel} **/
   customers_funnel: {
     title: "Customers Demography",
     subtitle:
@@ -6370,7 +6370,7 @@ export default {
       "Connect multiple domains to your business OS and manage all of them in one place. You can use the multiple domains feature to create dedicated domains for each part of your website, like blog and community, or use different domains for your affiliates.",
   },
 
-  /** {@see TeamNoteButton}   {@see TeamNoteDialog} **/
+  /** {@see BNoteButton}   {@see BNoteDialog} **/
   notes: {
     add_action: "Add a note for your team",
     notifications: {
