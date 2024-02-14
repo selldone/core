@@ -23,7 +23,7 @@ export const LEVELS={
   MARKETING:{name:'admin_shop.menu.marketing',icon:'fa:fas fa-bullhorn'},
   LOGISTIC:{name:'admin_shop.menu.logistic',icon:'fa:fas fa-boxes-packing'},
   CUSTOMERS:{name:'admin_shop.menu.customers',icon:'supervised_user_circle'},
-  CATEGORIES:{name:'admin_shop.menu.categories',icon:'category'},
+  CATEGORIES:{name:'admin_shop.menu.classification',icon:'class'},
   PAGES:{name:'admin_shop.menu.pages',icon:'fa:fas fa-drafting-compass'},
   ACCESS:{name:'admin_shop.menu.access',icon:'fa:fas fa-id-badge'},
   APPLICATIONS:{name:'admin_shop.menu.application',icon:'fa:fas fa-mobile'},

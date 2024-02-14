@@ -337,7 +337,7 @@ export default {
       access: "دسترسی",
       pages: "صفحات",
       channels: "کانال ها",
-      categories: "دسته بندی",
+      classification: "طبقه بندی",
       marketing: "مارکتینگ",
       customers: "کاربران",
       logistic: "لجستیک",
@@ -533,7 +533,7 @@ export default {
         "فایل فهرست محصولات (فرمت CSV، XLS، XLSX) را در اینجا رها کنید تا وارد کردن محصولات انبوه شروع شود. مطمئن شوید که فایل دارای فرمت استاندارد فهرست محصولات سلدان است.",
       menu_advanced_options: "تنظیمات پیشرفته",
 
-      /** {@see WidgetProductCard} **/
+      /** {@see BProductWindowProductLarge} **/
       product_widget: {
         product_type: "نوع کالا",
         price: "قیمت",
@@ -856,7 +856,7 @@ export default {
         report: "گزارش",
       },
 
-      /** {@see ShopUsers_Report} **/
+      /** {@see BPageShopCrmReport} **/
       report: {
         title: "گزارش کاربران فروشگاه",
         sub_title:
@@ -866,7 +866,7 @@ export default {
         report_30days_by_location:
           "فعالیت کاربران بر اساس موقعیت جغرافیایی در 30 روز گذشته",
       },
-      /** {@see ShopUsers_Club} **/
+      /** {@see BPageShopCrmClub} **/
       club: {
         title: "باشگاه مشتریان",
         sub_title:
@@ -897,7 +897,7 @@ export default {
           update_success: "تغییرات بر روی باشگاه مشتریان اعمال گردید.",
         },
       },
-      /** {@see ShopUsers_FAQ} **/
+      /** {@see BPageShopCrmFaq} **/
       faq: {
         title: "سوالات متداول",
         sub_title: "پرسش های مطرح شده در بخش پرسش و پاسخ فروشگاه.",
@@ -1012,14 +1012,14 @@ export default {
       },
     }, // End of pages
 
-    /** {@see AdminShopPermission} **/
+    /** {@see BPageShopPermission} **/
     permissions: {
       menu: {
         persons: "کارمندان",
         roles: "نقش ها",
         api: "API",
       },
-      /** {@see AdminShopPermission_Personnel} **/
+      /** {@see BPageShopPermissionStaff} **/
       shop_permissions: {
         menu: {
           users: "لیست کارمندان",
@@ -1044,7 +1044,7 @@ export default {
         },
       },
 
-      /** {@see AdminShopPermission_API} **/
+      /** {@see BPageShopPermissionApi} **/
       shop_api: {
         title: "کلیدهای دسترسی به فروشگاه",
         message:
@@ -1052,9 +1052,9 @@ export default {
       },
     }, // End of permissions
 
-    /** {@see AdminShop_Applications} **/
+    /** {@see BPageShopApplications} **/
     applications: {
-      /** {@see AdminShop_Applications_PWA} **/
+      /** {@see BPageShopApplicationsPwa} **/
       pwa: {
         title: "وب اپلیکیشن",
         sub_title: "وب اپلیکیشن فروشگاه خود را اینجا مشاهده نمایید.",
@@ -1063,7 +1063,7 @@ export default {
         ios_app: "اپلیکیشن iOS",
       },
 
-      /** {@see AdminShop_Applications_iOS} **/
+      /** {@see BPageShopApplicationsIos} **/
       ios: {
         title: "اپلیکیشن iOS",
         sub_title:
@@ -1071,7 +1071,7 @@ export default {
         message:
           "حداکثر حجم فایل :512 کیلوبایت، شما می توانید فایل هایی تا حجم 1MB را نیز آپلود نمایید به شرط آنکه سیستم فشرده سازی ما قادر به کاهش حجم آن تا 512KB باشد. تصویر آپلود شده توسط شما به صورت هوشمند به سایز مناسب تغییر داده خواهد شد.",
       },
-      /** {@see AdminShop_Applications_Android} **/
+      /** {@see BPageShopApplicationsAndroid} **/
       android: {
         title: "اپلیکیشن اندروید",
         sub_title: "اپلیکیشن اندروید خود را بسازید.",
@@ -2212,7 +2212,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterVirtualOrderPage} **/
+  /** {@see BPageOrderVirtual} **/
   virtual_process_center: {
     title: "مرکز پردازش",
     sub_title: "پردازش سفارش",
@@ -2278,7 +2278,7 @@ export default {
   },
 
   /** {@see BPageOrderPhysical} **/
-  /** {@see ShopProcessCenterVirtualOrderPage} **/
+  /** {@see BPageOrderVirtual} **/
   /** {@see BPageOrderFile} **/
   /** {@see BPageOrderService} **/
   process_center: {
@@ -2866,7 +2866,7 @@ export default {
     last_days: "{days} روز پیش",
   },
 
-  /** {@see SBackofficeProductsManagementView} **/
+  /** {@see BProductsWindow} **/
   products_select: {
     move_category: "انتقال دسته بندی<b> {category} </b>به یک دسته دیگر",
     move_product: "انتقال محصول<b> {product} </b>به دسته بندی",
@@ -4549,7 +4549,7 @@ export default {
     pay_now: "تسویه حساب",
   },
 
-  /** {@see AdminShopPermission_Role**/
+  /** {@see BPageShopPermissionRoles**/
   permission_roles: {
     new_role: "نقش جدید",
     new_role_message: "با تعریف نقش ها، کار تیمی در مقیاس بزرگ را آسان نمایید.",
@@ -5614,7 +5614,7 @@ export default {
     },
   },
 
-  /** @see ShopUsersContactForm **/
+  /** @see BPageShopCrmChat **/
   shop_contacts: {
     popup: "چت باکس پشتیبانی",
     popup_message:
@@ -6107,31 +6107,31 @@ export default {
     },
   },
 
-  /** {@see PagesManagement_AboutUs} **/
+  /** {@see BPageShopPagesAboutUs} **/
   about_us: {
     title: "صفحه درباره ما",
     subtitle:
       "یک مقاله درباره کسبو کار خود بنویسید تا در صفحه درباره ما نشان داده شود. این صفحه به شناخت برند و کسب و کار شما برای مخاطبانتان کمک خواهد کرد.",
   },
-  /** {@see PagesManagement_Terms} **/
+  /** {@see BPageShopPagesTerms} **/
   terms: {
     title: "صفحه شرایط استفاده",
     subtitle:
       "شرایط خرید و استفاده از خدمات خود را برای مشتریانتان توضیح دهید.",
   },
-  /** {@see PagesManagement_Privacy} **/
+  /** {@see BPageShopPagesPrivacy} **/
   privacy: {
     title: "صفحه سیاست حفظ حریم خصوصی",
     subtitle:
       "سیاست حفظ حریم خصوصی یک بیانیه یا سند قانونی است که برخی یا همه روش‌های جمع‌آوری، استفاده، افشای و مدیریت داده‌های مشتری یا مشتری را توسط یک طرف مشخص می‌کند.",
   },
-  /** {@see PagesManagement_ContactUs} **/
+  /** {@see BPageShopPagesContactUs} **/
   contact_us: {
     title: "صفحه ارتباط با ما",
     subtitle:
       "اطلاعات تماس، آدرس و شماره تماس خود را در این بخش بنویسید تا به مشتریان شما در صفحه تماس با ما نشان داده شود.",
   },
-  /** {@see AdminShop_Applications_Metaverse} **/
+  /** {@see BPageShopApplicationsMetaverse} **/
   metaverse: {
     title: "پل متاورس",
     subtitle:

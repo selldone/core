@@ -130,11 +130,11 @@ const MENTION_TIMELINE: INotificationType = {
                 : basket.type === "AVO"
                   ? "BPageOrderAvocadoTimeline"
                   : basket.type === "HYP"
-                    ? "ShopProcessCenterHyperOrderPage_Timeline"
+                    ? "BPageOrderHyperTimeline"
                     : basket.type === "POS"
                       ? "BPageOrderPosTimeline"
                       : basket.type === "FUL"
-                        ? "ShopProcessCenterDropShippingOrderPage_Timeline"
+                        ? "BPageOrderFulfillmentTimeline"
                         : null;
     return { name: name, params: { shop_id: shop.id, basket_id: basket.id } };
   },

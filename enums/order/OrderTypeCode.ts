@@ -25,4 +25,6 @@ export enum OrderTypeCode {
 
   Avocado = "AVO",
   Hyper = "HYP",
+  Fulfillment = "FUL", // Wholesaler fulfillment (Dropshipping supplier)
+
 }

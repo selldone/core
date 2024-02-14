@@ -364,7 +364,7 @@ export default {
       access: "Access",
       pages: "Pages",
       channels: "Channels",
-      categories: "Categories",
+      classification: "Classification",
       marketing: "Marketing",
       customers: "Customers",
       logistic: "Logistic",
@@ -558,7 +558,7 @@ export default {
         "Drop products list file (CSV, XLS, XLSX format) here to start adding bulk products. Ensure that the file has the Selldone products list format.",
 
       menu_advanced_options: "Advanced options",
-      /** {@see WidgetProductCard} **/
+      /** {@see BProductWindowProductLarge} **/
 
       product_widget: {
         product_type: "Product type",
@@ -884,7 +884,7 @@ export default {
         report: "Report",
       },
 
-      /** {@see ShopUsers_Report} **/
+      /** {@see BPageShopCrmReport} **/
       report: {
         title: "Customers Overview",
         sub_title: "You will see the live status of your customers here. ",
@@ -893,7 +893,7 @@ export default {
         report_30days_by_location:
           "Geolocation users activity in the last 30 days",
       },
-      /** {@see ShopUsers_Club} **/
+      /** {@see BPageShopCrmClub} **/
       club: {
         title: "Customers Club",
         sub_title:
@@ -924,7 +924,7 @@ export default {
           update_success: "Changes applied to the customer club.",
         },
       },
-      /** {@see ShopUsers_FAQ} **/
+      /** {@see BPageShopCrmFaq} **/
       faq: {
         title: "Frequently Asked Questions",
         sub_title: "Add, edit, and answer your customers questions.",
@@ -1037,14 +1037,14 @@ export default {
       },
     }, // End of pages
 
-    /** {@see AdminShopPermission} **/
+    /** {@see BPageShopPermission} **/
     permissions: {
       menu: {
         persons: "Staff",
         roles: "Roles",
         api: "API",
       },
-      /** {@see AdminShopPermission_Personnel} **/
+      /** {@see BPageShopPermissionStaff} **/
       shop_permissions: {
         menu: {
           users: "Personnel List",
@@ -1069,16 +1069,16 @@ export default {
         },
       },
 
-      /** {@see AdminShopPermission_API} **/
+      /** {@see BPageShopPermissionApi} **/
       shop_api: {
-        title: "Store Access Keys",
+        title: "Clients",
         message:
           "These keys are used to create Access Token by your server. Note that the keys are confidential and only on the server in a way that is not visible to others. ",
       },
     }, // End of permissions
-    /** {@see AdminShop_Applications} **/
+    /** {@see BPageShopApplications} **/
     applications: {
-      /** {@see AdminShop_Applications_PWA} **/
+      /** {@see BPageShopApplicationsPwa} **/
       pwa: {
         title: "Web App",
         sub_title: "It's the preview of your store's web app.",
@@ -1087,14 +1087,14 @@ export default {
         ios_app: "iOS app",
       },
 
-      /** {@see AdminShop_Applications_iOS} **/
+      /** {@see BPageShopApplicationsIos} **/
       ios: {
         title: "iOS app",
         sub_title: "You will soon be able to build an iOS app for your store.",
         message:
           "Maximum file size: 512 KB, you can upload files up to 1MB in size, provided our compression system is able to reduce the size to 512KB. The uploaded image will be intelligently resized. ",
       },
-      /** {@see AdminShop_Applications_Android} **/
+      /** {@see BPageShopApplicationsAndroid} **/
       android: {
         title: "Android Application",
         sub_title: "Build your own Android app",
@@ -2256,7 +2256,7 @@ export default {
     },
   },
 
-  /** {@see ShopProcessCenterVirtualOrderPage} **/
+  /** {@see BPageOrderVirtual} **/
   virtual_process_center: {
     title: "Processing Center",
     sub_title: "Order Processing",
@@ -2321,7 +2321,7 @@ export default {
     },
   },
   /** {@see BPageOrderPhysical} **/
-  /** {@see ShopProcessCenterVirtualOrderPage} **/
+  /** {@see BPageOrderVirtual} **/
   /** {@see BPageOrderFile} **/
   /** {@see BPageOrderService} **/
   process_center: {
@@ -2900,7 +2900,7 @@ export default {
     today: "Today",
     last_days: "{days} days ago",
   },
-  /** {@see SBackofficeProductsManagementView} **/
+  /** {@see BProductsWindow} **/
   products_select: {
     move_category: "Move category <b> {category} </b> to another category",
     move_product: "Move product <b> {product} </b> to category",
@@ -4567,7 +4567,7 @@ export default {
     pay_now: "Pay now",
   },
 
-  /** {@see AdminShopPermission_Role**/
+  /** {@see BPageShopPermissionRoles**/
   permission_roles: {
     new_role: "Add New role",
     new_role_message: "Make teamwork easier.",
@@ -5648,7 +5648,7 @@ export default {
     },
   },
 
-  /** @see ShopUsersContactForm **/
+  /** @see BPageShopCrmChat **/
   shop_contacts: {
     popup: "Enable popup support",
     popup_message:
@@ -6142,32 +6142,32 @@ export default {
     },
   },
 
-  /** {@see PagesManagement_AboutUs} **/
+  /** {@see BPageShopPagesAboutUs} **/
   about_us: {
     title: "About us page",
     subtitle:
       "Write an article about your business to show on the About Us page. This page will help your audience to know your brand and mission.",
   },
-  /** {@see PagesManagement_Terms} **/
+  /** {@see BPageShopPagesTerms} **/
   terms: {
     title: "Terms of service page",
     subtitle:
       "Explain the terms of purchase and use of your services for your customers.",
   },
-  /** {@see PagesManagement_Privacy} **/
+  /** {@see BPageShopPagesPrivacy} **/
   privacy: {
     title: "Privacy policy page",
     subtitle:
       "A privacy policy is a statement or legal document that discloses some or all of the ways a party gathers, uses, discloses, and manages a customer or client's data.",
   },
-  /** {@see PagesManagement_ContactUs} **/
+  /** {@see BPageShopPagesContactUs} **/
   contact_us: {
     title: "Contact us page",
     subtitle:
       "Write your contact information, address, and phone number to be shown to your customers on the contact us page.",
   },
 
-  /** {@see AdminShop_Applications_Metaverse} **/
+  /** {@see BPageShopApplicationsMetaverse} **/
   metaverse: {
     title: "Metaverse Bridge",
     subtitle:
