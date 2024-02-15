@@ -83,7 +83,7 @@ const MENTION_NOTE: INotificationType = {
         }
       : notification.data?.note?.target_type === "page"
         ? {
-            name: "ShopPageBuilderPage",
+            name: "BPageLandingEditor",
             params: {
               shop_id: shop.id,
               page_id: notification.data.note.target_id,
