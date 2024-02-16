@@ -74,7 +74,7 @@ export interface Page {
   /**
    * Content related to the Page.
    */
-  content: object;
+  content: Page.IContent;
 
   /**
    * Background settings or image for the Page.
@@ -131,7 +131,53 @@ export interface Page {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace Page {
+  export interface IContent {
+    title: string;
+    sections: ISection[];
+    style: IStyle;
+  }
 
+  export interface ISection {
+    name: string;
+    uid: string; // Keep section ID [new]
+    data: any;
+  }
 
-
+  export interface IStyle {
+    font_size: number;
+    bg_color: string | null;
+    fonts: string[];
+    bg_gradient: any[];
+    bg_size: string;
+    bg_custom: string | null;
+    bg_repeat: string | null;
+    h1_size: string;
+    h2_size: string;
+    h3_size: string;
+    h4_size: string;
+    h5_size: string;
+    h6_size: string;
+    plate_light_1: string;
+    plate_dark_1: string;
+    plate_light_2: string;
+    plate_dark_2: string;
+    plate_light_3: string;
+    plate_dark_3: string;
+    plate_light_4: string;
+    plate_dark_4: string;
+    plate_light_5: string;
+    plate_dark_5: string;
+    plate_light_6: string;
+    plate_dark_6: string;
+    plate_light_7: string;
+    plate_dark_7: string;
+    plate_light_8: string;
+    plate_dark_8: string;
+    plate_light_9: string;
+    plate_dark_9: string;
+    plate_light_10: string;
+    plate_dark_10: string;
+    plate_light_11: string;
+    plate_dark_11: string;
+  }
 }
