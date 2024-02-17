@@ -148,7 +148,7 @@ export class ClassesHelper {
     out.push(...this.AutoGenerate("elevation-", 0, 16));
 
     // Cols
-    out.push(...this.AutoGenerateResponsive("col-", 1, 12));
+    out.push(...this.AutoGenerateResponsive("v-col-", 1, 12));
 
     out.push(...ANIMATION_CLASSES);
     out.push(...HOVER_CLASSES);
