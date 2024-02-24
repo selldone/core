@@ -58,6 +58,8 @@ declare global {
       augment: { key: string; value: string }[],
       bypass: boolean,
     ): T[];
+
+    removeNulls(clone: boolean): T[];
   }
 }
 // This is required because we modified global
@@ -399,4 +401,28 @@ Array.prototype.applyAugment = function <T>(
 
     return element;
   });
+};
+
+/**
+ * Removes all null values from the array.
+ *
+ * This method extends the Array prototype to provide functionality for removing all null values from the array.
+ * It takes a boolean parameter `clone` which determines whether the operation should be performed on a clone of the array or modify the original array.
+ *
+ * @param {boolean} clone - If true, the operation is performed on a clone of the array and the original array is not modified. If false, the original array is modified to remove all null values.
+ *
+ * @returns {Array} If `clone` is true, returns a new array with all null values removed. If `clone` is false, the original array is modified to remove all null values and then returned.
+ *
+ * @example
+ * let arr = [1, null, 2, null, 3];
+ * arr.removeNulls(true);  // Returns a new array: [1, 2, 3], original array remains unchanged
+ * arr.removeNulls(false); // Original array is modified: [1, 2, 3]
+ */
+Array.prototype.removeNulls = function (clone: Boolean = true) {
+  if (clone) {
+    return this.filter((item) => item !== null);
+  }
+  const nonNulls = this.filter((item) => item !== null);
+  this.length = 0; // clear the original array
+  this.push(...nonNulls); // push the non-null values back into the array
 };
