@@ -19,12 +19,13 @@ export class FontLoader {
     link.href = url;
     document.getElementsByTagName("head")[0].appendChild(link);
 
-   // console.log("Load: ", link);
+    // console.log("Load: ", link);
   }
-  static LoadFonts(fonts) {
+
+  static LoadFonts(fonts:string[]) {
     if (!fonts || !fonts.length) return;
 
-   // console.log("Load fonts: ", fonts);
+    // console.log("Load fonts: ", fonts);
 
     let missed = "";
     fonts.forEach((font) => {
@@ -35,18 +36,59 @@ export class FontLoader {
 
     this.AddStylesheetURL(url);
   }
-
-
-
 }
 
-export const FONTS=['Roboto','Neonderthaw','Dongle','Open Sans','Rubik Beastly','Mochiy Pop P One','Montserrat','Roboto Condensed',
-'Outfit','Source Sans Pro','Poppins','Oswald','Luxurious Roman','Roboto Mono','Noto Sans','Raleway',
-'Ubuntu','Nunito','PT Sans','Playfair Display','Open Sans Condensed','Rubik','Josefin Sans','Bebas Neue',
-   'Cabin','Lobster','Anton','Dancing Script','Cairo','Fjalla One','Kanit','Sedgwick Ave','Pacifico',
-   'Architects Daughter','Teko','Abril Fatface','Permanent Marker','Satisfy','Cookie','Righteous','Lobster Two',
-   'Creepster','Russo One','Kaushan Script','Press Start 2P','News Cycle','Titan One','Ultra','Handlee',
-   'Moo Lah Lah','Bangers','Black Ops One'
-
+export const FONTS = [
+  "Roboto",
+  "Neonderthaw",
+  "Dongle",
+  "Open Sans",
+  "Rubik Beastly",
+  "Mochiy Pop P One",
+  "Montserrat",
+  "Roboto Condensed",
+  "Outfit",
+  "Source Sans Pro",
+  "Poppins",
+  "Oswald",
+  "Luxurious Roman",
+  "Roboto Mono",
+  "Noto Sans",
+  "Raleway",
+  "Ubuntu",
+  "Nunito",
+  "PT Sans",
+  "Playfair Display",
+  "Open Sans Condensed",
+  "Rubik",
+  "Josefin Sans",
+  "Bebas Neue",
+  "Cabin",
+  "Lobster",
+  "Anton",
+  "Dancing Script",
+  "Cairo",
+  "Fjalla One",
+  "Kanit",
+  "Sedgwick Ave",
+  "Pacifico",
+  "Architects Daughter",
+  "Teko",
+  "Abril Fatface",
+  "Permanent Marker",
+  "Satisfy",
+  "Cookie",
+  "Righteous",
+  "Lobster Two",
+  "Creepster",
+  "Russo One",
+  "Kaushan Script",
+  "Press Start 2P",
+  "News Cycle",
+  "Titan One",
+  "Ultra",
+  "Handlee",
+  "Moo Lah Lah",
+  "Bangers",
+  "Black Ops One",
 ];
-
