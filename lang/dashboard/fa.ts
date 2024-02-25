@@ -3924,7 +3924,7 @@ export default {
       title: "تاریخچه ذخیره شده صفحه",
     },
 
-    /** {@see SPageEditor} **/
+    /** {@see LPageEditor} **/
     design: {
       themes: {
         title: "دستیار طراحی صفحات لندینگ",

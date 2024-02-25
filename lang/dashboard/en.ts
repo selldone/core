@@ -3941,7 +3941,7 @@ export default {
       title: "Saved History",
     },
 
-    /** {@see SPageEditor} **/
+    /** {@see LPageEditor} **/
     design: {
       themes: {
         title: "Inline Page Builder",

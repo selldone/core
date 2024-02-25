@@ -11,20 +11,50 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-// EventBus.ts
+
+/**
+ * EventBus module.
+ * @module EventBus
+ */
+
 import {reactive} from "vue";
 
+/**
+ * Callback function type definition.
+ * @callback Callback
+ * @param {...any} args - The arguments.
+ */
 type Callback = (...args: any[]) => void;
 
+/**
+ * EventBus object.
+ * @type {Object}
+ */
 export const EventBus = (() => {
+  /**
+   * Map of events to callbacks.
+   * @type {Map<string, Set<Callback>>}
+   */
   const events = reactive(new Map<string, Set<Callback>>());
 
+  /**
+   * Emit an event.
+   * @function $emit
+   * @param {string} event - The event name.
+   * @param {...any} args - The arguments to pass to the callback.
+   */
   function $emit(event: string, ...args: any[]) {
     if (events.has(event)) {
       events.get(event)!.forEach((callback) => callback(...args));
     }
   }
 
+  /**
+   * Register a callback for an event.
+   * @function $on
+   * @param {string} event - The event name.
+   * @param {Callback} callback - The callback to register.
+   */
   function $on(event: string, callback: Callback) {
     if (!events.has(event)) {
       events.set(event, new Set());
@@ -32,11 +62,21 @@ export const EventBus = (() => {
     events.get(event)!.add(callback);
   }
 
-  function $off(event: string, callback: Callback) {
+  /**
+   * Unregister a callback for an event. If no callback is provided, unregister all callbacks for the event.
+   * @function $off
+   * @param {string} event - The event name.
+   * @param {Callback} [callback] - The callback to unregister.
+   */
+  function $off(event: string, callback?: Callback) {
     if (events.has(event)) {
-      events.get(event)!.delete(callback);
-      if (events.get(event)!.size === 0) {
+      if (!callback) {
         events.delete(event);
+      } else {
+        events.get(event)!.delete(callback);
+        if (events.get(event)!.size === 0) {
+          events.delete(event);
+        }
       }
     }
   }
@@ -44,6 +84,11 @@ export const EventBus = (() => {
   return { $emit, $on, $off };
 })();
 
+/**
+ * Enum for event names.
+ * @readonly
+ * @enum {string}
+ */
 export enum EventName {
   // ━━━━━━━━━━━━━━━ Common in storefront & backoffice ━━━━━━━━━━━━━━━
   SHOW_MAP = "map-show",
