@@ -96,7 +96,7 @@ export class ShopCautionHelper {
           "warning",
           i18n.global.t("cautions.shop_complete.title"),
           message,
-          { name: "ShopEdit_Info" },
+          { name: "BPageShopSettingInfo" },
           i18n.global.t("cautions.shop_complete.action"),
           score,
         ),

@@ -1143,7 +1143,7 @@ export default {
       },
     },
 
-    /** {@see ShopEditPage} **/
+    /** {@see BPageShopSetting} **/
     edit: {
       menu: {
         delete: "حذف فروشگاه",
@@ -1172,7 +1172,7 @@ export default {
         delete_success: "فروشگاه حذف شد.",
       },
 
-      /** {@see ShopEdit_Info} **/
+      /** {@see BPageShopSettingInfo} **/
       info: {
         title_tab: {
           title: "تنظیمات نام و زبان",
@@ -6245,7 +6245,7 @@ export default {
     },
   },
 
-  /** {@see ShopEdit_BusinessModel} **/
+  /** {@see BPageShopSettingBusinessModel} **/
   business_model: {
     title: "تنظیمات مدل کسب و کار",
     subtitle:

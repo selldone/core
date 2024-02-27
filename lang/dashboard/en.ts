@@ -1166,7 +1166,7 @@ export default {
       },
     },
 
-    /** {@see ShopEditPage} **/
+    /** {@see BPageShopSetting} **/
     edit: {
       menu: {
         delete: "Delete Store",
@@ -1195,7 +1195,7 @@ export default {
         delete_success: "Store deleted.",
       },
 
-      /** {@see ShopEdit_Info} **/
+      /** {@see BPageShopSettingInfo} **/
       info: {
         title_tab: {
           title: "Business name & Language",
@@ -6281,7 +6281,7 @@ export default {
     },
   },
 
-  /** {@see ShopEdit_BusinessModel} **/
+  /** {@see BPageShopSettingBusinessModel} **/
   business_model: {
     title: "Business model setup",
     subtitle:
