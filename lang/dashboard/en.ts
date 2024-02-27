@@ -961,7 +961,7 @@ export default {
       },
     }, // End of marketing
 
-    /** {@see CategoriesManagement} **/
+    /** {@see BPageShopClassification} **/
     categories: {
       title: "Category List",
       subtitle:
@@ -1023,7 +1023,7 @@ export default {
         more: "more",
       },
     }, // End of apps
-    /** {@see PagesManagement} **/
+    /** {@see BPageShopPages} **/
     pages: {
       menu: {
         new_page: "New Page",
@@ -5655,7 +5655,7 @@ export default {
       "By activating this option, the support key will be seen at the bottom right of your store.",
   },
 
-  /** @see ShopPopupBuilderPage **/
+  /** @see BPagePopup **/
   popup_page: {
     preview: "View live popup",
 
@@ -5670,7 +5670,7 @@ export default {
       edit: "Popup updated successfully.",
     },
   },
-  /** @see SettingPopupAppearance **/
+  /** @see BPagePopupAppearance **/
   popup_appearance: {
     position: "Position",
     position_desc:
@@ -5693,7 +5693,7 @@ export default {
     transition: "Popup animation",
   },
 
-  /** @see SettingPopupFilter **/
+  /** @see BPagePopupFilter **/
   popup_filter: {
     registered: "Membership and login requirement",
     registered_desc:
@@ -5719,7 +5719,7 @@ export default {
       "Do you want this notification to be displayed only to users coming from a specific country?",
   },
 
-  /** @see SettingPopup **/
+  /** @see BPagePopupSetting **/
   popup_setting: {
     published: "Published status",
     repeat: "Repeat",

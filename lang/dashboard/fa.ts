@@ -934,7 +934,7 @@ export default {
       },
     }, // End of marketing
 
-    /** {@see CategoriesManagement} **/
+    /** {@see BPageShopClassification} **/
     categories: {
       title: "لیست دسته بندی ها",
       subtitle:
@@ -998,7 +998,7 @@ export default {
       },
     }, // End of apps
 
-    /** {@see PagesManagement} **/
+    /** {@see BPageShopPages} **/
     pages: {
       menu: {
         new_page: "صفحه جدید",
@@ -5621,7 +5621,7 @@ export default {
       "با فعال کردن این گزینه، کلید پشتیبانی در سمت راست و پایین فروشگاه شما دیده خواهد شد.",
   },
 
-  /** @see ShopPopupBuilderPage **/
+  /** @see BPagePopup **/
   popup_page: {
     preview: "پیش نمایش",
 
@@ -5636,7 +5636,7 @@ export default {
       edit: "نوتیفیکیشن با موفقیت به روز شد.",
     },
   },
-  /** @see SettingPopupAppearance **/
+  /** @see BPagePopupAppearance **/
   popup_appearance: {
     position: "موقعیت",
     position_desc: "موقعیت نمایش این نوتیفیکیشن را در صفحه مشخص نمایید.",
@@ -5658,7 +5658,7 @@ export default {
     transition: "انیمیشن",
   },
 
-  /** @see SettingPopupFilter **/
+  /** @see BPagePopupFilter **/
   popup_filter: {
     registered: "شرط عضویت و ورود کاربر",
     registered_desc:
@@ -5683,7 +5683,7 @@ export default {
     countries_desc:
       "آیا می خواهید این نوتیفیکیشن تنها به کاربرانی که از یک کشور خاص وارد می شوند نمایش داده شود؟",
   },
-  /** @see SettingPopup **/
+  /** @see BPagePopupSetting **/
   popup_setting: {
     published: "منتشر شده",
     repeat: "تکرار نمایش",

@@ -92,7 +92,7 @@ const MENTION_NOTE: INotificationType = {
           }
         : notification.data?.note?.target_type === "popup"
           ? {
-              name: "ShopPopupBuilderPage",
+              name: "BPagePopup",
               params: {
                 shop_id: shop.id,
                 popup_id: notification.data.note.target_id,
