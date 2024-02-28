@@ -4648,7 +4648,7 @@ export default {
     schedule_placeholder: "Select time to send email",
   },
 
-  /** {@see ShopUsersFunnelFactory**/
+  /** {@see BCustomersFunnel**/
   user_funnel: {
     REGISTER_DATE: {
       title: "Registration date",
@@ -5340,11 +5340,11 @@ export default {
     option_instant_shipping: "Option 3: Instant shipping.",
   },
 
-  /** {@see ShopEdit_Home} **/
+  /** {@see SelectShopHomePage} **/
   shop_home_edit: {
     title: "Home page setting",
     sub_title:
-      "Configure the default page for your website here. Additionally, you have the option to assign a custom homepage for each domain individually by navigating to the Settings > Domains tab.",
+      "Set up the default page for your website in this section. You also have the flexibility to designate a custom homepage for each domain separately through the domain settings.",
 
     default_home: "Default home page",
     default_home_placeholder: "Shop page is the website home page",
@@ -6211,15 +6211,15 @@ export default {
       "This option is suitable for admins of Instagram pages and other social networks. Use Affiliate POS to receive and add orders from customers manually. Your affiliates (or franchise) can add new orders in the Affiliate POS and upload the deposit slip.",
   },
 
-  /** {@see ShopEdit_Shop} **/
+  /** {@see BPageShopSettingFlow} **/
   shop_configuration: {
-    /** {@see ShopConfigurationLoginMethods} **/
+    /** {@see BShopOptionsLoginMethods} **/
     login: {
       title: "Login methods",
       subtitle: "Customize the way users log in to your store.",
     },
 
-    /** {@see ShopConfigurationCheckout} **/
+    /** {@see BShopOptionsCheckout} **/
     checkout: {
       title: "Checkout flow",
       subtitle:

@@ -4633,7 +4633,7 @@ export default {
     schedule_placeholder: "زمان ارسال را انتخاب نمایید",
   },
 
-  /** {@see ShopUsersFunnelFactory**/
+  /** {@see BCustomersFunnel**/
   user_funnel: {
     REGISTER_DATE: {
       title: "تاریخ عضویت",
@@ -5312,7 +5312,7 @@ export default {
     option_add_to_que: "گزینه 2: اضافه کردن به صف ارسال.",
     option_instant_shipping: "گزینه 3: ارسال فوری از طریق سرویس حمل.",
   },
-  /** {@see ShopEdit_Home} **/
+  /** {@see SelectShopHomePage} **/
   shop_home_edit: {
     title: "تنظیمات صفحه اصلی فروشگاه",
     sub_title: "انتخاب دامنه و صفحه اصلی (خانه) فروشگاه",
@@ -6175,14 +6175,14 @@ export default {
       "این گزینه برای ادمین های پیج های اینستاگرام و دیگر شبکه های اجتمائی مناسب است. زمانی که شما سفارشات را مستقیما از مشتریان دریافت می کنید این گزینه برای شما مناسب است. تنها کافیست سفارش را در پوز ثبت کرده و فیش واریز را آپلود نمایید تا کارمندان فروشگاه سفارش شما را دریافت نموده و پس از تایید برای مشتری نهایی ارسال کنند.",
   },
 
-  /** {@see ShopEdit_Shop} **/
+  /** {@see BPageShopSettingFlow} **/
   shop_configuration: {
     login: {
       title: "روش های ورود",
       subtitle: "روش های ورود کاربران به فروشگاه خود را شخصی سازی نمایید.",
     },
 
-    /** {@see ShopConfigurationCheckout} **/
+    /** {@see BShopOptionsCheckout} **/
     checkout: {
       title: "مراحل خرید",
       subtitle:
