@@ -1271,7 +1271,7 @@ export default {
           "Enter your official social media link in this section. Follow the instructions for each item to confirm the addresses. ",
       },
 
-      /** {@see ShopEdit_Time} **/
+      /** {@see BShopSettingWorkingDays} **/
       time: {
         title: "Working Days",
         sub_title: "Set working days and time",
@@ -5065,7 +5065,7 @@ export default {
     jewellery: "Jewelry",
   },
 
-  /** {@see ShopEdit_Theme**/
+  /** {@see BPageShopSettingTheme**/
   shop_theme: {
     theme_colors: "Theme colors",
     products_view_mode: "Shopping list view",

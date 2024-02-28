@@ -1247,7 +1247,7 @@ export default {
           "لینک شبکه های رسمی خود را در این بخش وارد نمایید. جهت تایید آدرس ها طبق راهنمای هر مورد عمل نمایید.",
       },
 
-      /** {@see ShopEdit_Time} **/
+      /** {@see BShopSettingWorkingDays} **/
       time: {
         title: "روزهای فعالیت کسب و کار شما",
         sub_title: "تنظیم روزها و ساعت های فعالیت فروشگاه",
@@ -5040,7 +5040,7 @@ export default {
     clothing: "لباس و کفش",
     jewellery: "جواهرات",
   },
-  /** {@see ShopEdit_Theme**/
+  /** {@see BPageShopSettingTheme**/
   shop_theme: {
     theme_colors: "رنگبندی سایت",
     products_view_mode: "نمایش لیست محصولات",
