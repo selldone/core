@@ -880,7 +880,7 @@ export default {
   },
   "placeholders": {
     "name": "ଜୋନ୍ କକ୍ସ |",
-    "email": "your-mail@mail.com",
+    "email": "your-mail{'@'}mail.com",
     "phone": "+1 000 0000",
     "language": "ଭାଷା ଚୟନ କରନ୍ତୁ ..",
     "friend_email": "ତୁମର ସାଙ୍ଗର ଇମେଲ୍ ...",

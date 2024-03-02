@@ -360,7 +360,7 @@ export default {
     "contact": "Informasi Kontak",
     "name_placeholder": "dibutuhake*",
     "email": "Email",
-    "email_placeholder": "Dibutuhake* your-email@gmail.com",
+    "email_placeholder": "Dibutuhake* your-mail{'@'}mail.com",
     "request_title": "Nerangake kabutuhan sampeyan.",
     "request_message": "Menehi informasi khusus babagan bisnis sampeyan kanggo mbantu pakar kita nyukupi kabutuhan sampeyan kanthi luwih apik lan menehi rega terjangkau lan perkiraan wektu.",
     "description": "Marang kita liyane babagan bisnis",

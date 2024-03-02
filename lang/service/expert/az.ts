@@ -360,7 +360,7 @@ export default {
     "contact": "Əlaqə məlumatı",
     "name_placeholder": "Tələb olunur*",
     "email": "E-poçt",
-    "email_placeholder": "Tələb olunur* your-email@gmail.com",
+    "email_placeholder": "Tələb olunur* your-mail{'@'}mail.com",
     "request_title": "Ehtiyaclarınızı təsvir edin.",
     "request_message": "Mütəxəssisimizin tələblərinizə daha yaxşı cavab verməsi və sizə sərfəli qiymət və vaxtın təxminini təmin etmək üçün biznesiniz haqqında konkret məlumat verin.",
     "description": "Biznesiniz haqqında bizə ətraflı məlumat verin",

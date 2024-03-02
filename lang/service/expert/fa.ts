@@ -448,7 +448,7 @@ export default {
     contact: "اطلاعات تماس",
     name_placeholder: "الزامی*",
     email: "ایمیل برای تماس با شما",
-    email_placeholder: "الزامی* your-email@gmail.com",
+    email_placeholder: "الزامی* your-mail{'@'}mail.com",
     request_title: "چه می خواهید",
     request_message:
       "جزئیات درخواست خود را اضافه نمایید تا به متخصصین کمک کنید نیازهای شما را بهتر درک کرده و قیمت و جدول زمانی مناسبی برای کار ارائه دهند.",

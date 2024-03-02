@@ -980,13 +980,13 @@ export default {
         app_store: "فروشگاه اپ",
         my_apps: "اپلیکیشن ها",
       },
-      /** {@see AdminShopApps_List} **/
+      /** {@see BPageShopSettingApplications} **/
       my_apps: {
         title: "اپلیکیشن های فعال فروشگاه",
         subtitle: "اپلیکیشن های سایت خود را در این بخش مدیریت نمایید.",
         all: "همه",
       },
-      /** {@see SBackofficeAppStoreShop} **/
+      /** {@see BApplicationsStore} **/
       store: {
         title: "فروشگاه اپلیکیشن",
         subtitle:
@@ -1912,7 +1912,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopCampaignPage} **/
+  /** {@see BPageCampaign} **/
   campaign: {
     title: "کمپین",
     menu: {
@@ -1924,7 +1924,7 @@ export default {
       ads: "تبلیغات",
       finance: "مالی",
     },
-    /** {@see AdminShopCampaignPage_Dashboard} **/
+    /** {@see BPageCampaignDashboard} **/
     dashboard: {
       title: "داشبورد",
       status: "وضعیت کمپین",
@@ -1939,7 +1939,7 @@ export default {
       conversion_over_time: "نرخ تبدیل در طی زمان",
       total_campaign_sell: "مجموع فروش با این کمپین",
     },
-    /** {@see AdminShopCampaignPage_Finance} **/
+    /** {@see BPageCampaignFinance} **/
     finance: {
       title: "گزارش مالی",
       campaign_revenue: "درآمد کمپین",
@@ -1948,20 +1948,20 @@ export default {
       payments_over_time: "میزان فروش در طی زمان",
       all_links: "همه لینک ها",
     },
-    /** {@see AdminShopCampaignPage_Landing} **/
+    /** {@see BPageCampaignLanding} **/
     landing: {
       empty_message: "یک صفحه   برای کمپین خود انتخاب نمایید!",
       set_landing: "افزودن صفحه لندینگ",
       create_landing: "ساخت صفحه لندینگ جدید",
     },
 
-    /** {@see AdminShopCampaignPage_Links} **/
+    /** {@see BPageCampaignLinks} **/
     links: {
       title: "لینک های کمپین",
       url_input_message: "آدرس صفحه مورد نظر را وارد نمایید",
     },
 
-    /** {@see AdminShopCampaignPage_Setting} **/
+    /** {@see BPageCampaignSetting} **/
     setting: {
       menu: {
         config: "پیکربندی",
@@ -2107,7 +2107,7 @@ export default {
     },
   },
 
-  /** {@see AppsList} **/
+  /** {@see BApplicationsList} **/
   apps_list: {
     nodata: "اپلیکیشنی بر روی فروشگاه شما نصب نیست.",
     inactive: "غیر فعال",
@@ -2115,7 +2115,7 @@ export default {
     app_store: "نصب اپلیکیشن",
   },
 
-  /** {@see AddShop} **/
+  /** {@see BShopAdd} **/
   add_shop: {
     menu: {
       shop_title: "عنوان فروشگاه",
@@ -2510,11 +2510,11 @@ export default {
       back: "درگاه ها",
     },
 
-    /** {@see AdminShopGatewayManagement_DashboardPage} **/
+    /** {@see BPageGatewayDashboard} **/
     dashboard: {
       title: "مدیریت درگاه",
 
-      /** {@see GatewayDataWidget} **/
+      /** {@see BGatewayPaymentsChart} **/
       gateway_data_widget: {
         title: "گزارش پرداخت از",
         title_small: "درگاه",
@@ -2527,7 +2527,7 @@ export default {
         },
       },
 
-      /** {@see GatewayInfoWidget} **/
+      /** {@see BGatewayOverview} **/
       gateway_info_widget: {
         title: "مشخصات",
         title_small: "درگاه",
@@ -2554,7 +2554,7 @@ export default {
       },
     },
 
-    /** {@see AdminShopGatewayManagement_EditPage} **/
+    /** {@see BPageGatewayEdit} **/
     edit: {
       title: "ویرایش درگاه",
       menu: {
@@ -2563,7 +2563,7 @@ export default {
       edit_action: "ویرایش درگاه",
     },
 
-    /** {@see AdminShopGatewayManagementPage_Transactions} **/
+    /** {@see BPageGatewayTransactions} **/
     transactions: {
       title: "تراکنش ها",
       table: {
@@ -4066,7 +4066,7 @@ export default {
     automation_message: "نمایش تب اتوماسیون در داشبورد فروشگاه.",
   },
 
-  /** {@see ShopEdit_Locations} **/
+  /** {@see BPageShopSettingLocations} **/
   shop_locations: {
     title: "محدوده جغرافیایی تحت پوشش",
     sub_title:
@@ -4460,7 +4460,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopCampaignPage_Ads} **/
+  /** {@see BPageCampaignAds} **/
   campaign_ads: {
     menu: {
       banner: "بنر",
@@ -4518,14 +4518,14 @@ export default {
     edit: "ویرایش",
   },
 
-  /** {@see AdminShopAffiliatePage} **/
+  /** {@see BPageAffiliate} **/
   affiliate_page: {
     affiliates: "همکاران تجاری",
     orders: "سفارشات",
     payments: "پرداخت ها",
   },
 
-  /** {@see AdminShopAffiliatePage_Dashboard**/
+  /** {@see BPageAffiliateDashboard**/
   affiliate_dashboard: {
     link: "لینک همکار",
     fix_commission: "پورسانت ثابت",
@@ -4730,7 +4730,7 @@ export default {
     pos_tax_setting: "تنظیمات مالیات صندوق فروش",
   },
 
-  /** {@see AdminShopTransportationPage**/
+  /** {@see BPageTransportationService**/
   transportation_page: {
     menu: {
       dashboard: "داشبورد",
@@ -4744,7 +4744,7 @@ export default {
     go_to_service_list: "مشاهده لیست سرویس های حمل",
   },
 
-  /** {@see AdminShopTransportationPage_Persons**/
+  /** {@see BPageTransportationCouriers**/
   transportation_persons: {
     title: "مدیریت سفیران",
     notifications: {
@@ -4768,7 +4768,7 @@ export default {
       action: "افزودن سفیر",
     },
   },
-  /** {@see AdminShopTransportationPage_Orders**/
+  /** {@see BPageTransportationOrders**/
   transportation_orders: {
     title: "سفارشات ارسالی",
     notifications: {
@@ -4801,7 +4801,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopTransportationPage_Services**/
+  /** {@see BPageTransportationServices**/
   transportation_services: {
     title: "مدیریت سرویس های ارسال",
     notifications: {
@@ -4825,7 +4825,7 @@ export default {
       action: "افزودن سرویس",
     },
   },
-  /** {@see AdminShopTransportationPage_PickupAddresses**/
+  /** {@see BPageTransportationPickups**/
   transportation_pickups: {
     addresses: {
       title: "آدرس های پیکآپ",
@@ -4842,7 +4842,7 @@ export default {
     cashed: "پرداخت نقدی",
   },
 
-  /** {@see AdminShop_DeliveryService_Dashboard**/
+  /** {@see BPageTransportationServiceDashboard**/
   delivery_dashboard: {
     select_destinations: "افزودن سفارشات به لیست",
     price_calculation: "برآورد هزینه حمل و نقل",
@@ -5076,7 +5076,7 @@ export default {
     black: "دارک ساید",
   },
 
-  /** {@see AdminShopAffiliatePage_Orders**/
+  /** {@see BPageAffiliateOrders**/
   affiliate_orders: {
     title: "سفارشات نمایندگی",
     table: {
@@ -5094,7 +5094,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopAffiliatePage_Payments**/
+  /** {@see BPageAffiliatePayments**/
   affiliate_payments: {
     title: "پرداخت ها به نمایندگی",
     table: {
@@ -5230,10 +5230,9 @@ export default {
     end_input_placeholder: "تاریخ پایان گزارش را انتخاب نمایید",
     download_action: "دانلود فایل مالی",
   },
-  /** {@see ShopEdit_Notifications**/
+  /** {@see BPageShopSettingNotifications**/
   shop_notifications: {
     title: "نوتیفیکیشن های فروشگاه",
-    sub_title: "بات ها, ایمیل, پیامک, ... ",
     message:
       "شما می توانید نوتیفیکیشن های فروشگاه خود را در این بخش مدیریت و ویرایش نمایید.",
     channel: "کانال",
@@ -5706,14 +5705,14 @@ export default {
       delete: "نوتیفیکیشن با موفقیت حذف گردید.",
     },
   },
-  /** @see ShopEdit_Sms **/
+  /** @see BPageShopSettingSms **/
   shop_sms: {
     title: "مدیریت پیامک ها",
     sub_title: "الگوی پیامک ها",
     message:
       "محتوای پیامک های ارسالی فروشگاه خود را در اینجا مشاهده می نمایید. به دلیل محدودیت در ثبت الگوهای اعتبارسنجی در سرویس ارسال پیامک، امکان شخصی سازی پیامک ها در حال حاضر فراهم نیست.",
   },
-  /** @see ShopEdit_Emails **/
+  /** @see BPageShopSettingEmail **/
   shop_emails: {
     title: "مدیریت ایمیل ها",
     sub_title:
@@ -5989,7 +5988,7 @@ export default {
     msg: "کسب و کار خود را در هر مکان و هر زمان مدیریت کنید.",
   },
 
-  /** {@see ShopEdit_SEO**/
+  /** {@see BPageShopSettingSeo**/
   shop_seo: {
     title: "تنظیمات سئو سایت",
     msg: "با استفاده از بهینه سازی برای موتورهای جستجو، کانال فروش اورگانیک خود را تقویت نمایید.",
@@ -6004,7 +6003,7 @@ export default {
     },
   },
 
-  /** {@see ShopEdit_Emails} **/
+  /** {@see BPageShopSettingEmail} **/
   shop_preferences: {
     order: {
       title: "سفارش ها",

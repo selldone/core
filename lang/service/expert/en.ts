@@ -443,7 +443,7 @@ export default {
     contact: "Contact information",
     name_placeholder: "Required*",
     email: "Email",
-    email_placeholder: "Required* your-email@gmail.com",
+    email_placeholder: "Required* your-mail{'@'}mail.com",
     request_title: "Describe your needs.",
     request_message:
       "Give specific information about your business to help our expert meet your requirements better and provide you affordable price and estimation of time.",

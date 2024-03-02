@@ -360,7 +360,7 @@ export default {
     "contact": "ଯୋଗାଯୋଗ ସୁଚନା",
     "name_placeholder": "ଆବଶ୍ୟକ *",
     "email": "ଇମେଲ୍ କରନ୍ତୁ |",
-    "email_placeholder": "ଆବଶ୍ୟକ * your-email@gmail.com |",
+    "email_placeholder": "ଆବଶ୍ୟକ * your-mail{'@'}mail.com |",
     "request_title": "ତୁମର ଆବଶ୍ୟକତା ବର୍ଣ୍ଣନା କର |",
     "request_message": "ଆମର ବିଶେଷଜ୍ଞଙ୍କୁ ତୁମର ଆବଶ୍ୟକତାକୁ ପୂରଣ କରିବାରେ ସାହାଯ୍ୟ କରିବାକୁ ଏବଂ ତୁମର ସୁଲଭ ମୂଲ୍ୟ ଏବଂ ସମୟର ଆକଳନ ପ୍ରଦାନ କରିବାରେ ସାହାଯ୍ୟ କରିବାକୁ ତୁମର ବ୍ୟବସାୟ ବିଷୟରେ ନିର୍ଦ୍ଦିଷ୍ଟ ସୂଚନା ଦିଅ |",
     "description": "ତୁମର ବ୍ୟବସାୟ ବିଷୟରେ ଆମକୁ ଅଧିକ କୁହ |",

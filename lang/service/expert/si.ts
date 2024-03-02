@@ -360,7 +360,7 @@ export default {
     "contact": "සබඳතා තොරතුරු",
     "name_placeholder": "අවශ්ය*",
     "email": "විද්යුත් තැපෑල",
-    "email_placeholder": "අවශ්‍ය* your-email@gmail.com",
+    "email_placeholder": "අවශ්‍ය* your-mail{'@'}mail.com",
     "request_title": "ඔබේ අවශ්‍යතා විස්තර කරන්න.",
     "request_message": "අපගේ විශේෂඥයාට ඔබේ අවශ්‍යතා වඩා හොඳින් සපුරාලීමට සහ ඔබට දැරිය හැකි මිලක් සහ කාලය ඇස්තමේන්තු කිරීම සඳහා ඔබේ ව්‍යාපාරය පිළිබඳ නිශ්චිත තොරතුරු ලබා දෙන්න.",
     "description": "ඔබේ ව්‍යාපාරය ගැන වැඩි විස්තර අපට කියන්න",

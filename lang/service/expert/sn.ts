@@ -360,7 +360,7 @@ export default {
     "contact": "Contact Information",
     "name_placeholder": "Zvinodiwa*",
     "email": "Email",
-    "email_placeholder": "Inodiwa* your-email@gmail.com",
+    "email_placeholder": "Inodiwa* your-mail{'@'}mail.com",
     "request_title": "Rondedzera zvaunoda.",
     "request_message": "Ipa ruzivo rwechokwadi nezve bhizinesi rako kubatsira nyanzvi yedu kuzadzisa zvaunoda zvirinani uye kukupa iwe unokwanisika mutengo uye fungidziro yenguva.",
     "description": "Tiudze zvakawanda nezvebhizinesi rako",

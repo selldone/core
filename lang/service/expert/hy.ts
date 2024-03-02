@@ -360,7 +360,7 @@ export default {
     "contact": "Կոնտակտային տվյալներ",
     "name_placeholder": "Պահանջվում է*",
     "email": "Էլ",
-    "email_placeholder": "Պահանջվում է* your-email@gmail.com",
+    "email_placeholder": "Պահանջվում է* your-mail{'@'}mail.com",
     "request_title": "Նկարագրեք ձեր կարիքները:",
     "request_message": "Տվեք կոնկրետ տեղեկատվություն ձեր բիզնեսի մասին՝ օգնելու մեր փորձագետին ավելի լավ բավարարել ձեր պահանջները և տրամադրել ձեզ մատչելի գին և ժամանակի գնահատում:",
     "description": "Պատմեք մեզ ավելին ձեր բիզնեսի մասին",

@@ -360,7 +360,7 @@ export default {
     "contact": "संपर्क जानकारी",
     "name_placeholder": "आवश्यक*",
     "email": "ईमेल",
-    "email_placeholder": "आवश्यक* your-email@gmail.com",
+    "email_placeholder": "आवश्यक* your-mail{'@'}mail.com",
     "request_title": "अपनी आवश्यकताओं का वर्णन करें।",
     "request_message": "अपने व्यवसाय के बारे में विशिष्ट जानकारी दें ताकि हमारे विशेषज्ञ आपकी आवश्यकताओं को बेहतर ढंग से पूरा कर सकें और आपको वहनीय मूल्य और समय का अनुमान प्रदान कर सकें।",
     "description": "हमें अपने व्यवसाय के बारे में और बताएं",

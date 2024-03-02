@@ -360,7 +360,7 @@ export default {
     "contact": "Inpormasi kontak",
     "name_placeholder": "Dibutuhkeun*",
     "email": "Surélék",
-    "email_placeholder": "Diperlukeun* your-email@gmail.com",
+    "email_placeholder": "Diperlukeun* your-mail{'@'}mail.com",
     "request_title": "Jelaskeun kabutuhan anjeun.",
     "request_message": "Pasihan inpormasi khusus ngeunaan bisnis anjeun pikeun ngabantosan ahli kami nyumponan kabutuhan anjeun langkung saé sareng masihan anjeun harga anu berpatutan sareng perkiraan waktos.",
     "description": "Ngabejaan urang langkung seueur ngeunaan bisnis anjeun",

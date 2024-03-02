@@ -1005,14 +1005,14 @@ export default {
         app_store: "App Store",
         my_apps: "Apps",
       },
-      /** {@see AdminShopApps_List} **/
+      /** {@see BPageShopSettingApplications} **/
       my_apps: {
         title: "Applications",
         subtitle:
           "Discover the ease of managing your business applications with Selldone App Store. Our platform offers a comprehensive suite of tools designed to optimize your business operations. From innovative management solutions to productivity-boosting apps, Selldone provides a seamless experience for businesses seeking efficiency and growth.",
         all: "All",
       },
-      /** {@see SBackofficeAppStoreShop} **/
+      /** {@see BApplicationsStore} **/
       store: {
         title: "App store",
         subtitle:
@@ -1281,7 +1281,7 @@ export default {
         start_time_input_hint: "Store Open hours",
         end_time_input: "Store Close time",
         end_time_input_hint: "Store activity end time",
-        customer_support_service: "Accountability and Customer Service",
+        customer_support_service: "Customer Service",
         response_time_input: "Customer Service Status",
         support_24h: "24 hours 7 days a week ",
         support_normal: "Only during office hours",
@@ -1830,7 +1830,7 @@ export default {
     bulk_price_dialog: {
       title: "Bulk actions > Price",
       message:
-        "Note: The following amount will apply as a percentage to the price of all products in your store. Also, the calculated price values will be intelligently converted to the closest round number based on the selected currency.Be careful in entering the values.",
+        "The following amount will apply as a percentage to the price of all products in your store. Also, the calculated price values will be intelligently converted to the closest round number based on the selected currency.Be careful in entering the values.",
       check: "I approve price changes.",
       add_percent_tab: "Add Percent",
       add_constant_tab: "Add Constant",
@@ -1950,7 +1950,7 @@ export default {
       delete_success: "Message deleted.",
     },
   },
-  /** {@see AdminShopCampaignPage} **/
+  /** {@see BPageCampaign} **/
   campaign: {
     title: "Campaign",
     menu: {
@@ -1962,7 +1962,7 @@ export default {
       ads: "Ads",
       finance: "Finance",
     },
-    /** {@see AdminShopCampaignPage_Dashboard} **/
+    /** {@see BPageCampaignDashboard} **/
     dashboard: {
       title: "Dashboard",
       status: "Status overview",
@@ -1977,7 +1977,7 @@ export default {
       conversion_over_time: "Conversion over time",
       total_campaign_sell: "Total sales by campaign",
     },
-    /** {@see AdminShopCampaignPage_Finance} **/
+    /** {@see BPageCampaignFinance} **/
     finance: {
       title: "Finance report",
       campaign_revenue: "Campaign revenue",
@@ -1987,20 +1987,20 @@ export default {
       payments_over_time: "Sales over time",
       all_links: "All links",
     },
-    /** {@see AdminShopCampaignPage_Landing} **/
+    /** {@see BPageCampaignLanding} **/
     landing: {
       empty_message: "You can specify a custom landing page for the campaign.",
       set_landing: "Set landing page",
       create_landing: "Create new landing page",
     },
 
-    /** {@see AdminShopCampaignPage_Links} **/
+    /** {@see BPageCampaignLinks} **/
     links: {
       title: "Campaign links",
       url_input_message: "Enter your target page url",
     },
 
-    /** {@see AdminShopCampaignPage_Setting} **/
+    /** {@see BPageCampaignSetting} **/
     setting: {
       menu: {
         config: "Config",
@@ -2150,7 +2150,7 @@ export default {
     },
   },
 
-  /** {@see AppsList} **/
+  /** {@see BApplicationsList} **/
   apps_list: {
     nodata: "There is no app installed on your store",
     inactive: "Inactive",
@@ -2158,7 +2158,7 @@ export default {
     app_store: "Add new app",
   },
 
-  /** {@see AddShop} **/
+  /** {@see BShopAdd} **/
   add_shop: {
     menu: {
       shop_title: "Store title",
@@ -2546,11 +2546,11 @@ export default {
       back: "Gateways",
     },
 
-    /** {@see AdminShopGatewayManagement_DashboardPage} **/
+    /** {@see BPageGatewayDashboard} **/
     dashboard: {
       title: "Gateway Management",
 
-      /** {@see GatewayDataWidget} **/
+      /** {@see BGatewayPaymentsChart} **/
       gateway_data_widget: {
         title: "Payments Report",
         title_small: "Gateway",
@@ -2563,7 +2563,7 @@ export default {
         },
       },
 
-      /** {@see GatewayInfoWidget} **/
+      /** {@see BGatewayOverview} **/
       gateway_info_widget: {
         title: "Info",
         title_small: "Gateway",
@@ -2590,7 +2590,7 @@ export default {
       },
     },
 
-    /** {@see AdminShopGatewayManagement_EditPage} **/
+    /** {@see BPageGatewayEdit} **/
     edit: {
       title: "Edit Gateway",
       menu: {
@@ -2599,7 +2599,7 @@ export default {
       edit_action: "Edit Gateway",
     },
 
-    /** {@see AdminShopGatewayManagementPage_Transactions} **/
+    /** {@see BPageGatewayTransactions} **/
     transactions: {
       title: "Transactions",
       table: {
@@ -4086,7 +4086,7 @@ export default {
       "Show automation tab on shop dashboard. (Webhooks, Visual programming, ...)",
   },
 
-  /** {@see ShopEdit_Locations} **/
+  /** {@see BPageShopSettingLocations} **/
   shop_locations: {
     title: "Countries where service is provided",
     sub_title:
@@ -4478,7 +4478,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopCampaignPage_Ads} **/
+  /** {@see BPageCampaignAds} **/
   campaign_ads: {
     menu: {
       banner: "Banner",
@@ -4536,14 +4536,14 @@ export default {
     emails: "Emails",
     edit: "Edit",
   },
-  /** {@see AdminShopAffiliatePage} **/
+  /** {@see BPageAffiliate} **/
   affiliate_page: {
     affiliates: "Affiliate partners",
     orders: "Orders",
     payments: "Payments",
   },
 
-  /** {@see AdminShopAffiliatePage_Dashboard**/
+  /** {@see BPageAffiliateDashboard**/
   affiliate_dashboard: {
     link: "Affiliate partner link",
     fix_commission: "Fixed commission",
@@ -4754,7 +4754,7 @@ export default {
     pos_tax_setting: "POS Tax settings",
   },
 
-  /** {@see AdminShopTransportationPage**/
+  /** {@see BPageTransportation**/
   transportation_page: {
     menu: {
       dashboard: "Dashboard",
@@ -4769,7 +4769,7 @@ export default {
     go_to_service_list: "View shipping services list",
   },
 
-  /** {@see AdminShopTransportationPage_Persons**/
+  /** {@see BPageTransportationCouriers**/
   transportation_persons: {
     title: "Couriers",
     notifications: {
@@ -4793,7 +4793,7 @@ export default {
       action: "Add courier",
     },
   },
-  /** {@see AdminShopTransportationPage_Orders**/
+  /** {@see BPageTransportationOrders**/
   transportation_orders: {
     title: "Orders for Shipping",
     notifications: {
@@ -4826,7 +4826,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopTransportationPage_Services**/
+  /** {@see BPageTransportationServices**/
   transportation_services: {
     title: "Delivery service",
     notifications: {
@@ -4850,7 +4850,7 @@ export default {
       action: "Add service",
     },
   },
-  /** {@see AdminShopTransportationPage_PickupAddresses**/
+  /** {@see BPageTransportationPickups**/
   transportation_pickups: {
     addresses: {
       title: "Pickup addresses",
@@ -4866,7 +4866,7 @@ export default {
     has_return: "Return of delivery",
     cashed: "Cash payment",
   },
-  /** {@see AdminShop_DeliveryService_Dashboard**/
+  /** {@see BPageTransportationServiceDashboard**/
   delivery_dashboard: {
     select_destinations: "Add orders to the list",
     price_calculation: "Estimate shipping rates",
@@ -5101,7 +5101,7 @@ export default {
     black: "Dark side",
   },
 
-  /** {@see AdminShopAffiliatePage_Orders**/
+  /** {@see BPageAffiliateOrders**/
   affiliate_orders: {
     title: "Affiliate Partner Orders",
     table: {
@@ -5119,7 +5119,7 @@ export default {
     },
   },
 
-  /** {@see AdminShopAffiliatePage_Payments**/
+  /** {@see BPageAffiliatePayments**/
   affiliate_payments: {
     title: "Affiliate Partner Payments",
     table: {
@@ -5259,10 +5259,9 @@ export default {
     download_action: "Download finance list",
   },
 
-  /** {@see ShopEdit_Notifications**/
+  /** {@see BPageShopSettingNotifications**/
   shop_notifications: {
     title: "Shop notifications",
-    sub_title: "Bot, Email, SMS, ... ",
     message: "Edit your store notification settings and preferences",
     channel: "Channel",
     status: "Status",
@@ -5743,7 +5742,7 @@ export default {
     },
   },
 
-  /** @see ShopEdit_Sms **/
+  /** @see BPageShopSettingSms **/
   shop_sms: {
     title: "Manage SMS",
     sub_title: "SMS templates",
@@ -5751,7 +5750,7 @@ export default {
       "You can see the content of the text messages sent by your store here. Due to the limitation in registering the validation patterns in the messaging service, it is not possible to personalize the text messages at the moment.",
   },
 
-  /** @see ShopEdit_Emails **/
+  /** @see BPageShopSettingEmail **/
   shop_emails: {
     title: "Manage emails",
     sub_title:
@@ -6024,7 +6023,7 @@ export default {
     msg: "Manage your business anywhere & anytime.",
   },
 
-  /** {@see ShopEdit_SEO**/
+  /** {@see BPageShopSettingSeo**/
   shop_seo: {
     title: "SEO Configuration",
     msg: "Fast-forward to online marketing by empowering organic customers acquisition channels.",
@@ -6039,7 +6038,7 @@ export default {
     },
   },
 
-  /** {@see ShopEdit_Emails} **/
+  /** {@see BPageShopSettingEmail} **/
   shop_preferences: {
     order: {
       title: "Orders",

@@ -360,7 +360,7 @@ export default {
     "contact": "Şahsy maglumatlar",
     "name_placeholder": "Gerek *",
     "email": "E-poçta iberiň",
-    "email_placeholder": "Gerekli * your-email@gmail.com",
+    "email_placeholder": "Gerekli * your-mail{'@'}mail.com",
     "request_title": "Islegleriňizi beýan ediň.",
     "request_message": "Hünärmenimize talaplaryňyzy has gowy ýerine ýetirmek we elýeterli bahany we wagtyň bahalandyrylmagyny üpjün etmek üçin işiňiz barada anyk maglumat beriň.",
     "description": "Işiňiz barada has giňişleýin maglumat beriň",

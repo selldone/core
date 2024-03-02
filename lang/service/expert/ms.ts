@@ -360,7 +360,7 @@ export default {
     "contact": "Maklumat perhubungan",
     "name_placeholder": "Diperlukan*",
     "email": "E-mel",
-    "email_placeholder": "Diperlukan* your-email@gmail.com",
+    "email_placeholder": "Diperlukan* your-mail{'@'}mail.com",
     "request_title": "Terangkan keperluan anda.",
     "request_message": "Berikan maklumat khusus tentang perniagaan anda untuk membantu pakar kami memenuhi keperluan anda dengan lebih baik dan memberikan anda harga yang berpatutan serta anggaran masa.",
     "description": "Beritahu kami lebih lanjut tentang perniagaan anda",

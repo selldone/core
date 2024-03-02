@@ -360,7 +360,7 @@ export default {
     "contact": "Upplýsingar um tengiliði",
     "name_placeholder": "Áskilið*",
     "email": "Tölvupóstur",
-    "email_placeholder": "Áskilið* your-email@gmail.com",
+    "email_placeholder": "Áskilið* your-mail{'@'}mail.com",
     "request_title": "Lýstu þörfum þínum.",
     "request_message": "Gefðu sérstakar upplýsingar um fyrirtækið þitt til að hjálpa sérfræðingnum okkar að uppfylla kröfur þínar betur og veita þér hagkvæmt verð og tímaáætlun.",
     "description": "Segðu okkur meira um fyrirtækið þitt",

@@ -360,7 +360,7 @@ export default {
     "contact": "Bog'lanish uchun ma'lumot",
     "name_placeholder": "Majburiy*",
     "email": "Elektron pochta",
-    "email_placeholder": "Majburiy* your-email@gmail.com",
+    "email_placeholder": "Majburiy* your-mail{'@'}mail.com",
     "request_title": "Ehtiyojlaringizni tasvirlab bering.",
     "request_message": "Mutaxassisimizga sizning talablaringizni yaxshiroq qondirishga yordam berish va sizga hamyonbop narx va vaqtni taxmin qilish uchun biznesingiz haqida aniq ma'lumot bering.",
     "description": "Biznesingiz haqida ko'proq ma'lumot bering",

@@ -360,7 +360,7 @@ export default {
     "contact": "Enfòmasyon sou kontak",
     "name_placeholder": "Obligatwa*",
     "email": "Imèl",
-    "email_placeholder": "Obligatwa* your-email@gmail.com",
+    "email_placeholder": "Obligatwa* your-mail{'@'}mail.com",
     "request_title": "Dekri bezwen ou yo.",
     "request_message": "Bay enfòmasyon espesifik sou biznis ou pou ede ekspè nou an satisfè kondisyon ou pi byen epi ba ou pri abòdab ak estimasyon tan.",
     "description": "Di nou plis sou biznis ou",

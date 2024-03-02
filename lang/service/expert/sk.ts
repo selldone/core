@@ -360,7 +360,7 @@ export default {
     "contact": "Kontaktné informácie",
     "name_placeholder": "Požadovaný*",
     "email": "Email",
-    "email_placeholder": "Povinné* your-email@gmail.com",
+    "email_placeholder": "Povinné* your-mail{'@'}mail.com",
     "request_title": "Popíšte svoje potreby.",
     "request_message": "Poskytnite konkrétne informácie o svojom podnikaní, aby sme pomohli nášmu odborníkovi lepšie splniť vaše požiadavky a poskytli vám dostupnú cenu a odhad času.",
     "description": "Povedzte nám viac o svojom podnikaní",

@@ -360,7 +360,7 @@ export default {
     "contact": "Agahiyên Têkilî",
     "name_placeholder": "Pêdivî ye*",
     "email": "Email",
-    "email_placeholder": "Pêdivî ye * your-email@gmail.com",
+    "email_placeholder": "Pêdivî ye * your-mail{'@'}mail.com",
     "request_title": "Pêdiviyên xwe diyar bikin.",
     "request_message": "Der barê karsaziya xwe de agahdariya taybetî bidin da ku ji pisporê me re bibe alîkar ku daxwazên we çêtir bicîh bîne û bihayê erzan û texmîna demê ji we re peyda bike.",
     "description": "Di derbarê karsaziya xwe de bêtir ji me re bêje",

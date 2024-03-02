@@ -360,7 +360,7 @@ export default {
     "contact": "Informacioni i Kontaktit",
     "name_placeholder": "Kërkohet*",
     "email": "Email",
-    "email_placeholder": "Kërkohet* your-email@gmail.com",
+    "email_placeholder": "Kërkohet* your-mail{'@'}mail.com",
     "request_title": "Përshkruani nevojat tuaja.",
     "request_message": "Jepni informacion specifik rreth biznesit tuaj për të ndihmuar ekspertin tonë të përmbushë më mirë kërkesat tuaja dhe t'ju ofrojë çmim të përballueshëm dhe vlerësim të kohës.",
     "description": "Na tregoni më shumë për biznesin tuaj",

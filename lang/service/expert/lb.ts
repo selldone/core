@@ -360,7 +360,7 @@ export default {
     "contact": "Kontakt-Informatioun",
     "name_placeholder": "Obligatoresch*",
     "email": "E-Mail",
-    "email_placeholder": "Obligatoresch * your-email@gmail.com",
+    "email_placeholder": "Obligatoresch * your-mail{'@'}mail.com",
     "request_title": "Beschreift Är Besoinen.",
     "request_message": "Gitt spezifesch Informatioun iwwer Äert Geschäft fir eisen Expert ze hëllefen Är Ufuerderunge besser ze treffen an Iech bezuelbare Präis an Zäitschätzung ze bidden.",
     "description": "Sot eis méi iwwer Äre Betrib",

@@ -360,7 +360,7 @@ export default {
     "contact": "ಸಂಪರ್ಕ ಮಾಹಿತಿ",
     "name_placeholder": "ಅಗತ್ಯವಿದೆ*",
     "email": "ಇಮೇಲ್",
-    "email_placeholder": "ಅಗತ್ಯವಿದೆ* your-email@gmail.com",
+    "email_placeholder": "ಅಗತ್ಯವಿದೆ* your-mail{'@'}mail.com",
     "request_title": "ನಿಮ್ಮ ಅಗತ್ಯಗಳನ್ನು ವಿವರಿಸಿ.",
     "request_message": "ನಮ್ಮ ತಜ್ಞರು ನಿಮ್ಮ ಅವಶ್ಯಕತೆಗಳನ್ನು ಉತ್ತಮವಾಗಿ ಪೂರೈಸಲು ಮತ್ತು ನಿಮಗೆ ಕೈಗೆಟುಕುವ ಬೆಲೆ ಮತ್ತು ಸಮಯದ ಅಂದಾಜನ್ನು ಒದಗಿಸಲು ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಕುರಿತು ನಿರ್ದಿಷ್ಟ ಮಾಹಿತಿಯನ್ನು ನೀಡಿ.",
     "description": "ನಿಮ್ಮ ವ್ಯಾಪಾರದ ಕುರಿತು ನಮಗೆ ಇನ್ನಷ್ಟು ತಿಳಿಸಿ",

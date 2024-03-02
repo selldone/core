@@ -360,7 +360,7 @@ export default {
     "contact": "Кантактная інфармацыя",
     "name_placeholder": "Абавязкова*",
     "email": "Электронная пошта",
-    "email_placeholder": "Абавязкова* your-email@gmail.com",
+    "email_placeholder": "Абавязкова* your-mail{'@'}mail.com",
     "request_title": "Апішыце свае патрэбы.",
     "request_message": "Дайце канкрэтную інфармацыю аб вашым бізнэсе, каб дапамагчы нашаму эксперту лепш задаволіць вашыя патрабаванні і даць вам даступны кошт і ацэнку часу.",
     "description": "Раскажыце больш пра свой бізнэс",

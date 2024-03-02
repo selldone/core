@@ -360,7 +360,7 @@ export default {
     "contact": "연락처 정보",
     "name_placeholder": "필수의*",
     "email": "이메일",
-    "email_placeholder": "필수* your-email@gmail.com",
+    "email_placeholder": "필수* your-mail{'@'}mail.com",
     "request_title": "귀하의 요구 사항을 설명하십시오.",
     "request_message": "당사 전문가가 귀하의 요구 사항을 더 잘 충족하고 합리적인 가격과 예상 시간을 제공할 수 있도록 귀하의 비즈니스에 대한 구체적인 정보를 제공하십시오.",
     "description": "귀하의 비즈니스에 대해 자세히 알려주세요",

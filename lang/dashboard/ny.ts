@@ -1019,7 +1019,7 @@ export default {
         "start_time_input_hint": "Sungani Maola Otsegula",
         "end_time_input": "Sungani Nthawi Yotseka",
         "end_time_input_hint": "Sungani nthawi yomaliza ya ntchito",
-        "customer_support_service": "Accountability ndi Customer Service",
+        "customer_support_service": "Customer Service",
         "response_time_input": "Mkhalidwe Wothandizira Makasitomala",
         "support_24h": "Maola 24 masiku 7 pa sabata",
         "support_normal": "Pokhapokha pa nthawi ya ntchito",

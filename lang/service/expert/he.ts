@@ -360,7 +360,7 @@ export default {
     "contact": "פרטי התקשרות",
     "name_placeholder": "נדרש*",
     "email": "אימייל",
-    "email_placeholder": "חובה* your-email@gmail.com",
+    "email_placeholder": "חובה* your-mail{'@'}mail.com",
     "request_title": "תאר את הצרכים שלך.",
     "request_message": "תן מידע ספציפי על העסק שלך כדי לעזור למומחה שלנו לעמוד בדרישות שלך טוב יותר ולספק לך מחיר נוח ואומדן זמן.",
     "description": "ספר לנו עוד על העסק שלך",

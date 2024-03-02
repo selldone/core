@@ -989,7 +989,7 @@ export default {
 
   placeholders: {
     name: "نام کامل شما",
-    email: "your-mail@mail.com",
+    email: "your-mail{'@'}mail.com",
     phone: "0900 0000 0000",
     language: "انتخاب زبان..",
     friend_email: "آدرس ایمیل...",

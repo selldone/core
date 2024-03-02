@@ -360,7 +360,7 @@ export default {
     "contact": "Elérhetőség",
     "name_placeholder": "Kívánt*",
     "email": "Email",
-    "email_placeholder": "Kötelező* your-email@gmail.com",
+    "email_placeholder": "Kötelező* your-mail{'@'}mail.com",
     "request_title": "Írja le igényeit.",
     "request_message": "Adjon meg konkrét információkat vállalkozásáról, hogy segítsen szakértőnknek jobban megfelelni az Ön igényeinek, és megfizethető árat és becsült időt biztosítson Önnek.",
     "description": "Mondjon el többet a vállalkozásáról",

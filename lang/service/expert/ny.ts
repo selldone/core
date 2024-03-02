@@ -360,7 +360,7 @@ export default {
     "contact": "Zambiri zamalumikizidwe",
     "name_placeholder": "Zofunikira*",
     "email": "Imelo",
-    "email_placeholder": "Zofunika* your-email@gmail.com",
+    "email_placeholder": "Zofunika* your-mail{'@'}mail.com",
     "request_title": "Fotokozani zosowa zanu.",
     "request_message": "Perekani zambiri zabizinesi yanu kuti muthandizire katswiri wathu kukwaniritsa zomwe mukufuna ndikukupatsirani mtengo wotsika mtengo komanso kuyerekezera nthawi.",
     "description": "Tiuzeni zambiri za bizinesi yanu",

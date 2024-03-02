@@ -360,7 +360,7 @@ export default {
     "contact": "Thông tin liên lạc",
     "name_placeholder": "Cần thiết*",
     "email": "E-mail",
-    "email_placeholder": "Bắt buộc * your-email@gmail.com",
+    "email_placeholder": "Bắt buộc * your-mail{'@'}mail.com",
     "request_title": "Mô tả nhu cầu của bạn.",
     "request_message": "Cung cấp thông tin cụ thể về doanh nghiệp của bạn để giúp chuyên gia của chúng tôi đáp ứng các yêu cầu của bạn tốt hơn và cung cấp cho bạn mức giá hợp lý và ước tính thời gian.",
     "description": "Cho chúng tôi biết thêm về doanh nghiệp của bạn",

@@ -360,7 +360,7 @@ export default {
     "contact": "Kontaktinformation",
     "name_placeholder": "Erforderlich*",
     "email": "Email",
-    "email_placeholder": "Erforderlich* your-email@gmail.com",
+    "email_placeholder": "Erforderlich* your-mail{'@'}mail.com",
     "request_title": "Beschreiben Sie Ihre Bedürfnisse.",
     "request_message": "Geben Sie spezifische Informationen über Ihr Unternehmen an, damit unser Experte Ihre Anforderungen besser erfüllen und Ihnen einen erschwinglichen Preis und eine Zeitschätzung bieten kann.",
     "description": "Erzählen Sie uns mehr über Ihr Unternehmen",

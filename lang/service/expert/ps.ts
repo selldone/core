@@ -360,7 +360,7 @@ export default {
     "contact": "د اړیکې معلومات",
     "name_placeholder": "اړین*",
     "email": "ایمیل",
-    "email_placeholder": "اړین* your-email@gmail.com",
+    "email_placeholder": "اړین* your-mail{'@'}mail.com",
     "request_title": "خپلې اړتیاوې بیان کړئ.",
     "request_message": "ستاسو د سوداګرۍ په اړه ځانګړي معلومات ورکړئ ترڅو زموږ متخصص سره مرسته وکړي چې ستاسو اړتیاوې په ښه توګه پوره کړي او تاسو ته ارزانه قیمت او د وخت اټکل چمتو کړي.",
     "description": "موږ ته د خپلې سوداګرۍ په اړه نور معلومات راکړئ",

@@ -360,7 +360,7 @@ export default {
     "contact": "సంప్రదింపు సమాచారం",
     "name_placeholder": "అవసరం*",
     "email": "ఇమెయిల్",
-    "email_placeholder": "అవసరం* your-email@gmail.com",
+    "email_placeholder": "అవసరం* your-mail{'@'}mail.com",
     "request_title": "మీ అవసరాలను వివరించండి.",
     "request_message": "మా నిపుణుడు మీ అవసరాలను మెరుగ్గా తీర్చడంలో సహాయపడటానికి మరియు మీకు సరసమైన ధర మరియు సమయాన్ని అంచనా వేయడానికి మీ వ్యాపారం గురించి నిర్దిష్ట సమాచారాన్ని అందించండి.",
     "description": "మీ వ్యాపారం గురించి మాకు మరింత చెప్పండి",

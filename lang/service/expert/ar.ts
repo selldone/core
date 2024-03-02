@@ -360,7 +360,7 @@ export default {
     "contact": "معلومات الاتصال",
     "name_placeholder": "مطلوب*",
     "email": "بريد الالكتروني",
-    "email_placeholder": "مطلوب * your-email@gmail.com",
+    "email_placeholder": "مطلوب * your-mail{'@'}mail.com",
     "request_title": "صِف احتياجاتك.",
     "request_message": "قدم معلومات محددة حول عملك لمساعدة خبرائنا على تلبية متطلباتك بشكل أفضل وتزويدك بسعر مناسب وتقدير للوقت.",
     "description": "أخبرنا المزيد عن عملك",

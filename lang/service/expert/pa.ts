@@ -360,7 +360,7 @@ export default {
     "contact": "ਸੰਪਰਕ ਜਾਣਕਾਰੀ",
     "name_placeholder": "ਲੋੜੀਂਦਾ*",
     "email": "ਈ - ਮੇਲ",
-    "email_placeholder": "ਲੋੜੀਂਦਾ* your-email@gmail.com",
+    "email_placeholder": "ਲੋੜੀਂਦਾ* your-mail{'@'}mail.com",
     "request_title": "ਆਪਣੀਆਂ ਲੋੜਾਂ ਦਾ ਵਰਣਨ ਕਰੋ।",
     "request_message": "ਸਾਡੇ ਮਾਹਰ ਨੂੰ ਤੁਹਾਡੀਆਂ ਜ਼ਰੂਰਤਾਂ ਨੂੰ ਬਿਹਤਰ ਢੰਗ ਨਾਲ ਪੂਰਾ ਕਰਨ ਅਤੇ ਤੁਹਾਨੂੰ ਕਿਫਾਇਤੀ ਕੀਮਤ ਅਤੇ ਸਮੇਂ ਦਾ ਅੰਦਾਜ਼ਾ ਪ੍ਰਦਾਨ ਕਰਨ ਵਿੱਚ ਮਦਦ ਕਰਨ ਲਈ ਆਪਣੇ ਕਾਰੋਬਾਰ ਬਾਰੇ ਖਾਸ ਜਾਣਕਾਰੀ ਦਿਓ।",
     "description": "ਸਾਨੂੰ ਆਪਣੇ ਕਾਰੋਬਾਰ ਬਾਰੇ ਹੋਰ ਦੱਸੋ",

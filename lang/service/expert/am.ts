@@ -360,7 +360,7 @@ export default {
     "contact": "የማንነትህ መረጃ",
     "name_placeholder": "ያስፈልጋል*",
     "email": "ኢሜይል",
-    "email_placeholder": "ያስፈልጋል* your-email@gmail.com",
+    "email_placeholder": "ያስፈልጋል* your-mail{'@'}mail.com",
     "request_title": "ፍላጎቶችዎን ይግለጹ.",
     "request_message": "ባለሙያዎቻችን የእርስዎን መስፈርቶች በተሻለ ሁኔታ እንዲያሟሉ እና በተመጣጣኝ ዋጋ እና የጊዜ ግምት ለእርስዎ ለማቅረብ ስለ ንግድዎ የተለየ መረጃ ይስጡ።",
     "description": "ስለ ንግድዎ የበለጠ ይንገሩን።",

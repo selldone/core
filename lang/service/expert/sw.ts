@@ -360,7 +360,7 @@ export default {
     "contact": "Maelezo ya Mawasiliano",
     "name_placeholder": "Inahitajika*",
     "email": "Barua pepe",
-    "email_placeholder": "Inahitajika* your-email@gmail.com",
+    "email_placeholder": "Inahitajika* your-mail{'@'}mail.com",
     "request_title": "Eleza mahitaji yako.",
     "request_message": "Toa maelezo mahususi kuhusu biashara yako ili kumsaidia mtaalamu wetu kutimiza mahitaji yako vyema na kukupa bei nafuu na makadirio ya muda.",
     "description": "Tuambie zaidi kuhusu biashara yako",
