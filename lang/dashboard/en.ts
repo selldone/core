@@ -1731,7 +1731,7 @@ export default {
     },
   }, // product_admin
 
-  /** {@see ProductExtraPhysicalForm} **/
+  /** {@see BProductExtraInput} **/
   product_extra_physical: {
     weight: "Package weight",
     weight_unit: "Kg",
@@ -2643,7 +2643,7 @@ export default {
     developer_setting: "Develop & Test",
   },
 
-  /** {@see AdminGiftCardPage} **/
+  /** {@see BPageGiftcard} **/
   gift_card: {
     title: "Gift Cards",
     menu: {
@@ -2659,7 +2659,7 @@ export default {
     dashboard: {
       title: "Gift Card Management Dashboard",
 
-      /** {@see GiftCardAmountWidget} **/
+      /** {@see BGiftcardStatisticsPayment} **/
       amount_widget: {
         title: "Card Payment",
         title_small: "30 days",
@@ -2676,7 +2676,7 @@ export default {
         total_pay_today: "Today's payment",
       },
 
-      /** {@see GiftCardCountWidget} **/
+      /** {@see BGiftcardStatisticsCount} **/
       count_widget: {
         title: "Number of issued cards",
         title_small: "30 days",
@@ -2691,7 +2691,7 @@ export default {
         },
       },
 
-      /** {@see GiftCardExportWidget} **/
+      /** {@see BGiftcardExport} **/
       export: {
         title: "Get Output file",
         cards_list: "Get a list of cards",
@@ -2729,7 +2729,7 @@ export default {
       },
     }, // End of cards
 
-    /** {@see GiftCardEdit} **/
+    /** {@see BGiftcardAdd} **/
     gift_card_edit: {
       title: "Create Gift Card",
       validity: "Validity",
@@ -2751,7 +2751,7 @@ export default {
     },
   },
 
-  /** {@see AdminDiscountCodePage} **/
+  /** {@see BPageDiscountCode} **/
   shop_discount: {
     title: "Discount code",
     up_to: "Up to",
@@ -2761,7 +2761,7 @@ export default {
       back: "Discount Codes",
     },
 
-    /** {@see AdminDiscountCodeDashboardPage} **/
+    /** {@see BPageDiscountCodeDashboard} **/
     dashboard: {
       title: "Discount Code Management Dashboard",
       chart_amount_buy: {
@@ -2779,7 +2779,7 @@ export default {
     },
   },
 
-  /** {@see AdminCouponPage} **/
+  /** {@see BPageCoupon} **/
   shop_coupon: {
     title: "Coupons",
     up_to: "up to",
@@ -2789,7 +2789,7 @@ export default {
       orders: "Orders",
     },
 
-    /** {@see AdminCouponDashboardPage} **/
+    /** {@see BPageCouponDashboard} **/
     dashboard: {
       title: "Coupon Management Dashboard",
       chart_amount_buy: {
@@ -2807,7 +2807,7 @@ export default {
     },
   },
 
-  /** {@see AdminOfferPage} **/
+  /** {@see BPageOffer} **/
   shop_offer: {
     title: "Offers",
     up_to: "up to",
@@ -2817,7 +2817,7 @@ export default {
       back: "Offers",
     },
 
-    /** {@see AdminOfferDashboardPage} **/
+    /** {@see BPageOfferDashboard} **/
     dashboard: {
       title: "Offer Management Dashboard",
       chart_amount_buy: {
@@ -2835,7 +2835,7 @@ export default {
     },
   },
 
-  /** {@see WidgetAccount} **/
+  /** {@see BAccountCard} **/
   account_card: {
     pay_create_receipt: "Pay activation fee",
     balance: "Balance",
@@ -3015,7 +3015,7 @@ export default {
     },
   },
 
-  /** {@see GetGiftDialog} **/
+  /** {@see BAccountGiftRedeem} **/
   get_gift_dialog: {
     title: "Receive a Gift",
     more: "More ..",
@@ -3030,7 +3030,7 @@ export default {
         "The amount of gift {amount} {currency} has been deposited into your account.",
     },
   },
-  /** {@see SendGiftDialog} **/
+  /** {@see BAccountGiftSend} **/
   send_gift_dialog: {
     title: "Send Gift",
     account_from_input: "Choose an account",
@@ -3183,7 +3183,7 @@ export default {
     add_residential_address:
       "Add your location and proof of residential address documents.",
   },
-  /** {@see PhoneVerifyDialog} **/
+  /** {@see BUserPhoneVerify} **/
   phone_verify: {
     title: "Mobile Number Verification",
     step1_title:
@@ -3208,7 +3208,7 @@ export default {
       "Businesses, entrepreneurs, and professional teams can develop products and applications based on the Selldone. It is a requirement to create a business profile.",
     new_company: "New company",
   },
-  /** {@see AddCompany} **/
+  /** {@see BCompanyAdd} **/
   add_company: {
     name_input: "Company name",
     website_input: "Website",
@@ -3539,7 +3539,7 @@ export default {
       title: "Edit",
     },
   },
-  /** {@see AddApp} **/
+  /** {@see BAppAdd} **/
   add_app: {
     category_input: "Category",
     code_input: "Code",
@@ -3656,7 +3656,7 @@ export default {
     SelldoneSprite: "Selldone Wallet Account",
     SelldoneStorage: "Selldone Storage",
   },
-  /** {@see AccountPage} **/
+  /** {@see BPageAccount} **/
   account_page: {
     title: "Account",
     menu: {
@@ -3668,7 +3668,7 @@ export default {
       cards: "Cards",
     },
 
-    /** {@see AccountPage_Transactions} **/
+    /** {@see BPageAccountTransactions} **/
     transactions: {
       title: "Account Transactions",
       detail: {
@@ -3692,7 +3692,7 @@ export default {
       },
     },
 
-    /** {@see AccountPage_Transfer} **/
+    /** {@see BPageAccountTransfer} **/
     transfer: {
       title: "Transfer Charges",
       form: {
@@ -3703,7 +3703,7 @@ export default {
           "Be careful in transferring money, you will not be able to return if you complete the transfer.",
       },
     },
-    /** {@see AccountPage_Deposit} **/
+    /** {@see BPageAccountDeposit} **/
     deposit: {
       form: {
         title: "Charging Account",
@@ -3720,7 +3720,7 @@ export default {
       },
     },
 
-    /** {@see AccountPage_Edit} **/
+    /** {@see BPageAccountEdit} **/
     setting: {
       title: "Account Settings",
       account_name_input: "Account name",
@@ -3730,7 +3730,7 @@ export default {
     },
   },
 
-  /** {@see ReceiptPaymentDialog} **/
+  /** {@see BAccountReceiptPaymentDialog} **/
   receipt_payment_dialog: {
     title: "Receipt Payment",
     /*  message: 'If the following information is correct, hit the transaction confirmation key to make the transaction.',
@@ -3743,7 +3743,7 @@ export default {
       pay_action: 'Pay via port',
       pay_internal_action: 'Payment from account',*/
   },
-  /** {@see TransactionForm} **/
+  /** {@see BAccountTransactionForm} **/
   transaction_form: {
     title: "Transaction Form",
     from_input: "From account number",
@@ -4063,7 +4063,7 @@ export default {
     download_txt: "Download data text",
     download_excel: "Download data excel",
   },
-  /** {@see SUserPreferences} **/
+  /** {@see BUserPreferences} **/
   user_preferences: {
     access: "Access",
     template: "Template",
@@ -4186,7 +4186,7 @@ export default {
     },
   },
 
-  /** @see AdminOfferPage_Orders **/
+  /** @see BPageOfferOrders **/
   offer_orders: {
     title: "Offer Orders",
     table: {
@@ -4199,7 +4199,7 @@ export default {
     },
   },
 
-  /** @see AdminCouponPage_Orders **/
+  /** @see BPageCouponOrders **/
   coupon_orders: {
     title: "Coupon Orders",
     table: {
@@ -4211,7 +4211,7 @@ export default {
     },
   },
 
-  /** @see AdminDiscountPage_Orders **/
+  /** @see BPageDiscountCodeOrders **/
   discount_code_orders: {
     title: "Orders with Discount Code ",
     table: {
@@ -4634,7 +4634,7 @@ export default {
     },
   },
 
-  /** {@see SelectGiftCardType**/
+  /** {@see BGiftcardTypeInput**/
   gift_card_types_list: {
     label: "Gift card type",
     message: "Select a gift card type from the list.",
@@ -4920,7 +4920,7 @@ export default {
     ChipReader: "Chip Reader",
     ChipReader_desc: "NFC tag reader to add items to cart using tags.",
   },
-  /** {@see CashRegister_Devices**/
+  /** {@see BPagePosDevices**/
   pos_register_devices: {
     delete_dialog: {
       title: "Remove device",
@@ -5154,7 +5154,7 @@ export default {
     accepted: "Accepted user",
   },
 
-  /** {@see AppConfigDialog**/
+  /** {@see BAppConfigDialog**/
   app_config: {
     reviews: "Reviews",
     rate_now: "Rate now",
@@ -5242,7 +5242,7 @@ export default {
     client_name: "Client name",
   },
 
-  /** {@see ApplicationLoaderPage**/
+  /** {@see BPageApplication**/
   app_loader_page: {
     no_ui_title: "This application does not have any UI!",
     no_ui_desc:
@@ -5835,7 +5835,7 @@ export default {
     },
   },
 
-  /** {@see ServiceDesign} **/
+  /** {@see BProductServiceManage} **/
   service_design: {
     type: "Service type",
     type_message:

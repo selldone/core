@@ -16,9 +16,9 @@ import VueI18n from "vue-i18n";
 import {ILanguage} from "./enums/language/Language";
 
 declare global {
-    interface Window {
-        $t:(key: VueI18n.Path, values?: VueI18n.Values)=>VueI18n.TranslateResult;
+  interface Window {
+    $t: (key: VueI18n.Path, values?: VueI18n.Values) => VueI18n.TranslateResult;
 
-        $language:ILanguage
-    }
+    $language: ILanguage;
+  }
 }

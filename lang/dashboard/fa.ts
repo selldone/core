@@ -1688,7 +1688,7 @@ export default {
     },
   }, // product_admin
 
-  /** {@see ProductExtraPhysicalForm} **/
+  /** {@see BProductExtraInput} **/
   product_extra_physical: {
     weight: "وزن کالا",
     weight_unit: "کیلوگرم",
@@ -2607,7 +2607,7 @@ export default {
     developer_setting: "تنظیمات توسعه دهنده",
   },
 
-  /** {@see AdminGiftCardPage} **/
+  /** {@see BPageGiftcard} **/
   gift_card: {
     title: "کارت های هدیه",
     menu: {
@@ -2623,7 +2623,7 @@ export default {
     dashboard: {
       title: "پنل مدیریت کارت هدیه",
 
-      /** {@see GiftCardAmountWidget} **/
+      /** {@see BGiftcardStatisticsPayment} **/
       amount_widget: {
         title: "پرداخت با کارت",
         title_small: "30 روز",
@@ -2640,7 +2640,7 @@ export default {
         total_pay_today: "مقدار پرداختی امروز",
       },
 
-      /** {@see GiftCardCountWidget} **/
+      /** {@see BGiftcardStatisticsCount} **/
       count_widget: {
         title: "تعداد کارت های صادر شده",
         title_small: "30 روز",
@@ -2655,7 +2655,7 @@ export default {
         },
       },
 
-      /** {@see GiftCardExportWidget} **/
+      /** {@see BGiftcardExport} **/
       export: {
         title: "دریافت خروجی",
         cards_list: "دریافت لیست کارت ها",
@@ -2693,7 +2693,7 @@ export default {
       },
     }, // End of cards
 
-    /** {@see GiftCardEdit} **/
+    /** {@see BGiftcardAdd} **/
     gift_card_edit: {
       title: "ایجاد کارت هدیه",
       validity: "اعتبار",
@@ -2715,7 +2715,7 @@ export default {
     },
   },
 
-  /** {@see AdminDiscountCodePage} **/
+  /** {@see BPageDiscountCode} **/
   shop_discount: {
     title: "کد تخفیف",
     up_to: "تا سقف",
@@ -2725,7 +2725,7 @@ export default {
       back: "کدهای تخفیف",
     },
 
-    /** {@see AdminDiscountCodeDashboardPage} **/
+    /** {@see BPageDiscountCodeDashboard} **/
     dashboard: {
       title: "پنل مدیریت کد تخفیف",
       chart_amount_buy: {
@@ -2743,7 +2743,7 @@ export default {
     },
   },
 
-  /** {@see AdminCouponPage} **/
+  /** {@see BPageCoupon} **/
   shop_coupon: {
     title: "کوپن ها",
     up_to: "تا تاریخ",
@@ -2753,7 +2753,7 @@ export default {
       orders: "سفارشات",
     },
 
-    /** {@see AdminCouponDashboardPage} **/
+    /** {@see BPageCouponDashboard} **/
     dashboard: {
       title: "پنل مدیریت کوپن",
       chart_amount_buy: {
@@ -2771,7 +2771,7 @@ export default {
     },
   },
 
-  /** {@see AdminOfferPage} **/
+  /** {@see BPageOffer} **/
   shop_offer: {
     title: "پیشنهاد ویژه",
     up_to: "تا تاریخ",
@@ -2781,7 +2781,7 @@ export default {
       back: "پیشنهاد های",
     },
 
-    /** {@see AdminOfferDashboardPage} **/
+    /** {@see BPageOfferDashboard} **/
     dashboard: {
       title: "پنل مدیریت پیشنهاد ویژه",
       chart_amount_buy: {
@@ -2799,7 +2799,7 @@ export default {
     },
   },
 
-  /** {@see WidgetAccount} **/
+  /** {@see BAccountCard} **/
   account_card: {
     pay_create_receipt: "پرداخت مبلغ فعال سازی",
     balance: "موجودی",
@@ -2984,7 +2984,7 @@ export default {
     },
   },
 
-  /** {@see GetGiftDialog} **/
+  /** {@see BAccountGiftRedeem} **/
   get_gift_dialog: {
     title: "دریافت هدیه",
     more: "بیشتر..",
@@ -2999,7 +2999,7 @@ export default {
         "مبلغ هدیه {amount} {currency}  به حساب شما واریز گردید.`",
     },
   },
-  /** {@see SendGiftDialog} **/
+  /** {@see BAccountGiftSend} **/
   send_gift_dialog: {
     title: "ارسال هدیه",
     account_from_input: "حساب مبدا",
@@ -3152,7 +3152,7 @@ export default {
       "درخواست تایید آدرس محل سکونت شما در صف انجام قرار دارد.",
     add_residential_address: "آدرس خود  و مدارک اثبات آن را اضافه کنید.",
   },
-  /** {@see PhoneVerifyDialog} **/
+  /** {@see BUserPhoneVerify} **/
   phone_verify: {
     title: "شماره تلفن همراه",
     step1_title: "شماره تلفن همراه خود را وارد نمایید.",
@@ -3178,7 +3178,7 @@ export default {
     new_company: "شرکت جدید",
   },
 
-  /** {@see AddCompany} **/
+  /** {@see BCompanyAdd} **/
   add_company: {
     name_input: "نام شرکت",
     website_input: "وب سایت",
@@ -3518,7 +3518,7 @@ export default {
     },
   },
 
-  /** {@see AddApp} **/
+  /** {@see BAppAdd} **/
   add_app: {
     category_input: "دسته بندی",
     code_input: "کد",
@@ -3639,7 +3639,7 @@ export default {
     SelldoneStorage: "فضای ذخیره رسمی سلدان",
   },
 
-  /** {@see AccountPage} **/
+  /** {@see BPageAccount} **/
   account_page: {
     title: "حساب",
     menu: {
@@ -3651,7 +3651,7 @@ export default {
       cards: "حساب متصل",
     },
 
-    /** {@see AccountPage_Transactions} **/
+    /** {@see BPageAccountTransactions} **/
     transactions: {
       title: "تراکنش های حساب",
       detail: {
@@ -3675,7 +3675,7 @@ export default {
       },
     },
 
-    /** {@see AccountPage_Transfer} **/
+    /** {@see BPageAccountTransfer} **/
     transfer: {
       title: "انتقال شارژ",
       form: {
@@ -3685,7 +3685,7 @@ export default {
           "در انتقال وجه دقت نمایید، در صورت تکمیل انتقال وجه توسط شما امکان بازگشت وجود نخواهد داشت.",
       },
     },
-    /** {@see AccountPage_Deposit} **/
+    /** {@see BPageAccountDeposit} **/
     deposit: {
       form: {
         title: "شارژ حساب",
@@ -3702,7 +3702,7 @@ export default {
         gateway_message: "در حال اتصال به درگاه پرداخت.",
       },
     },
-    /** {@see AccountPage_Edit} **/
+    /** {@see BPageAccountEdit} **/
     setting: {
       title: "تنظیمات حساب",
       account_name_input: "نام حساب",
@@ -3712,7 +3712,7 @@ export default {
     },
   },
 
-  /** {@see ReceiptPaymentDialog} **/
+  /** {@see BAccountReceiptPaymentDialog} **/
   receipt_payment_dialog: {
     title: "پرداخت رسید",
     /*  message: 'در صورتی که اطلاعات زیر صحیح است کلید تایید تراکنش را زده تا تراکنش صورت گیرد.',
@@ -3725,7 +3725,7 @@ export default {
     pay_action: 'پرداخت از طریق درگاه',
     pay_internal_action: 'پرداخت از حساب سلدان',*/
   },
-  /** {@see TransactionForm} **/
+  /** {@see BAccountTransactionForm} **/
   transaction_form: {
     title: "انتقال وجه",
     from_input: "شماره حساب مبدا",
@@ -4043,7 +4043,7 @@ export default {
     download_txt: "دانلود فایل متنی داده ها",
     download_excel: "دانلود فایل اکسل داده ها",
   },
-  /** {@see SUserPreferences} **/
+  /** {@see BUserPreferences} **/
   user_preferences: {
     access: "دسترسی",
     template: "قالب",
@@ -4160,7 +4160,7 @@ export default {
       date: "تاریخ",
     },
   },
-  /** @see AdminOfferPage_Orders **/
+  /** @see BPageOfferOrders **/
   offer_orders: {
     title: "سفارشات با پیشنهاد ویژه",
     table: {
@@ -4173,7 +4173,7 @@ export default {
     },
   },
 
-  /** @see AdminCouponPage_Orders **/
+  /** @see BPageCouponOrders **/
   coupon_orders: {
     title: "سفارشات با کوپن",
     table: {
@@ -4184,7 +4184,7 @@ export default {
       date: "تاریخ",
     },
   },
-  /** @see AdminDiscountPage_Orders **/
+  /** @see BPageDiscountCodeOrders **/
   discount_code_orders: {
     title: "سفارشات با کد تخفیف",
     table: {
@@ -4619,7 +4619,7 @@ export default {
     },
   },
 
-  /** {@see SelectGiftCardType**/
+  /** {@see BGiftcardTypeInput**/
   gift_card_types_list: {
     label: "نوع کارت هدیه",
     message: "نوع کارت هدیه را از لیست انتخاب کنید.",
@@ -4902,7 +4902,7 @@ export default {
     ChipReader_desc:
       "تگ خوان NFC برای اضافه کردن کالا به سبد با استفاده از تگ.",
   },
-  /** {@see CashRegister_Devices**/
+  /** {@see BPagePosDevices**/
   pos_register_devices: {
     delete_dialog: {
       title: "حذف دستگاه",
@@ -5130,7 +5130,7 @@ export default {
     accepted: "عضو تایید شده",
   },
 
-  /** {@see AppConfigDialog**/
+  /** {@see BAppConfigDialog**/
   app_config: {
     reviews: "نظرات",
     rate_now: "نظر دهید",
@@ -5215,7 +5215,7 @@ export default {
     redirect_url: "آدرس بازگشت",
     client_name: "نام کلاینت",
   },
-  /** {@see ApplicationLoaderPage**/
+  /** {@see BPageApplication**/
   app_loader_page: {
     no_ui_title: "این اپلیکیشن فاقد واسط کاربری است!",
     no_ui_desc:
@@ -5799,7 +5799,7 @@ export default {
     },
   },
 
-  /** {@see ServiceDesign} **/
+  /** {@see BProductServiceManage} **/
   service_design: {
     type: "نوع خدمت",
     type_message:

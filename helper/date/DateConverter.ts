@@ -56,7 +56,7 @@ declare global {
  * @returns {string} Formatted time string.
  */
 Date.prototype.printTime = function (): string {
-  return Intl.DateTimeFormat(window.$language?.full_local, {
+  return Intl.DateTimeFormat(window.$language?.full_locale, {
     calendar: window.$language?.calendar.calendar,
     hour: "numeric",
     minute: "numeric",
@@ -76,7 +76,7 @@ Date.prototype.printTime = function (): string {
  * console.log(myDate.printMonth()); // Outputs "September" if `$language.full_local` is set to "en-US".
  */
 Date.prototype.printMonth = function (): string {
-  return Intl.DateTimeFormat(window.$language?.full_local, {
+  return Intl.DateTimeFormat(window.$language?.full_locale, {
     calendar: window.$language?.calendar.calendar,
     month: "long",
   }).format(this);
@@ -95,7 +95,7 @@ Date.prototype.printMonth = function (): string {
  * console.log(date.printDayWeek());  // Outputs: "Wednesday" if `$language.full_local` is set to "en-US"
  */
 Date.prototype.printDayWeek = function (): string {
-  return Intl.DateTimeFormat(window.$language?.full_local, {
+  return Intl.DateTimeFormat(window.$language?.full_locale, {
     calendar: window.$language?.calendar.calendar,
     weekday: "long",
   }).format(this);
@@ -237,7 +237,7 @@ export class DateConverter {
       const date = new Date(timestamp);
 
       // Use the global $language setting for formatting
-      return Intl.DateTimeFormat(window.$language?.full_local, options).format(
+      return Intl.DateTimeFormat(window.$language?.full_locale, options).format(
         date
       );
     } catch (e) {
@@ -316,7 +316,7 @@ export class DateConverter {
         };
       }
 
-      return Intl.DateTimeFormat(window.$language?.full_local, options).format(
+      return Intl.DateTimeFormat(window.$language?.full_locale, options).format(
         date
       );
     } catch (e) {
@@ -365,7 +365,7 @@ export class DateConverter {
     if (!datetime_start) return "";
 
     const formatter = new Intl.RelativeTimeFormat(
-      local || window.$language?.full_local,
+      local || window.$language?.full_locale,
       {
         localeMatcher: "best fit",
         numeric: "auto", // change to "always" if you want 1 day ago/from now

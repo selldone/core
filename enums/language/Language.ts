@@ -27,7 +27,7 @@ export interface ILanguage {
    * A localized version of the language code.
    * For most languages, this will be the same as `code`.
    */
-  local: string;
+  locale: string;
 
   /**
    * The country or region code corresponding to the language (e.g., 'US' for United States).
@@ -56,7 +56,7 @@ export interface ILanguage {
    * A fuller, more localized version of the language code combined with a country or region code.
    * This is used for more specific regional settings (e.g., 'en-US' for American English).
    */
-  full_local: string;
+  full_locale: string;
 
   /**
    * A list of country or region codes where this language is primarily spoken or recognized.
@@ -81,12 +81,12 @@ export const Language: Record<string, ILanguage> = {
   // English
   en: {
     code: "en",
-    local: "en",
+    locale: "en",
     flag: "US",
     dir: "ltr",
     title: "English",
     calendar: Calendar.gregory,
-    full_local: "en-US", // Used for calendar
+    full_locale: "en-US", // Used for calendar
     countries: [
       "AU",
       "BZ",
@@ -113,12 +113,12 @@ export const Language: Record<string, ILanguage> = {
   // German
   de: {
     code: "de",
-    local: "de",
+    locale: "de",
     flag: "DE",
     dir: "ltr",
     title: "Deutsch",
     calendar: Calendar.gregory,
-    full_local: "de-DE", // Used for calendar
+    full_locale: "de-DE", // Used for calendar
     countries: ["AT", "CH", "DE", "LI", "LU"],
     vip: true, // Show on local services
   },
@@ -126,12 +126,12 @@ export const Language: Record<string, ILanguage> = {
   // Danish
   da: {
     code: "da",
-    local: "da",
+    locale: "da",
     flag: "DK",
     dir: "ltr",
     title: "Dansk",
     calendar: Calendar.gregory,
-    full_local: "da-DK", // Used for calendar
+    full_locale: "da-DK", // Used for calendar
     countries: ["DK"],
     vip: true, // Show on local services
   },
@@ -139,12 +139,12 @@ export const Language: Record<string, ILanguage> = {
   // Swedish
   sv: {
     code: "sv",
-    local: "sv",
+    locale: "sv",
     flag: "SE",
     dir: "ltr",
     title: "Svenska",
     calendar: Calendar.gregory,
-    full_local: "sv-SE", // Used for calendar
+    full_locale: "sv-SE", // Used for calendar
     countries: ["FI", "SE"],
     vip: true, // Show on local services
   },
@@ -152,12 +152,12 @@ export const Language: Record<string, ILanguage> = {
   // Persian
   fa: {
     code: "fa",
-    local: "fa",
+    locale: "fa",
     flag: "IR",
     dir: "rtl",
     title: "فارسی",
     calendar: Calendar.persian,
-    full_local: "fa-IR", // Used for calendar
+    full_locale: "fa-IR", // Used for calendar
     countries: ["IR", "AF"],
     vip: true, // Show on local services
     human: true, // Translated by human
@@ -165,36 +165,36 @@ export const Language: Record<string, ILanguage> = {
 
   zh: {
     code: "zh",
-    local: "zh",
+    locale: "zh",
     flag: "CN",
     dir: "ltr",
     title: "中文",
     calendar: Calendar.gregory,
-    full_local: "zh-CN", // Used for calendar
+    full_locale: "zh-CN", // Used for calendar
     countries: ["CN", "HK", "MO", "SG", "TW"],
     vip: true, // Show on local services
   },
 
   "zh-tw": {
     code: "zh-tw",
-    local: "zh",
+    locale: "zh",
     flag: "TW",
     dir: "ltr",
     title: "中文(台灣)",
     calendar: Calendar.gregory,
-    full_local: "zh-tw", // Used for calendar
+    full_locale: "zh-tw", // Used for calendar
     countries: ["TW", "CN", "HK", "MO", "SG"],
   },
 
   // Spanish
   es: {
     code: "es",
-    local: "es",
+    locale: "es",
     flag: "ES",
     dir: "ltr",
     title: "Español",
     calendar: Calendar.gregory,
-    full_local: "es-ES", // Used for calendar
+    full_locale: "es-ES", // Used for calendar
     countries: [
       "AR",
       "BO",
@@ -222,12 +222,12 @@ export const Language: Record<string, ILanguage> = {
 
   hi: {
     code: "hi",
-    local: "hi",
+    locale: "hi",
     flag: "IN",
     dir: "ltr",
     title: "हिंदी",
     calendar: Calendar.gregory,
-    full_local: "hi-IN", // Used for calendar
+    full_locale: "hi-IN", // Used for calendar
     countries: ["IN"],
     vip: true, // Show on local services
   },
@@ -235,12 +235,12 @@ export const Language: Record<string, ILanguage> = {
   // Arabic
   ar: {
     code: "ar",
-    local: "ar",
+    locale: "ar",
     flag: "SA",
     dir: "rtl",
     title: "عربي",
     calendar: Calendar.gregory,
-    full_local: "ar-AE", // Used for calendar
+    full_locale: "ar-AE", // Used for calendar
     countries: [
       "AE",
       "BH",
@@ -266,12 +266,12 @@ export const Language: Record<string, ILanguage> = {
   // French
   fr: {
     code: "fr",
-    local: "fr",
+    locale: "fr",
     flag: "FR",
     dir: "ltr",
     title: "français",
     calendar: Calendar.gregory,
-    full_local: "fr-FR", // Used for calendar
+    full_locale: "fr-FR", // Used for calendar
     countries: ["BE", "CA", "CH", "FR", "LU", "MC"],
     vip: true, // Show on local services
   },
@@ -279,12 +279,12 @@ export const Language: Record<string, ILanguage> = {
   // Turkish
   tr: {
     code: "tr",
-    local: "tr",
+    locale: "tr",
     flag: "TR",
     dir: "ltr",
     title: "Türk",
     calendar: Calendar.gregory,
-    full_local: "tr-TR", // Used for calendar
+    full_locale: "tr-TR", // Used for calendar
     countries: ["TR"],
     vip: true, // Show on local services
   },
@@ -292,12 +292,12 @@ export const Language: Record<string, ILanguage> = {
   // Portuguese
   pt: {
     code: "pt",
-    local: "pt",
+    locale: "pt",
     flag: "PT",
     dir: "ltr",
     title: "português",
     calendar: Calendar.gregory,
-    full_local: "pt-PT", // Used for calendar
+    full_locale: "pt-PT", // Used for calendar
     countries: ["BR", "PT"],
     vip: true, // Show on local services
   },
@@ -305,24 +305,24 @@ export const Language: Record<string, ILanguage> = {
   // Indonesian
   id: {
     code: "id",
-    local: "id",
+    locale: "id",
     flag: "ID",
     dir: "ltr",
     title: "Indonesian",
     calendar: Calendar.gregory,
-    full_local: "id-ID", // Used for calendar
+    full_locale: "id-ID", // Used for calendar
     countries: ["ID"],
     vip: true, // Show on local services
   },
   // Urdu
   ur: {
     code: "ur",
-    local: "ur",
+    locale: "ur",
     flag: "PK",
     dir: "rtl",
     title: "اردو",
     calendar: Calendar.gregory,
-    full_local: "ur-PK", // Used for calendar
+    full_locale: "ur-PK", // Used for calendar
     countries: ["PK"],
     vip: true, // Show on local services
   },
@@ -330,12 +330,12 @@ export const Language: Record<string, ILanguage> = {
   // Punjabi
   pa: {
     code: "pa",
-    local: "pa",
+    locale: "pa",
     flag: "IN",
     dir: "ltr",
     title: "ਪੰਜਾਬੀਆਂ",
     calendar: Calendar.gregory,
-    full_local: "pa-IN", // Used for calendar
+    full_locale: "pa-IN", // Used for calendar
     countries: ["IN"],
     vip: true, // Show on local services
   },
@@ -343,12 +343,12 @@ export const Language: Record<string, ILanguage> = {
   // Japanese
   ja: {
     code: "ja",
-    local: "ja",
+    locale: "ja",
     flag: "JP",
     dir: "ltr",
     title: "日本",
     calendar: Calendar.gregory,
-    full_local: "ja-JP", // Used for calendar
+    full_locale: "ja-JP", // Used for calendar
     countries: ["JP"],
     vip: true, // Show on local services
   },
@@ -356,12 +356,12 @@ export const Language: Record<string, ILanguage> = {
   // Russian
   ru: {
     code: "ru",
-    local: "ru",
+    locale: "ru",
     flag: "RU",
     dir: "ltr",
     title: "Pусский",
     calendar: Calendar.gregory,
-    full_local: "ru-RU", // Used for calendar
+    full_locale: "ru-RU", // Used for calendar
     countries: ["RU"],
     vip: true, // Show on local services
   },
@@ -369,12 +369,12 @@ export const Language: Record<string, ILanguage> = {
   // Bengali
   bn: {
     code: "bn",
-    local: "bn",
+    locale: "bn",
     flag: "BD",
     dir: "ltr",
     title: "বাংলা",
     calendar: Calendar.gregory,
-    full_local: "bn-BD", // Used for calendar
+    full_locale: "bn-BD", // Used for calendar
     countries: ["BD", "IN"],
     vip: true, // Show on local services
   },
@@ -384,940 +384,940 @@ export const Language: Record<string, ILanguage> = {
   // Afrikaans
   af: {
     code: "af",
-    local: "af",
+    locale: "af",
     flag: "ZA",
     dir: "ltr",
     title: "Afrikaans",
     calendar: Calendar.gregory,
-    full_local: "af-ZA", // Used for calendar
+    full_locale: "af-ZA", // Used for calendar
     countries: ["ZA"],
   },
 
   // Albanian
   sq: {
     code: "sq",
-    local: "sq",
+    locale: "sq",
     flag: "AL",
     dir: "ltr",
     title: "Shqip",
     calendar: Calendar.gregory,
-    full_local: "sq-AL", // Used for calendar
+    full_locale: "sq-AL", // Used for calendar
     countries: ["AL"],
   },
 
   // Azerbaijani
   az: {
     code: "az",
-    local: "az",
+    locale: "az",
     flag: "AZ",
     dir: "rtl",
     title: "Azərbaycanca",
     calendar: Calendar.gregory,
-    full_local: "az-AZ", // Used for calendar
+    full_locale: "az-AZ", // Used for calendar
     countries: ["AZ"],
   },
 
   // Amharic
   am: {
     code: "am",
-    local: "am",
+    locale: "am",
     flag: "ET",
     dir: "ltr",
     title: "አማርኛ ",
     calendar: Calendar.gregory,
-    full_local: "am-ET", // Used for calendar
+    full_locale: "am-ET", // Used for calendar
     countries: ["ET"],
   },
 
   // Armenian
   hy: {
     code: "hy",
-    local: "hy",
+    locale: "hy",
     flag: "AM",
     dir: "ltr",
     title: "Հայերեն",
     calendar: Calendar.gregory,
-    full_local: "hy-AM", // Used for calendar
+    full_locale: "hy-AM", // Used for calendar
     countries: ["AM"],
   },
 
   // Belarusian
   be: {
     code: "be",
-    local: "be",
+    locale: "be",
     flag: "BY",
     dir: "ltr",
     title: "Беларуская",
     calendar: Calendar.gregory,
-    full_local: "be-BY", // Used for calendar
+    full_locale: "be-BY", // Used for calendar
     countries: ["BY"],
   },
 
   // Basque
   eu: {
     code: "eu",
-    local: "eu",
+    locale: "eu",
     flag: "ES",
     dir: "ltr",
     title: "Euskara",
     calendar: Calendar.gregory,
-    full_local: "eu-ES", // Used for calendar
+    full_locale: "eu-ES", // Used for calendar
     countries: ["ES"],
   },
 
   // Bulgarian
   bg: {
     code: "bg",
-    local: "bg",
+    locale: "bg",
     flag: "BG",
     dir: "ltr",
     title: "Български",
     calendar: Calendar.gregory,
-    full_local: "bg-BG", // Used for calendar
+    full_locale: "bg-BG", // Used for calendar
     countries: ["BG"],
   },
 
   // Bosnian
   bs: {
     code: "bs",
-    local: "bs",
+    locale: "bs",
     flag: "BA",
     dir: "ltr",
     title: "Bosanski",
     calendar: Calendar.gregory,
-    full_local: "bs-BA", // Used for calendar
+    full_locale: "bs-BA", // Used for calendar
     countries: ["BA"],
   },
 
   // Corsican
   co: {
     code: "co",
-    local: "co",
+    locale: "co",
     flag: "FR",
     dir: "ltr",
     title: "Corsu",
     calendar: Calendar.gregory,
-    full_local: "co-FR", // Used for calendar
+    full_locale: "co-FR", // Used for calendar
     countries: ["FR"],
   },
 
   // Catalan
   ca: {
     code: "ca",
-    local: "ca",
+    locale: "ca",
     flag: "AD",
     dir: "ltr",
     title: "Català",
     calendar: Calendar.gregory,
-    full_local: "ca-AD", // Used for calendar
+    full_locale: "ca-AD", // Used for calendar
     countries: ["AD", "ES"],
   },
 
   // Croatian
   hr: {
     code: "hr",
-    local: "hr",
+    locale: "hr",
     flag: "HR",
     dir: "ltr",
     title: "Hrvatski",
     calendar: Calendar.gregory,
-    full_local: "hr-HR", // Used for calendar
+    full_locale: "hr-HR", // Used for calendar
     countries: ["HR", "BA"],
   },
 
   // Czech
   cs: {
     code: "cs",
-    local: "cs",
+    locale: "cs",
     flag: "CZ",
     dir: "ltr",
     title: "Česky",
     calendar: Calendar.gregory,
-    full_local: "cs-CZ", // Used for calendar
+    full_locale: "cs-CZ", // Used for calendar
     countries: ["CZ"],
   },
 
   // Dutch
   nl: {
     code: "nl",
-    local: "nl",
+    locale: "nl",
     flag: "BE",
     dir: "ltr",
     title: "Nederlands",
     calendar: Calendar.gregory,
-    full_local: "nl-BE", // Used for calendar
+    full_locale: "nl-BE", // Used for calendar
     countries: ["BE", "NL"],
   },
 
   // Estonian
   et: {
     code: "et",
-    local: "et",
+    locale: "et",
     flag: "EE",
     dir: "ltr",
     title: "Eesti",
     calendar: Calendar.gregory,
-    full_local: "et-EE", // Used for calendar
+    full_locale: "et-EE", // Used for calendar
     countries: ["EE"],
   },
 
   // Finnish
   fi: {
     code: "fi",
-    local: "fi",
+    locale: "fi",
     flag: "FI",
     dir: "ltr",
     title: "Finnish",
     calendar: Calendar.gregory,
-    full_local: "fi-FI", // Used for calendar
+    full_locale: "fi-FI", // Used for calendar
     countries: ["FI"],
   },
 
   // Frisian
   fy: {
     code: "fy",
-    local: "fy",
+    locale: "fy",
     flag: "NL",
     dir: "ltr",
     title: "Frysk",
     calendar: Calendar.gregory,
-    full_local: "fy-NL", // Used for calendar
+    full_locale: "fy-NL", // Used for calendar
     countries: ["NL"],
   },
 
   // Galician
   gl: {
     code: "gl",
-    local: "gl",
+    locale: "gl",
     flag: "ES",
     dir: "ltr",
     title: "Galego",
     calendar: Calendar.gregory,
-    full_local: "gl-ES", // Used for calendar
+    full_locale: "gl-ES", // Used for calendar
     countries: ["ES"],
   },
 
   // Georgian
   ka: {
     code: "ka",
-    local: "ka",
+    locale: "ka",
     flag: "GE",
     dir: "ltr",
     title: "ქართული",
     calendar: Calendar.gregory,
-    full_local: "ka-GE", // Used for calendar
+    full_locale: "ka-GE", // Used for calendar
     countries: ["GE"],
   },
   // Greek
   el: {
     code: "el",
-    local: "el",
+    locale: "el",
     flag: "CY",
     dir: "ltr",
     title: "Ελληνικά",
     calendar: Calendar.gregory,
-    full_local: "el-CY", // Used for calendar
+    full_locale: "el-CY", // Used for calendar
     countries: ["CY", "GR"],
   },
   // Gujarati
   gu: {
     code: "gu",
-    local: "gu",
+    locale: "gu",
     flag: "IN",
     dir: "ltr",
     title: "ગુજરાતી",
     calendar: Calendar.gregory,
-    full_local: "gu-IN", // Used for calendar
+    full_locale: "gu-IN", // Used for calendar
     countries: ["IN"],
   },
   // Haitian Creole
   ht: {
     code: "ht",
-    local: "ht",
+    locale: "ht",
     flag: "HT",
     dir: "ltr",
     title: "Krèyol ayisyen",
     calendar: Calendar.gregory,
-    full_local: "ht-HT", // Used for calendar
+    full_locale: "ht-HT", // Used for calendar
     countries: ["HT"],
   },
 
   // Hausa
   ha: {
     code: "ha",
-    local: "ha",
+    locale: "ha",
     flag: "NG",
     dir: "rtl",
     title: "هَوُسَ",
     calendar: Calendar.gregory,
-    full_local: "ha-NG", // Used for calendar
+    full_locale: "ha-NG", // Used for calendar
     countries: ["NG"],
   },
 
   // Hebrew
   he: {
     code: "he",
-    local: "he",
+    locale: "he",
     flag: "IL",
     dir: "rtl",
     title: "עברית",
     calendar: Calendar.gregory,
-    full_local: "he-IL", // Used for calendar
+    full_locale: "he-IL", // Used for calendar
     countries: ["IL"],
   },
 
   // Hungarian
   hu: {
     code: "hu",
-    local: "hu",
+    locale: "hu",
     flag: "HU",
     dir: "ltr",
     title: "Magyar",
     calendar: Calendar.gregory,
-    full_local: "hu-HU", // Used for calendar
+    full_locale: "hu-HU", // Used for calendar
     countries: ["HU"],
   },
 
   // Icelandic
   is: {
     code: "is",
-    local: "is",
+    locale: "is",
     flag: "IS",
     dir: "ltr",
     title: "Íslenska",
     calendar: Calendar.gregory,
-    full_local: "is-IS", // Used for calendar
+    full_locale: "is-IS", // Used for calendar
     countries: ["IS"],
   },
 
   // Igbo
   ig: {
     code: "ig",
-    local: "ig",
+    locale: "ig",
     flag: "NG",
     dir: "ltr",
     title: "Igbo",
     calendar: Calendar.gregory,
-    full_local: "ig-NG", // Used for calendar
+    full_locale: "ig-NG", // Used for calendar
     countries: ["NG"],
   },
 
   // Irish
   ga: {
     code: "ga",
-    local: "ga",
+    locale: "ga",
     flag: "IE",
     dir: "ltr",
     title: "Gaeilge",
     calendar: Calendar.gregory,
-    full_local: "ga-IE", // Used for calendar
+    full_locale: "ga-IE", // Used for calendar
     countries: ["IE"],
   },
 
   // Italian
   it: {
     code: "it",
-    local: "it",
+    locale: "it",
     flag: "IT",
     dir: "ltr",
     title: "Italiano",
     calendar: Calendar.gregory,
-    full_local: "it-IT", // Used for calendar
+    full_locale: "it-IT", // Used for calendar
     countries: ["IT", "CH"],
   },
   // Javanese
   jv: {
     code: "jv",
-    local: "jv",
+    locale: "jv",
     flag: "ID",
     dir: "ltr",
     title: "Basa Jawa",
     calendar: Calendar.gregory,
-    full_local: "jv-ID", // Used for calendar
+    full_locale: "jv-ID", // Used for calendar
     countries: ["ID"],
   },
 
   // Kannada
   kn: {
     code: "kn",
-    local: "kn",
+    locale: "kn",
     flag: "IN",
     dir: "ltr",
     title: "ಕನ್ನಡ",
     calendar: Calendar.gregory,
-    full_local: "kn-IN", // Used for calendar
+    full_locale: "kn-IN", // Used for calendar
     countries: ["IN"],
   },
 
   // Kazakh
   kk: {
     code: "kk",
-    local: "kk",
+    locale: "kk",
     flag: "KZ",
     dir: "ltr",
     title: "Қазақша",
     calendar: Calendar.gregory,
-    full_local: "kk-KZ", // Used for calendar
+    full_locale: "kk-KZ", // Used for calendar
     countries: ["KZ"],
   },
 
   // Khmer
   km: {
     code: "km",
-    local: "km",
+    locale: "km",
     flag: "KH",
     dir: "ltr",
     title: "ភាសាខ្មែរ ",
     calendar: Calendar.gregory,
-    full_local: "km-KH", // Used for calendar
+    full_locale: "km-KH", // Used for calendar
     countries: ["KH"],
   },
 
   // Kinyarwanda
   rw: {
     code: "rw",
-    local: "rw",
+    locale: "rw",
     flag: "RW",
     dir: "ltr",
     title: "Kinyarwandi",
     calendar: Calendar.gregory,
-    full_local: "rw-RW", // Used for calendar
+    full_locale: "rw-RW", // Used for calendar
     countries: ["RW"],
   },
 
   // Korean
   ko: {
     code: "ko",
-    local: "ko",
+    locale: "ko",
     flag: "KR",
     dir: "ltr",
     title: "한국어",
     calendar: Calendar.gregory,
-    full_local: "ko-KR", // Used for calendar
+    full_locale: "ko-KR", // Used for calendar
     countries: ["KR"],
   },
 
   // Kurdish
   ku: {
     code: "ku",
-    local: "ku",
+    locale: "ku",
     flag: "IQ",
     dir: "rtl",
     title: "Kurdî",
     calendar: Calendar.gregory,
-    full_local: "ku-IQ", // Used for calendar
+    full_locale: "ku-IQ", // Used for calendar
     countries: ["IQ"],
   },
 
   // Kyrgyz
   ky: {
     code: "ky",
-    local: "ky",
+    locale: "ky",
     flag: "KG",
     dir: "ltr",
     title: "Кыргызча",
     calendar: Calendar.gregory,
-    full_local: "ky-KG", // Used for calendar
+    full_locale: "ky-KG", // Used for calendar
     countries: ["KG"],
   },
 
   // Lao
   lo: {
     code: "lo",
-    local: "lo",
+    locale: "lo",
     flag: "LA",
     dir: "ltr",
     title: "ລາວ / Pha xa lao",
     calendar: Calendar.gregory,
-    full_local: "lo-LA", // Used for calendar
+    full_locale: "lo-LA", // Used for calendar
     countries: ["LA"],
   },
 
   // Latvian
   lv: {
     code: "lv",
-    local: "lv",
+    locale: "lv",
     flag: "LV",
     dir: "ltr",
     title: "Latviešu",
     calendar: Calendar.gregory,
-    full_local: "lv-LV", // Used for calendar
+    full_locale: "lv-LV", // Used for calendar
     countries: ["LV"],
   },
   // Lithuanian
   lt: {
     code: "lt",
-    local: "lt",
+    locale: "lt",
     flag: "LT",
     dir: "ltr",
     title: "Lietuvių",
     calendar: Calendar.gregory,
-    full_local: "lt-LT", // Used for calendar
+    full_locale: "lt-LT", // Used for calendar
     countries: ["LT"],
   },
   // Luxembourgish
   lb: {
     code: "lb",
-    local: "lb",
+    locale: "lb",
     flag: "LU",
     dir: "ltr",
     title: "Lëtzebuergesch",
     calendar: Calendar.gregory,
-    full_local: "lb-LU", // Used for calendar
+    full_locale: "lb-LU", // Used for calendar
     countries: ["LU"],
   },
   // Macedonian
   mk: {
     code: "mk",
-    local: "mk",
+    locale: "mk",
     flag: "MK",
     dir: "ltr",
     title: "Македонски",
     calendar: Calendar.gregory,
-    full_local: "mk-MK", // Used for calendar
+    full_locale: "mk-MK", // Used for calendar
     countries: ["MK"],
   },
   // Malagasy
   mg: {
     code: "mg",
-    local: "mg",
+    locale: "mg",
     flag: "MG",
     dir: "ltr",
     title: "Malagasy",
     calendar: Calendar.gregory,
-    full_local: "mg-MG", // Used for calendar
+    full_locale: "mg-MG", // Used for calendar
     countries: ["MG"],
   },
   // Malay
   ms: {
     code: "ms",
-    local: "ms",
+    locale: "ms",
     flag: "MY",
     dir: "ltr",
     title: "Bahasa Melayu",
     calendar: Calendar.gregory,
-    full_local: "ms-MY", // Used for calendar
+    full_locale: "ms-MY", // Used for calendar
     countries: ["MY", "BN"],
   },
 
   // Malayalam
   ml: {
     code: "ml",
-    local: "ml",
+    locale: "ml",
     flag: "IN",
     dir: "ltr",
     title: "മലയാളം",
     calendar: Calendar.gregory,
-    full_local: "ml-IN", // Used for calendar
+    full_locale: "ml-IN", // Used for calendar
     countries: ["IN"],
   },
 
   // Maltese
   mt: {
     code: "mt",
-    local: "mt",
+    locale: "mt",
     flag: "MT",
     dir: "ltr",
     title: "bil-Malti",
     calendar: Calendar.gregory,
-    full_local: "mt-MT", // Used for calendar
+    full_locale: "mt-MT", // Used for calendar
     countries: ["MT"],
   },
 
   // Maori
   mi: {
     code: "mi",
-    local: "mi",
+    locale: "mi",
     flag: "NZ",
     dir: "ltr",
     title: "Māori",
     calendar: Calendar.gregory,
-    full_local: "mi-NZ", // Used for calendar
+    full_locale: "mi-NZ", // Used for calendar
     countries: ["NZ"],
   },
 
   // Marathi
   mr: {
     code: "mr",
-    local: "mr",
+    locale: "mr",
     flag: "IN",
     dir: "ltr",
     title: "मराठी",
     calendar: Calendar.gregory,
-    full_local: "mr-IN", // Used for calendar
+    full_locale: "mr-IN", // Used for calendar
     countries: ["IN"],
   },
 
   // Mongolian
   mn: {
     code: "mn",
-    local: "mn",
+    locale: "mn",
     flag: "MN",
     dir: "ltr",
     title: "Монгол",
     calendar: Calendar.gregory,
-    full_local: "mn-MN", // Used for calendar
+    full_locale: "mn-MN", // Used for calendar
     countries: ["MN"],
   },
   // Myanmar
   my: {
     code: "my",
-    local: "my",
+    locale: "my",
     flag: "MM",
     dir: "ltr",
     title: "Myanmasa",
     calendar: Calendar.gregory,
-    full_local: "my-MM", // Used for calendar
+    full_locale: "my-MM", // Used for calendar
     countries: ["MM"],
   },
 
   // Nepali
   ne: {
     code: "ne",
-    local: "ne",
+    locale: "ne",
     flag: "NP",
     dir: "ltr",
     title: "नेपाली",
     calendar: Calendar.gregory,
-    full_local: "ne-NP", // Used for calendar
+    full_locale: "ne-NP", // Used for calendar
     countries: ["NP"],
   },
   // Norwegian
   no: {
     code: "no",
-    local: "no",
+    locale: "no",
     flag: "NO",
     dir: "ltr",
     title: "Norsk",
     calendar: Calendar.gregory,
-    full_local: "no-NO", // Used for calendar
+    full_locale: "no-NO", // Used for calendar
     countries: ["NO"],
   },
   // Nyanja
   ny: {
     code: "ny",
-    local: "ny",
+    locale: "ny",
     flag: "MW",
     dir: "ltr",
     title: "Chi-Chewa",
     calendar: Calendar.gregory,
-    full_local: "ny-MW", // Used for calendar
+    full_locale: "ny-MW", // Used for calendar
     countries: ["MW", "ZM"],
   },
   // Odia / Oriya
   or: {
     code: "or",
-    local: "or",
+    locale: "or",
     flag: "IN",
     dir: "ltr",
     title: "ଓଡ଼ିଆ",
     calendar: Calendar.gregory,
-    full_local: "or-IN", // Used for calendar
+    full_locale: "or-IN", // Used for calendar
     countries: ["IN"],
   },
 
   // Pashto
   ps: {
     code: "ps",
-    local: "ps",
+    locale: "ps",
     flag: "AF",
     dir: "rtl",
     title: "پښتو",
     calendar: Calendar.gregory,
-    full_local: "ps-AF", // Used for calendar
+    full_locale: "ps-AF", // Used for calendar
     countries: ["AF"],
   },
 
   // Polish
   pl: {
     code: "pl",
-    local: "pl",
+    locale: "pl",
     flag: "PL",
     dir: "ltr",
     title: "Polski",
     calendar: Calendar.gregory,
-    full_local: "pl-PL", // Used for calendar
+    full_locale: "pl-PL", // Used for calendar
     countries: ["PL"],
   },
   // Romanian
   ro: {
     code: "ro",
-    local: "ro",
+    locale: "ro",
     flag: "RO",
     dir: "ltr",
     title: "Română",
     calendar: Calendar.gregory,
-    full_local: "ro-RO", // Used for calendar
+    full_locale: "ro-RO", // Used for calendar
     countries: ["RO", "MO"],
   },
   // Serbian
   sr: {
     code: "sr",
-    local: "sr",
+    locale: "sr",
     flag: "RS",
     dir: "ltr",
     title: "Српски",
     calendar: Calendar.gregory,
-    full_local: "sr-RS", // Used for calendar
+    full_locale: "sr-RS", // Used for calendar
     countries: ["BA", "CS", "ME", "RS"],
   },
 
   // Sesotho
   st: {
     code: "st",
-    local: "st",
+    locale: "st",
     flag: "LS",
     dir: "ltr",
     title: "Sesotho",
     calendar: Calendar.gregory,
-    full_local: "st-LS", // Used for calendar
+    full_locale: "st-LS", // Used for calendar
     countries: ["ZA", "LS", "ZW"],
   },
   // Shona
   sn: {
     code: "sn",
-    local: "sn",
+    locale: "sn",
     flag: "ZW",
     dir: "ltr",
     title: "chiShona",
     calendar: Calendar.gregory,
-    full_local: "sn-ZW", // Used for calendar
+    full_locale: "sn-ZW", // Used for calendar
     countries: ["ZW", "MZ"],
   },
   // Sinhala / Sinhalese
   si: {
     code: "si",
-    local: "si",
+    locale: "si",
     flag: "LK",
     dir: "ltr",
     title: "සිංහල",
     calendar: Calendar.gregory,
-    full_local: "si-LK", // Used for calendar
+    full_locale: "si-LK", // Used for calendar
     countries: ["LK"],
   },
   // Slovak
   sk: {
     code: "sk",
-    local: "sk",
+    locale: "sk",
     flag: "SK",
     dir: "ltr",
     title: "Slovenčina",
     calendar: Calendar.gregory,
-    full_local: "sk-SK", // Used for calendar
+    full_locale: "sk-SK", // Used for calendar
     countries: ["SK"],
   },
   // Slovenian
   sl: {
     code: "sl",
-    local: "sl",
+    locale: "sl",
     flag: "SI",
     dir: "ltr",
     title: "Slovenščina",
     calendar: Calendar.gregory,
-    full_local: "sl-SI", // Used for calendar
+    full_locale: "sl-SI", // Used for calendar
     countries: ["SI"],
   },
   // Somali
   so: {
     code: "so",
-    local: "so",
+    locale: "so",
     flag: "SO",
     dir: "ltr",
     title: "Soomaaliga",
     calendar: Calendar.gregory,
-    full_local: "so-SO", // Used for calendar
+    full_locale: "so-SO", // Used for calendar
     countries: ["SO", "ET", "KE"],
   },
 
   // Sundanese
   su: {
     code: "su",
-    local: "su",
+    locale: "su",
     flag: "IN",
     dir: "ltr",
     title: "Basa Sunda",
     calendar: Calendar.gregory,
-    full_local: "su-IN", // Used for calendar
+    full_locale: "su-IN", // Used for calendar
     countries: ["IN"],
   },
 
   // Swahili
   sw: {
     code: "sw",
-    local: "sw",
+    locale: "sw",
     flag: "KE",
     dir: "ltr",
     title: "Kiswahili",
     calendar: Calendar.gregory,
-    full_local: "sw-KE", // Used for calendar
+    full_locale: "sw-KE", // Used for calendar
     countries: ["KE"],
   },
   // Tajik
   tg: {
     code: "tg",
-    local: "tg",
+    locale: "tg",
     flag: "TJ",
     dir: "ltr",
     title: "Тоҷикӣ",
     calendar: Calendar.gregory,
-    full_local: "tg-TJ", // Used for calendar
+    full_locale: "tg-TJ", // Used for calendar
     countries: ["TJ"],
   },
   // Tamil
   ta: {
     code: "ta",
-    local: "ta",
+    locale: "ta",
     flag: "IN",
     dir: "ltr",
     title: "தமிழ்",
     calendar: Calendar.gregory,
-    full_local: "ta-IN", // Used for calendar
+    full_locale: "ta-IN", // Used for calendar
     countries: ["IN"],
   },
   // Tatar
   tt: {
     code: "tt",
-    local: "tt",
+    locale: "tt",
     flag: "RU",
     dir: "ltr",
     title: "Tatarça",
     calendar: Calendar.gregory,
-    full_local: "tt-RU", // Used for calendar
+    full_locale: "tt-RU", // Used for calendar
     countries: ["RU"],
   },
   // Telugu
   te: {
     code: "te",
-    local: "te",
+    locale: "te",
     flag: "IN",
     dir: "ltr",
     title: "తెలుగు",
     calendar: Calendar.gregory,
-    full_local: "te-IN", // Used for calendar
+    full_locale: "te-IN", // Used for calendar
     countries: ["IN"],
   },
 
   // Thai
   th: {
     code: "th",
-    local: "th",
+    locale: "th",
     flag: "TH",
     dir: "ltr",
     title: "ไทย",
     calendar: Calendar.gregory,
-    full_local: "th-TH", // Used for calendar
+    full_locale: "th-TH", // Used for calendar
     countries: ["TH"],
   },
   // Turkmen
   tk: {
     code: "tk",
-    local: "tk",
+    locale: "tk",
     flag: "TM",
     dir: "ltr",
     title: "Туркмен",
     calendar: Calendar.gregory,
-    full_local: "tk-TM", // Used for calendar
+    full_locale: "tk-TM", // Used for calendar
     countries: ["TM"],
   },
   // Ukrainian
   uk: {
     code: "uk",
-    local: "uk",
+    locale: "uk",
     flag: "UA",
     dir: "ltr",
     title: "Українська",
     calendar: Calendar.gregory,
-    full_local: "uk-UA", // Used for calendar
+    full_locale: "uk-UA", // Used for calendar
     countries: ["UA"],
   },
 
   // Uyghur
   ug: {
     code: "ug",
-    local: "ug",
+    locale: "ug",
     flag: "CN",
     dir: "ltr",
     title: "Uyƣurqə",
     calendar: Calendar.gregory,
-    full_local: "ug-CN", // Used for calendar
+    full_locale: "ug-CN", // Used for calendar
     countries: ["CN"],
   },
   // Uzbek
   uz: {
     code: "uz",
-    local: "uz",
+    locale: "uz",
     flag: "UZ",
     dir: "ltr",
     title: "Ўзбек",
     calendar: Calendar.gregory,
-    full_local: "uz-UZ", // Used for calendar
+    full_locale: "uz-UZ", // Used for calendar
     countries: ["BO", "EC", "PE", "UZ"],
   },
   // Vietnamese
   vi: {
     code: "vi",
-    local: "vi",
+    locale: "vi",
     flag: "VN",
     dir: "ltr",
     title: "Tiếng Việt",
     calendar: Calendar.gregory,
-    full_local: "vi-VN", // Used for calendar
+    full_locale: "vi-VN", // Used for calendar
     countries: ["VN"],
   },
   // Welsh
   cy: {
     code: "cy",
-    local: "cy",
+    locale: "cy",
     flag: "GB",
     dir: "ltr",
     title: "Cymraeg",
     calendar: Calendar.gregory,
-    full_local: "cy-GB", // Used for calendar
+    full_locale: "cy-GB", // Used for calendar
     countries: ["GB"],
   },
   // Xhosa
   xh: {
     code: "xh",
-    local: "xh",
+    locale: "xh",
     flag: "ZA",
     dir: "ltr",
     title: "isiXhosa",
     calendar: Calendar.gregory,
-    full_local: "xh-ZA", // Used for calendar
+    full_locale: "xh-ZA", // Used for calendar
     countries: ["ZA"],
   },
 
   // Yiddish
   yi: {
     code: "yi",
-    local: "yi",
+    locale: "yi",
     flag: "RU",
     dir: "rtl",
     title: "ייִדיש ",
     calendar: Calendar.gregory,
-    full_local: "yi-RU", // Used for calendar
+    full_locale: "yi-RU", // Used for calendar
     countries: ["RU"],
   },
   // Yoruba
   yo: {
     code: "yo",
-    local: "yo",
+    locale: "yo",
     flag: "NG",
     dir: "ltr",
     title: "Yorùbá",
     calendar: Calendar.gregory,
-    full_local: "yo-NG", // Used for calendar
+    full_locale: "yo-NG", // Used for calendar
     countries: ["NG"],
   },
   // Zulu
   zu: {
     code: "zu",
-    local: "zu",
+    locale: "zu",
     flag: "ZA",
     dir: "ltr",
     title: "isiZulu",
     calendar: Calendar.gregory,
-    full_local: "zu-ZA", // Used for calendar
+    full_locale: "zu-ZA", // Used for calendar
     countries: ["ZA"],
   },
 };

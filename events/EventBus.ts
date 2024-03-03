@@ -106,4 +106,7 @@ export enum EventName {
   ARTICLE_CODE_EDITOR_SHOW = "article-code-editor-show",
   ARTICLE_FLIP_BOOK_SHOW = "article-flip-book-show",
   ARTICLE_COMPARE_IMAGES_SHOW = "article-compare-images-show",
+
+  // ━━━━━━━━━━━━━━━ Blur App ━━━━━━━━━━━━━━━
+  BLUR_APP = "blur-app",
 }
