@@ -4883,7 +4883,7 @@ export default {
     cashed: "Cash payment",
   },
 
-  /** {@see CashRegisterPage**/
+  /** {@see BPagePos**/
   cash_register: {
     menu: {
       panel: "Cash Register",
@@ -4940,7 +4940,7 @@ export default {
       order: "Order",
     },
   },
-  /** {@see CashRegister_Dashboard**/
+  /** {@see BPagePosPanel**/
   pos: {
     name: "POS",
     message:

@@ -4866,7 +4866,7 @@ export default {
     CANCELED: "لغو شده",
   },
 
-  /** {@see CashRegisterPage**/
+  /** {@see BPagePos**/
   cash_register: {
     menu: {
       panel: "صندوق",
@@ -4922,7 +4922,7 @@ export default {
       order: "سفارش",
     },
   },
-  /** {@see CashRegister_Dashboard**/
+  /** {@see BPagePosPanel**/
   pos: {
     name: "صندوق فروشگاهی",
 
