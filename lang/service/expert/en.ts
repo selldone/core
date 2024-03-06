@@ -300,7 +300,7 @@ export default {
     AUTOMOTIVE: "Automotive",
   },
 
-  /** @see UserExpertPanel **/
+  /** @see BPageShuttleExpert **/
   expert_panel: {
     title: "Expert Hub",
     add_dialog: {

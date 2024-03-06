@@ -277,7 +277,7 @@ export default {
       "One of the key features of Selldone is providing robust and secure APIs to manage and connect stores to other services such as warehousing, accounting, etc. You can also design custom apps and web apps for your store. Without having to worry about server and data management. Just use the domain APIs. You will have all the process of managing users, authentication and other domain features.",
   },
 
-  /** {@see SShuttle} **/
+  /** {@see BPageShuttle} **/
   user_dashboard: {
     title: "My shuttle",
     subtitle: "Comprehensive overview of my businesses.",
@@ -289,7 +289,7 @@ export default {
       access: "Access",
       business: "Company",
       wallet: "Wallet",
-      identification: "KYC",
+      identification: "Identity",
       stores: "Stores",
       roles: "Roles",
       home: "Home",
@@ -3126,7 +3126,7 @@ export default {
         "The requested amount has been deposited into your account.",
     },
   },
-  /** {@see BasicInformation} **/
+  /** {@see BPageShuttleIdentity} **/
   basic_information: {
     title: "My Identity and Profile",
     email: "Email address",
@@ -3201,7 +3201,7 @@ export default {
       verify_success: "Your mobile number has been verified",
     },
   },
-  /** {@see UserCompanies} **/
+  /** {@see BPageShuttleCompanies} **/
   companies: {
     title: "My Business Accounts",
     message:
@@ -3241,7 +3241,7 @@ export default {
       "You can create the keys to your account here. Note that these keys will be able to access your account. Create and use these keys only if you know exactly what you are doing.",
   },
 
-  /** {@see UserSecurityControl} **/
+  /** {@see BPageShuttleSecurity} **/
   user_security_control: {
     title: "Account Security",
     message: "You can edit your account security settings here.",

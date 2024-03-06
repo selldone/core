@@ -32,13 +32,13 @@ export class User {
   email_verified_at: Date;
 
   /** Social login flags for the user. */
-  socials_login?: UserSocialLogin;
+  socials_login?: User.SocialLogin;
 
   /** User preferences settings. */
-  preferences?: UserPreferences;
+  preferences?: User.Preferences;
 
   /** User's interests grouped by categories. */
-  interest: UserInterest;
+  interest: User.Interest;
 
   /** Indicates if the user is subscribed. */
   subscribed: boolean;
@@ -50,7 +50,7 @@ export class User {
   block_hours: number;
 
   /** Ban level for the user. */
-  ban?: BanLevels;
+  ban?: User.BanLevels;
 
   /** Key-value pairs for storing metadata (private). Used for keeping third-party customer IDs and other values. */
   meta: { [key: string]: any };
@@ -83,42 +83,44 @@ export class User {
   }
 }
 
-/**
- * Represents the social login flags for a user.
- */
-type UserSocialLogin = {
-  google?: boolean;
-  linkedin?: boolean;
-  github?: boolean;
-  stripe?: boolean;
-};
+export namespace User {
+  /**
+   * Represents the social login flags for a user.
+   */
+  export type SocialLogin = {
+    google?: boolean;
+    linkedin?: boolean;
+    github?: boolean;
+    stripe?: boolean;
+  };
+  /**
+   * Represents user preferences settings.
+   */
+  export type Preferences = {
+    level?: string;
+    rating?: number;
+    lang?: string;
+    dark?: boolean;
+    template?: string;
+    samples?: boolean;
+    currency?: string;
+    provider?: boolean;
+    calendar?: string;
+  };
 
-/**
- * Represents user preferences settings.
- */
-type UserPreferences = {
-  level?: string;
-  rating?: number;
-  lang?: string;
-  dark?: boolean;
-  template?: string;
-  samples?: boolean;
-  currency?: string;
-  provider?: boolean;
-};
+  /**
+   * Represents user's interests grouped by categories.
+   */
+  export type Interest = {
+    business?: string[];
+    topic?: string[];
+  };
 
-/**
- * Represents user's interests grouped by categories.
- */
-type UserInterest = {
-  business?: string[];
-  topic?: string[];
-};
-
-/** Possible ban levels for a user. */
-enum BanLevels {
-  TRANSACTION_BAN = "TRANSACTION_BAN",
-  SHOP_ADMIN_BAN = "SHOP_ADMIN_BAN",
-  SHOP_CUSTOMER_BAN = "SHOP_CUSTOMER_BAN",
-  FULL_BAN = "FULL_BAN",
+  /** Possible ban levels for a user. */
+  export enum BanLevels {
+    TRANSACTION_BAN = "TRANSACTION_BAN",
+    SHOP_ADMIN_BAN = "SHOP_ADMIN_BAN",
+    SHOP_CUSTOMER_BAN = "SHOP_CUSTOMER_BAN",
+    FULL_BAN = "FULL_BAN",
+  }
 }

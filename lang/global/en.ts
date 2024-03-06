@@ -719,7 +719,9 @@ export default {
     video: "Video",
     ends_in: "Ends in",
     current: "Current",
-    important:'Important',
+    important: "Important",
+
+    web: "Web",
   },
   difficulties: {
     very_complicated: "Very complicated",
@@ -2031,15 +2033,15 @@ export default {
   },
   /** {@see Calculator} **/
   /* calculator: {
-    title: "Calculator title",
-    formula: "Formula",
-    variable_name: "Variable name",
-    variable_name_message:
-      "Enter variable name and add it to use in your formula.",
-    type: "Variable type",
-    variable_title: "Variable title",
-    duplicate_var_name_error: "Can not add variable with same name!",
-  },*/
+      title: "Calculator title",
+      formula: "Formula",
+      variable_name: "Variable name",
+      variable_name_message:
+        "Enter variable name and add it to use in your formula.",
+      type: "Variable type",
+      variable_title: "Variable title",
+      duplicate_var_name_error: "Can not add variable with same name!",
+    },*/
 
   /** {@see SArticleStructuredData} **/
   json: {

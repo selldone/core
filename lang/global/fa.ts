@@ -718,8 +718,9 @@ export default {
     video: "ویدئو",
     ends_in: "تا پایان",
     current: "فعلی",
-    important:'مهم',
+    important: "مهم",
 
+    web: "وب",
   },
 
   difficulties: {
@@ -983,8 +984,7 @@ export default {
     Processing: "درحال پردازش",
     Canceled: "لغو شده",
     Succeeded: "تایید پرداخت",
-    RequireCapture:"نیاز به تایید"
-
+    RequireCapture: "نیاز به تایید",
   },
 
   placeholders: {
@@ -1582,8 +1582,7 @@ export default {
     cod: "پرداخت در محل",
     receipt_added: "ثبت رسید",
     payment_processing: "پردازش پرداخت",
-    payment_require_capture:'نیاز به تایید',
-
+    payment_require_capture: "نیاز به تایید",
   },
 
   /** {@see BasketDeliveryState} **/

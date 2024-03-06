@@ -292,7 +292,7 @@ export default {
     AUTOMOTIVE: "خودرو",
   },
 
-  /** @see UserExpertPanel **/
+  /** @see BPageShuttleExpert **/
   expert_panel: {
     title: "پنل مدیریت متخصصین سلدان",
     add_dialog: {
