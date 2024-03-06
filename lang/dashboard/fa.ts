@@ -2925,7 +2925,7 @@ export default {
     },
   },
 
-  /** {@see Accounts} **/
+  /** {@see BPageShuttleWalletAccounts} **/
   accounts: {
     title: "کیف پول من",
     message:
@@ -2951,7 +2951,7 @@ export default {
       received: "دریافتی",
     },
 
-    /** {@see UserGiftSend} **/
+    /** {@see BPageShuttleWalletGiftsSend} **/
     send_gifts: {
       title: "لیست هدایای ارسالی",
       sub_title:
@@ -2967,7 +2967,7 @@ export default {
       },
     },
 
-    /** {@see UserGiftReceived} **/
+    /** {@see BPageShuttleWalletGiftsReceived} **/
     received_gifts: {
       title: "لیست دریافتی ها",
       sub_title: "تمامی هدایای دریافتی از طرف سلدان و دیگر افراد به شما.",
@@ -5104,7 +5104,7 @@ export default {
       date: "تاریخ",
     },
   },
-  /** {@see MyRolesList**/
+  /** {@see BPageShuttleRoles**/
   my_roles: {
     title: "نقش های من",
     message:
@@ -5370,7 +5370,7 @@ export default {
       "پس از پرداخت هزینه سفارش به تامین کننده مراحل پیشرفت ارسال سفارش را در این بخش مشاهده نمایید.",
   },
 
-  /** {@see DropshippingPage} **/
+  /** {@see BPageWholesaler} **/
   drop_shipping: {
     menu: {
       dashboard: "داشبورد",
@@ -5389,7 +5389,7 @@ export default {
     REJECT: "رد شده",
   },
 
-  /** {@see DropshippingShopPage} **/
+  /** {@see BPageWholesalerShop} **/
   dropshipping_reseller_page: {
     menu: {
       dashboard: "داشبورد",
@@ -5398,17 +5398,17 @@ export default {
     },
   },
 
-  /** {@see DropshippingShopPage_Dashboard} **/
+  /** {@see BPageWholesalerShopDashboard} **/
   dropshipping_reseller_dashboard: {
     title: "داشبورد فروشنده واسط",
   },
 
-  /** {@see DropshippingShopPage_Orders} **/
+  /** {@see BPageWholesalerShopOrders} **/
   dropshipping_reseller_orders: {
     title: "سفارشات فروشنده واسط",
   },
 
-  /** {@see DropshippingShopPage_Wallet} **/
+  /** {@see BPageWholesalerShopWallet} **/
   dropshipping_reseller_wallet: {
     title: "حساب های فروشنده واسط",
   },
@@ -5466,7 +5466,7 @@ export default {
     },
   },
 
-  /** @see Dropshipping_Dashboard **/
+  /** @see BPageWholesalerDashboard **/
   dropship_admin_dashboard: {
     title: "درخواست های خرده فروشی",
     today_order_count: "تعداد سفارشات امروز",
@@ -6064,7 +6064,7 @@ export default {
     },
   },
 
-  /** {@see SShuttleShopsListPage} **/
+  /** {@see BPageShuttleShops} **/
   shops_list: {
     title: "فروشگاه های من",
     message:
@@ -6317,7 +6317,7 @@ export default {
     },
   },
 
-  /** {@see VendorsList} **/
+  /** {@see BPageShuttleVendors} **/
   vendors_list: {
     title: "وندورهای من",
     message: "لیست فروشگاهایی که به عنوان تامین کننده به آنها اضافه شده ام.",

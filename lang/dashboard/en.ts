@@ -2955,7 +2955,7 @@ export default {
     },
   },
 
-  /** {@see Accounts} **/
+  /** {@see BPageShuttleWalletAccounts} **/
   accounts: {
     title: "My Wallets",
     message:
@@ -2981,7 +2981,7 @@ export default {
       received: "Received",
     },
 
-    /** {@see UserGiftSend} **/
+    /** {@see BPageShuttleWalletGiftsSend} **/
     send_gifts: {
       title: "Sent Gifts",
       sub_title:
@@ -2997,7 +2997,7 @@ export default {
       },
     },
 
-    /** {@see UserGiftReceived} **/
+    /** {@see BPageShuttleWalletGiftsReceived} **/
     received_gifts: {
       title: "Received Gifts",
       sub_title:
@@ -5129,7 +5129,7 @@ export default {
       date: "Date",
     },
   },
-  /** {@see MyRolesList**/
+  /** {@see BPageShuttleRoles**/
   my_roles: {
     title: "My roles ",
     message:
@@ -5400,7 +5400,7 @@ export default {
       "After paying the order fee to the supplier, see the progress of sending the order in this section.",
   },
 
-  /** {@see DropshippingPage} **/
+  /** {@see BPageWholesaler} **/
   drop_shipping: {
     menu: {
       dashboard: "Dashboard",
@@ -5419,7 +5419,7 @@ export default {
     REJECT: "Reject",
   },
 
-  /** {@see DropshippingShopPage} **/
+  /** {@see BPageWholesalerShop} **/
   dropshipping_reseller_page: {
     menu: {
       dashboard: "Dashboard",
@@ -5428,17 +5428,17 @@ export default {
     },
   },
 
-  /** {@see DropshippingShopPage_Dashboard} **/
+  /** {@see BPageWholesalerShopDashboard} **/
   dropshipping_reseller_dashboard: {
     title: "Reseller dashboard",
   },
 
-  /** {@see DropshippingShopPage_Orders} **/
+  /** {@see BPageWholesalerShopOrders} **/
   dropshipping_reseller_orders: {
     title: "Reseller orders",
   },
 
-  /** {@see DropshippingShopPage_Wallet} **/
+  /** {@see BPageWholesalerShopWallet} **/
   dropshipping_reseller_wallet: {
     title: "Reseller wallet",
   },
@@ -5495,7 +5495,7 @@ export default {
     },
   },
 
-  /** @see Dropshipping_Dashboard **/
+  /** @see BPageWholesalerDashboard **/
   dropship_admin_dashboard: {
     title: "Reseller requests",
     today_order_count: "Today orders count",
@@ -6099,7 +6099,7 @@ export default {
     },
   },
 
-  /** {@see SShuttleShopsListPage} **/
+  /** {@see BPageShuttleShops} **/
   shops_list: {
     title: "My Shops",
     message:
@@ -6354,7 +6354,7 @@ export default {
     },
   },
 
-  /** {@see VendorsList} **/
+  /** {@see BPageShuttleVendors} **/
   vendors_list: {
     title: "My Vendors",
     message:
