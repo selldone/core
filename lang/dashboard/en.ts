@@ -3811,11 +3811,11 @@ export default {
     select_your_store: "Select your store",
   },
 
-  /** {@see ShopSessionsWorldMap} **/
+  /** {@see BSessionsMap} **/
   shop_session_widget: {
     total_sessions: "Total sessions",
   },
-  /** {@see UserActivityWorldMap} **/
+  /** {@see BDashboardShopCustomersActivityMap} **/
   user_activities_keys: {
     add_baskets: "Add to Cart",
     remove_baskets: "Delete from Cart",
@@ -5339,7 +5339,7 @@ export default {
     option_instant_shipping: "Option 3: Instant shipping.",
   },
 
-  /** {@see SelectShopHomePage} **/
+  /** {@see BShopHomeSelect} **/
   shop_home_edit: {
     title: "Home page setting",
     sub_title:
@@ -6326,7 +6326,7 @@ export default {
     },
   },
 
-  /** {@see MarketplacePage} **/
+  /** {@see BPageMarketplace} **/
   marketplace: {
     vendor_wallets: "Wallets",
     pricing_models: "Pricing",

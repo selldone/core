@@ -3792,12 +3792,12 @@ export default {
     select_your_store: "انتخاب فروشگاه",
   },
 
-  /** {@see ShopSessionsWorldMap} **/
+  /** {@see BSessionsMap} **/
   shop_session_widget: {
     total_sessions: "کل کاربران(sessions)",
   },
 
-  /** {@see UserActivityWorldMap} **/
+  /** {@see BDashboardShopCustomersActivityMap} **/
   user_activities_keys: {
     add_baskets: "افزودن به سبد خرید",
     remove_baskets: "حذف از سبد خرید",
@@ -5311,7 +5311,7 @@ export default {
     option_add_to_que: "گزینه 2: اضافه کردن به صف ارسال.",
     option_instant_shipping: "گزینه 3: ارسال فوری از طریق سرویس حمل.",
   },
-  /** {@see SelectShopHomePage} **/
+  /** {@see BShopHomeSelect} **/
   shop_home_edit: {
     title: "تنظیمات صفحه اصلی فروشگاه",
     sub_title: "انتخاب دامنه و صفحه اصلی (خانه) فروشگاه",
@@ -6289,7 +6289,7 @@ export default {
     },
   },
 
-  /** {@see MarketplacePage} **/
+  /** {@see BPageMarketplace} **/
   marketplace: {
     vendor_wallets: "کیف پول ها",
     pricing_models: "قیمت گذاری",

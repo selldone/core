@@ -721,6 +721,8 @@ export default {
     important: "مهم",
 
     web: "وب",
+    payout:"پرداخت",
+
   },
 
   difficulties: {

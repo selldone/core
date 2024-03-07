@@ -722,6 +722,7 @@ export default {
     important: "Important",
 
     web: "Web",
+    payout:"Payout",
   },
   difficulties: {
     very_complicated: "Very complicated",
