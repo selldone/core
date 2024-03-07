@@ -4878,7 +4878,7 @@ export default {
     payment_confirm: "تایید پرداخت",
     payment_confirm_msg: "سفارش {basket_id} توسط مشتری پرداخت گردید.",
   },
-  /** {@see BarcodeScannerConnectWidget**/
+  /** {@see BPosDeviceBarcodeScanner**/
   barcode_scanner: {
     wifi_pass: "رمز اتصال به شبکه بیسیم",
     message: "رمز وای فای خود را وارد نموده و کد بالا را اسکن نمایید.",

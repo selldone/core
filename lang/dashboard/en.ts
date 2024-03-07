@@ -4896,7 +4896,7 @@ export default {
     payment_confirm_msg: "Customer paid order {basket_id}.",
   },
 
-  /** {@see BarcodeScannerConnectWidget**/
+  /** {@see BPosDeviceBarcodeScanner**/
   barcode_scanner: {
     wifi_pass: "Your Wi-Fi Password",
     message: "Enter your WiFi router password and scan the QR code.",
