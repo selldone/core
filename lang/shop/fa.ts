@@ -75,7 +75,7 @@ export default {
     },
   },
 
-  /** @see SShopProductMainCard **/
+  /** @see SProductOverview **/
   product_info: {
     fake: "غیر اصل",
     action: "حراج",
@@ -739,7 +739,7 @@ export default {
       "این محصول امتیاز {rate} از 5 ستاره دریافت کرده است و توسط {rate_count} نفر امتیازدهی شده است.",
   },
 
-  /** {@see SShopRelatedProducts} **/
+  /** {@see SProductRelatedProducts} **/
   related_products: {
     card: {
       title: "کاوش کنید!",
@@ -748,7 +748,7 @@ export default {
     },
   },
 
-  /** {@see SShopProductCrossSellList} **/
+  /** {@see SProductCrossSells} **/
   cross_selling: {
     title:'محصولات پیشنهادی با {product}'
   },

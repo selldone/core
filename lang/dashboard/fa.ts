@@ -5542,7 +5542,7 @@ export default {
     },
   },
 
-  /** @see ProductInfo **/
+  /** @see SProductOverview **/
   product_info: {
     fake: "غیر اصل",
     action: "حراج",

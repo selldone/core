@@ -76,7 +76,7 @@ export default {
     },
   },
 
-  /** @see SShopProductMainCard **/
+  /** @see SProductOverview **/
   product_info: {
     fake: "Fake",
     action: "Auction",
@@ -731,7 +731,7 @@ export default {
       "This product has received a rating of {rate} out of 5 stars and rated by {rate_count} people.",
   },
 
-  /** {@see SShopRelatedProducts} **/
+  /** {@see SProductRelatedProducts} **/
   related_products: {
     card: {
       title: "Explore!",
@@ -740,7 +740,7 @@ export default {
     },
   },
 
-  /** {@see SShopProductCrossSellList} **/
+  /** {@see SProductCrossSells} **/
   cross_selling: {
     title:'Order {product} with'
   },

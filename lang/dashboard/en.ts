@@ -5573,7 +5573,7 @@ export default {
       inform_remove_success: "You have been removed from the waiting list.",
     },
   },
-  /** @see ProductInfo **/
+  /** @see SProductOverview **/
   product_info: {
     fake: "Fake",
     action: "Auction",
