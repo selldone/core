@@ -152,7 +152,7 @@ export default {
           {
             "title": "Плани та ціни",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

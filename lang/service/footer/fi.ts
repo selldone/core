@@ -152,7 +152,7 @@ export default {
           {
             "title": "Suunnitelmat ja hinnoittelu",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

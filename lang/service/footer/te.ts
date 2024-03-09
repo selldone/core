@@ -152,7 +152,7 @@ export default {
           {
             "title": "ప్రణాళికలు & ధర",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

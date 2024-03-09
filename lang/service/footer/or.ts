@@ -152,7 +152,7 @@ export default {
           {
             "title": "ଯୋଜନା ଏବଂ ମୂଲ୍ୟ",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

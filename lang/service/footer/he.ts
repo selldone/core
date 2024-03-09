@@ -152,7 +152,7 @@ export default {
           {
             "title": "תוכניות ותמחור",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

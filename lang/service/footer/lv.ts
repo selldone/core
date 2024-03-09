@@ -152,7 +152,7 @@ export default {
           {
             "title": "Plāni un cenas",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

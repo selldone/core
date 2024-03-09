@@ -152,7 +152,7 @@ export default {
           {
             "title": "Eto & Ifowoleri",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

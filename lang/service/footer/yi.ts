@@ -152,7 +152,7 @@ export default {
           {
             "title": "פּלאַנז & פּרייסינג",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

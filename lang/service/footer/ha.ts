@@ -152,7 +152,7 @@ export default {
           {
             "title": "Tsare-tsare & Farashi",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

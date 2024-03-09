@@ -152,7 +152,7 @@ export default {
           {
             "title": "Forfaits et tarifs",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

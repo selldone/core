@@ -152,7 +152,7 @@ export default {
           {
             "title": "Tervek és árak",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

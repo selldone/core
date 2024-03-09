@@ -152,7 +152,7 @@ export default {
           {
             "title": "پلانونه او قیمتونه",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

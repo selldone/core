@@ -152,7 +152,7 @@ export default {
           {
             "title": "Izicwangciso & Amaxabiso",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

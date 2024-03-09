@@ -152,7 +152,7 @@ export default {
           {
             "title": "منصوبے اور قیمتوں کا تعین",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

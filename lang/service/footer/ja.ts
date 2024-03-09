@@ -152,7 +152,7 @@ export default {
           {
             "title": "プランと価格",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

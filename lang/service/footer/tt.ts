@@ -152,7 +152,7 @@ export default {
           {
             "title": "Планнар һәм бәяләр",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

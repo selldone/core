@@ -152,7 +152,7 @@ export default {
           {
             "title": "Meýilnamalar we bahalar",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

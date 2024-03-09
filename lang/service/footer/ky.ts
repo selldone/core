@@ -152,7 +152,7 @@ export default {
           {
             "title": "Пландар жана баа",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

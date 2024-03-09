@@ -66,7 +66,7 @@ export default {
       {
         title: "سرویس ها",
         items: [
-          { title: "لیست قیمت", to: { name: "PriceList" } },
+          { title: "لیست قیمت", to: { name: "OPagePrice" } },
           { title: "اپلیکیشن ها", to: { name: "AppStore_List" } },
           { title: "اپلیکیشن ساز", to: { name: "Landing_AppBuilder" } },
           { title: "صفحه لندینگ ساز", to: { name: "Landing_PageBuilder" } },

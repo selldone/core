@@ -152,7 +152,7 @@ export default {
           {
             "title": "Pläng & Präisser",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

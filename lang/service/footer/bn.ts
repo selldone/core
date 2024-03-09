@@ -152,7 +152,7 @@ export default {
           {
             "title": "পরিকল্পনা এবং মূল্য নির্ধারণ",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

@@ -152,7 +152,7 @@ export default {
           {
             "title": "Mipango na Bei",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

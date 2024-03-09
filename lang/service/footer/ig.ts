@@ -152,7 +152,7 @@ export default {
           {
             "title": "Atụmatụ & Ọnụ ahịa",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

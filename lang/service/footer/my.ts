@@ -152,7 +152,7 @@ export default {
           {
             "title": "အစီအစဉ်များနှင့် ဈေးနှုန်း",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

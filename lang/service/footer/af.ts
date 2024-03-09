@@ -152,7 +152,7 @@ export default {
           {
             "title": "Planne en pryse",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

@@ -152,7 +152,7 @@ export default {
           {
             "title": "Paket & Harga",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

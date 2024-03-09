@@ -152,7 +152,7 @@ export default {
           {
             "title": "සැලසුම් සහ මිලකරණය",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

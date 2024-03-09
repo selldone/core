@@ -152,7 +152,7 @@ export default {
           {
             "title": "Pelan & Harga",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

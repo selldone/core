@@ -152,7 +152,7 @@ export default {
           {
             "title": "Gahunda & Igiciro",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

@@ -152,7 +152,7 @@ export default {
           {
             "title": "योजना आणि किंमत",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

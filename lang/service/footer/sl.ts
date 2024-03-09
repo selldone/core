@@ -152,7 +152,7 @@ export default {
           {
             "title": "Načrti in cene",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

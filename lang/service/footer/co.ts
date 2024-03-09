@@ -152,7 +152,7 @@ export default {
           {
             "title": "Piani è Prezzi",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

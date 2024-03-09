@@ -152,7 +152,7 @@ export default {
           {
             "title": "Plaanid ja hinnakujundus",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

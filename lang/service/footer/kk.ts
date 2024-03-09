@@ -152,7 +152,7 @@ export default {
           {
             "title": "Жоспарлар және бағалар",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

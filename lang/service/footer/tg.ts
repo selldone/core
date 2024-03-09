@@ -152,7 +152,7 @@ export default {
           {
             "title": "Нақшаҳо ва нархгузорӣ",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

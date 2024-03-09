@@ -152,7 +152,7 @@ export default {
           {
             "title": "Abonnementen en prijzen",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

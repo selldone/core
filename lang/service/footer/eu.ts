@@ -152,7 +152,7 @@ export default {
           {
             "title": "Planak eta prezioak",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

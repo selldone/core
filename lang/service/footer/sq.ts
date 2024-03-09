@@ -152,7 +152,7 @@ export default {
           {
             "title": "Planet dhe Çmimet",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

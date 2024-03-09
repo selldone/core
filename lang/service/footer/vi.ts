@@ -152,7 +152,7 @@ export default {
           {
             "title": "Gói & Giá cả",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

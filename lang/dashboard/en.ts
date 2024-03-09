@@ -3792,7 +3792,7 @@ export default {
     },
   },
 
-  /** {@see PriceCalculator} **/
+  /** {@see OPlanCalculator} **/
   price_calculator: {
     title: "Calculator ╏ Fit to your business",
     description:
@@ -3803,7 +3803,7 @@ export default {
     show_hypernova_mode: "My transaction is over 20M$!",
   },
 
-  /** {@see PriceCard} **/
+  /** {@see OPlanFeaturesCard} **/
   price_card: {
     billed_monthly: "Billed {amount} monthly.",
     billed_yearly: "Billed {amount} yearly.",
@@ -3833,7 +3833,7 @@ export default {
     from_previous_7_days: "from last 7 days",
   },
 
-  /** {@see AppLevelSelector}   {@see AppLevel}  **/
+  /** {@see BUserAppLevel}   {@see AppLevel}  **/
   app_levels: {
     title: "App Level",
     Newbie: "Newbie",
@@ -4536,7 +4536,7 @@ export default {
     emails: "Emails",
     edit: "Edit",
   },
-  /** {@see BPageAffiliate} **/
+  /** {@see BPageAffiliator} **/
   affiliate_page: {
     affiliates: "Affiliate partners",
     orders: "Orders",
@@ -6202,7 +6202,7 @@ export default {
       "Filter and export your customers data to make better decisions to deliver more value with less marketing! Please respect your customers' privacy and never send mass bulk emails to them! Never share your customers' information with 3rd party services without getting permission from every single of them.",
   },
 
-  /** {@see AffiliatePage_Dashboard} **/
+  /** {@see BPageAffiliatorDashboard} **/
   affiliate_pos: {
     title: "Affiliate POS",
     open_pos_action: "Fast ordering POS",

@@ -152,7 +152,7 @@ export default {
           {
             "title": "Σχέδια & Τιμολόγηση",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

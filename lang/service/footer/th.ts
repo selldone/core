@@ -152,7 +152,7 @@ export default {
           {
             "title": "แผนและราคา",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

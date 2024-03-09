@@ -152,7 +152,7 @@ export default {
           {
             "title": "Plan & Pri",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

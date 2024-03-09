@@ -152,7 +152,7 @@ export default {
           {
             "title": "Pjanijiet u Ipprezzar",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

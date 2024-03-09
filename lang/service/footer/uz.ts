@@ -152,7 +152,7 @@ export default {
           {
             "title": "Rejalar va narxlar",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

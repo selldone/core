@@ -152,7 +152,7 @@ export default {
           {
             "title": "Cynlluniau a Phrisiau",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

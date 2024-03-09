@@ -152,7 +152,7 @@ export default {
           {
             "title": "Mapulani & Mitengo",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

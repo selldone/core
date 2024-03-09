@@ -152,7 +152,7 @@ export default {
           {
             "title": "Izinhlelo namanani",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

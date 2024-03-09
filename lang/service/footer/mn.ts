@@ -152,7 +152,7 @@ export default {
           {
             "title": "Төлөвлөгөө ба үнэ",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

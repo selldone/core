@@ -152,7 +152,7 @@ export default {
           {
             "title": "Qorshayaasha & Qiimaha",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

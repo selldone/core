@@ -152,7 +152,7 @@ export default {
           {
             "title": "Merero & Theko",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

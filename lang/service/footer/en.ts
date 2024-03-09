@@ -70,7 +70,7 @@ export default {
       {
         title: "Services",
         items: [
-          { title: "Plans & Pricing", to: { name: "PriceList" } },
+          { title: "Plans & Pricing", to: { name: "OPagePrice" } },
           { title: "Applications", to: { name: "AppStore_List" } },
           { title: "Application Builder", to: { name: "Landing_AppBuilder" } },
           { title: "Page Builder", to: { name: "Landing_PageBuilder" } },

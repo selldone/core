@@ -152,7 +152,7 @@ export default {
           {
             "title": "Plan & Biha",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

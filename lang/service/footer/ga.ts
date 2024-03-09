@@ -152,7 +152,7 @@ export default {
           {
             "title": "Pleananna & Praghsanna",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

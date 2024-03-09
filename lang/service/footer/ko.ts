@@ -152,7 +152,7 @@ export default {
           {
             "title": "요금제 및 가격",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

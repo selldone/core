@@ -152,7 +152,7 @@ export default {
           {
             "title": "計劃和定價",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

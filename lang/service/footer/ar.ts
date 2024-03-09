@@ -152,7 +152,7 @@ export default {
           {
             "title": "الخطط والتسعير",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

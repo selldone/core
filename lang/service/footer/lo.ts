@@ -152,7 +152,7 @@ export default {
           {
             "title": "ແຜນການ & ລາຄາ",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

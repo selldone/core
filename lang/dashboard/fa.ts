@@ -3773,7 +3773,7 @@ export default {
     },
   },
 
-  /** {@see PriceCalculator} **/
+  /** {@see OPlanCalculator} **/
   price_calculator: {
     title: "ماشین حساب ╏ بر اساس نیاز خود بخرید",
     description:
@@ -3784,7 +3784,7 @@ export default {
     show_hypernova_mode: "میزان فروش من بیشتر از این مبالغ است!",
   },
 
-  /** {@see PriceCard} **/
+  /** {@see OPlanFeaturesCard} **/
   price_card: {
     billed_monthly: "صورت حساب ماهانه به مبلغ {amount}.",
     billed_yearly: "صورت حساب سالانه به مبلغ {amount}.",
@@ -3816,7 +3816,7 @@ export default {
     from_previous_7_days: "از 7 روز پیش",
   },
 
-  /** {@see AppLevelSelector}   {@see AppLevel}  **/
+  /** {@see BUserAppLevel}   {@see AppLevel}  **/
   app_levels: {
     title: "سطح  تجربه کاربر",
     Newbie: "تازه وارد",
@@ -4518,7 +4518,7 @@ export default {
     edit: "ویرایش",
   },
 
-  /** {@see BPageAffiliate} **/
+  /** {@see BPageAffiliator} **/
   affiliate_page: {
     affiliates: "همکاران تجاری",
     orders: "سفارشات",
@@ -6166,7 +6166,7 @@ export default {
       "مشتریان خود را فیلتر کنید و به صورت یک فایل خروجی بگیرید.  با این اطلاعات می توانید تصمیمات بهتری برای ارتقاع خدماتتان بگیرید.  لطفا به حریم خصوصی مشتریان خود احترام بگذارید و هرگز ایمیل های انبوه برای آنها ارسال نکنید! هرگز اطلاعات مشتریان خود را با شرکت های ثالث بدون کسب اجازه از تک تک مشتریان، به اشتراک نگذارید.",
   },
 
-  /** {@see AffiliatePage_Dashboard} **/
+  /** {@see BPageAffiliatorDashboard} **/
   affiliate_pos: {
     title: "پنل ثبت سفارش",
     open_pos_action: "ثبت سفارش سریع",

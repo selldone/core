@@ -152,7 +152,7 @@ export default {
           {
             "title": "Rencana & Harga",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {

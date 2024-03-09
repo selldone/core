@@ -152,7 +152,7 @@ export default {
           {
             "title": "Zvirongwa & Mitengo",
             "to": {
-              "name": "PriceList"
+              "name": "OPagePrice"
             }
           },
           {
