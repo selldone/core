@@ -191,7 +191,7 @@ export default {
     items: "عدد",
   },
 
-  /** {@see StorefrontPageOrdersPhysical} **/
+  /** {@see StorefrontPageUserOrdersPhysical} **/
   history_orders_physical: {
     rejected: "رد شده است",
     table: {
@@ -215,7 +215,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontLayoutCustomer} **/
+  /** {@see StorefrontPageUser} **/
   user_page: {
     menu: {
       gift_card: "کارت هدیه",
@@ -328,7 +328,7 @@ export default {
       title: "محصول خریداری شده",
     },
   },
-  /** {@see SStorefrontUserProfilePage} **/
+  /** {@see StorefrontPageUserProfile} **/
   user_profile: {
     title: "اطلاعات شخصی من",
     name: "نام",
@@ -426,7 +426,7 @@ export default {
     offer: "دریافت {count} عدد با {percent}% تخفیف",
     offer_free: "دریافت {count} عدد رایگان",
   },
-  /** {@see SStorefrontUserAddressesPage} **/
+  /** {@see StorefrontUserAddresses} **/
   addresses_page: {
     title: "آدرس های من",
     new_action: "آدرس جدید",
@@ -451,22 +451,22 @@ export default {
     },
   },
 
-  /** {@see SStorefrontUserReturnRequests} **/
+  /** {@see StorefrontPageUserReturns} **/
   return_requests: {
     title: "درخواست های مرجوعی",
   },
 
-  /** {@see SStorefrontUserFavoritesPage} **/
+  /** {@see StorefrontPageUserWishlist} **/
   user_favorites: {
     title: "لیست علاقه مندی ها",
   },
-  /** {@see SStorefrontUserCommentsPage} **/
+  /** {@see StorefrontPageUserComments} **/
   user_comments: {
     title: "نظرات من",
     first_post: "اولین ارسال",
     last_edit: "آخرین ویرایش",
   },
-  /** {@see SStorefrontUserGiftCardsPage} **/
+  /** {@see StorefrontPageUserGiftcards} **/
   user_gift_cards: {
     title: "کارت های هدیه من",
     add_action: "افزودن کارت",
@@ -525,7 +525,7 @@ export default {
     },
   },
 
-  /** @see SStorefrontBlogsPage **/
+  /** @see StorefrontPageBlogsList **/
   blogs: {
     title: "وبلاگ",
 
@@ -757,6 +757,8 @@ export default {
   select_vendor: {
     item_title:'مشاهده فروشگاه {vendor}'
   },
-
+  login:{
+    welcome:'خوش آمدید'
+  }
 
 };

@@ -192,7 +192,7 @@ export default {
     items: "Item(s)",
   },
 
-  /** {@see StorefrontPageOrdersPhysical} **/
+  /** {@see StorefrontPageUserOrdersPhysical} **/
   history_orders_physical: {
     rejected: "Rejected",
     table: {
@@ -215,7 +215,7 @@ export default {
     },
   },
 
-  /** {@see StorefrontLayoutCustomer} **/
+  /** {@see StorefrontPageUser} **/
   user_page: {
     menu: {
       gift_card: "Gift Card",
@@ -329,7 +329,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontUserProfilePage} **/
+  /** {@see StorefrontPageUserProfile} **/
   user_profile: {
     title: "My Personal Information",
     name: "Name",
@@ -422,7 +422,7 @@ export default {
     offer_free: "Get {count}x free",
   },
 
-  /** {@see SStorefrontUserAddressesPage} **/
+  /** {@see StorefrontUserAddresses} **/
   addresses_page: {
     title: "My Addresses",
     new_action: "New Address",
@@ -446,21 +446,21 @@ export default {
       address_name_input: "Address (required)",
     },
   },
-  /** {@see SStorefrontUserReturnRequests} **/
+  /** {@see StorefrontPageUserReturns} **/
   return_requests: {
     title: "Return requests",
   },
-  /** {@see SStorefrontUserFavoritesPage} **/
+  /** {@see StorefrontPageUserWishlist} **/
   user_favorites: {
     title: "Wishlist",
   },
-  /** {@see SStorefrontUserCommentsPage} **/
+  /** {@see StorefrontPageUserComments} **/
   user_comments: {
     title: "My Comments",
     first_post: "First post",
     last_edit: "Last edit",
   },
-  /** {@see SStorefrontUserGiftCardsPage} **/
+  /** {@see StorefrontPageUserGiftcards} **/
   user_gift_cards: {
     title: "My Gift Cards",
     add_action: "Add card",
@@ -519,7 +519,7 @@ export default {
     },
   },
 
-  /** @see SStorefrontBlogsPage **/
+  /** @see StorefrontPageBlogsList **/
   blogs: {
     title: "Blog",
     add_new_blog: "New Blog",
@@ -752,5 +752,7 @@ export default {
   },
 
 
-
+login:{
+    welcome:'Welcome'
+}
 };
