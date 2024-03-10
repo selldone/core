@@ -159,7 +159,7 @@ export default {
     related_categories_title: "Discover in collections",
   },
 
-  /** @see SStorefrontLayout **/
+  /** @see StorefrontLayout **/
   layout_shop: {
     shop_menu: {
       orders_history: "Orders History",
@@ -192,7 +192,7 @@ export default {
     items: "Item(s)",
   },
 
-  /** {@see SStorefrontHistoryOrdersPhysicalPage} **/
+  /** {@see StorefrontPageOrdersPhysical} **/
   history_orders_physical: {
     rejected: "Rejected",
     table: {
@@ -203,7 +203,7 @@ export default {
       status: "Payment Status",
     },
   },
-  /** {@see SStorefrontOrdersList} **/
+  /** {@see SOrdersList} **/
   history_orders: {
     table: {
       code: "Order Code",
@@ -215,7 +215,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontUserPagesLayout} **/
+  /** {@see StorefrontLayoutCustomer} **/
   user_page: {
     menu: {
       gift_card: "Gift Card",
@@ -227,7 +227,7 @@ export default {
       orders: "Orders",
     },
   },
-  /** {@see SStorefrontPhysicalOrderDetailPage} **/
+  /** {@see StorefrontPageBasketOrderPhysicalDashboard} **/
   order_page: {
     title: "Order",
 
@@ -321,7 +321,7 @@ export default {
     add_action: "Send return request",
     notifications: "Your return request has been successfully registered.",
   },
-  /** {@see SStorefrontVirtualOrderDetailPage} **/
+  /** {@see StorefrontPageBasketOrderVirtualDashboard} **/
   virtual_order_page: {
     title: "Order",
     info: {
@@ -358,7 +358,7 @@ export default {
       free_shipping: "Free Shipping",
     },
   },
-  /** {@see SStorefrontBasketPage} **/
+  /** {@see StorefrontPageBasketCart} **/
   basket_page: {
     title: "Shopping Cart",
     total_price: "Total amount",
@@ -590,7 +590,7 @@ export default {
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SStorefrontAvocadoCustomerOrderList} **/
   /** {@see SStorefrontAvocadoPage} **/
-  /** {@see SStorefrontAvocadoOrderPage} **/
+  /** {@see StorefrontPageAvocadoCart} **/
 
   avocado: {
     not_enable: "The avocado form is not enabled!",

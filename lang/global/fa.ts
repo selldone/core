@@ -997,6 +997,7 @@ export default {
     friend_email: "آدرس ایمیل...",
     friend_name: "نام دریافت کننده",
     select_date: "یک تاریخ را انتخاب کنید...",
+    address:"خیابان اصلی 123، شهرستان، 12345",
   },
 
   notification: {

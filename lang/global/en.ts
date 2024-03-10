@@ -1004,6 +1004,7 @@ export default {
     friend_email: "Your friend's email...",
     friend_name: "Opt. Your friend's name",
     select_date: "Select a date...",
+    address:'123 Main St, Anytown, 12345',
   },
 
   notification: {

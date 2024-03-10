@@ -157,7 +157,7 @@ export default {
     related_categories_title: "جستجو در مجموعه های مرتبط",
   },
 
-  /** @see SStorefrontLayout **/
+  /** @see StorefrontLayout **/
   layout_shop: {
     shop_menu: {
       orders_history: "تاریخچه سفارشات",
@@ -191,7 +191,7 @@ export default {
     items: "عدد",
   },
 
-  /** {@see SStorefrontHistoryOrdersPhysicalPage} **/
+  /** {@see StorefrontPageOrdersPhysical} **/
   history_orders_physical: {
     rejected: "رد شده است",
     table: {
@@ -203,7 +203,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontOrdersList} **/
+  /** {@see SOrdersList} **/
   history_orders: {
     table: {
       code: "کد سفارش",
@@ -215,7 +215,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontUserPagesLayout} **/
+  /** {@see StorefrontLayoutCustomer} **/
   user_page: {
     menu: {
       gift_card: "کارت هدیه",
@@ -228,7 +228,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontPhysicalOrderDetailPage} **/
+  /** {@see StorefrontPageBasketOrderPhysicalDashboard} **/
   order_page: {
     title: "سفارش",
 
@@ -321,7 +321,7 @@ export default {
     notifications: "درخواست مرجوعی شما با موفقیت ثبت گردید.",
   },
 
-  /** {@see SStorefrontVirtualOrderDetailPage} **/
+  /** {@see StorefrontPageBasketOrderVirtualDashboard} **/
   virtual_order_page: {
     title: "سفارش",
     info: {
@@ -359,7 +359,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontBasketPage} **/
+  /** {@see StorefrontPageBasketCart} **/
   basket_page: {
     title: "سبد خرید",
     total_price: "مبلغ کل",
@@ -598,7 +598,7 @@ export default {
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SStorefrontAvocadoCustomerOrderList} **/
   /** {@see SStorefrontAvocadoPage} **/
-  /** {@see SStorefrontAvocadoOrderPage} **/
+  /** {@see StorefrontPageAvocadoCart} **/
 
   avocado: {
     not_enable: "فرم دریافت سفارشات آووکادو فعال نیست!",

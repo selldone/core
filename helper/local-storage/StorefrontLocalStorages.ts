@@ -58,7 +58,7 @@ export class StorefrontLocalStorages {
 
   /**
    * Keep guest codes after user click payment button to be able to show history of orders!
-   * Only basket supported!
+   * Only basket (Physical, File, Service, Virtual) supported!
    * @constructor
    */
   static AddCurrentGuestCodeToHistory(
