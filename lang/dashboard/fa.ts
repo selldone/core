@@ -4491,7 +4491,7 @@ export default {
     new_email_message: "یک ایمیل جدید ایجاد نمایید",
   },
 
-  /** {@see AdminShopEmailPage_Dashboard} **/
+  /** {@see BPageEmailMarketingDashboard} **/
   email_dashboard: {
     review: "بازخوانی",
     waiting_for_approve: "در انتظار تایید توسط {name}",
@@ -4512,7 +4512,7 @@ export default {
     actions: "فعالیت کاربر",
   },
 
-  /** {@see AdminShopEmailPage} **/
+  /** {@see BPageEmailMarketing} **/
   email_page: {
     emails: "ایمیل ها",
     edit: "ویرایش",
@@ -4625,7 +4625,7 @@ export default {
     message: "نوع کارت هدیه را از لیست انتخاب کنید.",
   },
 
-  /** {@see EmailBuilder**/
+  /** {@see BEmailMarketingEditor**/
   email_builder: {
     service_unavailable: "سرویس ایمیل در حساب شما فعال نیست.",
     design_section: "صفحه طراحی ایمیل",

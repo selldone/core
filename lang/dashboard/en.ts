@@ -4510,7 +4510,7 @@ export default {
     new_email_message: "Create & schedule new marketing email",
   },
 
-  /** {@see AdminShopEmailPage_Dashboard} **/
+  /** {@see BPageEmailMarketingDashboard} **/
   email_dashboard: {
     review: "Review",
     waiting_for_approve: "Waiting for confirmation by {name}",
@@ -4531,7 +4531,7 @@ export default {
     actions: "User activity",
   },
 
-  /** {@see AdminShopEmailPage} **/
+  /** {@see BPageEmailMarketing} **/
   email_page: {
     emails: "Emails",
     edit: "Edit",
@@ -4640,7 +4640,7 @@ export default {
     message: "Select a gift card type from the list.",
   },
 
-  /** {@see EmailBuilder**/
+  /** {@see BEmailMarketingEditor**/
   email_builder: {
     service_unavailable: "The mail server is not active in your account.",
     design_section: "Your email design plate",
