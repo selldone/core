@@ -1811,7 +1811,7 @@ export default {
     gift_cards_input: "Gift Cards",
     gift_cards_input_empty: "No gift cards found..",
     more: "Other",
-    pay_amount_by_gift_cards: "Charge Card Payment",
+    pay_amount_by_gift_cards: "Giftcard payment",
     select_payment_method:
       "Choose your payment method from the following options.",
     payment_amount_remained: "Remaining payment amount",
