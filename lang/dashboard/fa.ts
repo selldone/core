@@ -957,21 +957,7 @@ export default {
         items_count: "تعداد ایتم ها",
         home: "خانه",
       },
-      /** {@see WidgetCategoryCard} **/
-      category_widget: {
-        parent: "دسته مادر",
-        not_exist: "ندارد",
-        children: "دسته های زیر مجموعه",
-        delete_alert: {
-          title: "حذف دسته بندی فرزند",
-          message:
-            "آیا می خواهید {title} را از لیست زیر مجموعه های  {parent_title} خارج نمایید؟",
-          action: "حذف",
-        },
-        notifications: {
-          edit_success: "دسته بندی ویرایش شد.",
-        },
-      },
+
     }, // End of categories
 
     /** {@see AdminShopApps} **/
@@ -1269,7 +1255,7 @@ export default {
     }, // End of edit
   }, // End of admin_shop
 
-  /** {@see BShopCategoryInput} **/
+  /** {@see BCategoryInput} **/
   category_select: {
     category_input_no_category: "بدون دسته بندی",
   },
@@ -2042,7 +2028,7 @@ export default {
     },
   },
 
-  /** {@see SShopCategoryAdd} **/
+  /** {@see BCategoryAdd} **/
   add_category: {
     title_edit: "ویرایش دسته بندی",
     title_update: "افزودن دسته بندی به لیست",
@@ -2085,7 +2071,7 @@ export default {
       edit_success: "دسته ویرایش شد.",
       delete_success: "دسته {title} حذف شد.",
     },
-    /** {@see SShopCategoryFilter} **/
+    /** {@see BCategoryFilterEditor} **/
     edit_filter: {
       spec_input: "لیست عناوین مشخصه های فنی",
       spec_input_message: "لیست عناوین مشصه های فنی قابل فیلتر کردن",
@@ -2582,7 +2568,7 @@ export default {
     },
   },
 
-  /** {@see AddEditGatewayForm} **/
+  /** {@see BGatewayAdd} **/
   edit_gateway: {
     public_keys: "کلید های عمومی",
     private_keys: "کلید های خصوصی (محرمانه)",
@@ -3942,7 +3928,7 @@ export default {
       no_category: "بدون دسته بندی",
     },
 
-    /** {@see SPageBuilderSeo} **/
+    /** {@see LPageEditorSeo} **/
     seo: {
       message: "تنظیمات SEO به صورت خودکار توسط موتور SEO سلدان انجام می گیرد.",
     },
@@ -3964,7 +3950,7 @@ export default {
     end: "زمان پایان",
   },
 
-  /** {@see Help} **/
+  /** {@see OPageHelp} **/
   help: {
     menu: "منو",
     more_helps: "بیشتر بخوانید",

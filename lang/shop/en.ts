@@ -142,7 +142,7 @@ export default {
 
   },
 
-  /** @see SStorefrontProfilePage **/
+  /** @see StorefrontPageProduct **/
 
   product: {
     review: "Description",
@@ -499,7 +499,7 @@ export default {
       cross_list: ["No", "Hasn't"],
     },
   },
-  /** {@see SStorefrontProductsFilterMenu} **/
+  /** {@see SCategoryFilter} **/
   product_filter_menu: {
     only_original: "Only originals",
     only_has_discount: "Only discounted",
@@ -528,7 +528,7 @@ export default {
     suggestions: "Suggestions",
   },
 
-  /** @see SStorefrontProfilePage **/
+  /** @see StorefrontPageOfficial **/
   official_pages: {
     about_us: "About us",
     terms: "Terms of use",
@@ -589,7 +589,7 @@ export default {
   /** {@see SStorefrontAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SStorefrontAvocadoCustomerOrderList} **/
-  /** {@see SStorefrontAvocadoPage} **/
+  /** {@see StorefrontPageAvocado} **/
   /** {@see StorefrontPageAvocadoCart} **/
 
   avocado: {

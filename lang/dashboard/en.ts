@@ -983,21 +983,7 @@ export default {
         items_count: "Number of items",
         home: "Home",
       },
-      /** {@see WidgetCategoryCard} **/
-      category_widget: {
-        parent: "Parent",
-        not_exist: "Does not exist",
-        children: "Subcategories",
-        delete_alert: {
-          title: "Remove child category",
-          message:
-            "Do you want to remove {title} from the {parent_title} list?",
-          action: "Delete",
-        },
-        notifications: {
-          edit_success: "Category edited.",
-        },
-      },
+
     }, // End of categories
     /** {@see AdminShopApps} **/
     apps: {
@@ -1293,7 +1279,7 @@ export default {
     }, // End of edit
   }, // End of admin_shop
 
-  /** {@see BShopCategoryInput} **/
+  /** {@see BCategoryInput} **/
   category_select: {
     category_input_no_category: "No category",
   },
@@ -2085,7 +2071,7 @@ export default {
     },
   },
 
-  /** {@see SShopCategoryAdd} **/
+  /** {@see BCategoryAdd} **/
   add_category: {
     title_edit: "Edit category",
     title_update: "Add new category",
@@ -2127,7 +2113,7 @@ export default {
       edit_success: "Category edited.",
       delete_success: "Deleted {title}.",
     },
-    /** {@see SShopCategoryFilter} **/
+    /** {@see BCategoryFilterEditor} **/
     edit_filter: {
       spec_input: "Technical Specifications List",
       spec_input_message:
@@ -2618,7 +2604,7 @@ export default {
     },
   },
 
-  /** {@see AddEditGatewayForm} **/
+  /** {@see BGatewayAdd} **/
   edit_gateway: {
     public_keys: "Public keys",
     private_keys: "Private keys (confidential)",
@@ -3958,7 +3944,7 @@ export default {
       no_category: "No Categories",
     },
 
-    /** {@see SPageBuilderSeo} **/
+    /** {@see LPageEditorSeo} **/
     seo: {
       message:
         "SEO settings are adjusted automatically by the Selldone SEO engine.",

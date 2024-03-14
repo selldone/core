@@ -140,7 +140,7 @@ export default {
     zip_pin_placeholder: "محل خود را انتخاب کنید..."
   },
 
-  /** @see SStorefrontProfilePage **/
+  /** @see StorefrontPageProduct **/
 
   product: {
     review: "بررسی",
@@ -505,7 +505,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontProductsFilterMenu} **/
+  /** {@see SCategoryFilter} **/
   product_filter_menu: {
     only_original: "کالاهای اصل",
     only_has_discount: "کالاهای دارای تخفیف",
@@ -534,7 +534,7 @@ export default {
     topics: "موضوعات",
     suggestions: "پیشنهادها",
   },
-  /** @see SStorefrontProfilePage **/
+  /** @see StorefrontPageOfficial **/
   official_pages: {
     about_us: "درباره ما",
     terms: "قوانین و مقرارت",
@@ -597,7 +597,7 @@ export default {
   /** {@see SStorefrontAvocadoCustomerOrderForm} **/
   /** {@see SShopAvocadoCustomerOrderItems} **/
   /** {@see SStorefrontAvocadoCustomerOrderList} **/
-  /** {@see SStorefrontAvocadoPage} **/
+  /** {@see StorefrontPageAvocado} **/
   /** {@see StorefrontPageAvocadoCart} **/
 
   avocado: {
