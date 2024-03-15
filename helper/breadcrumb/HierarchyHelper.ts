@@ -57,7 +57,7 @@ export class HierarchyHelper {
         name: dialog_mode
           ? undefined
           : IS_VENDOR_PANEL
-          ? "VendorPageProducts"
+          ? "VPageVendorProducts"
           : "BPageShopProductsList",
         hash: hash,
         query: { dir: "", "no-scroll": dialog_mode },
@@ -80,7 +80,7 @@ export class HierarchyHelper {
                 name: dialog_mode
                   ? undefined
                   : IS_VENDOR_PANEL
-                  ? "VendorPageProducts"
+                  ? "VPageVendorProducts"
                   : "BPageShopProductsList",
                 hash: hash,
                 query: {
@@ -99,7 +99,7 @@ export class HierarchyHelper {
               name: dialog_mode
                 ? undefined
                 : IS_VENDOR_PANEL
-                ? "VendorPageProducts"
+                ? "VPageVendorProducts"
                 : "BPageShopProductsList",
               hash: hash,
               query: {
@@ -118,7 +118,7 @@ export class HierarchyHelper {
             name: dialog_mode
               ? undefined
               : IS_VENDOR_PANEL
-              ? "VendorPageProducts"
+              ? "VPageVendorProducts"
               : "BPageShopProductsList",
             hash: hash,
             query: { dir: parent_folders.parent.id, "no-scroll": dialog_mode },
@@ -134,7 +134,7 @@ export class HierarchyHelper {
           name: dialog_mode
             ? undefined
             : IS_VENDOR_PANEL
-            ? "VendorPageProducts"
+            ? "VPageVendorProducts"
             : "BPageShopProductsList",
           hash: hash,
           query: { dir: parent_folders.id, "no-scroll": dialog_mode },
