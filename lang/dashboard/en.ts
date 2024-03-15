@@ -998,7 +998,7 @@ export default {
           "Discover the ease of managing your business applications with Selldone App Store. Our platform offers a comprehensive suite of tools designed to optimize your business operations. From innovative management solutions to productivity-boosting apps, Selldone provides a seamless experience for businesses seeking efficiency and growth.",
         all: "All",
       },
-      /** {@see BApplicationsStore} **/
+      /** {@see BAppShopStore} **/
       store: {
         title: "App store",
         subtitle:
@@ -2136,7 +2136,7 @@ export default {
     },
   },
 
-  /** {@see BApplicationsList} **/
+  /** {@see BAppShopList} **/
   apps_list: {
     nodata: "There is no app installed on your store",
     inactive: "Inactive",

@@ -972,7 +972,7 @@ export default {
         subtitle: "اپلیکیشن های سایت خود را در این بخش مدیریت نمایید.",
         all: "همه",
       },
-      /** {@see BApplicationsStore} **/
+      /** {@see BAppShopStore} **/
       store: {
         title: "فروشگاه اپلیکیشن",
         subtitle:
@@ -2093,7 +2093,7 @@ export default {
     },
   },
 
-  /** {@see BApplicationsList} **/
+  /** {@see BAppShopList} **/
   apps_list: {
     nodata: "اپلیکیشنی بر روی فروشگاه شما نصب نیست.",
     inactive: "غیر فعال",

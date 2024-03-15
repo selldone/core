@@ -722,6 +722,7 @@ export default {
 
     web: "وب",
     payout:"پرداخت",
+    company:'شرکت',
 
   },
 
