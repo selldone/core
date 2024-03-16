@@ -1824,7 +1824,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontDiscountCodeInput} **/
+  /** {@see SDiscountCodeInput} **/
   discount_input: {
     limit: "{percent}% تخفیف تا سقف {limit} {currency}",
     action: "افزودن کد تخفیف",
@@ -1944,7 +1944,7 @@ export default {
       name: "پادشاه بازار",
     },
   },
-  /** {@see SStorefrontCookieDialog} **/
+  /** {@see SCookieConsent} **/
 
   cookie: {
     title: "استفاده از کوکی",

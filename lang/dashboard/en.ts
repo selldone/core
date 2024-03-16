@@ -6064,7 +6064,7 @@ export default {
     },
   },
 
-  /** {@see ShopEdit_Languages} **/
+  /** {@see BPageShopSettingLanguages} **/
   shop_languages: {
     title: "Store languages",
     sub_title: "Install and activate store auto-translation packages.",
@@ -6371,7 +6371,7 @@ export default {
       "Monitor the last status of the external services like SMS and emails here.",
   },
 
-  /** {@see ShopEdit_Quota**/
+  /** {@see BPageShopSettingQuota**/
   shop_quota: {
     title: "Usage quota",
     sub_title:

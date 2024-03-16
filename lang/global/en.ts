@@ -1829,7 +1829,7 @@ export default {
       amount: "Amount",
     },
   },
-  /** {@see SStorefrontDiscountCodeInput} **/
+  /** {@see SDiscountCodeInput} **/
   discount_input: {
     limit: "{percent}% discount up to {limit} {currency}",
     action: "Add Discount Code",
@@ -1947,7 +1947,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontCookieDialog} **/
+  /** {@see SCookieConsent} **/
 
   cookie: {
     title: "This website uses cookies",

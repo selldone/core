@@ -21,7 +21,7 @@ import type { SubscriptionPrice } from "../../models/shop/product/subscription_p
 import type { ProductVariant } from "../../models/shop/product/product_variant.model";
 import type { Valuation } from "../../models/shop/accounting/valuation/valuation.model";
 import type { ExtraPricing } from "../../models/shop/extra-pricing/extra-pricing.model";
-import { StorefrontDebugEvents } from "@components/storefront/debug/StorefrontDebugEvents";
+import { StorefrontDebugEvents } from "@components/storefront/debuger/StorefrontDebugEvents";
 
 export class PriceHelper {
   static FixPrecision(val: number, floats: number) {

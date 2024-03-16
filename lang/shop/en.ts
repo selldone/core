@@ -16,7 +16,7 @@ export default {
   /** @see SShopProductRatingView **/
   surveys: ["Very poor", "Poor", "Normal", "Good", "Excellent"],
 
-  /** @see SStorefrontPrimaryFooter **/
+  /** @see SFooterSection **/
   footer: {
     map: "Map",
     email: "Email",
@@ -474,12 +474,12 @@ export default {
     },
   },
 
-  /** {@see SStorefrontProductsComparisonButton} **/
+  /** {@see SComparisonButton} **/
   product_comparison: {
     title: "Compare Products",
     action_button: "Compare",
 
-    /** {@see ProductComparisonList} **/
+    /** {@see SComparisonList} **/
     list: {
       no_data: "No products were added to the comparison list.",
       price: "Price",
@@ -633,7 +633,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontHyperAddOrderForm} **/
+  /** {@see SHyperCart} **/
   hyper: {
     title: "Order creation",
     message:
@@ -699,7 +699,7 @@ export default {
     },
   },
 
-  /** @see SStorefrontPrivateAccessCheckView **/
+  /** @see SAccessPrivateCheck **/
   check_access: {
     waiting_message: "Waiting to check access...",
     no_access_message:

@@ -15,7 +15,7 @@
 export default {
   surveys: ["خیلی ضعیف", "ضعیف", "معمولی", "خوب", "عالی"],
 
-  /** @see SStorefrontPrimaryFooter **/
+  /** @see SFooterSection **/
   footer: {
     map: "نقشه",
     email: "ایمیل",
@@ -479,12 +479,12 @@ export default {
       add_action: "ثبت کارت",
     },
   },
-  /** {@see SStorefrontProductsComparisonButton} **/
+  /** {@see SComparisonButton} **/
   product_comparison: {
     title: "مقایسه محصول",
     action_button: "مقایسه",
 
-    /** {@see ProductComparisonList} **/
+    /** {@see SComparisonList} **/
     list: {
       no_data: "هیچ محصولی به لیست مقایسه افزوده نشده است.",
       price: "قیمت",
@@ -641,7 +641,7 @@ export default {
     },
   },
 
-  /** {@see SStorefrontHyperAddOrderForm} **/
+  /** {@see SHyperCart} **/
   hyper: {
     title: "ثبت سفارش",
     message:
@@ -707,7 +707,7 @@ export default {
     },
   },
 
-  /** @see SStorefrontPrivateAccessCheckView **/
+  /** @see SAccessPrivateCheck **/
   check_access: {
     waiting_message: "در انتظار بررسی دسترسی...",
     no_access_message:
