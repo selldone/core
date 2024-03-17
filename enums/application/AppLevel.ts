@@ -19,7 +19,7 @@
  * @property {number} level - The numeric representation of the app level, useful for comparisons and logic based on the level.
  * @property {string} code - The unique code identifier for the app level.
  */
-interface IAppLevel {
+export  interface IAppLevel {
   title: string;
   level: number;
   code: string;

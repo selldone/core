@@ -1313,7 +1313,7 @@ export default {
       "Customers pick up the items at your physical store or warehouse.",
   },
 
-  /** {@see SArticleView} **/
+  /** {@see ArticleViewer} **/
   article: {
     login_to_see_error: "Login to access the article",
     create_new_action: "Create New Content",
@@ -1845,7 +1845,7 @@ export default {
     transfer: "Transfer",
     send_to_friend: "Send to friend",
   },
-  /** {@see SCountDown} **/
+  /** {@see UCountDown} **/
   count_down: {
     days: "Day",
     hours: "Hour",
@@ -1986,10 +1986,10 @@ export default {
     },
   },
 
-  /** {@see RatingInput} **/
+  /** {@see URatingInput} **/
   rating_labels: ["Very bad", "Bad", "Normal", "Good", "Excellent"],
 
-  /** {@see SMapView} **/
+  /** {@see UMapView} **/
   map_view: {
     address_detail: "Address details",
     change: "Change",

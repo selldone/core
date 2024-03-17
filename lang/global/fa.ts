@@ -1306,7 +1306,7 @@ export default {
       "سفارشات از داخل مغازه و یا درب انبار توسط مشتری تحویل گرفته می شود.",
   },
 
-  /** {@see SArticleView} **/
+  /** {@see ArticleViewer} **/
   article: {
     login_to_see_error: "برای دسترسی به مقاله وارد شوید",
     create_new_action: "ایجاد مطلب جدید",
@@ -1841,7 +1841,7 @@ export default {
     transfer: "انتقال",
     send_to_friend: "ارسال به یک دوست",
   },
-  /** {@see SCountDown} **/
+  /** {@see UCountDown} **/
   count_down: {
     days: "روز",
     hours: "ساعت",
@@ -1986,10 +1986,10 @@ export default {
     },
   },
 
-  /** {@see RatingInput} **/
+  /** {@see URatingInput} **/
   rating_labels: ["خیلی ضعیف", "ضعیف", "معمولی", "خوب", "عالی"],
 
-  /** {@see SMapView} **/
+  /** {@see UMapView} **/
   map_view: {
     address_detail: "جزئیات آدرس",
     change: "تغییر",
