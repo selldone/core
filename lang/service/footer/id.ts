@@ -111,7 +111,7 @@ export default {
           {
             "title": "Persekutuan",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝公会",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

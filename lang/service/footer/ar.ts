@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 نقابة",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

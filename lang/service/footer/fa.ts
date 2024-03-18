@@ -53,7 +53,7 @@ export default {
         title: "راه حل ها",
         items: [
           { title: "🎨 NFT", to: { name: "Landing_NFT" } },
-          { title: "🤝 قبیله", to: { name: "GuildHome" } },
+          { title: "🤝 قبیله", to: { name: "GPageHome" } },
           { title: "🥑 آووکادو", to: { name: "AvocadoHomePage" } },
           //{ title: "متخصصین", to: { name: "ExpertsPage" } }, TODO: ACTIVATE AFTER RUNNING EXPERTS
           { title: "موتور SEO", to: { name: "Landing_SEO" } },

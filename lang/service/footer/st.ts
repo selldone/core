@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Mokhatlo",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

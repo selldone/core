@@ -57,7 +57,7 @@ export default {
         title: "Solutions",
         items: [
           { title: "🎨 Art", to: { name: "Landing_NFT" } },
-          { title: "🤝 Guild", to: { name: "GuildHome" } },
+          { title: "🤝 Guild", to: { name: "GPageHome" } },
           { title: "🥑 Avocado", to: { name: "AvocadoHomePage" } },
           // { title: "Experts", to: { name: "ExpertsPage" } }, TODO: ACTIVATE AFTER RUNNING EXPERTS
           { title: "🧱 API / Developers", to: { name: "DocHome" } },

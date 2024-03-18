@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Chama",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

@@ -418,11 +418,12 @@ Array.prototype.applyAugment = function <T>(
  * arr.removeNulls(true);  // Returns a new array: [1, 2, 3], original array remains unchanged
  * arr.removeNulls(false); // Original array is modified: [1, 2, 3]
  */
-Array.prototype.removeNulls = function (clone: Boolean = true) {
+Array.prototype.removeNulls = function<T>(this: T[], clone: boolean = true): T[] {
   if (clone) {
     return this.filter((item) => item !== null);
   }
   const nonNulls = this.filter((item) => item !== null);
   this.length = 0; // clear the original array
   this.push(...nonNulls); // push the non-null values back into the array
+  return this;
 };

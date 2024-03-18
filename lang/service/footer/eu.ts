@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Kofradia",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

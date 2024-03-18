@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Umbutho",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

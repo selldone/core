@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Huihuinga",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

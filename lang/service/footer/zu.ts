@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Inhlangano",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

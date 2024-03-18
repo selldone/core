@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 ສະມາຄົມ",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

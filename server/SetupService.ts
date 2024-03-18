@@ -24,13 +24,24 @@ export class SetupService {
    */
   static GetMetaValue<T extends string | null>(
     name: string,
-    default_val?: T
+    default_val?: T,
   ): T | string {
     const meta: HTMLMetaElement | null = document.head.querySelector(
-      `meta[name="${name}"]`
+      `meta[name="${name}"]`,
     );
-    return (meta ? meta.content : default_val) as T;
+
+    const dynamic_config_val =
+      window.selldone_config &&
+      (window.selldone_config as Record<string, any>)[name];
+    return (
+      meta
+        ? meta.content
+        : dynamic_config_val
+          ? dynamic_config_val // Get from window.selldone_config (In embed widget we use this method)
+          : default_val
+    ) as T;
   }
+
   static PWAVersion(): string | null {
     return this.GetMetaValue("pwa-version");
   }
@@ -146,6 +157,7 @@ export class SetupService {
   static SaminColorDarkDeep(): string {
     return this.GetMetaValue("color--theme-deep-dark", "#261b2d");
   }
+
   static SaminInfoColor(): string {
     return this.GetMetaValue("color--theme-info", "#9964e3");
   }
@@ -158,17 +170,21 @@ export class SetupService {
   static GetCampaignId(): string | null {
     return this.GetMetaValue("campaign_id", null);
   }
+
   static GetCampaignLinkId(): string | null {
     return this.GetMetaValue("link_id", null);
   }
+
   // ――――――――――――――――――――――――― UTM Affiliate ―――――――――――――――――――――――――
   static GetAffiliateId() {
     return this.GetMetaValue("affiliate_id", null);
   }
+
   // ――――――――――――――――――――――――― UTM Email ―――――――――――――――――――――――――
   static GetEmailId(): string | null {
     return this.GetMetaValue("email_id", null);
   }
+
   // ――――――――――――――――――――――――― GDPR ―――――――――――――――――――――――――
   static GetGDPREnable(): string | null {
     return this.GetMetaValue("gdpr", null);
@@ -181,6 +197,7 @@ export class SetupService {
       throw "The images CDN is not defined in [selldone-cdn-images] meta tag!";
     return _val;
   }
+
   static GetSelldoneCDN_Jsons(): string {
     const _val = this.GetMetaValue("selldone-cdn-jsons", null);
     if (!_val)
@@ -194,18 +211,21 @@ export class SetupService {
       throw "The file CDN is not defined in [selldone-cdn-temp-files] meta tag!";
     return _val;
   }
+
   static GetSelldoneCDN_AR(): string {
     const _val = this.GetMetaValue("selldone-cdn-ar", null);
     if (!_val)
       throw "The AR/3D CDN is not defined in [selldone-cdn-ar] meta tag!";
     return _val;
   }
+
   static GetSelldoneCDN_Videos(): string {
     const _val = this.GetMetaValue("selldone-cdn-videos", null);
     if (!_val)
       throw "The videos CDN is not defined in [selldone-cdn-videos] meta tag!";
     return _val;
   }
+
   static GetSelldoneCDN_ID(): string {
     const _val = this.GetMetaValue("selldone-cdn-id", null);
     if (!_val) throw "The ID CDN is not defined in [selldone-cdn-id] meta tag!";
@@ -221,6 +241,7 @@ export class SetupService {
     // Get files directly from cloud storage!
     return this.GetMetaValue("storage-redirect", null) == "true";
   }
+
   static GetStorageDirectThumbnails(): boolean {
     // Get files directly from cloud storage!
     return this.GetMetaValue("storage-redirect-thumbnails", null) == "true";
@@ -240,13 +261,14 @@ export class SetupService {
   static AndroidApp(): string | null {
     return this.GetMetaValue(
       "android-app",
-      "https://play.google.com/store/apps/details?id=com.selldone.seller&utm_source=webapp"
+      "https://play.google.com/store/apps/details?id=com.selldone.seller&utm_source=webapp",
     );
   }
+
   static IosApp(): string | null {
     return this.GetMetaValue(
       "ios-app",
-      "https://apps.apple.com/us/app/selldone/id1599250815"
+      "https://apps.apple.com/us/app/selldone/id1599250815",
     );
   }
 
@@ -281,7 +303,7 @@ export class SetupService {
   static MapToken(): string | null {
     return this.GetMetaValue(
       "map-token",
-      "pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw"
+      "pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw",
     );
   }
 
@@ -297,17 +319,23 @@ export class SetupService {
     return this.GetMetaValue("captcha", null);
   }
 
-
   // ――――――――――――――――――――――――― 🦋 Dev Kit ―――――――――――――――――――――――――
-  static GetLayoutOperator(): 'official'|'test'|'dev' | null {
-    return this.GetMetaValue("layout-operator", null);
+  static GetLayoutOperator(): "official" | "test" | "dev" | null {
+    return this.GetMetaValue("layout-operator", null) as
+      | "official"
+      | "test"
+      | "dev"
+      | null;
   }
+
   static GetLayoutImage(): string | null {
     return this.GetMetaValue("layout-image", null);
   }
+
   static GetLayoutVersion(): string | null {
     return this.GetMetaValue("layout-version", null);
   }
+
   static GetLayoutPackage(): string | null {
     return this.GetMetaValue("layout-package", null);
   }

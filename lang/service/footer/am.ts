@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 ማህበር",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

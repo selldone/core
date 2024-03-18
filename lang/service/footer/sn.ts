@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Sangano",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

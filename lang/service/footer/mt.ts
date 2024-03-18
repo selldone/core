@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Xirka",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

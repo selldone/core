@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Σωματείο",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

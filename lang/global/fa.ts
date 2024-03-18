@@ -721,9 +721,8 @@ export default {
     important: "مهم",
 
     web: "وب",
-    payout:"پرداخت",
-    company:'شرکت',
-
+    payout: "پرداخت",
+    company: "شرکت",
   },
 
   difficulties: {
@@ -998,7 +997,7 @@ export default {
     friend_email: "آدرس ایمیل...",
     friend_name: "نام دریافت کننده",
     select_date: "یک تاریخ را انتخاب کنید...",
-    address:"خیابان اصلی 123، شهرستان، 12345",
+    address: "خیابان اصلی 123، شهرستان، 12345",
   },
 
   notification: {
@@ -2036,14 +2035,14 @@ export default {
 
   /** {@see Calculator} **/
   /* calculator: {
-    title: "عنوان ماشین حساب",
-    formula: "فرمول",
-    variable_name: "نام متغیر",
-    variable_name_message: "نام متغیر را وارد نموده و کلید افزودن را بزنید.",
-    type: "نوع متغیر",
-    variable_title: "عنوان متغیر",
-    duplicate_var_name_error: "نمیتوان دو متغیر با یک نام وارد نمود.",
-  },*/
+      title: "عنوان ماشین حساب",
+      formula: "فرمول",
+      variable_name: "نام متغیر",
+      variable_name_message: "نام متغیر را وارد نموده و کلید افزودن را بزنید.",
+      type: "نوع متغیر",
+      variable_title: "عنوان متغیر",
+      duplicate_var_name_error: "نمیتوان دو متغیر با یک نام وارد نمود.",
+    },*/
   /** {@see SArticleStructuredData} **/
   json: {
     add: "افزودن داده های بیشتر",

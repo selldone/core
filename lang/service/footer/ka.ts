@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 გილდია",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

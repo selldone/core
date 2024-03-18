@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Kilta",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

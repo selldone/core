@@ -111,7 +111,7 @@ export default {
           {
             "title": "Ild ଗିଲ୍ଡ |",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 အစည်းအရုံး",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

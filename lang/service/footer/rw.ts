@@ -111,7 +111,7 @@ export default {
           {
             "title": "Guild",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

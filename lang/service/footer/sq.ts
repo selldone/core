@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Esnaf",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {

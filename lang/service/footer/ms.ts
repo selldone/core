@@ -111,7 +111,7 @@ export default {
           {
             "title": "🤝 Persatuan",
             "to": {
-              "name": "GuildHome"
+              "name": "GPageHome"
             }
           },
           {
