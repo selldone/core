@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ProductType } from "../../../enums/product/ProductType";
-import { Currency } from "../../../enums/payment/Currency";
-import { ProductCondition } from "../../../enums/product/ProductCondition";
+import {ProductType} from "../../../enums/product/ProductType";
+import {Currency} from "../../../enums/payment/Currency";
+import {ProductCondition} from "../../../enums/product/ProductCondition";
 
 export const ProductsCsvHeaders = [
   "Product ID",
@@ -192,7 +192,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Title",
-      message: "It's the name of the product. It should be short and clear.<br>e.g: <code>iPhone 15 Pro Max</code>",
+      message:
+        "It's the name of the product. It should be short and clear.<br>e.g: <code>iPhone 15 Pro Max</code>",
     },
   },
   "Title En": {
@@ -202,7 +203,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Technical or Latin Product Name",
-      message: "It's the technical or Latin name of the product. Also it can be the model name of the product.<br>e.g: <code>Apple Iphone 15 Pro Max DR5-XDR</code>",
+      message:
+        "It's the technical or Latin name of the product. Also it can be the model name of the product.<br>e.g: <code>Apple Iphone 15 Pro Max DR5-XDR</code>",
     },
   },
 
@@ -218,7 +220,8 @@ export const ProductsCsvStyler = {
     default: ProductType.PHYSICAL.code, // Auto correction
     tooltip: {
       title: "Product Type",
-      message: "Selldone supports all product and services type including Physical, Virtual, File,Service, Subscription.Each type has its own fulfillment method and pricing method.<br>e.g: <code>PHYSICAL</code>",
+      message:
+        "Selldone supports all product and services type including Physical, Virtual, File,Service, Subscription.Each type has its own fulfillment method and pricing method.<br>e.g: <code>PHYSICAL</code>",
     },
   },
   Price: {
@@ -229,7 +232,8 @@ export const ProductsCsvStyler = {
     default: 0, // Auto correction
     tooltip: {
       title: "Net Price",
-      message: "This is the price of the product.<br>e.g: <code>100</code><br><b>Selling Price = <span style='color: #80ea69'>Price</span> + Commission - Discount </b>",
+      message:
+        "This is the price of the product.<br>e.g: <code>100</code><br><b>Selling Price = <span style='color: #80ea69'>Price</span> + Commission - Discount </b>",
     },
   },
 
@@ -242,7 +246,8 @@ export const ProductsCsvStyler = {
     default: Currency.USD.code, // Auto correction
     tooltip: {
       title: "Currency",
-      message: "The price, discount and commission of the product are in this currency.<br>e.g: <code>USD</code>",
+      message:
+        "The price, discount and commission of the product are in this currency.<br>e.g: <code>USD</code>",
     },
   },
   Commission: {
@@ -252,7 +257,8 @@ export const ProductsCsvStyler = {
     default: 0, // Auto correction
     tooltip: {
       title: "Commission",
-      message: "There is various use case for commission. This value will be added to price for customer, and can use for dynamic commission to affiliate or reseller in wholesale.<br>e.g: <code>10</code><br><b>Selling Price = Price + <span style='color: #80ea69'>Commission</span> - Discount </b>",
+      message:
+        "There is various use case for commission. This value will be added to price for customer, and can use for dynamic commission to affiliate or reseller in wholesale.<br>e.g: <code>10</code><br><b>Selling Price = Price + <span style='color: #80ea69'>Commission</span> - Discount </b>",
     },
   },
   Discount: {
@@ -262,9 +268,9 @@ export const ProductsCsvStyler = {
     default: 0, // Auto correction
     tooltip: {
       title: "Discount",
-      message: "This is the discount of the product.<br>e.g: <code>10</code><br><b>Selling Price = Price + Commission - <span style='color: #80ea69'>Discount</span> </b>",
+      message:
+        "This is the discount of the product.<br>e.g: <code>10</code><br><b>Selling Price = Price + Commission - <span style='color: #80ea69'>Discount</span> </b>",
     },
-
   },
 
   "Discount Start Date": {
@@ -273,7 +279,8 @@ export const ProductsCsvStyler = {
     ifNullMessage: "♺ Like product", // Message if col is null!
     tooltip: {
       title: "Discount Start Date",
-      message: "This is the start date of the discount. Format is YYYY-mm-dd h:m:s <br>e.g: <code>2022-08-10 00:00:00</code>",
+      message:
+        "This is the start date of the discount. Format is YYYY-mm-dd h:m:s <br>e.g: <code>2022-08-10 00:00:00</code>",
     },
   },
   "Discount End Date": {
@@ -282,7 +289,8 @@ export const ProductsCsvStyler = {
     ifNullMessage: "♺ Like product", // Message if col is null!
     tooltip: {
       title: "Discount End Date",
-      message: "This is the end date of the discount. Format is YYYY-mm-dd h:m:s <br>e.g: <code>2022-08-20 00:00:00</code>",
+      message:
+        "This is the end date of the discount. Format is YYYY-mm-dd h:m:s <br>e.g: <code>2022-08-20 00:00:00</code>",
     },
   },
 
@@ -295,7 +303,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Status",
-      message: "You can set the status of the product. If the product is closed, it will not be displayed in the online product list and product page.<br>e.g: <code>Open</code>",
+      message:
+        "You can set the status of the product. If the product is closed, it will not be displayed in the online product list and product page.<br>e.g: <code>Open</code>",
     },
   },
 
@@ -304,7 +313,8 @@ export const ProductsCsvStyler = {
     default: 0, // Autocorrection
     tooltip: {
       title: "Inventory Quantity",
-      message: "This is the quantity of the product. If the product is out of stock, you can set the quantity to zero.<br>e.g: <code>100</code>",
+      message:
+        "This is the quantity of the product. If the product is out of stock, you can set the quantity to zero.<br>e.g: <code>100</code>",
     },
   },
 
@@ -314,7 +324,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Minimum Order Quantity",
-      message: "You can set the minimum order quantity of the product. If the minimum order quantity is zero, there is no limit.<br>e.g: <code>10</code>",
+      message:
+        "You can set the minimum order quantity of the product. If the minimum order quantity is zero, there is no limit.<br>e.g: <code>10</code>",
     },
   },
   "Limit Max": {
@@ -323,7 +334,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Maximum Order Quantity",
-      message: "You can set the maximum order quantity of the product. If the maximum order quantity is zero, there is no limit.<br>e.g: <code>100</code>",
+      message:
+        "You can set the maximum order quantity of the product. If the maximum order quantity is zero, there is no limit.<br>e.g: <code>100</code>",
     },
   },
 
@@ -335,7 +347,8 @@ export const ProductsCsvStyler = {
     default: ProductCondition.NEW.code, // Autocorrection
     tooltip: {
       title: "Product Condition",
-      message: "You can set the condition of the product. If the product is new, you can set the condition to new.<br>e.g: <code>NEW</code>",
+      message:
+        "You can set the condition of the product. If the product is new, you can set the condition to new.<br>e.g: <code>NEW</code>",
     },
   },
 
@@ -344,7 +357,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Brand",
-      message: "You can set the brand of the product. If the product is Apple, you can set the brand to Apple.<br>e.g: <code>Apple</code>",
+      message:
+        "You can set the brand of the product. If the product is Apple, you can set the brand to Apple.<br>e.g: <code>Apple</code>",
     },
   },
   Warranty: {
@@ -391,7 +405,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Article Title",
-      message: "You can set the title of the product article. This title will be shown in the product page.",
+      message:
+        "You can set the title of the product article. This title will be shown in the product page.",
     },
   },
   "Content Body (Html)": {
@@ -399,7 +414,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Article Body",
-      message: "You can set the body of the product article. It can be HTML code. This body will be shown in the product page.",
+      message:
+        "You can set the body of the product article. It can be HTML code. This body will be shown in the product page.",
     },
   },
   "Content Description": {
@@ -407,7 +423,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Article Description (SEO)",
-      message: "It's the description of the product article. It should be short and clear.",
+      message:
+        "It's the description of the product article. It should be short and clear.",
     },
   },
   "Content Image": {
@@ -431,14 +448,16 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Product Category",
-      message: "You can enter the name of category of the product. System will try to find the category and assign it to the product. If the category doesn't exist, it will be created.<br>e.g: <code>Electronics</code>",
+      message:
+        "You can enter the name of category of the product. System will try to find the category and assign it to the product. If the category doesn't exist, it will be created.<br>e.g: <code>Electronics</code>",
     },
   },
   "Lead Time": {
     type: "number",
     tooltip: {
       title: "Lead Time",
-      message: "It's the lead time of the product. It's the time between the order and the shipment of the product. If you don't know the lead time enter -1.<br>e.g: <code>3</code>",
+      message:
+        "It's the lead time of the product. It's the time between the order and the shipment of the product. If you don't know the lead time enter -1.<br>e.g: <code>3</code>",
     },
   },
   Extra: {
@@ -458,7 +477,8 @@ export const ProductsCsvStyler = {
     onlyProduct: true,
     tooltip: {
       title: "Return Warranty",
-      message: "It's the hours that customer can return the product after delivery. <br>e.g for 1 day: <code>24</code>",
+      message:
+        "It's the hours that customer can return the product after delivery. <br>e.g for 1 day: <code>24</code>",
     },
   },
   Original: {
@@ -562,9 +582,9 @@ export const ProductsCsvStyler = {
 };
 
 export class ProductsCsvFormat {
-  static LastError = null;
+  static LastError: string | null = null;
 
-  static CheckValidFile(headers) {
+  static CheckValidFile(headers: string[]) {
     this.LastError = null;
     if (!headers) return false;
 

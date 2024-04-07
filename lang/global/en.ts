@@ -723,7 +723,6 @@ export default {
 
     web: "Web",
     payout:"Payout",
-    company:'Company',
   },
   difficulties: {
     very_complicated: "Very complicated",

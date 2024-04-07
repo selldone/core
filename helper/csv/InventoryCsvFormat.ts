@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ProductType } from "../../enums/product/ProductType";
-import { Currency } from "../../enums/payment/Currency";
+import {ProductType} from "../../enums/product/ProductType";
+import {Currency} from "../../enums/payment/Currency";
 
 export const InventoryCsvHeaders = [
   "Product ID",
@@ -184,14 +184,15 @@ export const InventoryImportType: Record<string, InventoryImportTypeStructure> =
 function checkHasAll(headers: string[], permanentHeaders: string[]): boolean {
   return permanentHeaders.every((header) => headers.includes(header));
 }
+
 function checkJustContains(
   headers: string[],
   permanentHeaders: string[],
-  optionalHeaders: string[]
+  optionalHeaders: string[],
 ): boolean {
   return headers.every(
     (header) =>
-      permanentHeaders.includes(header) || optionalHeaders.includes(header)
+      permanentHeaders.includes(header) || optionalHeaders.includes(header),
   );
 }
 
@@ -200,15 +201,17 @@ export class InventoryCsvFormat {
     const found = Object.values(InventoryImportType).find(
       (it) =>
         checkHasAll(headers, it.permanent_headers) &&
-        checkJustContains(headers, it.permanent_headers, it.optional_header)
+        checkJustContains(headers, it.permanent_headers, it.optional_header),
     );
 
     return found ? found : InventoryImportType.FULL;
   }
-  static LastError = null;
+
+  static LastError: string | null = null;
+
   static CheckValidFile(
     headers: string[],
-    inventory_import_type: InventoryImportTypeStructure
+    inventory_import_type: InventoryImportTypeStructure,
   ) {
     this.LastError = null;
 

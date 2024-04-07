@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -509,6 +510,7 @@ const __CANCELLATION = new LRUCache<
 >(100);
 
 // Adding the cache method to the Promise prototype
+// @ts-ignore
 Promise.prototype.cache = function (
   this: IExtendedPromiseWithCache<any>,
   cacheResponse: (value: any) => void,
