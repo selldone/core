@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-require("./ArrayPrototypes");
-require("./StringPrototypes");
-require("./NumberPrototypes");
-require("./ObjectPrototypes");
-require("./ElementPrototypes");
+import "./ArrayPrototypes";
+import "./StringPrototypes";
+import "./NumberPrototypes";
+import "./ObjectPrototypes";
+import "./ElementPrototypes";
