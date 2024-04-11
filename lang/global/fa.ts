@@ -1798,7 +1798,7 @@ export default {
     Friday: "جمعه",
   },
 
-  /** {@see SPaymentForm} **/
+  /** {@see UPaymentForm} **/
   payment_form: {
     title: "انتخاب روش پرداخت",
     gift_cards_input: "کارت های هدیه",
