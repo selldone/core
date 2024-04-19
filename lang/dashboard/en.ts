@@ -1214,7 +1214,7 @@ export default {
         external_message:
           "Here, you can enter the address of the badge image and the link to it. URLs must be from an approved website. ",
       },
-      /** {@see ShopEdit_Menu} **/
+      /** {@see BPageShopSettingMenus} **/
       edit_menu: {
         title: "Menus",
 

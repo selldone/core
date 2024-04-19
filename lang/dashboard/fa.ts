@@ -1190,7 +1190,7 @@ export default {
         external_message:
           "آدرس تصویر نشان و لینک مربوط به آن را میتوانید در این بخش وارد نمایید. آدرس ها باید از یک سایت مورد تایید باشد.",
       },
-      /** {@see ShopEdit_Menu} **/
+      /** {@see BPageShopSettingMenus} **/
       edit_menu: {
         title: "منوها",
 
