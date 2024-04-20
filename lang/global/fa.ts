@@ -722,6 +722,9 @@ export default {
 
     web: "وب",
     payout: "پرداخت",
+    vendor_panel:"پنل فروشنده",
+    vendors_panel:"پنل فروشنده ها",
+
   },
 
   difficulties: {
@@ -862,6 +865,9 @@ export default {
     change_payment_method: "تغییر روش پرداخت",
     buy: "خرید",
     view_all: "نمایش همه",
+    view_now: "مشاهده",
+    edit_address: "ویرایش آدرس",
+
   },
 
   /** @see BillingPeriod **/

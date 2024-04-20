@@ -983,7 +983,6 @@ export default {
         items_count: "Number of items",
         home: "Home",
       },
-
     }, // End of categories
     /** {@see AdminShopApps} **/
     apps: {
@@ -2253,7 +2252,6 @@ export default {
       order: "Order",
     },
 
-
     /** {@see BOrderVirtualItem} **/
     outputs_widget: {
       title: "Output form",
@@ -2474,6 +2472,10 @@ export default {
       distance_warning: "Exceeds the allowed distance limit.",
       weight_warning: "Exceeds the allowed weight.",
       volume_warning: "Exceeds the allowed package size.",
+      items_weight_calculation:'Combined weight of all items is {weight} {unit}',
+      not_available_message:"It's not available when you are disabled asking for shipping address and also user did not fill address after purchase!",
+
+
 
       message:
         "Click the following <b> Order Ready</b> button if the order is ready to ship.",
@@ -2898,7 +2900,77 @@ export default {
       copy_success: "Copy of product.",
       change_category_success: "Product category edited.",
     },
+
+    filter_box: {
+      no_root_filter_message: "You have products in root but no filter.",
+      has_root_filter_message: "You set filters for root category.",
+      set_filter_message: "You can set filters.",
+      edit_action: "Edit Root Filters",
+      clear_action: "Clear Root Filters",
+    },
+    ai: {
+      title: "AI Product Assistance",
+    },
+    menu: {
+      select_all_products: "Select all products",
+      unselect: "Unselect",
+      sort_categories: "Arrange / Sort Categories",
+      subscription_vendor_not_support_message:
+        "Can not assign vendor for subscription products! Subscription products must always have a vendor as their owner!",
+      vendor_owner_not_assignable_message:
+        "Can not assign a vendor for products with a vendor as its owner!",
+      category_assign_profile: "Assign profile to products in the category",
+      category_assign_profile_subtitle: "Tax, Shipping, Guide, Warranty, ...",
+      bulk_discount: "Bulk discount",
+      bulk_discount_subtitle: "Apply discount on all products.",
+    },
   },
+  /** {@see BProductsPanel} **/
+  product_panel: {
+    excel_import: {
+      title: "Drop Excel / CSV file here.",
+      select_file: "Select file",
+      max_file: "Maximum file size: 20mb",
+      download_sample: "Download sample",
+    },
+    ai: {
+      title: "AI Product Assistance",
+    },
+  },
+
+  /** {@see BOrderDashboardVendor} **/
+  order_vendor: {
+    has_panel: "Has panel",
+    no_panel: "No panel",
+    manual_action: {
+      title: "Manual actions",
+      message: "You can update the vendor order status manually.",
+      guides: [
+        "Vendors with panel access can update their fulfillment (sub-orders) in their dedicated dashboard.",
+        "If the vendor has no panel access, the vendor order status will be changed automatically by changing the basket status.",
+        "You can update vendor orders manually.",
+      ],
+    },
+    payouts: {
+      title: "Payouts",
+      message: "Manage the vendor payouts and transactions.",
+
+      charge_tooltip: "Charge vendor wallet.",
+      withdraw_tooltip: "Withdraw from vendor wallet.",
+      payout_tooltip: "Payout to the vendor.",
+    },
+  },
+
+  /** {@see BOrderVendorPaymentManagement} **/
+  order_vendor_payment: {
+    message:"This is an overview of the transactions in your virtual wallet on the marketplace.",
+    vendor_wallets:'Vendor Wallets',
+    my_wallets:'My Wallets',
+
+  },
+
+
+
   /** {@see BPageOrderPhysicalTrack} **/
   physical_order_track: {
     title: "Risk Reports and Assessments",
@@ -5284,8 +5356,14 @@ export default {
       "Once the package has been handed over to the shipping courier, please click the <b>Confirm Delivery</b> button.",
     message_add_to_service:
       "Press the button below to add your order to the shipping queue and dispatch the package via a <b>delivery service</b>.",
-    action: "Delivery Confirmation",
+    courier_action:"Delivery Confirmation",
+    courier_action_subtitle:"My courier will pick up the parcel.",
+
     pickup_action: "Pickup confirmation",
+    pickup_action_subtitle:"The customer picked up the order.",
+
+    service_action: "Execution Confirmation",
+
 
     checklist: [
       "Check courier's identity card.",
@@ -6412,6 +6490,38 @@ export default {
   },
 
   /**
+   * BDashboardShopFeedback
+   */
+  direct_feedback: {
+    title: "Send Direct Request",
+    message:
+      "Identify your top 3 business needs to thrive and profit on Selldone. This information will be shared directly with founders and directors and will be considered carefully. You can also update your needs over time after submission.",
+    expand_action: "Write the request...",
+    input_label: "Your Request",
+    to: {
+      ceo: "Send to CEO",
+      team: "Send to Team",
+    },
+    placeholder: {
+      ceo: "Absolutely no need to be nice, I like to hear your direct, right-to-the-point ask.\ne.g. I need to have...",
+      team: "Please try to be nice to them.\ne.g. I need to have...",
+    },
+  },
+
+  /**
+   * BInventoryFilter
+   */
+  inventory_filter: {
+    placeholder: "Select Filter *.*",
+  },
+  /**
+   * BVendorInput
+   */
+  vendor_input: {
+    placeholder: "Filter vendor...",
+  },
+
+  /**
    * AUto fill suggestions
    */
   suggestions: {
@@ -7041,9 +7151,8 @@ export default {
       ],
     },
 
-
-    spec:{
-      group:[
+    spec: {
+      group: [
         "Technical Specifications",
         "Physical Dimensions",
         "Performance Features",
@@ -7063,12 +7172,12 @@ export default {
         "Customization Options",
         "Included Accessories",
         "User Ratings and Reviews",
-        "Pricing and Availability"
-      ]
+        "Pricing and Availability",
+      ],
     },
 
-    avocado:{
-      title:[
+    avocado: {
+      title: [
         "Purchase Receipt",
         "Sale Confirmation",
         "Order Invoice",
@@ -7088,9 +7197,9 @@ export default {
         "Order Confirmation",
         "Billing Invoice",
         "Checkout Invoice",
-        "Customer Invoice"
+        "Customer Invoice",
       ],
-      message:[
+      message: [
         "Thank you for your purchase!",
         "We appreciate your business.",
         "Your order is on its way!",
@@ -7110,15 +7219,15 @@ export default {
         "You've made a great choice!",
         "Thank you for your trust in us.",
         "Looking forward to your feedback.",
-        "A heartfelt thank you from our team."
+        "A heartfelt thank you from our team.",
       ],
     },
 
     /**
      * Map Tag
      */
-    map_tag:{
-      title:[
+    map_tag: {
+      title: [
         "Property Showcase",
         "Vendor Plaza",
         "Featured Homes",
@@ -7137,10 +7246,8 @@ export default {
         "Book Nook",
         "Jewelry Junction",
         "Antique Avenue",
-        "Fitness Zone"
-      ]
-    }
-
-
+        "Fitness Zone",
+      ],
+    },
   },
 };

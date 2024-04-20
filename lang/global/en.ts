@@ -723,6 +723,8 @@ export default {
 
     web: "Web",
     payout:"Payout",
+    vendor_panel:"Vendor panel",
+    vendors_panel:"Vendors panel",
   },
   difficulties: {
     very_complicated: "Very complicated",
@@ -862,6 +864,8 @@ export default {
     buy: "Buy",
     view_all: "View All",
     view_now: "View Now",
+    edit_address:"Edit address",
+
   },
   /** @see BillingPeriod **/
   billing_period: {
