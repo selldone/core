@@ -22,6 +22,7 @@ export default {
     featured_apps: "اپلیکیشن های منتخب",
     more_apps: "اپلیکیشن های بیشتر",
     my_public_profile: "صفحه پروفایل عمومی من",
+    product_admin:"مدیریت محصول",
   },
 
   numbers: {
@@ -523,7 +524,6 @@ export default {
       title: "لیست محصولات",
       products_list: "لیست محصولات",
       products_menu: "مدیریت محصولات",
-      process_que: "درحال پردازش و افزودن محصولات",
       view_que_list: "لیست محصولات در صف",
       menu_products_list: "لیست محصولات",
       menu_export: "دانلود لیست محصولات",
@@ -2431,8 +2431,9 @@ export default {
       distance_warning: "از محدوده فاصله مجاز فراتر رفته است.",
       weight_warning: "از حداکثر وزن مجاز فراتر رفته است.",
       volume_warning: "بیشتر از حداکثر ابعاد قابل حمل است.",
-      items_weight_calculation: 'وزن ترکیبی تمام موارد {weight} {unit} است',
-      not_available_message: "زمانی که درخواست آدرس حمل و نقل غیرفعال شده و همچنین کاربر پس از خرید آدرس را وارد نکرده باشد، در دسترس نیست!",
+      items_weight_calculation: "وزن ترکیبی تمام موارد {weight} {unit} است",
+      not_available_message:
+        "زمانی که درخواست آدرس حمل و نقل غیرفعال شده و همچنین کاربر پس از خرید آدرس را وارد نکرده باشد، در دسترس نیست!",
 
       message:
         "درصورتی که سفارش آماده ارسال است بر روی کلید<b> سفارش آماده ارسال است</b> کلیک نمایید.",
@@ -2934,10 +2935,9 @@ export default {
   /** {@see BOrderVendorPaymentManagement} **/
   order_vendor_payment: {
     message: "این نمای کلی از تراکنش‌ها در کیف پول مجازی شما در بازار است.",
-    vendor_wallets: 'کیف پول‌های فروشنده',
-    my_wallets: 'کیف پول‌های من',
+    vendor_wallets: "کیف پول‌های فروشنده",
+    my_wallets: "کیف پول‌های من",
   },
-
 
   /** {@see BPageOrderPhysicalTrack} **/
   physical_order_track: {
@@ -2959,8 +2959,12 @@ export default {
   /** {@see BPageOrderPhysicalInput} **/
   physical_order_inputs: {},
 
-  /** {@see SBackofficeOrderTimeline} **/
+  /** {@see BOrderTimeline} **/
   order_timeline: {
+    message:
+      "در این بخش، شما می‌توانید جدول زمانی رویدادهای مرتبط با سفارش، اجرای سفارش، پرداخت و وضعیت‌های مربوط به آن‌ها را مشاهده کنید. علاوه بر این، می‌توانید سفارش‌های ارسال شده به مشتریان و فروشندگان را نیز بررسی کنید.",
+    add_note_subtitle: "پیامی بنویسید و همکاران خود را ذکر کنید.",
+
     message_input: "متن پیام",
     pin_action: "چسباندن به بالا",
     unpin_action: "حذف پین",
@@ -5338,9 +5342,6 @@ export default {
 
     service_action: "تایید اجرا",
 
-
-
-
     checklist: [
       "کارت شناسایی مامور ارسال را بررسی نمایید.",
       "می توانید از سرویس درخواست باربری استفاده نمایید.",
@@ -6471,6 +6472,24 @@ export default {
   vendor_input: {
     placeholder: "انتخاب فروشنده...",
   },
+
+  /**
+   * BShopProductsImportProcessing
+   */
+  product_import_processing: {
+    title: "درحال پردازش و افزودن محصولات",
+    message:
+      "در حال وارد کردن محصولات و تصاویر هستیم، که ممکن است مدتی زمان ببرد.",
+  },
+
+  /**
+   * BOrderInput
+   */
+  order_input: {
+    message: "اطلاعات نمایش داده شده در اینجا توسط مشتری و بر اساس ساختار فرم ورودی محصول ارائه شده است.",
+  },
+
+
 
   /**
    * AUto fill suggestions

@@ -22,6 +22,8 @@ export default {
     featured_apps: "Featured apps",
     more_apps: "More apps",
     my_public_profile: "My public profile page",
+    product_admin:"Product Admin",
+
   },
 
   numbers: {
@@ -548,7 +550,7 @@ export default {
       title: "Products list",
       products_list: "Back to list",
       products_menu: "Products management",
-      process_que: "Processing imported products",
+
       view_que_list: "View queue list",
       menu_products_list: "Products list",
       menu_export: "Export products",
@@ -2472,10 +2474,10 @@ export default {
       distance_warning: "Exceeds the allowed distance limit.",
       weight_warning: "Exceeds the allowed weight.",
       volume_warning: "Exceeds the allowed package size.",
-      items_weight_calculation:'Combined weight of all items is {weight} {unit}',
-      not_available_message:"It's not available when you are disabled asking for shipping address and also user did not fill address after purchase!",
-
-
+      items_weight_calculation:
+        "Combined weight of all items is {weight} {unit}",
+      not_available_message:
+        "It's not available when you are disabled asking for shipping address and also user did not fill address after purchase!",
 
       message:
         "Click the following <b> Order Ready</b> button if the order is ready to ship.",
@@ -2963,13 +2965,11 @@ export default {
 
   /** {@see BOrderVendorPaymentManagement} **/
   order_vendor_payment: {
-    message:"This is an overview of the transactions in your virtual wallet on the marketplace.",
-    vendor_wallets:'Vendor Wallets',
-    my_wallets:'My Wallets',
-
+    message:
+      "This is an overview of the transactions in your virtual wallet on the marketplace.",
+    vendor_wallets: "Vendor Wallets",
+    my_wallets: "My Wallets",
   },
-
-
 
   /** {@see BPageOrderPhysicalTrack} **/
   physical_order_track: {
@@ -2989,8 +2989,12 @@ export default {
   },
   /** {@see BPageOrderPhysicalInput} **/
   physical_order_inputs: {},
-  /** {@see SBackofficeOrderTimeline} **/
+  /** {@see BOrderTimeline} **/
   order_timeline: {
+    message:
+      "In this section, you can view the timeline of events related to the order, fulfillment, payment, and their respective statuses. Additionally, you can observe the orders dispatched to both customers and vendors.",
+    add_note_subtitle: "Write a message and mention your colleagues.",
+
     message_input: "Write a message here...",
     pin_action: "Pin to top",
     unpin_action: "Unpin",
@@ -5356,14 +5360,13 @@ export default {
       "Once the package has been handed over to the shipping courier, please click the <b>Confirm Delivery</b> button.",
     message_add_to_service:
       "Press the button below to add your order to the shipping queue and dispatch the package via a <b>delivery service</b>.",
-    courier_action:"Delivery Confirmation",
-    courier_action_subtitle:"My courier will pick up the parcel.",
+    courier_action: "Delivery Confirmation",
+    courier_action_subtitle: "My courier will pick up the parcel.",
 
     pickup_action: "Pickup confirmation",
-    pickup_action_subtitle:"The customer picked up the order.",
+    pickup_action_subtitle: "The customer picked up the order.",
 
     service_action: "Execution Confirmation",
-
 
     checklist: [
       "Check courier's identity card.",
@@ -6520,6 +6523,25 @@ export default {
   vendor_input: {
     placeholder: "Filter vendor...",
   },
+
+  /**
+   * BShopProductsImportProcessing
+   */
+  product_import_processing: {
+    title: "Processing imported products",
+    message:
+      "We are in the process of importing products and images, which may take some time to complete.",
+  },
+
+
+  /**
+   * BOrderInput
+   */
+  order_input: {
+    message: "The information displayed here has been submitted by the customer, in accordance with the product input form structure.",
+  },
+
+
 
   /**
    * AUto fill suggestions

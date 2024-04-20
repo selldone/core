@@ -867,6 +867,7 @@ export default {
     view_all: "نمایش همه",
     view_now: "مشاهده",
     edit_address: "ویرایش آدرس",
+    resend:"ارسال مجدد",
 
   },
 
@@ -2180,4 +2181,20 @@ export default {
     autumn: "پاییز",
     winter: "زمستان",
   },
+
+  /** {@see SOrderChatBox} **/
+  order_chat: {
+    seller:{
+      history_title: "تاریخچه پیام‌ها بین شما و مشتری.",
+      input_message: "در اینجا، شما قابلیت تبادل مستقیم پیام‌ها با مشتریان را دارید."
+    },
+    customer:{
+      history_title: "تاریخچه پیام‌ها بین شما و فروشنده.",
+      input_message: "در اینجا، شما قابلیت برقراری ارتباط مستقیم با فروشنده از طریق ارسال پیام‌ها را دارید."
+    }
+  },
+
+
+
+
 };

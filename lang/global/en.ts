@@ -865,6 +865,7 @@ export default {
     view_all: "View All",
     view_now: "View Now",
     edit_address:"Edit address",
+    resend:"Resend",
 
   },
   /** @see BillingPeriod **/
@@ -2182,4 +2183,20 @@ export default {
     autumn: "Autumn",
     winter: "Winter",
   },
+
+
+  /** {@see SOrderChatBox} **/
+  order_chat: {
+    seller:{
+        history_title:"Messages history between you and the customer.",
+      input_message:"Here, you have the ability to directly exchange messages with customers."
+
+    },
+    customer:{
+      history_title:"Messages history between you and the seller.",
+      input_message:"Here, you have the ability to directly communicate with the seller by sending messages."
+    }
+  },
+
+
 };
