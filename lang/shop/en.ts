@@ -469,7 +469,7 @@ export default {
       message:
         "Enter the card number and security code. A gift card will be added to your account.",
       card_number_input: "Card number",
-      info: "Note: When buying from the store, you will be shown the option of paying with gift cards. By selecting this option, the amount of your recharge balance will be deducted from the order amount. ",
+      info: "Please note that when purchasing from the store, you will have the option to pay using gift cards. If you choose this payment method, the amount will be deducted from your recharge balance, directly affecting your order's total.",
       add_action: "Card Registration",
     },
   },
