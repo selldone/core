@@ -30,7 +30,6 @@
     "baseUrl": ".",
 
     "downlevelIteration": true,
-    "allowImportingTsExtensions": true,
     "lib": [
       "esnext",
       "dom",
