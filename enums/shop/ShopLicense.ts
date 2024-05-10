@@ -18,8 +18,6 @@ import { AgencyClient } from "@selldone/core-js/models/agency/agency-client.mode
 import { Agency } from "@selldone/core-js/models/agency/agency.model";
 import { AgencyPlan } from "@selldone/core-js/models/agency/agency-plan.model";
 import { Domain } from "@selldone/core-js/models/shop/domain/domain.model";
-import freeIcon from './assets/license/free.svg';
-
 
 export const ShopLicense = {
   // wage_factor: wage_factor*gateway wage percent!             wage_percent: default payment wage of selldone!
@@ -28,7 +26,7 @@ export const ShopLicense = {
     name: "global.license.free",
     wage_percent: 2,
     wage_factor: 1,
-    icon: freeIcon,
+    icon: require("./assets/license/free.svg").default,
     file_sell_percent: 30,
     quota_multiple:1,   // Multiple of quota
   },
