@@ -29,6 +29,7 @@ export const ShopLicense = {
     icon: require("./assets/license/free.svg"),
     file_sell_percent: 30,
     quota_multiple:1,   // Multiple of quota
+    xxxxx:true,
   },
   STARTUP: {
     code: "STARTUP",
