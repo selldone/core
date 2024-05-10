@@ -37,7 +37,6 @@
       "dom.iterable",
       "scripthost"
     ],
-    "types": [    "webpack-env"],
     "rootDir": ".",
     "paths": {
       "@selldone/core-js/*": [

@@ -2,7 +2,7 @@
   "name": "@selldone/core-js",
   "version": "1.0.3",
   "private": false,
-  "main": "index.js",
+
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://pajuhaan.com)",
   "bugs": {
@@ -21,6 +21,11 @@
     "axios": "*"
   },
   "devDependencies": {
-    "@types/node": "^20.12.11"
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-prettier": "^5.1.0"
   }
 }
