@@ -1,28 +1,43 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "temp",
-    "sourceMap": false,
-    "target": "es2016",
-    "newLine": "LF",
-    "useDefineForClassFields": false,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "allowJs": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
+    "target": "es5",
+    "module": "ESNext",
+    "importHelpers": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "removeComments": false,
+
+    "noEmitOnError": false,
+
+    // Required in Vue projects
     "jsx": "preserve",
+    "jsxImportSource": "vue",
+
+    // `"noImplicitThis": true` is part of `strict`
+    // Added again here in case some users decide to disable `strict`.
+    // This enables stricter inference for data properties on `this`.
+    "noImplicitThis": false,
+    "strict": true,
+
+
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+
+    "downlevelIteration": true,
+    "allowImportingTsExtensions": true,
     "lib": [
-      "es2016",
-      "dom"
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ],
-    "types": ["node"],
+    "types": [    "webpack-env"],
     "rootDir": ".",
     "paths": {
       "@selldone/core-js/*": [
@@ -34,6 +49,8 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "*.ts",
+    "*.tsx"
   ],
   "exclude": [
     "node_modules",
