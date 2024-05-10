@@ -1,7 +1,8 @@
 {
   "name": "@selldone/core-js",
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "1.0.2",
+  "private": false,
+  "main": "SelldoneCore.ts",
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://pajuhaan.com)",
   "bugs": {
