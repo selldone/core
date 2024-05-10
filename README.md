@@ -38,6 +38,10 @@ To install Selldone Core in your project, use the following command:
 ```bash
 npm install selldone/core --save
 ```
+```bash
+yarn add @selldone/core
+```
+
 
 ## Usage
 

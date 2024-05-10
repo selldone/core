@@ -1,8 +1,21 @@
 {
   "name": "@selldone/core-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "type": "module",
+  "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://pajuhaan.com)",
+  "bugs": {
+    "url": "https://github.com/selldone/core/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selldone/core.git"
+  },
+  "homepage": "https://selldone.com",
+  "license": "MIT",
+  "scripts": {
+    "publish": "npm publish --access public"
+  },
   "dependencies": {
     "axios": "*"
   }
