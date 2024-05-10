@@ -16,8 +16,8 @@
 
 import {StorefrontLocalStorages} from "../local-storage/StorefrontLocalStorages";
 import {Currency, type ICurrency} from "../../enums/payment/Currency";
-import {SetupService} from "@core/server/SetupService";
-import {TrackConfig} from "@core/enums/gtag/TrackConfig";
+import {SetupService} from "@selldone/core-js/server/SetupService";
+import {TrackConfig} from "@selldone/core-js/enums/gtag/TrackConfig";
 import CoreMixin from "@components/mixin/CoreMixin";
 
 export class CurrencyHelper {

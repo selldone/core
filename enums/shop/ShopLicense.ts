@@ -13,11 +13,11 @@
  */
 
 import { BusinessModel } from "./BusinessModel";
-import { Shop } from "@core/models/shop/shop.model";
-import { AgencyClient } from "@core/models/agency/agency-client.model";
-import { Agency } from "@core/models/agency/agency.model";
-import { AgencyPlan } from "@core/models/agency/agency-plan.model";
-import { Domain } from "@core/models/shop/domain/domain.model";
+import { Shop } from "@selldone/core-js/models/shop/shop.model";
+import { AgencyClient } from "@selldone/core-js/models/agency/agency-client.model";
+import { Agency } from "@selldone/core-js/models/agency/agency.model";
+import { AgencyPlan } from "@selldone/core-js/models/agency/agency-plan.model";
+import { Domain } from "@selldone/core-js/models/shop/domain/domain.model";
 
 export const ShopLicense = {
   // wage_factor: wage_factor*gateway wage percent!             wage_percent: default payment wage of selldone!

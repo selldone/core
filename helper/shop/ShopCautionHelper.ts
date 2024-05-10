@@ -14,11 +14,11 @@
 
 import {i18n} from "@app-backoffice/lang/i18n_backoffice";
 import type {Shop} from "../../models/shop/shop.model";
-import {Domain} from "@core/models/shop/domain/domain.model";
-import {Club} from "@core/models/shop/club/club.model";
-import {ShopGateway} from "@core/models/shop/gateway/shop-gateway.model";
-import {ShopSocial} from "@core/models/shop/social/shop-social.model";
-import {Account} from "@core/models/account/account.model";
+import {Domain} from "@selldone/core-js/models/shop/domain/domain.model";
+import {Club} from "@selldone/core-js/models/shop/club/club.model";
+import {ShopGateway} from "@selldone/core-js/models/shop/gateway/shop-gateway.model";
+import {ShopSocial} from "@selldone/core-js/models/shop/social/shop-social.model";
+import {Account} from "@selldone/core-js/models/account/account.model";
 
 export class ShopCautionHelper {
   static Generate(

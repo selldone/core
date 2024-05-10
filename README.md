@@ -48,7 +48,7 @@ yarn add @selldone/core-js
 Here's a basic example to get you started:
 
 ```javascript
-import { SelldoneCore } from "@core/SelldoneCore";
+import { SelldoneCore } from "@selldone/core-js/SelldoneCore";
 
 SelldoneCore.Setup();
 ```

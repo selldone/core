@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "@core/enums/payment/Currency";
-import { SubscriptionMode } from "@core/enums/subscription/SubscriptionMode";
+import { Currency } from "@selldone/core-js/enums/payment/Currency";
+import { SubscriptionMode } from "@selldone/core-js/enums/subscription/SubscriptionMode";
 
 export class Product implements Product.IProduct {
   /** @property {number} id - The unique identifier for the product. */

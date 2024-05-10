@@ -16,8 +16,8 @@ import type { BasketItem } from "../../models/shop/order/basket/basket_item.mode
 import type { Basket } from "../../models/shop/order/basket/basket.model";
 import { Product } from "../../models/shop/product/product.model";
 import { ProductVariant } from "../../models/shop/product/product_variant.model";
-import { PricingTypes } from "@core/enums/product/PricingTypes";
-import { ProductType } from "@core/enums/product/ProductType";
+import { PricingTypes } from "@selldone/core-js/enums/product/PricingTypes";
+import { ProductType } from "@selldone/core-js/enums/product/ProductType";
 
 export class BasketHelper {
   // ――――――――――――――― Weight ―――――――――――――――

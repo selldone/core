@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {SetupService} from "@core/server/SetupService";
+import {SetupService} from "@selldone/core-js/server/SetupService";
 import {Shop} from "../models/shop/shop.model";
 import {Product} from "../models/shop/product/product.model";
 

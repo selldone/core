@@ -13,7 +13,7 @@
  */
 
 // Extending the global Window interface to include $AppsInterface.
-import { ShopEventsName } from "@core/enums/application/ShopEventsName";
+import { ShopEventsName } from "@selldone/core-js/enums/application/ShopEventsName";
 
 declare global {
   interface Window {

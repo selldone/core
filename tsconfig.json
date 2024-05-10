@@ -22,17 +22,18 @@
       "es2016",
       "dom"
     ],
-    "types": [],
+    "types": ["node"],
     "rootDir": ".",
     "paths": {
-      "@core/*": [
+      "@selldone/core-js/*": [
+
         "*"
       ]
     }
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
   ],
   "exclude": [
     "node_modules",

@@ -14,7 +14,7 @@
 
 import { ProductType } from "../../enums/product/ProductType";
 import type { Shop } from "../../models/shop/shop.model";
-import { LabelingModes } from "@core/enums/shop/options/LabelingOptions";
+import { LabelingModes } from "@selldone/core-js/enums/shop/options/LabelingOptions";
 
 /**
  * Helper class for retrieving various shop-related configuration options.

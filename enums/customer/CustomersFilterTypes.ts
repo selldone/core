@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { CustomerClubLevels } from "@core/enums/customer/CustomerClubLevels";
+import { CustomerClubLevels } from "@selldone/core-js/enums/customer/CustomerClubLevels";
 
 export default {
   REGISTER_DATE: {

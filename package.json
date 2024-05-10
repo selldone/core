@@ -1,6 +1,6 @@
 {
   "name": "@selldone/core-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "main": "SelldoneCore.ts",
   "type": "module",
@@ -19,5 +19,8 @@
   },
   "dependencies": {
     "axios": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11"
   }
 }
