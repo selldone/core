@@ -18,11 +18,6 @@ import { FileOrderStates } from "../basket/FileOrderStates";
 import { ServiceOrderStates } from "../basket/ServiceOrderStates";
 import { SubscriptionOrderStates } from "../basket/SubscriptionOrderStates";
 
-
-import subscriptionSvg from "../../assets/product-types/subscription.svg";
-import basketSubscriptionSvg from "../../assets/order-types/basket-subscription.svg";
-
-
 interface IProductType {
   /** Code of the product type. */
   code: string;
@@ -75,8 +70,8 @@ export const ProductType: Record<
     code: "PHYSICAL",
     basket_code: "SM",
     name: "global.product_types.physical",
-    image: require("@selldone/core-js/assets/product-types/physical.svg"),
-    basket: require("@selldone/core-js/assets/order-types/basket-physical.svg"),
+    image: require("../../assets/product-types/physical.svg"),
+    basket: require("../../assets/order-types/basket-physical.svg"),
     description: "global.product_types.physical_description",
     enable: true,
     process_page: "BPageShopOrdersPhysical",
@@ -90,8 +85,8 @@ export const ProductType: Record<
     code: "VIRTUAL",
     basket_code: "SV",
     name: "global.product_types.virtual",
-    image: require("@selldone/core-js/assets/product-types/virtual.svg"),
-    basket: require("@selldone/core-js/assets/order-types/basket-virtual.svg"),
+    image: require("../../assets/product-types/virtual.svg"),
+    basket: require("../../assets/order-types/basket-virtual.svg"),
     description: "global.product_types.virtual_description",
     enable: true,
     process_page: "BPageShopOrdersVirtual",
@@ -105,8 +100,8 @@ export const ProductType: Record<
     code: "FILE",
     basket_code: "SF",
     name: "global.product_types.file",
-    image: require("@selldone/core-js/assets/product-types/file.svg"),
-    basket: require("@selldone/core-js/assets/order-types/basket-file.svg"),
+    image: require("../../assets/product-types/file.svg"),
+    basket: require("../../assets/order-types/basket-file.svg"),
     description: "global.product_types.file_description",
     enable: true,
     process_page: "BPageShopOrdersFile",
@@ -120,8 +115,8 @@ export const ProductType: Record<
     code: "SERVICE",
     basket_code: "SS",
     name: "global.product_types.service",
-    image: require("@selldone/core-js/assets/product-types/service.svg"),
-    basket: require("@selldone/core-js/assets/order-types/basket-service.svg"),
+    image: require("../../assets/product-types/service.svg"),
+    basket: require("../../assets/order-types/basket-service.svg"),
     description: "global.product_types.service_description",
     enable: true,
     process_page: "BPageShopOrdersService",
@@ -136,8 +131,8 @@ export const ProductType: Record<
     code: "SUBSCRIPTION",
     basket_code: "SN",
     name: "global.product_types.subscription",
-    image: subscriptionSvg,
-    basket: basketSubscriptionSvg,
+    image: require("../../assets/product-types/subscription.svg"),
+    basket: require("../../assets/order-types/basket-subscription.svg"),
     description: "global.product_types.subscription_description",
     enable: true,
     process_page: "BPageShopOrdersSubscription",
