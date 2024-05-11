@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/@selldone/core-js)
+
 ![Selldone Official Storefront App](_docs/images/banner-core.jpg)
 
 ![Selldone](https://img.shields.io/badge/type-Selldone-f39f37?style=flat&label=Core&labelColor=%23567&color=%23000)
