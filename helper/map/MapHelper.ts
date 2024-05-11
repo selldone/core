@@ -13,7 +13,7 @@
  */
 
 import {IAddress} from "../../models/traits/address.model";
-import {MapTag} from "@selldone/core-js/models/shop/map/map-tag.model.ts";
+import {MapTag} from "../../models/shop/map/map-tag.model.ts";
 
 export class MapHelper {
   static GenerateFullAddressFromMapInfo(info_object: IAddress) {
