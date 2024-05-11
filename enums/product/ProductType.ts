@@ -18,6 +18,11 @@ import { FileOrderStates } from "../basket/FileOrderStates";
 import { ServiceOrderStates } from "../basket/ServiceOrderStates";
 import { SubscriptionOrderStates } from "../basket/SubscriptionOrderStates";
 
+
+import subscriptionSvg from "../../assets/product-types/subscription.svg";
+import basketSubscriptionSvg from "../../assets/order-types/basket-subscription.svg";
+
+
 interface IProductType {
   /** Code of the product type. */
   code: string;
@@ -131,8 +136,8 @@ export const ProductType: Record<
     code: "SUBSCRIPTION",
     basket_code: "SN",
     name: "global.product_types.subscription",
-    image: require("@selldone/core-js/assets/product-types/subscription.svg"),
-    basket: require("@selldone/core-js/assets/order-types/basket-subscription.svg"),
+    image: subscriptionSvg,
+    basket: basketSubscriptionSvg,
     description: "global.product_types.subscription_description",
     enable: true,
     process_page: "BPageShopOrdersSubscription",

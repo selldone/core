@@ -22,6 +22,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '@selldone/core-js': path.resolve(__dirname, ''),
+        },
     },
     output: {
         filename: 'bundle.js', // name of the output bundle
