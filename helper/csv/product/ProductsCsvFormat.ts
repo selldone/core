@@ -214,7 +214,7 @@ export const ProductsCsvStyler = {
       ...Object.values(ProductType),
       {
         code: "VARIANT",
-        image: require("@components/assets/icons/package.svg"),
+        image: require("../assets/package.svg"),
       },
     ],
     default: ProductType.PHYSICAL.code, // Auto correction

@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import ProviderWebhooks from "@app-selldone/pages/connect-provider/enums/ProviderWebhooks";
+import ProviderWebhooks from "./webhook/ProviderWebhooks";
 import {ConnectScope} from "./ConnectScope";
 
 export const ConnectMode = {

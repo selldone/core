@@ -49,7 +49,7 @@ export type ShopChannelType =
 export default [
   {
     channel: "Application",
-    icon: require("@components/assets/selldone-logo/logo-box.svg"),
+    icon: require("./assets/logo-box.svg"),
     name: "Application",
     available: true,
     events: [
@@ -63,7 +63,7 @@ export default [
   },
   {
     channel: "Email",
-    icon: require("@components/assets/icons/email.svg"),
+    icon: require("./assets/email.svg"),
     name: "global.commons.email",
     available: true,
     events: [
@@ -74,7 +74,7 @@ export default [
   },
   {
     channel: "SMS",
-    icon: require("@components/assets/icons/sms.svg"),
+    icon: require("./assets/sms.svg"),
     name: "global.commons.sms",
     available: true,
     events: ["notification_events.payment"],
@@ -82,7 +82,7 @@ export default [
   },
   {
     channel: "Notification",
-    icon: require("@components/assets/icons/notification-blue.svg"),
+    icon: require("./assets/notification-blue.svg"),
     name: "global.commons.notification",
     available: true,
     events: ["notification_events.payment"],
@@ -91,7 +91,7 @@ export default [
 
   {
     channel: "Telegram",
-    icon: require("@components/assets/trademark/telegram.svg"),
+    icon: require("./assets/telegram.svg"),
     name: "Telegram",
     available: true,
     events: [
@@ -103,7 +103,7 @@ export default [
   },
   {
     channel: "Flock",
-    icon: require("@components/assets/trademark/flock.svg"),
+    icon: require("./assets/flock.svg"),
     name: "Flock",
     available: true,
     events: [
@@ -115,7 +115,7 @@ export default [
   },
   {
     channel: "Slack",
-    icon: require("@components/assets/trademark/slack.svg"),
+    icon: require("./assets/slack.svg"),
     name: "Slack",
     available: true,
     events: [

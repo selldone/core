@@ -12,9 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { XapiShop } from "@sdk-storefront/shop/XapiShop";
-import ILocation = XapiShop.ILocation;
 import {IAddress} from "../../models/traits/address.model";
+import {MapTag} from "@selldone/core-js/models/shop/map/map-tag.model.ts";
 
 export class MapHelper {
   static GenerateFullAddressFromMapInfo(info_object: IAddress) {
@@ -32,7 +31,7 @@ export class MapHelper {
     return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${lng},${lat},${zoom},0,0/800x800?access_token=pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw`;
   }
 
-  static GetMapDirectionUrl(location: ILocation, travelmode: boolean = false) {
+  static GetMapDirectionUrl(location: MapTag.ILocation, travelmode: boolean = false) {
     if (!location?.lng || !location?.lat) return null;
     return `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}&travelmode=${travelmode}`;
   }

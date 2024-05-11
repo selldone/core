@@ -28,19 +28,19 @@ interface IReaction {
 export const Reactions: { [key: string]: IReaction } = {
   Angry: {
     code: "Angry",
-    icon: require("@components/assets/emotions/Angry.svg"),
+    icon: require("./reaction/assets/Angry.svg"),
   },
   Annoyed: {
     code: "Annoyed",
-    icon: require("@components/assets/emotions/Annoyed.svg"),
+    icon: require("./reaction/assets/Annoyed.svg"),
   },
   Bored: {
     code: "Bored",
-    icon: require("@components/assets/emotions/Bored.svg"),
+    icon: require("./reaction/assets/Bored.svg"),
   },
-  Glad: { code: "Glad", icon: require("@components/assets/emotions/Glad.svg") },
+  Glad: { code: "Glad", icon: require("./reaction/assets/Glad.svg") },
   Excited: {
     code: "Excited",
-    icon: require("@components/assets/emotions/Excited.svg"),
+    icon: require("./reaction/assets/Excited.svg"),
   },
 };

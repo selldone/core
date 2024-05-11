@@ -112,4 +112,9 @@ export interface MapTag {
   range: number;
 }
 
-export namespace MapTag {}
+export namespace MapTag {
+  export interface ILocation {
+    lng: number;
+    lat: number;
+  }
+}

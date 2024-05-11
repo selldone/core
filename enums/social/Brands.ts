@@ -15,64 +15,64 @@
 export const Brands = [
   {
     name: "Google",
-    icon: require("@components/assets/trademark/google.svg"),
+    icon: require("../../assets/trademark/google.svg"),
   },
   {
     name: "Telegram",
-    icon: require("@components/assets/trademark/telegram.svg"),
+    icon: require("../../assets/trademark/telegram.svg"),
   },
   {
     name: "Twitter",
-    icon: require("@components/assets/trademark/twitter.svg"),
+    icon: require("../../assets/trademark/twitter.svg"),
   },
   {
     name: "Google Ads",
-    icon: require("@components/assets/trademark/adwords.svg"),
+    icon: require("../../assets/trademark/adwords.svg"),
   },
   {
     name: "Facebook",
-    icon: require("@components/assets/trademark/meta.png"),
+    icon: require("../../assets/trademark/meta.png"),
   },
   {
     name: "Email",
-    icon: require("@components/assets/trademark/gmail.svg"),
+    icon: require("../../assets/trademark/gmail.svg"),
   },
   {
     name: "Youtube",
-    icon: require("@components/assets/trademark/youtube.svg"),
+    icon: require("../../assets/trademark/youtube.svg"),
   },
   {
     name: "WeChat",
-    icon: require("@components/assets/trademark/wechat.svg"),
+    icon: require("../../assets/trademark/wechat.svg"),
   },
   {
     name: "Mailchimp",
-    icon: require("@components/assets/trademark/mailchimp.svg"),
+    icon: require("../../assets/trademark/mailchimp.svg"),
   },
   {
     name: "Reddit",
-    icon: require("@components/assets/trademark/reddit.svg"),
+    icon: require("../../assets/trademark/reddit.svg"),
   },
   {
     name: "Instagram",
-    icon: require("@components/assets/trademark/instagram.svg"),
+    icon: require("../../assets/trademark/instagram.svg"),
   },
   {
     name: "Medium",
-    icon: require("@components/assets/trademark/medium.svg"),
+    icon: require("../../assets/trademark/medium.svg"),
   },
 
   {
     name: "Dribbble",
-    icon: require("@components/assets/trademark/dribbble.svg"),
+    icon: require("../../assets/trademark/dribbble.svg"),
   },
 
   {
     name: "Linkedin",
-    icon: require("@components/assets/trademark/linkedin.svg"),
+    icon: require("../../assets/trademark/linkedin.svg"),
   },
   {
     name: "Pinterest",
-    icon: require("@components/assets/trademark/pinterest.svg"),
+    icon: require("../../assets/trademark/pinterest.svg"),
   },
 ];

@@ -41,7 +41,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://www.instagram.com/",
     icon: "fa:fab fa-instagram",
     title: "global.social_network.instagram",
-    image: require("@components/assets/trademark/instagram.svg"),
+    image: require("../../assets/trademark/instagram.svg"),
     color: "#C2185B",
   },
   Telegram: {
@@ -50,7 +50,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://t.me/",
     icon: "fa:fab fa-telegram",
     title: "global.social_network.telegram",
-    image: require("@components/assets/trademark/telegram.svg"),
+    image: require("../../assets/trademark/telegram.svg"),
     color: "#0288D1",
     product: true, // Show in product
   },
@@ -60,7 +60,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://play.google.com/",
     icon: "fa:fab fa-google-play",
     title: "global.social_network.googleplay",
-    image: require("@components/assets/trademark/googleplay.svg"),
+    image: require("../../assets/trademark/googleplay.svg"),
     color: "#009688",
   },
   AppStore: {
@@ -69,7 +69,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://apps.apple.com/",
     icon: "fa:fab fa-app-store",
     title: "global.social_network.appstore",
-    image: require("@components/assets/trademark/apple.svg"),
+    image: require("../../assets/trademark/apple.svg"),
     color: "#616161",
   },
   Twitter: {
@@ -78,7 +78,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://twitter.com/",
     icon: "fa:fab fa-twitter",
     title: "global.social_network.twitter",
-    image: require("@components/assets/trademark/twitter.svg"),
+    image: require("../../assets/trademark/twitter.svg"),
     color: "#0097A7",
   },
   Linkedin: {
@@ -87,7 +87,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://linkedin.com/",
     icon: "fa:fab fa-linkedin",
     title: "global.social_network.linkedin",
-    image: require("@components/assets/trademark/linkedin.svg"),
+    image: require("../../assets/trademark/linkedin.svg"),
     color: "#1576b6",
   },
 
@@ -97,7 +97,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://medium.com/",
     icon: "fa:fab fa-medium",
     title: "global.social_network.medium",
-    image: require("@components/assets/trademark/medium.svg"),
+    image: require("../../assets/trademark/medium.svg"),
     color: "#1a1a1a",
   },
   Selldone: {
@@ -106,7 +106,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: SetupService.MainServiceUrl() + "/",
     icon: "fa:fas fa-store",
     title: "global.social_network.selldone",
-    image: require("@components/assets/trademark/selldone.svg"),
+    image: require("../../assets/trademark/selldone.svg"),
     color: "#70557e",
   },
 
@@ -116,7 +116,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://facebook.com/",
     icon: "fa:fab fa-facebook",
     title: "global.social_network.facebook",
-    image: require("@components/assets/trademark/facebook.svg"),
+    image: require("../../assets/trademark/facebook.svg"),
     color: "#4267b2",
   },
   Messenger: {
@@ -125,7 +125,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://www.messenger.com/t/",
     icon: "fa:fab fa-facebook-messenger",
     title: "global.social_network.facebook_messenger",
-    image: require("@components/assets/trademark/facebook-messenger.svg"),
+    image: require("../../assets/trademark/facebook-messenger.svg"),
     color: "#2196f3",
     product: true, // Show in product
   },
@@ -136,7 +136,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://pinterest.com/",
     icon: "fa:fab fa-pinterest",
     title: "global.social_network.pinterest",
-    image: require("@components/assets/trademark/pinterest.svg"),
+    image: require("../../assets/trademark/pinterest.svg"),
     color: "#cb1f24",
   },
   WhatsApp: {
@@ -145,7 +145,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "https://wa.me/",
     icon: "fa:fab fa-whatsapp",
     title: "global.social_network.whatsapp",
-    image: require("@components/assets/trademark/whatsapp.svg"),
+    image: require("../../assets/trademark/whatsapp.svg"),
     color: "#4caf50",
     query: { text: "url" }, //url: current encoded url
     product: true, // Show in product
@@ -157,7 +157,7 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     host: "skype:",
     icon: "fa:fab fa-skype",
     title: "global.social_network.skype",
-    image: require("@components/assets/trademark/skype.svg"),
+    image: require("../../assets/trademark/skype.svg"),
     color: "#03a9f4",
     suffix: "?chat", // create: skype:XXXXXXXX?chat
     product: true, // Show in product

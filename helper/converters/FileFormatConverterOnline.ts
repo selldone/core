@@ -13,7 +13,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { UploadHelper } from "@components/utils/upload/UploadHelper";
+import { UploadHelper } from "../upload/UploadHelper";
 
 export class FileFormatConverterOnline {
   static VendorConvertToCsv(vue, vendor_id, file, success) {

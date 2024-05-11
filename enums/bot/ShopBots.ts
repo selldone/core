@@ -16,7 +16,7 @@
 export const ShopBots = [
   {
     driver: "Telegram",
-    icon: require("@components/assets/trademark/telegram.svg"),
+    icon: require("./assets/telegram.svg"),
     name: "Telegram",
     token: "Bot API Key",
     placeholder: "",
@@ -27,7 +27,7 @@ export const ShopBots = [
   },
   {
     driver: "Slack",
-    icon: require("@components/assets/trademark/slack.svg"),
+    icon: require("./assets/slack.svg"),
     name: "Slack",
     token: "Token",
     available: false,
@@ -37,7 +37,7 @@ export const ShopBots = [
   },
   {
     driver: "AmazonAlexa",
-    icon: require("@components/assets/trademark/alexa.svg"),
+    icon: require("./assets/alexa.svg"),
     name: "Amazon Alexa",
     available: false,
     getWebhookURL: (shop_id, secret) => {
@@ -47,7 +47,7 @@ export const ShopBots = [
 
   {
     driver: "CiscoSpark",
-    icon: require("@components/assets/trademark/cisco.svg"),
+    icon: require("./assets/cisco.svg"),
     name: "Cisco Spark",
     token: "Token",
     token2: "Secret",
@@ -59,7 +59,7 @@ export const ShopBots = [
 
   {
     driver: "Facebook",
-    icon: require("@components/assets/trademark/facebook-messenger.svg"),
+    icon: require("./assets/facebook-messenger.svg"),
     name: "Facebook Messenger",
     token: "Token",
     token2: "App Secret",
@@ -70,19 +70,10 @@ export const ShopBots = [
     },
   },
 
-  {
-    driver: "Hangouts",
-    icon: require("@components/assets/trademark/google-hangouts.svg"),
-    name: "Hangouts Chat",
-    token: "Token",
-    available: false,
-    getWebhookURL: (shop_id, secret) => {
-      return `https://bots.selldone.com/${shop_id}/hangouts-${secret}`;
-    },
-  },
+
   {
     driver: "HipChat",
-    icon: require("@components/assets/trademark/hipchat.svg"),
+    icon: require("./assets/hipchat.svg"),
     name: "HipChat",
     available: false,
     getWebhookURL: (shop_id, secret) => {
@@ -91,7 +82,7 @@ export const ShopBots = [
   },
   {
     driver: "BotFramework",
-    icon: require("@components/assets/trademark/microsoft.svg"),
+    icon: require("./assets/microsoft.svg"),
     name: "Microsoft Bot Framework / Skype",
     token: "API ID",
     token2: "API Key",
@@ -100,19 +91,11 @@ export const ShopBots = [
       return `https://bots.selldone.com/${shop_id}/microsoft-${secret}`;
     },
   },
-  /* {
-    driver: "Nexmo",
-    icon: require("./../assets/trademark/nexmo.svg"),
-    name: "Nexmo",
-    token: "Key",
-    token2: "Secret",
-    available:false,
-    getWebhookURL:(shop_id,secret)=>{return `https://bots.selldone.com/${shop_id}/nexmo-${secret}`}
-  },*/
+
 
   {
     driver: "Twilio",
-    icon: require("@components/assets/trademark/twilio.svg"),
+    icon: require("./assets/twilio.svg"),
     name: "Twilio",
     token: "Token",
     available: false,
@@ -122,7 +105,7 @@ export const ShopBots = [
   },
   {
     driver: "WeChat",
-    icon: require("@components/assets/trademark/wechat.svg"),
+    icon: require("./assets/wechat.svg"),
     name: "WeChat",
     token: "App ID",
     token2: "App Key",

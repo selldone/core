@@ -18,7 +18,7 @@ export const ShopPlugin = {
         code: "TagManager",
         name: "Tag Manager",
         description: "",
-        icon: require("@components/assets/trademark/google-tag-manager.svg"),
+        icon: require("./plugin/assets/google-tag-manager.svg"),
         url: "https://tagmanager.google.com",
         to:{name:'BPageShopChannelGoogle'}
     },
@@ -27,7 +27,7 @@ export const ShopPlugin = {
         code: "VerificationTag",
         name: "Search Console",
         description: "",
-        icon: require("@components/assets/trademark/search-console.svg"),
+        icon: require("./plugin/assets/search-console.svg"),
         url: "https://search.google.com/search-console?",
         to:{name:'BPageShopChannelGoogle'}
     },
@@ -36,7 +36,7 @@ export const ShopPlugin = {
         code: "FacebookPixel",
         name: "Facebook Pixel",
         description: "",
-        icon: require("@components/assets/trademark/meta.png"),
+        icon: require("./plugin/assets/meta.png"),
         //url: "https://search.google.com/search-console?",
         to:{name:'BPageShopChannelMeta'}
     },

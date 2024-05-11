@@ -16,6 +16,6 @@ export const MapProviders ={
   Mapbox: {
     code: "Mapbox",
     title: "Mapbox",
-    icon: require("@components/assets/trademark/mapbox.svg"),
+    icon: require("./assets/mapbox.svg"),
   },
 };
