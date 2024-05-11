@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@selldone/core-js/server/SetupService";
+import { SetupService } from "../server/SetupService";
 import { PlaceholderImages } from "../helper/image/PlaceholderImages";
 
 export class CDN {

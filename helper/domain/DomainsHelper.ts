@@ -13,8 +13,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {SetupService} from "@selldone/core-js/server/SetupService";
-import {Shop} from "@selldone/core-js/models/shop/shop.model";
+import {SetupService} from "../../server/SetupService";
+import {Shop} from "../../models/shop/shop.model";
 
 export class DomainsHelper {
   static GetShopDomains(shop: Shop, domains, contains_default_domains = true) {

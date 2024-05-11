@@ -15,8 +15,8 @@
 import { Currency } from "../../enums/payment/Currency";
 import { ExchangeRate } from "./payment/exchange_rate.model";
 import { WeekDays } from "../../enums/logistic/WeekDays";
-import {Domain} from "@selldone/core-js/models/shop/domain/domain.model";
-import {ShopLicenseLimits} from "@selldone/core-js/enums/shop/ShopLicense";
+import {Domain} from "../../models/shop/domain/domain.model";
+import {ShopLicenseLimits} from "../../enums/shop/ShopLicense";
 
 /**
  * Represents the main configuration and details for a shop.

@@ -14,11 +14,11 @@
 
 import { Gapi } from "./gapi/Gapi";
 import { GAPI } from "./server/GAPI";
-import { SetupService } from "@selldone/core-js/server/SetupService";
+import { SetupService } from "./server/SetupService";
 
 import "./utils/console/ConsoleStyle";
 import {CDN} from "./server/CDN";
-import { URLS } from "@selldone/core-js/server/URLS";
+import { URLS } from "./server/URLS";
 
 const SDK_VERSION = "0.04";
 //█████████████████████████████████████████████████████████████

@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Shop } from "@selldone/core-js/models/shop/shop.model";
-import { IQuota } from "@selldone/core-js/models/shop/quota/quota.model";
+import { Shop } from "../../../models/shop/shop.model";
+import { IQuota } from "../../../models/shop/quota/quota.model";
 
 // Define the structure of each quota item
 interface IQuotaItem {

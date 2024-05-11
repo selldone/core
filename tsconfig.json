@@ -8,6 +8,7 @@
 
     "noEmitOnError": false,
 
+
     // Required in Vue projects
     "jsx": "preserve",
     "jsxImportSource": "vue",
@@ -38,7 +39,10 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@selldone/core-js/*": ["*"]
+      "@selldone/core-js/*": [
+
+        "*"
+      ]
     }
   },
   "include": [

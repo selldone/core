@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {ApplyAugmentToObject} from "@selldone/core-js/prototypes/ObjectPrototypes";
+import {ApplyAugmentToObject} from "../prototypes/ObjectPrototypes";
 
 declare global {
   interface Array<T> {

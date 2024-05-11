@@ -27,32 +27,32 @@ export const PermissionLevels = {
   FULL_ACCESS: {
     code: "FULL_ACCESS",
     title: "Full access to all sections",
-    image: require("@selldone/core-js/enums/admin/assets/levels/chevron-1star-2line.svg")
+    image: require("../assets/levels/chevron-1star-2line.svg")
   },
   WRITE_ACCESS: {
     code: "WRITE_ACCESS",
     title: "Write & Edit",
-    image: require("@selldone/core-js/enums/admin/assets/levels/chevron-2line.svg")
+    image: require("../assets/levels/chevron-2line.svg")
   },
   READ_ACCESS: {
     code: "READ_ACCESS",
     title: "Read only",
-    image: require("@selldone/core-js/enums/admin/assets/levels/chevron-1line.svg")
+    image: require("../assets/levels/chevron-1line.svg")
   },
   DELETE_ACCESS: {
     code: "DELETE_ACCESS",
     title: "Delete access",
-    image: require("@selldone/core-js/enums/admin/assets/levels/chevron-3line.svg")
+    image: require("../assets/levels/chevron-3line.svg")
   },
   EDIT_ACCESS: {
     code: "EDIT_ACCESS",
     title: "Edit access",
-    image: require("@selldone/core-js/enums/admin/assets/levels/chevron-circle-star.svg")
+    image: require("../assets/levels/chevron-circle-star.svg")
   },
   CHECK_ACCESS: {
     code: "CHECK_ACCESS",
     title: "Check and confirm",
-    image: require("@selldone/core-js/enums/admin/assets/levels/chevron-1star.svg")
+    image: require("../assets/levels/chevron-1star.svg")
   },
 
 };

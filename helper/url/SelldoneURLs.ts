@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@selldone/core-js/server/SetupService";
-import { User } from "@selldone/core-js/models/user/user.model";
+import { SetupService } from "../../server/SetupService";
+import { User } from "../../models/user/user.model";
 
 export class SelldoneURLs {
   static UserProfilePageUrl(user: User) {

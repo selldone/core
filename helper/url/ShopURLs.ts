@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "@selldone/core-js/server/SetupService";
-import type { Shop } from "@selldone/core-js/models/shop/shop.model";
-import { Domain } from "@selldone/core-js/models/shop/domain/domain.model";
+import { SetupService } from "../../server/SetupService";
+import type { Shop } from "../../models/shop/shop.model";
+import { Domain } from "../../models/shop/domain/domain.model";
 
 export class ShopURLs {
   static MainShopUrl(shop: Shop & { domains?: Domain[] }) {

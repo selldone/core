@@ -14,7 +14,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "@selldone/core-js/enums/payment/Currency";
+import { Currency } from "../../enums/payment/Currency";
 
 export class TrackConfig {
   static SetLanguage(language: string) {

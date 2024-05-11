@@ -13,16 +13,15 @@
  */
 
 import { BusinessModel } from "./BusinessModel";
-import { Shop } from "@selldone/core-js/models/shop/shop.model";
-import { AgencyClient } from "@selldone/core-js/models/agency/agency-client.model";
-import { Agency } from "@selldone/core-js/models/agency/agency.model";
-import { AgencyPlan } from "@selldone/core-js/models/agency/agency-plan.model";
-import { Domain } from "@selldone/core-js/models/shop/domain/domain.model";
+import { Shop } from "../../models/shop/shop.model";
+import { AgencyClient } from "../../models/agency/agency-client.model";
+import { Agency } from "../../models/agency/agency.model";
+import { AgencyPlan } from "../../models/agency/agency-plan.model";
+import { Domain } from "../../models/shop/domain/domain.model";
 
 export const ShopLicense = {
   // wage_factor: wage_factor*gateway wage percent!             wage_percent: default payment wage of selldone!
   FREE: {
-    test:"ITS TEST!!!!!!!!!!!!!!!! XXXXXXX",
     code: "FREE",
     name: "global.license.free",
     wage_percent: 2,
