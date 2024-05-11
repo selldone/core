@@ -38,17 +38,14 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@selldone/core-js/*": [
-
-        "*"
-      ]
+      "@selldone/core-js/*": ["*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "*.ts",
-    "*.tsx"
+    "*.tsx",
   ],
   "exclude": [
     "node_modules",

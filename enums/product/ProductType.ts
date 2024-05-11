@@ -61,6 +61,7 @@ interface IProductType {
     | typeof SubscriptionOrderStates;
 }
 
+
 export const ProductType: Record<
   "PHYSICAL" | "VIRTUAL" | "FILE" | "SERVICE" | "SUBSCRIPTION",
   IProductType
