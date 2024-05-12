@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-interface Gateway {
+export interface Gateway {
   enable: boolean;
   code: string;
   name: string;

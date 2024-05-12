@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-interface Transportation {
+export interface Transportation {
   id: number;
   shop_id: number;
   type: string;

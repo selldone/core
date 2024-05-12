@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-interface ProductBadge {
+export interface ProductBadge {
     id: number;
     shop_id: number;
     title: string;
