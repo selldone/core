@@ -1,7 +1,7 @@
 
 ![Selldone Official Storefront App](_docs/images/banner-core.jpg)
 
-![npm](https://img.shields.io/npm/v/@selldone/core-js)
+<a href="https://www.npmjs.com/package/@selldone/core-js"><img src="https://img.shields.io/npm/v/@selldone/core-js.svg?sanitize=true" alt="Version"></a>
 ![Selldone](https://img.shields.io/badge/type-Selldone-f39f37?style=flat&label=Core&labelColor=%23567&color=%23000)
 ![License](https://img.shields.io/github/license/selldone/core.svg)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e06b6bb638104350a6cbd7cc056ce6c1)](https://app.codacy.com/gh/selldone/core/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
