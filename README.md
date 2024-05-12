@@ -38,7 +38,7 @@ Welcome to Selldone Core, the foundational JavaScript/TypeScript library for Sel
 To install Selldone Core in your project, use the following command:
 
 ```bash
-npm install selldone/core-js
+npm install @selldone/core-js
 ```
 ```bash
 yarn add @selldone/core-js
