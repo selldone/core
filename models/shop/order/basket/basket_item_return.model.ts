@@ -12,6 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-interface BasketItemReturn {
+export interface BasketItemReturn {
 
 }

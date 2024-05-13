@@ -13,8 +13,8 @@
  */
 
 import type {User} from "../../../user/user.model";
-import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
 import {AvocadoOrderStates} from "../../../../enums/avocado/AvocadoOrderStates";
+import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
 
 export interface Avocado {
   /** Unique identifier of the order. */

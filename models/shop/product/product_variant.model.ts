@@ -15,6 +15,7 @@
 import {Product} from "./product.model";
 import type {ProductImage} from "./product-image.model";
 import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
+import {VirtualItem} from "../order/basket/virtual_item.model";
 
 export interface ProductVariant {
   id: number;

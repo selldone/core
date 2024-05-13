@@ -13,7 +13,7 @@
  */
 
 // Extending the global Window interface to include $AppsInterface.
-import { ShopEventsName } from "./event/ShopEventsName.ts";
+import { ShopEventsName } from "./event/ShopEventsName";
 
 declare global {
   interface Window {

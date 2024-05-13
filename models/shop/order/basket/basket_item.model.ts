@@ -19,6 +19,11 @@ import type { SubscriptionPrice } from "../../product/subscription_price.model";
 import type { Offer } from "../../incentives/offer/offer.model";
 import type { ExtraPricing } from "../../extra-pricing/extra-pricing.model";
 import type { Connect } from "../../../connect/connect.model";
+import {BasketItemReturn} from "./basket_item_return.model";
+import {VirtualItem} from "./virtual_item.model";
+import {ServiceItem} from "./service_item.model";
+import {Fulfillment} from "./fulfillment.model";
+import {VendorProduct} from "../../vendor/vendor_product.model";
 
 /**
  * TypeScript model for BasketItem

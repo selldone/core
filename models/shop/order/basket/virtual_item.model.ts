@@ -12,4 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-interface VirtualItem { /* ... properties for VirtualItem ... */ }
+export interface VirtualItem { /* ... properties for VirtualItem ... */ }

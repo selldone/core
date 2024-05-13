@@ -19,5 +19,13 @@ declare global {
     $t: (key: string, values?: any) => any;
 
     $language: ILanguage;
+
+    selldone_config: any; // Specify the type according to what selldone_config is supposed to be.
+    extra_footer:any,
+    $i18n_global:any,
   }
 }
+
+
+// Export nothing to ensure this file can only be used for type declarations
+export {};

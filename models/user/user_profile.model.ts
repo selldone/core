@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-class UserProfile {
+export class UserProfile {
   id: number;
   user_id: number;
   verified: boolean;

@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-interface VendorProduct {
+export interface VendorProduct {
   /** Unique identifier for the product pricing */
   id: number;
 
