@@ -19,6 +19,7 @@ import {SetupService} from "./server/SetupService";
 import "./utils/console/ConsoleStyle";
 import {CDN} from "./server/CDN";
 import {URLS} from "./server/URLS";
+import Cookie from "./utils/cookie/cookie";
 
 const SDK_VERSION = "0.04";
 //█████████████████████████████████████████████████████████████
@@ -40,6 +41,9 @@ declare global {
         $selldone: {
             gapi: Gapi;
         };
+
+
+        $cookies:typeof Cookie;
     }
 }
 
@@ -87,6 +91,9 @@ export class SelldoneCore {
         window.$selldone = {
             gapi: new Gapi(),
         };
+
+        // Register $cookies to window
+        window.$cookies = Cookie;
     }
 
 

@@ -1,6 +1,6 @@
 
 
-import { SelldoneCore } from './SelldoneCore.ts';
+import { SelldoneCore } from './SelldoneCore';
 
 export {
     SelldoneCore
