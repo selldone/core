@@ -61,11 +61,11 @@ const Cookie = {
                     else _expires = '; max-age=' + expires;
                     break;
                 case String:
-                    if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expires)) {
+                    if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expires as string)) {
                         // get capture number group
-                        var _expireTime = expires.replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
+                        var _expireTime = (expires as string).replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
                         // get capture type group , to lower case
-                        switch (expires.replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
+                        switch ((expires as string).replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
                             // Frequency sorting
                             case 'm':
                                 _expires = '; max-age=' + +_expireTime * 2592000;
@@ -93,7 +93,7 @@ const Cookie = {
                     }
                     break;
                 case Date:
-                    _expires = '; expires=' + expires.toUTCString();
+                    _expires = '; expires=' + (expires as Date).toUTCString();
                     break;
             }
         }
