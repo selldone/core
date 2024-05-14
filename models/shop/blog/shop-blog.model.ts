@@ -12,12 +12,35 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import mapboxIcon from './assets/mapbox.svg';
+export  interface ShopBlog {
+    /**
+     * The unique identifier of the blog post.
+     */
+    id: number;
 
-export const MapProviders ={
-  Mapbox: {
-    code: "Mapbox",
-    title: "Mapbox",
-    icon: mapboxIcon,
-  },
-};
+    /**
+     * The unique identifier of the shop.
+     */
+    shop_id: number;
+
+    /**
+     * The unique identifier of the category.
+     */
+    category_id: number;
+
+    /**
+     * SEO fetched data, can be null.
+     */
+    audit: object | null;
+
+    /**
+     * The title of the blog post, can be null.
+     */
+    title: string | null;
+
+    /**
+     * The image URL of the blog post, can be null.
+     */
+    image: string | null;
+
+}

@@ -11,6 +11,16 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+import emailIcon from "./assets/mediums/email.svg";
+import cpcIcon from "./assets/mediums/cpc.svg";
+import socialMediaIcon from "./assets/mediums/social-media.svg";
+import affiliateIcon from "./assets/mediums/affiliate.svg";
+import qrIcon from "./assets/mediums/qr.svg";
+import bannerIcon from "./assets/mediums/banner.svg";
+import notificationIcon from "./assets/mediums/notification.svg";
+import smsIcon from "./assets/mediums/sms.svg";
+import videoIcon from "./assets/mediums/video.svg";
+import podcastIcon from "./assets/mediums/podcast.svg";
 
 /**
  * Represents the structure for each campaign medium.
@@ -34,42 +44,42 @@ interface CampaignMediumType {
 export const CampaignMedium: CampaignMediumType[] = [
   {
     name: "Email",
-    icon: require("./assets/mediums/email.svg"),
+    icon: emailIcon,
   },
   {
     name: "CPC", // Cost Per Click
-    icon: require("./assets/mediums/cpc.svg"),
+    icon: cpcIcon,
   },
   {
     name: "Social-Media",
-    icon: require("./assets/mediums/social-media.svg"),
+    icon: socialMediaIcon,
   },
   {
     name: "Affiliate",
-    icon: require("./assets/mediums/affiliate.svg"),
+    icon: affiliateIcon,
   },
   {
     name: "QR",
-    icon: require("./assets/mediums/qr.svg"),
+    icon: qrIcon,
   },
   {
     name: "Banner",
-    icon: require("./assets/mediums/banner.svg"),
+    icon: bannerIcon,
   },
   {
     name: "Notification",
-    icon: require("./assets/mediums/notification.svg"),
+    icon: notificationIcon,
   },
   {
     name: "SMS",
-    icon: require("./assets/mediums/sms.svg"),
+    icon: smsIcon,
   },
   {
     name: "Video",
-    icon: require("./assets/mediums/video.svg"),
+    icon: videoIcon,
   },
   {
     name: "Podcast",
-    icon: require("./assets/mediums/podcast.svg"),
+    icon: podcastIcon,
   },
 ];

@@ -12,35 +12,41 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import Angry from './reaction/assets/Angry.svg';
+import Annoyed from './reaction/assets/Annoyed.svg';
+import Bored from './reaction/assets/Bored.svg';
+import Glad from './reaction/assets/Glad.svg';
+import Excited from './reaction/assets/Excited.svg';
+
 /**
  * Interface representing a single reaction.
  * @property {string} code - Represents the code name of the emotion.
  * @property {string} icon - Represents the SVG icon path of the emotion.
  */
 interface IReaction {
-  code: string;
-  icon: any; // Change 'any' to the type of your require if known, maybe 'string' or 'SVG'.
+    code: string;
+    icon: any; // Change 'any' to the type of your requirement if known, maybe 'string' or 'SVG'.
 }
 
 /**
  * An object containing a collection of reactions.
  */
 export const Reactions: { [key: string]: IReaction } = {
-  Angry: {
-    code: "Angry",
-    icon: require("./reaction/assets/Angry.svg"),
-  },
-  Annoyed: {
-    code: "Annoyed",
-    icon: require("./reaction/assets/Annoyed.svg"),
-  },
-  Bored: {
-    code: "Bored",
-    icon: require("./reaction/assets/Bored.svg"),
-  },
-  Glad: { code: "Glad", icon: require("./reaction/assets/Glad.svg") },
-  Excited: {
-    code: "Excited",
-    icon: require("./reaction/assets/Excited.svg"),
-  },
+    Angry: {
+        code: "Angry",
+        icon: Angry,
+    },
+    Annoyed: {
+        code: "Annoyed",
+        icon: Annoyed,
+    },
+    Bored: {
+        code: "Bored",
+        icon: Bored,
+    },
+    Glad: {code: "Glad", icon: Glad},
+    Excited: {
+        code: "Excited",
+        icon: Excited,
+    },
 };

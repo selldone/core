@@ -15,6 +15,9 @@
 import {ProductType} from "../../../enums/product/ProductType";
 import {Currency} from "../../../enums/payment/Currency";
 import {ProductCondition} from "../../../enums/product/ProductCondition";
+import packageImage from "../assets/package.svg";
+import colImage from "./assets/col-image.jpg";
+import colImages from "./assets/col-images.png";
 
 export const ProductsCsvHeaders = [
   "Product ID",
@@ -214,10 +217,10 @@ export const ProductsCsvStyler = {
       ...Object.values(ProductType),
       {
         code: "VARIANT",
-        image: require("../assets/package.svg"),
+        image: packageImage,
       },
     ],
-    default: ProductType.PHYSICAL.code, // Auto correction
+    default: ProductType.PHYSICAL.code, // Autocorrection
     tooltip: {
       title: "Product Type",
       message:
@@ -229,7 +232,7 @@ export const ProductsCsvStyler = {
     required_product: true,
     ifNullCol: "Price", // Same as product if is null!
     ifNullMessage: "♺ Like product", // Message if col is null!
-    default: 0, // Auto correction
+    default: 0, // Autocorrection
     tooltip: {
       title: "Net Price",
       message:
@@ -243,7 +246,7 @@ export const ProductsCsvStyler = {
     required_product: true, //  Variant null (Or price 0): pricing in false
     ifNullCol: "Price", // Same as product if is null!
     ifNullMessage: "♺ Like product", // Message if col is null!
-    default: Currency.USD.code, // Auto correction
+    default: Currency.USD.code, // Autocorrection
     tooltip: {
       title: "Currency",
       message:
@@ -254,7 +257,7 @@ export const ProductsCsvStyler = {
     type: "price",
     ifNullCol: "Price", // Same as product if is null!
     ifNullMessage: "♺ Like product", // Message if col is null!
-    default: 0, // Auto correction
+    default: 0, // Autocorrection
     tooltip: {
       title: "Commission",
       message:
@@ -265,7 +268,7 @@ export const ProductsCsvStyler = {
     type: "price",
     ifNullCol: "Price", // Same as product if is null!
     ifNullMessage: "♺ Like product", // Message if col is null!
-    default: 0, // Auto correction
+    default: 0, // Autocorrection
     tooltip: {
       title: "Discount",
       message:
@@ -389,7 +392,7 @@ export const ProductsCsvStyler = {
       title: "Main Product Image",
       message:
         "You can set the main image of the product. This image will be shown in the product list and product page. The structure of the image is as follows: <code>image-url</code>",
-      image: require("./assets/col-image.jpg"),
+      image: colImage,
     },
   },
   Outputs: {
@@ -497,7 +500,7 @@ export const ProductsCsvStyler = {
       title: "Gallery Images",
       message:
         "You can add multiple images to the product gallery. The structure of the images is as follows: <code>image1-url.jpg</code>,<code>image2-url.jpg</code>,<code>image3-url.jpg</code>,...",
-      image: require("./assets/col-images.png"),
+      image: colImages,
     },
   },
   V_Color: {

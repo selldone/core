@@ -11,6 +11,16 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+import motorbikeIcon from './assets/transportations/motorbike.svg';
+import pickupIcon from './assets/transportations/pickup.svg';
+import cargoSmallIcon from './assets/transportations/cargo_s.svg';
+import cargoIcon from './assets/transportations/cargo.svg';
+import truckIcon from './assets/transportations/truck.svg';
+import postFastIcon from './assets/transportations/post_fast.svg';
+import postIcon from './assets/transportations/post.svg';
+import airplaneIcon from './assets/transportations/airplane.svg';
+import bicycleIcon from './assets/transportations/bicycle.svg';
+import globalIcon from './assets/transportations/global.svg';
 
 export namespace ShopTransportations {
   export interface IShopTransportations {
@@ -100,7 +110,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.motorbike",
     description: "global.transportation_type.motorbike_description",
 
-    icon: require("./assets/transportations/motorbike.svg"),
+    icon: motorbikeIcon,
 
     default: {
       type: "Motorbike",
@@ -141,7 +151,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.pickup",
     description: "global.transportation_type.pickup_description",
 
-    icon: require("./assets/transportations/pickup.svg"),
+    icon: pickupIcon,
 
     pickup: true, // Is pickup!
 
@@ -185,7 +195,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.cargo_small",
     description: "global.transportation_type.cargo_description",
 
-    icon: require("./assets/transportations/cargo_s.svg"),
+    icon: cargoSmallIcon,
 
     default: {
       type: "CargoSmall",
@@ -225,7 +235,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.cargo",
     description: "global.transportation_type.cargo_description",
 
-    icon: require("./assets/transportations/cargo.svg"),
+    icon: cargoIcon,
 
     default: {
       type: "Cargo",
@@ -266,7 +276,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.truck",
     description: "global.transportation_type.truck_description",
 
-    icon: require("./assets/transportations/truck.svg"),
+    icon: truckIcon,
 
     default: {
       type: "Truck",
@@ -307,7 +317,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.fast_post",
     description: "global.transportation_type.fast_post_description",
 
-    icon: require("./assets/transportations/post_fast.svg"),
+    icon: postFastIcon,
 
     default: {
       type: "PostFast",
@@ -347,7 +357,7 @@ export const ShopTransportations: Record<
     code: "Post",
     name: "global.transportation_type.post",
     description: "global.transportation_type.post_description",
-    icon: require("./assets/transportations/post.svg"),
+    icon: postIcon,
 
     default: {
       type: "Post",
@@ -388,7 +398,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.airplane",
     description: "global.transportation_type.airplane_description",
 
-    icon: require("./assets/transportations/airplane.svg"),
+    icon: airplaneIcon,
 
     default: {
       type: "Airplane",
@@ -430,7 +440,7 @@ export const ShopTransportations: Record<
 
     description: "global.transportation_type.bicycle_description",
 
-    icon: require("./assets/transportations/bicycle.svg"),
+    icon: bicycleIcon,
 
     default: {
       type: "Bicycle",
@@ -471,7 +481,7 @@ export const ShopTransportations: Record<
     name: "global.transportation_type.global",
     description: "global.transportation_type.global_description",
 
-    icon: require("./assets/transportations/global.svg"),
+    icon: globalIcon,
 
     default: {
       type: "Global",

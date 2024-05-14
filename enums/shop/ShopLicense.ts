@@ -19,6 +19,12 @@ import { Agency } from "../../models/agency/agency.model";
 import { AgencyPlan } from "../../models/agency/agency-plan.model";
 import { Domain } from "../../models/shop/domain/domain.model";
 
+import freeIcon from "./assets/license/free.svg";
+import startupIcon from "./assets/license/startup.svg";
+import companyIcon from "./assets/license/company.svg";
+import enterpriseIcon from "./assets/license/enterprise.svg";
+
+
 export const ShopLicense = {
   // wage_factor: wage_factor*gateway wage percent!             wage_percent: default payment wage of selldone!
   FREE: {
@@ -26,7 +32,7 @@ export const ShopLicense = {
     name: "global.license.free",
     wage_percent: 2,
     wage_factor: 1,
-    icon: require("./assets/license/free.svg"),
+    icon: freeIcon,
     file_sell_percent: 30,
     quota_multiple:1,   // Multiple of quota
   },
@@ -35,7 +41,7 @@ export const ShopLicense = {
     name: "global.license.startup",
     wage_percent: 1.5,
     wage_factor: 0.75,
-    icon: require("./assets/license/startup.svg"),
+    icon: startupIcon,
     file_sell_percent: 20,
     quota_multiple:2,   // Multiple of quota
   },
@@ -44,7 +50,7 @@ export const ShopLicense = {
     name: "global.license.company",
     wage_percent: 1,
     wage_factor: 0.5,
-    icon: require("./assets/license/company.svg"),
+    icon: companyIcon,
     file_sell_percent: 7,
     quota_multiple:3,   // Multiple of quota
   },
@@ -53,7 +59,7 @@ export const ShopLicense = {
     name: "global.license.enterprise",
     wage_percent: 0.5,
     wage_factor: 0.25,
-    icon: require("./assets/license/enterprise.svg"),
+    icon: enterpriseIcon,
     file_sell_percent: 3,
     quota_multiple:10,   // Multiple of quota
   },

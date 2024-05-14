@@ -74,12 +74,12 @@ export interface Coupon {
   /**
    * Start date for the validity of the coupon.
    */
-  start: Date; // Assuming 'Carbon' maps to a Date object in TypeScript.
+  start: string; // Assuming 'Carbon' maps to a Date object in TypeScript.
 
   /**
    * End date for the validity of the coupon.
    */
-  end: Date;
+  end: string;
 
   /**
    * Title of the coupon.
@@ -146,5 +146,5 @@ export interface Coupon {
   /**
    * Notes by the team regarding the coupon. Contains user_id, user_name, body, and date.
    */
-  note: Array<{ user_id: number; user_name: string; body: string; date: Date }>;
+  note: Array<{ user_id: number; user_name: string; body: string; date: string }>;
 }

@@ -12,40 +12,46 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import scannerIcon from './device/assets/barcode-scanner.svg';
+import printerIcon from './device/assets/label-printer.svg';
+import customerViewIcon from './device/assets/pos-customer-view.svg';
+import cardReaderIcon from './device/assets/pos-card-reader.svg';
+import chipReaderIcon from './device/assets/tag-reader.svg';
+
 export const PosDeviceTypes = {
   Scanner: {
     code: "Scanner",
     title: "pos_devices.Scanner",
     desc: "pos_devices.Scanner_desc",
-    src: require("./device/assets/barcode-scanner.svg"),
+    src: scannerIcon,
     enable: true,
   },
   Printer: {
     code: "Printer",
     title: "pos_devices.Printer",
     desc: "pos_devices.Printer_desc",
-    src: require("./device/assets/label-printer.svg"),
+    src: printerIcon,
     enable: false,
   },
   CustomerView: {
     code: "CustomerView",
     title: "pos_devices.CustomerView",
     desc: "pos_devices.CustomerView_desc",
-    src: require("./device/assets/pos-customer-view.svg"),
+    src: customerViewIcon,
     enable: true,
   },
   CardReader: {
     code: "CardReader",
     title: "pos_devices.CardReader",
     desc: "pos_devices.CardReader_desc",
-    src: require("./device/assets/pos-card-reader.svg"),
+    src: cardReaderIcon,
     enable: false,
   },
   ChipReader: {
     code: "ChipReader",
     title: "pos_devices.ChipReader",
     desc: "pos_devices.ChipReader_desc",
-    src: require("./device/assets/tag-reader.svg"),
+    src: chipReaderIcon,
     enable: false,
   },
 };

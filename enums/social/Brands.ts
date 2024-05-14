@@ -11,68 +11,81 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+import googleIcon from '../../assets/trademark/google.svg';
+import telegramIcon from '../../assets/trademark/telegram.svg';
+import twitterIcon from '../../assets/trademark/twitter.svg';
+import googleAdsIcon from '../../assets/trademark/adwords.svg';
+import facebookIcon from '../../assets/trademark/meta.png';
+import emailIcon from '../../assets/trademark/gmail.svg';
+import youtubeIcon from '../../assets/trademark/youtube.svg';
+import weChatIcon from '../../assets/trademark/wechat.svg';
+import mailchimpIcon from '../../assets/trademark/mailchimp.svg';
+import redditIcon from '../../assets/trademark/reddit.svg';
+import instagramIcon from '../../assets/trademark/instagram.svg';
+import mediumIcon from '../../assets/trademark/medium.svg';
+import dribbbleIcon from '../../assets/trademark/dribbble.svg';
+import linkedinIcon from '../../assets/trademark/linkedin.svg';
+import pinterestIcon from '../../assets/trademark/pinterest.svg';
 
 export const Brands = [
   {
     name: "Google",
-    icon: require("../../assets/trademark/google.svg"),
+    icon: googleIcon,
   },
   {
     name: "Telegram",
-    icon: require("../../assets/trademark/telegram.svg"),
+    icon: telegramIcon,
   },
   {
     name: "Twitter",
-    icon: require("../../assets/trademark/twitter.svg"),
+    icon: twitterIcon,
   },
   {
     name: "Google Ads",
-    icon: require("../../assets/trademark/adwords.svg"),
+    icon: googleAdsIcon,
   },
   {
     name: "Facebook",
-    icon: require("../../assets/trademark/meta.png"),
+    icon: facebookIcon,
   },
   {
     name: "Email",
-    icon: require("../../assets/trademark/gmail.svg"),
+    icon: emailIcon,
   },
   {
     name: "Youtube",
-    icon: require("../../assets/trademark/youtube.svg"),
+    icon: youtubeIcon,
   },
   {
     name: "WeChat",
-    icon: require("../../assets/trademark/wechat.svg"),
+    icon: weChatIcon,
   },
   {
     name: "Mailchimp",
-    icon: require("../../assets/trademark/mailchimp.svg"),
+    icon: mailchimpIcon,
   },
   {
     name: "Reddit",
-    icon: require("../../assets/trademark/reddit.svg"),
+    icon: redditIcon,
   },
   {
     name: "Instagram",
-    icon: require("../../assets/trademark/instagram.svg"),
+    icon: instagramIcon,
   },
   {
     name: "Medium",
-    icon: require("../../assets/trademark/medium.svg"),
+    icon: mediumIcon,
   },
-
   {
     name: "Dribbble",
-    icon: require("../../assets/trademark/dribbble.svg"),
+    icon: dribbbleIcon,
   },
-
   {
     name: "Linkedin",
-    icon: require("../../assets/trademark/linkedin.svg"),
+    icon: linkedinIcon,
   },
   {
     name: "Pinterest",
-    icon: require("../../assets/trademark/pinterest.svg"),
+    icon: pinterestIcon,
   },
 ];

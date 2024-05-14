@@ -13,6 +13,14 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import physicalFastDeliveryIcon from './assets/delivery/physical-fast-delivery.svg';
+import physicalUnder24hIcon from './assets/delivery/physical-under-24h.svg';
+import physicalOver24hIcon from './assets/delivery/physical-over-24h.svg';
+import virtualPrepareFastIcon from './assets/delivery/virtual-prepare-fast.svg';
+import virtualPrepareUnder24hIcon from './assets/delivery/virtual-prepare-under-24h.svg';
+import virtualPrepareOver24hIcon from './assets/delivery/virtual-prepare-over-24h.svg';
+
+
 export const LeadStatus = {
   physical: [
     {
@@ -21,7 +29,7 @@ export const LeadStatus = {
       title: (that, lead) => {
         return that.$t("global.lead_status.physical_fast_delivery");
       },
-      icon: require("./assets/delivery/physical-fast-delivery.svg")
+      icon: physicalFastDeliveryIcon
     },
     {
       min: 3,
@@ -31,7 +39,7 @@ export const LeadStatus = {
           lead: Math.round(lead)
         });
       },
-      icon: require("./assets/delivery/physical-under-24h.svg")
+      icon: physicalUnder24hIcon
     },
     {
       min: 24,
@@ -41,7 +49,7 @@ export const LeadStatus = {
           days: Math.round(lead / 24)
         });
       },
-      icon: require("./assets/delivery/physical-over-24h.svg")
+      icon: physicalOver24hIcon
     }
   ],
   virtual: [
@@ -51,7 +59,7 @@ export const LeadStatus = {
       title: (that, lead) => {
         return that.$t("global.lead_status.virtual_fast_prepare");
       },
-      icon: require("./assets/delivery/virtual-prepare-fast.svg")
+      icon: virtualPrepareFastIcon
     },
     {
       min: 3,
@@ -61,7 +69,7 @@ export const LeadStatus = {
           lead: Math.round(lead)
         });
       },
-      icon: require("./assets/delivery/virtual-prepare-under-24h.svg")
+      icon: virtualPrepareUnder24hIcon
     },
     {
       min: 24,
@@ -71,7 +79,7 @@ export const LeadStatus = {
           days: Math.round(lead / 24)
         });
       },
-      icon: require("./assets/delivery/virtual-prepare-over-24h.svg")
+      icon: virtualPrepareOver24hIcon
     }
   ]
 };

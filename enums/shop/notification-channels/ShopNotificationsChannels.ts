@@ -13,7 +13,13 @@
  */
 
 import { SetupService } from "../../../server/SetupService";
-
+import logoBoxIcon from './assets/logo-box.svg';
+import emailIcon from './assets/email.svg';
+import smsIcon from './assets/sms.svg';
+import notificationBlueIcon from './assets/notification-blue.svg';
+import telegramIcon from './assets/telegram.svg';
+import flockIcon from './assets/flock.svg';
+import slackIcon from './assets/slack.svg';
 /**
  * Interface representing the structure of a notification channel.
  */
@@ -49,7 +55,8 @@ export type ShopChannelType =
 export default [
   {
     channel: "Application",
-    icon: require("./assets/logo-box.svg"),
+    icon: logoBoxIcon,
+
     name: "Application",
     available: true,
     events: [
@@ -63,7 +70,8 @@ export default [
   },
   {
     channel: "Email",
-    icon: require("./assets/email.svg"),
+    icon: emailIcon,
+
     name: "global.commons.email",
     available: true,
     events: [
@@ -74,7 +82,7 @@ export default [
   },
   {
     channel: "SMS",
-    icon: require("./assets/sms.svg"),
+    icon: smsIcon,
     name: "global.commons.sms",
     available: true,
     events: ["notification_events.payment"],
@@ -82,7 +90,7 @@ export default [
   },
   {
     channel: "Notification",
-    icon: require("./assets/notification-blue.svg"),
+    icon: notificationBlueIcon,
     name: "global.commons.notification",
     available: true,
     events: ["notification_events.payment"],
@@ -91,7 +99,7 @@ export default [
 
   {
     channel: "Telegram",
-    icon: require("./assets/telegram.svg"),
+    icon: telegramIcon,
     name: "Telegram",
     available: true,
     events: [
@@ -103,7 +111,7 @@ export default [
   },
   {
     channel: "Flock",
-    icon: require("./assets/flock.svg"),
+    icon: flockIcon,
     name: "Flock",
     available: true,
     events: [
@@ -115,7 +123,7 @@ export default [
   },
   {
     channel: "Slack",
-    icon: require("./assets/slack.svg"),
+    icon: slackIcon,
     name: "Slack",
     available: true,
     events: [

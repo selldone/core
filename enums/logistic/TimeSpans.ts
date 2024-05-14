@@ -12,33 +12,38 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import morningIcon from './time-span/assets/morning.svg';
+import eveningIcon from './time-span/assets/evening.svg';
+import nightIcon from './time-span/assets/night.svg';
+import daynightIcon from './time-span/assets/daynight.svg';
+
 export const TimeSpans = {
   Morning: {
     value: "Morning",
     min: 8,
     max: 12,
     name: "global.timespan.Morning",
-    icon: require("./time-span/assets/morning.svg"),
+    icon: morningIcon,
   },
   Evening: {
     value: "Evening",
     min: 12,
     max: 18,
     name: "global.timespan.Evening",
-    icon: require("./time-span/assets/evening.svg"),
+    icon: eveningIcon,
   },
   Night: {
     value: "Night",
     min: 18,
     max: 24,
     name: "global.timespan.Night",
-    icon: require("./time-span/assets/night.svg"),
+    icon: nightIcon,
   },
   Instant: {
     value: "Instant",
     min: 0,
     max: 24,
     name: "global.timespan.Instant",
-    icon: require("./time-span/assets/daynight.svg"),
+    icon: daynightIcon,
   },
 };

@@ -39,10 +39,10 @@ export interface Offer {
   currency: string;
 
   /** Start date of the offer. */
-  start: Date; // Note: I'm using the native JS Date type. If you're using a library like moment.js or date-fns, adjust accordingly.
+  start: string; // Note: I'm using the native JS Date type. If you're using a library like moment.js or date-fns, adjust accordingly.
 
   /** End date of the offer. */
-  end: Date;
+  end: string;
 
   /** Title of the offer. */
   title: string;
@@ -71,9 +71,11 @@ export interface Offer {
   /** Percentage of the discount offered. */
   percent: number;
 
+  color:string;
+
   /**
    * Notes related to the offer by the team.
    * Contains details such as user_id, user_name, body of the note, and the date.
    */
-  note: Array<{ user_id: number; user_name: string; body: string; date: Date }>;
+  note: Array<{ user_id: number; user_name: string; body: string; date: string }>;
 }

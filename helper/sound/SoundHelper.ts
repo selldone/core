@@ -12,9 +12,12 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import tick from "./assets/tick.mp3";
+import win from "./assets/win.mp3";
+
 export class SoundHelper {
-  static tick = new Audio(require("./assets/tick.mp3"));
-  static win = new Audio(require("./assets/win.mp3"));
+  static tick = new Audio(tick);
+  static win = new Audio(win);
 
   static playTick(volume?: number) {
     try {

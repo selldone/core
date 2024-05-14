@@ -12,35 +12,46 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import bronze from "./assets/customer-levels/bronze.svg";
+import bronzeOutline from "./assets/customer-levels/bronze-outline.svg";
+import silver from "./assets/customer-levels/silver.svg";
+import silverOutline from "./assets/customer-levels/silver-outline.svg";
+import gold from "./assets/customer-levels/gold.svg";
+import goldOutline from "./assets/customer-levels/gold-outline.svg";
+import platinum from "./assets/customer-levels/platinum.svg";
+import platinumOutline from "./assets/customer-levels/platinum-outline.svg";
+import diamond from "./assets/customer-levels/diamond.svg";
+import diamondOutline from "./assets/customer-levels/diamond-outline.svg";
+
 export const CustomerClubLevels = {
   BRONZE: {
     code: "BRONZE",
     name: "global.customer_club.bronze",
-    icon: require("./assets/customer-levels/bronze.svg"),
-    icon_outline: require("./assets/customer-levels/bronze-outline.svg"),
+    icon: bronze,
+    icon_outline: bronzeOutline,
   },
   SILVER: {
     code: "SILVER",
     name: "global.customer_club.silver",
-    icon: require("./assets/customer-levels/silver.svg"),
-    icon_outline: require("./assets/customer-levels/silver-outline.svg"),
+    icon: silver,
+    icon_outline: silverOutline,
   },
   GOLD: {
     code: "GOLD",
     name: "global.customer_club.gold",
-    icon: require("./assets/customer-levels/gold.svg"),
-    icon_outline: require("./assets/customer-levels/gold-outline.svg"),
+    icon: gold,
+    icon_outline: goldOutline,
   },
   PLATINUM: {
     code: "PLATINUM",
     name: "global.customer_club.platinum",
-    icon: require("./assets/customer-levels/platinum.svg"),
-    icon_outline: require("./assets/customer-levels/platinum-outline.svg"),
+    icon: platinum,
+    icon_outline: platinumOutline,
   },
   DIAMOND: {
     code: "DIAMOND",
     name: "global.customer_club.diamond",
-    icon: require("./assets/customer-levels/diamond.svg"),
-    icon_outline: require("./assets/customer-levels/diamond-outline.svg"),
+    icon: diamond,
+    icon_outline: diamondOutline,
   },
 };

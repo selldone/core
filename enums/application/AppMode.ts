@@ -12,6 +12,10 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import testImage from "./assets/app-mode/test.svg";
+import enterpriseImage from "./assets/app-mode/enterprise.svg";
+import publicImage from "./assets/app-mode/public.svg";
+
 /**
  * Interface representing the structure of an application mode.
  * @interface IAppMode
@@ -34,16 +38,16 @@ export const AppMode: Record<string, IAppMode> = {
   TEST: {
     title: "Test",
     code: "TEST",
-    src: require("./assets/app-mode/test.svg"),
+    src: testImage,
   },
   ENTERPRISE: {
     title: "Enterprise",
     code: "ENTERPRISE",
-    src: require("./assets/app-mode/enterprise.svg"),
+    src: enterpriseImage,
   },
   PUBLIC: {
     title: "Public",
     code: "PUBLIC",
-    src: require("./assets/app-mode/public.svg"),
+    src: publicImage,
   },
 };

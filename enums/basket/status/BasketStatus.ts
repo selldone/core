@@ -11,7 +11,11 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-
+import openImage from "./assets/basket-open.svg";
+import reserveImage from "./assets/basket-reserve.svg";
+import payedImage from "./assets/basket-payed.svg";
+import canceledImage from "./assets/basket-canceled.svg";
+import codImage from "./assets/basket-cod.svg";
 /**
  * Interface representing the structure of each Basket Status.
  */
@@ -42,42 +46,42 @@ interface BasketStatusItem {
  * - `COD`: Represents Cash-On-Delivery, the basket is to be paid for upon delivery.
  */
 export const BasketStatus: Record<
-  "Open" | "Reserved" | "Payed" | "Canceled" | "COD",
-  BasketStatusItem
+    "Open" | "Reserved" | "Payed" | "Canceled" | "COD",
+    BasketStatusItem
 > = {
   Open: {
     code: "Open",
     title: "global.basket_status.open",
     icon: "system_update_alt",
-    src: require("./assets/basket-open.svg"),
+    src: openImage,
     color: "#888",
   },
   Reserved: {
     code: "Reserved",
     title: "global.basket_status.reserved",
     icon: "pause_presentation",
-    src: require("./assets/basket-reserve.svg"),
+    src: reserveImage,
     color: "amber",
   },
   Payed: {
     code: "Payed",
     title: "global.basket_status.paid",
     icon: "payment",
-    src: require("./assets/basket-payed.svg"),
+    src: payedImage,
     color: "green",
   },
   Canceled: {
     code: "Canceled",
     title: "global.basket_status.canceled",
     icon: "cancel_presentation",
-    src: require("./assets/basket-canceled.svg"),
+    src: canceledImage,
     color: "red",
   },
   COD: {
     code: "COD",
     title: "global.basket_status.cod",
     icon: "local_atm",
-    src: require("./assets/basket-cod.svg"),
+    src: codImage,
     color: "blue",
   },
 };

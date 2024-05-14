@@ -11,6 +11,10 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+import webIcon from "./assets/web.svg";
+import apiIcon from "./assets/code.svg";
+import androidIcon from "./assets/android.svg";
+import iosIcon from "./assets/apple-b.svg";
 
 /**
  * Describes the structure of a single platform.
@@ -38,21 +42,21 @@ export const Platform: Record<string, PlatformType> = {
   web: {
     code: "web",
     title: "Web",
-    icon: require("./assets/web.svg"),
+    icon: webIcon,
   },
   api: {
     code: "api",
     title: "API",
-    icon: require("./assets/code.svg"),
+    icon: apiIcon,
   },
   android: {
     code: "android",
     title: "Android",
-    icon: require("./assets/android.svg"),
+    icon: androidIcon,
   },
   ios: {
     code: "ios",
     title: "iOS",
-    icon: require("./assets/apple-b.svg"),
+    icon: iosIcon,
   },
 };

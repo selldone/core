@@ -12,33 +12,38 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import fixIcon from '../../assets/pricings/fix.svg';
+import estimationIcon from '../../assets/pricings/estimation.svg';
+import agreementIcon from '../../assets/pricings/agreement.svg';
+import bidIcon from '../../assets/pricings/bid.svg';
+
 export const PricingTypes = {
   FIX: {
     // Fix price    (Physical, Virtual, File, Service)
     code: "FIX",
     title: "global.PricingTypes.FIX.title",
     message: "global.PricingTypes.FIX.message",
-    image: require("../../assets/pricings/fix.svg"),
+    image: fixIcon,
   },
   ESTIMATION: {
     // Set price in pre-checkout by seller and can be change in future (Service only)
     code: "ESTIMATION",
     title: "global.PricingTypes.ESTIMATION.title",
     message: "global.PricingTypes.ESTIMATION.message",
-    image: require("../../assets/pricings/estimation.svg"),
+    image: estimationIcon,
   },
   AGREEMENT: {
     // Set final price in pre-checkout by seller (Service only)
     code: "AGREEMENT",
     title: "global.PricingTypes.AGREEMENT.title",
     message: "global.PricingTypes.AGREEMENT.message",
-    image: require("../../assets/pricings/agreement.svg"),
+    image: agreementIcon,
   },
   BID: {
     // Bid on product by buyer (Higher win) -> Disable now
     code: "BID",
     title: "global.PricingTypes.BID.title",
     message: "global.PricingTypes.BID.message",
-    image: require("../../assets/pricings/bid.svg"),
+    image: bidIcon,
   },
 };

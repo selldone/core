@@ -12,25 +12,30 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import AirdropImage from '../assets/gift/air-drop.svg';
+import AdvertisementImage from '../assets/gift/advertisment.svg';
+import PersonalGiftImage from '../assets/gift/personal-gift.svg';
+import ShopGiftImage from '../assets/gift/shop-gift.svg';
+
 export const GiftStProgramTypes = {
   Airdrop: {
     code: "Airdrop",
     title: "global.gift_program_status.Airdrop",
-    image: require("../assets/gift/air-drop.svg")
+    image: AirdropImage
   },
   Advertisement: {
     code: "Advertisement",
     title: "global.gift_program_status.Advertisement",
-    image: require("../assets/gift/advertisment.svg")
+    image: AdvertisementImage
   },
   PersonalGift: {
     code: "PersonalGift",
     title: "global.gift_program_status.PersonalGift",
-    image: require("../assets/gift/personal-gift.svg")
+    image: PersonalGiftImage
   },
   ShopGift: {
     code: "ShopGift",
     title: "global.gift_program_status.ShopGift",
-    image: require("../assets/gift/shop-gift.svg")
+    image: ShopGiftImage
   }
 };

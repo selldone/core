@@ -22,9 +22,10 @@ import {
 import _ from "lodash-es";
 import { MD5 } from "../helper/string/MD5";
 import { LRUCache } from "../helper/cache/LRUCache";
-const axios = require("axios");
+import axios from 'axios';
+window.axios = axios;
 
-interface IAPIConfig {
+export interface IAPIConfig {
   axiosInstance: AxiosInstance;
   debounceTime?: number;
 }
@@ -480,7 +481,7 @@ export abstract class APIAbstract {
 /**
  * Interface extending the native Promise to support cache functionality.
  */
-interface IExtendedPromiseWithCache<T> extends Promise<T> {
+export interface IExtendedPromiseWithCache<T> extends Promise<T> {
   /** Cache key for the current promise. */
   __cache_key?: string;
   __cache_callback_disabled?: boolean;

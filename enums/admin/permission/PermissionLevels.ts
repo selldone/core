@@ -23,36 +23,42 @@
  *
  * @enum {Object}
  */
+import fullAccessImage from "../assets/levels/chevron-1star-2line.svg";
+import writeAccessImage from "../assets/levels/chevron-2line.svg";
+import readAccessImage from "../assets/levels/chevron-1line.svg";
+import deleteAccessImage from "../assets/levels/chevron-3line.svg";
+import editAccessImage from "../assets/levels/chevron-circle-star.svg";
+import checkAccessImage from "../assets/levels/chevron-1star.svg";
+
 export const PermissionLevels = {
   FULL_ACCESS: {
     code: "FULL_ACCESS",
     title: "Full access to all sections",
-    image: require("../assets/levels/chevron-1star-2line.svg")
+    image: fullAccessImage
   },
   WRITE_ACCESS: {
     code: "WRITE_ACCESS",
     title: "Write & Edit",
-    image: require("../assets/levels/chevron-2line.svg")
+    image: writeAccessImage
   },
   READ_ACCESS: {
     code: "READ_ACCESS",
     title: "Read only",
-    image: require("../assets/levels/chevron-1line.svg")
+    image: readAccessImage
   },
   DELETE_ACCESS: {
     code: "DELETE_ACCESS",
     title: "Delete access",
-    image: require("../assets/levels/chevron-3line.svg")
+    image: deleteAccessImage
   },
   EDIT_ACCESS: {
     code: "EDIT_ACCESS",
     title: "Edit access",
-    image: require("../assets/levels/chevron-circle-star.svg")
+    image: editAccessImage
   },
   CHECK_ACCESS: {
     code: "CHECK_ACCESS",
     title: "Check and confirm",
-    image: require("../assets/levels/chevron-1star.svg")
+    image: checkAccessImage
   },
-
 };

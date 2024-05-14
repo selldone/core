@@ -20,6 +20,7 @@ import "./utils/console/ConsoleStyle";
 import {CDN} from "./server/CDN";
 import {URLS} from "./server/URLS";
 import Cookie from "./utils/cookie/cookie";
+import axios from 'axios';
 
 const SDK_VERSION = "0.04";
 //█████████████████████████████████████████████████████████████
@@ -62,7 +63,7 @@ export class SelldoneCore {
 
 
         //――――――――――――――――――――――――― Axios ―――――――――――――――――――――――――
-        window.axios = require("axios");
+        window.axios = axios;
         // 🞧 Header: CORS
         window.axios.defaults.headers.common["Access-Control-Allow-Origin"] =
             SetupService.MainServiceUrl();

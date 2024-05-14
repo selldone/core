@@ -12,6 +12,16 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import adminIcon from './assets/permissions/admin.svg';
+import productIcon from './assets/permissions/product.svg';
+import auditingIcon from './assets/permissions/auditing.svg';
+import contentIcon from './assets/permissions/content.svg';
+import officerIcon from './assets/permissions/officer.svg';
+import employeeIcon from './assets/permissions/employee.svg';
+import marketingIcon from './assets/permissions/marketing.svg';
+import viewerIcon from './assets/permissions/viewer.svg';
+
+
 export const LEVELS = {
   DASHBOARD: { name: "admin_shop.menu.dashboard", icon: "dashboard" },
   PRODUCTS: { name: "admin_shop.menu.products", icon: "apps" },
@@ -51,35 +61,35 @@ export const ShopPermissions = {
     text: "shop_permissions.ADMIN.text",
     code: "ADMIN",
     description: "shop_permissions.ADMIN.description",
-    src: require("./assets/permissions/admin.svg"),
+    src: adminIcon,
     levels: Object.values(LEVELS),
   },
   PRODUCT: {
     text: "shop_permissions.PRODUCT.text",
     code: "PRODUCT",
     description: "shop_permissions.PRODUCT.description",
-    src: require("./assets/permissions/product.svg"),
+    src: productIcon,
     levels: [LEVELS.PRODUCTS, LEVELS.CATEGORIES, LEVELS.BLOG, LEVELS.LOGISTIC],
   },
   AUDITING: {
     text: "shop_permissions.AUDITING.text",
     code: "AUDITING",
     description: "shop_permissions.AUDITING.description",
-    src: require("./assets/permissions/auditing.svg"),
+    src: auditingIcon,
     levels: [LEVELS.ORDERS, LEVELS.ACCOUNTING, LEVELS.INCENTIVES],
   },
   CONTENT: {
     text: "shop_permissions.CONTENT.text",
     code: "CONTENT",
     description: "shop_permissions.CONTENT.description",
-    src: require("./assets/permissions/content.svg"),
+    src: contentIcon,
     levels: [LEVELS.BLOG, LEVELS.PAGES],
   },
   OFFICER: {
     text: "shop_permissions.OFFICER.text",
     code: "OFFICER",
     description: "shop_permissions.OFFICER.description",
-    src: require("./assets/permissions/officer.svg"),
+    src: officerIcon,
     levels: [
       LEVELS.DASHBOARD,
       LEVELS.PRODUCTS,
@@ -99,21 +109,21 @@ export const ShopPermissions = {
     text: "shop_permissions.EMPLOYEE.text",
     code: "EMPLOYEE",
     description: "shop_permissions.EMPLOYEE.description",
-    src: require("./assets/permissions/employee.svg"),
+    src: employeeIcon,
     levels: [LEVELS.PRODUCTS, LEVELS.BLOG, LEVELS.ORDERS, LEVELS.LOGISTIC],
   },
   MARKETING: {
     text: "shop_permissions.MARKETING.text",
     code: "MARKETING",
     description: "shop_permissions.MARKETING.description",
-    src: require("./assets/permissions/marketing.svg"),
+    src: marketingIcon,
     levels: [LEVELS.MARKETING],
   },
   VIEWER: {
     text: "shop_permissions.VIEWER.text",
     code: "VIEWER",
     description: "shop_permissions.VIEWER.description",
-    src: require("./assets/permissions/viewer.svg"),
+    src: viewerIcon,
     levels: [],
   },
 };

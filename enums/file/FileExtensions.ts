@@ -12,59 +12,97 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const FileExtensions =
-[
-  {ex:['3ds'],src:require('./assets/extensions/3ds.svg')},
-  {ex:['ai'],src:require('./assets/extensions/ai.svg')},
-  {ex:['asp'],src:require('./assets/extensions/asp.svg')},
-  {ex:['avi'],src:require('./assets/extensions/avi.svg')},
-  {ex:['bin'],src:require('./assets/extensions/bin.svg')},
-  {ex:['com'],src:require('./assets/extensions/com.svg')},
-  {ex:['css'],src:require('./assets/extensions/css.svg')},
-  {ex:['csv'],src:require('./assets/extensions/csv.svg')},
-  {ex:['dbf'],src:require('./assets/extensions/dbf.svg')},
-  {ex:['dll'],src:require('./assets/extensions/dll.svg')},
 
-  {ex:['doc'],src:require('./assets/extensions/doc.svg')},
-  {ex:['docs'],src:require('./assets/extensions/doc2.svg')},
-  {ex:['docx'],src:require('./assets/extensions/docx.svg')},
+import _3dsIcon from './assets/extensions/3ds.svg';
+import aiIcon from './assets/extensions/ai.svg';
+import aspIcon from './assets/extensions/asp.svg';
+import aviIcon from './assets/extensions/avi.svg';
+import binIcon from './assets/extensions/bin.svg';
+import comIcon from './assets/extensions/com.svg';
+import cssIcon from './assets/extensions/css.svg';
+import csvIcon from './assets/extensions/csv.svg';
+import dbfIcon from './assets/extensions/dbf.svg';
+import dllIcon from './assets/extensions/dll.svg';
+import docIcon from './assets/extensions/doc.svg';
+import docsIcon from './assets/extensions/doc2.svg';
+import docxIcon from './assets/extensions/docx.svg';
+import dwgIcon from './assets/extensions/dwg.svg';
+import emlIcon from './assets/extensions/eml.svg';
+import epsIcon from './assets/extensions/eps.svg';
+import exeIcon from './assets/extensions/exe.svg';
+import flaIcon from './assets/extensions/fla.svg';
+import gifIcon from './assets/extensions/gif.svg';
+import htmlIcon from './assets/extensions/html.svg';
+import icoIcon from './assets/extensions/ico.svg';
+import iniIcon from './assets/extensions/ini.svg';
+import isoIcon from './assets/extensions/iso.svg';
+import jarIcon from './assets/extensions/jar.svg';
+import jpgIcon from './assets/extensions/jpg.svg';
+import jsIcon from './assets/extensions/js.svg';
+import mkvIcon from './assets/extensions/mkv.svg';
+import movIcon from './assets/extensions/mov.svg';
+import mp3Icon from './assets/extensions/mp3.svg';
+import mp4Icon from './assets/extensions/mp4.svg';
+import objIcon from './assets/extensions/obj.svg';
+import pdfIcon from './assets/extensions/pdf.svg';
+import pkgIcon from './assets/extensions/pkg.svg';
+import pngIcon from './assets/extensions/png.svg';
+import pptIcon from './assets/extensions/ppt.svg';
+import psdIcon from './assets/extensions/psd.svg';
+import rtfIcon from './assets/extensions/rtf.svg';
+import svgIcon from './assets/extensions/svg.svg';
+import ttfIcon from './assets/extensions/ttf.svg';
+import txtIcon from './assets/extensions/txt.svg';
+import vcfIcon from './assets/extensions/vcf.svg';
+import rarIcon from './assets/extensions/rar.svg';
+import zipIcon from './assets/extensions/zip.svg';
+import xlsIcon from './assets/extensions/xls.svg';
+import webpIcon from './assets/extensions/webp.svg';
 
-  {ex:['dwg'],src:require('./assets/extensions/dwg.svg')},
-  {ex:['eml'],src:require('./assets/extensions/eml.svg')},
-  {ex:['eps'],src:require('./assets/extensions/eps.svg')},
-  {ex:['exe'],src:require('./assets/extensions/exe.svg')},
-  {ex:['fla'],src:require('./assets/extensions/fla.svg')},
-  {ex:['gif'],src:require('./assets/extensions/gif.svg')},
-  {ex:['htm','html'],src:require('./assets/extensions/html.svg')},
-  {ex:['ico'],src:require('./assets/extensions/ico.svg')},
-  {ex:['ini'],src:require('./assets/extensions/ini.svg')},
-  {ex:['iso'],src:require('./assets/extensions/iso.svg')},
-  {ex:['jar'],src:require('./assets/extensions/jar.svg')},
-  {ex:['jpg','jpeg'],src:require('./assets/extensions/jpg.svg')},
-  {ex:['js'],src:require('./assets/extensions/js.svg')},
-  {ex:['mkv'],src:require('./assets/extensions/mkv.svg')},
-  {ex:['mov'],src:require('./assets/extensions/mov.svg')},
-  {ex:['mp3'],src:require('./assets/extensions/mp3.svg')},
-  {ex:['mp4','m4v'],src:require('./assets/extensions/mp4.svg')},
-  {ex:['obj'],src:require('./assets/extensions/obj.svg')},
-  {ex:['pdf'],src:require('./assets/extensions/pdf.svg')},
-  {ex:['pkg'],src:require('./assets/extensions/pkg.svg')},
-
-
-  {ex:['png'],src:require('./assets/extensions/png.svg')},
-  {ex:['ppt'],src:require('./assets/extensions/ppt.svg')},
-  {ex:['psd'],src:require('./assets/extensions/psd.svg')},
-  {ex:['rtf'],src:require('./assets/extensions/rtf.svg')},
-  {ex:['svg'],src:require('./assets/extensions/svg.svg')},
-  {ex:['ttf'],src:require('./assets/extensions/ttf.svg')},
-  {ex:['txt'],src:require('./assets/extensions/txt.svg')},
-  {ex:['vcf'],src:require('./assets/extensions/vcf.svg')},
-
-  {ex:['rar'],src:require('./assets/extensions/rar.svg')},
-  {ex:['zip'],src:require('./assets/extensions/zip.svg')},
-
-  {ex:['xlsx','xls'],src:require('./assets/extensions/xls.svg')},
-
-  {ex:['webp'],src:require('./assets/extensions/webp.svg')},
-
+export const FileExtensions = [
+  {ex:['3ds'],src:_3dsIcon},
+  {ex:['ai'],src:aiIcon},
+  {ex:['asp'],src:aspIcon},
+  {ex:['avi'],src:aviIcon},
+  {ex:['bin'],src:binIcon},
+  {ex:['com'],src:comIcon},
+  {ex:['css'],src:cssIcon},
+  {ex:['csv'],src:csvIcon},
+  {ex:['dbf'],src:dbfIcon},
+  {ex:['dll'],src:dllIcon},
+  {ex:['doc'],src:docIcon},
+  {ex:['docs'],src:docsIcon},
+  {ex:['docx'],src:docxIcon},
+  {ex:['dwg'],src:dwgIcon},
+  {ex:['eml'],src:emlIcon},
+  {ex:['eps'],src:epsIcon},
+  {ex:['exe'],src:exeIcon},
+  {ex:['fla'],src:flaIcon},
+  {ex:['gif'],src:gifIcon},
+  {ex:['htm','html'],src:htmlIcon},
+  {ex:['ico'],src:icoIcon},
+  {ex:['ini'],src:iniIcon},
+  {ex:['iso'],src:isoIcon},
+  {ex:['jar'],src:jarIcon},
+  {ex:['jpg','jpeg'],src:jpgIcon},
+  {ex:['js'],src:jsIcon},
+  {ex:['mkv'],src:mkvIcon},
+  {ex:['mov'],src:movIcon},
+  {ex:['mp3'],src:mp3Icon},
+  {ex:['mp4','m4v'],src:mp4Icon},
+  {ex:['obj'],src:objIcon},
+  {ex:['pdf'],src:pdfIcon},
+  {ex:['pkg'],src:pkgIcon},
+  {ex:['png'],src:pngIcon},
+  {ex:['ppt'],src:pptIcon},
+  {ex:['psd'],src:psdIcon},
+  {ex:['rtf'],src:rtfIcon},
+  {ex:['svg'],src:svgIcon},
+  {ex:['ttf'],src:ttfIcon},
+  {ex:['txt'],src:txtIcon},
+  {ex:['vcf'],src:vcfIcon},
+  {ex:['rar'],src:rarIcon},
+  {ex:['zip'],src:zipIcon},
+  {ex:['xlsx','xls'],src:xlsIcon},
+  {ex:['webp'],src:webpIcon},
 ];

@@ -12,12 +12,28 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import mapboxIcon from './assets/mapbox.svg';
+export  interface GiftCard {
 
-export const MapProviders ={
-  Mapbox: {
-    code: "Mapbox",
-    title: "Mapbox",
-    icon: mapboxIcon,
-  },
-};
+    id: number;
+    type_id: number;
+    shop_id: number;
+    vitem_id: number | null;
+
+    user_id: number;         // Owner (Use this card)
+    customer_id: number;
+    number: string;
+    cvv: string;
+    balance: number;
+    lock: number;
+    payed: number;
+    currency: string;
+    title: string;
+    expire_at: string;         // Using Date to represent Carbon type
+    enable: boolean;         // Enable card
+    note: string;            // Note by admin (Show to user!)
+
+    created_at: string;        // Using Date to represent Carbon type
+    updated_at: string;        // Using Date to represent Carbon type
+    deleted_at: string;        // Using Date to represent Carbon type
+
+}

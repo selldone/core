@@ -11,6 +11,11 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+import likeIcon from './assets/reactions/like.svg';
+import smileIcon from './assets/reactions/smile.svg';
+import clapIcon from './assets/reactions/claps.svg';
+import ideaIcon from './assets/reactions/idea.svg';
+import disagreeIcon from './assets/reactions/disagree.svg';
 
 /**
  * Defines the structure of a post reaction.
@@ -34,31 +39,31 @@ export const PostReaction: Record<string, IPostReactionType> = {
   LIKE: {
     code: "LIKE",
     name: "community.post_reaction.LIKE",
-    image: require('./assets/reactions/like.svg'),
+    image: likeIcon,
     column: 'likes',
   },
   SMILE: {
     code: "SMILE",
     name: "community.post_reaction.SMILE",
-    image: require('./assets/reactions/smile.svg'),
+    image: smileIcon,
     column: 'smiles',
   },
   CLAP: {
     code: "CLAP",
     name: "community.post_reaction.CLAP",
-    image: require('./assets/reactions/claps.svg'),
+    image: clapIcon,
     column: 'claps',
   },
   IDEA: {
     code: "IDEA",
     name: "community.post_reaction.IDEA",
-    image: require('./assets/reactions/idea.svg'),
+    image: ideaIcon,
     column: 'ideas',
   },
   DISAGREE: {
     code: "DISAGREE",
     name: "community.post_reaction.DISAGREE",
-    image: require('./assets/reactions/disagree.svg'),
+    image: disagreeIcon,
     column: 'disagrees',
   },
 };

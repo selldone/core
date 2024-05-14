@@ -13,6 +13,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import {User} from "../../user/user.model";
+
 export interface GatewayQue {
   /** Unique identifier for the record. */
   id: number;

@@ -14,6 +14,7 @@
 
 import {ProductType} from "../../enums/product/ProductType";
 import {Currency} from "../../enums/payment/Currency";
+import packageImage from "./assets/package.svg";
 
 export const InventoryCsvHeaders = [
   "Product ID",
@@ -56,7 +57,7 @@ export const InventoryCsvStyler = {
       ...Object.values(ProductType),
       {
         code: "VARIANT",
-        image: require("./assets/package.svg"),
+        image: packageImage,
       },
     ],
   },

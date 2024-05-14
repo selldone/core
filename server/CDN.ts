@@ -14,6 +14,8 @@
 
 import { SetupService } from "./SetupService";
 import { PlaceholderImages } from "../helper/image/PlaceholderImages";
+import imagePlaceholder from "../helper/image/assets/image-placeholder.svg";
+
 
 export class CDN {
   selldone_service_url: string = "";
@@ -66,7 +68,7 @@ export class CDN {
       if (random_fill && Number.isInteger(random_fill))
         return PlaceholderImages.GetIDImage(random_fill as number);
       if (random_fill) return PlaceholderImages.GetRamonImage();
-      return require("../helper/image/assets/image-placeholder.svg");
+      return imagePlaceholder;
     }
 
     // Invalid size mode file formats:

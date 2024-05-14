@@ -12,12 +12,19 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import mapboxIcon from './assets/mapbox.svg';
+export  interface DiscountCode {
+    id: number;
+    code: string;
+    percent: number;
+    max: number;
+    used: number;
+    limit: number;
+    currency: string;
+    dis_start: string;
+    dis_end: string;
+    title: string;
+    description: string;
+    amount_discount: number;
+    note: { user_id: number, user_name: string, body: string, date: string }[];
 
-export const MapProviders ={
-  Mapbox: {
-    code: "Mapbox",
-    title: "Mapbox",
-    icon: mapboxIcon,
-  },
-};
+}

@@ -43,7 +43,7 @@ export class Gateway implements Gateway.IGateway {
   url: string;
   component: string;
   timeout: number;
-  network: GatewayNetworkStatus;
+  network: any;
   wallet: any[]; // assuming array of a certain type, replace 'any' with the specific type if known
   script: string;
 
@@ -88,7 +88,7 @@ export namespace Gateway {
     url?: string;
     component?: string;
     timeout?: number;
-    network?: GatewayNetworkStatus; // Assuming GatewayNetworkStatus is defined elsewhere
+    network?: any; // Assuming GatewayNetworkStatus is defined elsewhere
     wallet?: any[]; // assuming array of a certain type, replace 'any' with the specific type if known
     script?: string;
   }

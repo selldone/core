@@ -12,35 +12,42 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import newIcon from '../../assets/conditions/new.svg';
+import refurbishedIcon from '../../assets/conditions/refurbished.svg';
+import usedIcon from '../../assets/conditions/used.svg';
+import usedFairIcon from '../../assets/conditions/used-fair.svg';
+import usedGoodIcon from '../../assets/conditions/used-good.svg';
+import usedLikeNewIcon from '../../assets/conditions/used-like-new.svg';
+
 export const ProductCondition = {
   NEW: {
     title: "global.condition.new",
     code: "new",
-    icon: require("../../assets/conditions/new.svg"),
+    icon: newIcon,
   },
   REFURBISHED: {
     title: "global.condition.refurbished",
     code: "refurbished",
-    icon: require("../../assets/conditions/refurbished.svg"),
+    icon: refurbishedIcon,
   },
   USED: {
     title: "global.condition.used",
     code: "used",
-    icon: require("../../assets/conditions/used.svg"),
+    icon: usedIcon,
   },
   USED_FAIR: {
     title: "global.condition.used_fair",
     code: "used_fair",
-    icon: require("../../assets/conditions/used-fair.svg"),
+    icon: usedFairIcon,
   },
   USED_GOOD: {
     title: "global.condition.used_good",
     code: "used_good",
-    icon: require("../../assets/conditions/used-good.svg"),
+    icon: usedGoodIcon,
   },
   USED_LIKE_NEW: {
     title: "global.condition.used_like_new",
     code: "used_like_new",
-    icon: require("../../assets/conditions/used-like-new.svg"),
+    icon: usedLikeNewIcon,
   },
 };

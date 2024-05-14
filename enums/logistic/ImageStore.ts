@@ -12,18 +12,31 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const ImageStore = {
-  motorbike: require("./assets/transportations/motorbike.svg"),
-  cargo_small: require("./assets/transportations/cargo_s.svg"),
-  cargo: require("./assets/transportations/cargo.svg"),
-  truck: require("./assets/transportations/truck.svg"),
-  post_fast: require("./assets/transportations/post_fast.svg"),
-  post: require("./assets/transportations/post.svg"),
-  airplane: require("./assets/transportations/airplane.svg"),
-  bicycle: require("./assets/transportations/bicycle.svg"),
-  global: require("./assets/transportations/global.svg"),
-  motor_taxi: require("./assets/transportations/motor_taxi.svg"),
-  car: require("./assets/transportations/car.svg"),
+import motorbikeIcon from './assets/transportations/motorbike.svg';
+import cargoSmallIcon from './assets/transportations/cargo_s.svg';
+import cargoIcon from './assets/transportations/cargo.svg';
+import truckIcon from './assets/transportations/truck.svg';
+import postFastIcon from './assets/transportations/post_fast.svg';
+import postIcon from './assets/transportations/post.svg';
+import airplaneIcon from './assets/transportations/airplane.svg';
+import bicycleIcon from './assets/transportations/bicycle.svg';
+import globalIcon from './assets/transportations/global.svg';
+import motorTaxiIcon from './assets/transportations/motor_taxi.svg';
+import carIcon from './assets/transportations/car.svg';
+import boxIcon from '../../assets/icons/box-3d.svg';
 
-  box: require("../../assets/icons/box-3d.svg")
+
+export const ImageStore = {
+  motorbike: motorbikeIcon,
+  cargo_small: cargoSmallIcon,
+  cargo: cargoIcon,
+  truck: truckIcon,
+  post_fast: postFastIcon,
+  post: postIcon,
+  airplane: airplaneIcon,
+  bicycle: bicycleIcon,
+  global: globalIcon,
+  motor_taxi: motorTaxiIcon,
+  car: carIcon,
+  box: boxIcon,
 };

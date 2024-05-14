@@ -13,10 +13,20 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import telegramIcon from "./assets/telegram.svg";
+import slackIcon from "./assets/slack.svg";
+import alexaIcon from "./assets/alexa.svg";
+import ciscoIcon from "./assets/cisco.svg";
+import facebookIcon from "./assets/facebook-messenger.svg";
+import hipchatIcon from "./assets/hipchat.svg";
+import microsoftIcon from "./assets/microsoft.svg";
+import twilioIcon from "./assets/twilio.svg";
+import wechatIcon from "./assets/wechat.svg";
+
 export const ShopBots = [
   {
     driver: "Telegram",
-    icon: require("./assets/telegram.svg"),
+    icon: telegramIcon,
     name: "Telegram",
     token: "Bot API Key",
     placeholder: "",
@@ -27,7 +37,7 @@ export const ShopBots = [
   },
   {
     driver: "Slack",
-    icon: require("./assets/slack.svg"),
+    icon: slackIcon,
     name: "Slack",
     token: "Token",
     available: false,
@@ -37,17 +47,16 @@ export const ShopBots = [
   },
   {
     driver: "AmazonAlexa",
-    icon: require("./assets/alexa.svg"),
+    icon: alexaIcon,
     name: "Amazon Alexa",
     available: false,
     getWebhookURL: (shop_id, secret) => {
       return `https://bots.selldone.com/${shop_id}/amazon-${secret}`;
     },
   },
-
   {
     driver: "CiscoSpark",
-    icon: require("./assets/cisco.svg"),
+    icon: ciscoIcon,
     name: "Cisco Spark",
     token: "Token",
     token2: "Secret",
@@ -56,10 +65,9 @@ export const ShopBots = [
       return `https://bots.selldone.com/${shop_id}/cisco-${secret}`;
     },
   },
-
   {
     driver: "Facebook",
-    icon: require("./assets/facebook-messenger.svg"),
+    icon: facebookIcon,
     name: "Facebook Messenger",
     token: "Token",
     token2: "App Secret",
@@ -69,11 +77,9 @@ export const ShopBots = [
       return `https://bots.selldone.com/${shop_id}/facebook-${secret}`;
     },
   },
-
-
   {
     driver: "HipChat",
-    icon: require("./assets/hipchat.svg"),
+    icon: hipchatIcon,
     name: "HipChat",
     available: false,
     getWebhookURL: (shop_id, secret) => {
@@ -82,7 +88,7 @@ export const ShopBots = [
   },
   {
     driver: "BotFramework",
-    icon: require("./assets/microsoft.svg"),
+    icon: microsoftIcon,
     name: "Microsoft Bot Framework / Skype",
     token: "API ID",
     token2: "API Key",
@@ -91,11 +97,9 @@ export const ShopBots = [
       return `https://bots.selldone.com/${shop_id}/microsoft-${secret}`;
     },
   },
-
-
   {
     driver: "Twilio",
-    icon: require("./assets/twilio.svg"),
+    icon: twilioIcon,
     name: "Twilio",
     token: "Token",
     available: false,
@@ -105,7 +109,7 @@ export const ShopBots = [
   },
   {
     driver: "WeChat",
-    icon: require("./assets/wechat.svg"),
+    icon: wechatIcon,
     name: "WeChat",
     token: "App ID",
     token2: "App Key",

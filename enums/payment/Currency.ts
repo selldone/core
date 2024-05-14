@@ -12,6 +12,14 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import adaIcon from './assets/currency/ADA.png';
+import btcIcon from './assets/currency/currency_bitcoin.svg';
+import ethIcon from './assets/currency/ethereum.svg';
+import nioIcon from "./assets/currency/nio-token.svg";
+import selldoneIcon from "./assets/currency/samin-token.svg";
+
+
+
 /**
  * Represents the details of a currency.
  *
@@ -2008,7 +2016,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     enable: true,
     name: "global.currency.ADA",
     country: "Blockchain",
-    icon: require("./assets/currency/ADA.png"),
+    icon: adaIcon,
     floats: 6,
     format: "0,0.[000000]",
     round_factor: 1,
@@ -2022,7 +2030,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     enable: true,
     name: "global.currency.BTC",
     country: "Blockchain",
-    icon: require("./assets/currency/currency_bitcoin.svg"),
+    icon: btcIcon,
     floats: 6,
     format: "0,0.[000000]",
     round_factor: 1,
@@ -2035,7 +2043,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     enable: false,
     name: "global.currency.ETH",
     country: "Blockchain",
-    icon: require("./assets/currency/ethereum.svg"),
+    icon: ethIcon,
     floats: 6,
     format: "0,0.[000000]",
     round_factor: 1,
@@ -2049,7 +2057,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     enable: false,
     name: "global.currency.NIOC",
     country: "Blockchain",
-    icon: require("./assets/currency/nio-token.svg"),
+    icon: nioIcon,
     floats: 4,
     format: "0,0.[0000]",
     round_factor: 1,
@@ -2062,7 +2070,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     enable: true,
     name: "global.currency.SEL",
     country: "Blockchain",
-    icon: require("./assets/currency/samin-token.svg"),
+    icon: selldoneIcon,
     floats: 4,
     format: "0,0.[0000]",
     round_factor: 1,

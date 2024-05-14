@@ -12,32 +12,37 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import PhysicalOrdersCheckingIcon from './assets/role/PhysicalOrdersChecking.svg';
+import PhysicalOrdersPackagingIcon from './assets/role/PhysicalOrdersPackaging.svg';
+import PhysicalOrdersDeliveryIcon from './assets/role/PhysicalOrdersDelivery.svg';
+import PhysicalOrdersSupportIcon from './assets/role/PhysicalOrdersSupport.svg';
+
 export const ShopRoles = {
   PhysicalOrdersChecking: {
     text: "shop_roles.PhysicalOrdersChecking.text",
     code: "PhysicalOrdersChecking",
     description: "shop_roles.PhysicalOrdersChecking.description",
-    src: require("./assets/role/PhysicalOrdersChecking.svg"),
+    src: PhysicalOrdersCheckingIcon,
   },
 
   PhysicalOrdersPackaging: {
     text: "shop_roles.PhysicalOrdersPackaging.text",
     code: "PhysicalOrdersPackaging",
     description: "shop_roles.PhysicalOrdersPackaging.description",
-    src: require("./assets/role/PhysicalOrdersPackaging.svg"),
+    src: PhysicalOrdersPackagingIcon,
   },
 
   PhysicalOrdersDelivery: {
     text: "shop_roles.PhysicalOrdersDelivery.text",
     code: "PhysicalOrdersDelivery",
     description: "shop_roles.PhysicalOrdersDelivery.description",
-    src: require("./assets/role/PhysicalOrdersDelivery.svg"),
+    src: PhysicalOrdersDeliveryIcon,
   },
 
   PhysicalOrdersSupport: {
     text: "shop_roles.PhysicalOrdersSupport.text",
     code: "PhysicalOrdersSupport",
     description: "shop_roles.PhysicalOrdersSupport.description",
-    src: require("./assets/role/PhysicalOrdersSupport.svg"),
+    src: PhysicalOrdersSupportIcon,
   },
 };

@@ -17,8 +17,8 @@ export interface Campaign {
   shop_id: number;
   name: string;
   enable: boolean;
-  start_at: Date;
-  end_at: Date;
+  start_at: string;
+  end_at: string;
   auto: boolean; // Auto apply to shop
   banner: any[]; // You might want to define a more specific type for banner items
   discount_id: number;
