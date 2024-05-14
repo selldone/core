@@ -18,8 +18,8 @@ import {ConnectScope} from "./ConnectScope";
 export const ConnectMode = {
   Migration: {
     code: "Migration",
-    title: "Migration",
-    desc: "Get products, categories, and customers. After the user deletes this service, the received products, categories, and customers will not be deleted.",
+    title: "connect_mode.Migration.title",
+    desc: "connect_mode.Migration.desc",
     webhooks: [
       ProviderWebhooks.notify_shop,
       ProviderWebhooks.sync_category,
@@ -35,8 +35,8 @@ export const ConnectMode = {
   },
   Dropshipping: {
     code: "Dropshipping",
-    title: "Dropshipping",
-    desc: "Get products, categories, and orders. The system removes products after the user removes the service.",
+    title: "connect_mode.Dropshipping.title",
+    desc: "connect_mode.Dropshipping.desc",
     webhooks: [
       ProviderWebhooks.notify_shop,
       ProviderWebhooks.sync_category,
@@ -56,8 +56,8 @@ export const ConnectMode = {
   },
   Marketplace: {
     code: "Marketplace",
-    title: "Marketplace",
-    desc: "Just sync inventory and receive orders (Products will be linked by SKU).",
+    title: "connect_mode.Marketplace.title",
+    desc: "connect_mode.Marketplace.desc",
     webhooks: [
       ProviderWebhooks.notify_shop,
       ProviderWebhooks.create_order,
@@ -71,8 +71,8 @@ export const ConnectMode = {
   },
   Accounting: {
     code: "Accounting",
-    title: "Accounting",
-    desc: "Send orders and financial information.",
+    title: "connect_mode.Accounting.title",
+    desc: "connect_mode.Accounting.desc",
     webhooks: [
       ProviderWebhooks.notify_shop,
       ProviderWebhooks.create_order,
@@ -88,8 +88,8 @@ export const ConnectMode = {
   },
   Other: {
     code: "Other",
-    title: "Other",
-    desc: "Other services.",
+    title: "connect_mode.Other.title",
+    desc: "connect_mode.Other.desc",
     webhooks: [
       ProviderWebhooks.notify_shop,
       ProviderWebhooks.sync_category,
