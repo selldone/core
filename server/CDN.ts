@@ -12,10 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "./SetupService";
-import { PlaceholderImages } from "../helper/image/PlaceholderImages";
+import {SetupService} from "./SetupService";
+import {PlaceholderImages} from "../helper/image/PlaceholderImages";
 import imagePlaceholder from "../helper/image/assets/image-placeholder.svg";
-
 
 export class CDN {
   selldone_service_url: string = "";
@@ -61,7 +60,7 @@ export class CDN {
   GET_SHOP_IMAGE_PATH(
     file_name: string | null,
     size: number | null = null,
-    random_fill: boolean | number = false
+    random_fill: boolean | number = false,
   ) {
     //console.log('Debug > GET_SHOP_IMAGE_PATH ',this.shop_cdn_images,file_name,size)
     if (!file_name) {
@@ -177,7 +176,7 @@ export class CDN {
     product_id: number,
     variant_id: number | null,
     folder_name: string,
-    file_name: string
+    file_name: string,
   ) {
     return `${this.shop_cdn_ar}/@${shop_name}/products/${product_id}/variants/${variant_id}/ar/${folder_name}/${file_name}`;
   }
@@ -204,6 +203,7 @@ export class CDN {
       (size !== null ? `?size=${size}` : "")
     );
   }
+
   GET_CATEGORY_ICON(category_id: number | string, size?: number | null) {
     return (
       `${this.cdn_image_by_id}/shops/categories/${category_id}/icon.png` +
@@ -220,7 +220,7 @@ export class CDN {
 
   GET_DELIVERY_SERVICE_ICON(
     delivery_service_id: number | string,
-    size?: number | null
+    size?: number | null,
   ) {
     return (
       `${this.cdn_image_by_id}/shops/delivery-services/${delivery_service_id}/icon.png` +
