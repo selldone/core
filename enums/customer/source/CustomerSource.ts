@@ -2,3 +2,4 @@
     CUSTOMER = "customer",
     VENDOR = "vendor",
   }
+
