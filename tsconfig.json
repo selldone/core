@@ -1,27 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "module": "ESNext",
     "importHelpers": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-
     "noEmitOnError": false,
     "composite": true,
-
-
     "jsx": "preserve",
     "jsxImportSource": "vue",
-
     "noImplicitThis": false,
     "strict": true,
-
-
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-
-
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -40,16 +32,26 @@
     }
   },
   "include": [
+    "assets",
+    "enums",
+    "events",
+    "gapi",
+    "helpers",
+    "models",
+    "prototypes",
+    "server",
+    "timeserie",
+    "types",
+    "utils",
     "**/*.ts",
     "**/*.tsx",
     "*.ts",
-    "*.tsx",
+    "*.tsx"
   ],
   "exclude": [
     "node_modules",
     "_docs",
     "public",
     "dist"
-
   ]
 }
