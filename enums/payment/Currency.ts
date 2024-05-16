@@ -12,13 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import adaIcon from './assets/currency/ADA.png';
-import btcIcon from './assets/currency/currency_bitcoin.svg';
-import ethIcon from './assets/currency/ethereum.svg';
+import adaIcon from "./assets/currency/ADA.png";
+import btcIcon from "./assets/currency/currency_bitcoin.svg";
+import ethIcon from "./assets/currency/ethereum.svg";
 import nioIcon from "./assets/currency/nio-token.svg";
 import selldoneIcon from "./assets/currency/samin-token.svg";
-
-
 
 /**
  * Represents the details of a currency.
@@ -2008,6 +2006,19 @@ const CurrencyRepository: Record<string, ICurrency> = {
     unicode: "Nu.",
     auto_rate: false,
   },
+  JOD: {
+    code: "JOD",
+    enable: true,
+    name: "JOD",
+    country: "Jordan",
+    flag: "JO",
+    floats: 2,
+    format: "0,0.[00]",
+    round_factor: 100,
+    gradient: ["#ff1313", "#800e0e"],
+    unicode: "د.أ",
+    auto_rate: false,
+  },
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -2082,7 +2093,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
 
 // Convert the object into an array of entries, sort by key, and reconstruct it into an object
 export const Currency: Record<string, ICurrency> = Object.entries(
-  CurrencyRepository
+  CurrencyRepository,
 )
   .sort(([key1], [key2]) => key1.localeCompare(key2))
   .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
