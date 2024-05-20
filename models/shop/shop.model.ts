@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "../../enums/payment/Currency";
-import { ExchangeRate } from "./payment/exchange_rate.model";
-import { WeekDays } from "../../enums/logistic/WeekDays";
+import {Currency} from "../../enums/payment/Currency";
+import {ExchangeRate} from "./payment/exchange_rate.model";
+import {WeekDays} from "../../enums/logistic/WeekDays";
 import {Domain} from "../../models/shop/domain/domain.model";
 import {ShopLicenseLimits} from "../../enums/shop/ShopLicense";
 
@@ -136,10 +136,10 @@ export class Shop {
   model?: string; // should be elaborated based on BusinessModel
 
   /** Domain details for local configuration. */
-  local?: Domain|null; // specific type can be added
+  local?: Domain | null; // specific type can be added
 
   /** Domain details for sub-domain configuration. */
-  sub?: Domain|null; // specific type can be added
+  sub?: Domain | null; // specific type can be added
 
   /** Supported countries for the shop. */
   countries: string[] = [];
@@ -180,11 +180,12 @@ export class Shop {
     data: {
       id: number;
       name: string;
-    } & Partial<Shop>
+    } & Partial<Shop>,
   ) {
     Object.assign(this, data);
   }
 }
+
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
@@ -200,9 +201,18 @@ export namespace Shop {
     light_header: boolean;
     light_footer: boolean;
     light_filter: boolean;
+
+    // Products listing config:
     mobile: string;
     tablet: string;
     pc: string;
+
+    // Products listing view for categories (folders):
+    mobile_f: string;
+    tablet_f: string;
+    pc_f: string;
+
+
     static: any | null;
     hover_actions: any | null;
     only_available: boolean;
@@ -221,7 +231,6 @@ export namespace Shop {
   export interface IOption {
     code: string;
     value: any; // This is either an array, boolean, or object. Might need to further sub-divide this type
-
   }
 
   export interface IRibbon {

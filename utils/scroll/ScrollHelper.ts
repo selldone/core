@@ -16,9 +16,10 @@ export default class ScrollHelper {
   static scrollToTop(top: number = 0, behavior: ScrollBehavior = "instant") {
     window.scrollTo({
       top: top, // Scroll to the top of the page
-      behavior: "instant", // Remove animation in change page!
+      behavior: behavior, // Remove animation in change page!
     });
   }
+
   static scrollToElement(
     selector: string,
     offset: number = 0,
