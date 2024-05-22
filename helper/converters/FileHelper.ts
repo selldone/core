@@ -13,27 +13,30 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { FileExtensions } from "../../enums/file/FileExtensions";
+import {FileExtensions} from "../../enums/file/FileExtensions";
 
 export class FileHelper {
-  static GetFileName(fullPath:string|null) {
+  static GetFileName(fullPath: string | null) {
     if (!fullPath) return null;
 
     return fullPath.replace(/^.*[\\\/]/, "");
   }
-  static GetFileExtension(fullPath:string|null) {
+
+  static GetFileExtension(fullPath: string | null) {
     if (!fullPath) return null;
     return fullPath.split(".").pop();
   }
-  static GetFileIcon(fullPath:string|null) {
+
+  static GetFileIcon(fullPath: string | null) {
     if (!fullPath) return null;
 
     const extension = FileHelper.GetFileExtension(fullPath);
+    console.log('extension',extension)
     const found = FileExtensions.find((it) => it.ex.includes(extension));
     return found ? found.src : null;
   }
 
-  static DataURItoBlob(dataURI:string|null) {
+  static DataURItoBlob(dataURI: string | null) {
     // convert base64 to raw binary data held in a string
     // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
     const byteString = atob(dataURI.split(",")[1]);
