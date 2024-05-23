@@ -212,7 +212,6 @@ export namespace Shop {
     tablet_f: string;
     pc_f: string;
 
-
     static: any | null;
     hover_actions: any | null;
     only_available: boolean;

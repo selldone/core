@@ -13,7 +13,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
 export class ImportQueVariant implements ImportQueVariant.IImportQueVariant {
   id: number;
   product_id: number;

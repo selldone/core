@@ -12,66 +12,64 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
-
 export interface Cluster {
-    /**
-     * The unique identifier of the cluster.
-     * @type {number}
-     */
-    id: number;
+  /**
+   * The unique identifier of the cluster.
+   * @type {number}
+   */
+  id: number;
 
-    /**
-     * The identifier of the associated shop.
-     * @type {number}
-     */
-    shop_id: number;
+  /**
+   * The identifier of the associated shop.
+   * @type {number}
+   */
+  shop_id: number;
 
-    /**
-     * The identifier of the associated user, or null if not assigned.
-     * @type {number | null}
-     */
-    user_id: number | null;
+  /**
+   * The identifier of the associated user, or null if not assigned.
+   * @type {number | null}
+   */
+  user_id: number | null;
 
-    /**
-     * The identifier of the parent cluster, or null if there is no parent.
-     * @type {number | null}
-     */
-    parent_id: number | null;
+  /**
+   * The identifier of the parent cluster, or null if there is no parent.
+   * @type {number | null}
+   */
+  parent_id: number | null;
 
-    /**
-     * The name of the cluster.
-     * @type {string}
-     */
-    name: string;
+  /**
+   * The name of the cluster.
+   * @type {string}
+   */
+  name: string;
 
-    /**
-     * A description of the cluster, or null if not provided.
-     * @type {string | null}
-     */
-    description: string | null;
+  /**
+   * A description of the cluster, or null if not provided.
+   * @type {string | null}
+   */
+  description: string | null;
 
-    /**
-     * The path to the cluster's icon image. Supported sizes: 64, 128, original.
-     * @type {string | null}
-     */
-    icon: string | null;
+  /**
+   * The path to the cluster's icon image. Supported sizes: 64, 128, original.
+   * @type {string | null}
+   */
+  icon: string | null;
 
-    /**
-     * The hex color code associated with the cluster.
-     * @type {string | null}
-     */
-    color: string | null;
+  /**
+   * The hex color code associated with the cluster.
+   * @type {string | null}
+   */
+  color: string | null;
 
-    /**
-     * The timestamp when the cluster was created.
-     * @type {string}
-     */
-    created_at: string;
+  /**
+   * The timestamp when the cluster was created.
+   * @type {string}
+   */
+  created_at: string;
 
-    /**
-     * The timestamp when the cluster was last updated.
-     * @type {string}
-     */
-    updated_at: string;
+  /**
+   * The timestamp when the cluster was last updated.
+   * @type {string}
+   */
+  updated_at: string;
 }

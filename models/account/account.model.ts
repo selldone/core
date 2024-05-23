@@ -15,119 +15,116 @@
 import {Currency} from "../../enums/payment/Currency";
 
 export interface Account {
+  /**
+   * Unique identifier for the account.
+   */
+  id: number;
 
-    /**
-     * Unique identifier for the account.
-     */
-    id: number;
+  /**
+   * ID of the associated user.
+   */
+  user_id: number;
 
-    /**
-     * ID of the associated user.
-     */
-    user_id: number;
+  /**
+   * Account number string.
+   */
+  account_number: string;
 
-    /**
-     * Account number string.
-     */
-    account_number: string;
+  /**
+   * Name associated with the account.
+   */
+  account_name: string;
 
-    /**
-     * Name associated with the account.
-     */
-    account_name: string;
+  /**
+   * Type of the account, e.g., "Single Share".
+   */
+  type: string;
 
-    /**
-     * Type of the account, e.g., "Single Share".
-     */
-    type: string;
+  /**
+   * Account status. (Refer to the AccountStatus enumeration for possible values)
+   */
+  status: Account.AccountStatus;
 
-    /**
-     * Account status. (Refer to the AccountStatus enumeration for possible values)
-     */
-    status: Account.AccountStatus;
+  /**
+   * Currency type used in the account. (Refer to the Currency link for details)
+   */
+  currency: keyof typeof Currency;
 
-    /**
-     * Currency type used in the account. (Refer to the Currency link for details)
-     */
-    currency: keyof typeof Currency;
+  /**
+   * Current balance of the account.
+   */
+  balance: number;
 
-    /**
-     * Current balance of the account.
-     */
-    balance: number;
+  /**
+   * Interest rate applicable to the account.
+   */
+  interest_rate: number;
 
-    /**
-     * Interest rate applicable to the account.
-     */
-    interest_rate: number;
+  /**
+   * Overdraft limit or value.
+   */
+  overdraft: number;
 
-    /**
-     * Overdraft limit or value.
-     */
-    overdraft: number;
+  /**
+   * Amount of funds that are locked or unavailable.
+   */
+  locked: number;
 
-    /**
-     * Amount of funds that are locked or unavailable.
-     */
-    locked: number;
+  /**
+   * Extra information provided by the user.
+   */
+  options: object;
 
-    /**
-     * Extra information provided by the user.
-     */
-    options: object;
+  /**
+   * ID of the associated company, if any.
+   */
+  company_id?: number | null;
 
-    /**
-     * ID of the associated company, if any.
-     */
-    company_id?: number | null;
+  /**
+   * Subscription UID as defined in the payment service (e.g., Stripe).
+   */
+  subscription_uid?: string | null;
 
-    /**
-     * Subscription UID as defined in the payment service (e.g., Stripe).
-     */
-    subscription_uid?: string | null;
+  /**
+   * The last date and time when usage was synchronized with Stripe.
+   */
+  usage_sync_at?: Date | null;
 
-    /**
-     * The last date and time when usage was synchronized with Stripe.
-     */
-    usage_sync_at?: Date | null;
+  /**
+   * The last date and time when charges were synchronized with Stripe.
+   */
+  charges_sync_at?: Date | null;
 
-    /**
-     * The last date and time when charges were synchronized with Stripe.
-     */
-    charges_sync_at?: Date | null;
-
-    /**
-     * Extra metadata or information provided by the service.
-     */
-    meta?: any[] | null;  // Adjust the type as per the structure of the meta data
-
+  /**
+   * Extra metadata or information provided by the service.
+   */
+  meta?: any[] | null; // Adjust the type as per the structure of the meta data
 }
 
-
 export namespace Account {
-    export enum AccountStatus {
-        /** First step checking account state. */
-        Checking = 'Checking',
+  export enum AccountStatus {
+    /** First step checking account state. */
+    Checking = "Checking",
 
-        /** Approved account. */
-        Approved = 'Approved',
+    /** Approved account. */
+    Approved = "Approved",
 
-        /** Rejected account. */
-        Rejected = 'Rejected',
+    /** Rejected account. */
+    Rejected = "Rejected",
 
-        /** Deleted account. */
-        Deleted = 'Deleted',
+    /** Deleted account. */
+    Deleted = "Deleted",
 
-        /** Banned account. */
-        Banned = 'Banned',
+    /** Banned account. */
+    Banned = "Banned",
 
-        /** Waiting for payment fee. */
-        Payment = 'Payment',
+    /** Waiting for payment fee. */
+    Payment = "Payment",
 
-        /** Selldone sprite account (used for external account mirror, Charge and withdraw requests). */
-        SelldoneSprite = 'SelldoneSprite',
+    /** Selldone sprite account (used for external account mirror, Charge and withdraw requests). */
+    SelldoneSprite = "SelldoneSprite",
 
-        /** Selldone storage account (used for receive fees). */
-        SelldoneStorage = 'SelldoneStorage'
-    }
+    /** Selldone storage account (used for receive fees). */
+    SelldoneStorage = "SelldoneStorage",
+  }
 }

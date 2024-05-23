@@ -12,42 +12,38 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
 import {Currency} from "../../enums/payment/Currency";
 
-export interface AgencyWallet{
-    /**
-     * Unique identifier for the wallet entry.
-     */
-    id: number;
+export interface AgencyWallet {
+  /**
+   * Unique identifier for the wallet entry.
+   */
+  id: number;
 
-    /**
-     * ID of the associated agency.
-     */
-    agency_id: number;
+  /**
+   * ID of the associated agency.
+   */
+  agency_id: number;
 
-    /**
-     * Current balance of the wallet.
-     */
-    balance: number;
+  /**
+   * Current balance of the wallet.
+   */
+  balance: number;
 
-    /**
-     * Currency type used in the wallet. This is not changeable after creation.
-     */
-    currency: keyof typeof Currency;
+  /**
+   * Currency type used in the wallet. This is not changeable after creation.
+   */
+  currency: keyof typeof Currency;
 
-    /**
-     * The date and time when the record was last updated.
-     */
-    updated_at: Date;
+  /**
+   * The date and time when the record was last updated.
+   */
+  updated_at: Date;
 
-    /**
-     * The date and time when the record was created.
-     */
-    created_at: Date;
+  /**
+   * The date and time when the record was created.
+   */
+  created_at: Date;
 }
 
-
-export namespace AgencyWallet {
-
-}
+export namespace AgencyWallet {}

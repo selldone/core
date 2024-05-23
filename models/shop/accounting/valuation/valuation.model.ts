@@ -12,7 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
 export interface Valuation {
   id: number;
   shop_id: number;
@@ -22,8 +21,6 @@ export interface Valuation {
 }
 
 export namespace Valuation {
-
-
   export interface IDataItem {
     name: string;
     title: string;

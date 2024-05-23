@@ -12,4 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface VirtualItem { /* ... properties for VirtualItem ... */ }
+export interface VirtualItem {
+  /* ... properties for VirtualItem ... */
+}

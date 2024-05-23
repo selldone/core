@@ -14,10 +14,10 @@
 
 import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
 
-export interface Hyper{
-    /** Unique identifier of the order. */
-    id: number;
+export interface Hyper {
+  /** Unique identifier of the order. */
+  id: number;
 
-    /** Type of the order, e.g., HYP. */
-    type: OrderTypeCode.Hyper;
+  /** Type of the order, e.g., HYP. */
+  type: OrderTypeCode.Hyper;
 }

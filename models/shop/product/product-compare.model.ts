@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Product } from "./product.model";
-import { ProductVariant } from "./product_variant.model";
+import {Product} from "./product.model";
+import {ProductVariant} from "./product_variant.model";
 
 export interface ProductCompare extends Product {
   variant: ProductVariant | null;

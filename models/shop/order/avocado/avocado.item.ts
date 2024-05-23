@@ -12,7 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
 export interface AvocadoItem {
   id: number;
   avocado_id: number;
@@ -24,7 +23,6 @@ export interface AvocadoItem {
   count: number;
   price: number; // Final Price
   currency: string; // Currency of user!
-
 }
 
 //█████████████████████████████████████████████████████████████

@@ -36,6 +36,4 @@ export interface Campaign {
   tablet: number;
 }
 
-export namespace Campaign {
-
-}
+export namespace Campaign {}

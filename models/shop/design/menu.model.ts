@@ -12,16 +12,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export  interface ShopMenu {
+export interface ShopMenu {
   shop_id: number;
   type: string;
   menu: MenuItem[][];
   enable: boolean;
 }
+
 export interface MenuItem {
   name: string;
   to: To;
 }
+
 export interface To {
   name?: string;
   path?: string;

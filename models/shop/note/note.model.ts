@@ -12,12 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Shop } from "../shop.model";
+import {Shop} from "../shop.model";
 import type {User} from "../../user/user.model";
 
 export namespace Note {
-
-    export  interface INote {
+  export interface INote {
     /** Unique identifier for the notification. */
     id: number;
 
@@ -61,7 +60,7 @@ export namespace Note {
   /**
    * Contains the message details with potential HTML content.
    */
-  export  interface IData {
+  export interface IData {
     /**
      * HTML message content.
      *

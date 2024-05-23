@@ -12,24 +12,22 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export  interface GiftCardType {
-
-    id: number;
-    shop_id: number;
-    color: string;
-    bg: string;
-    amount: number;
-    currency: string;
-    title: string;
-    life: number; // Initial lifetime by month
-    count: number;
-    used: number;
-    amount_payed: number; // Total paid by these cards
-    note: Array<{
-        user_id: number;
-        user_name: string;
-        body: string;
-        date: string
-    }>; // Team notes
-
+export interface GiftCardType {
+  id: number;
+  shop_id: number;
+  color: string;
+  bg: string;
+  amount: number;
+  currency: string;
+  title: string;
+  life: number; // Initial lifetime by month
+  count: number;
+  used: number;
+  amount_payed: number; // Total paid by these cards
+  note: Array<{
+    user_id: number;
+    user_name: string;
+    body: string;
+    date: string;
+  }>; // Team notes
 }

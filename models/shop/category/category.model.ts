@@ -29,19 +29,21 @@ export class Category implements Category.ICategory {
   visits: number | null = null;
   products: number | null = null;
   categories: number | null = null;
-  filters: any[] | null = null;  // Adjust the type if possible.
-  note: {
-    user_id: number;
-    user_name: string;
-    body: string;
-    date: Date;
-  }[] | null = null;
+  filters: any[] | null = null; // Adjust the type if possible.
+  note:
+    | {
+        user_id: number;
+        user_name: string;
+        body: string;
+        date: Date;
+      }[]
+    | null = null;
 
   constructor(
     data: {
       id: number;
       name: string;
-    } & Partial<Category.ICategory>
+    } & Partial<Category.ICategory>,
   ) {
     Object.assign(this, data);
   }
@@ -123,7 +125,7 @@ export namespace Category {
     /**
      * Filters or criteria associated with the category.
      */
-    filters: any[];  // Adjust the type based on the specific structure of filters if possible.
+    filters: any[]; // Adjust the type based on the specific structure of filters if possible.
 
     /**
      * Notes from the team regarding the category.

@@ -12,19 +12,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export  interface DiscountCode {
-    id: number;
-    code: string;
-    percent: number;
-    max: number;
-    used: number;
-    limit: number;
-    currency: string;
-    dis_start: string;
-    dis_end: string;
-    title: string;
-    description: string;
-    amount_discount: number;
-    note: { user_id: number, user_name: string, body: string, date: string }[];
-
+export interface DiscountCode {
+  id: number;
+  code: string;
+  percent: number;
+  max: number;
+  used: number;
+  limit: number;
+  currency: string;
+  dis_start: string;
+  dis_end: string;
+  title: string;
+  description: string;
+  amount_discount: number;
+  note: { user_id: number; user_name: string; body: string; date: string }[];
 }

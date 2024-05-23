@@ -12,28 +12,27 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export  interface EmailMarketing {
-    id: number;
-    shop_id: number;
-    name: string;
-    in_que: boolean;
-    user_id: number;  // Approved by this user (admin or...)
-    approve: string | null;  // null or 'Pending' or 'Accept' or 'Reject'
-    sent: boolean;
-    schedule_at: string;  // Assuming Carbon translates to JavaScript Date
-    structure: any[];  // Assuming array can be of any type
-    html: string;
-    text: string;
-    filter: any[];  // Assuming array can be of any type
-    subject: string;
-    from: string;
-    sends: number;
-    delivers: number;
-    views: number;
-    clicks: number;
-    buys: number;
-    amount_buy: number;
-    currency: string;
-    error: string | null;
-
+export interface EmailMarketing {
+  id: number;
+  shop_id: number;
+  name: string;
+  in_que: boolean;
+  user_id: number; // Approved by this user (admin or...)
+  approve: string | null; // null or 'Pending' or 'Accept' or 'Reject'
+  sent: boolean;
+  schedule_at: string; // Assuming Carbon translates to JavaScript Date
+  structure: any[]; // Assuming array can be of any type
+  html: string;
+  text: string;
+  filter: any[]; // Assuming array can be of any type
+  subject: string;
+  from: string;
+  sends: number;
+  delivers: number;
+  views: number;
+  clicks: number;
+  buys: number;
+  amount_buy: number;
+  currency: string;
+  error: string | null;
 }

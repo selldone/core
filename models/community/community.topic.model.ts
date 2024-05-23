@@ -12,8 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
-
-export interface CommunityTopic{
-
-}
+export interface CommunityTopic {}

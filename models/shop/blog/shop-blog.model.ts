@@ -12,35 +12,34 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export  interface ShopBlog {
-    /**
-     * The unique identifier of the blog post.
-     */
-    id: number;
+export interface ShopBlog {
+  /**
+   * The unique identifier of the blog post.
+   */
+  id: number;
 
-    /**
-     * The unique identifier of the shop.
-     */
-    shop_id: number;
+  /**
+   * The unique identifier of the shop.
+   */
+  shop_id: number;
 
-    /**
-     * The unique identifier of the category.
-     */
-    category_id: number;
+  /**
+   * The unique identifier of the category.
+   */
+  category_id: number;
 
-    /**
-     * SEO fetched data, can be null.
-     */
-    audit: object | null;
+  /**
+   * SEO fetched data, can be null.
+   */
+  audit: object | null;
 
-    /**
-     * The title of the blog post, can be null.
-     */
-    title: string | null;
+  /**
+   * The title of the blog post, can be null.
+   */
+  title: string | null;
 
-    /**
-     * The image URL of the blog post, can be null.
-     */
-    image: string | null;
-
+  /**
+   * The image URL of the blog post, can be null.
+   */
+  image: string | null;
 }

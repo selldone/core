@@ -62,7 +62,7 @@ export class ExchangeRate {
     from: string,
     to: string,
     rate: number,
-    history?: Array<number>
+    history?: Array<number>,
   ) {
     this.id = id;
     this.user_id = user_id;

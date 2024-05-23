@@ -121,12 +121,8 @@ export namespace Popup {
     No = "No",
   }
 
-
   export enum ISex {
     Male = "Male",
     Female = "Female",
   }
-
-
-
 }

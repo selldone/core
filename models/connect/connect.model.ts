@@ -13,36 +13,35 @@
  */
 
 export interface Connect {
-    id: number;
-    user_id: number;
-    code: string;
-    mode: Connect.ConnectMode;
-    name: string;
-    description: string;
-    icon: string;
-    enable: boolean;
-    form?: any[] | null;  // Define a stricter type for the form elements if possible.
-    confirm: boolean;
-    read_categories: boolean;
-    write_categories: boolean;
-    read_products: boolean;
-    write_products: boolean;
-    read_orders: boolean;
-    write_orders: boolean;
-    read_customers: boolean;
-    write_customers: boolean;
-    shipping: boolean;
-    created_at: Date;
-    updated_at: Date;
+  id: number;
+  user_id: number;
+  code: string;
+  mode: Connect.ConnectMode;
+  name: string;
+  description: string;
+  icon: string;
+  enable: boolean;
+  form?: any[] | null; // Define a stricter type for the form elements if possible.
+  confirm: boolean;
+  read_categories: boolean;
+  write_categories: boolean;
+  read_products: boolean;
+  write_products: boolean;
+  read_orders: boolean;
+  write_orders: boolean;
+  read_customers: boolean;
+  write_customers: boolean;
+  shipping: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export namespace Connect {
-    export enum ConnectMode {
-        Migration = 'Migration',
-        Dropshipping = 'Dropshipping',
-        Marketplace = 'Marketplace',
-        Accounting = 'Accounting',
-        Other = 'Other'
-    }
+  export enum ConnectMode {
+    Migration = "Migration",
+    Dropshipping = "Dropshipping",
+    Marketplace = "Marketplace",
+    Accounting = "Accounting",
+    Other = "Other",
+  }
 }
-

@@ -66,7 +66,7 @@ export interface Avocado {
   delivery_price: number;
 
   /** State of the delivery. */
-  delivery_state:keyof typeof AvocadoOrderStates;
+  delivery_state: keyof typeof AvocadoOrderStates;
 
   /** Progress percentage of the order completion. */
   progress: number;

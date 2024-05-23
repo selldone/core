@@ -12,28 +12,26 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export  interface GiftCard {
+export interface GiftCard {
+  id: number;
+  type_id: number;
+  shop_id: number;
+  vitem_id: number | null;
 
-    id: number;
-    type_id: number;
-    shop_id: number;
-    vitem_id: number | null;
+  user_id: number; // Owner (Use this card)
+  customer_id: number;
+  number: string;
+  cvv: string;
+  balance: number;
+  lock: number;
+  payed: number;
+  currency: string;
+  title: string;
+  expire_at: string; // Using Date to represent Carbon type
+  enable: boolean; // Enable card
+  note: string; // Note by admin (Show to user!)
 
-    user_id: number;         // Owner (Use this card)
-    customer_id: number;
-    number: string;
-    cvv: string;
-    balance: number;
-    lock: number;
-    payed: number;
-    currency: string;
-    title: string;
-    expire_at: string;         // Using Date to represent Carbon type
-    enable: boolean;         // Enable card
-    note: string;            // Note by admin (Show to user!)
-
-    created_at: string;        // Using Date to represent Carbon type
-    updated_at: string;        // Using Date to represent Carbon type
-    deleted_at: string;        // Using Date to represent Carbon type
-
+  created_at: string; // Using Date to represent Carbon type
+  updated_at: string; // Using Date to represent Carbon type
+  deleted_at: string; // Using Date to represent Carbon type
 }

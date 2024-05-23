@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "../../../enums/payment/Currency";
+import {Currency} from "../../../enums/payment/Currency";
 
 export interface SubscriptionPrice {
   id: number;

@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Shop } from "../shop.model";
-import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
+import {Shop} from "../shop.model";
+import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
 
 /**
  * Model Definition

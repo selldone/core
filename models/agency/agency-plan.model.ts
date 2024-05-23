@@ -25,7 +25,7 @@ export interface AgencyPlan {
 
   staff: number;
 
-  domains:number;
+  domains: number;
 
   /**
    * Timestamp indicating when the entity was last updated.

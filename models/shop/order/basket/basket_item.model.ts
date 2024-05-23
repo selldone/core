@@ -12,13 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Product } from "../../product/product.model";
-import { Currency } from "../../../../enums/payment/Currency";
-import type { ProductVariant } from "../../product/product_variant.model";
-import type { SubscriptionPrice } from "../../product/subscription_price.model";
-import type { Offer } from "../../incentives/offer/offer.model";
-import type { ExtraPricing } from "../../extra-pricing/extra-pricing.model";
-import type { Connect } from "../../../connect/connect.model";
+import {Product} from "../../product/product.model";
+import {Currency} from "../../../../enums/payment/Currency";
+import type {ProductVariant} from "../../product/product_variant.model";
+import type {SubscriptionPrice} from "../../product/subscription_price.model";
+import type {Offer} from "../../incentives/offer/offer.model";
+import type {ExtraPricing} from "../../extra-pricing/extra-pricing.model";
+import type {Connect} from "../../../connect/connect.model";
 import {BasketItemReturn} from "./basket_item_return.model";
 import {VirtualItem} from "./virtual_item.model";
 import {ServiceItem} from "./service_item.model";
@@ -89,6 +89,7 @@ export namespace BasketItem {
     period?: string;
 
     days?: Record<string, number[]>;
+
     [key: string]: any; // This line allows for flexibility to include other properties not listed above
   }
 }

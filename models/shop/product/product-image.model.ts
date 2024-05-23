@@ -13,48 +13,48 @@
  */
 
 export interface ProductImage {
-    /**
-     * Unique identifier of the product image.
-     */
-    id: number;
+  /**
+   * Unique identifier of the product image.
+   */
+  id: number;
 
-    /**
-     * ID representing the associated product.
-     */
-    product_id: number;
+  /**
+   * ID representing the associated product.
+   */
+  product_id: number;
 
-    /**
-     * ID representing the associated product variant.
-     */
-    variant_id: number;
+  /**
+   * ID representing the associated product variant.
+   */
+  variant_id: number;
 
-    /**
-     * Path to the image's location.
-     */
-    path: string;
+  /**
+   * Path to the image's location.
+   */
+  path: string;
 
-    /**
-     * Order or sequence number of the image in listings.
-     */
-    order: number;
+  /**
+   * Order or sequence number of the image in listings.
+   */
+  order: number;
 
-    /**
-     * Size of the image in bytes.
-     */
-    size: number;
+  /**
+   * Size of the image in bytes.
+   */
+  size: number;
 
-    /**
-     * Width of the image in pixels. Nullable.
-     */
-    width?: number | null;
+  /**
+   * Width of the image in pixels. Nullable.
+   */
+  width?: number | null;
 
-    /**
-     * Height of the image in pixels. Nullable.
-     */
-    height?: number | null;
+  /**
+   * Height of the image in pixels. Nullable.
+   */
+  height?: number | null;
 
-    /**
-     * Alternative text for the image. Useful for accessibility and SEO. Nullable.
-     */
-    alt?: string | null;
+  /**
+   * Alternative text for the image. Useful for accessibility and SEO. Nullable.
+   */
+  alt?: string | null;
 }

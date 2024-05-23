@@ -12,4 +12,6 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface Fulfillment  { /* ... properties for VirtualItem ... */ }
+export interface Fulfillment {
+  /* ... properties for VirtualItem ... */
+}

@@ -48,16 +48,15 @@ export class Gateway implements Gateway.IGateway {
   script: string;
 
   constructor(
-      data: {
-        id: number;
-      } & Partial<Gateway.IGateway>,
+    data: {
+      id: number;
+    } & Partial<Gateway.IGateway>,
   ) {
     Object.assign(this, data);
   }
 }
 
 export namespace Gateway {
-
   export interface IGateway {
     id: number;
     currency?: string;

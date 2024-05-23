@@ -12,13 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "../../../../enums/payment/Currency";
-import type { IAddress } from "../../../traits/address.model";
-import type { IOrder } from "../../../traits/order.model";
-import { Product } from "../../product/product.model";
+import {Currency} from "../../../../enums/payment/Currency";
+import type {IAddress} from "../../../traits/address.model";
+import type {IOrder} from "../../../traits/order.model";
+import {Product} from "../../product/product.model";
+import {DeliveryStateCode} from "../../../../enums/delivery/DeliveryStateCode";
+import type { BasketItem } from "./basket_item.model";
 import ProductType = Product.ProductType;
-import { DeliveryStateCode } from "../../../../enums/delivery/DeliveryStateCode";
-import type {BasketItem} from "./basket_item.model";
 
 export interface Basket extends IOrder {
   id: number;
@@ -71,6 +71,7 @@ export interface Basket extends IOrder {
 //█████████████████████████████████████████████████████████████
 export namespace Basket {
   export interface IBill {}
+
   export interface IReceiverInfo extends IAddress {}
 
   export interface IBilling extends IAddress {}

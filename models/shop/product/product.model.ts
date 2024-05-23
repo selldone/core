@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "../../../enums/payment/Currency";
-import { SubscriptionMode } from "../../../enums/subscription/SubscriptionMode";
+import {Currency} from "../../../enums/payment/Currency";
+import {SubscriptionMode} from "../../../enums/subscription/SubscriptionMode";
 
 export class Product implements Product.IProduct {
   /** @property {number} id - The unique identifier for the product. */
@@ -189,7 +189,7 @@ export class Product implements Product.IProduct {
     data: {
       id: number;
       name: string;
-    } & Partial<Product.IProduct>
+    } & Partial<Product.IProduct>,
   ) {
     Object.assign(this, data);
   }

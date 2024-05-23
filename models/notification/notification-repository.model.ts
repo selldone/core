@@ -18,7 +18,7 @@
  * ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
  */
 import {NotificationRepositoryType} from "../../enums/notification/NotificationRepositoryType";
-import {Product} from "../shop/product/product.model";
+import { Product } from "../shop/product/product.model";
 import ProductType = Product.ProductType;
 
 export interface NotificationRepository {
@@ -51,9 +51,9 @@ export interface NotificationRepository {
    * Additional data associated with the notification.
    */
   data?: {
-    shop?:{id:number,title:string,name:string};
-    user?:{id:number,name:string};
-    basket?:{id:number,type:keyof typeof ProductType};
+    shop?: { id: number; title: string; name: string };
+    user?: { id: number; name: string };
+    basket?: { id: number; type: keyof typeof ProductType };
   };
 
   /**

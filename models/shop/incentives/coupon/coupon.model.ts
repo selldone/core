@@ -141,10 +141,15 @@ export interface Coupon {
   /**
    * Array of products. If a user adds any of these products to the cart, the coupon gets qualified.
    */
-  products: {[key:string]:number[]}; // Assuming the products are represented by their names or IDs.
+  products: { [key: string]: number[] }; // Assuming the products are represented by their names or IDs.
 
   /**
    * Notes by the team regarding the coupon. Contains user_id, user_name, body, and date.
    */
-  note: Array<{ user_id: number; user_name: string; body: string; date: string }>;
+  note: Array<{
+    user_id: number;
+    user_name: string;
+    body: string;
+    date: string;
+  }>;
 }

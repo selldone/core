@@ -83,4 +83,5 @@ export interface ShopInclude {
    */
   updated_at: Date;
 }
+
 export namespace ShopInclude {}

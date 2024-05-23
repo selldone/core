@@ -71,11 +71,16 @@ export interface Offer {
   /** Percentage of the discount offered. */
   percent: number;
 
-  color:string;
+  color: string;
 
   /**
    * Notes related to the offer by the team.
    * Contains details such as user_id, user_name, body of the note, and the date.
    */
-  note: Array<{ user_id: number; user_name: string; body: string; date: string }>;
+  note: Array<{
+    user_id: number;
+    user_name: string;
+    body: string;
+    date: string;
+  }>;
 }
