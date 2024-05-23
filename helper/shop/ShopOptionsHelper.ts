@@ -12,9 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ProductType } from "../../enums/product/ProductType";
-import type { Shop } from "../../models/shop/shop.model";
-import { LabelingModes } from "../../enums/shop/options/LabelingOptions";
+import {ProductType} from "../../enums/product/ProductType";
+import type {Shop} from "../../models/shop/shop.model";
+import {LabelingModes} from "../../enums/shop/options/LabelingOptions";
 
 /**
  * Helper class for retrieving various shop-related configuration options.
@@ -29,6 +29,7 @@ export class ShopOptionsHelper {
     const size_unit_option = shop.options?.find((e) => e.code === "size_unit");
     return size_unit_option ? size_unit_option.value : "cm";
   }
+
   /**
    * Returns the mass unit configured for the shop.
    * @param shop The shop object containing configuration options.
@@ -51,6 +52,7 @@ export class ShopOptionsHelper {
       shop.options && shop.options.find((e) => e.code === "amp");
     return amp_option ? amp_option.value : false;
   }
+
   static GetBoost(shop: Shop) {
     const boost_option =
       shop.options && shop.options.find((e) => e.code === "boost");
@@ -64,6 +66,7 @@ export class ShopOptionsHelper {
       shop.options && shop.options.find((e) => e.code === "login");
     return login_option ? login_option.value : null;
   }
+
   // █████████████████████████ Checkout █████████████████████████
 
   static GetCheckout(shop: Shop) {
@@ -90,16 +93,19 @@ export class ShopOptionsHelper {
       ["on-checkout", "login-free"].includes(checkout_option.mode)
     );
   }
+
   static HasGuestPayment(shop: Shop) {
     if (!shop) return false;
     const checkout_option = this.GetCheckout(shop);
     return checkout_option && ["login-free"].includes(checkout_option.mode);
   }
+
   static HasMap(shop: Shop) {
     if (!shop) return true;
     const checkout_option = this.GetCheckout(shop);
     return !checkout_option || checkout_option.map === true;
   }
+
   static AskShippingAddress(shop: Shop, type: string) {
     // 🎗️ Subscription:
     if (type === ProductType.SUBSCRIPTION.code) {
@@ -118,6 +124,7 @@ export class ShopOptionsHelper {
     else if (type === ProductType.SERVICE.code)
       return ["default"].includes(checkout_option.shipping);
   }
+
   // █████████████████████████ Active Product Types █████████████████████████
 
   /**
@@ -140,6 +147,7 @@ export class ShopOptionsHelper {
           ProductType.SUBSCRIPTION.code,
         ];
   }
+
   // █████████████████████████ Languages █████████████████████████
 
   /**
@@ -164,6 +172,7 @@ export class ShopOptionsHelper {
       shop.options && shop.options.find((e) => e.code === "shop_map");
     return checkout_option ? checkout_option.value : { enable: false };
   }
+
   /**
    * Checks if the shop map feature is enabled.
    * @param shop The shop object containing configuration options.
@@ -190,7 +199,20 @@ export class ShopOptionsHelper {
   }
 
   // █████████████████████████ Custom Orders Labeling █████████████████████████
-  static GetLabeling(shop: Shop): { mode?: keyof typeof LabelingModes,SM?:string,SV?:string,SF?:string,SS?:string,SN?:string,POS?:string,AVO?:string,HYP?:string,BILL?:string,FUL?:string,VND?:string} {
+  static GetLabeling(shop: Shop): {
+    mode?: keyof typeof LabelingModes;
+    SM?: string;
+    SV?: string;
+    SF?: string;
+    SS?: string;
+    SN?: string;
+    POS?: string;
+    AVO?: string;
+    HYP?: string;
+    BILL?: string;
+    FUL?: string;
+    VND?: string;
+  } {
     const labeling_option: undefined | Shop.IOption =
       shop.options && shop.options.find((e) => e.code === "labeling");
     return labeling_option?.value
