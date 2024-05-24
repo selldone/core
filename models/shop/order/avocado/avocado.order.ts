@@ -13,8 +13,10 @@
  */
 
 import type {User} from "../../../user/user.model";
-import {AvocadoOrderStates} from "../../../../enums/avocado/AvocadoOrderStates";
 import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
+//█████████████████████████████████████████████████████████████
+//―――――――――――――――― 🦫 Types ――――――――――――――――
+//█████████████████████████████████████████████████████████████
 
 export interface Avocado {
   /** Unique identifier of the order. */
@@ -66,7 +68,7 @@ export interface Avocado {
   delivery_price: number;
 
   /** State of the delivery. */
-  delivery_state: keyof typeof AvocadoOrderStates;
+  delivery_state: keyof typeof Avocado.DeliveryStates;
 
   /** Progress percentage of the order completion. */
   progress: number;
@@ -114,10 +116,64 @@ export interface Avocado {
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
+
 export namespace Avocado {
   export enum Status {
     Open = "Open",
     Payed = "Payed",
     Canceled = "Canceled",
   }
+
+  /**
+   * Interface representing the structure of each delivery state.
+   */
+  export interface IOrderState {
+    code: StateKey;
+    name: string;
+    icon: string;
+  }
+
+  /**
+   * Enumerates the keys for various delivery states.
+   */
+  export type StateKey =
+    | "CheckQueue"
+    | "OrderConfirm"
+    | "PreparingOrder"
+    | "SentOrder"
+    | "ToCustomer";
+
+  /**
+   * Enumerates the various delivery states with associated metadata.
+   *
+   * Each state provides details about its code, the localization key for its name,
+   * and a Font Awesome icon class for visual representation.
+   */
+  export const DeliveryStates: Record<StateKey, IOrderState> = {
+    CheckQueue: {
+      code: "CheckQueue",
+      name: "global.delivery_state.check_queue",
+      icon: "fa:fas fa-shopping-basket",
+    },
+    OrderConfirm: {
+      code: "OrderConfirm",
+      name: "global.delivery_state.order_confirm",
+      icon: "fa:fas fa-check",
+    },
+    PreparingOrder: {
+      code: "PreparingOrder",
+      name: "global.delivery_state.preparing_order",
+      icon: "fa:fas fa-box-open",
+    },
+    SentOrder: {
+      code: "SentOrder",
+      name: "global.delivery_state.sent_order",
+      icon: "fa:fas fa-shipping-fast",
+    },
+    ToCustomer: {
+      code: "ToCustomer",
+      name: "global.delivery_state.to_customer",
+      icon: "fa:fas fa-check-double",
+    },
+  };
 }

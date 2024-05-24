@@ -77,7 +77,7 @@ export namespace ArticleReport {
   /**
    * Enumerates various reasons to report an article with associated metadata.
    */
-  export const Category: Record<CategoryKey, ICategory> = {
+  export const Categories: Record<CategoryKey, ICategory> = {
     Inappropriate: {
       value: "Inappropriate",
       title: "global.article_report.inappropriate",

@@ -26,7 +26,7 @@
  * - {@link FileOrderStates} for order fulfillment status of file orders.
  * - {@link ServiceOrderStates} for order fulfillment status of service orders.
  * - {@link SubscriptionOrderStates} for order fulfillment status of subscription orders.
- * - {@link AvocadoOrderStates} for order fulfillment status of Avocado orders.
+ * - {@link Avocado.DeliveryStates} for order fulfillment status of Avocado orders.
  */
 export enum DeliveryStateCode {
   CheckQueue = "CheckQueue",

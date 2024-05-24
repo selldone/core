@@ -168,7 +168,7 @@ export namespace Article {
    * Each property of the object represents a specific type of article
    * with its unique code, name, and color.
    */
-  export const Type: Record<TypeKey, IType> = {
+  export const Types: Record<TypeKey, IType> = {
     /**
      * Official blog articles for Selldone.
      * These articles are generally focused on updates, news, and insights about Selldone.
@@ -207,7 +207,7 @@ export namespace Article {
   /**
    * Type representing the union of all possible `code` values in `Type`.
    */
-  export type TypeValue = typeof Type[TypeKey]['code'];
+  export type TypeValue = typeof Types[TypeKey]['code'];
 
 
 }
