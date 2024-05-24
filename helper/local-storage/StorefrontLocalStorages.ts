@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { ProductType } from "../../enums/product/ProductType";
+import {ProductType} from "../../enums/product/ProductType";
 
 export class StorefrontLocalStorages {
   static GetUserCurrencyPath($localstorage_base_path: string): string {
@@ -21,7 +21,7 @@ export class StorefrontLocalStorages {
 
   static GetUserShopViewModePath(
     $localstorage_base_path: string,
-    device: string
+    device: string,
   ): string {
     return `${$localstorage_base_path}view-mode-${device}`;
   }
@@ -46,7 +46,6 @@ export class StorefrontLocalStorages {
     return `${$localstorage_base_path}seen-pops`;
   }
 
-
   // ▀▀▀▀▀▀▀▀▀ 🥶 Guest ▀▀▀▀▀▀▀▀▀
   static SetShopGuestCode(code: string): void {
     localStorage.setItem("guest-code", code);
@@ -64,7 +63,7 @@ export class StorefrontLocalStorages {
   static AddCurrentGuestCodeToHistory(
     type: string,
     order_id: number,
-    code: string
+    code: string,
   ): boolean {
     if (!code || !type || !order_id) return false;
     const ids = this.GetShopHistoryOrderIDs(type);
@@ -72,7 +71,7 @@ export class StorefrontLocalStorages {
 
     localStorage.setItem(
       "guest-orders:" + type,
-      JSON.stringify(ids.slice(0, 100))
+      JSON.stringify(ids.slice(0, 100)),
     );
     localStorage.setItem("guest-basket:" + order_id, code);
     return true;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,13 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface Gateway {
-  enable: boolean;
-  code: string;
-  name: string;
-  icon: string;
-  currency: string;
-  timeout: number;
-  cod: boolean;
-  dir: boolean;
-}
+export * from "./hyper.order";

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,30 +12,10 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface AgencyPlan {
-  /**
-   * Unique identifier for the client.
-   */
-  id: number;
+export * from "./coupon/coupon.model";
+export * from "./discount-code/discount-code.model";
+export * from "./gift-card/gift-card.model";
+export * from "./gift-card/gift-card-type.model";
+export * from "./lottery/lottery.model";
+export * from "./offer/offer.model";
 
-  /**
-   * Identifier for the associated agency.
-   */
-  agency_id: number;
-
-  staff: number;
-
-  domains: number;
-
-  /**
-   * Timestamp indicating when the entity was last updated.
-   */
-  updated_at: string;
-
-  /**
-   * Timestamp indicating when the entity was created.
-   */
-  created_at: string;
-}
-
-export namespace AgencyPlan {}

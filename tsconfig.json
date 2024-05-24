@@ -2,6 +2,9 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "outDir": "./dist",
+    "declaration": true,                      // Generates corresponding '.d.ts' file
+
     "importHelpers": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
