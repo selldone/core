@@ -1,9 +1,11 @@
 {
   "name": "@selldone/core-js",
-  "version": "1.5.25",
+  "version": "1.5.26",
   "private": false,
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://selldone.com)",
+  "description": "Models and utilities for Selldone API and services. This package covers models and types in storefront and backoffice APIs.",
+
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
