@@ -106,4 +106,6 @@ export interface Community {
   };
 }
 
-export namespace Community {}
+export namespace Community {
+
+}
