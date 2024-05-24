@@ -97,7 +97,7 @@ export namespace User {
    * Represents user preferences settings.
    */
   export type Preferences = {
-    level?: string;
+    level?: User.Preferences.AppLevelKey;
     rating?: number;
     lang?: string;
     dark?: boolean;
@@ -107,6 +107,82 @@ export namespace User {
     provider?: boolean;
     calendar?: string;
   };
+
+  export namespace Preferences {
+    /**
+     * Interface representing the structure of an app level.
+     * @interface
+     * @property {string} title - The title of the app level, typically used for display purposes.
+     * @property {number} level - The numeric representation of the app level, useful for comparisons and logic based on the level.
+     * @property {string} code - The unique code identifier for the app level.
+     */
+    export interface IAppLevel {
+      title: string;
+      level: number;
+      code: AppLevelKey;
+    }
+
+    /**
+     * Represents the predefined keys for app levels.
+     */
+    type AppLevelKey =
+      | "NEWBIE"
+      | "BEGINNER"
+      | "NOVICE"
+      | "INTERMEDIATE"
+      | "ADVANCED";
+
+    /**
+     * Represents predefined app levels with their associated titles, levels, and codes.
+     * This is part of the Selldone open-source library, enabling developers to build custom storefronts and back offices.
+     */
+    export const AppLevel: Record<AppLevelKey, IAppLevel> = {
+      /**
+       * Represents a newbie user level.
+       */
+      NEWBIE: {
+        title: "app_levels.Newbie",
+        level: 1,
+        code: "NEWBIE",
+      },
+
+      /**
+       * Represents a beginner user level.
+       */
+      BEGINNER: {
+        title: "app_levels.Beginner",
+        level: 2,
+        code: "BEGINNER",
+      },
+
+      /**
+       * Represents a novice user level.
+       */
+      NOVICE: {
+        title: "app_levels.Novice",
+        level: 3,
+        code: "NOVICE",
+      },
+
+      /**
+       * Represents an intermediate user level.
+       */
+      INTERMEDIATE: {
+        title: "app_levels.Intermediate",
+        level: 4,
+        code: "INTERMEDIATE",
+      },
+
+      /**
+       * Represents an advanced user level.
+       */
+      ADVANCED: {
+        title: "app_levels.Advanced",
+        level: 5,
+        code: "ADVANCED",
+      },
+    };
+  }
 
   /**
    * Represents user's interests grouped by categories.

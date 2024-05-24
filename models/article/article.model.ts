@@ -31,7 +31,7 @@ export interface Article {
   /**
    * Type of the parent entity.
    */
-  parent_type: number;
+  parent_type: Article.TypeValue;
 
   /**
    * ID of the user associated with the article.
@@ -137,4 +137,77 @@ export interface Article {
    * Creation date of the article.
    */
   created_at: Date;
+}
+
+//█████████████████████████████████████████████████████████████
+//―――――――――――――――― 🦫 Types ――――――――――――――――
+//█████████████████████████████████████████████████████████████
+
+export namespace Article {
+  /**
+   * Interface representing the structure of each article type.
+   */
+  interface IType {
+    code: string;
+    name: string;
+    color: string;
+  }
+
+  /**
+   * Enumerates the keys for different types of articles.
+   */
+  export type TypeKey =
+    | "SelldoneBlog"
+    | "SelldoneHelp"
+    | "Product"
+    | "Blog"
+    | "Company";
+
+  /**
+   * Object containing different types of articles.
+   * Each property of the object represents a specific type of article
+   * with its unique code, name, and color.
+   */
+  export const Type: Record<TypeKey, IType> = {
+    /**
+     * Official blog articles for Selldone.
+     * These articles are generally focused on updates, news, and insights about Selldone.
+     */
+    SelldoneBlog: { code: "blog", name: "", color: "#C2185B" },
+
+    /**
+     * Official help articles for Selldone.
+     * These articles provide guidance, FAQs, and support information for Selldone users.
+     */
+    SelldoneHelp: { code: "help", name: "", color: "#FFA000" },
+
+    /**
+     * Articles related to shop products.
+     * These are typically product descriptions, reviews, or any content related to specific products.
+     */
+    Product: { code: "product", name: "", color: "#1976D2" },
+
+    /**
+     * Blog articles for a shop.
+     * This can include a variety of topics relevant to the shop's focus, such as lifestyle, tips, and news.
+     */
+    Blog: { code: "shop-blog", name: "", color: "#689F38" },
+
+    /**
+     * Company profile for a shop.
+     * This includes information about the company, its values, history, and other corporate information.
+     */
+    Company: { code: "company", name: "", color: "#456" },
+
+    // Uncomment the following line to add BusinessProfile
+    // BusinessProfile: { code: "BusinessProfile", name: "", color: "#456" }
+  };
+
+
+  /**
+   * Type representing the union of all possible `code` values in `Type`.
+   */
+  export type TypeValue = typeof Type[TypeKey]['code'];
+
+
 }

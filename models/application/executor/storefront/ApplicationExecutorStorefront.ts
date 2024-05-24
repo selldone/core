@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -13,11 +13,9 @@
  */
 
 // Extending the global Window interface to include $AppsInterface.
-import { ShopEventsName } from "./event/ShopEventsName";
-
 declare global {
   interface Window {
-    $AppsInterface: AppsInterface;
+    $AppsInterface: IAppsInterface;
   }
 }
 
@@ -28,29 +26,29 @@ type IListenerCallback = (...args: any[]) => void;
 
 /**
  * Type representing the structure of the Listeners object.
- * Maps ShopEventsName enum values to an array of IListenerCallback functions.
+ * Maps ApplicationExecutorStorefront.EventsName enum values to an array of IListenerCallback functions.
  */
 type IListener = {
-  [event_name in ShopEventsName]?: IListenerCallback[];
+  [event_name in ApplicationExecutorStorefront.EventsName]?: IListenerCallback[];
 };
 
 // Define the full $AppsInterface type.
-export interface AppsInterface {
+export interface IAppsInterface {
   Listeners: IListener;
   addListener: (
-    event_name: ShopEventsName,
-    callback: IListenerCallback
+    event_name: ApplicationExecutorStorefront.EventsName,
+    callback: IListenerCallback,
   ) => void;
   removeListener: (
-    event_name: ShopEventsName,
-    callback: IListenerCallback
+    event_name: ApplicationExecutorStorefront.EventsName,
+    callback: IListenerCallback,
   ) => void;
 }
 
 /**
  * Provides an interface for shop applications to listen to and trigger events.
  */
-export class ShopApplicationInterface {
+export class ApplicationExecutorStorefront {
   /**
    * Initializes the $AppsInterface on the window object, if not already present.
    */
@@ -67,8 +65,8 @@ export class ShopApplicationInterface {
          * @param {Function} callback - The callback function to execute when the event is triggered.
          */
         addListener: function (
-          event_name: ShopEventsName,
-          callback: IListenerCallback
+          event_name: ApplicationExecutorStorefront.EventsName,
+          callback: IListenerCallback,
         ) {
           if (!window.$AppsInterface.Listeners[event_name])
             window.$AppsInterface.Listeners[event_name] = [];
@@ -82,8 +80,8 @@ export class ShopApplicationInterface {
          * @param {Function} callback - The callback function to be removed.
          */
         removeListener: function (
-          event_name: ShopEventsName,
-          callback: IListenerCallback
+          event_name: ApplicationExecutorStorefront.EventsName,
+          callback: IListenerCallback,
         ) {
           if (!window.$AppsInterface.Listeners[event_name]) return;
 
@@ -102,16 +100,30 @@ export class ShopApplicationInterface {
   /**
    * Triggers an event, executing all the attached listeners with the provided arguments.
    *
-   * @param {ShopEventsName} event_name - The name of the event to trigger.
+   * @param {ApplicationExecutorStorefront.EventsName} event_name - The name of the event to trigger.
    * @param {...any} args - The arguments to pass to the event listeners.
    */
-  static TriggerEvent(event_name: ShopEventsName, ...args: any[]) {
+  static TriggerEvent(
+    event_name: ApplicationExecutorStorefront.EventsName,
+    ...args: any[]
+  ) {
     if (window.$AppsInterface.Listeners[event_name]) {
       window.$AppsInterface.Listeners[event_name]!.forEach(
         (callback: Function) => {
           if (callback) callback(...args);
-        }
+        },
       );
     }
+  }
+}
+
+export namespace ApplicationExecutorStorefront {
+  /**
+   * Enum representing the names of shop events that can be triggered in the application interface.
+   */
+  export enum EventsName {
+    ChangePage = "change-page", // {to,from}
+    ChangeUser = "change-user", // {user}
+    ChangeShop = "change-shop", // {shop}
   }
 }

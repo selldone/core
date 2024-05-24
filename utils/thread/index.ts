@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,11 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-/**
- * Enum representing the names of shop events that can be triggered in the application interface.
- */
-export enum ShopEventsName {
-  ChangePage = "change-page", // {to,from}
-  ChangeUser = "change-user", // {user}
-  ChangeShop = "change-shop", // {shop}
-}
+export * from "./threads";
+

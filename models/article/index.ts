@@ -12,4 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./article.model"
+export * from "./article.model";
+export * from "./article.report.model";

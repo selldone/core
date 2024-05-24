@@ -12,18 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-
-export * from "./account";
-export * from "./agency";
-export * from "./application";
-export * from "./article";
-export * from "./cluster";
-export * from "./community";
-export * from "./connect";
-export * from "./guild";
-export * from "./notification";
-export * from "./shop";
-export * from "./traits";
-export * from "./user";
-
+export * from "./registerServiceWorker";
 

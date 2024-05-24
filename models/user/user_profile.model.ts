@@ -74,3 +74,5 @@ type UserProfileInput = {
   socials?: any[] | null;
   nominated_id?: number | null;
 };
+
+export namespace UserProfile {}
