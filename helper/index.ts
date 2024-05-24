@@ -13,7 +13,6 @@
  */
 
 export * from "./augment";
-export * from "./breadcrumb";
 export * from "./cache";
 export * from "./campaign";
 export * from "./canvas";
