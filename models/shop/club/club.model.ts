@@ -12,16 +12,16 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import bronze from "../../../enums/customer/assets/customer-levels/bronze.svg";
-import bronzeOutline from "../../../enums/customer/assets/customer-levels/bronze-outline.svg";
-import silver from "../../../enums/customer/assets/customer-levels/silver.svg";
-import silverOutline from "../../../enums/customer/assets/customer-levels/silver-outline.svg";
-import gold from "../../../enums/customer/assets/customer-levels/gold.svg";
-import goldOutline from "../../../enums/customer/assets/customer-levels/gold-outline.svg";
-import platinum from "../../../enums/customer/assets/customer-levels/platinum.svg";
-import platinumOutline from "../../../enums/customer/assets/customer-levels/platinum-outline.svg";
-import diamond from "../../../enums/customer/assets/customer-levels/diamond.svg";
-import diamondOutline from "../../../enums/customer/assets/customer-levels/diamond-outline.svg";
+import bronze from "./assets/customer-levels/bronze.svg";
+import bronzeOutline from "./assets/customer-levels/bronze-outline.svg";
+import silver from "./assets/customer-levels/silver.svg";
+import silverOutline from "./assets/customer-levels/silver-outline.svg";
+import gold from "./assets/customer-levels/gold.svg";
+import goldOutline from "./assets/customer-levels/gold-outline.svg";
+import platinum from "./assets/customer-levels/platinum.svg";
+import platinumOutline from "./assets/customer-levels/platinum-outline.svg";
+import diamond from "./assets/customer-levels/diamond.svg";
+import diamondOutline from "./assets/customer-levels/diamond-outline.svg";
 
 /**
  * Represents a Shop's Club membership.

@@ -13,11 +13,11 @@
  */
 
 // 🌸 Add extra pricing 🌸
-import { BasketHelper } from "./BasketHelper";
-import { Product } from "../../models/shop/product/product.model";
-import { ProductVariant } from "../../models/shop/product/product_variant.model";
-import { Vendor } from "../../models/shop/vendor/vendor.model";
-import { ExtraPricing } from "../../models/shop/extra-pricing/extra-pricing.model";
+import {Product} from "../../models/shop/product/product.model";
+import {ProductVariant} from "../../models/shop/product/product_variant.model";
+import {Vendor} from "../../models/shop/vendor/vendor.model";
+import {ExtraPricing} from "../../models/shop/extra-pricing/extra-pricing.model";
+import {VendorProduct} from "../../models";
 
 export class ExtraPricingHelper {
   // ――――――――――――――― Weight ―――――――――――――――
@@ -29,7 +29,7 @@ export class ExtraPricingHelper {
       extra_pricings?: ExtraPricing[];
     },
     currentVariant: ProductVariant | null,
-    selectedVendorProduct: VendorProduct | null
+    selectedVendorProduct: VendorProduct | null,
   ) {
     // Force to select a variant:
     if (product.product_variants?.length && !currentVariant) return [];
@@ -46,21 +46,21 @@ export class ExtraPricingHelper {
 
     return product.extra_pricings
       ?.filter((x) =>
-        currentVariant ? x.variant_id === currentVariant.id : !x.variant_id
+        currentVariant && currentVariant.pricing/*Should have pricing independent enable*/ ? x.variant_id === currentVariant.id : !x.variant_id,
       )
       .filter((x) =>
         selectedVendorProduct
           ? x.vendor_product_id === selectedVendorProduct.id
-          : !x.vendor_product_id
+          : !x.vendor_product_id,
       )
       .sortByKey("min", true);
   }
 
   static FindMatchInList(
     extra_pricings: ExtraPricing[] | null,
-    quantity: number
+    quantity: number,
   ) {
-    if(!extra_pricings)return null;
+    if (!extra_pricings) return null;
     let out = null;
     // Find last satisfied pricing (lower price):
     for (let i = 0; i < extra_pricings.length; i++) {
