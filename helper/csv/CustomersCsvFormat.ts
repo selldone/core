@@ -95,7 +95,7 @@ export const CustomersCsvStyler = {
 };
 
 export class CustomersCsvFormat {
-  static CheckValidFile(headers) {
+  static CheckValidFile(headers:string[]) {
     if (!headers) return false;
     return !["Name", "Email", "Phone", "Level"].some((it) => {
       return !headers.includes(it);
