@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -11,13 +11,4 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-
-import mapboxIcon from './assets/mapbox.svg';
-
-export const MapProviders ={
-  Mapbox: {
-    code: "Mapbox",
-    title: "Mapbox",
-    icon: mapboxIcon,
-  },
-};
+export * from "./company.model";

@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { CustomerClubLevels } from "../../enums/customer/CustomerClubLevels";
-import { Currency } from "../../enums/payment/Currency";
+import {Currency} from "../../enums/payment/Currency";
+import {Club} from "../../models";
 
 export const CustomersCsvHeaders = [
   "Name",
@@ -33,8 +33,6 @@ export const CustomersCsvHeaders = [
   "No",
   "Unit",
   "Postal",
-
-
 ];
 
 export const CustomersCsvStyler = {
@@ -50,7 +48,7 @@ export const CustomersCsvStyler = {
   },
   Level: {
     type: "enum",
-    list: [...Object.values(CustomerClubLevels)],
+    list: [...Object.values(Club.Levels)],
     nullable: true,
   },
   Segments: {

@@ -13,34 +13,64 @@
  */
 
 export interface Cluster {
-  /** Unique identifier for the shop category. */
+  /**
+   * The unique identifier of the cluster.
+   * @type {number}
+   */
   id: number;
 
-  /** Identifier for the shop this category belongs to. */
+  /**
+   * The identifier of the associated shop.
+   * @type {number}
+   */
   shop_id: number;
 
-  /** Optional identifier for the user associated with this category. */
-  user_id?: number | null;
+  /**
+   * The identifier of the associated user, or null if not assigned.
+   * @type {number | null}
+   */
+  user_id: number | null;
 
-  /** Optional identifier for the parent category. */
-  parent_id?: number | null;
+  /**
+   * The identifier of the parent cluster, or null if there is no parent.
+   * @type {number | null}
+   */
+  parent_id: number | null;
 
-  /** Name of the category. */
+  /**
+   * The name of the cluster.
+   * @type {string}
+   */
   name: string;
 
-  /** Optional description of the category. */
-  description?: string | null;
+  /**
+   * A description of the cluster, or null if not provided.
+   * @type {string | null}
+   */
+  description: string | null;
 
-  /** Optional icon image path for the category. Sizes: 64, 128, original. */
-  icon?: string | null;
+  /**
+   * The path to the cluster's icon image. Supported sizes: 64, 128, original.
+   * @type {string | null}
+   */
+  icon: string | null;
 
-  /** Optional hex color code for the category. */
-  color?: string | null;
+  /**
+   * The hex color code associated with the cluster.
+   * @type {string | null}
+   */
+  color: string | null;
 
-  /** Timestamp of when the category was created. */
+  /**
+   * The timestamp when the cluster was created.
+   * @type {string}
+   */
   created_at: string;
 
-  /** Timestamp of when the category was last updated. */
+  /**
+   * The timestamp when the cluster was last updated.
+   * @type {string}
+   */
   updated_at: string;
 }
 

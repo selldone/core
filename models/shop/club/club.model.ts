@@ -12,6 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import bronze from "../../../enums/customer/assets/customer-levels/bronze.svg";
+import bronzeOutline from "../../../enums/customer/assets/customer-levels/bronze-outline.svg";
+import silver from "../../../enums/customer/assets/customer-levels/silver.svg";
+import silverOutline from "../../../enums/customer/assets/customer-levels/silver-outline.svg";
+import gold from "../../../enums/customer/assets/customer-levels/gold.svg";
+import goldOutline from "../../../enums/customer/assets/customer-levels/gold-outline.svg";
+import platinum from "../../../enums/customer/assets/customer-levels/platinum.svg";
+import platinumOutline from "../../../enums/customer/assets/customer-levels/platinum-outline.svg";
+import diamond from "../../../enums/customer/assets/customer-levels/diamond.svg";
+import diamondOutline from "../../../enums/customer/assets/customer-levels/diamond-outline.svg";
+
 /**
  * Represents a Shop's Club membership.
  */
@@ -20,7 +31,7 @@ export interface Club {
   shop_id: number;
 
   /** The level of customer badge associated with the shop club. */
-  level: Club.ILevel;
+  level: keyof typeof Club.Levels;
 
   /** Description of the shop club. */
   description: string;
@@ -51,11 +62,36 @@ export interface Club {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace Club {
-  export enum ILevel {
-    BRONZE = "BRONZE",
-    SILVER = "SILVER",
-    GOLD = "GOLD",
-    PLATINUM = "PLATINUM",
-    DIAMOND = "DIAMOND",
-  }
+  export const Levels = {
+    BRONZE: {
+      code: "BRONZE",
+      name: "global.customer_club.bronze",
+      icon: bronze,
+      icon_outline: bronzeOutline,
+    },
+    SILVER: {
+      code: "SILVER",
+      name: "global.customer_club.silver",
+      icon: silver,
+      icon_outline: silverOutline,
+    },
+    GOLD: {
+      code: "GOLD",
+      name: "global.customer_club.gold",
+      icon: gold,
+      icon_outline: goldOutline,
+    },
+    PLATINUM: {
+      code: "PLATINUM",
+      name: "global.customer_club.platinum",
+      icon: platinum,
+      icon_outline: platinumOutline,
+    },
+    DIAMOND: {
+      code: "DIAMOND",
+      name: "global.customer_club.diamond",
+      icon: diamond,
+      icon_outline: diamondOutline,
+    },
+  };
 }

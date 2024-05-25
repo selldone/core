@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { CustomerClubLevels } from "../../enums/customer/CustomerClubLevels";
+import {Club} from "../../models";
 
 export default {
   REGISTER_DATE: {
@@ -54,7 +54,7 @@ export default {
       levels: {
         type: "enum",
         title: "Customer clubs",
-        items: Object.values(CustomerClubLevels),
+        items: Object.values(Club.Levels),
         multiple: true,
         chips: true,
       },

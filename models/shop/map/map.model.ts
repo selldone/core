@@ -12,9 +12,12 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+//█████████████████████████████████████████████████████████████
+//―――――――――――――――― 🦫 Types ――――――――――――――――
+//█████████████████████████████████████████████████████████████
+import mapboxIcon from "./assets/mapbox.svg";
 
 export namespace Map {
-
   /**
    * Represents the geographical location with longitude and latitude.
    *
@@ -25,4 +28,12 @@ export namespace Map {
     lng: number;
     lat: number;
   }
+
+  export const Providers = {
+    Mapbox: {
+      code: "Mapbox",
+      title: "Mapbox",
+      icon: mapboxIcon,
+    },
+  };
 }

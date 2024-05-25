@@ -13,3 +13,4 @@
  */
 
 export * from "./connect.model";
+export * from "./connect.provider.model";

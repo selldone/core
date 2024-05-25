@@ -12,9 +12,30 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export default  [
+export interface Company {}
+
+//█████████████████████████████████████████████████████████████
+//―――――――――――――――― 🦫 Types ――――――――――――――――
+//█████████████████████████████████████████████████████████████
+export namespace Company {
+  /**
+   * Interface representing a document type.
+   */
+  interface IDocumentType {
+    /** Code representing the document type. */
+    code: string;
+
+    /** Title of the document type. */
+    title: string;
+  }
+
+  /**
+   * Constant array of document types.
+   */
+  export const DocumentTypes: IDocumentType[] = [
     { code: "REGISTRATION", title: "Registration documents" },
     { code: "VAT", title: "VAT documents" },
     { code: "TAX", title: "Tax documents" },
     { code: "IP", title: "Intellectual Property documents" },
-]
+  ];
+}
