@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,8 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface IAddress {
-  address?: string;
-  no?: string; // Building number
-  unit?: string; // Unit number
-}
+export * from "./analytics.model";

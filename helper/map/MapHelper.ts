@@ -12,17 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {IAddress} from "../../models/traits/address.model";
-import {MapTag} from "../../models/shop/map/map-tag.model";
+import {Map} from "../../models/shop/map/map.model";
+import {Order} from "../../models";
 
 export class MapHelper {
-  static GenerateFullAddressFromMapInfo(info_object: IAddress) {
+  static GenerateFullAddressFromMapInfo(info_object: Order.IAddress) {
     if (!info_object || !info_object.address) return null;
 
     return `${info_object.address},${window.$i18n_global.t(
-      "global.address_info.building_number"
+      "global.address_info.building_number",
     )}: ${info_object.no ? info_object.no : "?"},${window.$i18n_global.t(
-      "global.address_info.building_unit"
+      "global.address_info.building_unit",
     )}: ${info_object.unit ? info_object.unit : "?"}`;
   }
 
@@ -31,7 +31,10 @@ export class MapHelper {
     return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${lng},${lat},${zoom},0,0/800x800?access_token=pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw`;
   }
 
-  static GetMapDirectionUrl(location: MapTag.ILocation, travelmode: boolean = false) {
+  static GetMapDirectionUrl(
+    location: Map.ILocation,
+    travelmode: boolean = false,
+  ) {
     if (!location?.lng || !location?.lat) return null;
     return `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}&travelmode=${travelmode}`;
   }

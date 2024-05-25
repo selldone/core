@@ -11,5 +11,5 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-
+export * from "./map.model";
 export * from "./map-tag.model";

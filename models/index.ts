@@ -20,10 +20,10 @@ export * from "./article";
 export * from "./cluster";
 export * from "./community";
 export * from "./connect";
+export * from "./general";
 export * from "./guild";
 export * from "./notification";
 export * from "./shop";
-export * from "./traits";
 export * from "./user";
 
 

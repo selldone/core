@@ -22,8 +22,8 @@ import type {Connect} from "../../../connect/connect.model";
 import {BasketItemReturn} from "./basket_item_return.model";
 import {VirtualItem} from "./virtual_item.model";
 import {ServiceItem} from "./service_item.model";
-import {Fulfillment} from "./fulfillment.model";
 import {VendorProduct} from "../../vendor/vendor_product.model";
+import {Fulfillment} from "../fulfillment";
 
 /**
  * TypeScript model for BasketItem

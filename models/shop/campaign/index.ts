@@ -13,3 +13,4 @@
  */
 
 export * from "./campaign.model";
+export * from "./campaign-link.model";

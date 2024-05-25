@@ -113,8 +113,5 @@ export interface MapTag {
 }
 
 export namespace MapTag {
-  export interface ILocation {
-    lng: number;
-    lat: number;
-  }
+
 }

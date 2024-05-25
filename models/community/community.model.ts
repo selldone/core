@@ -39,15 +39,15 @@ export interface Community {
 
   /**
    * Stage access level determining who can post a new topic.
-   * {@see CommunityStageLevel}
+   * {@see Community.StageLevel}
    */
-  stage: string;
+  stage: keyof typeof Community.StageLevels;
 
   /**
    * Determines who can attach files.
-   * {@see CommunityStageLevel}
+   * {@see Community.AttachmentAccess}
    */
-  attachment: string;
+  attachment: keyof typeof Community.AttachmentAccesses;
 
   /** Allowed file types for attachments */
   mims: string[];
@@ -106,6 +106,87 @@ export interface Community {
   };
 }
 
-export namespace Community {
+//█████████████████████████████████████████████████████████████
+//―――――――――――――――― 🦫 Types ――――――――――――――――
+//█████████████████████████████████████████████████████████████
 
+export namespace Community {
+  /**
+   * CommunityAttachmentAccess Enum
+   *
+   * Represents the different access levels for attaching files within a community.
+   */
+  export enum AttachmentAccessValues {
+    PUBLIC = "PUBLIC",
+    PRIVATE = "PRIVATE",
+    VERIFIED = "VERIFIED",
+  }
+
+  interface IAttachmentAccess {
+    code: AttachmentAccessValues;
+    name: string;
+    icon: string;
+    description: string;
+  }
+
+  /**
+   * community.stage_level.PUBLIC: All registered users, irrespective of their roles or verification status, have the ability to attach files.
+   * community.stage_level.PRIVATE: Only those users with administrative or moderating roles can attach files. Regular users or members without any elevated permissions cannot.
+   * community.stage_level.VERIFIED: In addition to admins and moderators, users who have undergone a verification process or have been nominated for the same can attach files. This can be useful in communities where certain privileges are reserved for trusted or recognized members.
+   */
+  export const AttachmentAccesses: Record<
+    AttachmentAccessValues,
+    IAttachmentAccess
+  > = {
+    [AttachmentAccessValues.PUBLIC]: {
+      code: AttachmentAccessValues.PUBLIC,
+      name: "community.stage_level.PUBLIC",
+      icon: "public",
+      description: "All registered users can attach files.",
+    },
+    [AttachmentAccessValues.PRIVATE]: {
+      code: AttachmentAccessValues.PRIVATE,
+      name: "community.stage_level.PRIVATE",
+      icon: "admin_panel_settings",
+      description: "Only admins and moderators can attach files.",
+    },
+    [AttachmentAccessValues.VERIFIED]: {
+      code: AttachmentAccessValues.VERIFIED,
+      name: "community.stage_level.VERIFIED",
+      icon: "verified",
+      description:
+        "Admins, moderators, and all verified or nominated users can attach files.",
+    },
+  };
+
+  /**
+   * Represents the various stage levels of a community.
+   *
+   * - **PUBLIC**: All logged-in users have the ability to create topics and send posts to the community.
+   * - **PRIVATE**: Only administrators and moderators are granted the privilege to create topics, while other users can only send posts within these created topics.
+   * - **VERIFIED**: Administrators, moderators, and users who have been verified or nominated possess the right to create topics. All other members are limited to sending posts within these established topics.
+   */
+  export const StageLevels = {
+    PUBLIC: {
+      code: "PUBLIC",
+      name: "community.stage_level.PUBLIC",
+      icon: "public",
+      description:
+        "This level provides an open platform where every logged-in user can freely create topics and send posts. Ideal for promoting extensive community interaction and engagement.",
+    },
+    PRIVATE: {
+      code: "PRIVATE",
+      name: "community.stage_level.PRIVATE",
+      icon: "admin_panel_settings",
+      description:
+        "This level restricts topic creation to only administrators and moderators. However, all other members can contribute by sending posts in the topics created by these privileged users. Suited for controlled and moderated community environments.",
+    },
+    VERIFIED: {
+      code: "VERIFIED",
+      name: "community.stage_level.VERIFIED",
+      icon: "verified",
+      description:
+        "Topic creation at this level is reserved for administrators, moderators, and users who've been either verified or nominated. However, every other user retains the right to send posts within these topics. Best for communities that seek a balance between openness and controlled topic generation.",
+    },
+  };
 }

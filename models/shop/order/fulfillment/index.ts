@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,22 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface IOrder {
-  id: number;
-  shop_id: number;
-  label: string | null; // Custom order ID set by seller configuration.
-  type:
-    | "AVO"
-    | "FUL"
-    | "POS"
-    | "HYP"
-    | "BILL"
-    | "PHYSICAL"
-    | "VIRTUAL"
-    | "FILE"
-    | "SERVICE"
-    | "SUBSCRIPTION";
-
-  vendor_id?: number; // Only in the vendor order! We use this to detect it's a vendor order. The type will be PHYSICAL,VIRTUAL,... same as main basket type.
-  basket_id?: number; // Only in the vendor order!
-}
+export * from "./fulfillment.model";

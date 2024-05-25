@@ -12,34 +12,35 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export interface AgencyPlan {
-  /**
-   * Unique identifier for the client.
-   */
+export interface CommunityAttachment {
+  /** Unique identifier for the community post file. */
   id: number;
 
-  /**
-   * Identifier for the associated agency.
-   */
-  agency_id: number;
+  /** Identifier for the community this post file belongs to. */
+  community_id: number;
 
-  staff: number;
+  /** Identifier for the post this file is associated with. */
+  post_id: number;
 
-  domains: number;
+  /** Identifier for the user who uploaded the file. */
+  user_id: number;
 
-  /**
-   * Timestamp indicating when the entity was last updated.
-   */
-  updated_at: string;
+  /** Size of the file in bytes. */
+  size: string;
 
-  /**
-   * Timestamp indicating when the entity was created.
-   */
-  created_at: string;
+  /** Name of the file. */
+  name: string;
+
+  /** Path of the file on storage. */
+  path: number;
+
+  /** Flag indicating whether the file is a virus. */
+  virus: boolean;
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
+export namespace CommunityAttachment {
 
-export namespace AgencyPlan {}
+}

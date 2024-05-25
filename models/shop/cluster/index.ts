@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,23 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const ReturnItemStates = {
-  Pending: {
-    code: "Pending",
-    name: "global.return_request_state.pending",
-    icon: "fa:fas fa-hourglass-half ",
-    color: "#F57C00"
-  },
-  Accepted: {
-    code: "Accepted",
-    name: "global.return_request_state.accepted",
-    icon: "fa:fas fa-check ",
-    color: "#388E3C"
-  },
-  Rejected: {
-    code: "Rejected",
-    name: "global.return_request_state.rejected",
-    icon: "fa:fas fa-times ",
-    color: "#D32F2F"
-  }
-};
+export * from "./cluster.model";

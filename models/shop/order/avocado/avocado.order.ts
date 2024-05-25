@@ -14,11 +14,12 @@
 
 import type {User} from "../../../user/user.model";
 import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
+import {Order} from "../order";
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export interface Avocado {
+export interface Avocado extends Order.IOrder{
   /** Unique identifier of the order. */
   id: number;
 
@@ -104,7 +105,7 @@ export interface Avocado {
   created_at: string;
 
   /** Reason for order rejection. Can be nullable. */
-  reject?: string;
+  reject?: keyof typeof Order.RejectReasons | null;
 
   /** Timestamp indicating when the order was rejected. Can be nullable. */
   reject_at?: string;

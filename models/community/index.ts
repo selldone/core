@@ -11,10 +11,11 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-
+export * from "./community.attachment.model";
 export * from "./community.category.model";
 export * from "./community.comment.model";
 export * from "./community.data.model";
 export * from "./community.model";
+export * from "./community.post.reaction.model";
 export * from "./community.post.model";
 export * from "./community.topic.model";

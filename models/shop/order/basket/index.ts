@@ -15,6 +15,5 @@
 export * from "./basket.model";
 export * from "./basket_item.model";
 export * from "./basket_item_return.model";
-export * from "./fulfillment.model";
 export * from "./service_item.model";
 export * from "./virtual_item.model";

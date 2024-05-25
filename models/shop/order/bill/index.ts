@@ -12,6 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./address.model";
-export * from "./order.model";
-
+export * from "./bill.model";

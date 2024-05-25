@@ -13,8 +13,9 @@
  */
 
 import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
+import {Order} from "../order";
 
-export interface Hyper {
+export interface Hyper extends Order.IOrder{
   /** Unique identifier of the order. */
   id: number;
 
