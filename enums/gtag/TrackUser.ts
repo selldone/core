@@ -29,6 +29,7 @@ export class TrackUser {
     gtag("event", this.EVENT_ACTION_CLICK, {
       event_category: this.EVENT_CATEGORY_USER, // 📁 Category
       event_label: label, // 🏷️ Label
+      event_action: "click", // 🖱️ Action
     });
   }
 }
