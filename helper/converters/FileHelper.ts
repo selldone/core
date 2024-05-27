@@ -31,7 +31,7 @@ export class FileHelper {
     if (!fullPath) return null;
 
     const extension = FileHelper.GetFileExtension(fullPath);
-    console.log('extension',extension)
+    // console.log("extension", extension);
     const found = FileExtensions.find((it) => it.ex.includes(extension));
     return found ? found.src : null;
   }
