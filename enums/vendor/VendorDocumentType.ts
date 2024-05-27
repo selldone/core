@@ -55,4 +55,24 @@ export default {
     description:
       "Include your privacy policy documents, demonstrating your business's commitment to safeguarding user or customer information.",
   },
+
+  Embed: {
+    code: "Embed",
+    icon: "view_cozy",
+    title: "Embed Form",
+    description:
+      "Complete the embedded form to provide the necessary information.",
+    multi:true, // Can add multiple item to documents
+
+  },
+  Link: {
+    code: "Link",
+    icon: "link",
+    title: "External Link",
+    description:
+        "Open the external link to provide the necessary information.",
+    multi:true,
+
+  },
+
 };
