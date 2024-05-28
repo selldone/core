@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,12 +12,12 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export type Country = {
+export type ICountry = {
   code: string;
   name: string;
 };
 
-export const Countries: Country[] = [
+export const Countries: ICountry[] = [
   { code: "AD", name: "Andorra" },
   { code: "AE", name: "United Arab Emirates" },
   { code: "AF", name: "Afghanistan" },
@@ -270,3 +270,38 @@ export const Countries: Country[] = [
 ];
 
 export type ICountryCode = (typeof Countries)[number]["code"];
+
+//█████████████████████████████████████████████████████████████
+//―――――――――――――――― 🦫 Types ――――――――――――――――
+//█████████████████████████████████████████████████████████████
+export namespace Country {
+  export const EuropeCountriesAlpha2: string[] = [
+    "AT",
+    "BE",
+    "BG",
+    "HR",
+    "DO",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "DE",
+    "GR",
+    "HU",
+    "IS",
+    "IT",
+    "LV",
+    "LT",
+    "LU",
+    "MT",
+    "NL",
+    "PL",
+    "PT",
+    "RO",
+    "SK",
+    "SI",
+    "ES",
+    "SE",
+    "CY",
+  ];
+}

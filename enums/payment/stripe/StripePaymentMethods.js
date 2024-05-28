@@ -13,7 +13,7 @@
  */
 
 import SVGs from "./SVGs";
-import EuropeCountriesAlpha2 from "../../country/EuropeCountriesAlpha2";
+import {Country} from "../../../models/general/country/country.model";
 
 export default {
   card: {
@@ -36,7 +36,7 @@ export default {
     countries: null /*All mode*/,
     currencies: null /*All mode*/,
     subscription: true,
-    verification_method:'stripe-apple',  // Domain verification
+    verification_method: "stripe-apple", // Domain verification
   },
   google_pay: {
     title: "Google Pay",
@@ -74,7 +74,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: [
       "AUD",
@@ -106,7 +106,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR"],
     subscription: false,
@@ -146,7 +146,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR"],
     subscription: false,
@@ -166,7 +166,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR"],
     subscription: false,
@@ -186,7 +186,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR"],
     subscription: false,
@@ -239,7 +239,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR", "PLN"],
     subscription: false,
@@ -259,7 +259,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR"],
     subscription: true,
@@ -279,7 +279,7 @@ export default {
       "NZ",
       "SG",
       "US",
-      ...EuropeCountriesAlpha2,
+      ...Country.EuropeCountriesAlpha2,
     ],
     currencies: ["EUR"],
     subscription: false,

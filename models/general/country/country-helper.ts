@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2023-2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -14,7 +14,7 @@
 
 "use strict";
 
-import { Countries, Country } from "./CountriesListEnum"; // Assuming you have a types.ts file which contains the `Country` interface
+import {Countries, ICountry} from "./country.model"; // Assuming you have a types.ts file which contains the `Country` interface
 
 /** Precompute name and code lookups. */
 const nameMap: { [key: string]: string } = {};
@@ -26,7 +26,7 @@ Countries.forEach(mapCodeAndName);
  * Maps country name to its code and vice versa.
  * @param country - The country object containing name and code.
  */
-function mapCodeAndName(country: Country) {
+function mapCodeAndName(country: ICountry) {
   nameMap[country.name.toLowerCase()] = country.code;
   codeMap[country.code.toLowerCase()] = country.name;
 }
@@ -35,7 +35,7 @@ function mapCodeAndName(country: Country) {
  * Overwrite the default countries with provided ones.
  * @param countries - An array of country objects to overwrite.
  */
-export function overwrite(countries: Country[]) {
+export function overwrite(countries: ICountry[]) {
   if (!countries || !countries.length) return;
   countries.forEach(function (country) {
     const foundIndex = Countries.findIndex(function (item) {
@@ -60,7 +60,7 @@ export function getCode(name: string): string | undefined {
  * @param code - The country code.
  * @returns - The country name or null if not found.
  */
-export function getCountryName(code: string|null): string | null {
+export function getCountryName(code: string | null): string | null {
   if (!code) return null;
   return codeMap[code.toLowerCase()] || null;
 }
@@ -101,6 +101,6 @@ export function getNameList(): { [key: string]: string } {
  * Get the complete country data.
  * @returns - An array of country objects.
  */
-export function getData(): Country[] {
+export function getData(): ICountry[] {
   return Countries;
 }
