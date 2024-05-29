@@ -14,18 +14,17 @@
 
 /* eslint-disable no-console */
 
-import { register } from "register-service-worker";
+import {register} from "register-service-worker";
 
 if (process.env.NODE_ENV === "production") {
-
   /* `${process.env.BASE_URL}service-worker.js` */ // MOVE TO ROOT!
   register(`/service-worker.js`, {
-    registrationOptions: { scope: './' },
+    registrationOptions: { scope: "./" },
 
     ready() {
       console.log(
         "App is being served from cache by a service worker.\n" +
-          "For more details, visit https://goo.gl/AFskqB"
+          "For more details, visit https://goo.gl/AFskqB",
       );
     },
     registered() {
@@ -42,11 +41,11 @@ if (process.env.NODE_ENV === "production") {
     },
     offline() {
       console.log(
-        "No internet connection found. App is running in offline mode."
+        "No internet connection found. App is running in offline mode.",
       );
     },
     error(error) {
       console.error("Error during service worker registration:", error);
-    }
+    },
   });
 }

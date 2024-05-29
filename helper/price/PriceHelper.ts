@@ -12,15 +12,15 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { Currency } from "../../enums/payment/Currency";
-import { DateConverter } from "../date/DateConverter";
-import { Shop } from "../../models/shop/shop.model";
-import { Product } from "../../models/shop/product/product.model";
-import type { BasketItem } from "../../models/shop/order/basket/basket_item.model";
-import type { SubscriptionPrice } from "../../models/shop/product/subscription_price.model";
-import type { ProductVariant } from "../../models/shop/product/product_variant.model";
-import type { Valuation } from "../../models/shop/accounting/valuation/valuation.model";
-import type { ExtraPricing } from "../../models/shop/extra-pricing/extra-pricing.model";
+import {Currency} from "../../enums/payment/Currency";
+import {DateConverter} from "../date/DateConverter";
+import {Shop} from "../../models/shop/shop.model";
+import {Product} from "../../models/shop/product/product.model";
+import type {BasketItem} from "../../models/shop/order/basket/basket_item.model";
+import type {SubscriptionPrice} from "../../models/shop/product/subscription_price.model";
+import type {ProductVariant} from "../../models/shop/product/product_variant.model";
+import type {Valuation} from "../../models/shop/accounting/valuation/valuation.model";
+import type {ExtraPricing} from "../../models/shop/extra-pricing/extra-pricing.model";
 import {StorefrontDebugEvents} from "../../enums/debug/StorefrontDebugEvents";
 
 export class PriceHelper {
@@ -34,7 +34,7 @@ export class PriceHelper {
   static getExchangeRate(
     shop: Shop,
     from: keyof typeof Currency,
-    to: keyof typeof Currency
+    to: keyof typeof Currency,
   ) {
     if (from === to) return { rate: 1 };
     if (!shop) return null;
@@ -47,7 +47,7 @@ export class PriceHelper {
     shop: Shop,
     from: keyof typeof Currency,
     to: keyof typeof Currency,
-    default_rate?: number | null
+    default_rate?: number | null,
   ) {
     let exchangeRate = this.getExchangeRate(shop, from, to);
 
@@ -63,7 +63,7 @@ export class PriceHelper {
   static getBuyRateValue(
     shop: Shop,
     from_currency: keyof typeof Currency,
-    to_currency: keyof typeof Currency
+    to_currency: keyof typeof Currency,
   ) {
     if (from_currency === to_currency) return 1;
 
@@ -75,7 +75,7 @@ export class PriceHelper {
       const reverse_val = this.getExchangeRateValue(
         shop,
         to_currency,
-        from_currency
+        from_currency,
       );
       if (reverse_val) val = 1 / reverse_val;
     }
@@ -86,7 +86,7 @@ export class PriceHelper {
           from_currency +
           " --> " +
           to_currency,
-        "background: #C2185B; color: #fff;padding 4px 12px"
+        "background: #C2185B; color: #fff;padding 4px 12px",
       );
     }
     return val;
@@ -97,7 +97,7 @@ export class PriceHelper {
   static getBasketItemPrice(
     shop: Shop,
     item: BasketItem,
-    to_currency: keyof typeof Currency
+    to_currency: keyof typeof Currency,
   ) {
     const rate = this.getBuyRateValue(shop, item.currency, to_currency);
     if (!rate) {
@@ -109,7 +109,7 @@ export class PriceHelper {
   static getBasketItemDiscount(
     shop: Shop,
     item: BasketItem,
-    to_currency: keyof typeof Currency
+    to_currency: keyof typeof Currency,
   ) {
     const rate = this.getBuyRateValue(shop, item.currency, to_currency);
     if (!rate) {
@@ -117,10 +117,11 @@ export class PriceHelper {
     }
     return item.dis * rate;
   }
+
   static getBasketItemSumPriceDiscount(
     shop: Shop,
     item: BasketItem,
-    to_currency: keyof typeof Currency
+    to_currency: keyof typeof Currency,
   ) {
     const rate = this.getBuyRateValue(shop, item.currency, to_currency);
     if (!rate) {
@@ -151,7 +152,7 @@ export class PriceHelper {
     preferences?: BasketItem.IPreferences | null,
     valuation?: Valuation | null,
     subscription_price?: SubscriptionPrice | null, // 🎗️ Subscription
-    current_extra_pricing?: ExtraPricing | null // 🌸 Add extra pricing 🌸
+    current_extra_pricing?: ExtraPricing | null, // 🌸 Add extra pricing 🌸
   ): number {
     if (!product || !to_currency) return 0;
 
@@ -161,10 +162,10 @@ export class PriceHelper {
         console.error(
           "The currency of the subscription price does not match the currency selected by the user!",
           subscription_price.currency,
-          to_currency
+          to_currency,
         );
         throw new Error(
-          `The currency of the subscription price [${subscription_price.currency}] does not match the currency selected by the user [${to_currency}]!`
+          `The currency of the subscription price [${subscription_price.currency}] does not match the currency selected by the user [${to_currency}]!`,
         );
       }
       return subscription_price.price;
@@ -174,7 +175,7 @@ export class PriceHelper {
     if (!valuation && product.valuation) {
       valuation = product.valuation;
       console.error(
-        "Valuation exist in the product but not pass as a param in priceProductByCurrency! It can cause error in marketplace!"
+        "Valuation exist in the product but not pass as a param in priceProductByCurrency! It can cause error in marketplace!",
       );
     }
 
@@ -188,7 +189,7 @@ export class PriceHelper {
         // 🪠 Log error to storefront debugger view!
         StorefrontDebugEvents.LogWarning(
           `Exchange ${variant!.currency}/${to_currency}`,
-          _error_message
+          _error_message,
         );
         throw new Error(_error_message);
       }
@@ -216,7 +217,7 @@ export class PriceHelper {
           shop,
           product,
           clone_variant,
-          to_currency
+          to_currency,
         );
 
       // ━━━━━━━━━━━━ 5. 🍁 Apply valuation (Pricing form) 🍁 ━━━━━━━━━━━━
@@ -233,7 +234,7 @@ export class PriceHelper {
         // 🪠 Log error to storefront debugger view!
         StorefrontDebugEvents.LogWarning(
           `Exchange ${product.currency}/${to_currency}`,
-          _error_message
+          _error_message,
         );
 
         throw new Error(_error_message);
@@ -264,7 +265,7 @@ export class PriceHelper {
           shop,
           clone_product,
           null,
-          to_currency
+          to_currency,
         );
         $out -= _discount;
 
@@ -294,7 +295,7 @@ export class PriceHelper {
   static ApplyValuation(
     valuation: Valuation | null | undefined,
     preferences: BasketItem.IPreferences | null | undefined,
-    base_price: number
+    base_price: number,
   ): number {
     //console.log("applyValuation > ...");
 
@@ -382,7 +383,7 @@ export class PriceHelper {
     shop: Shop,
     product: Product,
     variant: ProductVariant | null,
-    to_currency: keyof typeof Currency
+    to_currency: keyof typeof Currency,
   ): number {
     if (!product) return 0;
 
@@ -393,14 +394,14 @@ export class PriceHelper {
         DateConverter.inBetweenDates(
           new Date(),
           DateConverter.convertToLocalTime(variant.dis_start),
-          DateConverter.convertToLocalTime(variant.dis_end)
+          DateConverter.convertToLocalTime(variant.dis_end),
         )
       ) {
         // 1. Get exchange rate.
         const rate = this.getBuyRateValue(shop, variant.currency, to_currency);
         if (!rate) {
           throw new Error(
-            `Exchange rate ${variant.currency}/${to_currency} not found!`
+            `Exchange rate ${variant.currency}/${to_currency} not found!`,
           );
         }
 
@@ -415,14 +416,14 @@ export class PriceHelper {
       DateConverter.inBetweenDates(
         new Date(),
         DateConverter.convertToLocalTime(product.dis_start),
-        DateConverter.convertToLocalTime(product.dis_end)
+        DateConverter.convertToLocalTime(product.dis_end),
       )
     ) {
       // 1. Get exchange rate.
       const rate = this.getBuyRateValue(shop, product.currency!, to_currency);
       if (!rate) {
         throw new Error(
-          `Exchange rate ${product.currency}/${to_currency} not found!`
+          `Exchange rate ${product.currency}/${to_currency} not found!`,
         );
       }
 
@@ -437,7 +438,7 @@ export class PriceHelper {
     shop: Shop,
     product: Product,
     variant: ProductVariant | null,
-    to_currency?: keyof typeof Currency
+    to_currency?: keyof typeof Currency,
   ) {
     if (!to_currency) to_currency = product.currency;
 
@@ -445,13 +446,13 @@ export class PriceHelper {
       shop,
       product,
       variant,
-      to_currency
+      to_currency,
     );
     const discount = this.getProductDiscountAmountByCurrency(
       shop,
       product,
       variant,
-      to_currency
+      to_currency,
     );
 
     try {
@@ -466,30 +467,30 @@ export class PriceHelper {
 
   static HasDiscountCountDownMode(
     product: Product,
-    variant: ProductVariant | null = null
+    variant: ProductVariant | null = null,
   ) {
     if (!product) return false;
 
     if (variant && variant.pricing) {
-      if (!variant.dis_start && !variant.dis_end) return false;
+      if (/*!variant.dis_start &&*/ !variant.dis_end) return false;
       return DateConverter.inBetweenDates(
         new Date(),
         DateConverter.convertToLocalTime(variant.dis_start),
-        DateConverter.convertToLocalTime(variant.dis_end)
+        DateConverter.convertToLocalTime(variant.dis_end),
       );
     }
 
-    if (!product.dis_start && !product.dis_end) return false;
+    if (/*!product.dis_start &&*/ !product.dis_end) return false;
     return DateConverter.inBetweenDates(
       new Date(),
       DateConverter.convertToLocalTime(product.dis_start),
-      DateConverter.convertToLocalTime(product.dis_end)
+      DateConverter.convertToLocalTime(product.dis_end),
     );
   }
 
   static GetEndOfDiscountDate(
     product: Product,
-    variant: ProductVariant | null = null
+    variant: ProductVariant | null = null,
   ) {
     if (!product) return null;
 
