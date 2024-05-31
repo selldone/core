@@ -1,6 +1,6 @@
 {
   "name": "@selldone/core-js",
-  "version": "1.5.31",
+  "version": "1.5.32",
   "private": false,
   "type": "module",
   "author": "Mehrdad Pajuhaan <mehrdad@selldone.com> (https://selldone.com)",
@@ -8,7 +8,7 @@
 
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "clean": "tsc --build --clean",
     "publish-npm": "npm publish --access public"
   },

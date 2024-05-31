@@ -14,6 +14,7 @@
 
 import {Shop} from "../shop.model";
 import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
+import {VendorProduct} from "./vendor_product.model";
 
 /**
  * Model Definition

@@ -1,4 +1,5 @@
-// StorefrontSDK.ts
+
+
 const defaultConfig:CookiesConfig = {
     expires: '1d',
     path: '; path=/',

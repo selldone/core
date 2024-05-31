@@ -13,13 +13,11 @@
  */
 
 export enum StorefrontRoutesName {
-
   // 🟢 Common > Blog
   BLOGS_PAGE = "Blogs",
   AUTHOR_PAGE = "AuthorPage",
 
   //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 
   AVOCADO_PAGE = "AvocadoPage",
   HYPER_PAGE = "HyperPage",

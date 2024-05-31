@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Selldone® Business OS™
+ * Copyright (c) 2024. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,9 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import "./ArrayPrototypes";
-import "./StringPrototypes";
-import "./NumberPrototypes";
-import "./ObjectPrototypes";
-import "./ElementPrototypes";
-
+export * from "./ArrayPrototypes";
+export * from "./StringPrototypes";
+export * from "./NumberPrototypes";
+export * from "./ObjectPrototypes";
+export * from "./ElementPrototypes";

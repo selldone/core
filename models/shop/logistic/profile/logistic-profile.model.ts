@@ -13,6 +13,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import {LogisticProfileType} from "../../../../enums/logistic/LogisticProfileType";
+
 /**
  * Represents a logistic model with detailed properties including identifiers, timestamps, and logistic-specific information.
  *
@@ -21,7 +23,7 @@
  * @property {number | null} user_id - The optional identifier for the associated user.
  * @property {LogisticProfileType} type - The type of logistic profile, which determines the logistic's characteristics.
  * @property {string} name - The name of the logistic entry.
- * @property {LogisticInfo} info - Contains additional information like product IDs and languages relevant to the logistic entry.
+ * @property {any} info - Contains additional information like product IDs and languages relevant to the logistic entry.
  * @property {Date} created_at - The timestamp when the logistic entry was created.
  * @property {Date} updated_at - The timestamp when the logistic entry was last updated.
  */
@@ -32,7 +34,7 @@ export interface LogisticProfile {
   user_id: number | null;
   type: keyof typeof LogisticProfileType;
   name: string;
-  info: LogisticInfo;
+  info: any;
   created_at: Date;
   updated_at: Date;
 }

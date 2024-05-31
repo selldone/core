@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -15,6 +17,9 @@
 /**
  * Extends the HTMLTextAreaElement prototype to provide a method to insert text at the current caret position.
  */
+
+// This is required because we modified global
+export {};
 
 interface HTMLTextAreaElement {
   /**
@@ -72,7 +77,10 @@ interface HTMLElement {
  *
  * @returns - The inserted text or the innerHTML of the element if the insertion fails.
  */
-HTMLElement.prototype.insertAtCaret = function (this: HTMLElement, text: string): string {
+HTMLElement.prototype.insertAtCaret = function (
+  this: HTMLElement,
+  text: string,
+): string {
   text = text || "";
 
   const sel = window.getSelection();
@@ -106,12 +114,11 @@ HTMLElement.prototype.insertAtCaret = function (this: HTMLElement, text: string)
       sel.addRange(nRange);
 
       //return "";
-    }else {
+    } else {
       // If the caret is not valid in the element, append the text to the end
       this.innerHTML += text;
     }
     return this.innerHTML;
-
   }
 
   // For older browsers (like IE).

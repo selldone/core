@@ -45,7 +45,7 @@ export const CategoriesCsvStyler= {
 
 
 export class CategoriesCsvFormat {
-    static CheckValidFile(headers){
+    static CheckValidFile(headers:string[]){
         if(!headers)return false;
         return !CategoriesCsvHeaders.some(it=>{
             return !headers.includes(it)

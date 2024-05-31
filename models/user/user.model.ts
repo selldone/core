@@ -125,7 +125,7 @@ export namespace User {
     /**
      * Represents the predefined keys for app levels.
      */
-    type AppLevelKey =
+    export type AppLevelKey =
       | "NEWBIE"
       | "BEGINNER"
       | "NOVICE"

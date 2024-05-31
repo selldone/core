@@ -12,15 +12,16 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { PriceHelper } from "../price/PriceHelper";
-import type { Shop } from "../../models/shop/shop.model";
-import { Currency } from "../../enums/payment/Currency";
-import type { Campaign } from "../../models/shop/campaign/campaign.model";
+import {PriceHelper} from "../price/PriceHelper";
+import type {Shop} from "../../models/shop/shop.model";
+import {Currency} from "../../enums/payment/Currency";
+import type {Campaign} from "../../models/shop/campaign/campaign.model";
 
 export class CampaignHelper {
   static isSearch(net: string) {
     return ["google"].includes(net);
   }
+
   static isSocialNetwork(net: string) {
     return net !== "direct" && !this.isSearch(net);
   }
@@ -28,7 +29,7 @@ export class CampaignHelper {
   static GetTotalAmount(
     shop: Shop,
     to_currency: keyof typeof Currency,
-    payment: Record<string, number>
+    payment: Record<string, number>,
   ) {
     let out = 0;
     if (payment) {
@@ -39,6 +40,7 @@ export class CampaignHelper {
     }
     return out;
   }
+
   static GetTotalSocials(campaign: Campaign) {
     let out = 0;
     if (campaign.social) {
@@ -49,6 +51,7 @@ export class CampaignHelper {
     }
     return out;
   }
+
   static GetSocialsOnly(campaign: Campaign, limit: number = 0) {
     const out: Record<string, number> = {};
     if (campaign.social) {
@@ -73,6 +76,7 @@ export class CampaignHelper {
     }
     return out;
   }
+
   static GetTotalDirects(campaign: Campaign) {
     return campaign.social && campaign.social.direct
       ? campaign.social.direct

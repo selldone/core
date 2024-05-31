@@ -11,6 +11,16 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+declare global {
+  interface Number {
+    applyAugment(
+      augment: { key: string; value: string }[],
+      bypass?: boolean,
+    ): number;
+  }
+}
+// This is required because we modified global
+export {};
 
 /**
  * Augments the current number instance.
@@ -21,7 +31,7 @@
  */
 Number.prototype.applyAugment = function (
   augment: { key: string; value: string }[],
-  bypass: boolean = false
+  bypass: boolean = false,
 ): number {
   return this as number;
 };
@@ -30,6 +40,6 @@ Number.prototype.applyAugment = function (
 interface Number {
   applyAugment(
     augment: { key: string; value: string }[],
-    bypass?: boolean
+    bypass?: boolean,
   ): number;
 }

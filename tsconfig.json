@@ -21,7 +21,6 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "allowImportingTsExtensions": false,
     "downlevelIteration": true,
     "lib": [
       "esnext",

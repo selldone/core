@@ -12,23 +12,32 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { StringToColour } from "../helper/color/ColorGenerator";
-import { ShopTransportations } from "../enums/logistic/ShopTransportations";
+import {StringToColour} from "../helper/color/ColorGenerator";
+import {ShopTransportations} from "../enums/logistic/ShopTransportations";
 
 declare global {
   interface String {
     isNumber(): boolean;
+
     limitWords(numWords: number): string;
+
     wordsCount(numWords: number): number;
+
     starMiddle(visible?: number, max_stars?: number): string;
+
     ellipsis(length: number): string;
+
     toColor(dark?: boolean): string;
+
     removeVariantAsset(): string;
+
     hasVariantAsset(): number | undefined;
+
     applyAugment(
       augment: { key: string; value: string }[],
-      bypass?: boolean
+      bypass?: boolean,
     ): string;
+
     findAllDynamicAugmentKeys(): string[];
 
     toTransportationObject(): ShopTransportations.IShopTransportations | null;
@@ -44,7 +53,7 @@ String.prototype.isNumber = function (this: string): boolean {
 
 String.prototype.limitWords = function (
   this: string,
-  numWords: number
+  numWords: number,
 ): string {
   const arr = this.split(/\s+/, numWords);
   let new_string = arr.join(" ");
@@ -56,7 +65,7 @@ String.prototype.limitWords = function (
 
 String.prototype.wordsCount = function (
   this: string,
-  numWords: number
+  numWords: number,
 ): number {
   const arr = this.split(/\s+/, numWords);
   return arr.length;
@@ -65,13 +74,13 @@ String.prototype.wordsCount = function (
 String.prototype.starMiddle = function (
   this: string,
   visible = 6,
-  max_stars = 10
+  max_stars = 10,
 ): string {
   if (this.length < 2 * visible) return this;
   const count = Math.min(this.length - 2 * visible, max_stars);
   return this.replace(
     this.substring(visible, this.length - visible),
-    "*".repeat(count)
+    "*".repeat(count),
   );
 };
 
@@ -98,7 +107,7 @@ String.prototype.hasVariantAsset = function (this: string): number | undefined {
 String.prototype.applyAugment = function (
   this: string,
   augment: { key: string; value: string }[],
-  bypass = false
+  bypass = false,
 ): string {
   if (bypass || !augment || !Array.isArray(augment)) return this;
   let str = this;
