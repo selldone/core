@@ -12,15 +12,14 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import adminIcon from './assets/permissions/admin.svg';
-import productIcon from './assets/permissions/product.svg';
-import auditingIcon from './assets/permissions/auditing.svg';
-import contentIcon from './assets/permissions/content.svg';
-import officerIcon from './assets/permissions/officer.svg';
-import employeeIcon from './assets/permissions/employee.svg';
-import marketingIcon from './assets/permissions/marketing.svg';
-import viewerIcon from './assets/permissions/viewer.svg';
-
+import adminIcon from "./assets/permissions/admin.svg";
+import productIcon from "./assets/permissions/product.svg";
+import auditingIcon from "./assets/permissions/auditing.svg";
+import contentIcon from "./assets/permissions/content.svg";
+import officerIcon from "./assets/permissions/officer.svg";
+import employeeIcon from "./assets/permissions/employee.svg";
+import marketingIcon from "./assets/permissions/marketing.svg";
+import viewerIcon from "./assets/permissions/viewer.svg";
 
 export const LEVELS = {
   DASHBOARD: { name: "admin_shop.menu.dashboard", icon: "dashboard" },
