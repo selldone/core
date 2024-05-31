@@ -15,6 +15,5 @@
 export * from "./console";
 export * from "./cookie";
 export * from "./scroll";
-export * from "./service-worker";
 export * from "./thread";
 
