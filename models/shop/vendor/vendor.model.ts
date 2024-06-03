@@ -109,6 +109,10 @@ export interface Vendor {
    */
   page_id: number | null;
 
+  augment: { key: string; value: string }[] | null;
+
+  slug: string | null;
+
   /**
    * Date of the last payment made to or by the vendor.
    * This uses an external library 'Carbon', so you might need to import it or replace with a Date type.

@@ -31,6 +31,7 @@ export enum StorefrontRoutesName {
 
   SHOP_CATEGORY_PAGE = "ShopCategoryPage",
   SHOP_VENDOR_PAGE = "VendorPublicPage",
+  SHOP_VENDOR_CUSTOM_LANDING_PAGE = "VendorCustomLandingPage",
 
   PAGE_RENDER = "PageRender",
 

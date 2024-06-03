@@ -12,9 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "../../server/SetupService";
-import type { Shop } from "../../models/shop/shop.model";
-import { Domain } from "../../models/shop/domain/domain.model";
+import {SetupService} from "../../server";
+import type {Shop} from "../../models";
+import {Domain} from "../../models";
+import {Slugify} from "../../utils/slugify/slugify";
+import {Vendor} from "../../models";
 
 export class ShopURLs {
   static MainShopUrl(shop: Shop & { domains?: Domain[] }) {
@@ -33,5 +35,17 @@ export class ShopURLs {
         ? shop.domain
         : `${SetupService.MainServiceUrl()}/@${shop.name}`;
     }
+  }
+
+  static GetVendorLandingPageUrl(shop: Shop, vendor: Vendor) {
+    if (!shop || !vendor?.id) return null;
+    const domain = ShopURLs.MainShopUrl(shop);
+    return `${domain}/vendor/@${vendor.slug ? vendor.slug : Slugify.apply(vendor.name)}-${vendor.id}`;
+  }
+
+  static GetVendorListingPageUrl(shop: Shop, vendor: Vendor) {
+    if (!shop || !vendor?.id) return null;
+    const domain = ShopURLs.MainShopUrl(shop);
+    return `${domain}/@${vendor.slug ? vendor.slug : Slugify.apply(vendor.name)}-${vendor.id}`;
   }
 }
