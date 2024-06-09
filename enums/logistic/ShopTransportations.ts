@@ -11,16 +11,16 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-import motorbikeIcon from './assets/transportations/motorbike.svg';
-import pickupIcon from './assets/transportations/pickup.svg';
-import cargoSmallIcon from './assets/transportations/cargo_s.svg';
-import cargoIcon from './assets/transportations/cargo.svg';
-import truckIcon from './assets/transportations/truck.svg';
-import postFastIcon from './assets/transportations/post_fast.svg';
-import postIcon from './assets/transportations/post.svg';
-import airplaneIcon from './assets/transportations/airplane.svg';
-import bicycleIcon from './assets/transportations/bicycle.svg';
-import globalIcon from './assets/transportations/global.svg';
+import motorbikeIcon from "./assets/transportations/motorbike.svg";
+import pickupIcon from "./assets/transportations/pickup.svg";
+import cargoSmallIcon from "./assets/transportations/cargo_s.svg";
+import cargoIcon from "./assets/transportations/cargo.svg";
+import truckIcon from "./assets/transportations/truck.svg";
+import postFastIcon from "./assets/transportations/post_fast.svg";
+import postIcon from "./assets/transportations/post.svg";
+import airplaneIcon from "./assets/transportations/airplane.svg";
+import bicycleIcon from "./assets/transportations/bicycle.svg";
+import globalIcon from "./assets/transportations/global.svg";
 
 export namespace ShopTransportations {
   export interface IShopTransportations {
