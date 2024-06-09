@@ -17,7 +17,6 @@ import twilioIcon from './provider/assets/twilio.svg';
 import smsitIcon from './provider/assets/smsit.png';
 import kavenegarIcon from './provider/assets/kavenegar.png';
 
-
 export const SmsProviders = [
   /*▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅ Default ▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅*/
 
@@ -31,8 +30,8 @@ export const SmsProviders = [
     messages: [
       "⚠️ Due to concerns over SMS fraud, this option is currently disabled. If you would like to enable SMS login and order notifications, please add your own custom service provider.",
       /*  "Authentications (OTP) will be sent.",
-      "Messages will be sent if the destination country is on the zero-cost SMS providers list.",
-      "Available for the enterprise license and will be charged per message.",*/
+            "Messages will be sent if the destination country is on the zero-cost SMS providers list.",
+            "Available for the enterprise license and will be charged per message.",*/
     ],
     support_text: false, // Support text mode.
     support_template: false, // Support template mode.
@@ -51,12 +50,11 @@ export const SmsProviders = [
       "Number" /*token_3*/,
       "Service SID" /*token_4*/,
     ],
-    placeholders:[
-        "Find this in your Twilio dashboard! ex. 8754...",
+    placeholders: [
+      "Find this in your Twilio dashboard! ex. 8754...",
       "Find this in your Twilio dashboard! ex. AC...",
       "Find it in your Twilio dashboard! ex. +1...",
       "Find or create it in your Twilio > Verify > Services! ex. VA...",
-
     ],
     support_text: true, // Support text mode.
     support_template: false, // Support template mode.
