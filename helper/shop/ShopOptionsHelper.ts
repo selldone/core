@@ -156,10 +156,10 @@ export class ShopOptionsHelper {
    * @returns Array of configured languages.
    */
   static GetLanguages(shop: Shop): string[] {
-    const login_option = shop.options?.find((e) => e.code === "languages");
+    const languages_option = shop.options?.find((e) => e.code === "languages");
     let languages =
-      login_option?.value && Array.isArray(login_option.value)
-        ? login_option.value
+        languages_option?.value && Array.isArray(languages_option.value)
+        ? languages_option.value
         : [];
     languages = [...languages]; // Cloning
     if (languages.includes(shop.language)) languages.unshift(shop.language);

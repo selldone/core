@@ -15,15 +15,15 @@
 export const SmsTemplateMode = {
   text: {
     code: "text",
-    title: "Plain Text",
-    desc: "Message will be created from a text with auto replace parameters and send.",
+    title: "sms_template_mode.text.title",
+    desc: "sms_template_mode.text.desc",
     icon: "subject",
   },
 
   template: {
     code: "template",
-    title: "Structural Template",
-    desc: "An object will be created from parameters and send to the provider.",
+    title: "sms_template_mode.template.title",
+    desc: "sms_template_mode.template.desc",
     icon: "data_object",
   },
 };
