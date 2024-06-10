@@ -100,10 +100,15 @@ export const SmsProviders = [
     description: "",
     icon: kavenegarIcon,
     tokens: ["Auth token" /*token_1*/, "Number" /*token_2*/],
-    locals: ["IR"], // Only for some local services : SetupService.LocalServiceCountry()
+  //  locals: ["IR"], // Only for some local services : SetupService.LocalServiceCountry()
 
     support_text: true, // Support text mode.
     support_template: true, // Support template mode.
+
+    template:{
+      has_dynamic_parameters:false, // Support dynamic parameters, like change the value of token, token2, token3,... which is not possible
+      permanent_params:['template']
+    }
     //link:'https://kavenegar.com'
   },
 ];
