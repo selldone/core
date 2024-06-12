@@ -135,6 +135,13 @@ export default {
     text: "timeline.email-payment",
     iclass: "bg-teal-soft",
   },
+  "sms-payment": {
+    icon: "fa:fas fa-sms",
+    color: "#00796B",
+    editable: false,
+    text: "timeline.sms-payment",
+    iclass: "bg-teal-soft",
+  },
 
   "delivery-returned": {
     icon: "fa:fas fa-truck-loading",
@@ -193,7 +200,7 @@ export default {
   vendor: {
     icon: "fullscreen",
     color: "#FFA000",
-    editable: true,
+    editable: false,
     text: "timeline.vendor",
     iclass: "bg-sunny-morning",
   },
@@ -264,5 +271,10 @@ export default {
     icon: "payments",
     color: "#000000",
     text: "timeline.vendor-payout",
+  },
+  "vendor-sms": {
+    icon: "fa:fas fa-sms",
+    color: "#000000",
+    text: "timeline.vendor-sms",
   },
 };
