@@ -12,8 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { SetupService } from "../server/SetupService";
-import { Currency } from "../enums/payment/Currency";
+import {SetupService} from "../server/SetupService";
+import {Currency} from "../enums/payment/Currency";
 
 export class GAPI {
   selldone_gapi_url: string = "";
@@ -235,7 +235,7 @@ export class GAPI {
 
   GET_PARTNER_DEAL_BY_CURRENCY(
     ref_code: string,
-    currency: keyof typeof Currency
+    currency: keyof typeof Currency,
   ) {
     return `${this.selldone_gapi_url}/partners/deals/${ref_code}/${currency}`;
   }
@@ -272,4 +272,14 @@ export class GAPI {
   GET_PAGE_BUILDER_TEMPLATES() {
     return `${this.selldone_gapi_url}/page-templates`;
   }
+
+  //―――――――――――――――――――――― Demo ――――――――――――――――――――
+  POST_DEMO_AI_ADD_PRODUCT() {
+    return `${this.selldone_gapi_url}/demo/ai-add-product`;
+  }
+
+  GET_DEMO_SHOP() {
+    return `${this.selldone_gapi_url}/demo/shop`;
+  }
+
 }
