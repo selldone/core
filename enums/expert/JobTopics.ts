@@ -13,43 +13,45 @@
  */
 
 import {JobTopicsCategory} from "./JobTopicsCategory";
-import storeDesignImg from './job-topic/assets/store-design.jpg';
-import storeConfigurationImg from './job-topic/assets/store-configuration.jpg';
-import storeOptimizationImg from './job-topic/assets/store-optimization.jpg';
-import domainImg from './job-topic/assets/domain.jpg';
-import pageDesignImg from './job-topic/assets/page-design.jpg';
-import addProductImg from './job-topic/assets/add-product.jpg';
-import paymentImg from './job-topic/assets/payment.jpg';
-import taxImg from './job-topic/assets/tax.jpg';
-import emailMarketingImg from './job-topic/assets/email-marketing.jpg';
-import seoImg from './job-topic/assets/seo.jpg';
-import searchAdsImg from './job-topic/assets/search-adds.jpg';
-import socialMarketingImg from './job-topic/assets/social-marketing.jpg';
-import contentMarketingImg from './job-topic/assets/content-marketing.jpg';
-import saleChannelsImg from './job-topic/assets/sale-channels.jpg';
-import conversionImg from './job-topic/assets/conversion.jpg';
-import analyzeImg from './job-topic/assets/analyze.jpg';
-import brandStrategyImg from './job-topic/assets/brand-strategy.jpg';
-import migrationImg from './job-topic/assets/advise.jpg';
-import appProgrammerImg from './job-topic/assets/app-programmer.jpg';
-import appInstallImg from './job-topic/assets/app-install.jpg';
-import uxDesignImg from './job-topic/assets/ux-designer.jpg';
-import debugImg from './job-topic/assets/debug.jpg';
-import strategyImg from './job-topic/assets/strategy.jpg';
-import productsGuideImg from './job-topic/assets/products-guide.jpg';
-import setupGuideImg from './job-topic/assets/setup-guide.jpg';
-import marketingGuideImg from './job-topic/assets/marketing-guide.jpg';
-import productDescriptionImg from './job-topic/assets/product-description.jpg';
-import contentWriteImg from './job-topic/assets/marketing-content.jpg';
-import logoDesignImg from './job-topic/assets/logo-design.jpg';
-import bannerDesignImg from './job-topic/assets/banner-designer.jpg';
-import videoImg from './job-topic/assets/video.jpg';
-import photographyImg from './job-topic/assets/photography.jpg';
-import photoEditorImg from './job-topic/assets/photo-editor.jpg';
-import threeDImg from './job-topic/assets/3d.jpg';
-import dropshippingImg from './job-topic/assets/dropshipping.jpg';
-import resellingImg from './job-topic/assets/reseller.jpg';
-import posSetupImg from './job-topic/assets/pos-setup.jpg';
+import storeDesignImg from "./job-topic/assets/store-design.jpg";
+import storeConfigurationImg from "./job-topic/assets/store-configuration.jpg";
+import storeOptimizationImg from "./job-topic/assets/store-optimization.jpg";
+import domainImg from "./job-topic/assets/domain.jpg";
+import pageDesignImg from "./job-topic/assets/page-design.jpg";
+import addProductImg from "./job-topic/assets/add-product.jpg";
+import paymentImg from "./job-topic/assets/payment.jpg";
+import taxImg from "./job-topic/assets/tax.jpg";
+import emailMarketingImg from "./job-topic/assets/email-marketing.jpg";
+import seoImg from "./job-topic/assets/seo.jpg";
+import searchAdsImg from "./job-topic/assets/search-adds.jpg";
+import socialMarketingImg from "./job-topic/assets/social-marketing.jpg";
+import contentMarketingImg from "./job-topic/assets/content-marketing.jpg";
+import saleChannelsImg from "./job-topic/assets/sale-channels.jpg";
+import conversionImg from "./job-topic/assets/conversion.jpg";
+import analyzeImg from "./job-topic/assets/analyze.jpg";
+import brandStrategyImg from "./job-topic/assets/brand-strategy.jpg";
+import migrationImg from "./job-topic/assets/advise.jpg";
+import appProgrammerImg from "./job-topic/assets/app-programmer.jpg";
+import appInstallImg from "./job-topic/assets/app-install.jpg";
+import uxDesignImg from "./job-topic/assets/ux-designer.jpg";
+import debugImg from "./job-topic/assets/debug.jpg";
+import strategyImg from "./job-topic/assets/strategy.jpg";
+import productsGuideImg from "./job-topic/assets/products-guide.jpg";
+import setupGuideImg from "./job-topic/assets/setup-guide.jpg";
+import marketingGuideImg from "./job-topic/assets/marketing-guide.jpg";
+import productDescriptionImg from "./job-topic/assets/product-description.jpg";
+import contentWriteImg from "./job-topic/assets/marketing-content.jpg";
+import logoDesignImg from "./job-topic/assets/logo-design.jpg";
+import bannerDesignImg from "./job-topic/assets/banner-designer.jpg";
+import videoImg from "./job-topic/assets/video.jpg";
+import photographyImg from "./job-topic/assets/photography.jpg";
+import photoEditorImg from "./job-topic/assets/photo-editor.jpg";
+import threeDImg from "./job-topic/assets/3d.jpg";
+import dropshippingImg from "./job-topic/assets/dropshipping.jpg";
+import resellingImg from "./job-topic/assets/reseller.jpg";
+import posSetupImg from "./job-topic/assets/pos-setup.jpg";
+import marketplaceSetup from "./job-topic/assets/marketplace-setup.jpg";
+import podSetup from "./job-topic/assets/pod-setup.jpg";
 
 export const JobTopics = {
   // SETUP
@@ -60,6 +62,16 @@ export const JobTopics = {
     desc: "topics.store-design.desc",
     category: JobTopicsCategory.SETUP,
   },
+  "marketplace-setup": {
+    code: "marketplace-setup",
+    title: "topics.marketplace-setup.title",
+    image: marketplaceSetup,
+    desc: "topics.marketplace-setup.desc",
+    category: JobTopicsCategory.SETUP,
+  },
+
+
+
   "store-configuration": {
     code: "store-configuration",
     title: "topics.store-configuration.title",
@@ -82,6 +94,15 @@ export const JobTopics = {
     desc: "topics.domain.desc",
     category: JobTopicsCategory.SETUP,
   },
+  "pod-setup": {
+    code: "pod-setup",
+    title: "topics.pod-setup.title",
+    image: podSetup,
+    desc: "topics.pod-setup.desc",
+    category: JobTopicsCategory.SETUP,
+  },
+
+
 
   // ADD_PAGE
   "page-design": {
@@ -218,7 +239,7 @@ export const JobTopics = {
   debug: {
     code: "debug",
     title: "topics.debug.title",
-    image:debugImg,
+    image: debugImg,
     desc: "topics.debug.desc",
     category: JobTopicsCategory.APP_SETUP,
   },
@@ -241,7 +262,7 @@ export const JobTopics = {
   "setup-guide": {
     code: "setup-guide",
     title: "topics.setup-guide.title",
-    image:setupGuideImg,
+    image: setupGuideImg,
     desc: "topics.setup-guide.desc",
     category: JobTopicsCategory.MANAGEMENT,
   },
@@ -257,7 +278,7 @@ export const JobTopics = {
   "product-description": {
     code: "product-description",
     title: "topics.product-description.title",
-    image:productDescriptionImg,
+    image: productDescriptionImg,
     desc: "topics.product-description.desc",
     category: JobTopicsCategory.CONTENT,
   },
@@ -287,7 +308,7 @@ export const JobTopics = {
   video: {
     code: "video",
     title: "topics.video.title",
-    image:videoImg,
+    image: videoImg,
     desc: "topics.video.desc",
     category: JobTopicsCategory.PHOTOGRAPHY,
   },
@@ -317,14 +338,14 @@ export const JobTopics = {
   dropshipping: {
     code: "dropshipping",
     title: "topics.dropshipping.title",
-    image:dropshippingImg,
+    image: dropshippingImg,
     desc: "topics.dropshipping.desc",
     category: JobTopicsCategory.DROP_SHIPPING,
   },
   reselling: {
     code: "reselling",
     title: "topics.reselling.title",
-    image:resellingImg,
+    image: resellingImg,
     desc: "topics.reselling.desc",
     category: JobTopicsCategory.DROP_SHIPPING,
   },

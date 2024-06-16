@@ -12,19 +12,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import setupIcon from './job-category/assets/SETUP.svg';
-import paymentIcon from './job-category/assets/PAYMENT.svg';
-import managementIcon from './job-category/assets/MANAGEMENT.svg';
-import contentIcon from './job-category/assets/CONTENT.svg';
-import photographyIcon from './job-category/assets/PHOTOGRAPHY.svg';
-import marketingIcon from './job-category/assets/MARKETING.svg';
-import addProductIcon from './job-category/assets/ADD_PRODUCT.svg';
-import addPageIcon from './job-category/assets/ADD_PAGE.svg';
-import migrationIcon from './job-category/assets/MIGRATION.svg';
-import appSetupIcon from './job-category/assets/APP_SETUP.svg';
-import dropShippingIcon from './job-category/assets/DROP_SHIPPING.svg';
-import posSetupIcon from './job-category/assets/POS_SETUP.svg';
-
+import setupIcon from "./job-category/assets/SETUP.svg";
+import paymentIcon from "./job-category/assets/PAYMENT.svg";
+import managementIcon from "./job-category/assets/MANAGEMENT.svg";
+import contentIcon from "./job-category/assets/CONTENT.svg";
+import photographyIcon from "./job-category/assets/PHOTOGRAPHY.svg";
+import marketingIcon from "./job-category/assets/MARKETING.svg";
+import addProductIcon from "./job-category/assets/ADD_PRODUCT.svg";
+import addPageIcon from "./job-category/assets/ADD_PAGE.svg";
+import migrationIcon from "./job-category/assets/MIGRATION.svg";
+import appSetupIcon from "./job-category/assets/APP_SETUP.svg";
+import dropShippingIcon from "./job-category/assets/DROP_SHIPPING.svg";
+import posSetupIcon from "./job-category/assets/POS_SETUP.svg";
 
 export const JobTopicsCategory = {
   SETUP: {
