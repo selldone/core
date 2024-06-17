@@ -158,6 +158,10 @@ export class GAPI {
   GET_EXPERT_JOB_PUBLIC_INFO(job_id: string | number) {
     return `${this.selldone_gapi_url}/expert/jobs/${job_id}`;
   }
+  GET_EXPERT_JOB_PUBLIC_COMMENTS(job_id: string | number) {
+    return `${this.selldone_gapi_url}/expert/jobs/${job_id}/comments`;
+  }
+
 
   GET_EXPERT_JOBS() {
     return `${this.selldone_gapi_url}/expert/jobs`;
