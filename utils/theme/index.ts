@@ -12,10 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./console";
-export * from "./cookie";
-export * from "./scroll";
-
-export * from "./theme";
-export * from "./thread";
+export * from "./ThemeHelper";
 
