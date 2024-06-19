@@ -12,18 +12,17 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { BusinessModel } from "./BusinessModel";
-import { Shop } from "../../models/shop/shop.model";
-import { AgencyClient } from "../../models/agency/agency-client.model";
-import { Agency } from "../../models/agency/agency.model";
-import { AgencyPlan } from "../../models/agency/agency-plan.model";
-import { Domain } from "../../models/shop/domain/domain.model";
+import {BusinessModel} from "./BusinessModel";
+import {Shop} from "../../models/shop/shop.model";
+import {AgencyClient} from "../../models/agency/agency-client.model";
+import {Agency} from "../../models/agency/agency.model";
+import {AgencyPlan} from "../../models/agency/agency-plan.model";
+import {Domain} from "../../models/shop/domain/domain.model";
 
 import freeIcon from "./assets/license/free.svg";
 import startupIcon from "./assets/license/startup.svg";
 import companyIcon from "./assets/license/company.svg";
 import enterpriseIcon from "./assets/license/enterprise.svg";
-
 
 export const ShopLicense = {
   // wage_factor: wage_factor*gateway wage percent!             wage_percent: default payment wage of selldone!
@@ -34,7 +33,7 @@ export const ShopLicense = {
     wage_factor: 1,
     icon: freeIcon,
     file_sell_percent: 30,
-    quota_multiple:1,   // Multiple of quota
+    quota_multiple: 1, // Multiple of quota
   },
   STARTUP: {
     code: "STARTUP",
@@ -43,7 +42,7 @@ export const ShopLicense = {
     wage_factor: 0.75,
     icon: startupIcon,
     file_sell_percent: 20,
-    quota_multiple:2,   // Multiple of quota
+    quota_multiple: 2, // Multiple of quota
   },
   COMPANY: {
     code: "COMPANY",
@@ -52,7 +51,7 @@ export const ShopLicense = {
     wage_factor: 0.5,
     icon: companyIcon,
     file_sell_percent: 7,
-    quota_multiple:3,   // Multiple of quota
+    quota_multiple: 3, // Multiple of quota
   },
   ENTERPRISE: {
     code: "ENTERPRISE",
@@ -61,7 +60,7 @@ export const ShopLicense = {
     wage_factor: 0.25,
     icon: enterpriseIcon,
     file_sell_percent: 3,
-    quota_multiple:10,   // Multiple of quota
+    quota_multiple: 10, // Multiple of quota
   },
 };
 
@@ -88,6 +87,7 @@ export const ShopLicenseLimits = {
     "connects-count": 1,
     marketplace: false,
     "tax-profiles": 5,
+    cashback: 3,
   },
 
   STARTUP: {
@@ -112,6 +112,7 @@ export const ShopLicenseLimits = {
     "connects-count": 5,
     marketplace: false,
     "tax-profiles": 10,
+    cashback: 10,
   },
 
   COMPANY: {
@@ -136,6 +137,7 @@ export const ShopLicenseLimits = {
     "connects-count": 10,
     marketplace: false,
     "tax-profiles": 20,
+    cashback: 50,
   },
 
   ENTERPRISE: {
@@ -160,6 +162,7 @@ export const ShopLicenseLimits = {
     "connects-count": 100,
     marketplace: true,
     "tax-profiles": 100,
+    cashback: 1000,
   },
 };
 
@@ -169,6 +172,7 @@ export class Eligible {
     const limit = this.DomainsLimit(shop);
     return shop.domains.length < limit;
   }
+
   static CanEditDomain(shop: Shop & { domains: Domain[] }, domain_id: number) {
     const domain_index = shop.domains.findIndex((it) => it.id === domain_id);
 
@@ -179,7 +183,7 @@ export class Eligible {
   static DomainsLimit(
     shop: Shop & {
       agency_client?: AgencyClient & { agency?: Agency; plan?: AgencyPlan };
-    }
+    },
   ) {
     // Default plan limit:
     let limit = ShopLicenseLimits[shop.license!].domains;
@@ -194,11 +198,13 @@ export class Eligible {
     }
     return limit;
   }
+
   //――――――――――――――――――― Staff ――――――――――――――――――
   static CanAddNewStaff(shop: Shop, staff_count: number) {
     const limit = this.StaffLimit(shop);
     return staff_count < limit;
   }
+
   static CanEditStaff(shop: Shop, staff_count: number) {
     const limit = this.StaffLimit(shop);
     return staff_count <= limit;
@@ -207,7 +213,7 @@ export class Eligible {
   static StaffLimit(
     shop: Shop & {
       agency_client?: AgencyClient & { agency?: Agency; plan?: AgencyPlan };
-    }
+    },
   ) {
     // Default plan limit:
     let limit = ShopLicenseLimits[shop.license!].staff;
@@ -222,12 +228,14 @@ export class Eligible {
     }
     return limit;
   }
+
   //――――――――――――――――――― DiscountCode ――――――――――――――――――
   static CanAddNewDiscountCode(shop: Shop, discount_codes_count: number) {
     return (
       discount_codes_count < ShopLicenseLimits[shop.license!]["discount-codes"]
     );
   }
+
   static CanEditDiscountCode(shop: Shop, discount_codes_count: number) {
     return (
       discount_codes_count <= ShopLicenseLimits[shop.license!]["discount-codes"]
@@ -238,6 +246,7 @@ export class Eligible {
   static CanAddNewCoupon(shop: Shop, coupons_count: number) {
     return coupons_count < ShopLicenseLimits[shop.license!].coupons;
   }
+
   static CanEditCoupon(shop: Shop, coupons_count: number) {
     return coupons_count <= ShopLicenseLimits[shop.license!].coupons;
   }
@@ -246,6 +255,7 @@ export class Eligible {
   static CanAddNewOffer(shop: Shop, offers_count: number) {
     return offers_count < ShopLicenseLimits[shop.license!].coupons;
   }
+
   static CanEditOffer(shop: Shop, offers_count: number) {
     return offers_count <= ShopLicenseLimits[shop.license!].coupons;
   }
@@ -257,6 +267,7 @@ export class Eligible {
       ShopLicenseLimits[shop.license!]["gift-card-types"]
     );
   }
+
   static CanEditGiftCardType(shop: Shop, gift_card_types_count: number) {
     return (
       gift_card_types_count <=
@@ -268,6 +279,7 @@ export class Eligible {
   static CanAddNewCampaign(shop: Shop, campaigns_count: number) {
     return campaigns_count < ShopLicenseLimits[shop.license!].campaigns;
   }
+
   static CanEditCampaign(shop: Shop, campaigns_count: number) {
     return campaigns_count <= ShopLicenseLimits[shop.license!].campaigns;
   }
@@ -276,6 +288,7 @@ export class Eligible {
   static CanAddNewAffiliate(shop: Shop, affiliates_count: number) {
     return affiliates_count < ShopLicenseLimits[shop.license!].affiliates;
   }
+
   static CanEditAffiliate(shop: Shop, affiliates_count: number) {
     return affiliates_count <= ShopLicenseLimits[shop.license!].affiliates;
   }
@@ -284,6 +297,7 @@ export class Eligible {
   static CanAddNewEmail(shop: Shop, emails_count: number) {
     return emails_count < ShopLicenseLimits[shop.license!].emails;
   }
+
   static CanEditEmail(shop: Shop, emails_count: number) {
     return emails_count <= ShopLicenseLimits[shop.license!].emails;
   }
@@ -297,6 +311,7 @@ export class Eligible {
   static CanAddNewLottery(shop: Shop, lotteries_count: number) {
     return lotteries_count < ShopLicenseLimits[shop.license!].lotteries;
   }
+
   static CanEditLottery(shop: Shop, lotteries_count: number) {
     return lotteries_count <= ShopLicenseLimits[shop.license!].lotteries;
   }
@@ -304,16 +319,17 @@ export class Eligible {
   //――――――――――――――――――― Transportation Person ――――――――――――――――――
   static CanAddNewTransportationPerson(
     shop: Shop,
-    transportation_persons_count: number
+    transportation_persons_count: number,
   ) {
     return (
       transportation_persons_count <
       ShopLicenseLimits[shop.license!]["transportation-persons"]
     );
   }
+
   static CanEditTransportationPerson(
     shop: Shop,
-    transportation_persons_count: number
+    transportation_persons_count: number,
   ) {
     return (
       transportation_persons_count <=
@@ -325,9 +341,11 @@ export class Eligible {
   static getImportQueLimit(shop: Shop) {
     return ShopLicenseLimits[shop.license!]["importing-que"];
   }
+
   static getMaxImportProductsBatchSize(shop: Shop) {
     return ShopLicenseLimits[shop.license!]["importing-que-batch-size"];
   }
+
   //――――――――――――――――――― Drop Shipping ――――――――――――――――――
   static CanDropShip(shop: Shop) {
     return (
@@ -336,6 +354,7 @@ export class Eligible {
       shop.model === BusinessModel.WHOLESALER.code
     );
   }
+
   static CanReselling(shop: Shop) {
     return ShopLicenseLimits[shop.license!]["reselling"];
   }
@@ -344,6 +363,7 @@ export class Eligible {
   static GetFileUploadLimitMB(shop: Shop) {
     return ShopLicenseLimits[shop.license!]["max-file-size"];
   }
+
   static GetMaxCapacityMB(shop: Shop) {
     return ShopLicenseLimits[shop.license!]["capacity"];
   }
@@ -357,7 +377,17 @@ export class Eligible {
   static CanAddTaxProfile(shop: Shop, profiles_count: number) {
     return profiles_count < ShopLicenseLimits[shop.license!]["tax-profiles"];
   }
+
   static GetTaxProfilesLimit(shop: Shop) {
     return ShopLicenseLimits[shop.license!]["tax-profiles"];
+  }
+
+  //――――――――――――――――――― Cashback ――――――――――――――――――
+  static CanAddNewCashback(shop: Shop, cashbacks_count: number) {
+    return cashbacks_count < ShopLicenseLimits[shop.license!].cashback;
+  }
+
+  static CanEditCashback(shop: Shop, cashbacks_count: number) {
+    return cashbacks_count <= ShopLicenseLimits[shop.license!].cashback;
   }
 }

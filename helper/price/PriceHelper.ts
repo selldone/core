@@ -29,6 +29,12 @@ export class PriceHelper {
     return Math.round(val * factor) / factor;
   }
 
+  static FixPrecisionForCurrency(val: number, currency: keyof typeof Currency) {
+    const currency_obj: Currency = Currency[currency];
+    if (!currency_obj) return val;
+    return this.FixPrecision(val, currency_obj.floats);
+  }
+
   //――――――――――――――――――――――  Exchange Rates ――――――――――――――――――――
 
   static getExchangeRate(
