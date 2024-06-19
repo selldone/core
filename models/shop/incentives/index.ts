@@ -11,7 +11,7 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-
+export * from "./cashback/cashback.model";
 export * from "./coupon/coupon.model";
 export * from "./discount-code/discount-code.model";
 export * from "./gift-card/gift-card.model";
