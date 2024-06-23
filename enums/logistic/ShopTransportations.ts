@@ -98,6 +98,11 @@ export namespace ShopTransportations {
 
     /** Indicates whether the shipping cost can be paid upon delivery. */
     sod: boolean;
+
+    /**
+     * If true, vendors can add their shipping services and couriers in their panel for this method.
+     */
+    marketplace: boolean;
   }
 }
 
