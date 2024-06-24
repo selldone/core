@@ -56,6 +56,8 @@ export interface IProductType {
   /** Name of the order page for the product type. */
   order_page: string;
 
+  vendor_order_page: string;
+
   /** Primary color associated with the product type. */
   color: string;
 
@@ -85,6 +87,7 @@ export const ProductType: Record<
     enable: true,
     process_page: "BPageShopOrdersPhysical",
     order_page: "BPageOrderPhysicalDashboard",
+    vendor_order_page: "VendorProcessCenterPhysicalOrderPage_Dashboard",
 
     color: "#689F38",
     colors: ["#689F38", "#AFB42B"],
@@ -100,6 +103,7 @@ export const ProductType: Record<
     enable: true,
     process_page: "BPageShopOrdersVirtual",
     order_page: "BPageOrderVirtualDashboard",
+    vendor_order_page: "VendorProcessCenterVirtualOrderPage_Dashboard",
 
     color: "#2196F3",
     colors: ["#2196F3", "#0097A7"],
@@ -115,6 +119,7 @@ export const ProductType: Record<
     enable: true,
     process_page: "BPageShopOrdersFile",
     order_page: "BPageOrderFileDashboard",
+    vendor_order_page: "VendorProcessCenterFileOrderPage_Dashboard",
 
     color: "#F57C00",
     colors: ["#F57C00", "#FBC02D"],
@@ -130,6 +135,7 @@ export const ProductType: Record<
     enable: true,
     process_page: "BPageShopOrdersService",
     order_page: "BPageOrderServiceDashboard",
+    vendor_order_page: "VendorProcessCenterServiceOrderPage_Dashboard",
 
     color: "#E91E63",
     colors: ["#E91E63", "#C2185B"],
@@ -146,6 +152,7 @@ export const ProductType: Record<
     enable: true,
     process_page: "BPageShopOrdersSubscription",
     order_page: "BPageOrderSubscriptionDashboard",
+    vendor_order_page: "VendorProcessCenterSubscriptionOrderPage_Dashboard",
 
     color: "#673AB7",
     colors: ["#673AB7", "#512DA8"],
