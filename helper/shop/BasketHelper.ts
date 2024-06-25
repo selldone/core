@@ -30,8 +30,8 @@ export class BasketHelper {
           ? item.variant.extra.weight
           : 0
         : item.product?.extra && item.product.extra.weight
-        ? item.product.extra.weight
-        : 0)
+          ? item.product.extra.weight
+          : 0)
     );
   }
 
@@ -82,7 +82,7 @@ export class BasketHelper {
   static FindItem(
     basket: Basket,
     product: Product,
-    currentVariant: ProductVariant
+    currentVariant: ProductVariant,
   ) {
     return basket?.items?.find((item) => {
       return (
@@ -101,7 +101,7 @@ export class BasketHelper {
     return (
       basket?.type === ProductType.SERVICE.code &&
       basket.items?.some(
-        (item) => item.product?.pricing !== PricingTypes.FIX.code
+        (item) => item.product?.pricing !== PricingTypes.FIX.code,
       )
     );
   }
