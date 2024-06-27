@@ -13,7 +13,7 @@
  */
 
 import chroma from "chroma-js";
-import { ILanguage } from "../../enums/language/Language";
+import {ILanguage} from "../../enums/language/Language";
 
 let COLORS_NAME_CACHE: { [key: string]: string } = {};
 let LAST_LANGUAGE: ILanguage | null = null;
@@ -89,9 +89,35 @@ export class ColorHelper {
     return ColorNamer(color);
   }
 
+  /**
+   * Extracts hex color values from a given string for product variants.
+   *
+   * @param {string | null} colorString - The input string containing color values. Can be null.
+   * @returns {string[] | null} An array of extracted hex color values, or null if the input is null or contains no matches.
+   *
+   * @example
+   * // Returns ['#fff', '#ff5733']
+   * ColorExtractor.ExtractColors('Here are some colors: #fff and #ff5733.');
+   *
+   * @example
+   * // Returns ['#123', '#123456']
+   * ColorExtractor.ExtractColors('Shades: #123, #123456, #abcd.');
+   *
+   * @example
+   * // Returns null
+   * ColorExtractor.ExtractColors(null);
+   *
+   * @example
+   * // Returns []
+   * ColorExtractor.ExtractColors('No colors here.');
+   */
   static ExtractColors(colorString: string | null) {
     if (!colorString) return null;
+    console.log("ExtractColors", colorString);
     const regex = /#([A-Fa-f0-9]{3}){1,2}([A-Fa-f0-9]{2})?/g;
     return colorString.match(regex);
   }
+
+
+
 }
