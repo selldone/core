@@ -141,6 +141,7 @@ export namespace Page {
     name: string;
     uid: string; // Keep section ID [new]
     data: any;
+    object: any;
   }
 
   export interface IStyle {
