@@ -12,17 +12,14 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-declare global {
-
-}
+declare global {}
 // This is required because we modified global
 export {};
-
 
 export function ApplyAugmentToObject(
   object: { [key: string]: any },
   augment: { key: string; value: string }[],
-  bypass: boolean = false
+  bypass: boolean = false,
 ): { [p: string]: any } {
   const _object = JSON.parse(JSON.stringify(object));
   if (bypass) {
@@ -50,6 +47,6 @@ export function ApplyAugmentToObject(
 
       return newObj;
     },
-    {}
+    {},
   );
 }

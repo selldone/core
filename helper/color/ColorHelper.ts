@@ -113,7 +113,7 @@ export class ColorHelper {
    */
   static ExtractColors(colorString: string | null) {
     if (!colorString) return null;
-    console.log("ExtractColors", colorString);
+    //console.log("ExtractColors", colorString);
     const regex = /#([A-Fa-f0-9]{3}){1,2}([A-Fa-f0-9]{2})?/g;
     return colorString.match(regex);
   }

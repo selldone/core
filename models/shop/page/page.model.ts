@@ -140,8 +140,23 @@ export namespace Page {
   export interface ISection {
     name: string;
     uid: string; // Keep section ID [new]
+    /**
+     * V1
+     * @deprecated
+     */
     data: any;
-    object: any;
+    /**
+     * V2
+     */
+    object: {
+      component: string;
+      background: any;
+      style: Record<string, any>;
+      classes: string[];
+      data: any;
+      children: any;
+      props: any;
+    }[];
   }
 
   export interface IStyle {
