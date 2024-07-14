@@ -138,6 +138,9 @@ export namespace Page {
   }
 
   export interface ISection {
+    /**
+     * @deprecated
+     */
     name: string;
     uid: string; // Keep section ID [new]
     /**
@@ -148,6 +151,8 @@ export namespace Page {
     /**
      * V2
      */
+
+    label: string;
     object: {
       component: string;
       background: any;
