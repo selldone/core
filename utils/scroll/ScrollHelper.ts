@@ -20,24 +20,41 @@ export default class ScrollHelper {
     });
   }
 
+  /**
+   * Scrolls the page to the specified element with an optional offset and behavior.
+   * If the center option is true, the element will be centered in the viewport.
+   *
+   * @param {string | HTMLElement} selector - The selector string or the HTML element to scroll to.
+   * @param {number} [offset=0] - The offset in pixels to adjust the scroll position.
+   * @param {ScrollBehavior} [behavior="auto"] - The scroll behavior, either "auto" or "smooth".
+   * @param {boolean} [center=false] - Whether to center the element in the viewport.
+   */
   static scrollToElement(
-    selector: string,
-    offset: number = 0,
-    behavior: ScrollBehavior = "instant",
+      selector: string | HTMLElement,
+      offset: number = 0,
+      behavior: ScrollBehavior = "auto",
+      center: boolean = false,
   ) {
     // Select the element
-    const element = document.querySelector(selector);
+    const element = selector instanceof HTMLElement ? selector : document.querySelector(selector);
 
     if (element) {
       // Calculate position with offset
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset; // Adjust 100px offset as needed
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+
+      let offsetPosition;
+      if (center) {
+        const viewportHeight = window.innerHeight;
+        const elementHeight = element.getBoundingClientRect().height;
+        offsetPosition = elementPosition - (viewportHeight / 2) + (elementHeight / 2);
+      } else {
+        offsetPosition = elementPosition - offset;
+      }
 
       // Scroll to the element with the offset
       window.scrollTo({
         top: offsetPosition,
-        behavior: behavior, // Smooth scroll
+        behavior: behavior, // Scroll behavior
       });
     } else {
       console.error(`ScrollHelper: Element ${selector} not found!`);
