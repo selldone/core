@@ -11,9 +11,7 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-
+import {toPng} from "html-to-image";
 
 export class Screenshot {
   static FromVideo(
@@ -42,11 +40,11 @@ export class Screenshot {
   }
 
   static async FromElement(
-      element: HTMLElement,
-      des_image: HTMLImageElement | null=null,
-      flash: boolean=false,
-      depth:number=10,
-      ignore_imgs
+    element: HTMLElement,
+    des_image: HTMLImageElement | null = null,
+    flash: boolean = false,
+    depth: number = 10,
+    ignore_imgs,
   ) {
     try {
       const rect = element.getBoundingClientRect();
@@ -58,13 +56,13 @@ export class Screenshot {
         cacheBust: true,
         width: rect.width,
         height: rect.height,
-        backgroundColor: '#ffffff',
+        backgroundColor: "#ffffff",
         canvasWidth: width,
         canvasHeight: height,
         skipFonts: true,
         style: {
           transform: `scale(${scaleFactor})`,
-          transformOrigin: 'top left',
+          transformOrigin: "top left",
         },
         filter: (node) => {
           if (node instanceof HTMLStyleElement) {
@@ -72,7 +70,7 @@ export class Screenshot {
               node.sheet && node.sheet.cssRules;
             } catch (e) {
               if (e instanceof DOMException) {
-                console.warn('Ignoring cross-origin stylesheet', node);
+                console.warn("Ignoring cross-origin stylesheet", node);
                 return false;
               }
             }
@@ -82,16 +80,19 @@ export class Screenshot {
             return false;
           }
           // Ignore elements with the 'temporary' class
-          if (node.classList && node.classList.contains('temporary')) {
+          if (node.classList && node.classList.contains("temporary")) {
             return false;
           }
 
           // Skip images without src
-          if (node instanceof HTMLImageElement && !node.src) {
+          if (
+            node instanceof HTMLImageElement &&
+            (!node.src || node.src.includes("data:image/"))
+          ) {
             return false;
           }
 
-          if(ignore_imgs){
+          if (ignore_imgs) {
             // Ignore images with the class 'v-img__img'
             if (node instanceof HTMLImageElement) {
               return false;
@@ -117,18 +118,16 @@ export class Screenshot {
 
       // Animate flash:
       if (flash) {
-        element.classList.add('fadeIn');
+        element.classList.add("fadeIn");
         setTimeout(() => {
-          element.classList.remove('fadeIn');
+          element.classList.remove("fadeIn");
         }, 300);
       }
 
       return dataURI;
     } catch (error) {
-      console.error('Error capturing the element:', error);
+      console.error("Error capturing the element:", error);
       throw error;
     }
   }
-
-
 }
