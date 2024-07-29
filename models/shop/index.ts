@@ -35,6 +35,7 @@ export * from "./order";
 export * from "./page";
 export * from "./payment";
 export * from "./popup";
+export * from "./print";
 export * from "./product";
 export * from "./quota";
 export * from "./shipping";
