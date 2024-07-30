@@ -46,10 +46,8 @@ export namespace PrintTemplateTypes {
     BOX_LABEL = "BOX_LABEL",
   }
 
-    export const Types = [
-        { value: IType.INVOICE, title: "Invoice",icon:"receipt" },
-        { value: IType.BOX_LABEL, title: "Box Label",icon: "pallet" },
-    ];
-
-
+  export const Types = {
+    INVOICE: { value: IType.INVOICE, title: "Invoice", icon: "receipt" },
+    BOX_LABEL: { value: IType.BOX_LABEL, title: "Box Label", icon: "pallet" },
+  };
 }
