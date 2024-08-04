@@ -26,6 +26,7 @@ import mediumIcon from '../../assets/trademark/medium.svg';
 import dribbbleIcon from '../../assets/trademark/dribbble.svg';
 import linkedinIcon from '../../assets/trademark/linkedin.svg';
 import pinterestIcon from '../../assets/trademark/pinterest.svg';
+import torobIcon from '../../assets/trademark/torob.png';
 
 export const Brands = [
   {
@@ -87,5 +88,9 @@ export const Brands = [
   {
     name: "Pinterest",
     icon: pinterestIcon,
+  },
+  {
+    name: "Torob",
+    icon: torobIcon,
   },
 ];
