@@ -40,11 +40,11 @@ export const ProductVariants = {
  * @returns {Array} Array of unique values for the given key.
  */
 export function GetArrayOfValuesInVariants(
-  variants: any[],
+  variants: any[]|null,
   key: string
 ): any[] {
   const out: any[] = [];
-  variants.forEach((item) => {
+  variants?.forEach((item) => {
     if (item[key] && !out.includes(item[key])) out.push(item[key]);
   });
   return out;
