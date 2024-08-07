@@ -27,6 +27,7 @@ export * from "./font";
 export * from "./html";
 export * from "./image";
 export * from "./local-storage";
+export * from "./log";
 export * from "./logistic";
 export * from "./map";
 export * from "./number";
