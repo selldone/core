@@ -19,11 +19,22 @@ export class MapHelper {
   static GenerateFullAddressFromMapInfo(info_object: Order.IAddress) {
     if (!info_object || !info_object.address) return null;
 
-    return `${info_object.address},${window.$i18n_global.t(
-      "global.address_info.building_number",
-    )}: ${info_object.no ? info_object.no : "?"},${window.$i18n_global.t(
-      "global.address_info.building_unit",
-    )}: ${info_object.unit ? info_object.unit : "?"}`;
+    return (
+      info_object.address +
+      (info_object.no
+        ? `, ${window.$i18n_global.t(
+            "global.address_info.building_number",
+          )}: ${info_object.no}`
+        : "") +
+      (info_object.unit
+        ? `, ${window.$i18n_global.t(
+            "global.address_info.building_unit",
+          )}: ${info_object.unit}`
+        : "") +
+      (info_object.city ? `, ${info_object.city}` : "") +
+      (info_object.state ? `, ${info_object.state}` : "") +
+      (info_object.country ? `, ${info_object.country}` : "")
+    );
   }
 
   static GetMapImage(lng: number, lat: number, zoom: number) {
