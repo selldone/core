@@ -42,6 +42,10 @@ export const Brands = [
     icon: twitterIcon,
   },
   {
+    name: "X",
+    icon: twitterIcon,
+  },
+  {
     name: "Google Ads",
     icon: googleAdsIcon,
   },
