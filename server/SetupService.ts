@@ -273,10 +273,53 @@ export class SetupService {
     );
   }
 
-  // ――――――――――――――――――――――――― HTTP_REFERER : Keep origin url on SEO page load mode (Load first static version! ―――――――――――――――――――――――――
+  // ――――――――――――――――――――――――― HTTP_REFERER : Keep origin url on SEO page load mode (Load first static version!) ―――――――――――――――――――――――――
 
   static GetReferrerMeta(): string | null {
-    return this.GetMetaValue("http-referer", document.referrer);
+    const REFERRER_KEY = 'REFERRER_URL';
+    const EXPIRY_KEY = 'REFERRER_EXPIRY';
+    const EXPIRY_TIME = 24 * 60 * 60 * 1000; // 48 hours in milliseconds
+
+    // Get current time
+    const now = new Date().getTime();
+
+    // Retrieve stored referrer and expiry time
+    let storedReferrer = localStorage.getItem(REFERRER_KEY);
+    let expiryTime = localStorage.getItem(EXPIRY_KEY);
+
+    // Check if stored referrer is still valid
+    if (storedReferrer && expiryTime && now < parseInt(expiryTime)) {
+      console.log("🞧 Returning stored referrer...", storedReferrer);
+      return storedReferrer;
+    }
+
+    // Get referrer from document.referrer or utm_source
+    let referrer = this.GetMetaValue("http-referer", document.referrer);
+    const currentDomain = window.location.hostname;
+
+    // Check if referrer is from the same domain and discard it if it is
+    if (referrer && new URL(referrer).hostname === currentDomain) {
+      console.log("🞧 Referrer is from the same domain, ignoring...", referrer);
+      referrer = null;
+    }
+
+    if (!referrer) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source');
+      if (utmSource) {
+        console.log("🞧 GetReferrerMeta from utm_source...", utmSource, 'document:', document);
+        referrer = window.location.href; // Keep full referrer URL if utm_source is in the URL!
+      }
+    }
+
+    // Store new referrer and update expiry time
+    if (referrer) {
+      localStorage.setItem(REFERRER_KEY, referrer);
+      localStorage.setItem(EXPIRY_KEY, (now + EXPIRY_TIME).toString());
+      console.log("🞧 Storing new referrer...", referrer);
+    }
+
+    return referrer;
   }
 
   // ――――――――――――――――――――――――― Only for shop ―――――――――――――――――――――――――
