@@ -48,8 +48,9 @@ export class Screenshot {
   ) {
     try {
       const rect = element.getBoundingClientRect();
-      const scaleFactor = 400 / rect.width;
       const width = Math.min(400, rect.width);
+      const scaleFactor = width / rect.width;
+
       const height = rect.height * scaleFactor;
 
       const dataURI = await toPng(element, {
