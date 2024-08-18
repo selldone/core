@@ -51,7 +51,7 @@ export function ApplyAugmentToObject(
   );
 }
 
-export function RemoveEmptyFromObject(obj) {
+export function RemoveEmptyFromObject(obj:any) {
   return Object.fromEntries(
     Object.entries(obj).filter(([_, v]) => v != null && v !== ""),
   );

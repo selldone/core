@@ -13,7 +13,7 @@
  */
 
 export class ThemeHelper {
-  static SetMetaThemeColor(color) {
+  static SetMetaThemeColor(color:any) {
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
       metaThemeColor.setAttribute("content", color);

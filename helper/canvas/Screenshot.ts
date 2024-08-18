@@ -44,7 +44,7 @@ export class Screenshot {
     des_image: HTMLImageElement | null = null,
     flash: boolean = false,
     depth: number = 10,
-    ignore_imgs,
+    ignore_imgs :boolean,
   ) {
     try {
       const rect = element.getBoundingClientRect();

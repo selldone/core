@@ -14,6 +14,7 @@
 
 export class CONSOLE {
    static log(...args: any[]) {
+       // @ts-ignore
        if (import.meta?.env?.MODE === 'development' && false) {
            console.log(...args);
        }

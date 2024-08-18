@@ -62,12 +62,12 @@ export interface Cashback {
   /**
    * @property Carbon|null start - Start date.
    */
-  start: Carbon | null;
+  start: string | null;
 
   /**
    * @property Carbon|null end - End date.
    */
-  end: Carbon | null;
+  end: string | null;
 
   /**
    * @property string title - Title of the cashback program.

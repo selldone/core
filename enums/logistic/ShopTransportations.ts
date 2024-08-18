@@ -102,7 +102,7 @@ export namespace ShopTransportations {
     /**
      * If true, vendors can add their shipping services and couriers in their panel for this method.
      */
-    marketplace: boolean;
+    marketplace?: boolean;
   }
 }
 

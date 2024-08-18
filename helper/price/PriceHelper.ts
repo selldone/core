@@ -30,7 +30,7 @@ export class PriceHelper {
   }
 
   static FixPrecisionForCurrency(val: number, currency: keyof typeof Currency) {
-    const currency_obj: Currency = Currency[currency];
+    const currency_obj = Currency[currency];
     if (!currency_obj) return val;
     return this.FixPrecision(val, currency_obj.floats);
   }
