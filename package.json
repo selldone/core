@@ -27,15 +27,15 @@
     "axios": "^1.7.4",
     "lodash-es": "^4.17.21",
     "register-service-worker": "^1.7.2",
-    "chroma-js": "^2.6.1-0",
+    "chroma-js": "^3.0.0",
     "print-js": "^1.6.0",
     "vue": "^3.4.27"
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.4",
     "@types/lodash-es": "^4.17.12",
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
     "eslint": "^9.9.0",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
