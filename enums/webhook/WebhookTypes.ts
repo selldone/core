@@ -20,7 +20,9 @@ export default {
     title: "Inventory",
     desc: "Send after changing the product quantity.",
     icon:'precision_manufacturing',
-    actions:['AddProduct','CloneProduct','EditProduct','AddVariant','EditVariant','DeleteProduct','DeleteVariant']
+    actions:['AddProduct','CloneProduct','EditProduct','AddVariant','EditVariant','DeleteProduct','DeleteVariant'],
+    params:['event','action','shop','product','variant']
+
   },
 
   OnlineOrder: {
@@ -29,7 +31,8 @@ export default {
     title: "Online Order",
     desc: "Send after change in online orders status.",
     icon:'shopping_cart',
-    actions:['CheckoutOrder','PaymentOrder','CancelProduct']
+    actions:['CheckoutOrder','PaymentOrder','CancelProduct','OrderConfirm','PreparingOrder','SentOrder','ToCustomer','ReturnOrder','DeliveryCanceled'],
+    params:['event','action','shop','basket','user','customer']
 
   },
   PosOrder: {
@@ -39,8 +42,8 @@ export default {
     title: "POS Order",
     desc: "Send after change in in-person (POS) orders status.",
     icon:'shopping_bag',
-    actions:['CheckoutOrder','PaymentOrder','CancelProduct']
-
+    actions:['CheckoutOrder','PaymentOrder','CancelProduct'],
+    params:['event','action','shop','basket','user','customer']
 
   },
   AvocadoOrder: {
@@ -50,7 +53,9 @@ export default {
     title: "Avocado Order",
     desc: "Send after change in Avocado orders status.",
     icon:'commit',
-    actions:['CheckoutOrder','PaymentOrder','CancelProduct']
+    actions:['CheckoutOrder','PaymentOrder','CancelProduct'],
+    params:['event','action','shop','basket','user','customer']
+
 
 
   },
@@ -61,7 +66,9 @@ export default {
     title: "Hyper Order",
     desc: "Send after change in Hyper orders status.",
     icon:'qr_code_scanner',
-    actions:['CheckoutOrder','PaymentOrder','CancelProduct']
+    actions:['CheckoutOrder','PaymentOrder','CancelProduct'],
+    params:['event','action','shop','basket','user','customer']
+
 
 
   },
@@ -72,7 +79,8 @@ export default {
     title: "Dropshipping Fulfillment",
     desc: "Send after change in dropshipping fulfillment orders status.",
     icon:'join_full',
-    actions:['CheckoutOrder','PaymentOrder','CancelProduct']
+    actions:['CheckoutOrder','PaymentOrder','CancelProduct'],
+    params:['event','action','shop','basket']
 
 
   },
@@ -83,7 +91,8 @@ export default {
     code: "Register",
     title: "User Register",
     desc: "Send after a new user register.",
-    icon:'person_add'
+    icon:'person_add',
+    params:['event','source','shop','customer']
 
   },
   Leave: {
@@ -92,7 +101,9 @@ export default {
     code: "Leave",
     title: "User Leave",
     desc: "Send after a user leave your shop.",
-    icon:'person_remove'
+    icon:'person_remove',
+    params:['event','shop','customer']
+
 
   },
 };
