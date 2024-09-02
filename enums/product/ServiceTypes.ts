@@ -16,45 +16,45 @@ export const ServiceTypes = {
   DEMAND: {
     title: "global.ServiceTypes.DEMAND.title",
     code: "DEMAND",
-    desc: "ServiceTypes.DEMAND.desc",
+    desc: "global.ServiceTypes.DEMAND.desc",
     form: ["tasks", "reserve"],
   },
 
   BOOKING: {
     title: "global.ServiceTypes.BOOKING.title",
     code: "BOOKING",
-    desc: "ServiceTypes.BOOKING.desc",
+    desc: "global.ServiceTypes.BOOKING.desc",
     form: ["tasks", "booking"],
   },
   APPOINTMENT: {
     title: "global.ServiceTypes.APPOINTMENT.title",
     code: "APPOINTMENT",
-    desc: "ServiceTypes.APPOINTMENT.desc",
+    desc: "global.ServiceTypes.APPOINTMENT.desc",
     form: ["reserve"],
   },
   RENTAL: {
     title: "global.ServiceTypes.RENTAL.title",
     code: "RENTAL",
-    desc: "ServiceTypes.RENTAL.desc",
+    desc: "global.ServiceTypes.RENTAL.desc",
     form: ["booking"],
   },
 
   SUBSCRIPTION: {
     title: "global.ServiceTypes.SUBSCRIPTION.title",
     code: "SUBSCRIPTION",
-    desc: "ServiceTypes.SUBSCRIPTION.desc",
+    desc: "global.ServiceTypes.SUBSCRIPTION.desc",
     form: ["subscription"],
   },
   CHARGE: {
     title: "global.ServiceTypes.CHARGE.title",
     code: "CHARGE",
-    desc: "ServiceTypes.CHARGE.desc",
+    desc: "global.ServiceTypes.CHARGE.desc",
     form: ["charge"],
   },
   CUSTOM: {
     title: "global.ServiceTypes.CUSTOM.title",
     code: "CUSTOM",
-    desc: "ServiceTypes.CUSTOM.desc",
+    desc: "global.ServiceTypes.CUSTOM.desc",
     form: ["tasks"],
   },
 };
