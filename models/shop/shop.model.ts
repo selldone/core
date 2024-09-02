@@ -252,15 +252,13 @@ export namespace Shop {
   export const ShopMarketplaceModes = {
     Collective: {
       code: "Collective",
-      title: "Collective Mode",
-      description:
-        "All orders will be collected in the warehouse and shipped to customers from a single point. Vendors will send items to your warehouse so the shipping address for vendor will be your warehouse address.",
+      title: "ShopMarketplaceModes.Collective.title",
+      description:"ShopMarketplaceModes.Collective.description",
     },
     Direct: {
       code: "Direct",
-      title: "Direct Mode",
-      description:
-        "Vendors will ship their own orders directly to customers. Shipping address for vendor orders will be buyer address.",
+      title: "ShopMarketplaceModes.Direct.title",
+      description:"ShopMarketplaceModes.Direct.description",
     },
   };
 }

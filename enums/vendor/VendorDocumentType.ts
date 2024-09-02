@@ -16,61 +16,53 @@ export default {
   Identification: {
     code: "Identification",
     icon: "fingerprint",
-    title: "Owner Identification Document",
-    description:
-      "Upload a government-issued identification document to validate the identity of the owner or key executive.",
+    title: "VendorDocumentType.Identification.title",
+    description:"VendorDocumentType.Identification.description",
   },
   Business: {
     code: "Business",
     icon: "business",
-    title: "Business Document",
-    description:
-      "Provide necessary business-related documents such as licenses or registration certificates, supporting the legal existence of your business.",
+    title: "VendorDocumentType.Business.title",
+    description:"VendorDocumentType.Business.description",
   },
   Address: {
     code: "Address",
     icon: "contact_mail",
-    title: "Address Verification Document",
-    description:
-      "Submit a document to confirm your business address. This could be a utility bill, tax invoice, or lease agreement.",
+    title: "VendorDocumentType.Address.title",
+    description:"VendorDocumentType.Address.description",
   },
   Contract: {
     code: "Contract",
     icon: "gavel",
-    title: "Contract & Agreements",
-    description:
-      "Upload the relevant contracts or agreements that outline the terms and conditions of your business relationships.",
+    title: "VendorDocumentType.Contract.title",
+    description:"VendorDocumentType.Contract.description",
   },
   Copyright: {
     code: "Copyright",
     icon: "copyright",
-    title: "Copyright Papers",
-    description:
-      "Supply your copyright registration documents to affirm your intellectual property rights.",
+    title: "VendorDocumentType.Copyright.title",
+    description:"VendorDocumentType.Copyright.description",
   },
   Privacy: {
     code: "Privacy",
     icon: "policy",
-    title: "Privacy Papers",
-    description:
-      "Include your privacy policy documents, demonstrating your business's commitment to safeguarding user or customer information.",
+    title: "VendorDocumentType.Privacy.title",
+    description:"VendorDocumentType.Privacy.description",
   },
 
   Embed: {
     code: "Embed",
     icon: "view_cozy",
-    title: "Embed Form",
-    description:
-      "Complete the embedded form to provide the necessary information.",
+    title: "VendorDocumentType.Embed.title",
+    description:"VendorDocumentType.Embed.description",
     multi:true, // Can add multiple item to documents
 
   },
   Link: {
     code: "Link",
     icon: "link",
-    title: "External Link",
-    description:
-        "Open the external link to provide the necessary information.",
+    title: "VendorDocumentType.Link.title",
+    description:"VendorDocumentType.Link.description",
     multi:true,
 
   },

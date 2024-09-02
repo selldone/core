@@ -47,6 +47,7 @@ interface IShopQuota {
   Blog: IQuotaItem;
   AITokens: IQuotaItem;
   BgRemove: IQuotaItem;
+  Vendor: IQuotaItem;
 }
 
 const shopQuota: IShopQuota = {
@@ -196,6 +197,13 @@ const shopQuota: IShopQuota = {
     max: "bg_remove_max",
     extra: "bg_remove_extra",
     usage: "bg_remove_usage",
+  },
+  Vendor: {
+    title: "Vendor",
+    icon: "store",
+    max: "vendors_max",
+    extra: "vendors_extra",
+    usage: "vendors_usage",
   },
 };
 export default shopQuota;
