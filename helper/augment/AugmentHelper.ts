@@ -45,9 +45,12 @@ export class AugmentHelper {
     // Add or update items from otherArray
     otherArray.forEach((newItem) => {
       // Find the index of the item in the augment array by its key
-      const index = augment!.findIndex((item) => item.key === newItem.key);
+      const found_item = augment!.find((item) => item.key === newItem.key);
 
-      if (index === -1) {
+      if (found_item) {
+        found_item.group= newItem.group;// Assign group
+        found_item.group_index= newItem.group_index;// Assign group index
+      }else{
         // If the item does not exist in the augment array, add it
         augment!.push(newItem);
       }

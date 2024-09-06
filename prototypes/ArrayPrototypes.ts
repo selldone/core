@@ -140,8 +140,20 @@ Array.prototype.sortByKey = function <T extends Record<string, any>>(
   ASC: boolean = false,
 ) {
   return this.sort((a: T, b: T) => {
-    if (ASC) return (a[key] as any) - (b[key] as any);
-    return (b[key] as any) - (a[key] as any);
+    const valueA = a[key];
+    const valueB = b[key];
+
+    if (typeof valueA === "string" && typeof valueB === "string") {
+      // For string comparison, use localeCompare
+      return ASC ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+    } else if (typeof valueA === "number" && typeof valueB === "number") {
+      // For number comparison
+      return ASC ? valueA - valueB : valueB - valueA;
+    } else {
+      console.error("uncomparable", this, typeof valueA, typeof valueB);
+      // If values are of different types or uncomparable, don't sort
+      return 0;
+    }
   });
 };
 
