@@ -112,10 +112,14 @@ String.prototype.applyAugment = function (
   if (bypass || !augment || !Array.isArray(augment)) return this;
   let str = this;
 
+  // Replace placeholders with corresponding values from the augment array
   augment.forEach((item) => {
     const regEx = new RegExp("\\{\\{" + item.key + "\\}\\}", "g");
     str = str.replace(regEx, item.value ? item.value : "");
   });
+
+  // Replace any remaining {{...}} placeholders with the default value
+  str = str.replace(/\{\{.*?\}\}/g, '');
 
   return str;
 };
