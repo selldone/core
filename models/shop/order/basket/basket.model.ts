@@ -91,165 +91,178 @@ export namespace Basket {
     order_id: number;
 
     /**
-     * The type of the order.
+     * The type of the order (e.g., physical, virtual, service, etc.).
      */
     order_type: string;
 
     /**
-     * The customer information.
+     * The customer information, including level, last login, and loyalty chips (if any).
      */
     customer: Partial<Customer> | null;
 
     /**
-     * The currency of the bill.
+     * The currency of the order.
      */
     currency: string;
 
     /**
-     * The total amount that the user must pay.
+     * The total amount that the customer must pay, including taxes and shipping.
      */
     sum: number;
 
     /**
-     * The base price of the order.
+     * The base price of the order after all discounts.
      */
     price: number;
 
     /**
-     * The total price of items before incentives.
+     * The total price of all items before any discounts, offers, or incentives.
      */
     items_price: number;
 
     /**
-     * The amount of the offer applied.
+     * The total amount discounted from offers applied to the items.
      */
     offer: number;
 
     /**
-     * The discount on items.
+     * The total discount applied directly to the items.
      */
     items_discount: number;
 
     /**
-     * The total discount applied to the order.
+     * The total discount applied to the entire order (including items, offers, etc.).
      */
     discount: number;
 
     /**
-     * The club discount amount.
+     * The amount discounted by the customer club membership, if applicable.
      */
     club: number;
 
     /**
-     * The amount discounted by a discount code.
+     * The amount discounted by applying a discount code, if applicable.
      */
     discount_code: number;
 
     /**
-     * The amount discounted by a coupon.
+     * The amount discounted by a coupon, if applicable.
      */
     coupon: number;
 
     /**
-     * The amount discounted by a lottery prize.
+     * The amount discounted by applying a lottery prize, if applicable.
      */
     lottery: number;
 
     /**
-     * The amount discounted by cross-selling.
+     * The total discount applied from cross-selling.
      */
     cross_selling_discount: number;
 
     /**
-     * The price of delivery.
+     * The total price for delivery (shipping).
      */
     delivery_price: number;
 
     /**
-     * The method of delivery price calculation.
+     * The method used to calculate the delivery price (Auto or Manual).
      */
     delivery_calculation: string;
 
     /**
-     * The tax amount.
+     * The total tax applied to the order.
      */
     tax: number;
 
     /**
-     * Indicates if the tax is included.
+     * A boolean indicating whether tax is included in the item prices.
      */
     tax_included: boolean;
 
     /**
-     * The tax amount on shipping.
+     * The amount of tax applied to the shipping cost.
      */
     tax_shipping: number;
 
     /**
-     * The distance for delivery.
+     * The distance between the warehouse/vendor and the delivery address.
      */
     distance: number;
 
     /**
-     * The weight of the order.
+     * The total weight of the items in the order.
      */
     weight: number;
 
     /**
-     * The volume of the order.
+     * The total volume of the items in the order.
      */
     volume: number;
 
-    /**
-     * The selected transportation method.
-     */
-    transportation: string;
+
 
     /**
-     * The available transportation methods.
+     * The list of available transportation methods.
      */
     transportations: Array<Transportation>;
 
     /**
-     * The total extra shipping cost for drop shipping.
+     * The total additional shipping cost for drop-shipped items.
      */
     extra_shipping: number;
 
     /**
-     * The number of extra shipping counts.
+     * The number of drop-ship shops involved in the order.
      */
     extra_shipping_counts: number;
 
     /**
-     * Indicates if there is custom delivery by the shop owner.
+     * Indicates if there is custom delivery by the shop owner (direct from warehouse).
      */
     has_custom_delivery: boolean;
 
     /**
-     * User messages related to the order.
+     * Indicates if there is vendor shipping directly from vendors in the marketplace.
+     */
+    has_vendors_delivery: boolean;
+
+    /**
+     * The list of user-facing messages related to the order (e.g., errors, warnings, etc.).
      */
     user_messages: string[];
 
     /**
-     * The shipping options for connected shipping.
+     * The available shipping options provided by the shop.
      */
-    connect_shipping_options: string[] | null;
+    store_shipping_options: StoreShippingOption[] | null;
 
     /**
-     * Indicates if direct delivery is required.
+     * The available shipping options provided by third-party connect services.
      */
-    has_direct_delivery: boolean;
+    connect_shipping_options: ConnectShippingOption[] | null;
 
     /**
-     * The total cost of connected shipping.
+     * The available shipping options provided by vendors.
+     */
+    vendor_shipping_options: VendorShippingOption[] | null;
+
+    /**
+     * The total cost for shipping via third-party connect providers (e.g., Printful).
      */
     total_connect_shipping_cost: number;
 
     /**
-     * Indicates if the user can pay for the order.
+     * A boolean indicating whether the user is allowed to proceed with the payment.
      */
     can_pay: boolean;
 
+    /**
+     * Can accept COD payment. It determines delivery and product type support COD or not!
+     * (If any item shipped by connect providers then COD is not available!)
+     * (If any item shipped by wholesalers then COD is not available!)
+     */
+    can_cod: boolean;
     /**
      * The required values for the order.
      */

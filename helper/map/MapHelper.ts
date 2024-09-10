@@ -37,9 +37,9 @@ export class MapHelper {
     );
   }
 
-  static GetMapImage(lng: number, lat: number, zoom: number) {
+  static GetMapImage(lng: number, lat: number, zoom: number,size:string='800x800',style_id:'streets-v11'|'streets-v12'|'dark-v11'|'navigation-day-v1'|'navigation-night-v1'='streets-v11') {
     if (!lng || !lat || !zoom) return null;
-    return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${lng},${lat},${zoom},0,0/800x800?access_token=pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw`;
+    return `https://api.mapbox.com/styles/v1/mapbox/${style_id}/static/${lng},${lat},${zoom},0,0/${size}?access_token=pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw`;
   }
 
   static GetMapDirectionUrl(

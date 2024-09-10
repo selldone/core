@@ -61,6 +61,8 @@ export enum StorefrontRoutesName {
   SHOP_BLOGS_PAGE = "ShopBlogsPage",
   SHOP_BLOG_PAGE_SLUG = "ShopBlogPageSlug",
   SHOP_BLOG_PAGE = "ShopBlogPage",
+  USER_WALLETS_PAGE = "UserWalletsPage",
+
 
   SHOP_PROFILE_PAGE_ABOUT_US = "ShopProfilePage_AboutUs",
   SHOP_PROFILE_PAGE_TERMS = "ShopProfilePage_Terms",
