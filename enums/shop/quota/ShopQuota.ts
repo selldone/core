@@ -53,14 +53,14 @@ interface IShopQuota {
 const shopQuota: IShopQuota = {
   Product: {
     title: "Product",
-    icon: "storefront",
+    icon: "shelves",
     max: "products_max",
     extra: "products_extra",
     usage: "products_usage",
   },
   Category: {
     title: "Category",
-    icon: "category",
+    icon: "folder_open",
     max: "categories_max",
     extra: "categories_extra",
     usage: "categories_usage",
