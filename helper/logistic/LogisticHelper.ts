@@ -18,7 +18,7 @@ import { Currency } from "../../enums/payment/Currency";
 import {Shop} from "../../models/shop/shop.model";
 import {Transportation} from "../../models/shop/transportation/transportation.model";
 
-export class LogesticHelper {
+export class LogisticHelper {
   //―――――――――――――――――――――― Logistic > Basket Helpers ――――――――――――――――――――
 
   static calculateWeightBasket(basket) {

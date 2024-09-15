@@ -40,6 +40,12 @@ export class ShopOptionsHelper {
     return mass_unit_option ? mass_unit_option.value : "kg";
   }
 
+  static GetDistanceUnit(shop: Shop): string {
+    const distance_unit_option = shop.options?.find((e) => e.code === "distance_unit");
+    return distance_unit_option ? distance_unit_option.value : "km";
+  }
+
+
   static GetShippingRestriction(shop: Shop) {
     const shipping_option =
       shop.options &&
