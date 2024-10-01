@@ -32,6 +32,14 @@ export const BusinessModel = {
     code: "normal",
     name: "business_model_view.normal.title",
     desc: "business_model_view.normal.desc",
+    icon: "storefront",
+  },
+
+  DROPSHIPPING: {
+    code: "dropshipping",
+    name: "business_model_view.dropshipping.title",
+    desc: "business_model_view.dropshipping.desc",
+    icon: "recycling",
   },
 
   /**
@@ -45,6 +53,7 @@ export const BusinessModel = {
     code: "wholesaler",
     name: "business_model_view.wholesaler.title",
     desc: "business_model_view.wholesaler.desc",
+    icon: "business",
   },
 
   /**
@@ -58,6 +67,7 @@ export const BusinessModel = {
     code: "marketplace",
     name: "business_model_view.marketplace.title",
     desc: "business_model_view.marketplace.desc",
+    icon: "hub",
   },
 
   /**
@@ -71,5 +81,6 @@ export const BusinessModel = {
     code: "franchise",
     name: "business_model_view.franchise.title",
     desc: "business_model_view.franchise.desc",
+    icon: "multiple_stop",
   },
 };
