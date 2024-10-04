@@ -67,19 +67,19 @@ export namespace VendorMemberTypes {
     ORDERS: {
       code: "ORDERS",
       name: "global.commons.orders",
-      icon: "fa:fas fa-cart-arrow-down",
+      icon: "shopping_bag",
     },
 
     PAYMENT: {
       code: "PAYMENT",
       name: "global.commons.payment",
-      icon: "fa:fas fa-cart-arrow-down",
+      icon: "account_balance",
     },
 
     INVENTORY: {
       code: "INVENTORY",
       name: "global.commons.inventory",
-      icon: "apps",
+      icon: "fa:fas fa-boxes-packing",
     },
 
     PRODUCTS: {
@@ -97,13 +97,13 @@ export namespace VendorMemberTypes {
     ACCESS: {
       code: "ACCESS",
       name: "global.commons.access",
-      icon: "fa:fas fa-id-badge",
+      icon: "groups",
     },
 
     PROFILE: {
       code: "PROFILE",
       name: "global.commons.profile",
-      icon: "account_circle",
+      icon: "badge",
     },
 
 
