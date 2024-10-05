@@ -135,6 +135,14 @@ export default {
     text: "timeline.email-payment",
     iclass: "bg-teal-soft",
   },
+  "email-update": {
+    icon: "fa:fas fa-cart-arrow-down",
+    color: "#00796B",
+    editable: false,
+    text: "timeline.email-update",
+    iclass: "bg-indigo-soft",
+  },
+
   "sms-payment": {
     icon: "fa:fas fa-sms",
     color: "#00796B",

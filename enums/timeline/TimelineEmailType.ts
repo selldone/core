@@ -15,5 +15,7 @@
 export enum TimelineEmailType {
   EMAIL_BUY = "email-buy",
   EMAIL_PAYMENT = "email-payment",
+  EMAIL_UPDATE = "email-update",
+
   EMAIL_VENDOR = "email-vendor",
 }
