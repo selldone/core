@@ -41,7 +41,7 @@ export class ThemeHelper {
 
         // Get the nested element within #app where the CSS variable is defined
         const element = document.querySelector(calculator_element); // Replace '.nested-element' with your actual selector
-
+        if(!element)return;
         // Get the computed styles for the element
         const computedStyle = getComputedStyle(element);
 
