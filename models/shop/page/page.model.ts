@@ -165,19 +165,66 @@ export namespace Page {
   }
 
   export interface IStyle {
-    font_size: number;
+    // Responsive fonts size
+    font_size?: number;
+    font_size_sm?: number;
+    font_size_md?: number;
+    font_size_lg?: number;
+    font_size_xl?: number;
+    font_size_xxl?: number;
+    h1_size?: number;
+    h1_size_sm?: number;
+    h1_size_md?: number;
+    h1_size_lg?: number;
+    h1_size_xl?: number;
+    h1_size_xxl?: number;
+    h2_size?: number;
+    h2_size_sm?: number;
+    h2_size_md?: number;
+    h2_size_lg?: number;
+    h2_size_xl?: number;
+    h2_size_xxl?: number;
+    h3_size?: number;
+    h3_size_sm?: number;
+    h3_size_md?: number;
+    h3_size_lg?: number;
+    h3_size_xl?: number;
+    h3_size_xxl?: number;
+    h4_size?: number;
+    h4_size_sm?: number;
+    h4_size_md?: number;
+    h4_size_lg?: number;
+    h4_size_xl?: number;
+    h4_size_xxl?: number;
+    h5_size?: number;
+    h5_size_sm?: number;
+    h5_size_md?: number;
+    h5_size_lg?: number;
+    h5_size_xl?: number;
+    h5_size_xxl?: number;
+    h6_size?: number;
+    h6_size_sm?: number;
+    h6_size_md?: number;
+    h6_size_lg?: number;
+    h6_size_xl?: number;
+    h6_size_xxl?: number;
+    p_size?: number;
+    p_size_sm?: number;
+    p_size_md?: number;
+    p_size_lg?: number;
+    p_size_xl?: number;
+    p_size_xxl?: number;
+
+    // Background:
     bg_color: string | null;
     fonts: string[];
     bg_gradient: any[];
     bg_size: string;
     bg_custom: string | null;
     bg_repeat: string | null;
-    h1_size: string;
-    h2_size: string;
-    h3_size: string;
-    h4_size: string;
-    h5_size: string;
-    h6_size: string;
+
+    // Colors:
+
     plate_light_1: string;
     plate_dark_1: string;
     plate_light_2: string;
