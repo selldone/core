@@ -136,7 +136,7 @@ export default {
     iclass: "bg-teal-soft",
   },
   "email-update": {
-    icon: "fa:fas fa-cart-arrow-down",
+    icon: "fa:fas fa-envelope",
     color: "#00796B",
     editable: false,
     text: "timeline.email-update",
