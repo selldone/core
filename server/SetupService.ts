@@ -146,20 +146,20 @@ export class SetupService {
     return this.GetMetaValue("initial-language", "en");
   }
 
-  static SaminColorLight(): string {
+  static ColorThemeLight(): string {
     return this.GetMetaValue("color--theme-light", "#70557e");
   }
 
-  static SaminColorDark(): string {
+  static ColorThemeDark(): string {
     return this.GetMetaValue("color--theme-dark", "#3a2c41");
   }
 
   // ... [Continue with the rest of the methods in the same pattern]
-  static SaminColorDarkDeep(): string {
+  static ColorThemeDeepDark(): string {
     return this.GetMetaValue("color--theme-deep-dark", "#261b2d");
   }
 
-  static SaminInfoColor(): string {
+  static ColorThemeInfo(): string {
     return this.GetMetaValue("color--theme-info", "#9964e3");
   }
 
