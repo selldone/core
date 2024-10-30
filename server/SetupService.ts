@@ -51,30 +51,31 @@ export class SetupService {
    * Retrieves the main service's full URL.
    * @returns The full URL of the main service (e.g., https://selldone.com).
    */
-  static MainServiceUrl(language:string|null): string {
-
+  static MainServiceUrl(language: string | null): string {
     const _val = this.GetMetaValue("service-url");
     if (!_val) {
       console.error("[service-url] meta tag!");
       throw "The service url is not defined in [service-url] meta tag!";
     }
 
-    if(language && language!==SetupService.DefaultLanguageCode()){
-    // If selldone. be in the url, add language subdomain to the url
-    const url = new URL(_val);
-    const host = url.host;
-    const subdomain = language;
+    if (language && language !== SetupService.DefaultLanguageCode()) {
+      const url = new URL(_val);
+      const host = url.host;
+      const subdomain = language;
 
-    const newHost = `${subdomain}.${host}`;
-    url.host = newHost;
-    return url.toString();
+      const newHost = `${subdomain}.${host}`;
+      url.host = newHost;
+      // Remove trailing slash, if present
+      let urlString = url.toString();
+      if (urlString.endsWith("/")) {
+        urlString = urlString.slice(0, -1);
+      }
 
+      return urlString;
     }
-
 
     return _val;
   }
-
 
   static GetApiSubdomain(subdomain: string): string | null {
     const url = this.MainServiceUrl();
@@ -292,8 +293,8 @@ export class SetupService {
   // ――――――――――――――――――――――――― HTTP_REFERER : Keep origin url on SEO page load mode (Load first static version!) ―――――――――――――――――――――――――
 
   static GetReferrerMeta(): string | null {
-    const REFERRER_KEY = 'REFERRER_URL';
-    const EXPIRY_KEY = 'REFERRER_EXPIRY';
+    const REFERRER_KEY = "REFERRER_URL";
+    const EXPIRY_KEY = "REFERRER_EXPIRY";
     const EXPIRY_TIME = 24 * 60 * 60 * 1000; // 48 hours in milliseconds
 
     // Get current time
@@ -321,9 +322,14 @@ export class SetupService {
 
     if (!referrer) {
       const urlParams = new URLSearchParams(window.location.search);
-      const utmSource = urlParams.get('utm_source');
+      const utmSource = urlParams.get("utm_source");
       if (utmSource) {
-        console.log("🞧 GetReferrerMeta from utm_source...", utmSource, 'document:', document);
+        console.log(
+          "🞧 GetReferrerMeta from utm_source...",
+          utmSource,
+          "document:",
+          document,
+        );
         referrer = window.location.href; // Keep full referrer URL if utm_source is in the URL!
       }
     }
