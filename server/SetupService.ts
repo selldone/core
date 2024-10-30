@@ -51,14 +51,30 @@ export class SetupService {
    * Retrieves the main service's full URL.
    * @returns The full URL of the main service (e.g., https://selldone.com).
    */
-  static MainServiceUrl(): string {
+  static MainServiceUrl(language:string|null): string {
+
     const _val = this.GetMetaValue("service-url");
     if (!_val) {
       console.error("[service-url] meta tag!");
       throw "The service url is not defined in [service-url] meta tag!";
     }
+
+    if(language && language!==SetupService.DefaultLanguageCode()){
+    // If selldone. be in the url, add language subdomain to the url
+    const url = new URL(_val);
+    const host = url.host;
+    const subdomain = language;
+
+    const newHost = `${subdomain}.${host}`;
+    url.host = newHost;
+    return url.toString();
+
+    }
+
+
     return _val;
   }
+
 
   static GetApiSubdomain(subdomain: string): string | null {
     const url = this.MainServiceUrl();
