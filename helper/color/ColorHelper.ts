@@ -14,11 +14,53 @@
 
 import chroma from "chroma-js";
 import {ILanguage} from "../../enums/language/Language";
+import {isString} from "lodash-es";
 
 let COLORS_NAME_CACHE: { [key: string]: string } = {};
 let LAST_LANGUAGE: ILanguage | null = null;
 let COLORS_LANGUAGES_LIST: { name: string; hex: string; distance?: number }[];
 
+/**
+ * Retrieves the name of a given color by processing its format and mapping it
+ * to a name using available color resources.
+ *
+ * @param color - The color input in string format (e.g., HEX, RGB).
+ * @returns The color name if available; otherwise, `null`.
+ *
+ * @example
+ * ```typescript
+ * GetNameOfColor("#FF5733"); // Returns "Persimmon" or similar color name
+ * ```
+ */
+export function GetNameOfColor(color: string | null) {
+  if (!color || !isString(color)) return null;
+
+
+  const colors = ColorHelper.ExtractColors(color);
+
+  return colors
+      ?.map((color) =>
+          ColorHelper.getNameOfColor(window.$tm("global.colors") as {}, color),
+      )
+      .join(" / ");
+}
+
+/**
+ * Converts a color into a human-readable name in the user's language.
+ * It checks a cache for previously computed results to avoid redundant calculations.
+ *
+ * @param color - The color in string format (e.g., HEX, RGB).
+ * @returns The color name if identified; otherwise, `null`.
+ *
+ * @remarks
+ * - Uses chroma.js for color validation and distance calculations.
+ * - Utilizes a cache for performance optimization.
+ *
+ * @example
+ * ```typescript
+ * ColorNamer("#3498db"); // Returns "Sky Blue" or similar name
+ * ```
+ */
 const ColorNamer = function (color: string) {
   const cacheKey = color + window.$language.code;
 
@@ -36,11 +78,11 @@ const ColorNamer = function (color: string) {
     return null;
   }
 
-  const deltaE = true;
+  const _delta_e = true;
 
   const result = COLORS_LANGUAGES_LIST.map((item) => {
     try {
-      const distanceValue = deltaE
+      const distanceValue = _delta_e
         ? chroma.deltaE(color_obj, item.hex)
         : chroma.distance(color_obj, item.hex);
 

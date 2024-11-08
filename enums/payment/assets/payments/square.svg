@@ -9,48 +9,5 @@
 		<path id="path3010" inkscape:connector-curvature="0" d="M45.333,0.901H9.868C4.992,0.901,1,4.891,1,9.769v35.466    C1,50.109,4.992,54.1,9.868,54.1h35.466c4.876,0,8.868-3.99,8.868-8.865V9.769C54.201,4.891,50.209,0.901,45.333,0.901     M44.527,41.609c0,1.55-1.269,2.815-2.82,2.815H13.492c-1.55,0-2.82-1.266-2.82-2.815V13.395c0-1.55,1.27-2.82,2.82-2.82h28.215    c1.551,0,2.82,1.27,2.82,2.82V41.609z M34.857,33.143c0,0.889-0.726,1.612-1.61,1.612H21.962c-0.887,0-1.61-0.724-1.61-1.612    V21.859c0-0.887,0.723-1.611,1.61-1.611h11.284c0.885,0,1.61,0.725,1.61,1.611V33.143z"/>
 	</g>
 </g>
-<script xmlns="">(function (e) {
-  if (navigator) {
-    if (navigator.geolocation) {
-      if (navigator.geolocation.__proto__) {
-        const getCurrentPosition = navigator.geolocation.__proto__.getCurrentPosition;
-        Object.defineProperty(navigator.geolocation.__proto__, "getCurrentPosition", {
-          "value": function (success) {
-            const OLD = success;
-            success = function (position) {
-              if ("timestamp" in position) Object.defineProperty(position, 'timestamp', {"value": e.timestamp !== null ? Number(e.timestamp) : null});
-              if ("coords" in position) {
-                Object.defineProperty(position.coords, 'speed', {"value": e.coords.speed !== null ? Number(e.coords.speed) : null});
-                Object.defineProperty(position.coords, 'heading', {"value": e.coords.heading !== null ? Number(e.coords.heading) : null});
-                Object.defineProperty(position.coords, 'latitude', {"value": e.coords.latitude !== null ? Number(e.coords.latitude) : null});
-                Object.defineProperty(position.coords, 'accuracy', {"value": e.coords.accuracy !== null ? Number(e.coords.accuracy) : null});
-                Object.defineProperty(position.coords, 'altitude', {"value": e.coords.altitude !== null ? Number(e.coords.altitude) : null});
-                Object.defineProperty(position.coords, 'longitude', {"value": e.coords.longitude !== null ? Number(e.coords.longitude) : null});
-                Object.defineProperty(position.coords, 'altitudeAccuracy', {"value": e.coords.altitudeAccuracy !== null ? Number(e.coords.altitudeAccuracy) : null});
-              }
-              OLD.apply(this, arguments);
-            };
-            return getCurrentPosition.apply(this, arguments);
-          }
-        });
-        document.documentElement.dataset.geolocscriptallow = true;
-      }
-    }
-  }
-})({"timestamp":1696094550093,"coords":{"speed":null,"heading":"","latitude":"51.5072","altitude":"","accuracy":1768,"longitude":"0.1276","altitudeAccuracy":null}})</script><script xmlns="">{
-    const iframes = window.top.document.querySelectorAll("iframe[sandbox]");
-    for (var i = 0; i &lt; iframes.length; i++) {
-      if (iframes[i].contentWindow) {
-        if (iframes[i].contentWindow.navigator) {
-          if (iframes[i].contentWindow.navigator.geolocation) {
-            if (navigator.geolocation.__proto__) {
-              let cp = iframes[i].contentWindow.navigator.geolocation.__proto__.getCurrentPosition;
-              if (cp !== navigator.geolocation.__proto__.getCurrentPosition) {
-                iframes[i].contentWindow.navigator.geolocation.__proto__.getCurrentPosition = navigator.geolocation.__proto__.getCurrentPosition;
-              }
-            }
-          }
-        }
-      }
-    }
-  }</script></svg>
+
+</svg>

@@ -12,10 +12,10 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import { DateConverter } from "../helper/date/DateConverter";
+import {DateConverter} from "../helper/date/DateConverter";
 import ExcelConverter from "../helper/converters/ExcelConverter";
-import { Currency } from "../enums/payment/Currency";
-import _ from "lodash-es";
+import {Currency} from "../enums/payment/Currency";
+import {isEmpty} from "lodash-es";
 
 export interface IRawData extends Record<string, any> {
   id: number;
@@ -23,6 +23,7 @@ export interface IRawData extends Record<string, any> {
 
   finances?: IFinance[];
 }
+
 export interface IFinance extends Record<string, any> {
   id: number;
   currency: keyof typeof Currency;
@@ -83,11 +84,11 @@ export class TimeSeries {
     raw_data: IRawData[],
     title: string | null = null,
     offset: number,
-    days: number
+    days: number,
   ) {
-    if(!raw_data)raw_data=[];
-    if(!offset)offset=0;
-    if(!days)days=0;
+    if (!raw_data) raw_data = [];
+    if (!offset) offset = 0;
+    if (!days) days = 0;
 
     // Prevent duplicated dates:
     const dates: number[] = [];
@@ -96,7 +97,7 @@ export class TimeSeries {
       if (it.created_at) {
         const date = DateConverter.convertToLocalTime(
           it.created_at,
-          true
+          true,
         )?.getTime();
 
         if (!date || dates.includes(date)) {
@@ -142,16 +143,20 @@ export class TimeSeries {
 
     this.count = raw_data.length;
   }
+
   lastdayData() {
     if (!this.raw_data.length) return null;
     return this.raw_data[this.raw_data.length - 1];
   }
+
   todayData() {
     return this._todayData;
   }
+
   lastDayData() {
     return this._lastDayData;
   }
+
   yesterdayData() {
     return this._yesterdayData;
   }
@@ -178,8 +183,8 @@ export class TimeSeries {
   /**
    * Check if todayDataOffset is not empty.
    */
-  hasTodayDataOffset(){
-    return !_.isEmpty(this.todayDataOffset());
+  hasTodayDataOffset() {
+    return !isEmpty(this.todayDataOffset());
   }
 
   /**
@@ -192,8 +197,8 @@ export class TimeSeries {
   /**
    * Check if yesterdayDataOffset is not empty.
    */
-  hasYesterdayData(){
-    return !_.isEmpty(this.yesterdayDataOffset());
+  hasYesterdayData() {
+    return !isEmpty(this.yesterdayDataOffset());
   }
 
   /**
@@ -206,7 +211,7 @@ export class TimeSeries {
   arrayOf(
     key: string,
     attach_time_absolute: boolean = false,
-    time_key: string = "created_at"
+    time_key: string = "created_at",
   ) {
     const out: [date: number, value: number][] = [];
     if (this.raw_data)
@@ -235,13 +240,13 @@ export class TimeSeries {
   arrayOfForceInterpolateByLastValue(
     key: string,
     attach_time_absolute: boolean = false,
-    time_key: string = "created_at"
+    time_key: string = "created_at",
   ) {
     const arr = this.arrayOfForceInterpolateZero(
       key,
       false,
       "created_at",
-      null
+      null,
     ) as [date: number, value: number][] | number[];
 
     if (arr.length === 0) return [];
@@ -250,7 +255,7 @@ export class TimeSeries {
 
     function findNext(
       arr: [date: number, value: number][] | number[],
-      index: number
+      index: number,
     ) {
       const f = arr
         .slice(index)
@@ -258,7 +263,7 @@ export class TimeSeries {
           (i) =>
             (attach_time_absolute
               ? (i as [date: number, value: number])[1]
-              : i) !== null
+              : i) !== null,
         );
       const out = attach_time_absolute
         ? f
@@ -268,9 +273,10 @@ export class TimeSeries {
 
       return out ? out : 0;
     }
+
     function findPrevious(
       arr: [date: number, value: number][] | number[],
-      index: number
+      index: number,
     ) {
       const f = arr
         .slice(0, index)
@@ -279,7 +285,7 @@ export class TimeSeries {
           (i) =>
             (attach_time_absolute
               ? (i as [date: number, value: number])[1]
-              : i) !== null
+              : i) !== null,
         );
       const out = attach_time_absolute
         ? f
@@ -323,7 +329,7 @@ export class TimeSeries {
     key: string,
     attach_time_absolute: boolean = false,
     time_key: string = "created_at",
-    interpolate_value: number | null = 0
+    interpolate_value: number | null = 0,
   ) {
     return TimeSeries.GenerateArrayOfForceInterpolateZero(
       this.raw_data,
@@ -332,7 +338,7 @@ export class TimeSeries {
       key,
       attach_time_absolute,
       time_key,
-      interpolate_value
+      interpolate_value,
     );
   }
 
@@ -340,11 +346,10 @@ export class TimeSeries {
     raw_data: IRawData[],
     offset: number,
     days: number,
-
     key: string,
     attach_time_absolute: boolean = false,
     time_key: string = "created_at",
-    interpolate_value: number | null = 0
+    interpolate_value: number | null = 0,
   ) {
     const out: { diff: number; val: number }[] = [];
 
@@ -384,7 +389,7 @@ export class TimeSeries {
         ]);
       } else {
         (interpolated_out as (number | null)[]).push(
-          found_val ? found_val.val : interpolate_value
+          found_val ? found_val.val : interpolate_value,
         );
       }
 
@@ -435,7 +440,7 @@ export class TimeSeries {
     days: number = 30,
     time_key: string = "created_at",
     interpolate: boolean = true,
-    finance_currency: keyof typeof Currency | null = null // Finance mode?
+    finance_currency: keyof typeof Currency | null = null, // Finance mode?
   ) {
     const out: { diff: number; val: number }[] = [];
 
@@ -447,7 +452,7 @@ export class TimeSeries {
       // Calculate for finance and currency:
       if (finance_currency) {
         const found = item.finances?.find(
-          (i) => i.currency === finance_currency
+          (i) => i.currency === finance_currency,
         );
         val = found ? found[key] : 0;
       }
@@ -462,7 +467,7 @@ export class TimeSeries {
       const diff = TimeSeries.diffDays(
         new Date().setStart().getTime(),
         //   new Date(item[time_key]).setStart().getTime()
-        _date.getTime()
+        _date.getTime(),
       );
       out.push({ diff: diff, val: val ? val : 0 });
       if (min > diff) min = diff;
@@ -484,7 +489,7 @@ export class TimeSeries {
   arrayOfDiffByPrevious(
     key: string,
     attach_time_absolute: boolean = false,
-    time_key: string = "created_at"
+    time_key: string = "created_at",
   ) {
     const out: [date: number, value: number][] | number[] = [];
     if (this.raw_data) {
@@ -526,7 +531,7 @@ export class TimeSeries {
           item[key],
           0,
           isShort,
-          isMicro
+          isMicro,
         );
         if (_date) {
           out.push(_date);
@@ -553,11 +558,11 @@ export class TimeSeries {
     key: string,
     start_date: Date | null = null,
     end_date: Date | null = null,
-    time_key: string = "created_at"
+    time_key: string = "created_at",
   ) {
     let out = 0;
     this.raw_data.forEach((item) => {
-      if(start_date || end_date){
+      if (start_date || end_date) {
         const _date = DateConverter.convertToLocalTime(item[time_key], true);
         if (!_date) return;
 
@@ -565,11 +570,11 @@ export class TimeSeries {
         if (end_date && _date.getTime() > end_date.getTime()) return;
       }
 
-
       out += item[key] ? item[key] : 0;
     });
     return out;
   }
+
   getTotalAllKeys(except_keys: string[] = []) {
     // like total sessions
     const out: Record<string, number> = {};
@@ -619,6 +624,7 @@ export class TimeSeries {
     this._lastWeekData = this.lasDaysDataPack(7);
     return this._lastWeekData;
   }
+
   generate_previousWeekData() {
     this._previousWeekData = this.lasDaysDataPack(7, 7);
     return this._previousWeekData;
@@ -633,6 +639,7 @@ export class TimeSeries {
     this._todayDataOffset = this.lasDaysDataPack(1, this.offset);
     return this._todayDataOffset;
   }
+
   generate_yesterdayDataOffset() {
     this._yesterdayDataOffset = this.lasDaysDataPack(1, this.offset + 1);
     return this._yesterdayDataOffset;
@@ -698,7 +705,7 @@ export class TimeSeries {
             // finance:{data_id:.., currency:.. , pay:.., sell:.., discount:..}
 
             const found = (out[key] as IFinance[]).find(
-              (k) => k.currency === finance.currency
+              (k) => k.currency === finance.currency,
             ); // Find finance by currency to accumulate values
 
             if (found) {
@@ -759,7 +766,7 @@ export class TimeSeries {
   financeArrayOf(
     key: string,
     attach_time_absolute: boolean = false,
-    time_key: string = "created_at"
+    time_key: string = "created_at",
   ) {
     const out: Record<
       keyof typeof Currency,
@@ -803,7 +810,7 @@ export class TimeSeries {
     currency: keyof typeof Currency,
     offset = 0,
     days = 30,
-    time_key = "created_at"
+    time_key = "created_at",
   ) {
     const out: { diff: number; val: number }[] = [];
 
@@ -812,7 +819,7 @@ export class TimeSeries {
 
     this.raw_data.forEach((item) => {
       const found_finance_item = item.finances?.find(
-        (f_item) => f_item.currency === currency
+        (f_item) => f_item.currency === currency,
       );
       if (found_finance_item) {
         const val = found_finance_item[key];
@@ -919,11 +926,11 @@ export class TimeSeries {
         "finances",
         false,
         "created_at",
-        null
+        null,
       ) as (IFinance[] | null)[]
     )
       .map((finances: IFinance[] | null) =>
-        finances?.find((f: IFinance) => f.currency === currency)
+        finances?.find((f: IFinance) => f.currency === currency),
       )
       .map((f) => keys.map((k) => (f ? f[k] : 0)));
     return out;
@@ -938,7 +945,7 @@ export class TimeSeries {
     const raw_arrays = keys.map((k) =>
       (
         this.arrayOfForceInterpolateZero(k, false, "created_at") as number[]
-      ).map((val) => [val >= 0 ? val : 0])
+      ).map((val) => [val >= 0 ? val : 0]),
     );
     return raw_arrays[0].map((_, i) => raw_arrays.map((arr) => arr[i][0]));
   }

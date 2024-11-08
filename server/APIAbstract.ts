@@ -13,16 +13,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {
-  AxiosError,
-  type AxiosInstance,
-  type AxiosResponse,
-  type CancelTokenSource,
-} from "axios";
-import _ from "lodash-es";
-import { MD5 } from "../helper/string/MD5";
-import { LRUCache } from "../helper/cache/LRUCache";
-import axios from 'axios';
+import axios, {AxiosError, type AxiosInstance, type AxiosResponse, type CancelTokenSource,} from "axios";
+import {debounce} from "lodash-es";
+import {MD5} from "../helper/string/MD5";
+import {LRUCache} from "../helper/cache/LRUCache";
+
 window.axios = axios;
 
 export interface IAPIConfig {
@@ -160,7 +155,7 @@ export abstract class APIAbstract {
     const { max_valid_status_code = null, debounce_time = null } =
       options || {};
 
-    const debouncedFunction = _.debounce(
+    const debouncedFunction = debounce(
       () => {
         this.axiosInstance
           .get(url, {
@@ -381,7 +376,7 @@ export abstract class APIAbstract {
           throw undefined; // Important to not call then! then() is for success response only.
         } else {
           // Handle other errors
-          console.error("❌ Other errors:",error);
+          console.error("❌ Other errors:", error);
           throw error; // <- Propagate the error for further chaining
         }
       });
@@ -390,8 +385,6 @@ export abstract class APIAbstract {
 
     return out;
   }
-
-
 
   /**
    * Executes a PUT HTTP request using the provided URL, parameters, and optional configurations.

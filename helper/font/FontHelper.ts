@@ -12,7 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import _ from "lodash-es";
+import {delay} from "lodash-es";
 
 export class FontHelper {
   //――――――――――――――――――――――  Font loader listener ――――――――――――――――――――
@@ -24,7 +24,7 @@ export class FontHelper {
       if (callback) callback(true);
     });
     // Force show icons after 10 sec if font not loaded!
-    _.delay(() => {
+    delay(() => {
       if (callback) callback(true);
     }, 20000);
   }

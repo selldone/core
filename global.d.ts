@@ -17,6 +17,7 @@ import {ILanguage} from "./enums/language/Language";
 declare global {
   interface Window {
     $t: (key: string, values?: any) => any;
+    $tm: (key: string, values?: any) => any;
 
     $language: ILanguage;
 
