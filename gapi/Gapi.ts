@@ -13,7 +13,7 @@
  */
 
 import fetchCountries from "./requests/gapi.countries.get";
-import { APIAbstract } from "../server/APIAbstract";
+import {APIAbstract} from "../server/APIAbstract";
 
 export class Gapi extends APIAbstract {
   constructor() {
