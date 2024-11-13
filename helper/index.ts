@@ -16,6 +16,7 @@ export * from "./augment";
 export * from "./cache";
 export * from "./campaign";
 export * from "./canvas";
+export * from "./category";
 export * from "./color";
 export * from "./converters";
 export * from "./csv";

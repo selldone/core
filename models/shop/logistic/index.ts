@@ -12,4 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+export * from "./service/logistic-delivery-service.model";
 export * from "./profile/logistic-profile.model";

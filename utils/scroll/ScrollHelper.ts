@@ -13,11 +13,18 @@
  */
 
 export default class ScrollHelper {
-  static scrollToTop(top: number = 0, behavior: ScrollBehavior = "instant") {
-    window.scrollTo({
-      top: top, // Scroll to the top of the page
-      behavior: behavior, // Remove animation in change page!
-    });
+
+
+  static async scrollToTop(top: number = 0, behavior: ScrollBehavior = "instant") {
+    const currentScrollY = window.scrollY || window.pageYOffset;
+
+    // Only scroll if the current scroll position is different from the target top
+    if (currentScrollY !== top) {
+      window.scrollTo({
+        top: top, // Scroll to the specified position
+        behavior: behavior, // Scroll behavior (e.g., 'instant' or 'smooth')
+      });
+    }
   }
 
   /**
@@ -29,7 +36,7 @@ export default class ScrollHelper {
    * @param {ScrollBehavior} [behavior="auto"] - The scroll behavior, either "auto" or "smooth".
    * @param {boolean} [center=false] - Whether to center the element in the viewport.
    */
-  static scrollToElement(
+  static async scrollToElement(
       selector: string | HTMLElement,
       offset: number = 0,
       behavior: ScrollBehavior = "auto",

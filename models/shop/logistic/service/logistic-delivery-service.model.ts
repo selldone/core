@@ -1,5 +1,6 @@
+// @ts-nocheck
 /*
- * Copyright (c) 2024. Selldone® Business OS™
+ * Copyright (c) 2023. Selldone® Business OS™
  *
  * Author: M.Pajuhaan
  * Web: https://selldone.com
@@ -12,5 +13,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./delivery-service";
-export * from "./LogisticHelper";
+export interface DeliveryService {
+  id: number;
+  shop_id: number;
+}

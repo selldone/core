@@ -43,3 +43,5 @@ export interface ShopBlog {
    */
   image: string | null;
 }
+
+export namespace ShopBlog {}

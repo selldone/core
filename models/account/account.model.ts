@@ -98,13 +98,12 @@ export interface Account {
   /**
    * Extra metadata or information provided by the service.
    */
-  meta?: any[] | null; // Adjust the type as per the structure of the meta data
+  meta?: any[] | null; // Adjust the type as per the structure of the metadata
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
-
 
 export namespace Account {
   export enum AccountStatus {
@@ -131,5 +130,12 @@ export namespace Account {
 
     /** Selldone storage account (used for receive fees). */
     SelldoneStorage = "SelldoneStorage",
+  }
+
+  export function IsSelldoneAccount(account_number: string|null) {
+    return (
+      account_number?.startsWith("20000000000") ||
+      account_number?.startsWith("10000000000")
+    );
   }
 }

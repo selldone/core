@@ -12,5 +12,4 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./delivery-service";
-export * from "./LogisticHelper";
+export * from "./DeliveryServiceHelper";

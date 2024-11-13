@@ -11,6 +11,15 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+import {BackofficeLocalStorages} from "../local-storage";
 
-export * from "./delivery-service";
-export * from "./LogisticHelper";
+export class ShopCategoryHelper {
+   static GetCategoryIconById(
+        category_id: string | number,
+        size = BackofficeLocalStorages.IMAGE_SIZE_SMALL,
+    ) {
+        return window.CDN.GET_CATEGORY_ICON(category_id, size);
+    }
+
+
+}

@@ -181,6 +181,14 @@ export const SocialNetwork: Record<string, SocialNetworkEntry> = {
     },
 };
 
+export function GetSocialIcon(social: string) {
+    const found = Object.values(SocialNetwork).find(
+        (it) => it.code.toLowerCase() === social.toLowerCase(),
+    );
+    return found ? found.image : null;
+}
+
+
 export function CreateSocialConnectLink(
     network: keyof typeof SocialNetwork,
     user_name: string,

@@ -14,6 +14,7 @@
 
 export * from "./console";
 export * from "./cookie";
+export * from "./file";
 export * from "./scroll";
 
 export * from "./theme";

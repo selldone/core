@@ -253,12 +253,12 @@ export namespace Shop {
     Collective: {
       code: "Collective",
       title: "ShopMarketplaceModes.Collective.title",
-      description:"ShopMarketplaceModes.Collective.description",
+      description: "ShopMarketplaceModes.Collective.description",
     },
     Direct: {
       code: "Direct",
       title: "ShopMarketplaceModes.Direct.title",
-      description:"ShopMarketplaceModes.Direct.description",
+      description: "ShopMarketplaceModes.Direct.description",
     },
   };
 }

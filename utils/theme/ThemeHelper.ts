@@ -62,4 +62,19 @@ export class ThemeHelper {
       document.getElementsByTagName("head")[0].appendChild(meta);
     }
   }
+
+  //―――――――――――――――――――――― Global appearance――――――――――――――――――――
+
+ static SetHtmlFontSize(low_vision: boolean) {
+    document.documentElement.style.setProperty(
+        "font-size",
+        low_vision
+            ? "var(--base-font-low-vision)"
+            : "var(--base-font-standard)",
+        "important",
+    );
+  }
+
+
+
 }
