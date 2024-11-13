@@ -28,7 +28,7 @@ export class ThemeHelper {
    *                             This defaults to '#app .v-application'. If your CSS variable is defined in a different element,
    *                             provide the appropriate selector.
    */
-  static SetMetaThemeColor(
+  static async SetMetaThemeColor(
     color: any,
     calculator_element: string = "#app .v-application",
   ) {

@@ -126,10 +126,10 @@ export {};
    * @example console.style('Wow, this is <css="color:green;font-weight:bold;">so much</css> better!');
    * @param args
    */
-  console.style = function (...args: any[]) {
+  console.style = async function (...args: any[]) {
     console.log(...parse(args.shift()), ...args);
   };
-  console.errorStyle = function (...args) {
+  console.errorStyle = async function (...args) {
     console.error(...parse(args.shift()), ...args);
   };
   /**
@@ -141,7 +141,7 @@ export {};
    * @returns {string} - the wrapped text
    * @example console.style('I just ' + console.style.wrap('love', 'color:#c00;font-weight:bold;')');
    */
-  console.style.wrap = wrap = (text: string, rules: string): string => {
+  console.style.wrap = wrap =async (text: string, rules: string): string => {
     return '<css="' + rules + '">' + text + "</css>";
   };
 })(console);
