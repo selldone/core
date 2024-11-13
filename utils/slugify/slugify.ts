@@ -744,7 +744,16 @@ const locales = {
 };
 
 export class Slugify {
+
+  /**
+   * Convert string to proper hashtag
+   * @returns {string}
+   * @param string
+   * @param options
+   */
+
   static apply(string: any, options: any = {}) {
+    if(!string)return '';
     if (typeof string !== "string") {
       throw new Error("slugify: string argument expected");
     }
