@@ -13,6 +13,5 @@
  */
 
 export * from "./ColorGenerator";
-export * from "./ColorHelper";
-export * from "./NameOfColor";
+//export * from "./ColorHelper";
 export * from "./VariantColorsSet";
