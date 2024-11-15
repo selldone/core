@@ -495,6 +495,10 @@ export interface IExtendedPromiseWithCache<T> extends Promise<T> {
  * Adjust the size as per your requirements.
  */
 const __CACHE = new LRUCache<string, any>(100);
+
+export function CleanCache(){
+    __CACHE.clear();
+}
 /**
  * Cancellation keeper
  */
