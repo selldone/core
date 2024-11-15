@@ -15,6 +15,7 @@
 import {SetupService} from "./SetupService";
 import {PlaceholderImages} from "../helper/image/PlaceholderImages";
 import imagePlaceholder from "../helper/image/assets/image-placeholder.svg";
+import {isString} from "lodash-es";
 
 export class CDN {
   selldone_service_url: string = "";
@@ -186,7 +187,7 @@ export class CDN {
    * @param file_name
    */
   GET_VIDEO_URL(file_name: string): string | null {
-    if (!file_name) return null;
+    if (!file_name || !isString(file_name)) return null;
 
     if (this.storage_direct_url && this.storage_direct) {
       return `${this.storage_direct_url}/app/${file_name}`;
