@@ -14,6 +14,7 @@
 
 import axios, {AxiosProgressEvent, AxiosRequestConfig} from "axios";
 import type { IFileUploadResponse } from "./../../types/upload/file-upload-response-type.type";
+import NotificationService from "@selldone/components-vue/plugins/notification/NotificationService";
 
 export class UploadHelper {
   /**
@@ -80,11 +81,11 @@ export class UploadHelper {
         if (!data.error) {
           if (success) success(data);
         } else {
-          vue.showErrorAlert(null, data.error_msg);
+          NotificationService.showErrorAlert(null, data.error_msg);
         }
       })
       .catch((e) => {
-        vue.showLaravelError(e);
+        NotificationService.showLaravelError(e);
       })
       .finally(() => {
         // Remove the completed upload details from the global upload keeper in the store
