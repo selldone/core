@@ -861,7 +861,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     code: "GHS",
     enable: true,
     name: "global.currency.GHS",
-    country: "Guinea",
+    country: "Ghana",
     flag: "GH",
     floats: 2,
     format: "0,0.[00]",
