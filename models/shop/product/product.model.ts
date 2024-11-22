@@ -361,7 +361,7 @@ export namespace Product {
   type IThresholdValue = number | null;
 
   type IThreshold = {
-    minSells?: IThresholdValue; // Optional key for minimum sales
+    minSales?: IThresholdValue; // Optional key for minimum sales
     maxQuantity?: IThresholdValue; // Optional key for maximum quantity
     minQuantity?: IThresholdValue; // Optional key for minimum quantity
   };

@@ -18,7 +18,7 @@ import {Product} from "../../models";
  */
 interface IThresholdCondition {
   key: string; // The severity level (e.g., critical, high, moderate, low)
-  minSells?: number; // Minimum number of sales required for the condition
+  minSales?: number; // Minimum number of sales required for the condition
   minQuantity?: number; // Minimum available quantity for the condition
   maxQuantity?: number; // Maximum available quantity for the condition
   message: string; // Message key for localization
@@ -65,10 +65,10 @@ interface IProductThresholdSettings {
  * Variables will be saved in `product.threshold` with this format:
  * {
  *   variables: {
- *     critical: { minSells, minQuantity, maxQuantity },
- *     high: { minSells, minQuantity, maxQuantity },
- *     moderate: { minSells, minQuantity, maxQuantity },
- *     low: { minSells, minQuantity, maxQuantity }
+ *     critical: { minSales, minQuantity, maxQuantity },
+ *     high: { minSales, minQuantity, maxQuantity },
+ *     moderate: { minSales, minQuantity, maxQuantity },
+ *     low: { minSales, minQuantity, maxQuantity }
  *   }
  * }
  */
@@ -79,14 +79,14 @@ const productThresholds: Record<string, IProductThresholdSettings> = {
     conditions: [
       {
         key: "critical",
-        minSells: 50,
+        minSales: 50,
         maxQuantity: 100,
         message:
           "global.product_section_incentivise.physical.popular_selling_with_low_quantity",
       },
       {
         key: "high",
-        minSells: 5,
+        minSales: 5,
         message:
           "global.product_section_incentivise.physical.has_sell_has_quantity",
       },
@@ -114,14 +114,14 @@ const productThresholds: Record<string, IProductThresholdSettings> = {
     conditions: [
       {
         key: "critical",
-        minSells: 50,
+        minSales: 50,
         maxQuantity: 100,
         message:
           "global.product_section_incentivise.physical.popular_selling_with_low_quantity",
       },
       {
         key: "high",
-        minSells: 5,
+        minSales: 5,
         message:
           "global.product_section_incentivise.physical.has_sell_has_quantity",
       },
@@ -145,22 +145,22 @@ const productThresholds: Record<string, IProductThresholdSettings> = {
     conditions: [
       {
         key: "critical",
-        minSells: 100,
+        minSales: 100,
         message: "global.product_section_incentivise.file.very_popular_selling",
       },
       {
         key: "high",
-        minSells: 50,
+        minSales: 50,
         message: "global.product_section_incentivise.file.popular_selling",
       },
       {
         key: "moderate",
-        minSells: 10,
+        minSales: 10,
         message: "global.product_section_incentivise.file.has_normal_selling",
       },
       {
         key: "low",
-        minSells: 1,
+        minSales: 1,
         message:
           "global.product_section_incentivise.file.just_release_has_some_sales",
       },
@@ -196,7 +196,7 @@ export function GenerateProductThresholdsConditions(
       const _variable = variables[condition.key];
       if (_variable) {
         // Override condition values with the corresponding variables
-        condition.minSells = _variable.minSells;
+        condition.minSales = _variable.minSales;
         condition.minQuantity = _variable.minQuantity;
         condition.maxQuantity = _variable.maxQuantity;
       }
