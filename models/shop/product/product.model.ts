@@ -13,7 +13,8 @@
  */
 
 import {Currency} from "../../../enums/payment/Currency";
-import {SubscriptionMode} from "../../../enums/subscription/SubscriptionMode";
+import { SubscriptionMode } from "../../../enums/subscription/SubscriptionMode";
+import IThresholds = Product.IThresholds;
 
 export class Product implements Product.IProduct {
   /** @property {number} id - The unique identifier for the product. */
@@ -185,6 +186,8 @@ export class Product implements Product.IProduct {
   /** @property {string | null} [icon] - Optional icon for the product. */
   icon?: string | null;
 
+  thresholds?: IThresholds | null;
+
   constructor(
     data: {
       id: number;
@@ -353,4 +356,27 @@ export namespace Product {
     locations?: Record<string, Array<string>>;
     icon?: string | null;
   }
+
+  // ------------------- Thresholds -------------------
+  type IThresholdValue = number | null;
+
+  type IThreshold = {
+    minSells?: IThresholdValue; // Optional key for minimum sales
+    maxQuantity?: IThresholdValue; // Optional key for maximum quantity
+    minQuantity?: IThresholdValue; // Optional key for minimum quantity
+  };
+
+  export type IVariables = {
+    critical?: IThreshold;
+    high?: IThreshold;
+    moderate?: IThreshold;
+    low?: IThreshold;
+  };
+
+  export type IThresholds = {
+    custom?: boolean;
+    carts?: number;
+    progress?: number;
+    variables?: IVariables;
+  };
 }

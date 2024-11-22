@@ -88,6 +88,7 @@ export const ShopLicenseLimits = {
     marketplace: false,
     "tax-profiles": 5,
     cashback: 3,
+    thresholdings: 5,
   },
 
   STARTUP: {
@@ -113,6 +114,7 @@ export const ShopLicenseLimits = {
     marketplace: false,
     "tax-profiles": 10,
     cashback: 10,
+    thresholdings: 10,
   },
 
   COMPANY: {
@@ -138,6 +140,7 @@ export const ShopLicenseLimits = {
     marketplace: false,
     "tax-profiles": 20,
     cashback: 50,
+    thresholdings: 20,
   },
 
   ENTERPRISE: {
@@ -163,6 +166,7 @@ export const ShopLicenseLimits = {
     marketplace: true,
     "tax-profiles": 100,
     cashback: 1000,
+    thresholdings: 100,
   },
 };
 
@@ -274,6 +278,23 @@ export class Eligible {
       ShopLicenseLimits[shop.license!]["gift-card-types"]
     );
   }
+
+
+  //――――――――――――――――――― Thresholding ――――――――――――――――――
+  static CanAddNewThresholding(shop: Shop, thresholdings_count: number) {
+    return (
+        thresholdings_count < ShopLicenseLimits[shop.license!]["thresholdings"]
+    );
+  }
+
+  static CanEditThresholding(shop: Shop, thresholdings_count: number) {
+    return (
+        thresholdings_count <= ShopLicenseLimits[shop.license!]["thresholdings"]
+    );
+  }
+
+
+
 
   //――――――――――――――――――― Campaign ――――――――――――――――――
   static CanAddNewCampaign(shop: Shop, campaigns_count: number) {
