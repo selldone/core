@@ -64,7 +64,7 @@ export default class ScrollHelper {
         behavior: behavior, // Scroll behavior
       });
     } else {
-      console.error(`ScrollHelper: Element ${selector} not found!`);
+     // console.error(`ScrollHelper: Element ${selector} not found!`);
     }
   }
 }
