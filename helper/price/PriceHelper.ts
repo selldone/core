@@ -46,7 +46,7 @@ export class PriceHelper {
     if (!shop) return null;
 
     if(shop.currencies?.includes(from) === false || shop.currencies?.includes(to) === false) {
-      console.error("Currency not found in the store!", from, to,'Available currencies:',shop.currencies);
+      console.info("Currency not found in the store!", from, to,'Available currencies:',shop.currencies);
       return null;
     }
 
