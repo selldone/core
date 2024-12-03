@@ -37,7 +37,7 @@ export class SoundHelper {
     try {
       // Load `tick` sound only if it hasn't been loaded
       if (!this.tick) {
-        this.tick = await this.loadSound('./assets/tick.mp3');
+        this.tick = await this.loadSound('/sound/tick.mp3');
       }
 
       // Stop and rewind if already playing
@@ -61,7 +61,7 @@ export class SoundHelper {
     try {
       // Load `win` sound only if it hasn't been loaded
       if (!this.win) {
-        this.win = await this.loadSound('./assets/win.mp3');
+        this.win = await this.loadSound('/sound/win.mp3');
       }
 
       // Play the sound
