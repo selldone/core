@@ -15,6 +15,10 @@ export class SoundHelper {
    */
   private static win: HTMLAudioElement | null = null;
 
+  private static bubble: HTMLAudioElement | null = null;
+
+    private static double_bubble: HTMLAudioElement | null = null;
+
   /**
    * Loads a sound asynchronously and returns an HTMLAudioElement.
    * @param filePath - The path to the sound file to be loaded.
@@ -70,4 +74,33 @@ export class SoundHelper {
       console.error(e);
     }
   }
+
+  static async playBubble(): Promise<void> {
+    try {
+      // Load `win` sound only if it hasn't been loaded
+      if (!this.bubble) {
+        this.bubble = await this.loadSound('/sound/bubble.mp4');
+      }
+
+      // Play the sound
+      await this.bubble.play();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  // Double
+  static async playDoubleBubble(): Promise<void> {
+    try {
+      // Load `win` sound only if it hasn't been loaded
+      if (!this.double_bubble) {
+        this.double_bubble = await this.loadSound('/sound/double_bubble.mp4');
+      }
+
+      // Play the sound
+      await this.double_bubble.play();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
 }
