@@ -80,8 +80,8 @@ export class SoundHelper {
       // Load `win` sound only if it hasn't been loaded
       if (!this.bubble) {
         this.bubble = await this.loadSound('/sound/bubble.mp4');
+        this.bubble.volume=0.1;
       }
-
       // Play the sound
       await this.bubble.play();
     } catch (e) {
@@ -94,6 +94,7 @@ export class SoundHelper {
       // Load `win` sound only if it hasn't been loaded
       if (!this.double_bubble) {
         this.double_bubble = await this.loadSound('/sound/double_bubble.mp4');
+        this.double_bubble.volume=0.1;
       }
 
       // Play the sound
