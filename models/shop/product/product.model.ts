@@ -13,8 +13,7 @@
  */
 
 import {Currency} from "../../../enums/payment/Currency";
-import { SubscriptionMode } from "../../../enums/subscription/SubscriptionMode";
-import IThresholds = Product.IThresholds;
+import {SubscriptionMode} from "../../../enums/subscription/SubscriptionMode";
 
 export class Product implements Product.IProduct {
   /** @property {number} id - The unique identifier for the product. */
@@ -186,7 +185,9 @@ export class Product implements Product.IProduct {
   /** @property {string | null} [icon] - Optional icon for the product. */
   icon?: string | null;
 
-  thresholds?: IThresholds | null;
+  thresholds?: Product.IThresholds | null;
+
+  attributes?: Product.IAttributes | null;
 
   constructor(
     data: {
@@ -379,4 +380,6 @@ export namespace Product {
     progress?: number;
     variables?: IVariables;
   };
+
+  export type IAttributes = Record<string, any>;
 }
