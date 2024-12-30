@@ -17,6 +17,7 @@ import btcIcon from "./assets/currency/currency_bitcoin.svg";
 import ethIcon from "./assets/currency/ethereum.svg";
 import nioIcon from "./assets/currency/nio-token.svg";
 import selldoneIcon from "./assets/currency/samin-token.svg";
+import solanaIcon from "./assets/currency/solana.svg";
 
 /**
  * Represents the details of a currency.
@@ -2034,6 +2035,7 @@ const CurrencyRepository: Record<string, ICurrency> = {
     gradient: ["#55aae2", "#00a6ff"],
     unicode: "₳",
     auto_rate: true,
+    blockchain:true
   },
 
   BTC: {
@@ -2048,6 +2050,8 @@ const CurrencyRepository: Record<string, ICurrency> = {
     gradient: ["#FBC02D", "#FFA000"],
     unicode: "₿",
     auto_rate: false,
+    blockchain:true
+
   },
   ETH: {
     code: "ETH",
@@ -2061,6 +2065,8 @@ const CurrencyRepository: Record<string, ICurrency> = {
     gradient: ["#607D8B", "#455A64"],
     unicode: "Ξ",
     auto_rate: false,
+    blockchain:true
+
   },
 
   NIOC: {
@@ -2075,6 +2081,8 @@ const CurrencyRepository: Record<string, ICurrency> = {
     gradient: ["#C2185B", "#D32F2F"],
     unicode: "ṉ",
     auto_rate: false,
+    blockchain:true
+
   },
   SEL: {
     code: "SEL",
@@ -2088,6 +2096,24 @@ const CurrencyRepository: Record<string, ICurrency> = {
     gradient: ["#7B1FA2", "#512DA8"],
     unicode: "ഗ",
     auto_rate: false,
+    blockchain:true
+
+  },
+
+  SOL: {
+    code: "SOL",
+    enable: true,
+    name: "SOL",
+    country: "Blockchain",
+    icon: solanaIcon, // Replace with the appropriate icon variable
+    floats: 9,
+    format: "0,0.[000000000]",
+    round_factor: 1,
+    gradient: ["#4E44CE", "#00FFA3"], // Solana brand colors
+    unicode: "ᔑ", // Replace with a unique symbol if desired
+    auto_rate: false,
+    blockchain:true
+
   },
 };
 
