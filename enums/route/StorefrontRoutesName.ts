@@ -68,4 +68,7 @@ export enum StorefrontRoutesName {
   SHOP_PROFILE_PAGE_TERMS = "ShopProfilePage_Terms",
   SHOP_PROFILE_PAGE_PRIVACY = "ShopProfilePage_Privacy",
   SHOP_CONTACT_US = "ShopContactUs",
+
+  SHOP_LOGIN_PAGE = "ShopLoginPage",
+
 }
