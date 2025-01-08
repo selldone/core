@@ -25,16 +25,14 @@ export const ShopThemeVariantsMode: Record<
 > = {
   smart: {
     value: "smart",
-    title: "Smart Mode",
-    description:
-      "Compact variants in selectable separate options, suitable for most cases.",
+    title: "shop_theme_variants_mode.smart.title",
+    description:"shop_theme_variants_mode.smart.description",
     preview: require("@selldone/core-js/enums/shop/theme/assets/variant_mode_smart.png"),
   },
   select: {
     value: "select",
-    title: "Select Mode",
-    description:
-      "Displays all variants in a dropdown, ideal for a large number of variants.",
+    title: "shop_theme_variants_mode.select.title",
+    description:"shop_theme_variants_mode.select.description",
     preview: require("@selldone/core-js/enums/shop/theme/assets/variants_mode_select.png"),
   },
 };
