@@ -89,6 +89,7 @@ export const ShopLicenseLimits = {
     "tax-profiles": 5,
     cashback: 3,
     thresholdings: 5,
+    product_video_limit: 0, // Max number of videos per product
   },
 
   STARTUP: {
@@ -115,6 +116,8 @@ export const ShopLicenseLimits = {
     "tax-profiles": 10,
     cashback: 10,
     thresholdings: 10,
+    product_video_limit: 1,
+
   },
 
   COMPANY: {
@@ -141,6 +144,8 @@ export const ShopLicenseLimits = {
     "tax-profiles": 20,
     cashback: 50,
     thresholdings: 20,
+    product_video_limit: 2,
+
   },
 
   ENTERPRISE: {
@@ -167,6 +172,8 @@ export const ShopLicenseLimits = {
     "tax-profiles": 100,
     cashback: 1000,
     thresholdings: 100,
+    product_video_limit: 3,
+
   },
 };
 
@@ -411,4 +418,13 @@ export class Eligible {
   static CanEditCashback(shop: Shop, cashbacks_count: number) {
     return cashbacks_count <= ShopLicenseLimits[shop.license!].cashback;
   }
+
+  //――――――――――――――――――― Product Videos ――――――――――――――――――
+  static MaxUploadVideosForProduct(shop: Shop) {
+    return ShopLicenseLimits[shop.license!]["product_video_limit"]
+
+  }
+
+
+
 }
