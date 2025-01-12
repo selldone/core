@@ -150,6 +150,29 @@ export default {
     text: "timeline.sms-payment",
     iclass: "bg-teal-soft",
   },
+  "sms-ready-to-ship": {
+    icon: "fa:fas fa-sms",
+    color: "#00796B",
+    editable: false,
+    text: "timeline.sms-ready-to-ship",
+    iclass: "bg-teal-soft",
+  },
+  "sms-ready-to-pickup": {
+    icon: "fa:fas fa-sms",
+    color: "#00796B",
+    editable: false,
+    text: "timeline.sms-ready-to-pickup",
+    iclass: "bg-teal-soft",
+  },
+  "sms-order-confirmation": {
+    icon: "fa:fas fa-sms",
+    color: "#00796B",
+    editable: false,
+    text: "timeline.sms-order-confirmation",
+    iclass: "bg-teal-soft",
+  },
+
+
 
   "delivery-returned": {
     icon: "fa:fas fa-truck-loading",
