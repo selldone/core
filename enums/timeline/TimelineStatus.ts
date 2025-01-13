@@ -56,6 +56,15 @@ export default {
     text: "timeline.confirm",
     iclass: "bg-aqua-splash",
   },
+
+  'count-adjustment':{
+    icon: "fa:fas fa-scale-unbalanced",
+    color: "#13547a",
+    editable: false,
+    text: "timeline.count-adjustment",
+    iclass: "bg-aqua-splash",
+  },
+
   prepare: {
     icon: "fa:fas fa-box-open",
     color: "#a7a6cb",
@@ -303,6 +312,14 @@ export default {
     color: "#000000",
     text: "timeline.vendor-payout",
   },
+
+  "vendor-wallet-transaction":{
+    icon: "wallet",
+    color: "#673AB7",
+    text: "timeline.vendor-wallet-transaction",
+  },
+
+
   "vendor-sms": {
     icon: "fa:fas fa-sms",
     color: "#000000",
