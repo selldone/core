@@ -2021,6 +2021,20 @@ const CurrencyRepository: Record<string, ICurrency> = {
     auto_rate: false,
   },
 
+  BHD: {
+    code: "BHD",
+    enable: true,
+    name: "BHD",
+    country: "Bahrain",
+    flag: "BH",
+    floats: 3,
+    format: "0,0.00",
+    round_factor: 100,
+    gradient: ["#ff1313", "#771616"],
+    unicode: "د.ب",
+    auto_rate: false,
+  },
+
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   ADA: {
