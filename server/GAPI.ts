@@ -286,4 +286,11 @@ export class GAPI {
     return `${this.selldone_gapi_url}/demo/shop`;
   }
 
+
+  //―――――――――――――――――――――― Token SLDN ――――――――――――――――――――
+  GET_TOKEN_PURCHASE_RATE() {
+    return `${this.selldone_gapi_url}/sldn/purchase/rate`;
+  }
+
+
 }
