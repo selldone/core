@@ -146,14 +146,16 @@ export const ProductsCsvStyler = {
         "If the product ID exists, we attempt to find and update the matching product. If it doesn't, we search by product title and SKU. If there's still no match, we create a new product.",
       color: "#1976D2",
       dark: true,
+      icon:'edit'
     },
     value_empty: {
       // Show this message if the value is empty!
-      title: "Create",
+      title: "Update or Create",
       message:
         "We try to find the product by the title and SKU. If the product exists, we update it. If not, we create a new product.",
       color: "#388E3C",
       dark: true,
+      icon:'bolt'
     },
     tooltip: {
       title: "Unique Product ID On Selldone",
@@ -170,14 +172,16 @@ export const ProductsCsvStyler = {
         "We try to find the variant by the variant ID. If the variant exists, we update it, otherwise we create a new variant.",
       color: "#1976D2",
       dark: true,
+      icon:'edit'
     },
     value_empty: {
       // Show this message if the value is empty!
-      title: "Create",
+      title: "Update or Create",
       message:
         "We try to find the variant by the color,weight,style,... and SKU. If the variant exists, we update it. If not, we create a new variant.",
       color: "#388E3C",
       dark: true,
+      icon:'bolt'
     },
 
     tooltip: {
