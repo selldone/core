@@ -47,7 +47,7 @@ export const ProductStatus = {
     title: "product_status.rejected.title",
     description: "product_status.rejected.description",
     icon: "block",
-    color: "#111",
+    color: "#616161",
   },
 
   Unlisted: {
