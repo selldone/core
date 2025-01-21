@@ -49,4 +49,14 @@ export const ProductStatus = {
     icon: "block",
     color: "#111",
   },
+
+  Unlisted: {
+    code: "Unlisted",
+
+    name: "product_status.unlisted.name",
+    title: "product_status.unlisted.title",
+    description: "product_status.unlisted.description",
+    icon: "visibility_off",
+    color: "#111",
+  }
 };
