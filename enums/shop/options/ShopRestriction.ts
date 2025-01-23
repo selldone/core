@@ -16,21 +16,21 @@ export const ShopRestriction = {
   PUBLIC: {
     code: "PUBLIC",
     title: "Public Store",
-    desc: "All people can see and access all sides of your store. Also, you can add restrictions on the category level.",
+    desc: "Everyone can view and access all areas of your store. Additionally, you can set restrictions at the category level.",
     icon: "public",
   },
 
   RESTRICTED: {
     code: "RESTRICTED",
     title: "Restricted Purchase",
-    desc: "People can see your store but just verifies people can purchase.",
+    desc: "Everyone can view your store, but only verified customers are allowed to make purchases.",
     icon: "vpn_lock",
   },
 
   PRIVATE: {
     code: "PRIVATE",
     title: "Private Store",
-    desc: "The only person who has a password or is granted as a verified customer can access your website. Also, you can add additional restrictions on the category level.",
+    desc: "Only individuals with a password or those granted verified customer status can access your store. You can also set additional restrictions at the category level.",
     icon: "lock",
   },
 };
