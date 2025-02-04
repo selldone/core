@@ -44,11 +44,11 @@ export class PriceHelper {
   ) {
     if (from === to) return { rate: 1 };
     if (!shop) return null;
-
+/* No need! Now seller can limit currencies for the domain (like just show DKK but in backoffice has USD price)
     if(shop.currencies?.includes(from) === false || shop.currencies?.includes(to) === false) {
       console.info("Currency not found in the store!", from, to,'Available currencies:',shop.currencies);
       return null;
-    }
+    }*/
 
     return shop.shop_exchange_rates?.find((element) => {
       return from === element.from && to === element.to;
