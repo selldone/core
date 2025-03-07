@@ -12,11 +12,16 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-type AugmentItemI = {
+type IAugmentItem = {
   key: string;
   value: any;
-  type: 'text' | 'image';
+  type: "text" | "image";
+  // Additional properties for grouping
+  group?: string;
+  group_index?: number
 };
+
+
 
 
 /**
@@ -31,9 +36,9 @@ export class AugmentHelper {
    * @returns The augmented array.
    */
   static MixAugments(
-    augment: AugmentItemI[] | null,
-    otherArray: { key: string; value: any }[],
-  ): { key: string; value: any }[] {
+    augment: IAugmentItem[] | null,
+    otherArray: IAugmentItem[],
+  ): IAugmentItem[] {
     // Initialize the augment array if not provided or if it's not an array
     if (!augment || !Array.isArray(augment)) augment = [];
 
@@ -48,9 +53,9 @@ export class AugmentHelper {
       const found_item = augment!.find((item) => item.key === newItem.key);
 
       if (found_item) {
-        found_item.group= newItem.group;// Assign group
-        found_item.group_index= newItem.group_index;// Assign group index
-      }else{
+        found_item.group = newItem.group; // Assign group
+        found_item.group_index = newItem.group_index; // Assign group index
+      } else {
         // If the item does not exist in the augment array, add it
         augment!.push(newItem);
       }
@@ -70,18 +75,30 @@ export class AugmentHelper {
    * The function supports detecting if the value is a text or an image based on the file extension (e.g., '.jpg', '.png', '.gif').
    * It also handles nested objects recursively, building the full key path for each value in the object.
    */
-  static  ConvertToAugmentArray(obj: any, parentKey: string = ''):AugmentItemI[] {
-    const flattened: FlattenedItem[] = [];
+  static ConvertToAugmentArray(
+    obj: any,
+    parentKey: string = "",
+  ): IAugmentItem[] {
+    const flattened: IAugmentItem[] = [];
 
-    if(!obj)return flattened;
+    if (!obj) return flattened;
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         const fullKey = parentKey ? `${parentKey}.${key}` : key;
         const value = obj[key];
-        const type = typeof value === 'string' && (value.endsWith('.jpg') || value.endsWith('.png') || value.endsWith('.gif'))
-            ? 'image' : 'text';
+        const type =
+          typeof value === "string" &&
+          (value.endsWith(".jpg") ||
+            value.endsWith(".png") ||
+            value.endsWith(".gif"))
+            ? "image"
+            : "text";
 
-        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        if (
+          typeof value === "object" &&
+          value !== null &&
+          !Array.isArray(value)
+        ) {
           // Recursively flatten nested objects
           flattened.push(...this.ConvertToAugmentArray(value, fullKey));
         } else {
@@ -93,6 +110,4 @@ export class AugmentHelper {
 
     return flattened;
   }
-
-
 }

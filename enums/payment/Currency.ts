@@ -56,6 +56,7 @@ export type ICurrency = {
   unicode: string;
   auto_rate: boolean;
   at_end?: boolean; // Force sign be at end
+  blockchain?:boolean // Indicates whether the currency is a blockchain token or not.
 };
 
 const CurrencyRepository: Record<string, ICurrency> = {

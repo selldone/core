@@ -17,11 +17,12 @@ import {Product} from "../../models";
  * Interface for individual threshold conditions
  */
 interface IThresholdCondition {
-  key: string; // The severity level (e.g., critical, high, moderate, low)
-  minSales?: number; // Minimum number of sales required for the condition
-  minQuantity?: number; // Minimum available quantity for the condition
-  maxQuantity?: number; // Maximum available quantity for the condition
+  key: keyof Product.IVariables; // The severity level (e.g., critical, high, moderate, low)
+  minSales?: number| null; // Minimum number of sales required for the condition
+  minQuantity?: number| null; // Minimum available quantity for the condition
+  maxQuantity?: number| null; // Maximum available quantity for the condition
   message: string; // Message key for localization
+  color?: string; // Color for the condition
 }
 
 interface IProductThresholdLevel {
@@ -97,7 +98,6 @@ const productThresholds: Record<string, IProductThresholdSettings> = {
         message:
           "global.product_section_incentivise.physical.just_has_low_quantity",
         color: "blue",
-        name: "Moderate",
       },
       {
         key: "low",
@@ -182,23 +182,27 @@ export function GenerateProductThresholdsConditions(
   product: Product,
 ): IThresholdCondition[] | null {
   // Fetch predefined conditions for the product type
-  const pt = productThresholds[product.type];
+  const pt = productThresholds[product.type!];
   if (!pt) return null;
 
   // Deep copy the conditions to avoid mutating the original structure
-  const conditions = JSON.parse(JSON.stringify(pt.conditions));
+  const conditions = JSON.parse(
+    JSON.stringify(pt.conditions),
+  ) as IThresholdCondition[];
 
   // Apply custom thresholds to the conditions if they exist
   const thresholds = product.thresholds;
   if (thresholds?.custom) {
     const variables = thresholds.variables;
-    for (const condition of conditions) {
-      const _variable = variables[condition.key];
-      if (_variable) {
-        // Override condition values with the corresponding variables
-        condition.minSales = _variable.minSales;
-        condition.minQuantity = _variable.minQuantity;
-        condition.maxQuantity = _variable.maxQuantity;
+    if (variables) {
+      for (const condition of conditions) {
+        const _variable = variables[condition.key];
+        if (_variable) {
+          // Override condition values with the corresponding variables
+          condition.minSales = _variable.minSales;
+          condition.minQuantity = _variable.minQuantity;
+          condition.maxQuantity = _variable.maxQuantity;
+        }
       }
     }
   }

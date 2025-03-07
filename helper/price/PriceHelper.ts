@@ -76,7 +76,7 @@ export class PriceHelper {
     shop: Shop,
     from_currency: keyof typeof Currency,
     to_currency: keyof typeof Currency,
-  ) {
+  ):number|null {
     if (from_currency === to_currency) return 1;
 
     //  console.log("%c Exchange rate: "+from_currency+" --> "+to_currency, 'background: #eee; color: #333');
@@ -100,7 +100,8 @@ export class PriceHelper {
           to_currency,
         "background: #C2185B; color: #fff;padding 4px 12px",
       );
-      return '🚨';
+      //return '🚨';
+      return null;
     }
     return val;
   }

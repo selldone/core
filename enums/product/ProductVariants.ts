@@ -88,8 +88,8 @@ export function GetVariantNameByCode(
   code: keyof typeof ProductVariants,
   product: (Product & { property_set?: PropertySet }) | null,
 ): string {
-  if (product?.property_set?.variants?.length > 0) {
-    const found = product?.property_set?.variants.find((v) => v.code === code);
+  if (product?.property_set?.variants?.length && product?.property_set?.variants?.length > 0) {
+    const found = product.property_set.variants.find((v) => v.code === code);
     if (found?.name) {
       return found.name;
     }
@@ -109,8 +109,8 @@ export function GetVariantIconByCode(
   code: keyof typeof ProductVariants,
   product: (Product & { property_set?: PropertySet }) | null,
 ): string {
-  if (product?.property_set?.variants?.length > 0) {
-    const found = product?.property_set?.variants.find((v) => v.code === code);
+  if (product?.property_set?.variants?.length && product?.property_set?.variants?.length > 0) {
+    const found = product.property_set.variants.find((v) => v.code === code);
     if (found?.icon) {
       return found.icon;
     }
@@ -129,9 +129,9 @@ export function GetVariantIconByCode(
 export function GetVariantOrderIndexByCode(
   code: keyof typeof ProductVariants,
   product: (Product & { property_set?: PropertySet }) | null,
-): string {
-  if (product?.property_set?.variants?.length > 0) {
-    const attr_index = product?.property_set?.variants.findIndex(
+): number|null {
+  if (product?.property_set?.variants?.length && product?.property_set?.variants?.length > 0) {
+    const attr_index = product.property_set.variants.findIndex(
       (v) => v.code === code,
     );
     if (attr_index > -1) return attr_index;
@@ -151,8 +151,8 @@ export function GetVariantDefaultValuesByCode(
   code: keyof typeof ProductVariants,
   product: (Product & { property_set?: PropertySet }) | null,
 ) {
-  if (product?.property_set?.variants?.length > 0) {
-    const found = product?.property_set?.variants.find((v) => v.code === code);
+  if (product?.property_set?.variants?.length && product?.property_set?.variants?.length > 0) {
+    const found = product.property_set.variants.find((v) => v.code === code);
     if (found?.values?.length) {
       return found.values;
     }
@@ -174,9 +174,9 @@ export function GetVariantValueIndexCode(
   code: keyof typeof ProductVariants,
   product: (Product & { property_set?: PropertySet }) | null,
   value: string | null,
-): number {
-  if (product?.property_set?.variants?.length > 0) {
-    const found = product?.property_set?.variants.find((v) => v.code === code);
+): number|null {
+  if (product?.property_set?.variants?.length && product?.property_set?.variants?.length > 0) {
+    const found = product.property_set.variants.find((v) => v.code === code);
     if (found?.values?.length) {
       console.log("🏳 found.values", found.values, value);
       const out = found.values.findIndex((v) => v === value); // Correct usage of findIndex

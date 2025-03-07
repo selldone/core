@@ -141,7 +141,7 @@ export {};
    * @returns {string} - the wrapped text
    * @example console.style('I just ' + console.style.wrap('love', 'color:#c00;font-weight:bold;')');
    */
-  console.style.wrap = wrap =async (text: string, rules: string): string => {
+  console.style.wrap = wrap = (text: string, rules: string): string => {
     return '<css="' + rules + '">' + text + "</css>";
   };
 })(console);

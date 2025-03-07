@@ -100,6 +100,10 @@ export interface IQuota {
   bg_remove_extra: number;
   bg_remove_usage: number;
 
+  vendors_max: number; // Maximum number of vendors allowed to add per day
+  vendors_extra: number;
+  vendors_usage: number;
+
   reset_date: Date | null;
 
   created_at: Date;

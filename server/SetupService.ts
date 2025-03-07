@@ -51,7 +51,7 @@ export class SetupService {
    * Retrieves the main service's full URL.
    * @returns The full URL of the main service (e.g., https://selldone.com).
    */
-  static MainServiceUrl(language: string | null): string {
+  static MainServiceUrl(language?: string | null): string {
     const _val = this.GetMetaValue("service-url");
     if (!_val) {
       console.error("[service-url] meta tag!");

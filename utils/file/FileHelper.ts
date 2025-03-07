@@ -31,11 +31,12 @@ export class FileHelper {
 
     const extension = FileHelper.GetFileExtension(fullPath);
     // console.log("extension", extension);
-    const found = FileExtensions.find((it) => it.ex.includes(extension));
+    const found = extension && FileExtensions.find((it) => it.ex.includes(extension));
     return found ? found.src : null;
   }
 
   static DataURItoBlob(dataURI: string | null) {
+    if(!dataURI)return null;
     // convert base64 to raw binary data held in a string
     // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
     const byteString = atob(dataURI.split(",")[1]);

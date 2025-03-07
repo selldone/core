@@ -24,7 +24,7 @@ export interface CrossSelling {
   discount: number; // Discount percent
 
   message?: string | null; // Custom message to display to customer.
-  action?: CrossSellActionType | null; // Cross-sell action type
+  action?: typeof CrossSellActionType | null; // Cross-sell action type
 
   createdAt: string;
   updatedAt: string;

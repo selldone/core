@@ -64,7 +64,9 @@ export class LRUCache<K, V extends ICacheable | null> {
     // Check size constraint and remove the oldest (least recently used) item if needed
     if (this.cache.size > this.maxSize) {
       const oldestKey = this.cache.keys().next().value;
-      this.cache.delete(oldestKey);
+      if (oldestKey !== undefined) {
+        this.cache.delete(oldestKey);
+      }
     }
   }
 
@@ -78,6 +80,7 @@ export class LRUCache<K, V extends ICacheable | null> {
   entries() {
     return this.cache.entries();
   }
+
   length() {
     return this.cache.size;
   }

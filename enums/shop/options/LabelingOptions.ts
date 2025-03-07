@@ -11,8 +11,16 @@
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
  */
+export type ILabelingModeKey = 'default' | 'auto-increment' | 'hashed';
+export interface ILabelingMode {
+  code: ILabelingModeKey;
+  title: string;
+  icon: string;
+  description: string;
+  resetable: boolean;
+}
 
-export const LabelingModes = {
+export const LabelingModes: Record<ILabelingModeKey, ILabelingMode> = {
   default: {
     code: "default",
     title: "System Ordering (Default)",
