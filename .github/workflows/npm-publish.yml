@@ -2,8 +2,8 @@ name: Publish NPM Package
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main  # 👈 Triggers on every push to 'main' branch
 
 jobs:
   build-and-publish:
