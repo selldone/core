@@ -41,7 +41,6 @@ export * from "./shop";
 export * from "./sound";
 export * from "./string";
 export * from "./style";
-export * from "./upload";
 export * from "./url";
 export * from "./video";
 

@@ -13,4 +13,3 @@
  */
 
 export * from "./ExcelConverter";
-export * from "./FileFormatConverterOnline";
