@@ -24,7 +24,7 @@
   "license": "MIT",
 
   "dependencies": {
-    "axios": "^1.8.4",
+    "axios": "^1.9.0",
     "lodash-es": "^4.17.21",
     "register-service-worker": "^1.7.2",
     "chroma-js": "^3.1.2",
@@ -34,9 +34,9 @@
   "devDependencies": {
     "@types/chroma-js": "^3.1.1",
     "@types/lodash-es": "^4.17.12",
-     "@typescript-eslint/eslint-plugin": "^8.29.0",
-    "@typescript-eslint/parser": "^8.29.0",
-    "eslint": "^9.24.0",
+     "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "eslint": "^9.25.1",
     "eslint-plugin-prettier": "^5.2.6",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
