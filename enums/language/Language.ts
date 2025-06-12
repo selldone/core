@@ -173,6 +173,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "zh-CN", // Used for calendar
     countries: ["CN", "HK", "MO", "SG", "TW"],
     vip: true, // Show on local services
+    human: true, // Translated by human
   },
 
   "zh-tw": {
