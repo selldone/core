@@ -121,6 +121,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "de-DE", // Used for calendar
     countries: ["AT", "CH", "DE", "LI", "LU"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Danish
@@ -134,6 +135,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "da-DK", // Used for calendar
     countries: ["DK"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Swedish
@@ -147,6 +149,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "sv-SE", // Used for calendar
     countries: ["FI", "SE"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Persian
@@ -185,6 +188,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "zh-tw", // Used for calendar
     countries: ["TW", "CN", "HK", "MO", "SG"],
+    human: true,
   },
 
   // Spanish
@@ -219,6 +223,7 @@ export const Language: Record<string, ILanguage> = {
       "VE",
     ],
     vip: true, // Show on local services
+    human: true,
   },
 
   hi: {
@@ -231,6 +236,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "hi-IN", // Used for calendar
     countries: ["IN"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Arabic
@@ -262,6 +268,7 @@ export const Language: Record<string, ILanguage> = {
       "YE",
     ],
     vip: true, // Show on local services
+    human: true,
   },
 
   // French
@@ -275,6 +282,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "fr-FR", // Used for calendar
     countries: ["BE", "CA", "CH", "FR", "LU", "MC"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Turkish
@@ -288,6 +296,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "tr-TR", // Used for calendar
     countries: ["TR"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Portuguese
@@ -301,6 +310,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "pt-PT", // Used for calendar
     countries: ["BR", "PT"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Indonesian
@@ -314,6 +324,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "id-ID", // Used for calendar
     countries: ["ID"],
     vip: true, // Show on local services
+    human: true,
   },
   // Urdu
   ur: {
@@ -326,6 +337,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "ur-PK", // Used for calendar
     countries: ["PK"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Punjabi
@@ -339,6 +351,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "pa-IN", // Used for calendar
     countries: ["IN"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Japanese
@@ -352,6 +365,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "ja-JP", // Used for calendar
     countries: ["JP"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Russian
@@ -365,6 +379,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "ru-RU", // Used for calendar
     countries: ["RU"],
     vip: true, // Show on local services
+    human: true,
   },
 
   // Bengali
@@ -378,6 +393,7 @@ export const Language: Record<string, ILanguage> = {
     full_locale: "bn-BD", // Used for calendar
     countries: ["BD", "IN"],
     vip: true, // Show on local services
+    human: true,
   },
 
   //--------------------------------------------------------
@@ -392,6 +408,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "af-ZA", // Used for calendar
     countries: ["ZA"],
+    human: true,
   },
 
   // Albanian
@@ -404,6 +421,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "sq-AL", // Used for calendar
     countries: ["AL"],
+    human: true,
   },
 
   // Azerbaijani
@@ -416,6 +434,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "az-AZ", // Used for calendar
     countries: ["AZ"],
+    human: true,
   },
 
   // Amharic
@@ -428,6 +447,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "am-ET", // Used for calendar
     countries: ["ET"],
+    human: true,
   },
 
   // Armenian
@@ -440,6 +460,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "hy-AM", // Used for calendar
     countries: ["AM"],
+    human: true,
   },
 
   // Belarusian
@@ -452,6 +473,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "be-BY", // Used for calendar
     countries: ["BY"],
+    human: true,
   },
 
   // Basque
@@ -464,6 +486,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "eu-ES", // Used for calendar
     countries: ["ES"],
+    human: true,
   },
 
   // Bulgarian
@@ -476,6 +499,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "bg-BG", // Used for calendar
     countries: ["BG"],
+    human: true,
   },
 
   // Bosnian
@@ -488,6 +512,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "bs-BA", // Used for calendar
     countries: ["BA"],
+    human: true,
   },
 
   // Corsican
@@ -500,6 +525,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "co-FR", // Used for calendar
     countries: ["FR"],
+    human: true,
   },
 
   // Catalan
@@ -512,6 +538,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ca-AD", // Used for calendar
     countries: ["AD", "ES"],
+    human: true,
   },
 
   // Croatian
@@ -524,6 +551,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "hr-HR", // Used for calendar
     countries: ["HR", "BA"],
+    human: true,
   },
 
   // Czech
@@ -536,6 +564,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "cs-CZ", // Used for calendar
     countries: ["CZ"],
+    human: true,
   },
 
   // Dutch
@@ -548,6 +577,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "nl-BE", // Used for calendar
     countries: ["BE", "NL"],
+    human: true,
   },
 
   // Estonian
@@ -560,6 +590,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "et-EE", // Used for calendar
     countries: ["EE"],
+    human: true,
   },
 
   // Finnish
@@ -572,6 +603,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "fi-FI", // Used for calendar
     countries: ["FI"],
+    human: true,
   },
 
   // Frisian
@@ -584,6 +616,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "fy-NL", // Used for calendar
     countries: ["NL"],
+    human: true,
   },
 
   // Galician
@@ -596,6 +629,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "gl-ES", // Used for calendar
     countries: ["ES"],
+    human: true,
   },
 
   // Georgian
@@ -608,6 +642,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ka-GE", // Used for calendar
     countries: ["GE"],
+    human: true,
   },
   // Greek
   el: {
@@ -619,6 +654,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "el-CY", // Used for calendar
     countries: ["CY", "GR"],
+    human: true,
   },
   // Gujarati
   gu: {
@@ -630,6 +666,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "gu-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
   // Haitian Creole
   ht: {
@@ -641,6 +678,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ht-HT", // Used for calendar
     countries: ["HT"],
+    human: true,
   },
 
   // Hausa
@@ -653,6 +691,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ha-NG", // Used for calendar
     countries: ["NG"],
+    human: true,
   },
 
   // Hebrew
@@ -665,6 +704,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "he-IL", // Used for calendar
     countries: ["IL"],
+    human: true,
   },
 
   // Hungarian
@@ -677,6 +717,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "hu-HU", // Used for calendar
     countries: ["HU"],
+    human: true,
   },
 
   // Icelandic
@@ -689,6 +730,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "is-IS", // Used for calendar
     countries: ["IS"],
+    human: true,
   },
 
   // Igbo
@@ -701,6 +743,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ig-NG", // Used for calendar
     countries: ["NG"],
+    human: true,
   },
 
   // Irish
@@ -713,6 +756,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ga-IE", // Used for calendar
     countries: ["IE"],
+    human: true,
   },
 
   // Italian
@@ -725,6 +769,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "it-IT", // Used for calendar
     countries: ["IT", "CH"],
+    human: true,
   },
   // Javanese
   jv: {
@@ -736,6 +781,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "jv-ID", // Used for calendar
     countries: ["ID"],
+    human: true,
   },
 
   // Kannada
@@ -748,6 +794,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "kn-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
 
   // Kazakh
@@ -760,6 +807,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "kk-KZ", // Used for calendar
     countries: ["KZ"],
+    human: true,
   },
 
   // Khmer
@@ -772,6 +820,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "km-KH", // Used for calendar
     countries: ["KH"],
+    human: true,
   },
 
   // Kinyarwanda
@@ -784,6 +833,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "rw-RW", // Used for calendar
     countries: ["RW"],
+    human: true,
   },
 
   // Korean
@@ -796,6 +846,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ko-KR", // Used for calendar
     countries: ["KR"],
+    human: true,
   },
 
   // Kurdish
@@ -808,6 +859,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ku-IQ", // Used for calendar
     countries: ["IQ"],
+    human: true,
   },
 
   // Kyrgyz
@@ -820,6 +872,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ky-KG", // Used for calendar
     countries: ["KG"],
+    human: true,
   },
 
   // Lao
@@ -832,6 +885,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "lo-LA", // Used for calendar
     countries: ["LA"],
+    human: true,
   },
 
   // Latvian
@@ -844,6 +898,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "lv-LV", // Used for calendar
     countries: ["LV"],
+    human: true,
   },
   // Lithuanian
   lt: {
@@ -855,6 +910,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "lt-LT", // Used for calendar
     countries: ["LT"],
+    human: true,
   },
   // Luxembourgish
   lb: {
@@ -866,6 +922,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "lb-LU", // Used for calendar
     countries: ["LU"],
+    human: true,
   },
   // Macedonian
   mk: {
@@ -877,6 +934,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "mk-MK", // Used for calendar
     countries: ["MK"],
+    human: true,
   },
   // Malagasy
   mg: {
@@ -888,6 +946,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "mg-MG", // Used for calendar
     countries: ["MG"],
+    human: true,
   },
   // Malay
   ms: {
@@ -899,6 +958,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ms-MY", // Used for calendar
     countries: ["MY", "BN"],
+    human: true,
   },
 
   // Malayalam
@@ -911,6 +971,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ml-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
 
   // Maltese
@@ -923,6 +984,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "mt-MT", // Used for calendar
     countries: ["MT"],
+    human: true,
   },
 
   // Maori
@@ -935,6 +997,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "mi-NZ", // Used for calendar
     countries: ["NZ"],
+    human: true,
   },
 
   // Marathi
@@ -947,6 +1010,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "mr-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
 
   // Mongolian
@@ -959,6 +1023,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "mn-MN", // Used for calendar
     countries: ["MN"],
+    human: true,
   },
   // Myanmar
   my: {
@@ -970,6 +1035,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "my-MM", // Used for calendar
     countries: ["MM"],
+    human: true,
   },
 
   // Nepali
@@ -982,6 +1048,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ne-NP", // Used for calendar
     countries: ["NP"],
+    human: true,
   },
   // Norwegian
   no: {
@@ -993,6 +1060,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "no-NO", // Used for calendar
     countries: ["NO"],
+    human: true,
   },
   // Nyanja
   ny: {
@@ -1004,6 +1072,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ny-MW", // Used for calendar
     countries: ["MW", "ZM"],
+    human: true,
   },
   // Odia / Oriya
   or: {
@@ -1015,6 +1084,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "or-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
 
   // Pashto
@@ -1027,6 +1097,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ps-AF", // Used for calendar
     countries: ["AF"],
+    human: true,
   },
 
   // Polish
@@ -1039,6 +1110,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "pl-PL", // Used for calendar
     countries: ["PL"],
+    human: true,
   },
   // Romanian
   ro: {
@@ -1050,6 +1122,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ro-RO", // Used for calendar
     countries: ["RO", "MO"],
+    human: true,
   },
   // Serbian
   sr: {
@@ -1061,6 +1134,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "sr-RS", // Used for calendar
     countries: ["BA", "CS", "ME", "RS"],
+    human: true,
   },
 
   // Sesotho
@@ -1073,6 +1147,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "st-LS", // Used for calendar
     countries: ["ZA", "LS", "ZW"],
+    human: true,
   },
   // Shona
   sn: {
@@ -1084,6 +1159,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "sn-ZW", // Used for calendar
     countries: ["ZW", "MZ"],
+    human: true,
   },
   // Sinhala / Sinhalese
   si: {
@@ -1095,6 +1171,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "si-LK", // Used for calendar
     countries: ["LK"],
+    human: true,
   },
   // Slovak
   sk: {
@@ -1106,6 +1183,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "sk-SK", // Used for calendar
     countries: ["SK"],
+    human: true,
   },
   // Slovenian
   sl: {
@@ -1117,6 +1195,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "sl-SI", // Used for calendar
     countries: ["SI"],
+    human: true,
   },
   // Somali
   so: {
@@ -1128,6 +1207,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "so-SO", // Used for calendar
     countries: ["SO", "ET", "KE"],
+    human: true,
   },
 
   // Sundanese
@@ -1140,6 +1220,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "su-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
 
   // Swahili
@@ -1152,6 +1233,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "sw-KE", // Used for calendar
     countries: ["KE"],
+    human: true,
   },
   // Tajik
   tg: {
@@ -1163,6 +1245,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "tg-TJ", // Used for calendar
     countries: ["TJ"],
+    human: true,
   },
   // Tamil
   ta: {
@@ -1174,6 +1257,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ta-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
   // Tatar
   tt: {
@@ -1185,6 +1269,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "tt-RU", // Used for calendar
     countries: ["RU"],
+    human: true,
   },
   // Telugu
   te: {
@@ -1196,6 +1281,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "te-IN", // Used for calendar
     countries: ["IN"],
+    human: true,
   },
 
   // Thai
@@ -1208,6 +1294,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "th-TH", // Used for calendar
     countries: ["TH"],
+    human: true,
   },
   // Turkmen
   tk: {
@@ -1219,6 +1306,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "tk-TM", // Used for calendar
     countries: ["TM"],
+    human: true,
   },
   // Ukrainian
   uk: {
@@ -1230,6 +1318,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "uk-UA", // Used for calendar
     countries: ["UA"],
+    human: true,
   },
 
   // Uyghur
@@ -1242,6 +1331,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "ug-CN", // Used for calendar
     countries: ["CN"],
+    human: true,
   },
   // Uzbek
   uz: {
@@ -1253,6 +1343,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "uz-UZ", // Used for calendar
     countries: ["BO", "EC", "PE", "UZ"],
+    human: true,
   },
   // Vietnamese
   vi: {
@@ -1264,6 +1355,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "vi-VN", // Used for calendar
     countries: ["VN"],
+    human: true,
   },
   // Welsh
   cy: {
@@ -1275,6 +1367,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "cy-GB", // Used for calendar
     countries: ["GB"],
+    human: true,
   },
   // Xhosa
   xh: {
@@ -1286,6 +1379,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "xh-ZA", // Used for calendar
     countries: ["ZA"],
+    human: true,
   },
 
   // Yiddish
@@ -1298,6 +1392,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "yi-RU", // Used for calendar
     countries: ["RU"],
+    human: true,
   },
   // Yoruba
   yo: {
@@ -1309,6 +1404,7 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "yo-NG", // Used for calendar
     countries: ["NG"],
+    human: true,
   },
   // Zulu
   zu: {
@@ -1320,5 +1416,6 @@ export const Language: Record<string, ILanguage> = {
     calendar: Calendar.gregory,
     full_locale: "zu-ZA", // Used for calendar
     countries: ["ZA"],
+    human: true,
   },
 };

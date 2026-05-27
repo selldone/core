@@ -24,9 +24,32 @@ import type {ExtraPricing} from "../../models/shop/extra-pricing/extra-pricing.m
 import {StorefrontDebugEvents} from "../../enums/debug/StorefrontDebugEvents";
 
 export class PriceHelper {
+  private static missingExchangeRateWarnings = new Set<string>();
+
   static FixPrecision(val: number, floats: number) {
     const factor = Math.pow(10, floats);
     return Math.round(val * factor) / factor;
+  }
+
+  private static logMissingExchangeRateOnce(
+    shop: Shop | null | undefined,
+    from: keyof typeof Currency,
+    to: keyof typeof Currency,
+    message?: string,
+  ) {
+    const key = `${shop?.id ?? "shop"}:${from}->${to}`;
+    if (this.missingExchangeRateWarnings.has(key)) return;
+
+    this.missingExchangeRateWarnings.add(key);
+
+    const _message = message ?? `Exchange rate ${from}/${to} not found!`;
+
+    console.warn(
+      `%c No conversion rate found in the store!: ${from} --> ${to}`,
+      "background: #C2185B; color: #fff;padding 4px 12px",
+    );
+
+    StorefrontDebugEvents.LogWarning(`Exchange ${from}/${to}`, _message);
   }
 
   static FixPrecisionForCurrency(val: number, currency: keyof typeof Currency) {
@@ -93,14 +116,12 @@ export class PriceHelper {
     }
 
     if (!val) {
-      console.log(
-        "%c No conversion rate found in the store!: " +
-          from_currency +
-          " --> " +
-          to_currency,
-        "background: #C2185B; color: #fff;padding 4px 12px",
+      this.logMissingExchangeRateOnce(
+        shop,
+        from_currency,
+        to_currency,
+        `Exchange rate ${from_currency}/${to_currency} not found!`,
       );
-      //return '🚨';
       return null;
     }
     return val;
@@ -115,7 +136,7 @@ export class PriceHelper {
   ) {
     const rate = this.getBuyRateValue(shop, item.currency, to_currency);
     if (!rate) {
-      return "Error";
+      return null;
     }
     return item.price * rate;
   }
@@ -127,7 +148,7 @@ export class PriceHelper {
   ) {
     const rate = this.getBuyRateValue(shop, item.currency, to_currency);
     if (!rate) {
-      return "Error";
+      return null;
     }
     return item.dis * rate;
   }
@@ -139,7 +160,7 @@ export class PriceHelper {
   ) {
     const rate = this.getBuyRateValue(shop, item.currency, to_currency);
     if (!rate) {
-      return "Error";
+      return null;
     }
     return (item.price + item.dis) * rate;
   }
@@ -200,11 +221,6 @@ export class PriceHelper {
       const rate = this.getBuyRateValue(shop, variant.currency, to_currency);
       if (!rate) {
         const _error_message = `Exchange rate ${variant.currency}/${to_currency} not found!`;
-        // 🪠 Log error to storefront debugger view!
-        StorefrontDebugEvents.LogWarning(
-          `Exchange ${variant!.currency}/${to_currency}`,
-          _error_message,
-        );
         throw new Error(_error_message);
       }
       //console.log('------current_extra_pricing',current_extra_pricing)
@@ -245,11 +261,6 @@ export class PriceHelper {
       if (!rate) {
         const _error_message = `Exchange rate ${product.currency}/${to_currency} not found!`;
 
-        // 🪠 Log error to storefront debugger view!
-        StorefrontDebugEvents.LogWarning(
-          `Exchange ${product.currency}/${to_currency}`,
-          _error_message,
-        );
 
         throw new Error(_error_message);
       }
