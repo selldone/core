@@ -2036,6 +2036,20 @@ const CurrencyRepository: Record<string, ICurrency> = {
     auto_rate: false,
   },
 
+  SDG: {
+    code: "SDG",
+    enable: true,
+    name: "global.currency.SDG",
+    country: "Sudan",
+    flag: "SD",
+    floats: 2,
+    format: "0,0.00",
+    round_factor: 100,
+    gradient: ["#d71920", "#007229"],
+    unicode: "ج.س",
+    auto_rate: false,
+  },
+
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   ADA: {
