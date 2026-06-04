@@ -13,96 +13,115 @@
  */
 
 /**
- * Represents a Page associated with a shop.
+ * Shop popup-builder popup.
+ *
+ * Backend source: `App\Shop\Popups\Popup`, table `popups`.
+ * Managed by `PopupController`; list endpoints may return a compact subset while detail endpoints return the full row
+ * and optionally eager-load `notes`.
  */
 export interface Popup {
-  /** Unique identifier for the page. */
+  /** Popup id. Source: `popups.id`. */
   id: number;
 
-  /** User identifier associated with the page. */
+  /** Creator/editor user id. Source: `popups.user_id`. */
   user_id: number;
 
-  /** Shop identifier associated with the page. */
+  /** Owning shop id. Source: `popups.shop_id`. */
   shop_id: number;
 
-  /** Title of the page. */
-  title: string;
+  /** Optional cluster grouping id. Source: nullable `popups.cluster_id`. */
+  cluster_id?: number | null;
 
-  /** Indicates if the page is published or not. */
+  /** Popup title, or `null`. Source: nullable `popups.title`. */
+  title: string | null;
+
+  /** Whether the popup is published. Source: `popups.published` cast to boolean. */
   published: boolean;
 
-  /** A note only for admin purposes, to be shown as a popup. */
-  note: string;
+  /** Admin-only note, or `null`. Source: nullable `popups.note`. */
+  note: string | null;
 
-  /** An image to be shown as a popup. */
-  image: string;
+  /** Popup cover/template image path, or `null`. Source: nullable `popups.image`. */
+  image: string | null;
 
-  /** Direction for the popup. */
-  direction: string;
+  /** Text direction. Backend enum: `rtl`, `ltr`, or `auto`. */
+  direction: Popup.Direction;
 
-  /** Content of the page. Can be any structured object. */
-  content: object;
+  /** Popup builder JSON content. Source: `popups.content` cast from JSON/longtext by Eloquent. */
+  content: Popup.Content | Record<string, unknown>;
 
-  /** Count of visits to the page. */
+  /** Visit count. Source: `popups.visits`. */
   visits: number;
 
-  /** Transition effect to be used when showing the page. */
-  transition: string;
+  /** Transition animation name, or `null`. Source: nullable `popups.transition`. */
+  transition: string | null;
 
-  /** Position of the popup on the page. */
-  position: Popup.IPopupPositions;
+  /** Popup position. Backend enum `PopupPositions`. */
+  position: Popup.Position;
 
-  /** Styling details for the page. */
-  style: any[];
+  /** Custom style JSON, or `null`. Source: nullable JSON `popups.style`. */
+  style: Popup.Style | Record<string, unknown> | unknown[] | null;
 
-  /** Filters */
+  /** Registered-user filter. Backend enum: `None`, `Yes`, `No`. */
+  registered: Popup.FilterState;
 
-  /** State of registered filter for the popup. */
-  registered: Popup.IPopupFilterStates;
+  /** Purchased-before filter. Backend enum: `None`, `Yes`, `No`. */
+  purchased: Popup.FilterState;
 
-  /** State of purchased filter for the popup.
-   *  - yes: User purchased before.
-   *  - no: User hasn't made a purchase.
-   *  - none: No filter applied.
-   */
-  purchased: Popup.IPopupFilterStates;
+  /** Gender filter, or `null` for all genders. Backend enum: `Male`, `Female`. */
+  sex: Popup.Sex | null;
 
-  /** Gender filter for the popup. If null, all genders are considered. */
-  sex?: Popup.ISex;
-
-  /** Minimum age filter for the popup. */
+  /** Minimum customer age. Source: `popups.age`. */
   age: number;
 
-  /** Levels based on ShopCustomerBadgeEnums for the popup. */
-  levels: any[];
+  /** Customer club/badge level filters, or `null` for all levels. Source: nullable JSON `popups.levels`. */
+  levels: string[] | null;
 
-  /** Countries filter for the popup.
-   * The popup is only shown if the user's country matches one in this array.
-   * If null, it's shown for all countries.
-   */
-  countries?: any[] | null;
+  /** ISO-3166 alpha-2 country filters, or `null` for all countries. Source: nullable JSON `popups.countries`. */
+  countries: string[] | null;
 
-  /** Appearance */
-
-  /** Delay in seconds before the popup should appear. */
+  /** Delay before showing popup, in seconds. Source: `popups.delay`. */
   delay: number;
 
-  /** Determines if the popup should be shown repeatedly. */
+  /** Whether popup can be shown repeatedly. Source: `popups.repeat` cast to boolean. */
   repeat: boolean;
 
-  /** Interval in hours for the popup to be shown. */
+  /** Repeat interval in hours. Source: `popups.interval`. */
   interval: number;
 
-  /** Number of seconds before the popup auto-hides.
-   * If null, the popup persists until the user closes it.
-   */
-  hide?: number | null;
+  /** Auto-hide delay in seconds, or `null` to keep visible until closed. */
+  hide: number | null;
+
+  /** Soft-delete timestamp when included. Source: `popups.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `popups.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `popups.updated_at`. */
+  updated_at?: string;
+
+  /** Content image relations when `Popup::images()` is eager-loaded. */
+  images?: Popup.Image[];
+
+  /** Notes morph relation when eager-loaded by popup controllers. */
+  notes?: Record<string, unknown>[];
+
+  /** Creator relation when eager-loaded. */
+  user?: Record<string, unknown>;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace Popup {
+  /** Backend enum for `popups.direction`. */
+  export type Direction = "rtl" | "ltr" | "auto";
+
+  /** Backend enum `App\Shop\Popups\enums\PopupPositions`. */
   export enum IPopupPositions {
     Center = "center",
     Top_Center = "top-center",
@@ -115,14 +134,41 @@ export namespace Popup {
     Left_Center = "left-center",
   }
 
+  /** Position union used by backend and DB enum. */
+  export type Position = `${IPopupPositions}`;
+
+  /** Backend enum `App\Shop\Popups\enums\PopupFilterStates`. */
   export enum IPopupFilterStates {
     None = "None",
     Yes = "Yes",
     No = "No",
   }
 
+  /** Filter-state union used by backend and DB enum. */
+  export type FilterState = `${IPopupFilterStates}`;
+
+  /** Backend enum `App\Samin\Users\PersonalInformation\enums\Sex`. */
   export enum ISex {
     Male = "Male",
     Female = "Female",
+  }
+
+  /** Sex union used by backend and DB enum. */
+  export type Sex = `${ISex}`;
+
+  /** Popup builder JSON content. */
+  export type Content = Record<string, unknown>;
+
+  /** Popup custom style JSON. */
+  export type Style = Record<string, unknown>;
+
+  /** Row from `popup_images`. */
+  export interface Image {
+    id: number;
+    popup_id: number;
+    path: string;
+    deleted_at?: string | null;
+    created_at?: string;
+    updated_at?: string;
   }
 }

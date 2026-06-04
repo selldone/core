@@ -13,56 +13,50 @@
  */
 
 /**
- * Represents an exchange rate in the system.
+ * Shop-specific currency exchange rate.
+ *
+ * Backend source: `App\Shop\Exchanges\ShopExchangeRate`, table `shop_exchange_rates`.
+ * The global table `exchange_rates` has the same `from` / `to` / `rate` / `history` structure without `shop_id` and
+ * `auto`; this core model is used for shop exchange-rate API payloads.
  */
 export class ExchangeRate {
-  /**
-   * The unique identifier for the exchange rate.
-   */
+  /** Exchange-rate row id. Source: `shop_exchange_rates.id`. */
   id: number;
 
-  /**
-   * The user's unique identifier associated with the exchange rate.
-   */
+  /** Owning shop id. Source: `shop_exchange_rates.shop_id`; absent on global `exchange_rates`. */
+  shop_id?: number;
+
+  /** Last editor user id. Source: `shop_exchange_rates.user_id` / `exchange_rates.user_id`. */
   user_id: number;
 
-  /**
-   * The source currency for the exchange.
-   */
+  /** Source currency code. Source: `from` enum column. */
   from: string;
 
-  /**
-   * The destination currency for the exchange.
-   */
+  /** Target currency code. Source: `to` enum column. */
   to: string;
 
-  /**
-   * The conversion rate from the source currency to the destination currency.
-   */
+  /** Conversion rate from `from` to `to`. Source: `rate` double column. */
   rate: number;
 
-  /**
-   * Historical rates for this exchange rate, if available.
-   */
-  history?: Array<number>;
+  /** Whether shop should use Selldone/system exchange rate. Source: `shop_exchange_rates.auto`. */
+  auto?: boolean;
 
-  /**
-   * Constructs a new instance of ExchangeRate.
-   *
-   * @param id - The unique identifier for the exchange rate.
-   * @param user_id - The user's unique identifier associated with the exchange rate.
-   * @param from - The source currency for the exchange.
-   * @param to - The destination currency for the exchange.
-   * @param rate - The conversion rate from the source currency to the destination currency.
-   * @param history - Historical rates for this exchange rate.
-   */
+  /** Historical exchange values, or `null`. Source: nullable JSON `history`. */
+  history?: number[] | null;
+
+  /** Creation timestamp. Source: `created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `updated_at`. */
+  updated_at?: string;
+
   constructor(
     id: number,
     user_id: number,
     from: string,
     to: string,
     rate: number,
-    history?: Array<number>,
+    history?: number[] | null,
   ) {
     this.id = id;
     this.user_id = user_id;

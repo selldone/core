@@ -203,7 +203,7 @@ export class PriceHelper {
           `The currency of the subscription price [${subscription_price.currency}] does not match the currency selected by the user [${to_currency}]!`,
         );
       }
-      return subscription_price.price;
+      return subscription_price.price ?? 0;
     }
 
     // Auto set valuation if not set (By fault):
@@ -235,7 +235,7 @@ export class PriceHelper {
       }
 
       // ━━━━━━━━━━━━ 2. Calculate price if product. ━━━━━━━━━━━━
-      let $out = clone_variant.price;
+      let $out = clone_variant.price ?? 0;
       if (clone_variant.commission) $out += clone_variant.commission;
 
       // ━━━━━━━━━━━━ 3. Convert to target currency ━━━━━━━━━━━━
@@ -344,6 +344,7 @@ export class PriceHelper {
       .filter((i) => i.pricing && i.type === "select")
       .forEach((row) => {
         const lookup = row.lookup;
+        if (!lookup) return;
 
         const users_selected_value = preferences.valuation![row.name];
 
@@ -377,6 +378,7 @@ export class PriceHelper {
       .filter((i) => i.pricing && i.type === "switch")
       .forEach((row) => {
         const lookup = row.lookup;
+        if (!lookup) return;
 
         const users_selected_value = preferences.valuation![row.name];
 
@@ -430,7 +432,7 @@ export class PriceHelper {
           );
         }
 
-        let discount = variant.discount * rate;
+        let discount = (variant.discount ?? 0) * rate;
         discount = this.FixPrecision(discount, floats);
 
         return discount;

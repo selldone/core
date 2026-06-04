@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -13,39 +12,61 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {User} from "../../user/user.model";
+import type { User } from "../../user/user.model";
 
+/**
+ * Pending payment queue row.
+ *
+ * Backend source: `App\Gateway\GatewayQue`, table `gateway_que`.
+ * Created when a gateway transaction is issued and deleted after payment/expiration checks. `transaction_*` and
+ * `order_*` are Laravel morph columns.
+ */
 export interface GatewayQue {
-  /** Unique identifier for the record. */
+  /** Queue id. Source: `gateway_que.id`. */
   id: number;
 
-  /** A unique code associated with the transaction. */
+  /** Gateway code. Source: `gateway_que.code`, FK to `gateways.code`. */
   code: string;
 
-  /** Shop identifier associated with the user's transaction. */
-  shop_id: number;
+  /** Shop id, or `null` for non-shop payments. Source: nullable `gateway_que.shop_id`. */
+  shop_id: number | null;
 
-  /** User identifier associated with the transaction. */
-  user_id: number;
+  /** Paying user id, or `null`. Source: nullable `gateway_que.user_id`. */
+  user_id: number | null;
 
-  /** The timestamp when the transaction was issued. */
-  issued_at: Date;
+  /** Issue timestamp, or `null`. Source: nullable `gateway_que.issued_at`. */
+  issued_at: string | null;
 
-  /** The timestamp indicating when the transaction will expire. */
-  expire_at: Date;
+  /** Expiration timestamp, or `null`. Source: nullable `gateway_que.expire_at`. */
+  expire_at: string | null;
 
-  /** The ID of the associated gateway transaction. */
+  /** Morph transaction id. Source: `gateway_que.transaction_id`. */
   transaction_id: number;
 
-  /** Type of the gateway transaction. */
+  /** Morph transaction class/type. Source: `gateway_que.transaction_type`. */
   transaction_type: string;
 
-  /** The ID of the associated order. */
+  /** Morph order id. Source: `gateway_que.order_id`. */
   order_id: number;
 
-  /** The type of order. It can be 'Charge', 'BuyableModel', 'Avocado', 'Hyper' or any other specific string. */
+  /** Morph order class/type. Source: `gateway_que.order_type`. */
   order_type: string;
 
-  /** Associated user who is making the transaction. */
-  user: User;
+  /** Creation timestamp. Source: `gateway_que.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `gateway_que.updated_at`. */
+  updated_at?: string;
+
+  /** Paying user relation when eager-loaded. */
+  user?: User | Record<string, unknown> | null;
+
+  /** Shop relation when eager-loaded. */
+  shop?: Record<string, unknown> | null;
+
+  /** Gateway transaction morph relation when eager-loaded. */
+  transaction?: Record<string, unknown>;
+
+  /** Payment order morph relation when eager-loaded. */
+  order?: Record<string, unknown>;
 }

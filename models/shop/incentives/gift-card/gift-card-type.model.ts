@@ -12,22 +12,109 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import type { Product } from "../../product/product.model";
+
+/**
+ * Gift card product/type definition.
+ *
+ * Backend source: `App\Shop\GiftCard\GiftCardType`, table `shop_gift_card_types`.
+ * `GiftCardTypesController` manages create/edit/list/info, background uploads, and optional virtual-product linking.
+ */
 export interface GiftCardType {
+  /** Gift card type id. Source: `shop_gift_card_types.id`. */
   id: number;
+
+  /** Owning shop id. Source: `shop_gift_card_types.shop_id`. */
   shop_id: number;
+
+  /** Linked virtual product id, or `null` when this card type is not sold as a virtual product. */
+  product_id?: number | null;
+
+  /** Optional cluster grouping id. Source: nullable `shop_gift_card_types.cluster_id`. */
+  cluster_id?: number | null;
+
+  /** Card accent color. Source: `shop_gift_card_types.color`, usually a hex color. */
   color: string;
-  bg: string;
+
+  /** Background image path uploaded to `shops/{shop_id}/gift`, or `null`. Source: nullable `shop_gift_card_types.bg`. */
+  bg: string | null;
+
+  /** Initial card balance in `currency`. Source: `shop_gift_card_types.amount`. */
   amount: number;
+
+  /** ISO currency code from backend `Currency::GetCurrenciesList()`. Source: `shop_gift_card_types.currency`. */
   currency: string;
-  title: string;
-  life: number; // Initial lifetime by month
+
+  /** Display title. Source: nullable `shop_gift_card_types.title`; create/edit controllers require a title. */
+  title: string | null;
+
+  /** Initial lifetime in months. Source: nullable `shop_gift_card_types.life`; controllers require a positive integer. */
+  life: number | null;
+
+  /** Total number of cards generated for this type. Source: `shop_gift_card_types.count`. */
   count: number;
+
+  /** Number of cards issued/used from this type. Source: `shop_gift_card_types.used`. */
   used: number;
-  amount_payed: number; // Total paid by these cards
-  note: Array<{
+
+  /** Total amount paid by cards of this type. Source: `shop_gift_card_types.amount_payed`. */
+  amount_payed: number;
+
+  /** Team notes stored as JSON. Source: nullable `shop_gift_card_types.note`. */
+  note: GiftCardType.Note[] | null;
+
+  /** Localized fields keyed by locale. Source: nullable JSON `shop_gift_card_types.translations`. */
+  translations?: GiftCardType.Translations | null;
+
+  /** Soft-delete timestamp. Present in full Eloquent responses. Source: `shop_gift_card_types.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `shop_gift_card_types.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_gift_card_types.updated_at`. */
+  updated_at?: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown> | null;
+
+  /** Linked virtual product relation when `GiftCardType::product()` is eager-loaded. */
+  product?: Pick<Product, "id" | "title" | "icon" | "type" | "quantity"> | Product | null;
+
+  /** Generated cards relation when `GiftCardType::giftCards()` is eager-loaded. */
+  gift_cards?: Record<string, unknown>[];
+
+  /** Gift-card order relation when eager-loaded. */
+  gift_card_orders?: Record<string, unknown>[];
+
+  /** Daily aggregate rows from `GiftCardType::data()` when eager-loaded. */
+  data?: GiftCardType.Data[];
+
+  /** Cluster relation when loaded by callers. */
+  cluster?: Record<string, unknown> | null;
+}
+
+export namespace GiftCardType {
+  /** Team note object stored in nullable JSON `shop_gift_card_types.note`. */
+  export interface Note {
     user_id: number;
     user_name: string;
     body: string;
     date: string;
-  }>; // Team notes
+  }
+
+  /** Daily aggregate row from table `gift_card_data`. */
+  export interface Data {
+    id: number;
+    type_id: number;
+    added: number;
+    used: number;
+    amount_payed: number;
+    buys: number;
+    created_at?: string;
+    updated_at?: string;
+  }
+
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

@@ -12,75 +12,124 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-/**
- * Represents an Offer within the system.
- */
+import type { Coupon } from "../coupon/coupon.model";
 
+/**
+ * Buy/get offer incentive model.
+ *
+ * Backend source: `App\Shop\Offer\Offer`, table `shop_offers`.
+ * Admin list/detail is implemented in `OfferController`; create/edit/delete validation is in `OfferEditController`;
+ * storefront eligible-offer responses select a public subset of these fields.
+ */
 export interface Offer {
-  /** The unique identifier for the offer. */
+  /** Offer id. Source: `shop_offers.id`. */
   id: number;
 
-  /** Whether the offer is enabled or not. */
+  /** Owning shop id. Source: `shop_offers.shop_id`; omitted by some public projections. */
+  shop_id?: number;
+
+  /** Optional cluster grouping id. Source: nullable `shop_offers.cluster_id`. */
+  cluster_id?: number | null;
+
+  /** Whether the offer can be applied. Source: `shop_offers.enable`. */
   enable: boolean;
 
-  /** Maximum number of uses for the offer. */
-  max: number;
+  /** Maximum total uses, validation minimum `1`. Source: `shop_offers.max`. */
+  max?: number;
 
-  /** Count of how many times the offer has been used. */
-  used: number;
+  /** Number of already-used offers. Source: `shop_offers.used`. */
+  used?: number;
 
-  /** Total amount utilized by this offer. */
-  amount_usage: number;
+  /** Total discount amount applied by this offer. Source: `shop_offers.amount_usage`. */
+  amount_usage?: number;
 
-  /** Maximum number of uses per order. Defines how many times this promotion can be applied to an order. */
-  per_order: number;
+  /** Maximum number of discounted items per order, or `null` for backend default behavior. */
+  per_order: number | null;
 
-  /** The currency associated with the offer. */
+  /** ISO currency code from backend `Currency::GetCurrenciesList()`. Source: `shop_offers.currency`. */
   currency: string;
 
-  /** Start date of the offer. */
-  start: string; // Note: I'm using the native JS Date type. If you're using a library like moment.js or date-fns, adjust accordingly.
+  /** Start timestamp, or `null` when active immediately. Source: nullable `shop_offers.start`. */
+  start: string | null;
 
-  /** End date of the offer. */
-  end: string;
+  /** End timestamp, or `null` when no expiry is set. Source: nullable `shop_offers.end`. */
+  end: string | null;
 
-  /** Title of the offer. */
-  title: string;
+  /** Public offer title. Source: nullable `shop_offers.title`; controller requires this on add/edit. */
+  title: string | null;
 
-  /** Description related to the offer. */
-  description: string;
+  /** Public offer description. Source: nullable `shop_offers.description`. */
+  description: string | null;
 
-  /** Minimum quantity of items required. Specifies the number of items that a customer must buy. */
-  min_quantity: number;
+  /** Minimum quantity of source items required. Source: `shop_offers.min_quantity`; controller can pass `null`. */
+  min_quantity: number | null;
 
-  /** Minimum purchase amount necessary. Specifies the amount of money a customer must spend to be eligible for the discount. */
-  min_purchase: number;
+  /** Minimum source-purchase amount required. Source: `shop_offers.min_purchase`; controller can pass `null`. */
+  min_purchase: number | null;
 
-  /**
-   * List of source products eligible for the offer.
-   * Keyed by product_id, values are arrays of variant_ids.
-   */
-  buy_products: { [key: string]: number[] };
+  /** Source product/category map sanitized by `ShopHelper::GetValidProductsCategoriesList`. */
+  buy_products: Coupon.ProductSelectionMap | [] | null;
 
-  /**
-   * List of discounted products associated with the offer.
-   * Keyed by product_id, values are arrays of variant_ids.
-   */
-  get_products: { [key: string]: number[] };
+  /** Discounted product/category map sanitized by `ShopHelper::GetValidProductsCategoriesList`. */
+  get_products: Coupon.ProductSelectionMap | [] | null;
 
-  /** Percentage of the discount offered. */
+  /** Discount percentage applied to `get_products`, validation range `1..100`. Source: `shop_offers.percent`. */
   percent: number;
 
-  color: string;
+  /** Optional UI color used by legacy clients; not a current `shop_offers` DB column. */
+  color?: string | null;
 
-  /**
-   * Notes related to the offer by the team.
-   * Contains details such as user_id, user_name, body of the note, and the date.
-   */
-  note: Array<{
+  /** Team notes stored as JSON. Source: nullable `shop_offers.note`. */
+  note?: Offer.Note[] | null;
+
+  /** Localized fields keyed by locale. Source: nullable JSON `shop_offers.translations`. */
+  translations?: Offer.Translations | null;
+
+  /** Soft-delete timestamp. Present in full Eloquent responses. Source: `shop_offers.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `shop_offers.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_offers.updated_at`. */
+  updated_at?: string;
+
+  /** Daily aggregate rows from `Offer::data()` when eager-loaded. */
+  data?: Offer.Data[];
+
+  /** Offer order rows when `offerOrders()` is eager-loaded. */
+  offer_orders?: Record<string, unknown>[];
+
+  /** Basket relation when offer orders are eager-loaded. */
+  baskets?: Record<string, unknown>[];
+
+  /** Virtual item relation when eager-loaded. */
+  virtual_items?: Record<string, unknown>[];
+
+  /** Cluster relation when loaded by callers. */
+  cluster?: Record<string, unknown> | null;
+}
+
+export namespace Offer {
+  /** Team note object stored in nullable JSON `shop_offers.note`. */
+  export interface Note {
     user_id: number;
     user_name: string;
     body: string;
     date: string;
-  }>;
+  }
+
+  /** Daily aggregate row from table `offer_data`. */
+  export interface Data {
+    id: number;
+    offer_id: number;
+    used: number;
+    amount_discount: number;
+    amount_buy: number;
+    created_at?: string;
+    updated_at?: string;
+  }
+
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

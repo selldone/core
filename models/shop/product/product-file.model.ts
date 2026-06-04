@@ -12,62 +12,51 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Downloadable file attached to a product or subscription content item.
+ *
+ * Backend source: `App\Shop\File\ProductFile`, table `product_files`.
+ */
 export interface ProductFile {
-  /**
-   * Unique identifier of the product file.
-   */
+  /** Unique product file identifier. Source: `product_files.id`. */
   id: number;
 
-  /**
-   * ID representing the associated product.
-   */
+  /** Parent product identifier. Source: `product_files.product_id`. */
   product_id: number;
 
-  /**
-   * ID representing the associated content. Nullable.
-   */
+  /** Optional subscription/content identifier. Source: nullable `product_files.content_id`. */
   content_id?: number | null;
 
-  /**
-   * Indicates if the file is a sample and can be downloaded for free.
-   */
+  /** Whether this file is a free sample. Source: `product_files.sample`, default `false`. */
   sample: boolean;
 
-  /**
-   * Order or sequence number of the file in listings.
-   */
+  /** Sort position in the product file list. Source: unsigned tiny integer `product_files.order`. */
   order: number;
 
-  /**
-   * Name of the file.
-   */
+  /** Public file name. Source: `product_files.name`. */
   name: string;
 
-  /**
-   * Path to the file's location.
-   */
+  /** Stored file path. Source: `product_files.path`. */
   path: string;
 
-  /**
-   * Size of the file in kilobytes.
-   */
+  /** File size in kilobytes. Source: `product_files.size`. */
   size: number;
 
-  /**
-   * Indicates if the file is currently being uploaded.
-   */
+  /** Whether the backend still considers the file upload in progress. Source: `product_files.uploading`. */
   uploading: boolean;
 
-  /**
-   * Number of times the file has been downloaded.
-   */
+  /** Total successful downloads. Source: `product_files.downloads`. */
   downloads: number;
 
-  /**
-   * Date and time of the last download.
-   */
-  download_at: Date;
+  /** Last download timestamp, or `null` before the first download. Source: nullable `product_files.download_at`. */
+  download_at: string | null;
 
-  created_at: string | null;
-  updated_at: string | null;
+  /** Soft-delete timestamp when returned. Source: nullable `product_files.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp serialized by Laravel when included. Source: `product_files.created_at`. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel when included. Source: `product_files.updated_at`. */
+  updated_at?: string | null;
 }

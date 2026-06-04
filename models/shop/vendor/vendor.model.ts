@@ -12,136 +12,188 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import type { VendorPricing } from "./vendor_pricing.model";
+
+/**
+ * Marketplace vendor record.
+ *
+ * Backend source: `App\Shop\Vendors\Vendor`, table `vendors`.
+ * Main admin controller: `ShopVendorsController`. The Eloquent model hides `note` by default; some admin
+ * endpoints call `makeVisible('note')` before returning vendor rows.
+ */
 export interface Vendor {
-  /**
-   * Unique identifier for the Vendor.
-   * @type {number}
-   */
+  /** Vendor id. Source: `vendors.id`. */
   id: number;
 
-  /**
-   * Identifier for the shop.
-   * @type {number}
-   */
+  /** Owning marketplace shop id. Source: `vendors.shop_id`. */
   shop_id: number;
 
-  /**
-   * Indicates if the vendor is enabled.
-   * @type {boolean}
-   */
+  /** Whether the vendor is enabled by marketplace owner. Source: `vendors.enable`. */
   enable: boolean;
 
-  /**
-   * Indicates if the vendor has access.
-   * @type {boolean}
-   */
+  /** Whether vendor panel access is enabled. Source: `vendors.access`. */
   access: boolean;
 
-  /**
-   * Identifier for the user associated with the vendor.
-   * @type {number}
-   */
-  user_id: number;
+  /** Linked vendor user id, or `null` for invited/unassigned vendors. Source: nullable `vendors.user_id`. */
+  user_id: number | null;
 
-  /**
-   * Status of the vendor.
-   * @type {Vendor.VendorStatus}
-   */
+  /** Vendor approval status. Source: `vendors.status`. */
   status: Vendor.VendorStatus;
 
-  /**
-   * Public name of the vendor.
-   * @type {string}
-   */
+  /** Public vendor name. Source: `vendors.name`. */
   name: string;
 
-  /**
-   * Public description of the vendor.
-   * @type {string}
-   */
-  description: string;
+  /** Public vendor description. Source: nullable `vendors.description`. */
+  description: string | null;
 
-  /**
-   * Vendor's email address.
-   * @type {string}
-   */
-  email: string;
+  /** Vendor contact email. Source: nullable `vendors.email`. */
+  email: string | null;
 
-  /**
-   * Vendor's physical address.
-   * @type {string}
-   */
-  address: string;
+  /** Vendor address. Source: nullable `vendors.address`. */
+  address: string | null;
 
-  /**
-   * Vendor's website URL.
-   * @type {string}
-   */
-  web: string;
+  /** Vendor website URL. Source: nullable `vendors.web`. */
+  web: string | null;
 
-  /**
-   * Vendor's telephone number.
-   * @type {string}
-   */
-  tel: string;
+  /** Vendor telephone. Source: nullable `vendors.tel`. */
+  tel: string | null;
 
-  /**
-   * Vendor's bank name or identification.
-   * @type {string}
-   */
-  bank: string;
+  /** Bank label/name. Source: nullable `vendors.bank`. */
+  bank: string | null;
 
-  /**
-   * Additional banking information for the vendor.
-   * @type {any[]}
-   */
-  bank_info: any[];
+  /** Structured bank details filtered by `Vendor::FixBankDetail`. Source: nullable JSON `vendors.bank_info`. */
+  bank_info: Vendor.BankInfo | null;
 
-  /**
-   * URL or path to the vendor's icon.
-   * @type {string}
-   */
+  /** Vendor logo path. Source: nullable `vendors.icon`. */
   icon: string | null;
 
-  /**
-   * Identifier for the page associated with the vendor (if any).
-   * @type {number | null}
-   */
+  /** Landing page id. Source: nullable `vendors.page_id`. */
   page_id: number | null;
 
-  augment: { key: string; value: string }[] | null;
+  /** Map tag id used for vendor location grouping. Source: nullable `vendors.map_id`. */
+  map_id?: number | null;
 
+  /** Default pricing model id for new vendor products. Source: nullable `vendors.pricing_id`. */
+  pricing_id?: number | null;
+
+  /** Public augment fields parsed by `AugmentHelper::ParseRawAugment`. Source: nullable JSON `vendors.augment`. */
+  augment: Vendor.Augment[] | null;
+
+  /** Public vendor slug, defaulted from `name` when not supplied. Source: nullable `vendors.slug`. */
   slug: string | null;
 
-  /**
-   * Date of the last payment made to or by the vendor.
-   * This uses an external library 'Carbon', so you might need to import it or replace with a Date type.
-   * @type {Date | null}
-   */
-  payment_at: Date | null;
+  /** Last marketplace payment timestamp. Source: nullable `vendors.payment_at`. */
+  payment_at: string | null;
 
-  /**
-   * Date when the vendor was created.
-   * This uses an external library 'Carbon', so you might need to import it or replace with a Date type.
-   * @type {Date | null}
-   */
-  created_at: Date | null;
+  /** Invitation email for vendors without a linked user. Source: nullable `vendors.invite`. */
+  invite?: string | null;
 
-  /**
-   * Date when the vendor was last updated.
-   * This uses an external library 'Carbon', so you might need to import it or replace with a Date type.
-   * @type {Date | null}
-   */
-  updated_at: Date | null;
+  /** ISO-3166 alpha-2 country code. Source: nullable `vendors.country`. */
+  country?: string | null;
+
+  /** State/province. Source: nullable `vendors.state`. */
+  state?: string | null;
+
+  /** Private marketplace-owner note. Source: nullable `vendors.note`; hidden unless made visible. */
+  note?: string | null;
+
+  /** Private chat/history JSON. Source: nullable JSON `vendors.chat`. */
+  chat?: Record<string, unknown>[] | Record<string, unknown> | null;
+
+  /** Private integration metadata. Source: nullable JSON `vendors.meta`. */
+  meta?: Record<string, unknown> | null;
+
+  /** Whether vendor is registered as a business. Source: `vendors.business`. */
+  business?: boolean;
+
+  /** Business name. Source: nullable `vendors.business_name`. */
+  business_name?: string | null;
+
+  /** Tax identifier. Source: nullable `vendors.tax_id`. */
+  tax_id?: string | null;
+
+  /** Cached static counts such as shipping services/couriers/products. Source: nullable JSON `vendors.static`. */
+  static?: Vendor.Static | null;
+
+  /** Localized vendor fields keyed by locale. Source: nullable JSON `vendors.translations`. */
+  translations?: Vendor.Translations | null;
+
+  /** Soft-delete timestamp. Source: `vendors.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `vendors.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `vendors.updated_at`. */
+  updated_at?: string;
+
+  /** Linked user relation when eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Landing page relation when eager-loaded. */
+  page?: Record<string, unknown> | null;
+
+  /** Map tag relation when eager-loaded. */
+  map?: Record<string, unknown> | null;
+
+  /** Default pricing relation from `defaultPricing()`, serialized as `default_pricing`. */
+  default_pricing?: VendorPricing | null;
+
+  /** Vendor warehouse relation when eager-loaded. */
+  warehouse?: Record<string, unknown> | null;
+
+  /** Count appended by `ShopVendorsController::list` for products updated in the last day. */
+  updated_vendor_products?: number;
+
+  /** Count appended by `ShopVendorsController::list` for products created in the last day. */
+  added_products?: number;
+
+  /** Count appended by `ShopVendorsController::list` for categories created in the last day. */
+  added_categories?: number;
+
+  /** Vendor product relation when `vendorProducts()` is eager-loaded. */
+  vendor_products?: Record<string, unknown>[];
+
+  /** Owned product relation when `ownProducts()` is eager-loaded. */
+  own_products?: Record<string, unknown>[];
+
+  /** Owned category relation when `ownCategories()` is eager-loaded. */
+  own_categories?: Record<string, unknown>[];
 }
 
-//█████████████████████████████████████████████████████████████
-//―――――――――――――――― 🦫 Types ――――――――――――――――
-//█████████████████████████████████████████████████████████████
 export namespace Vendor {
+  /** Backend enum `App\Shop\Vendors\enums\VendorStatus`. */
   export enum VendorStatus {
     PENDING = "PENDING",
     ACCEPTED = "ACCEPTED",
     REJECTED = "REJECTED",
   }
+
+  /** Structured bank details retained by `Vendor::FixBankDetail`. */
+  export interface BankInfo {
+    account_name?: string | null;
+    account_number?: string | null;
+    routing_number?: string | null;
+    iban?: string | null;
+    swift?: string | null;
+    branch_address?: string | null;
+  }
+
+  /** Public augment item accepted by `ShopVendorsController` validation. */
+  export interface Augment {
+    key: string;
+    value: string | null;
+    type?: "text" | "image" | string | null;
+  }
+
+  /** Cached counts generated by `Vendor::updateStatic()`. */
+  export interface Static {
+    shipping_services?: number;
+    shipping_couriers?: number;
+    products?: number;
+    [key: string]: unknown;
+  }
+
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

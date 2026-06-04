@@ -12,70 +12,122 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import type { GiftCardType } from "../gift-card/gift-card-type.model";
+import type { Product } from "../../product/product.model";
+import type { ProductVariant } from "../../product/product_variant.model";
+
+/**
+ * Lottery prize definition used by shop lottery/admin and XAPI lottery endpoints.
+ *
+ * Backend source: `App\Shop\Lottery\Lottery`, table `shop_lotteries`.
+ * Admin controller `LotteryController` returns full rows with optional `product`, `variant`, and `card_type` relations;
+ * XAPI lottery endpoints hide internal counters and club flags from public customer responses.
+ */
 export interface Lottery {
-  /** The unique identifier for the coupon. */
+  /** Lottery id. Source: `shop_lotteries.id`. */
   id: number;
 
-  /** The associated shop's identifier. */
+  /** Owning shop id. Source: `shop_lotteries.shop_id`. */
   shop_id: number;
 
-  /** Indicates if the coupon is enabled. */
+  /** Whether this prize is active. Source: `shop_lotteries.enable`. */
   enable: boolean;
 
-  /** Total quantity of available tickets. */
-  quantity: number;
+  /** Remaining ticket inventory. Source: `shop_lotteries.quantity`; hidden in public XAPI responses. */
+  quantity?: number;
 
-  /** Number of tickets won by users. */
-  win: number;
+  /** Number of winning tickets already issued. Source: `shop_lotteries.win`; hidden in public XAPI responses. */
+  win?: number;
 
-  /** Number of tickets used. */
-  used: number;
+  /** Number of prizes used/redeemed. Source: `shop_lotteries.used`; hidden in public XAPI responses. */
+  used?: number;
 
-  /** The title of the lottery ticket. */
+  /** Prize title. Source: `shop_lotteries.title`, max 64 chars. */
   title: string;
 
-  /** Description about the lottery. */
-  description: string;
+  /** Prize description. Source: `shop_lotteries.description`, max 256 chars; edit controller accepts nullable. */
+  description: string | null;
 
-  /** Background color for the lottery ticket. */
+  /** Ticket/prize color. Source: `shop_lotteries.color`, usually a hex color. */
   color: string;
 
-  /** Image representing the lottery ticket. */
-  image: string;
+  /** Image path uploaded to `shops/{shop_id}/lottery`, or `null`. Source: nullable `shop_lotteries.image`. */
+  image: string | null;
 
-  /** Probability of winning (expressed as a percentage). */
+  /** Win chance as an integer percent-like weight `0..100`. Source: `shop_lotteries.chance`. */
   chance: number;
 
-  /** Indicates if the lottery is free for first-time customers. */
+  /** Whether first-time players can play this prize without chips. Source: `shop_lotteries.free_for_first`. */
   free_for_first: boolean;
 
-  /** Club membership conditions for eligibility. */
-  no_club: boolean;
-  bronze_club: boolean;
-  silver_club: boolean;
-  gold_club: boolean;
-  platinum_club: boolean;
-  diamond_club: boolean;
+  /** Eligible for customers without a club badge; hidden in public XAPI responses. */
+  no_club?: boolean;
 
-  // Prize Info
-  /** Amount of the prize (based on currency). */
+  /** Eligible for bronze club customers; hidden in public XAPI responses. */
+  bronze_club?: boolean;
+
+  /** Eligible for silver club customers; hidden in public XAPI responses. */
+  silver_club?: boolean;
+
+  /** Eligible for gold club customers; hidden in public XAPI responses. */
+  gold_club?: boolean;
+
+  /** Eligible for platinum club customers; hidden in public XAPI responses. */
+  platinum_club?: boolean;
+
+  /** Eligible for diamond club customers; hidden in public XAPI responses. */
+  diamond_club?: boolean;
+
+  /** Fixed prize amount in `currency`; set to `0` when prize mode is discount/product/gift card. */
   amount: number;
 
-  /** Currency for the prize amount. */
+  /** ISO currency code from backend `Currency::GetCurrenciesList()`. Source: `shop_lotteries.currency`. */
   currency: string;
 
-  /** Discount percentage applicable on the prize. */
+  /** Prize discount percentage; set to `0` unless prize mode is discount. Source: `shop_lotteries.discount`. */
   discount: number;
 
-  /** Upper limit for the discount (based on currency). */
+  /** Maximum discount amount in `currency`; `0` means unlimited/no discount cap. Source: `shop_lotteries.discount_limit`. */
   discount_limit: number;
 
-  /** The product associated with the prize. */
-  product_id: number;
+  /** Prize product id, or `null` unless prize mode is product. Source: nullable `shop_lotteries.product_id`. */
+  product_id: number | null;
 
-  /** The specific variant of the product associated with the prize. */
-  variant_id: number;
+  /** Prize product variant id, or `null` for product-level prizes. Source: nullable `shop_lotteries.variant_id`. */
+  variant_id: number | null;
 
-  /** The type of gift card associated with the prize. */
-  card_type_id: number;
+  /** Prize gift card type id, or `null` unless prize mode is gift card. Source: nullable `shop_lotteries.card_type_id`. */
+  card_type_id: number | null;
+
+  /** Localized fields keyed by locale. Source: nullable JSON `shop_lotteries.translations`. */
+  translations?: Lottery.Translations | null;
+
+  /** Soft-delete timestamp. Present in admin/full responses. Source: `shop_lotteries.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Hidden in some XAPI prize responses. Source: `shop_lotteries.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Hidden in some XAPI prize responses. Source: `shop_lotteries.updated_at`. */
+  updated_at?: string;
+
+  /** Product relation when `Lottery::product()` is eager-loaded. */
+  product?: Product | Pick<Product, "id" | "title" | "icon" | "type" | "quantity" | "variants"> | null;
+
+  /** Variant relation when `Lottery::variant()` is eager-loaded. */
+  variant?: ProductVariant | null;
+
+  /** Gift card type relation from `Lottery::cardType()`, serialized as `card_type`. */
+  card_type?: GiftCardType | Pick<GiftCardType, "id" | "color" | "bg" | "amount" | "currency" | "title" | "life"> | null;
+
+  /** Lottery order rows when `Lottery::lotteryOrders()` is eager-loaded. */
+  lottery_orders?: Record<string, unknown>[];
+
+  /** Basket relation when lottery orders are eager-loaded. */
+  baskets?: Record<string, unknown>[];
+}
+
+export namespace Lottery {
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

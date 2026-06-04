@@ -12,49 +12,94 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Image record attached to a storefront product.
+ *
+ * Backend source: `App\Shop\Products\ProductImages`, table `shop_product_images`.
+ * Storefront product endpoints return this model through the product `images` relation ordered by `order` ascending.
+ */
 export interface ProductImage {
   /**
-   * Unique identifier of the product image.
+   * Unique product image identifier.
+   *
+   * Source: `shop_product_images.id`.
    */
   id: number;
 
   /**
-   * ID representing the associated product.
+   * Product that owns the image.
+   *
+   * Source: `shop_product_images.product_id`.
    */
   product_id: number;
 
   /**
-   * ID representing the associated product variant.
+   * Variant-specific image owner, or `null` when the image belongs to the base product.
+   *
+   * Source: nullable `shop_product_images.variant_id`.
    */
-  variant_id: number;
+  variant_id: number | null;
 
   /**
-   * Path to the image's location.
+   * Stored CDN/storage path for the image.
+   *
+   * Source: `shop_product_images.path`. The backend stores the raw path, not a frontend alias.
    */
   path: string;
 
   /**
-   * Order or sequence number of the image in listings.
+   * Sort position inside the product image gallery.
+   *
+   * Source: unsigned tiny integer `shop_product_images.order`; lower values are displayed first.
    */
   order: number;
 
   /**
-   * Size of the image in bytes.
+   * Uploaded file size in bytes.
+   *
+   * Source: `shop_product_images.size`, default `0`.
    */
   size: number;
 
   /**
-   * Width of the image in pixels. Nullable.
+   * Image width in pixels.
+   *
+   * Source: `shop_product_images.width`, default `0`.
    */
-  width?: number | null;
+  width: number;
 
   /**
-   * Height of the image in pixels. Nullable.
+   * Image height in pixels.
+   *
+   * Source: `shop_product_images.height`, default `0`.
    */
-  height?: number | null;
+  height: number;
 
   /**
-   * Alternative text for the image. Useful for accessibility and SEO. Nullable.
+   * Optional alt text used by storefronts for accessibility and SEO.
+   *
+   * Source: nullable `shop_product_images.alt`.
    */
-  alt?: string | null;
+  alt: string | null;
+
+  /**
+   * Soft-delete timestamp when the backend returns trashed images.
+   *
+   * Source: nullable `shop_product_images.deleted_at`. Normally absent from public storefront payloads.
+   */
+  deleted_at?: string | null;
+
+  /**
+   * Creation timestamp serialized by Laravel when timestamps are included.
+   *
+   * Source: `shop_product_images.created_at`.
+   */
+  created_at?: string | null;
+
+  /**
+   * Last update timestamp serialized by Laravel when timestamps are included.
+   *
+   * Source: `shop_product_images.updated_at`.
+   */
+  updated_at?: string | null;
 }

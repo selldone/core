@@ -13,143 +13,164 @@
  */
 
 /**
- * Represents a coupon in the shop system.
+ * Coupon incentive model.
+ *
+ * Backend source: `App\Shop\Coupon\Coupon`, table `shop_coupons`.
+ * Admin validation is implemented in `CouponEditController::api_createShopCoupon` and
+ * `CouponEditController::api_editCoupon`; storefront eligibility/application logic is in
+ * `CouponController`.
  */
 export interface Coupon {
-  /**
-   * Coupon's unique identifier.
-   */
+  /** Coupon id. Source: `shop_coupons.id`. */
   id: number;
 
-  /**
-   * Shop's unique identifier associated with this coupon.
-   */
+  /** Owning shop id. Source: `shop_coupons.shop_id`. */
   shop_id: number;
 
-  /**
-   * The code of the coupon.
-   */
-  code: string;
+  /** Optional cluster grouping id. Source: nullable `shop_coupons.cluster_id`. */
+  cluster_id?: number | null;
 
-  /**
-   * Indicates if the coupon is enabled.
-   */
+  /** Optional coupon code. Source: nullable binary-collated `shop_coupons.code`, max 64 chars. */
+  code: string | null;
+
+  /** Whether the coupon can be used. Source: `shop_coupons.enable`. */
   enable: boolean;
 
-  /**
-   * Maximum count of usage for this coupon.
-   */
+  /** Maximum total uses; validation requires at least `1`. Source: `shop_coupons.max`. */
   max: number;
 
-  /**
-   * Count of times this coupon has been used.
-   */
+  /** Number of already-used coupons. Source: `shop_coupons.used`. */
   used: number;
 
-  /**
-   * Total amount of money saved using this coupon.
-   */
+  /** Total discount/charge amount applied by this coupon. Source: `shop_coupons.amount_usage`. */
   amount_usage: number;
 
-  /**
-   * Percentage discount provided by the coupon.
-   */
+  /** Percentage discount, `0..100`. Source: `shop_coupons.percent`. */
   percent: number;
 
-  /**
-   * Maximum discount amount limit.
-   */
+  /** Maximum discount amount in `currency`; `0` means unlimited. Source: `shop_coupons.limit`. */
   limit: number;
 
-  /**
-   * Base charge applicable with this coupon.
-   */
+  /** Fixed base discount amount added after percent calculation. Source: `shop_coupons.charge`. */
   charge: number;
 
-  /**
-   * Currency type for the discount amount.
-   */
+  /** ISO currency code from backend `Currency::GetCurrenciesList()`. Source: `shop_coupons.currency`. */
   currency: string;
 
-  /**
-   * Start date for the validity of the coupon.
-   */
-  start: string; // Assuming 'Carbon' maps to a Date object in TypeScript.
+  /** Start timestamp, or `null` when active immediately. Source: nullable `shop_coupons.start`. */
+  start: string | null;
 
-  /**
-   * End date for the validity of the coupon.
-   */
-  end: string;
+  /** End timestamp, or `null` when no expiry is set. Source: nullable `shop_coupons.end`. */
+  end: string | null;
 
-  /**
-   * Title of the coupon.
-   */
-  title: string;
+  /** Public coupon title. Source: nullable `shop_coupons.title`; controller requires this on add/edit. */
+  title: string | null;
 
-  /**
-   * Detailed description about the coupon.
-   */
-  description: string;
+  /** Public coupon description. Source: nullable `shop_coupons.description`. */
+  description: string | null;
 
-  /**
-   * Background color for the coupon display.
-   */
-  color: string;
+  /** Background color used by backoffice/storefront UIs. Source: nullable `shop_coupons.color`, max 9 chars. */
+  color: string | null;
 
-  /**
-   * If true, the coupon is available only for the first purchase.
-   */
+  /** Restricts usage to first purchase customers. Source: `shop_coupons.only_first_buy`. */
   only_first_buy: boolean;
 
-  /**
-   * Minimum purchase amount required to avail this coupon.
-   */
+  /** Minimum order amount required when qualification checks are active. Source: `shop_coupons.min_purchase`. */
   min_purchase: number;
 
-  /**
-   * If true, checks qualification limits for the coupon.
-   */
+  /** Enables customer/product/date qualification checks. Source: `shop_coupons.qualify`. */
   qualify: boolean;
 
-  /**
-   * If true, a customer can use this coupon only once.
-   */
+  /** If true, each customer can use this coupon only once. Source: `shop_coupons.qualify_single`. */
   qualify_single: boolean;
 
-  /**
-   * Maximum counts a customer can use this coupon in a day.
-   */
-  qualify_daily: number;
+  /** Max uses per customer per day, or `null` for no daily limit. Source: `shop_coupons.qualify_daily`. */
+  qualify_daily: number | null;
 
-  /**
-   * Maximum counts a customer can use this coupon in a month.
-   */
-  qualify_monthly: number;
+  /** Max uses per customer per month, or `null` for no monthly limit. Source: `shop_coupons.qualify_monthly`. */
+  qualify_monthly: number | null;
 
-  /**
-   * Maximum counts a customer can use this coupon in a year.
-   */
-  qualify_yearly: number;
+  /** Max uses per customer per year, or `null` for no yearly limit. Source: `shop_coupons.qualify_yearly`. */
+  qualify_yearly: number | null;
 
+  /** Eligible for customers without a club badge. Source: `shop_coupons.no_club`. */
   no_club: boolean;
+
+  /** Eligible for bronze club customers. Source: `shop_coupons.bronze_club`. */
   bronze_club: boolean;
+
+  /** Eligible for silver club customers. Source: `shop_coupons.silver_club`. */
   silver_club: boolean;
+
+  /** Eligible for gold club customers. Source: `shop_coupons.gold_club`. */
   gold_club: boolean;
+
+  /** Eligible for platinum club customers. Source: `shop_coupons.platinum_club`. */
   platinum_club: boolean;
+
+  /** Eligible for diamond club customers. Source: `shop_coupons.diamond_club`. */
   diamond_club: boolean;
 
   /**
-   * Array of products. If a user adds any of these products to the cart, the coupon gets qualified.
+   * Product/category eligibility map sanitized by `ShopHelper::GetValidProductsCategoriesList`.
+   * Keys are product ids or category keys like `c-456`; values are variant id arrays. Empty PHP arrays may serialize as `[]`.
    */
-  products: { [key: string]: number[] }; // Assuming the products are represented by their names or IDs.
+  products: Coupon.ProductSelectionMap | [] | null;
 
-  /**
-   * Notes by the team regarding the coupon. Contains user_id, user_name, body, and date.
-   */
-  note: Array<{
+  /** Team notes stored as JSON. Source: nullable `shop_coupons.note`. */
+  note: Coupon.Note[] | null;
+
+  /** Localized fields keyed by locale. Source: nullable JSON `shop_coupons.translations`. */
+  translations?: Coupon.Translations | null;
+
+  /** Soft-delete timestamp. Present in full Eloquent responses. Source: `shop_coupons.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `shop_coupons.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_coupons.updated_at`. */
+  updated_at?: string;
+
+  /** Daily aggregate rows from `Coupon::data()` when eager-loaded. */
+  data?: Coupon.Data[];
+
+  /** Coupon order rows when `couponOrders()` is eager-loaded. */
+  coupon_orders?: Record<string, unknown>[];
+
+  /** Basket relation when coupon orders are eager-loaded. */
+  baskets?: Record<string, unknown>[];
+
+  /** Virtual item relation when eager-loaded. */
+  virtual_items?: Record<string, unknown>[];
+
+  /** Cluster relation when loaded by callers. */
+  cluster?: Record<string, unknown> | null;
+}
+
+export namespace Coupon {
+  /** Product/category filter map accepted by coupon and offer controllers. */
+  export type ProductSelectionMap = Record<string, number[]>;
+
+  /** Team note object stored in nullable JSON `shop_coupons.note`. */
+  export interface Note {
     user_id: number;
     user_name: string;
     body: string;
     date: string;
-  }>;
+  }
+
+  /** Daily aggregate row from table `coupon_data`. */
+  export interface Data {
+    id: number;
+    coupon_id: number;
+    used: number;
+    amount_discount: number;
+    amount_buy: number;
+    created_at?: string;
+    updated_at?: string;
+  }
+
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

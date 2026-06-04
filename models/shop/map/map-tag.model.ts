@@ -13,108 +13,89 @@
  */
 
 /**
- * 🛹 Map Tag
+ * Shop map/address tag used by products and vendors.
+ *
+ * Backend source: `App\Shop\Map\MapTag`, table `shop_map_tags`.
+ * Products and vendors reference this row through nullable `map_id` foreign keys.
  */
 export interface MapTag {
-  /**
-   * ID of the map tag
-   */
+  /** Map tag id. Source: `shop_map_tags.id`. */
   id: number;
 
-  /**
-   * ID representing the associated shop
-   */
+  /** Owning shop id. Source: `shop_map_tags.shop_id`. */
   shop_id: number;
 
-  /**
-   * ID of the user who added or last modified this tag
-   */
-  user_id: number;
+  /** Creator / last editor user id, or `null`. Source: nullable `shop_map_tags.user_id`. */
+  user_id: number | null;
 
-  /**
-   * Tags used for creating filters
-   */
-  tags: any[]; // Specify a more specific type if possible.
+  /** Filter tags. Source: nullable JSON `shop_map_tags.tags`. */
+  tags: string[] | null;
 
-  /**
-   * Title of the map tag
-   */
+  /** Address title. Source: `shop_map_tags.title`. */
   title: string;
 
-  /**
-   * Country code
-   */
-  country: string;
+  /** Country code, or `null`. Source: nullable `shop_map_tags.country` (2 chars). */
+  country: string | null;
 
-  /**
-   * State or province
-   */
-  state: string;
+  /** State/province, or `null`. Source: nullable `shop_map_tags.state`. */
+  state: string | null;
 
-  /**
-   * City name
-   */
-  city: string;
+  /** City, or `null`. Source: nullable `shop_map_tags.city`. */
+  city: string | null;
 
-  /**
-   * Address details
-   */
+  /** Address text. Source: `shop_map_tags.address`. */
   address: string;
 
-  /**
-   * Geolocation details. Typically [latitude, longitude]
-   */
-  location: [number, number];
+  /** Geolocation JSON payload. Source: `shop_map_tags.location`. */
+  location: MapTag.Location;
 
-  /**
-   * Building number
-   */
-  no: number;
+  /** Building number, or `null`. Source: nullable `shop_map_tags.no`. */
+  no: string | null;
 
-  /**
-   * Building unit
-   */
-  unit: number;
+  /** Building unit, or `null`. Source: nullable `shop_map_tags.unit`. */
+  unit: string | null;
 
-  /**
-   * Name associated with the map tag
-   */
-  name: string;
+  /** Contact/receiver name, or `null`. Source: nullable `shop_map_tags.name`. */
+  name: string | null;
 
-  /**
-   * Phone number associated with the map tag
-   */
-  phone: string;
+  /** Contact phone, or `null`. Source: nullable `shop_map_tags.phone`. */
+  phone: string | null;
 
-  /**
-   * Message associated with the map tag
-   */
-  message: string;
+  /** Delivery/address message, or `null`. Source: nullable `shop_map_tags.message`. */
+  message: string | null;
 
-  /**
-   * Postal code
-   */
-  postal: string;
+  /** Postal code, or `null`. Source: nullable `shop_map_tags.postal`. */
+  postal: string | null;
 
-  /**
-   * Latitude coordinate
-   */
+  /** Latitude. Source: `shop_map_tags.lat`. */
   lat: number;
 
-  /**
-   * Longitude coordinate
-   */
+  /** Longitude. Source: `shop_map_tags.lng`. */
   lng: number;
 
-  /**
-   * Range (not clear from context what this represents, so added a generic description)
-   */
-  range: number;
+  /** Search/delivery range, or `null`. Source: nullable `shop_map_tags.range`. */
+  range: number | null;
+
+  /** Creation timestamp. Source: `shop_map_tags.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_map_tags.updated_at`. */
+  updated_at?: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Editor relation when eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Product relations when `MapTag::products()` is eager-loaded. */
+  products?: Record<string, unknown>[];
+
+  /** Vendor relations when `MapTag::vendors()` is eager-loaded. */
+  vendors?: Record<string, unknown>[];
 }
 
-//█████████████████████████████████████████████████████████████
-//―――――――――――――――― 🦫 Types ――――――――――――――――
-//█████████████████████████████████████████████████████████████
 export namespace MapTag {
-
+  /** Backend geolocation JSON. Backend accepts an array/object; SDK helpers commonly use lng/lat objects. */
+  export type Location = { lng: number; lat: number } | [number, number] | Record<string, unknown>;
 }

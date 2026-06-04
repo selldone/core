@@ -12,99 +12,66 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Daily product analytics/statistics record.
+ *
+ * Backend source: `App\Shop\Statistic\ProductData`, table `product_data`.
+ */
 export interface ProductData {
-  /**
-   * Unique identifier for the data entry.
-   */
+  /** Unique analytics record identifier. Source: `product_data.id`. */
   id: number;
 
-  /**
-   * ID of the associated product.
-   */
+  /** Product identifier. Source: `product_data.product_id`. */
   product_id: number;
 
-  /**
-   * Price of the product in Rial.
-   */
+  /** Product price snapshot in Rial/base accounting currency. Source: `product_data.price`. */
   price: number;
 
-  /**
-   * Total quantity of items.
-   */
+  /** Product quantity snapshot for the day. Source: `product_data.count`, changed to float for fractional units. */
   count: number;
 
-  /**
-   * Total number of products sold.
-   */
+  /** Total sold count for the day. Source: `product_data.sell`. */
   sell: number;
 
-  /**
-   * Total number of products sent.
-   */
+  /** Total sent/shipped count for the day. Source: `product_data.send`. */
   send: number;
 
-  /**
-   * Total number of product views.
-   */
+  /** Total product page views for the day. Source: `product_data.views`. */
   views: number;
 
-  /**
-   * Total number of likes for the product.
-   */
+  /** Total likes for the day. Source: `product_data.likes`. */
   likes: number;
 
-  /**
-   * Some property related to the power metric of the product.
-   */
+  /** Backend power metric counter. Source: `product_data.powers`. */
   powers: number;
 
-  /**
-   * Total number of times the product has been favorited.
-   */
+  /** Total favorites for the day. Source: `product_data.favorites`. */
   favorites: number;
 
-  /**
-   * Total number of times the product has been added to wishlists.
-   */
+  /** Total wishlist additions for the day. Source: `product_data.wishlist`. */
   wishlist: number;
 
-  /**
-   * Total number of comments on the product.
-   */
+  /** Total comments for the day. Source: `product_data.comments`. */
   comments: number;
 
-  /**
-   * Total number of approved comments on the product.
-   */
+  /** Total approved comments for the day. Source: `product_data.comments_approved`. */
   comments_approved: number;
 
-  /**
-   * Total number of ratings for the product.
-   */
+  /** Total rating count for the day. Source: `product_data.ratings`. */
   ratings: number;
 
-  /**
-   * Average star rating of the product (ranges from 1 to 5).
-   */
+  /** Average rating for the day, normally 1 to 5 when ratings exist. Source: `product_data.rating_star`. */
   rating_star: number;
 
-  /**
-   * Number of shops reselling the product.
-   */
+  /** Number of shops reselling the product in the daily snapshot. Source: `product_data.reselling_shops`. */
   reselling_shops: number;
 
-  /**
-   * Count related to reselling of the product.
-   */
+  /** Count of reseller sales/products in the daily snapshot. Source: `product_data.reselling_count`. */
   reselling_count: number;
 
-  /**
-   * The date and time when the record was created.
-   */
-  created_at: Date;
+  /** Creation timestamp for the analytics row. Source: `product_data.created_at`. */
+  created_at: string;
 
-  /**
-   * The date and time when the record was last updated.
-   */
-  updated_at: Date;
+  /** Last update timestamp for the analytics row. Source: `product_data.updated_at`. */
+  updated_at: string;
 }

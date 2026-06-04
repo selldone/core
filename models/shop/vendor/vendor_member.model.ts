@@ -12,52 +12,73 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import barcodeScannerIcon from "../../../enums/permission/assets/regions/barcode-scaner.svg";
-import dropshippingIcon from "../../../enums/permission/assets/regions/dropshipping.svg";
-import marketplaceIcon from "../../../enums/permission/assets/regions/marketplace.svg";
-
 /**
- * Model Definition
+ * Vendor panel member permission record.
+ *
+ * Backend source: `App\Shop\Vendors\Member\VendorMember`, table `vendor_members`.
+ * Access keys are validated in `MyVendorMembersController` from backend enum
+ * `App\Shop\Vendors\Member\enums\VendorMemberRegion` plus `-READ` / `-WRITE` suffixes.
  */
 export interface VendorMember {
-  /** Unique identifier */
+  /** Member row id. Source: `vendor_members.id`. */
   id: number;
 
-  /** Identifier of the associated shop */
+  /** Owning shop id. Source: `vendor_members.shop_id`. */
   shop_id: number;
 
+  /** Vendor id. Source: `vendor_members.vendor_id`. */
   vendor_id: number;
 
+  /** User id of the member. Source: `vendor_members.user_id`. */
   user_id: number;
 
-  /** Access permissions with keys being region-specific, like DASHBOARD-READ, DASHBOARD-WRITE, etc. */
-  access: Partial<Record<`${VendorMemberTypes.VendorMemberRegionCode}-READ` | `${VendorMemberTypes.VendorMemberRegionCode}-WRITE`, boolean>>;
+  /** Permission map stored as nullable JSON `vendor_members.access`. */
+  access: VendorMemberTypes.AccessMap | null;
 
-
-  /** Date of creation */
+  /** Creation timestamp. Source: `vendor_members.created_at`. */
   created_at: string;
 
-  /** Date of last update */
+  /** Last update timestamp. Source: `vendor_members.updated_at`. */
   updated_at: string;
+
+  /** Joined user display name returned by member list endpoints. */
+  name?: string;
+
+  /** Joined user email returned by member list endpoints. */
+  email?: string;
+
+  /** Shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Vendor relation when eager-loaded. */
+  vendor?: Record<string, unknown>;
+
+  /** User relation when eager-loaded. */
+  user?: Record<string, unknown>;
 }
 
-//█████████████████████████████████████████████████████████████
-//―――――――――――――――― 🦫 Types ――――――――――――――――
-//█████████████████████████████████████████████████████████████
 export namespace VendorMemberTypes {
+  /** Backend enum `VendorMemberRegion::All`. */
   export enum VendorMemberRegionCode {
     DASHBOARD = "DASHBOARD",
     ORDERS = "ORDERS",
     PAYMENT = "PAYMENT",
     PRODUCTS = "PRODUCTS",
     INVENTORY = "INVENTORY",
-
     SHIPPING = "SHIPPING",
     ACCESS = "ACCESS",
-
     PROFILE = "PROFILE",
   }
 
+  /** JSON access map with keys like `ORDERS-READ` and `PRODUCTS-WRITE`. */
+  export type AccessMap = Partial<
+    Record<
+      `${VendorMemberRegionCode}-READ` | `${VendorMemberRegionCode}-WRITE`,
+      boolean
+    >
+  >;
+
+  /** UI metadata for each backend vendor-member region. */
   export const VendorMemberRegion = {
     DASHBOARD: {
       code: "DASHBOARD",
@@ -69,44 +90,35 @@ export namespace VendorMemberTypes {
       name: "global.commons.orders",
       icon: "shopping_bag",
     },
-
     PAYMENT: {
       code: "PAYMENT",
       name: "global.commons.payment",
       icon: "account_balance",
     },
-
     INVENTORY: {
       code: "INVENTORY",
       name: "global.commons.inventory",
       icon: "fa:fas fa-boxes-packing",
     },
-
     PRODUCTS: {
       code: "PRODUCTS",
       name: "global.commons.products",
       icon: "apps",
     },
-
     SHIPPING: {
       code: "SHIPPING",
       name: "global.commons.shipping",
       icon: "local_shipping",
     },
-
     ACCESS: {
       code: "ACCESS",
       name: "global.commons.access",
       icon: "groups",
     },
-
     PROFILE: {
       code: "PROFILE",
       name: "global.commons.profile",
       icon: "badge",
     },
-
-
-  };
-
+  } as const;
 }

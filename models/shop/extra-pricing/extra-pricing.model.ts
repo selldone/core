@@ -13,56 +13,77 @@
  */
 
 /**
- * 🌸 Extra Pricing 🌸
+ * Extra pricing tier for a product, product variant, or marketplace vendor product.
+ *
+ * Backend source: `App\Shop\Products\ProductExtraPricing`, table `product_extra_pricings`.
+ * Controllers: `Shop\Product\ExtraPricing\ProductExtraPricing*Controller`.
  */
 export interface ExtraPricing {
-  /** Unique identifier of the extra pricing */
+  /** Unique extra-pricing identifier. Source: `product_extra_pricings.id`. */
   id: number;
 
-  /** Identifier of the associated shop */
+  /** Owning shop id. Source: `product_extra_pricings.shop_id`. */
   shop_id: number;
 
-  /** Identifier of the associated product */
+  /** Product id this tier applies to. Source: `product_extra_pricings.product_id`. */
   product_id: number;
 
-  /** Identifier of the associated variant, if any */
+  /** Variant id when the tier applies to a specific variant. Source: nullable `product_extra_pricings.variant_id`. */
   variant_id?: number | null;
 
-  /** Identifier of the associated vendor, if any */
+  /** Marketplace vendor id when this tier belongs to a vendor product. Source: nullable `product_extra_pricings.vendor_id`. */
   vendor_id?: number | null;
 
-  /** Identifier of the associated vendor product, if any */
+  /** Marketplace vendor-product row id. Source: nullable `product_extra_pricings.vendor_product_id`. */
   vendor_product_id?: number | null;
 
-  /** Identifier of the linked pricing model */
-  pricing_id: number;
+  /** Linked marketplace pricing model. Source: nullable `product_extra_pricings.pricing_id`. */
+  pricing_id?: number | null;
 
-  /** Minimum quantity for which this pricing applies */
+  /** Minimum ordered quantity required for this tier. Source: `product_extra_pricings.min`, default `1`. */
   min: number;
 
-  /** Price value */
+  /** Final tier price after vendor-pricing calculation if applicable. Source: `product_extra_pricings.price`. */
   price: number;
 
-  /** Raw price without any discounts or commissions */
+  /** Raw vendor price before commission conversion. Source: `product_extra_pricings.raw_price`, default `0`. */
   raw_price: number;
 
-  /** Commission value for this pricing */
+  /** Commission amount added to this tier. Source: `product_extra_pricings.commission`, default `0`. */
   commission: number;
 
-  /** Discount value for this pricing */
+  /** Discount amount for this tier. Source: `product_extra_pricings.discount`, default `0`. */
   discount: number;
 
-  /** Start date of the discount, if applicable */
+  /** Discount start timestamp, or `null` when no start is set. Source: nullable `product_extra_pricings.dis_start`. */
   dis_start: string | null;
 
-  /** End date of the discount, if applicable */
+  /** Discount end timestamp, or `null` when no end is set. Source: nullable `product_extra_pricings.dis_end`. */
   dis_end: string | null;
 
-  /** Date of creation */
-  created_at: string;
+  /** Creation timestamp serialized by Laravel when included. Source: `product_extra_pricings.created_at`. */
+  created_at?: string | null;
 
-  /** Date of last update */
-  updated_at: string;
+  /** Last update timestamp serialized by Laravel when included. Source: `product_extra_pricings.updated_at`. */
+  updated_at?: string | null;
+
+  /** Shop relation when eager-loaded. Source: `ProductExtraPricing::shop()` serialized as `shop`. */
+  shop?: Record<string, unknown>;
+
+  /** Product relation when eager-loaded. Source: `ProductExtraPricing::product()` serialized as `product`. */
+  product?: Record<string, unknown>;
+
+  /** Variant relation when eager-loaded. Source: `ProductExtraPricing::variant()` serialized as `variant`. */
+  variant?: Record<string, unknown> | null;
+
+  /** Vendor relation when eager-loaded. Source: `ProductExtraPricing::vendor()` serialized as `vendor`. */
+  vendor?: Record<string, unknown> | null;
+
+  /** Vendor-product relation when eager-loaded. Source: `ProductExtraPricing::vendorProduct()` serialized as `vendor_product`. */
+  vendor_product?: Record<string, unknown> | null;
+
+  /** Vendor-pricing relation when eager-loaded. Source: `ProductExtraPricing::pricing()` serialized as `pricing`. */
+  pricing?: Record<string, unknown> | null;
 }
 
 export namespace ExtraPricing {}

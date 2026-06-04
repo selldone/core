@@ -12,62 +12,77 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Shop} from "../shop.model";
-import type {User} from "../../user/user.model";
+import type { Shop } from "../shop.model";
+import type { User } from "../../user/user.model";
 
+/**
+ * Morphable shop note attached to pages, products, incentives, categories, and other shop resources.
+ *
+ * Backend source: `App\Shop\Note\Note`, table `notes`.
+ * Managed by `ShopNoteController` and resource-specific note controllers. `target_id` / `target_type` come from
+ * Laravel `nullableMorphs('target')`.
+ */
 export namespace Note {
   export interface INote {
-    /** Unique identifier for the notification. */
+    /** Note id. Source: `notes.id`. */
     id: number;
 
-    /** Identifier of the associated shop. */
-    shop_id: number;
+    /** Owning shop id, or `null`. Source: nullable `notes.shop_id`. */
+    shop_id: number | null;
 
-    /** Identifier of the associated user. */
-    user_id: number;
+    /** Author user id, or `null`. Source: nullable `notes.user_id`. */
+    user_id: number | null;
 
-    /** Identifier of the associated element. Optional. */
-    element_id?: number | null;
+    /** Page-builder/resource element id, or `null`. Source: nullable string `notes.element_id`. */
+    element_id?: string | null;
 
-    /** Identifier of the target element. Optional. */
+    /** Morph target id, or `null`. Source: nullable `notes.target_id`. */
     target_id?: number | null;
 
-    /** Type of the target, representing the nature of the target element. Optional. */
+    /** Morph target class/type, or `null`. Source: nullable `notes.target_type`. */
     target_type?: string | null;
 
-    /** Contains the message details. */
+    /** Note body JSON. Source: required JSON `notes.data`. */
     data: IData[];
 
-    /** Contains the list of mentioned user ids. Optional. */
-    mention?: any[] | null; // You might want to provide a more specific type if known
+    /** Mentioned user ids or mention payloads, or `null`. Source: nullable JSON `notes.mention`. */
+    mention?: Array<number | string | Record<string, unknown>> | null;
 
-    /** Indicates if the notification is specific to an agency. */
+    /** Whether the note should surface in agency notifications. Source: `notes.agency` cast to boolean. */
     agency: boolean;
 
-    /** Indicates if the notification is pinned to the top. */
+    /** Whether the note is pinned. Source: `notes.pin` cast to boolean. */
     pin: boolean;
 
-    /** Associated user details. */
-    user?: User;
+    /** Soft-delete timestamp when included. Source: `notes.deleted_at`. */
+    deleted_at?: string | null;
 
-    /** Associated shop details. */
-    shop?: Shop;
+    /** Creation timestamp. Source: `notes.created_at`. */
+    created_at?: string;
 
-    /** Represents the target model (e.g., a page for a page builder). The type can be further refined. */
-    target: any; // You might want to provide a more specific type or interface
+    /** Last update timestamp. Source: `notes.updated_at`. */
+    updated_at?: string;
+
+    /** Associated user relation when eager-loaded. */
+    user?: User | Record<string, unknown> | null;
+
+    /** Associated shop relation when eager-loaded. */
+    shop?: Shop | Record<string, unknown> | null;
+
+    /** Morph target model when eager-loaded. */
+    target?: Record<string, unknown> | null;
   }
 
-  /**
-   * Contains the message details with potential HTML content.
-   */
+  /** Rich text note payload stored in `notes.data`. */
   export interface IData {
     /**
-     * HTML message content.
+     * HTML/rich-text message content.
      *
-     * The message may contain suggestions, mentions, and other rich text elements.
-     * Mentions can introduce users, represented by special span elements with attributes like 'value', 'type', etc.
-     * Images, like avatars, can also be embedded directly in the message.
+     * The editor may embed mentions, suggestions, images, and other structured HTML fragments.
      */
     message: string;
+
+    /** Additional editor-specific payload preserved by backend JSON casts. */
+    [key: string]: unknown;
   }
 }

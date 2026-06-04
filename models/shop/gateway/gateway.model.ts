@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -13,184 +12,152 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Global payment gateway definition.
+ *
+ * Backend source: `App\Shop\Gateway\Gateway`, table `gateways`.
+ * The backend hides `wallet` by default and casts `public`, `private`, `info`, `network`, `theme`, and `actions` from
+ * JSON. Shop-specific merchant credentials live in {@link ShopGateway}.
+ */
 export class Gateway implements Gateway.IGateway {
-  /**
-   * The unique identifier for the gateway.
-   */
-  id: number;
+  /** Gateway id. Source: `gateways.id`. */
+  id!: number;
 
-  /**
-   * The currency code associated with the gateway (e.g., 'USD').
-   */
-  currency: string;
+  /** Gateway settlement/transaction currency. Source: `gateways.currency`. */
+  currency!: string;
 
-  /**
-   * The percentage of wage or fee taken by the gateway.
-   */
-  wage_percent: number;
+  /** Gateway wage percent. Source: `gateways.wage_percent`. */
+  wage_percent!: number;
 
-  /**
-   * The minimum fee amount that can be charged by the gateway.
-   */
-  wage_min: number;
+  /** Minimum gateway wage amount. Source: `gateways.wage_min`. */
+  wage_min!: number;
 
-  /**
-   * The maximum fee amount that can be charged by the gateway.
-   */
-  wage_max: number;
+  /** Maximum gateway wage amount. Source: `gateways.wage_max`. */
+  wage_max!: number;
 
-  /**
-   * The minimum transaction amount allowed by the gateway.
-   */
-  min: number;
+  /** Minimum transaction amount. Source: `gateways.min`. */
+  min!: number;
 
-  /**
-   * The maximum transaction amount allowed by the gateway.
-   */
-  max: number;
+  /** Maximum transaction amount. Source: `gateways.max`. */
+  max!: number;
 
-  /**
-   * Indicates whether the gateway is enabled or not.
-   */
-  enable: boolean;
+  /** Whether the gateway is globally enabled. Source: `gateways.enable`. */
+  enable!: boolean;
 
-  /**
-   * Indicates if the gateway accepts service charges (true: accepts charges).
-   */
-  charge: boolean;
+  /** Whether the gateway accepts Selldone service charges. Source: `gateways.charge`. */
+  charge!: boolean;
 
-  /**
-   * Indicates if the gateway can be used in the POS system by sellers (true: POS enabled).
-   */
-  pos: boolean;
+  /** Whether the gateway is available in POS. Source: `gateways.pos`. */
+  pos!: boolean;
 
-  /**
-   * Indicates if cash on delivery payment is supported (Offline - COD).
-   */
-  cod: boolean;
+  /** Whether cash-on-delivery/offline payment is supported. Source: `gateways.cod`. */
+  cod!: boolean;
 
-  /**
-   * Indicates if the gateway is only for Selldone POS.
-   */
-  cash: boolean;
+  /** Whether this is a cash/POS gateway. Source: `gateways.cash`. */
+  cash!: boolean;
 
-  /**
-   * Indicates if direct payment to a card or bank account is supported, with receipt upload.
-   */
-  dir: boolean;
+  /** Whether direct bank/card payment with receipt upload is supported. Source: `gateways.dir`. */
+  dir!: boolean;
 
-  /**
-   * Indicates if the gateway uses Selldone's blockchain service (true: generate wallet and save wallet ID).
-   */
-  blockchain: boolean;
+  /** Whether the gateway uses Selldone blockchain wallet flow. Source: `gateways.blockchain`. */
+  blockchain!: boolean;
 
-  /**
-   * Indicates if the gateway supports subscription-based payments.
-   */
-  subscription: boolean;
+  /** Whether subscription payments are supported. Source: `gateways.subscription`. */
+  subscription!: boolean;
 
-  /**
-   * Indicates if the gateway is in debug mode.
-   */
-  debug: boolean;
+  /** Whether debug/test mode is supported. Source: `gateways.debug`. */
+  debug!: boolean;
 
-  /**
-   * Indicates if the gateway supports manual confirmation by the seller.
-   */
-  manual: boolean;
+  /** Whether seller manual confirmation is supported. Source: `gateways.manual`. */
+  manual!: boolean;
 
-  /**
-   * List of available manual actions such as 'refund' and 'deliver'.
-   */
-  actions: ('refund'|'deliver')[];
+  /** Manual action options such as `refund` and `deliver`, or `null`. Source: nullable JSON `gateways.actions`. */
+  actions!: Gateway.ActionCode[] | null;
 
-  /**
-   * A unique code identifying the gateway.
-   */
-  code: string;
+  /** Unique gateway/plugin code, max 16 chars. Source: `gateways.code`. */
+  code!: string;
 
-  /**
-   * The name of the gateway.
-   */
-  name: string;
+  /** Gateway display name, max 24 chars. Source: `gateways.name`. */
+  name!: string;
 
-  /**
-   * A brief description of the gateway.
-   */
-  description: string;
+  /** Gateway description, or `null`. Source: nullable text `gateways.description`. */
+  description!: string | null;
 
-  /**
-   * Public configuration or data related to the gateway.
-   */
-  public: object;
+  /** Public credential/config schema. Source: nullable JSON/text `gateways.public`. */
+  public!: Gateway.JsonPayload | null;
 
-  /**
-   * Private configuration or data related to the gateway.
-   */
-  private: object;
+  /** Private credential/config schema. Source: nullable JSON/text `gateways.private`. */
+  private!: Gateway.JsonPayload | null;
 
-  /**
-   * Additional information or metadata about the gateway.
-   */
-  info: object;
+  /** Gateway info schema/metadata. Source: nullable JSON/text `gateways.info`. */
+  info!: Gateway.JsonPayload | null;
 
-  /**
-   * The URL or path to the gateway's logo.
-   */
-  logo: string;
+  /** Logo URL/path, or `null`. Source: nullable text `gateways.logo`. */
+  logo!: string | null;
 
-  /**
-   * The URL or path to the gateway's icon.
-   */
-  icon: string;
+  /** Icon URL/path, or `null`. Source: nullable text `gateways.icon`. */
+  icon!: string | null;
 
-  /**
-   * The URL to an informational or promotional video for the gateway.
-   */
-  video: string;
+  /** Video URL, or `null`. Source: nullable text `gateways.video`. */
+  video!: string | null;
 
-  /**
-   * The URL to the gateway's official website or documentation.
-   */
-  url: string;
+  /** Gateway public URL/docs URL, or `null`. Source: nullable `gateways.url`. */
+  url!: string | null;
 
-  /**
-   * The frontend component associated with the gateway.
-   */
-  component: string;
+  /** Admin/frontend component URL/name, or `null`. Source: nullable text `gateways.component`. */
+  component!: string | null;
 
-  /**
-   * The timeout duration for gateway transactions, in seconds.
-   */
-  timeout: number;
+  /** Payment queue timeout in seconds. Source: `gateways.timeout`. */
+  timeout!: number;
 
-  /**
-   * Network configuration or settings associated with the gateway.
-   */
-  network: any;
+  /** Gateway network status payload. Source: nullable JSON `gateways.network` cast by `GatewayNetworkStatus`. */
+  network!: Gateway.JsonPayload | null;
 
-  /**
-   * An array representing wallet configurations or wallet instances for the gateway.
-   * Replace `any` with a specific type if known.
-   */
-  wallet: any[];
+  /** Selldone wallet payload. Source: nullable JSON `gateways.wallet`; hidden by default. */
+  wallet?: Gateway.JsonPayload | null;
 
-  /**
-   * Custom script or configuration script associated with the gateway.
-   */
-  script: string;
+  /** JavaScript file that must be injected into checkout header, or `null`. */
+  script!: string | null;
 
+  /** Gateway theme payload used when passed to shop gateways. Source: nullable JSON `gateways.theme` cast. */
+  theme?: Gateway.JsonPayload | null;
 
-  constructor(
-    data: {
-      id: number;
-    } & Partial<Gateway.IGateway>,
-  ) {
+  /** Soft-delete timestamp when included. Source: `gateways.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `gateways.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `gateways.updated_at`. */
+  updated_at?: string;
+
+  /** Gateway aggregate data rows when `Gateway::data()` is eager-loaded. */
+  data?: Gateway.DataRow[];
+
+  constructor(data: { id: number } & Partial<Gateway.IGateway>) {
     Object.assign(this, data);
   }
 }
 
 export namespace Gateway {
+  /** Flexible gateway JSON field shape; schemas differ by payment plugin. */
+  export type JsonPayload = Record<string, unknown> | unknown[];
+
+  /** Known manual action options stored in `gateways.actions`. */
+  export type ActionCode = "refund" | "deliver" | string;
+
+  /** Gateway statistics row from `gateway_data`. */
+  export interface DataRow {
+    id: number;
+    gateway_id: number;
+    count: number;
+    success: number;
+    amount: number;
+    wage: number;
+    created_at?: string;
+    updated_at?: string;
+  }
+
   export interface IGateway {
     id: number;
     currency?: string;
@@ -209,21 +176,26 @@ export namespace Gateway {
     subscription?: boolean;
     debug?: boolean;
     manual?: boolean;
-    actions?: ('refund'|'deliver')[];
+    actions?: ActionCode[] | null;
     code?: string;
     name?: string;
-    description?: string;
-    public?: object;
-    private?: object;
-    info?: object;
-    logo?: string;
-    icon?: string;
-    video?: string;
-    url?: string;
-    component?: string;
+    description?: string | null;
+    public?: JsonPayload | null;
+    private?: JsonPayload | null;
+    info?: JsonPayload | null;
+    logo?: string | null;
+    icon?: string | null;
+    video?: string | null;
+    url?: string | null;
+    component?: string | null;
     timeout?: number;
-    network?: any; // Assuming GatewayNetworkStatus is defined elsewhere
-    wallet?: any[]; // assuming array of a certain type, replace 'any' with the specific type if known
-    script?: string;
+    network?: JsonPayload | null;
+    wallet?: JsonPayload | null;
+    script?: string | null;
+    theme?: JsonPayload | null;
+    deleted_at?: string | null;
+    created_at?: string;
+    updated_at?: string;
+    data?: DataRow[];
   }
 }

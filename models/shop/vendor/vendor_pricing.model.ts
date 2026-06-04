@@ -12,41 +12,58 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Shop} from "../shop.model";
-import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
-import {VendorProduct} from "./vendor_product.model";
+import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
+import type { Shop } from "../shop.model";
+import type { VendorProduct } from "./vendor_product.model";
 
 /**
- * Model Definition
+ * Marketplace pricing model used to calculate vendor product marketplace price from raw vendor price.
+ *
+ * Backend source: `App\Shop\Vendors\VendorPricing`, table `vendor_pricing`.
+ * Managed by `ShopVendorPricingController`; add validation allows `commission` from `0..1000` and requires `title`.
  */
 export interface VendorPricing {
-  /** Unique identifier */
+  /** Pricing id. Source: `vendor_pricing.id`. */
   id: number;
 
-  /** Identifier of the associated shop */
+  /** Owning marketplace shop id. Source: `vendor_pricing.shop_id`. */
   shop_id: number;
 
-  /** Title of the pricing model */
+  /** Pricing plan title. Source: `vendor_pricing.title`. */
   title: string;
 
-  /** Detailed description of the pricing model */
-  description: string;
+  /** Optional pricing plan description. Source: nullable `vendor_pricing.description`. */
+  description: string | null;
 
-  /** Commission percentage for this pricing model */
+  /** Commission percent applied as `raw_price * (1 + commission / 100)`. Source: `vendor_pricing.commission`. */
   commission: number;
 
-  /** Date of creation */
+  /** Localized fields keyed by locale. Source: nullable JSON `vendor_pricing.translations`. */
+  translations?: VendorPricing.Translations | null;
+
+  /** Creation timestamp. Source: `vendor_pricing.created_at`. */
   created_at: string;
 
-  /** Date of last update */
+  /** Last update timestamp. Source: `vendor_pricing.updated_at`. */
   updated_at: string;
 
-  /** Associated shop details */
-  shop: Shop;
+  /** Shop relation when `VendorPricing::shop()` is eager-loaded. */
+  shop?: Shop;
 
-  /** List of associated vendor products */
-  vendorProducts: VendorProduct[];
+  /** Vendor product relation from `vendorProducts()`, serialized as `vendor_products`. */
+  vendor_products?: VendorProduct[];
 
-  /** List of associated extra pricings */
-  extraPricings: ExtraPricing[];
+  /** Extra pricing relation from `extraPricings()`, serialized as `extra_pricings`. */
+  extra_pricings?: ExtraPricing[];
+
+  /** Legacy camelCase relation alias used by older clients; backend JSON uses `vendor_products`. */
+  vendorProducts?: VendorProduct[];
+
+  /** Legacy camelCase relation alias used by older clients; backend JSON uses `extra_pricings`. */
+  extraPricings?: ExtraPricing[];
+}
+
+export namespace VendorPricing {
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

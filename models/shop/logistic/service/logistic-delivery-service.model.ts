@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -13,7 +12,76 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Delivery service provider definition.
+ *
+ * Backend source: `App\Shop\Transportation\DeliveryService`, table `delivery_services`.
+ * Shop-specific enablement/statistics live in `shop_transportation_services`; this model describes the provider.
+ */
 export interface DeliveryService {
+  /** Delivery service id. Source: `delivery_services.id`. */
   id: number;
-  shop_id: number;
+
+  /** Unique service code. Source: `delivery_services.code`. */
+  code: string;
+
+  /** Whether the service is globally enabled. Source: `delivery_services.enable` cast to boolean. */
+  enable: boolean;
+
+  /** Whether the service uses OAuth. Source: `delivery_services.oauth` cast to boolean. */
+  oauth: boolean;
+
+  /** Supported transportation types. Source: nullable JSON `delivery_services.types`. */
+  types: string[] | null;
+
+  /** Number of orders this service can accept in one shipping batch. Source: `delivery_services.batch`. */
+  batch: number;
+
+  /** Service name. Source: `delivery_services.name`. */
+  name: string;
+
+  /** Service description, or `null`. Source: nullable `delivery_services.description`. */
+  description: string | null;
+
+  /** Service icon/logo path, or `null`. Source: nullable `delivery_services.icon`. */
+  icon: string | null;
+
+  /** Dashboard/provider URL, or `null`. Source: nullable `delivery_services.url`. */
+  url: string | null;
+
+  /** Failed API call count. Source: `delivery_services.fail_calls`. */
+  fail_calls: number;
+
+  /** Total delivery jobs. Source: `delivery_services.jobs`. */
+  jobs: number;
+
+  /** Jobs currently in process. Source: `delivery_services.process`. */
+  process: number;
+
+  /** Successful jobs count. Source: `delivery_services.success`. */
+  success: number;
+
+  /** Failed jobs count. Source: `delivery_services.fail`. */
+  fail: number;
+
+  /** Sum of successful delivery durations, in hours. Source: `delivery_services.duration`. */
+  duration: number;
+
+  /** Sum of successful delivery distances, in kilometers. Source: `delivery_services.distance`. */
+  distance: number;
+
+  /** Last stats reset timestamp, or `null`. Source: nullable `delivery_services.reset_at`. */
+  reset_at: string | null;
+
+  /** Soft-delete timestamp when included. Source: `delivery_services.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `delivery_services.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `delivery_services.updated_at`. */
+  updated_at?: string;
+
+  /** Shop-specific service rows when `DeliveryService::transportationServices()` is eager-loaded. */
+  transportation_services?: Record<string, unknown>[];
 }

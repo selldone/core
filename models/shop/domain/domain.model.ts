@@ -13,128 +13,100 @@
  */
 
 /**
- * Represents the main configuration and details for a shop.
+ * Custom domain attached to a shop.
+ *
+ * Backend source: `App\Shop\Domains\Domain`, table `shop_domains`.
+ * Managed by `DomainController`, `DomainSettingController`, and domain verification controllers. `debug` is hidden
+ * by the Eloquent model unless explicitly exposed to admins.
  */
 export class Domain {
-  /**
-   * Unique identifier for the domain.
-   */
-  id?: number;
+  /** Domain id. Source: `shop_domains.id`. */
+  id!: number;
 
-  /**
-   * Identifier of the associated shop.
-   */
-  shop_id?: number;
+  /** Owning shop id. Source: `shop_domains.shop_id`. */
+  shop_id!: number;
 
-  /**
-   * Indicates if this is the primary domain for the shop.
-   */
-  primary?: boolean;
+  /** Whether this is the shop primary domain. Source: `shop_domains.primary` cast to boolean. */
+  primary!: boolean;
 
-  /**
-   * Indicates if the domain is indexed.
-   */
-  indexed?: boolean;
+  /** Whether the domain should be indexed. Source: `shop_domains.indexed` cast to boolean. */
+  indexed!: boolean;
 
-  /**
-   * The domain name.
-   */
-  domain?: string;
+  /** Host/domain value. May include wildcard prefix such as `*.example.com`. */
+  domain!: string;
 
-  /**
-   * Domain home page (can be null, a page_id, 'avocado', or 'blog').
-   */
-  home?: string | null;
+  /** Domain home target: `null`, a page id encoded as string, or built-in values such as `shop`, `blog`, `avocado`. */
+  home!: string | null;
 
-  /**
-   * Indicates if the domain is approved.
-   */
-  approved?: boolean;
+  /** Whether DNS/domain ownership has been approved. Source: `shop_domains.approved`. */
+  approved!: boolean;
 
-  /**
-   * Indicates if the domain is enabled.
-   */
-  enable?: boolean;
+  /** Whether this domain is enabled for routing. Source: `shop_domains.enable`. */
+  enable!: boolean;
 
-  /**
-   * Date and time when the domain expires.
-   */
-  expire_at?: string;
+  /** SSL/certificate expiration timestamp, or `null`. Source: nullable `shop_domains.expire_at`. */
+  expire_at!: string | null;
 
-  /**
-   * Indicates if the domain was added via SSL proxy IPs.
-   */
-  ssl_proxy?: boolean;
+  /** Whether the domain was added through SSL proxy IPs. Source: `shop_domains.ssl_proxy`. */
+  ssl_proxy!: boolean;
 
-  /**
-   * Indicates the health status of domain SSL.
-   */
-  ssl?: boolean;
+  /** Last SSL health-check result. Source: `shop_domains.ssl` cast to boolean. */
+  ssl!: boolean;
 
-  /**
-   * Last date and time when a request was sent to issue SSL by SSL proxy.
-   */
-  issue_at?: string | null;
+  /** Last SSL issue request timestamp, or `null`. Source: nullable `shop_domains.issue_at`. */
+  issue_at!: string | null;
 
-  /**
-   * Last date and time when the domain was checked.
-   */
-  check_at?: string | null;
+  /** Last DNS/SSL connection check timestamp, or `null`. Source: nullable `shop_domains.check_at`. */
+  check_at!: string | null;
 
-  /**
-   * Indicates if http should be forced to https.
-   */
-  https?: boolean;
+  /** Whether HTTP should be forced to HTTPS. Source: `shop_domains.https`. */
+  https!: boolean;
 
-  /**
-   * Last error message, if any.
-   */
-  error?: string | null;
+  /** Last domain/SSL error message, or `null`. Source: nullable `shop_domains.error`. */
+  error!: string | null;
 
-  /**
-   * Identifier of the attached affiliate.
-   */
-  affiliate_id?: number;
+  /** Attached affiliate id, or `null`. Source: nullable `shop_domains.affiliate_id`. */
+  affiliate_id!: number | null;
 
-  /**
-   * Additional domain information provided by the user.
-   */
-  info?: any[] | null;
+  /** User-provided domain info. Source: nullable JSON `shop_domains.info`. */
+  info!: Record<string, unknown> | null;
 
-  /**
-   * Debug details for selldone admin.
-   */
-  debug?: any[] | null;
+  /** Admin-only debug details. Source: nullable JSON `shop_domains.debug`; hidden by default. */
+  debug?: Record<string, unknown> | null;
 
-  /**
-   * Certificate information (see SSLCertificate).
-   */
-  certificate?: any[] | null;
+  /** Parsed SSL certificate info. Source: nullable JSON `shop_domains.certificate`. */
+  certificate!: Domain.CertificateInfo | null;
 
-  /**
-   * Date and time when the domain was created.
-   */
+  /** Available currencies for this domain; `null` means all shop currencies. */
+  currencies?: string[] | null;
+
+  /** Available languages for this domain; `null` means all shop languages. */
+  languages?: string[] | null;
+
+  /** Extra metadata from `HasMeta`. Source: nullable JSON `shop_domains.meta`. */
+  meta?: Record<string, unknown> | null;
+
+  /** Soft-delete timestamp when included. Source: `shop_domains.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `shop_domains.created_at`. */
   created_at?: string;
 
-  /**
-   * Date and time when the domain was last updated.
-   */
+  /** Last update timestamp. Source: `shop_domains.updated_at`. */
   updated_at?: string;
 
-  constructor(
-    data: {
-      id: number | null;
-      shop_id: number;
-      name: string;
-      primary: boolean;
-      domain: string;
-    } & Partial<Domain>,
-  ) {
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Affiliate relation when eager-loaded. */
+  affiliate?: Record<string, unknown> | null;
+
+  constructor(data: Partial<Domain> & { id?: number | null }) {
     Object.assign(this, data);
   }
 }
 
-//█████████████████████████████████████████████████████████████
-//―――――――――――――――― 🦫 Types ――――――――――――――――
-//█████████████████████████████████████████████████████████████
-export namespace Domain {}
+export namespace Domain {
+  /** Public certificate fields returned by backend `SSLCertificate::toCertificateInfo()`. */
+  export type CertificateInfo = Record<string, unknown>;
+}

@@ -12,102 +12,71 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import type {ProductFile} from "./product-file.model";
+
 /**
- * 🎗️ Subscription Interface
+ * Subscription/content section attached to a product.
  *
- * This interface represents a subscription model with various properties.
- * It includes relations, content information, email settings, statistics, and rating data.
+ * Backend source: `App\Shop\Ribbon\ProductContent`, table `product_contents`.
  */
 export interface ProductContent {
-  /**
-   * @property id - Unique identifier for the subscription
-   */
+  /** Unique content identifier. Source: `product_contents.id`. */
   id: number;
 
-  /**
-   * @property shop_id - Identifier for the associated shop
-   */
+  /** Owning shop identifier. Source: `product_contents.shop_id`. */
   shop_id: number;
 
-  /**
-   * @property product_id - Identifier for the associated product
-   */
+  /** Parent product identifier. Source: `product_contents.product_id`. */
   product_id: number;
 
-  /**
-   * @property user_id - Identifier for the associated user
-   */
-  user_id: number;
+  /** Officer/user that created the content, or `null` if the user was deleted. Source: nullable `product_contents.user_id`. */
+  user_id: number | null;
 
-  // Content info
-  /**
-   * @property available - Indicates whether the subscription is available or not
-   */
+  /** Whether the content is available to buyers. Source: `product_contents.available`, default `false`. */
   available: boolean;
 
-  /**
-   * @property title - Public title for the subscription
-   */
+  /** Public content title. Source: `product_contents.title`. */
   title: string;
 
-  /**
-   * @property description - Public short description (optional)
-   */
+  /** Public short description. Source: nullable `product_contents.description`. */
   description?: string | null;
 
-  // Email
-  /**
-   * @property mail - Should an email be sent?
-   */
+  /** Whether the backend should send email for this content. Source: `product_contents.mail`, default `false`. */
   mail: boolean;
 
-  /**
-   * @property subject - Subject of the email (optional)
-   */
+  /** Email subject. Source: nullable `product_contents.subject`. */
   subject?: string | null;
 
-  /**
-   * @property body - Body content of the email in HTML format (optional)
-   */
+  /** Email body HTML. Source: nullable long text `product_contents.body`. */
   body?: string | null;
 
-  /**
-   * @property in_que - Is the email in the sending queue?
-   */
+  /** Whether the email is queued for sending. Source: `product_contents.in_que`, default `false`. */
   in_que: boolean;
 
-  // Statistics
-  /**
-   * @property emails - Total number of sent emails
-   */
+  /** Total sent emails. Source: `product_contents.emails`. */
   emails: number;
 
-  /**
-   * @property views - Total number of users who viewed the email
-   */
+  /** Total content/email views. Source: `product_contents.views`. */
   views: number;
 
-  /**
-   * @property clicks - Total number of users who opened the content list
-   */
+  /** Total content-list opens/clicks. Source: `product_contents.clicks`. */
   clicks: number;
 
-  /**
-   * @property downloads - Total number of users who downloaded at least one file
-   */
+  /** Total buyers that downloaded at least one attached file. Source: `product_contents.downloads`. */
   downloads: number;
 
-  // Rating
-  /**
-   * @property rate_count - Total number of ratings
-   */
+  /** Total number of buyer ratings. Source: `product_contents.rate_count`. */
   rate_count: number;
 
-  /**
-   * @property rate - Rating value, ranging from 1 to 5
-   */
+  /** Average rating value, normally in the 1 to 5 range when rated. Source: `product_contents.rate`. */
   rate: number;
 
-  created_at: string;
-  updated_at: string;
+  /** Attached files when the backend eager-loads `ProductContent::files()`. */
+  files?: ProductFile[];
+
+  /** Creation timestamp serialized by Laravel when included. Source: `product_contents.created_at`. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel when included. Source: `product_contents.updated_at`. */
+  updated_at?: string | null;
 }

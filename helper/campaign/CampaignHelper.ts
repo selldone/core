@@ -43,10 +43,11 @@ export class CampaignHelper {
 
   static GetTotalSocials(campaign: Campaign) {
     let out = 0;
-    if (campaign.social) {
-      Object.keys(campaign.social).forEach((key) => {
+    const social = campaign.social;
+    if (social) {
+      Object.keys(social).forEach((key) => {
         if (!this.isSocialNetwork(key)) return;
-        out += campaign.social[key];
+        out += social[key];
       });
     }
     return out;
@@ -54,14 +55,15 @@ export class CampaignHelper {
 
   static GetSocialsOnly(campaign: Campaign, limit: number = 0) {
     const out: Record<string, number> = {};
-    if (campaign.social) {
+    const social = campaign.social;
+    if (social) {
       // 1. Sort values:
       let sorted: { key: string; value: number }[] = [];
-      Object.keys(campaign.social).forEach((key) => {
+      Object.keys(social).forEach((key) => {
         // 2. Filter only social:
         if (!this.isSocialNetwork(key)) return;
 
-        sorted.push({ key: key, value: campaign.social[key] });
+        sorted.push({ key: key, value: social[key] });
       });
       sorted.sortByKey("value");
 
@@ -85,10 +87,11 @@ export class CampaignHelper {
 
   static GetTotalOrganicSearch(campaign: Campaign) {
     let out = 0;
-    if (campaign.social) {
-      Object.keys(campaign.social).forEach((key) => {
+    const social = campaign.social;
+    if (social) {
+      Object.keys(social).forEach((key) => {
         if (!this.isSearch(key)) return;
-        out += campaign.social[key];
+        out += social[key];
       });
     }
     return out;

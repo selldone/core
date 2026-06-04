@@ -12,20 +12,66 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import CrossSellActionType from "../../../enums/product/CrossSellActionType";
+import type { Product } from "../product/product.model";
 
+/**
+ * Product cross-sell rule.
+ *
+ * Backend source: `App\Shop\Products\CrossSelling\CrossSelling`, table `shop_cross_selling`.
+ * Managed by `ProductCrossSelling*Controller` and translated by `CrossSellTranslationController`/vendor equivalent.
+ */
 export interface CrossSelling {
+  /** Cross-sell id. Source: `shop_cross_selling.id`. */
   id: number;
-  shopId: number;
-  userId?: number; // Last editor
-  productId: number; // Source Product
-  targetId: number; // Target Product
 
-  discount: number; // Discount percent
+  /** Owning shop id. Source: `shop_cross_selling.shop_id`. */
+  shop_id: number;
 
-  message?: string | null; // Custom message to display to customer.
-  action?: typeof CrossSellActionType | null; // Cross-sell action type
+  /** Last editor user id, or `null`. Source: nullable `shop_cross_selling.user_id`. */
+  user_id: number | null;
 
-  createdAt: string;
-  updatedAt: string;
+  /** Source product id. Source: `shop_cross_selling.product_id`. */
+  product_id: number;
+
+  /** Target product id shown as cross-sell. Source: `shop_cross_selling.target_id`. */
+  target_id: number;
+
+  /** Discount percent shown/applied for the cross-sell target. Source: `shop_cross_selling.discount`. */
+  discount: number;
+
+  /** Custom customer-facing message. Source: nullable `shop_cross_selling.message`. */
+  message: string | null;
+
+  /** Customer action code. Source enum: `AddToCart` or `ViewProduct`. */
+  action: CrossSelling.ActionCode;
+
+  /** Localized fields keyed by locale. Source: nullable JSON `shop_cross_selling.translations`. */
+  translations?: CrossSelling.Translations | null;
+
+  /** Creation timestamp. Source: `shop_cross_selling.created_at`. */
+  created_at: string;
+
+  /** Last update timestamp. Source: `shop_cross_selling.updated_at`. */
+  updated_at: string;
+
+  /** Source product relation when eager-loaded. */
+  product?: Product | Record<string, unknown>;
+
+  /** Target product relation when eager-loaded. */
+  target?: Product | Record<string, unknown>;
+
+  /** Last editor relation when eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+}
+
+export namespace CrossSelling {
+  /** Backend enum `App\Shop\Products\CrossSelling\enums\CrossSellActionType`. */
+  export type ActionCode = "AddToCart" | "ViewProduct";
+
+
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, Record<string, unknown>>;
 }

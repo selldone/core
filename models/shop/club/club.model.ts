@@ -24,44 +24,73 @@ import diamond from "./assets/customer-levels/diamond.svg";
 import diamondOutline from "./assets/customer-levels/diamond-outline.svg";
 
 /**
- * Represents a Shop's Club membership.
+ * Shop customer-club level configuration.
+ *
+ * Backend source: `App\Shop\Club\ShopClub`, table `shop_club`.
+ * Rows are unique by `(shop_id, level)` and are soft-deleted when disabled/removed.
  */
 export interface Club {
-  /** The associated shop's identifier. */
+  /** Club row id. Source: `shop_club.id`. */
+  id: number;
+
+  /** Owning shop id. Source: `shop_club.shop_id`. */
   shop_id: number;
 
-  /** The level of customer badge associated with the shop club. */
-  level: keyof typeof Club.Levels;
+  /** Customer badge level. Backend enum `ShopCustomerBadgeEnums::ALL`. */
+  level: Club.LevelCode;
 
-  /** Description of the shop club. */
-  description: string;
+  /** Club level description, or `null`. Source: nullable text `shop_club.description`. */
+  description: string | null;
 
-  /** Currency for the club's charges. */
+  /** Currency code used for monthly/annual thresholds and discount limit. */
   currency: string;
 
-  /** Monthly charge for the club membership. */
+  /** Monthly purchase threshold/amount. Source: `shop_club.monthly`. */
   monthly: number;
 
-  /** Annual charge for the club membership. */
+  /** Annual purchase threshold/amount. Source: `shop_club.annually`. */
   annually: number;
 
-  /** Discount percentage offered to the club members. */
+  /** Discount percent offered to customers in this club. Source: `shop_club.percent`. */
   percent: number;
 
-  /** Upper limit for the discount. */
+  /** Discount limit in `currency`; `0` means unlimited. Source: `shop_club.limit`. */
   limit: number;
 
-  /** Indicates if the club offers free shipping (1 for true, 0 for false). */
-  free_shipping: number;
+  /** Whether this club grants free shipping. Source: `shop_club.free_shipping` boolean. */
+  free_shipping: boolean;
 
-  /** Count of members or other relevant count metric. */
+  /** Number of times this club discount has been used. Source: `shop_club.used`. */
+  used: number;
+
+  /** Current customer count in this club level. Source: `shop_club.count`. */
   count: number;
+
+  /** Soft-delete timestamp when included. Source: `shop_club.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `shop_club.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_club.updated_at`. */
+  updated_at?: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Order history relations when eager-loaded. */
+  baskets?: Record<string, unknown>[];
+  pos_baskets?: Record<string, unknown>[];
+  virtual_items?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace Club {
+  /** Backend enum values for `shop_club.level`. */
+  export type LevelCode = "BRONZE" | "SILVER" | "GOLD" | "PLATINUM" | "DIAMOND";
+
   export const Levels = {
     BRONZE: {
       code: "BRONZE",

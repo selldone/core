@@ -12,76 +12,66 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Included-in-the-box content item assignable to products.
+ *
+ * Backend source: `App\Shop\Products\Includes\ShopInclude`, table `shop_includes`.
+ * Controllers: `Shop\Product\Includes\ShopIncludes*Controller`.
+ */
 export interface ShopInclude {
-  /**
-   * Unique identifier of the content item.
-   */
+  /** Unique include identifier. Source: `shop_includes.id`. */
   id: number;
 
-  /**
-   * ID representing the associated shop.
-   */
+  /** Owning shop id. Source: `shop_includes.shop_id`. */
   shop_id: number;
 
-  /**
-   * ID of the user who last edited this content item, if applicable.
-   */
+  /** Last editor user id. Source: nullable `shop_includes.user_id`. */
   user_id?: number | null;
 
-  /**
-   * Unique code associated with the content item.
-   */
+  /** Unique include code per shop. Source: `shop_includes.code`, unique with `shop_id`. */
   code: string;
 
-  /**
-   * Image URL or path associated with the content item, if applicable.
-   */
+  /** Optional include image path. Source: nullable `shop_includes.image`. */
   image?: string | null;
 
-  /**
-   * Title of the content item.
-   */
+  /** Public include title. Source: `shop_includes.title`. */
   title: string;
 
-  /**
-   * Description associated with the content item, if available.
-   */
+  /** Public include description. Source: nullable `shop_includes.description`. */
   description?: string | null;
 
-  /**
-   * External link associated with the content item, if available.
-   */
+  /** External link for the include profile. Source: nullable `shop_includes.url`. */
   url?: string | null;
 
-  /**
-   * Custom URL path. For example: shop-sample.com/in/{path}-{id}
-   */
+  /** Custom URL path for internal include profile pages. Source: nullable `shop_includes.path`. */
   path?: string | null;
 
-  /**
-   * ID of the page to load dynamically, if applicable.
-   */
+  /** Internal page-builder page id. Source: nullable `shop_includes.page_id`. */
   page_id?: number | null;
 
-  /**
-   * Name or identifier of the custom layout theme. This allows having multiple themes within a single web application.
-   */
+  /** Custom storefront theme code. Source: nullable `shop_includes.theme`. */
   theme?: string | null;
 
-  /**
-   * Extra information to help render or populate the dynamic page.
-   */
-  augment?: any[] | null; // You might want to use a more specific type if possible.
+  /** Page-builder/include augmentation JSON. Source: nullable JSON `shop_includes.augment`. */
+  augment?: Record<string, unknown> | null;
 
-  /**
-   * Creation date of the content item.
-   */
-  created_at: Date;
+  /** Localized include fields keyed by locale. Source: nullable JSON `shop_includes.translations`. */
+  translations?: Record<string, Record<string, unknown>> | null;
 
-  /**
-   * Last updated date of the content item.
-   */
-  updated_at: Date;
+  /** Creation timestamp serialized by Laravel when included. Source: `shop_includes.created_at`. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel when included. Source: `shop_includes.updated_at`. */
+  updated_at?: string | null;
+
+  /** Product relation when eager-loaded. Source: `ShopInclude::products()` serialized as `products`; pivot is hidden. */
+  products?: Record<string, unknown>[];
+
+  /** Page relation when eager-loaded. Source: `ShopInclude::page()` via `HasTheme`/page relation, serialized as `page`. */
+  page?: Record<string, unknown> | null;
+
+  /** Last editor relation when eager-loaded. Source: `ShopInclude::user()` serialized as `user`. */
+  user?: Record<string, unknown> | null;
 }
 
 export namespace ShopInclude {}

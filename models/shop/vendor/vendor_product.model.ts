@@ -12,58 +12,92 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
+import type { Product } from "../product/product.model";
+import type { ProductVariant } from "../product/product_variant.model";
+import type { Shop } from "../shop.model";
+import type { Vendor } from "./vendor.model";
+import type { VendorPricing } from "./vendor_pricing.model";
+
+/**
+ * Vendor-specific product offer/pricing row.
+ *
+ * Backend source: `App\Shop\Vendors\VendorProduct`, table `vendor_products`.
+ * Managed by `ProductVendorsController`; list endpoints eager-load `vendor`, `variant`, `pricing`, and a compact `product`.
+ */
 export interface VendorProduct {
-  /** Unique identifier for the product pricing */
+  /** Vendor-product row id. Source: `vendor_products.id`. */
   id: number;
 
-  /** Shop's unique identifier */
+  /** Owning marketplace shop id. Source: `vendor_products.shop_id`. */
   shop_id: number;
 
-  /** Product's unique identifier */
+  /** Product id. Source: `vendor_products.product_id`. */
   product_id: number;
 
-  /** Optional variant identifier if applicable */
-  variant_id?: number | null;
+  /** Variant id for variant-specific vendor rows, or `null` for product-level rows. Source: nullable `vendor_products.variant_id`. */
+  variant_id: number | null;
 
-  /** Vendor's unique identifier */
+  /** Vendor id. Source: `vendor_products.vendor_id`. */
   vendor_id: number;
 
-  /** Linked pricing model identifier */
-  pricing_id: number;
+  /** Linked pricing plan id, or `null` for manual price. Source: nullable `vendor_products.pricing_id`. */
+  pricing_id: number | null;
 
-  /** Flag indicating whether the product pricing is enabled. Products are shown to customers if quantity is greater than 0 */
+  /** Whether this vendor row can be shown/used when quantity is positive. Source: `vendor_products.enable`. */
   enable: boolean;
 
-  /** Vendor set raw price */
+  /** Raw price set by vendor before marketplace pricing. Source: `vendor_products.raw_price`. */
   raw_price: number;
 
-  /** Automatically calculated price based on commission. price = raw_price * commission */
+  /** Marketplace-facing price after pricing-plan calculation. Source: `vendor_products.price`. */
   price: number;
 
-  /** Currency code, e.g., USD, EUR, etc. */
+  /** ISO currency code from backend `Currency::GetCurrenciesList()`. Source: `vendor_products.currency`. */
   currency: string;
 
-  /** Commission rate applied to the raw price */
+  /** Commission amount stored on vendor product. Source: `vendor_products.commission`. */
   commission: number;
 
-  /** Applicable discount amount */
+  /** Absolute discount amount in `currency`. Source: `vendor_products.discount`. */
   discount: number;
 
-  /** Discount start date */
-  dis_start: string;
+  /** Discount start timestamp, or `null` when active immediately. Source: nullable `vendor_products.dis_start`. */
+  dis_start: string | null;
 
-  /** Discount end date */
-  dis_end: string;
+  /** Discount end timestamp, or `null` when no expiry is set. Source: nullable `vendor_products.dis_end`. */
+  dis_end: string | null;
 
-  /** Quantity of the product available */
+  /** Available quantity; changed from integer to float in migration `2025_01_13_100003`. */
   quantity: number;
 
-  /** Lead time for the product in hours */
+  /** Lead time in hours; `-1` is accepted by update validation. Source: `vendor_products.lead`. */
   lead: number;
 
-  /** Timestamp when the product pricing was created */
+  /** Creation timestamp. Source: `vendor_products.created_at`. */
   created_at: string;
 
-  /** Timestamp when the product pricing was last updated */
+  /** Last update timestamp. Source: `vendor_products.updated_at`. */
   updated_at: string;
+
+  /** Shop relation when eager-loaded. */
+  shop?: Shop;
+
+  /** Product relation when eager-loaded. */
+  product?: Product | Record<string, unknown>;
+
+  /** Variant relation when eager-loaded. */
+  variant?: ProductVariant | null;
+
+  /** Vendor relation when eager-loaded. */
+  vendor?: Pick<Vendor, "id" | "name" | "icon"> | Vendor;
+
+  /** Pricing relation when eager-loaded. */
+  pricing?: VendorPricing | null;
+
+  /** Extra pricing relation from `extraPricings()`, serialized as `extra_pricings`. */
+  extra_pricings?: ExtraPricing[];
+
+  /** Legacy camelCase relation alias used by older clients; backend JSON uses `extra_pricings`. */
+  extraPricings?: ExtraPricing[];
 }

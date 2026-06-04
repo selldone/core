@@ -12,11 +12,37 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Product badge definition owned by a shop.
+ *
+ * Backend source: `App\Shop\Product\ProductBadge`, table `product_badges`.
+ * Controller: `Shop\Product\ProductBadgesController`.
+ */
 export interface ProductBadge {
+  /** Unique product badge identifier. Source: `product_badges.id`. */
   id: number;
+
+  /** Owning shop id. Source: `product_badges.shop_id`. */
   shop_id: number;
-  title: string;
-  image: string;
-  pattern: any | null;
-  link: any | null;
+
+  /** Badge title; at least `title` or `image` is required by backend creation logic. Source: nullable `product_badges.title`. */
+  title: string | null;
+
+  /** Badge image path uploaded under `shops/{shop_id}/badges`. Source: nullable `product_badges.image`. */
+  image: string | null;
+
+  /** Pattern used to assign badges by checking product spec. Source: nullable `product_badges.pattern`. */
+  pattern: string | null;
+
+  /** Optional external/internal link URL. Source: nullable `product_badges.link`; controller validates URL on write. */
+  link: string | null;
+
+  /** Creation timestamp serialized by Laravel when included. Source: `product_badges.created_at`. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel when included. Source: `product_badges.updated_at`. */
+  updated_at?: string | null;
+
+  /** Shop relation when eager-loaded. Source: `ProductBadge::shop()` serialized as `shop`. */
+  shop?: Record<string, unknown>;
 }

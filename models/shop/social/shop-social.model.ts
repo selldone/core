@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -13,31 +12,56 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Social network link attached to a shop.
+ *
+ * Backend source: `App\Shop\Social\ShopSocial`, table `shop_socials`.
+ * Managed by `ShopSocialsController`; rows are unique by `(shop_id, network)`.
+ */
 export class ShopSocial implements ShopSocial.IShopSocial {
-  id: number;
-  shop_id: number;
-  network: string;
-  url: string;
-  active: boolean;
-  validation_url: string;
+  /** Social row id. Source: `shop_socials.id`. */
+  id!: number;
 
-  constructor(
-    data: {
-      id: number;
-      shop_id: number;
-    } & Partial<ShopSocial.IShopSocial>,
-  ) {
+  /** Owning shop id. Source: `shop_socials.shop_id`. */
+  shop_id!: number;
+
+  /** Network code/name, max 12 chars in DB. Source: `shop_socials.network`. */
+  network!: string;
+
+  /** Public social profile URL. Source: `shop_socials.url`. */
+  url!: string;
+
+  /** Whether this social link is shown in sticky/active UI. Source: `shop_socials.active` cast to boolean. */
+  active!: boolean;
+
+  /** Optional URL used for social account validation. Source: nullable `shop_socials.validation_url`. */
+  validation_url!: string | null;
+
+  /** Creation timestamp. Source: `shop_socials.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_socials.updated_at`. */
+  updated_at?: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  constructor(data: Partial<ShopSocial.IShopSocial> & { id?: number; shop_id?: number }) {
     Object.assign(this, data);
   }
 }
 
 export namespace ShopSocial {
+  /** Raw Eloquent shape returned for `shop_socials`. */
   export interface IShopSocial {
     id: number;
     shop_id: number;
     network: string;
     url: string;
     active: boolean;
-    validation_url: string;
+    validation_url: string | null;
+    created_at?: string;
+    updated_at?: string;
+    shop?: Record<string, unknown>;
   }
 }

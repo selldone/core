@@ -14,180 +14,344 @@
 
 import {Currency} from "../../../enums/payment/Currency";
 import {SubscriptionMode} from "../../../enums/subscription/SubscriptionMode";
+import type {Category} from "../category/category.model";
+import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
+import type {PropertySet} from "../property-set/property-set.model";
+import type {ProductContent} from "./product-content.model";
+import type {ProductData} from "./product-data.model";
+import type {ProductFile} from "./product-file.model";
+import type {ProductImage} from "./product-image.model";
+import type {ProductRating} from "./product-rating.model";
+import type {ProductVariant} from "./product_variant.model";
+import type {SubscriptionPrice} from "./subscription_price.model";
 
+/**
+ * Storefront product model backed by `App\Shop\Products\Product` and table `shop_products`.
+ *
+ * The backend may return a projection of this model. Fields that are database columns are documented with their source
+ * column. Eager-loaded Laravel relations are documented with the snake_case keys used in JSON responses.
+ */
 export class Product implements Product.IProduct {
-  /** @property {number} id - The unique identifier for the product. */
+  /** Product id. Source: `shop_products.id`. */
   id!: number;
 
-  /** @property {number} shop_id - The identifier for the shop that owns the product. */
+  /** Owning shop id. Source: `shop_products.shop_id`. */
   shop_id!: number;
 
-  /** @property {string} [action] - Product buy call to action. */
-  action?: string;
+  /** Product buy call-to-action text. Source: nullable `shop_products.action`. */
+  action?: string | null;
 
-  /** @property {Product.IAR} [ar] - AR 3D model. Created by the system. */
-  ar?: Product.IAR;
-  /**
-   * @property {number[] | null} [badges] - Keep badge ids.
-   * An array of badge identifiers associated with the product.
-   */
+  /** AR/3D metadata generated or accepted by backend. Source: nullable JSON `shop_products.ar`. */
+  ar?: Product.IAR | null;
+
+  /** Badge ids attached to the product. Source: nullable JSON `shop_products.badges`. */
   badges?: number[] | null;
-  /** @property {boolean} [best_content] - System Flag. Indicates if this product has great ranked content. */
+
+  /** Backend ranking flag for strong product content. Source: `shop_products.best_content`. */
   best_content?: boolean;
-  /** @property {boolean} [best_seller] - System Flag. Indicates if this is the bestseller product. */
+
+  /** Backend ranking flag for bestselling products. Source: `shop_products.best_seller`. */
   best_seller?: boolean;
-  /** @property {string} [blog] - A link to external resources. This link will be shown on the product page. */
-  blog?: string;
-  /** @property {string} [brand] - The brand name of the product. */
-  brand?: string;
-  /** @property {number} [category_id] - The identifier for the product's category. */
-  category_id?: number;
-  /** @property {number} commission - The commission on the product, defaults to 0. */
+
+  /** External blog/resource URL shown on the product page. Source: nullable `shop_products.blog`. */
+  blog?: string | null;
+
+  /** Product brand. Source: nullable `shop_products.brand`. */
+  brand?: string | null;
+
+  /** Primary category id. Source: nullable `shop_products.category_id`. */
+  category_id?: number | null;
+
+  /** Commission amount added during price calculation. Source: `shop_products.commission`, default `0`. */
   commission: number = 0;
-  /**
-   * @property {Product.ProductCondition} condition - The condition of the product, defaults to NEW.
-   * Can be 'NEW', 'USED', 'REFURBISHED', etc.
-   */
+
+  /** Product condition. Source: `shop_products.condition`. */
   condition: Product.ProductCondition = Product.ProductCondition.NEW;
-  /** @property {number} [connect_id] - This product was created by this connect provider. */
-  connect_id?: number;
-  /** @property {Record<string, string>} [cons] - The list of disadvantages. */
-  cons?: Record<string, string>;
-  /** @property {keyof typeof Currency} currency - The currency code, e.g., 'USD', 'EUR'. */
+
+  /** Connect/import provider id. Source: nullable `shop_products.connect_id`. */
+  connect_id?: number | null;
+
+  /** Product disadvantages shown in product content. Source: nullable JSON `shop_products.cons`. */
+  cons?: Record<string, string> | null;
+
+  /** Product price currency. Source: `shop_products.currency`. */
   currency!: keyof typeof Currency;
-  /** @property {string | null} [dis_end] - The end date for the product discount. */
+
+  /** Discount end timestamp, or `null` when no end is set. Source: nullable `shop_products.dis_end` cast to datetime. */
   dis_end!: string | null;
-  /** @property {string | null} [dis_start] - The start date for the product discount. */
+
+  /** Discount start timestamp, or `null` when no start is set. Source: nullable `shop_products.dis_start` cast to datetime. */
   dis_start!: string | null;
-  /** @property {number} discount - The discount amount on the product. */
+
+  /** Discount amount subtracted during price calculation. Source: `shop_products.discount`, default `0`. */
   discount!: number;
-  /** @property {Product.IExtra} [extra] - Additional details about the product. */
-  extra?: Product.IExtra;
-  /** @property {number} [for_auction] - Total users who wait for auction. */
+
+  /** Physical dimensions/weight metadata. Source: nullable JSON/text `shop_products.extra`. */
+  extra?: Product.IExtra | null;
+
+  /** Count of users waiting for auction. Source: `shop_products.for_auction`. */
   for_auction?: number;
-  /** @property {number} [for_available] - Total users who wait to available. */
+
+  /** Count of users waiting for the product to become available. Source: `shop_products.for_available`. */
   for_available?: number;
 
-  /** @property {string} [gpc] - The Global Product Classification code for the product. */
-  gpc?: string;
-  /** @property {string} [gtin] - The Global Trade Item Number for the product. */
-  gtin?: string;
-  /** @property {number} [guide_id] - Assigned guide profile ID. This guide will be shown on the product page. */
-  guide_id?: number;
-  /** @property {string} [hsn] - Harmonized System Nomenclature code for international trade. */
-  hsn?: string;
-  /** @property {any[]} [inputs] - The structure of input form for extra information about purchased product. */
-  inputs?: any[];
-  /** @property {string} [lead] - Lead time required for the product. */
-  lead?: string;
-  /** @property {number} [map_id] - Assigned location tag on the map. */
-  map_id?: number;
-  /** @property {string} [message] - This note will be shown to the customer in the product and basket page. */
-  message?: string;
-  /** @property {string} [mpn] - The Manufacturer Part Number for the product. */
-  mpn?: string;
-  /** @property {any} [note] - General note or additional information about the product. */
-  note?: any;
-  /** @property {number} [officer] - Officer user id. The user who creates this product. */
-  officer?: number;
-  /** @property {number} [order] - The order index to custom sort products. */
+  /** Google Product Category id. Source: nullable unsigned integer `shop_products.gpc`. */
+  gpc?: number | null;
+
+  /** Global Trade Item Number. Source: nullable `shop_products.gtin`. */
+  gtin?: string | null;
+
+  /** Assigned guide logistic profile id. Source: nullable `shop_products.guide_id`. */
+  guide_id?: number | null;
+
+  /** Harmonized System Nomenclature code. Source: nullable `shop_products.hsn`. */
+  hsn?: string | null;
+
+  /** Custom buyer input form structure. Source: nullable JSON/text `shop_products.inputs`. */
+  inputs?: unknown[] | null;
+
+  /** Lead time in hours; `-1` means backend/default behavior. Source: `shop_products.lead`. */
+  lead?: number;
+
+  /** Assigned map tag id. Source: nullable `shop_products.map_id`. */
+  map_id?: number | null;
+
+  /** Message shown to customers after purchase or in basket/product views. Source: nullable `shop_products.message`. */
+  message?: string | null;
+
+  /** Manufacturer Part Number. Source: nullable `shop_products.mpn`. */
+  mpn?: string | null;
+
+  /** Internal team notes. Source: nullable JSON `shop_products.note`; usually omitted from public storefront payloads. */
+  note?: Product.INote[] | null;
+
+  /** Officer user id that created/manages the product. Source: `shop_products.officer`. */
+  officer?: number | null;
+
+  /** Custom sort order. Source: `shop_products.order`, default `0`. */
   order?: number;
-  /** @property {boolean} [original] - Indicates if the product is original. */
+
+  /** Whether product is original/authentic. Source: `shop_products.original`. */
   original?: boolean;
-  /** @property {any[]} [outputs] - The structure of output form for virtual items purchase. */
-  outputs?: any[];
-  /** @property {number} [parent_id] - For middle sellers, the main product in drop-shipping supplier store. */
-  parent_id?: number;
-  /** @property {number} price - The price of the product. */
+
+  /** Output form/data structure for virtual/file/service fulfillment. Source: nullable JSON/text `shop_products.outputs`. */
+  outputs?: unknown[] | null;
+
+  /** Dropshipping source product id. Source: nullable `shop_products.parent_id`. */
+  parent_id?: number | null;
+
+  /** Base product price. Source: `shop_products.price`. */
   price!: number;
-  /** @property {Product.PriceInputType} [price_input] - The type of input used for the product price. */
+
+  /** Price input mode for variable pricing. Source: `shop_products.price_input`. */
   price_input?: Product.PriceInputType;
-  /** @property {string} [price_label] - Add extra info about price like ($1.5/Fl Oz). */
-  price_label?: string;
-  /** @property {Product.ProductPricing} [pricing] - The pricing strategy for the product. */
+
+  /** Optional public price label such as `$1.5/Fl Oz`. Source: nullable `shop_products.price_label`. */
+  price_label?: string | null;
+
+  /** Product pricing strategy. Source: `shop_products.pricing`. */
   pricing?: Product.ProductPricing;
-  /** @property {Record<string, string>} [pros] - The list of advantages or positive aspects. */
-  pros?: Record<string, string>;
-  /** @property {number} [quantity] - The available quantity of the product. */
+
+  /** Product advantages shown in product content. Source: nullable JSON `shop_products.pros`. */
+  pros?: Record<string, string> | null;
+
+  /** Available stock quantity; supports fractional units. Source: `shop_products.quantity` cast to float. */
   quantity?: number;
-  /** @property {number} rate - The average rating of the product. */
+
+  /** Average product rating. Source: `shop_products.rate`, default `0`. */
   rate?: number;
-  /** @property {number} rate_count - The total number of buyers who rated this product. */
+
+  /** Total number of buyer ratings. Source: `shop_products.rate_count`, default `0`. */
   rate_count?: number;
-  /** @property {number} [repository_id] - This product was created from products repository. */
-  repository_id?: number;
-  /** @property {boolean} [reselling] - Indicates if the product is available for drop-shipping. */
+
+  /** Repository source product id. Source: nullable `shop_products.repository_id`. */
+  repository_id?: number | null;
+
+  /** Whether this product can be resold by middle sellers. Source: `shop_products.reselling`. */
   reselling?: boolean;
-  /** @property {number} [reselling_count] - Total number of products sold by resellers. */
+
+  /** Count of reseller sales/products. Source: `shop_products.reselling_count`. */
   reselling_count?: number;
-  /** @property {number} [reselling_shops] - Total number of shops reselling this product. */
+
+  /** Number of shops reselling this product. Source: `shop_products.reselling_shops`. */
   reselling_shops?: number;
-  /** @property {number} [return_policy_id] - Assigned return policy profile ID. */
-  return_policy_id?: number;
-  /** @property {number} [return_warranty] - The duration in hours to return goods after receiving order by buyer. */
+
+  /** Assigned return policy profile id. Source: nullable `shop_products.return_policy_id`. */
+  return_policy_id?: number | null;
+
+  /** Return window value. Source: `shop_products.return_warranty`; backend comments conflict between days and hours. */
   return_warranty?: number;
-  /** @property {Product.IRibbon} [ribbon] - Keep ribbon configurations. */
-  ribbon?: Product.IRibbon;
-  /** @property {number} [sells] - Total sales of this product. */
+
+  /** Subscription ribbon configuration. Source: nullable JSON `shop_products.ribbon`. */
+  ribbon?: Product.IRibbon | null;
+
+  /** Total sales counter. Source: `shop_products.sells`. */
   sells?: number;
 
-  /**
-   * Custom sipping price (for drop-shipping suppliers only)
-   * e.g. {"EE":22,"PS":23,"TL":22,"EH":0,"DK":0,"SE":0,"FR":0,"US":0,"GB":0,"AE":0,"TN":0,"NL":0}
-   */
+  /** Custom dropshipping shipping price map by country code. Source: nullable JSON `shop_products.shipping`. */
   shipping?: Record<string, number> | null;
-  /** @property {number} [shipping_id] - Assigned shipping profile ID. */
-  shipping_id?: number;
-  /** @property {string} [sku] - Stock Keeping Unit identifier for the product. */
-  sku?: string;
-  /** @property {string} [slug] - The slug to create SEO friendly URL. */
-  slug?: string;
-  /** @property {Product.ISpec} [spec] - A JSON of key/value pairs representing the product specifications. */
-  spec?: Product.ISpec;
-  /** @property {object[] | null} [spec_order] - The list of keys in spec to define the order of items in the table. */
-  spec_order?: object[] | null;
-  /** @property {Product.ProductStatus} [status] - Can be 'Open', or 'Close'. Indicates the availability of the product. */
+
+  /** Assigned shipping logistic profile id. Source: nullable `shop_products.shipping_id`. */
+  shipping_id?: number | null;
+
+  /** Product SKU. Source: nullable `shop_products.sku`. */
+  sku?: string | null;
+
+  /** SEO-friendly product slug. Source: nullable `shop_products.slug`. */
+  slug?: string | null;
+
+  /** Product specification key/value map. Source: nullable JSON `shop_products.spec`. */
+  spec?: Product.ISpec | null;
+
+  /** Display order for specification keys/groups. Source: nullable JSON `shop_products.spec_order`. */
+  spec_order?: Array<string | Record<string, unknown>> | null;
+
+  /** Product status. Source: `shop_products.status`. */
   status?: Product.ProductStatus;
-  /** @property {{ contain: boolean }} [style] - Style of the product. */
-  style?: { contain: boolean };
-  /** @property {string[]} [tags] - List of product tags. */
-  tags?: string[];
-  /** @property {number} [tax_id] - Assigned tax profile ID. */
-  tax_id?: number;
-  /** @property {string} [title] - Title of the product. */
+
+  /** Product display style options. Source: nullable JSON `shop_products.style`. */
+  style?: Product.IStyle | null;
+
+  /** Product tags. Source: nullable JSON `shop_products.tags`. */
+  tags?: string[] | null;
+
+  /** Assigned tax profile id. Source: nullable `shop_products.tax_id`. */
+  tax_id?: number | null;
+
+  /** Public product title. Source: `shop_products.title`. */
   title?: string;
-  /** @property {string} [title_en] - Subtitle of the product, preferably in English. */
-  title_en?: string;
-  /** @property {Product.ProductType} [type] - The type of product. */
+
+  /** English/secondary product title. Source: nullable `shop_products.title_en`. */
+  title_en?: string | null;
+
+  /** Product type. Source: `shop_products.type`. */
   type?: Product.ProductType;
-  /** @property {string} [unit] - Custom product unit (e.g., cm, litre, bottle). */
-  unit?: string;
-  /** @property {boolean} ["unit_float"] - Indicates if a fractional unit can be ordered (e.g., 3.5 kg of fruit). */
+
+  /** Custom unit label such as `kg`, `cm`, `bottle`. Source: nullable `shop_products.unit`. */
+  unit?: string | null;
+
+  /** Whether fractional quantities are allowed. Source: `shop_products.unit_float`. */
   unit_float?: boolean;
-  /** @property {number} [valuation_id] - Identifier for the valuation method used. */
-  valuation_id?: number;
-  /** @property {Product.IVariant[] | null} [variants] - A list of variants of the product. */
+
+  /** Assigned valuation id for custom price inputs. Source: nullable `shop_products.valuation_id`. */
+  valuation_id?: number | null;
+
+  /** Variant dimensions/options configuration JSON, not the variant relation rows. Source: nullable `shop_products.variants`. */
   variants?: Product.IVariant[] | null;
-  /** @property {number} [vendor_id] - The identifier for the vendor of the product. */
-  vendor_id?: number;
 
-  /** @property {string} [video] - Youtube video ID for the product. e.g. ZGbxEgSIyWE */
-  video?: string;
-  /** @property {number} [visits] - Total number of visits to the product page. */
+  /** Marketplace vendor owner id. Source: nullable `shop_products.vendor_id`. */
+  vendor_id?: number | null;
+
+  /** YouTube video id. Source: nullable `shop_products.video`. */
+  video?: string | null;
+
+  /** Product page visits counter. Source: `shop_products.visits`. */
   visits?: number;
-  /** @property {string} [warranty] - A short warranty condition and name. */
-  warranty?: string;
-  /** @property {number} [warranty_id] - Assigned warranty profile ID. */
-  warranty_id?: number;
-  /** @property {Record<string, Array<string>>} [locations] - Specific locations associated with the product. */
-  locations?: Record<string, Array<string>>;
 
-  /** @property {string | null} [icon] - Optional icon for the product. */
+  /** Short warranty label/terms. Source: nullable `shop_products.warranty`. */
+  warranty?: string | null;
+
+  /** Assigned warranty logistic profile id. Source: nullable `shop_products.warranty_id`. */
+  warranty_id?: number | null;
+
+  /** Location restrictions by country code. Source: nullable JSON `shop_products.locations`. */
+  locations?: Record<string, string[]> | null;
+
+  /** Raw product icon/image path. Source: nullable `shop_products.icon`. */
   icon?: string | null;
 
+  /** Product inventory/sales threshold configuration. Source: nullable JSON `shop_products.thresholds`. */
   thresholds?: Product.IThresholds | null;
 
+  /** Custom product attributes. Source: nullable JSON `shop_products.attributes`. */
   attributes?: Product.IAttributes | null;
+
+  /** Raw cover image path. Source: nullable `shop_products.cover`. */
+  declare cover?: string | null;
+
+  /** External buy URL. Source: nullable `shop_products.external`. */
+  declare external?: string | null;
+
+  /** Storefront product theme code. Source: nullable `shop_products.theme`. */
+  declare theme?: string | null;
+
+  /** Page-builder/product augmentation JSON. Source: nullable JSON `shop_products.augment`. */
+  declare augment?: Record<string, unknown> | null;
+
+  /** Localized product fields keyed by locale. Source: nullable JSON `shop_products.translations`. */
+  declare translations?: Product.Translations | null;
+
+  /** Additional category ids for shortcut listing. Source: nullable JSON `shop_products.shortcuts`; validated as max 5 ids. */
+  declare shortcuts?: number[] | null;
+
+  /** Private integration metadata. Source: nullable JSON `shop_products.meta`; `audit` is hidden by backend. */
+  declare meta?: Record<string, unknown> | null;
+
+  /** Property set profile id for customized variants/fields. Source: nullable `shop_products.property_set_id`. */
+  declare property_set_id?: number | null;
+
+  /** Internal page-builder page id. Source: nullable `shop_products.page_id`. */
+  declare page_id?: number | null;
+
+  /** Minimum order quantity, `0` for no limit. Source: `shop_products.limit_min`. */
+  declare limit_min?: number;
+
+  /** Maximum order quantity, `0` for no limit. Source: `shop_products.limit_max`. */
+  declare limit_max?: number;
+
+  /** Soft-delete timestamp when returned. Source: nullable `shop_products.deleted_at`. */
+  declare deleted_at?: string | null;
+
+  /** Creation timestamp serialized by Laravel when included. Source: `shop_products.created_at`. */
+  declare created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel when included. Source: `shop_products.updated_at`. */
+  declare updated_at?: string | null;
+
+  /** Primary category relation when eager-loaded. Source: `Product::category()` serialized as `category`. */
+  declare category?: Category | null;
+
+  /** Product image relation when eager-loaded. Source: `Product::images()` serialized as `images`. */
+  declare images?: ProductImage[];
+
+  /** Product variant relation when eager-loaded. Source: `Product::productVariants()` serialized as `product_variants`. */
+  declare product_variants?: ProductVariant[];
+
+  /** Product file relation when eager-loaded. Source: `Product::files()` serialized as `files`. */
+  declare files?: ProductFile[];
+
+  /** Rating aggregate relation when eager-loaded. Source: `Product::ratings()` serialized as `ratings`. */
+  declare ratings?: ProductRating[];
+
+  /** Subscription/content relation when eager-loaded. Source: `Product::contents()` serialized as `contents`. */
+  declare contents?: ProductContent[];
+
+  /** Daily analytics relation when eager-loaded. Source: `Product::data()` serialized as `data`. */
+  declare data?: ProductData[];
+
+  /** Extra-pricing relation when eager-loaded. Source: `Product::extraPricings()` serialized as `extra_pricings`. */
+  declare extra_pricings?: ExtraPricing[];
+
+  /** Include/accessory relation when eager-loaded. Source: `Product::includes()` serialized as `includes`. */
+  declare includes?: Record<string, unknown>[];
+
+  /** Subscription price relation when eager-loaded. Source: `Product::subscriptionPrices()` serialized as `subscription_prices`. */
+  declare subscription_prices?: SubscriptionPrice[];
+
+  /** Property set relation when eager-loaded. Source: `Product::propertySet()` serialized as `property_set`. */
+  declare property_set?: PropertySet | null;
+
+  /** Parent dropshipping product relation when eager-loaded. Source: `Product::parent()` serialized as `parent`. */
+  declare parent?: Product | null;
+
+  /** Child dropshipping products when eager-loaded. Source: `Product::children()` serialized as `children`. */
+  declare children?: Product[];
+
+  /** Marketplace vendor relation when eager-loaded. Source: `Product::vendor()` serialized as `vendor`. */
+  declare vendor?: Record<string, unknown> | null;
+
+  /** Marketplace vendor-product rows when eager-loaded. Source: `Product::vendorProducts()` serialized as `vendor_products`. */
+  declare vendor_products?: Record<string, unknown>[];
 
   constructor(
     data: {
@@ -200,6 +364,7 @@ export class Product implements Product.IProduct {
 }
 
 export namespace Product {
+  /** Product fulfillment type. Source enum: `App\Shop\Products\Enums\ProductType`. */
   export enum ProductType {
     PHYSICAL = "PHYSICAL",
     VIRTUAL = "VIRTUAL",
@@ -208,6 +373,7 @@ export namespace Product {
     SUBSCRIPTION = "SUBSCRIPTION",
   }
 
+  /** Variable price input mode. Source enum: `App\Shop\Products\Enums\PriceInputType`. */
   export enum PriceInputType {
     DEFAULT = "default",
     AREA = "area",
@@ -215,13 +381,19 @@ export namespace Product {
     CUSTOM = "custom",
   }
 
+  /** Product pricing strategy. Source enum: `App\Shop\Products\Enums\ProductPricing`. */
   export enum ProductPricing {
-    FIX = "FIX", // Fix price    (Physical, Virtual, File, Service)
-    ESTIMATION = "ESTIMATION", // Set price in pre-checkout by seller and can be change in future (Service only)
-    AGREEMENT = "AGREEMENT", // Set final price in pre-checkout by seller (Service only)
-    BID = "BID", // Bid on product by buyer (Higher win) -> Disable now
+    /** Fixed price used by physical, virtual, file, and service products. */
+    FIX = "FIX",
+    /** Seller estimates/sets service price before checkout and may change it later. */
+    ESTIMATION = "ESTIMATION",
+    /** Seller sets final agreed service price before checkout. */
+    AGREEMENT = "AGREEMENT",
+    /** Buyer bid flow; kept for backend compatibility. */
+    BID = "BID",
   }
 
+  /** Product condition. Source enum: `App\Shop\Products\Enums\ProductCondition`. */
   export enum ProductCondition {
     NEW = "new",
     REFURBISHED = "refurbished",
@@ -231,155 +403,355 @@ export namespace Product {
     USED_LIKE_NEW = "used_like_new",
   }
 
+  /** Product publication/workflow status. Source enum: `App\Shop\Products\Enums\ProductStatus`. */
   export enum ProductStatus {
     Open = "Open",
     Close = "Close",
-
-    // Only in Marketplace
-    Pending = "Pending", // Added by vendor and pending to accept by marketplace owner (If marketplace set to have verify process)
-    Rejected = "Rejected", // Rejected by marketplace owner
+    Pending = "Pending",
+    Rejected = "Rejected",
   }
 
+  /** Product specification JSON from `shop_products.spec`. */
   export interface ISpec {
-    [key: string]: string[] | "group";
+    [key: string]: string[] | string | number | boolean | null;
   }
 
+  /** Product display style JSON from `shop_products.style`. */
+  export interface IStyle {
+    /** Whether storefront images should use contain-fit behavior. */
+    contain?: boolean;
+    /** Backend/storefront themes may add custom style flags. */
+    [key: string]: unknown;
+  }
+
+  /** Variant dimensions/options configuration stored on `shop_products.variants`. */
   export interface IVariant {
-    color: string;
-    style: string | null;
-    volume: string | null;
-    weight: string;
-    pack: string | null;
-    type: string;
+    /** Color option label/code. */
+    color?: string | null;
+    /** Style option label. */
+    style?: string | null;
+    /** Volume option label. */
+    volume?: string | null;
+    /** Weight option label. */
+    weight?: string | null;
+    /** Pack/count option label. */
+    pack?: string | null;
+    /** Custom type option label. */
+    type?: string | null;
   }
 
+  /** Subscription ribbon configuration stored in `shop_products.ribbon`. */
   export interface IRibbon {
+    /** Subscription mode key. */
     mode: keyof typeof SubscriptionMode;
+    /** Linked product/variant/count configuration for subscription bundles. */
     items?: {
       product_id: number;
       variant_id?: number | null;
       count: number;
     };
-    billing: boolean; // Ask user about billing address.
-    shipping: boolean; // Ask user about shipping address.
-    count: boolean; // User can set more than one for purchasing this subscription item.
+    /** Whether the customer should provide billing address. */
+    billing: boolean;
+    /** Whether the customer should provide shipping address. */
+    shipping: boolean;
+    /** Whether the customer can purchase more than one subscription item. */
+    count: boolean;
   }
 
+  /** AR/3D model metadata stored in `shop_products.ar` and `shop_product_variant.ar`. */
   export interface IAR {
+    /** Original uploaded source file path. */
     src_file?: string;
+    /** Converted/public AR asset path. */
     src?: string;
+    /** Source file size/path metadata returned by backend converters. */
     size_src?: string;
+    /** Original source file name. */
     name_src?: string;
+    /** Backend can add converter-specific metadata. */
+    [key: string]: unknown;
   }
 
+  /** Physical extra parameters stored in `shop_products.extra` and variant `extra`. */
   export interface IExtra {
+    /** Width value in the shop-defined measurement unit. */
     width?: number;
+    /** Length value in the shop-defined measurement unit. */
     length?: number;
+    /** Height value in the shop-defined measurement unit. */
     height?: number;
+    /** Weight value in the shop-defined measurement unit. */
     weight?: number;
+    /** Backend can add shipping/provider-specific keys. */
+    [key: string]: unknown;
   }
+
+  /** Internal team note stored in `shop_products.note`. */
+  export interface INote {
+    /** User id of the note author. */
+    user_id: number;
+    /** Display name captured for the author. */
+    user_name: string;
+    /** Note body. */
+    body: string;
+    /** Note timestamp as returned by Laravel/JSON serialization. */
+    date: string | Date;
+  }
+
+  /** Localized product fields keyed by locale code. */
+  export type Translations = Record<string, Record<string, unknown>>;
 
   export interface IProduct {
+    /** Product id. Source: `shop_products.id`. */
     id: number | null;
+    /** Owning shop id. Source: `shop_products.shop_id`. */
     shop_id: number | null;
+    /** Marketplace vendor owner id. Source: nullable `shop_products.vendor_id`. */
     vendor_id?: number | null;
+    /** Product type. Source: `shop_products.type`. */
     type?: ProductType;
+    /** Custom sort order. Source: `shop_products.order`. */
     order?: number;
-    unit?: string;
+    /** Custom unit label. Source: nullable `shop_products.unit`. */
+    unit?: string | null;
+    /** Whether fractional quantities are allowed. Source: `shop_products.unit_float`. */
     unit_float?: boolean;
+    /** Price input mode. Source: `shop_products.price_input`. */
     price_input?: PriceInputType;
-    officer?: number | null; // Officer user id
+    /** Officer user id. Source: `shop_products.officer`. */
+    officer?: number | null;
+    /** Assigned valuation id. Source: nullable `shop_products.valuation_id`. */
     valuation_id?: number | null;
+    /** Product pricing strategy. Source: `shop_products.pricing`. */
     pricing?: ProductPricing;
-    price: number; // Assuming price is numeric.
+    /** Base price. Source: `shop_products.price`. */
+    price: number;
+    /** Price currency code. Source: `shop_products.currency`. */
     currency: keyof typeof Currency;
+    /** Commission amount. Source: `shop_products.commission`. */
     commission: number;
+    /** Discount amount. Source: `shop_products.discount`. */
     discount: number;
-    dis_start: string | null; // Using Date for datetime types.
+    /** Discount start timestamp. Source: nullable `shop_products.dis_start`. */
+    dis_start: string | null;
+    /** Discount end timestamp. Source: nullable `shop_products.dis_end`. */
     dis_end: string | null;
-    price_label?: string;
+    /** Public price label. Source: nullable `shop_products.price_label`. */
+    price_label?: string | null;
+    /** Product status. Source: `shop_products.status`. */
     status?: ProductStatus;
+    /** Public title. Source: `shop_products.title`. */
     title?: string;
-    title_en?: string;
+    /** English/secondary title. Source: nullable `shop_products.title_en`. */
+    title_en?: string | null;
+    /** SKU. Source: nullable `shop_products.sku`. */
     sku?: string | null;
+    /** Manufacturer Part Number. Source: nullable `shop_products.mpn`. */
     mpn?: string | null;
+    /** Global Trade Item Number. Source: nullable `shop_products.gtin`. */
     gtin?: string | null;
-    gpc?: string | null;
+    /** Google Product Category id. Source: nullable `shop_products.gpc`. */
+    gpc?: number | null;
+    /** Harmonized System Nomenclature code. Source: nullable `shop_products.hsn`. */
     hsn?: string | null;
+    /** Product condition. Source: `shop_products.condition`. */
     condition?: ProductCondition;
+    /** Brand. Source: nullable `shop_products.brand`. */
     brand?: string | null;
+    /** Warranty terms. Source: nullable `shop_products.warranty`. */
     warranty?: string | null;
-    spec?: object | null;
-    spec_order?: object[] | null;
-    pros?: Record<string, string>;
-    cons?: Record<string, string>;
-    message?: string;
-    outputs?: any[]; // Need more details on the structure.
-    inputs?: any[]; // Need more details on the structure.
+    /** Product specification JSON. Source: nullable `shop_products.spec`. */
+    spec?: ISpec | null;
+    /** Specification display order. Source: nullable `shop_products.spec_order`. */
+    spec_order?: Array<string | Record<string, unknown>> | null;
+    /** Pros map. Source: nullable `shop_products.pros`. */
+    pros?: Record<string, string> | null;
+    /** Cons map. Source: nullable `shop_products.cons`. */
+    cons?: Record<string, string> | null;
+    /** Product message. Source: nullable `shop_products.message`. */
+    message?: string | null;
+    /** Output form/data structure. Source: nullable `shop_products.outputs`. */
+    outputs?: unknown[] | null;
+    /** Buyer input form structure. Source: nullable `shop_products.inputs`. */
+    inputs?: unknown[] | null;
+    /** Variant dimension configuration JSON. Source: nullable `shop_products.variants`. */
     variants?: IVariant[] | null;
-    blog?: string;
-    category_id?: number;
+    /** Blog/resource URL. Source: nullable `shop_products.blog`. */
+    blog?: string | null;
+    /** Primary category id. Source: nullable `shop_products.category_id`. */
+    category_id?: number | null;
+    /** Shortcut category ids. Source: nullable `shop_products.shortcuts`. */
+    shortcuts?: number[] | null;
+    /** Available quantity. Source: `shop_products.quantity`. */
     quantity?: number;
-    lead?: string;
-    extra?: IExtra; // Assuming generic object, need more details.
-    style?: { contain: boolean };
+    /** Minimum order quantity. Source: `shop_products.limit_min`. */
+    limit_min?: number;
+    /** Maximum order quantity. Source: `shop_products.limit_max`. */
+    limit_max?: number;
+    /** Lead time in hours. Source: `shop_products.lead`. */
+    lead?: number;
+    /** Physical extra metadata. Source: nullable `shop_products.extra`. */
+    extra?: IExtra | null;
+    /** Display style JSON. Source: nullable `shop_products.style`. */
+    style?: IStyle | null;
+    /** Visit counter. Source: `shop_products.visits`. */
     visits?: number;
+    /** Average rating. Source: `shop_products.rate`. */
     rate?: number;
+    /** Rating count. Source: `shop_products.rate_count`. */
     rate_count?: number;
+    /** Wait-for-available count. Source: `shop_products.for_available`. */
     for_available?: number;
+    /** Wait-for-auction count. Source: `shop_products.for_auction`. */
     for_auction?: number;
+    /** Sales count. Source: `shop_products.sells`. */
     sells?: number;
+    /** Return window value; backend comments conflict on days/hours. Source: `shop_products.return_warranty`. */
     return_warranty?: number;
+    /** Original/authentic flag. Source: `shop_products.original`. */
     original?: boolean;
+    /** Bestseller flag. Source: `shop_products.best_seller`. */
     best_seller?: boolean;
+    /** Best-content flag. Source: `shop_products.best_content`. */
     best_content?: boolean;
-    slug?: string;
-    ar?: IAR;
-    note?: any; // Need more details.
-    video?: string;
-    badges?: number[] | null; // Need more details.
+    /** SEO slug. Source: nullable `shop_products.slug`. */
+    slug?: string | null;
+    /** AR/3D metadata. Source: nullable JSON `shop_products.ar`. */
+    ar?: IAR | null;
+    /** Team notes. Source: nullable JSON `shop_products.note`. */
+    note?: INote[] | null;
+    /** YouTube video id. Source: nullable `shop_products.video`. */
+    video?: string | null;
+    /** Badge ids. Source: nullable JSON `shop_products.badges`. */
+    badges?: number[] | null;
+    /** Dropshipping enabled flag. Source: `shop_products.reselling`. */
     reselling?: boolean;
+    /** Dropshipping shipping costs by country code. Source: nullable JSON `shop_products.shipping`. */
     shipping?: Record<string, number> | null;
+    /** Number of reseller shops. Source: `shop_products.reselling_shops`. */
     reselling_shops?: number;
+    /** Reseller sales/product count. Source: `shop_products.reselling_count`. */
     reselling_count?: number;
-    parent_id?: number;
-    repository_id?: number;
-    connect_id?: number;
-    warranty_id?: number;
-    return_policy_id?: number;
-    guide_id?: number;
-    shipping_id?: number;
-    tax_id?: number;
-    map_id?: number;
-    tags?: string[];
-    ribbon?: IRibbon;
-    action?: string;
-    locations?: Record<string, Array<string>>;
+    /** Dropshipping source product id. Source: nullable `shop_products.parent_id`. */
+    parent_id?: number | null;
+    /** Repository source id. Source: nullable `shop_products.repository_id`. */
+    repository_id?: number | null;
+    /** Connect provider id. Source: nullable `shop_products.connect_id`. */
+    connect_id?: number | null;
+    /** Warranty profile id. Source: nullable `shop_products.warranty_id`. */
+    warranty_id?: number | null;
+    /** Return policy profile id. Source: nullable `shop_products.return_policy_id`. */
+    return_policy_id?: number | null;
+    /** Guide profile id. Source: nullable `shop_products.guide_id`. */
+    guide_id?: number | null;
+    /** Shipping profile id. Source: nullable `shop_products.shipping_id`. */
+    shipping_id?: number | null;
+    /** Tax profile id. Source: nullable `shop_products.tax_id`. */
+    tax_id?: number | null;
+    /** Map tag id. Source: nullable `shop_products.map_id`. */
+    map_id?: number | null;
+    /** Product tags. Source: nullable JSON `shop_products.tags`. */
+    tags?: string[] | null;
+    /** Ribbon config. Source: nullable JSON `shop_products.ribbon`. */
+    ribbon?: IRibbon | null;
+    /** Buy call-to-action text. Source: nullable `shop_products.action`. */
+    action?: string | null;
+    /** External buy URL. Source: nullable `shop_products.external`. */
+    external?: string | null;
+    /** Location restrictions. Source: nullable JSON `shop_products.locations`. */
+    locations?: Record<string, string[]> | null;
+    /** Raw icon path. Source: nullable `shop_products.icon`. */
     icon?: string | null;
+    /** Raw cover path. Source: nullable `shop_products.cover`. */
+    cover?: string | null;
+    /** Theme code. Source: nullable `shop_products.theme`. */
+    theme?: string | null;
+    /** Product augmentation JSON. Source: nullable JSON `shop_products.augment`. */
+    augment?: Record<string, unknown> | null;
+    /** Localized fields. Source: nullable JSON `shop_products.translations`. */
+    translations?: Translations | null;
+    /** Threshold config. Source: nullable JSON `shop_products.thresholds`. */
+    thresholds?: IThresholds | null;
+    /** Custom attributes. Source: nullable JSON `shop_products.attributes`. */
+    attributes?: IAttributes | null;
+    /** Property set id. Source: nullable `shop_products.property_set_id`. */
+    property_set_id?: number | null;
+    /** Page-builder page id. Source: nullable `shop_products.page_id`. */
+    page_id?: number | null;
+    /** Private metadata. Source: nullable JSON `shop_products.meta`. */
+    meta?: Record<string, unknown> | null;
+    /** Soft-delete timestamp when returned. Source: `shop_products.deleted_at`. */
+    deleted_at?: string | null;
+    /** Creation timestamp when returned. Source: `shop_products.created_at`. */
+    created_at?: string | null;
+    /** Last update timestamp when returned. Source: `shop_products.updated_at`. */
+    updated_at?: string | null;
+    /** Category relation when returned. */
+    category?: Category | null;
+    /** Images relation when returned. */
+    images?: ProductImage[];
+    /** Variants relation when returned under Laravel's snake_case relation key. */
+    product_variants?: ProductVariant[];
+    /** Files relation when returned. */
+    files?: ProductFile[];
+    /** Rating aggregate relation when returned. */
+    ratings?: ProductRating[];
+    /** Subscription/content relation when returned. */
+    contents?: ProductContent[];
+    /** Daily analytics relation when returned. */
+    data?: ProductData[];
+    /** Extra-pricing relation when returned. */
+    extra_pricings?: ExtraPricing[];
+    /** Include/accessory relation when returned. */
+    includes?: Record<string, unknown>[];
+    /** Subscription price relation when returned. */
+    subscription_prices?: SubscriptionPrice[];
+    /** Property set relation when returned. */
+    property_set?: PropertySet | null;
+    /** Parent dropshipping product relation when returned. */
+    parent?: Product | null;
+    /** Child dropshipping products relation when returned. */
+    children?: Product[];
+    /** Vendor relation when returned. */
+    vendor?: Record<string, unknown> | null;
+    /** Vendor-product rows when returned. */
+    vendor_products?: Record<string, unknown>[];
   }
 
-  // ------------------- Thresholds -------------------
   type IThresholdValue = number | null;
 
   type IThreshold = {
-    minSales?: IThresholdValue; // Optional key for minimum sales
-    maxQuantity?: IThresholdValue; // Optional key for maximum quantity
-    minQuantity?: IThresholdValue; // Optional key for minimum quantity
+    /** Minimum sales required for this threshold. */
+    minSales?: IThresholdValue;
+    /** Maximum quantity boundary for this threshold. */
+    maxQuantity?: IThresholdValue;
+    /** Minimum quantity boundary for this threshold. */
+    minQuantity?: IThresholdValue;
   };
 
   export type IVariables = {
+    /** Critical stock/sales threshold. */
     critical?: IThreshold;
+    /** High stock/sales threshold. */
     high?: IThreshold;
+    /** Moderate stock/sales threshold. */
     moderate?: IThreshold;
+    /** Low stock/sales threshold. */
     low?: IThreshold;
   };
 
+  /** Product threshold configuration stored in `shop_products.thresholds`. */
   export type IThresholds = {
+    /** Whether product-specific thresholds override shop defaults. */
     custom?: boolean;
+    /** Proportion of stock in cart that triggers threshold state. */
     carts?: number;
+    /** Progress ratio used by storefront stock/progress display. */
     progress?: number;
+    /** Per-level threshold variables. */
     variables?: IVariables;
   };
 
-  export type IAttributes = Record<string, any>;
+  /** Custom product attributes stored in `shop_products.attributes`. */
+  export type IAttributes = Record<string, unknown>;
 }

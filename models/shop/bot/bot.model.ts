@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -14,15 +13,41 @@
  */
 
 export interface Bot {
-  id: number; // The unique identifier for the bot.
-  shop_id: number; // The unique identifier for the shop that the bot belongs to.
-  driver: Bot.DriverValues; // The driver used by the bot (e.g., 'Telegram').
-  secret: string; // A random string used to build a secure path.
-  token: string; // The first token used for authentication.
-  token2: string; // The second token used for authentication.
-  token3: string; // The third token used for authentication.
-  enable: boolean; // A flag indicating whether the bot is enabled or not.
-  calls: number; // The number of calls made to the bot.
+  /** Bot id. Source: `bots.id`. */
+  id: number;
+
+  /** Owning shop id. Source: `bots.shop_id`. */
+  shop_id: number;
+
+  /** Bot platform driver. Backend enum `AvailableBots::AllBots`. */
+  driver: Bot.DriverValues;
+
+  /** Random webhook path secret, 64 chars. Source: unique `bots.secret`. */
+  secret: string;
+
+  /** Primary platform token, or `null`. Source: nullable text `bots.token`. */
+  token: string | null;
+
+  /** Secondary platform token/secret, or `null`. Source: nullable text `bots.token2`. */
+  token2: string | null;
+
+  /** Third platform token/verification value, or `null`. Source: nullable text `bots.token3`. */
+  token3: string | null;
+
+  /** Whether the bot integration is enabled. Source: `bots.enable` cast to boolean. */
+  enable: boolean;
+
+  /** Persisted bot call counter. Source: `bots.calls`; runtime totals may also be cached by driver. */
+  calls: number;
+
+  /** Creation timestamp. Source: `bots.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `bots.updated_at`. */
+  updated_at?: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
 }
 
 import telegramIcon from "./assets/telegram.svg";
@@ -37,16 +62,9 @@ import wechatIcon from "./assets/wechat.svg";
 
 export namespace Bot {
   /**
-   * Represents the structure of a shop bot.
+   * UI metadata for a supported shop bot platform.
    *
-   * @property {DriverValues} driver - The identifier for the bot platform.
-   * @property {string} icon - The icon associated with the bot platform.
-   * @property {string} name - The name of the bot platform.
-   * @property {string} [token] - The token required for the bot platform (if applicable).
-   * @property {string} [token2] - A secondary token required for the bot platform (if applicable).
-   * @property {string} [token3] - A tertiary token required for the bot platform (if applicable).
-   * @property {boolean} available - Indicates whether the bot platform is available.
-   * @property {function} getWebhookURL - A function to get the webhook URL for the bot platform.
+   * Backend source: `App\Http\Controllers\Shop\Bots\enums\AvailableBots` and `bots.driver`.
    */
   interface IShopBot {
     driver: DriverValues;
@@ -55,8 +73,9 @@ export namespace Bot {
     token?: string;
     token2?: string;
     token3?: string;
+    placeholder?: string;
     available: boolean;
-    getWebhookURL: (shop_id: string, secret: string) => string;
+    getWebhookURL: (shop_id: string | number, secret: string) => string;
   }
 
   export type DriverValues =

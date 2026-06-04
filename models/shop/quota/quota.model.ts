@@ -12,12 +12,25 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Per-shop quota/usage counters.
+ *
+ * Backend source: table `shop_quota` created by `CreateShopQuotaTable` and extended by product/background-removal/vendor
+ * quota migrations. Every `*_max`, `*_extra`, and `*_usage` field is an integer counter with DB default `0` unless
+ * documented otherwise in the migration.
+ */
 export interface IQuota {
+  /** Quota row id. Source: `shop_quota.id`. */
   id: number;
+
+  /** Owning shop id. Source: unique `shop_quota.shop_id`. */
   shop_id: number;
 
+  /** Maximum products included by plan. */
   products_max: number;
+  /** Extra products granted by Selldone/admin. */
   products_extra: number; // Added extra quota by selldone admin
+  /** Current products usage. */
   products_usage: number;
 
   categories_max: number;
@@ -104,8 +117,12 @@ export interface IQuota {
   vendors_extra: number;
   vendors_usage: number;
 
-  reset_date: Date | null;
+  /** Quota reset timestamp, or `null`. Source: nullable `shop_quota.reset_date`. */
+  reset_date: string | null;
 
-  created_at: Date;
-  updated_at: Date;
+  /** Creation timestamp. Source: `shop_quota.created_at`. */
+  created_at: string;
+
+  /** Last update timestamp. Source: `shop_quota.updated_at`. */
+  updated_at: string;
 }

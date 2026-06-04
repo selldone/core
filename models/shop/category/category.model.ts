@@ -13,31 +13,90 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Storefront category record.
+ *
+ * Backend source: `App\Shop\Category\ShopCategory`, table `shop_categories`.
+ * Public storefront category endpoints return these records for shop navigation, category filters, and product listing context.
+ */
 export class Category implements Category.ICategory {
-  // Define class properties
+  /** Source: `shop_categories.id`. */
   id: number | null = null;
+
+  /** Source: `shop_categories.shop_id`. */
   shop_id: number | null = null;
+
+  /** Source: nullable `shop_categories.vendor_id`; marketplace vendor owner when present. */
   vendor_id: number | null = null;
+
+  /** Source: nullable `shop_categories.connect_id`; connect/import provider when present. */
   connect_id: number | null = null;
+
+  /** Source: nullable `shop_categories.name`; unique with `shop_id` when set. */
   name: string | null = null;
+
+  /** Source: `shop_categories.order`; lower values sort first. */
   order: number | null = null;
+
+  /** Source: non-null `shop_categories.title`; display title shown to customers. */
   title: string | null = null;
+
+  /** Source: nullable `shop_categories.description`; public category description. */
   description: string | null = null;
+
+  /** Source: nullable `shop_categories.icon`; raw icon/image path. */
   icon: string | null = null;
+
+  /** Source: `shop_categories.star`; marks featured/starred categories. */
   star: boolean | null = null;
+
+  /** Source: nullable `shop_categories.parent_id`; null for root categories. */
   parent_id: number | null = null;
+
+  /** Source: `shop_categories.visits`; backend-maintained visit counter. */
   visits: number | null = null;
+
+  /** Source: `shop_categories.products`; cached product count, not a product collection. */
   products: number | null = null;
+
+  /** Source: `shop_categories.categories`; cached direct child-category count. */
   categories: number | null = null;
-  filters: any[] | null = null; // Adjust the type if possible.
-  note:
-    | {
-        user_id: number;
-        user_name: string;
-        body: string;
-        date: Date;
-      }[]
-    | null = null;
+
+  /** Source: nullable JSON `shop_categories.filters`; category-specific storefront filters. */
+  filters: Category.Filter[] | null = null;
+
+  /** Source: nullable JSON `shop_categories.note`; internal team notes, usually omitted from public storefront responses. */
+  note: Category.Note[] | null = null;
+
+  /** Source: nullable `shop_categories.theme`; storefront theme code for custom category pages. */
+  theme: string | null = null;
+
+  /** Source: nullable JSON `shop_categories.augment`; page-builder/category augmentation payload. */
+  augment: Record<string, unknown> | null = null;
+
+  /** Source: nullable `shop_categories.page_id`; internal page-builder page linked to this category. */
+  page_id: number | null = null;
+
+  /** Source: nullable JSON `shop_categories.translations`; localized category fields keyed by locale. */
+  translations: Category.Translations | null = null;
+
+  /** Source: nullable JSON `shop_categories.engine`; extra loading rules such as `{categories,tags,limit}`. */
+  engine: Category.Engine | null = null;
+
+  /** Source: `shop_categories.deleted_at`; present only when backend includes trashed categories. */
+  deleted_at?: string | null = null;
+
+  /** Source: `shop_categories.created_at`; timestamp serialized by Laravel when included. */
+  created_at?: string | null = null;
+
+  /** Source: `shop_categories.updated_at`; timestamp serialized by Laravel when included. */
+  updated_at?: string | null = null;
+
+  /** Parent category relation when eager-loaded by backend. */
+  parent?: Category | null;
+
+  /** Child category relation when eager-loaded by backend (`ShopCategory::childes`). */
+  childes?: Category[];
 
   constructor(
     data: {
@@ -50,92 +109,113 @@ export class Category implements Category.ICategory {
 }
 
 export namespace Category {
+  /** Category filter definition stored in `shop_categories.filters`. Shape is shop-configurable. */
+  export type Filter = Record<string, unknown>;
+
+  /** Internal note entry stored in `shop_categories.note`. */
+  export interface Note {
+    /** User id of the note author. */
+    user_id: number;
+    /** Display name captured for the author. */
+    user_name: string;
+    /** Note body. */
+    body: string;
+    /** Note timestamp as returned by Laravel/JSON serialization. */
+    date: string | Date;
+  }
+
+  /** Localized category fields keyed by locale code. */
+  export type Translations = Record<string, Record<string, unknown>>;
+
+  /** Extra product loading rules used by the category/shop engine. */
+  export interface Engine {
+    /** Category ids to include as extra sources. */
+    categories?: number[];
+    /** Product tags to include as extra sources. */
+    tags?: string[];
+    /** Maximum number of extra products to load. */
+    limit?: number;
+    /** Backend can add shop-specific engine keys. */
+    [key: string]: unknown;
+  }
+
   export interface ICategory {
-    /**
-     * Unique identifier of the shop category.
-     */
-    id: number;
+    /** Unique category identifier. Source: `shop_categories.id`. */
+    id: number | null;
 
-    /**
-     * ID representing the associated shop.
-     */
-    shop_id: number;
+    /** Owning shop identifier. Source: `shop_categories.shop_id`. */
+    shop_id: number | null;
 
-    /**
-     * ID of the vendor who owns the category.
-     */
-    vendor_id: number;
+    /** Marketplace vendor owner. Source: nullable `shop_categories.vendor_id`. */
+    vendor_id?: number | null;
 
-    /**
-     * ID representing the connect service associated with the category.
-     */
-    connect_id: number;
+    /** Connect/import provider. Source: nullable `shop_categories.connect_id`. */
+    connect_id?: number | null;
 
-    /**
-     * Name of the category. Combined with `shop_id`, it must be unique (a constraint in the database).
-     */
-    name: string;
+    /** Category slug/name, unique per shop when set. Source: nullable `shop_categories.name`. */
+    name: string | null;
 
-    /**
-     * Order or sequence number of the category in listings.
-     */
-    order: number;
+    /** Custom sort order. Source: `shop_categories.order`. */
+    order?: number | null;
 
-    /**
-     * Title of the shop category.
-     */
-    title: string;
+    /** Public category title. Source: non-null `shop_categories.title`. */
+    title?: string | null;
 
-    /**
-     * Description of the shop category.
-     */
-    description: string;
+    /** Public category description. Source: nullable `shop_categories.description`. */
+    description?: string | null;
 
-    /**
-     * Icon or symbol representing the shop category.
-     */
-    icon: string;
+    /** Raw icon/image path. Source: nullable `shop_categories.icon`. */
+    icon?: string | null;
 
-    /**
-     * Indicates if the category is marked as starred or featured.
-     */
-    star: boolean;
+    /** Featured/starred flag. Source: `shop_categories.star`. */
+    star?: boolean | null;
 
-    /**
-     * ID of the parent category, if it exists.
-     */
-    parent_id: number;
+    /** Parent category id, or `null` for roots. Source: nullable `shop_categories.parent_id`. */
+    parent_id?: number | null;
 
-    /**
-     * Number of visits or views the category has received.
-     */
-    visits: number;
+    /** Visit counter. Source: `shop_categories.visits`. */
+    visits?: number | null;
 
-    /**
-     * Count of products under this category.
-     * Note: This shouldn't be used to fetch a subset collection of products.
-     */
-    products: number;
+    /** Cached product count. Source: `shop_categories.products`; not a product collection. */
+    products?: number | null;
 
-    /**
-     * Count of subcategories under this category.
-     */
-    categories: number;
+    /** Cached child-category count. Source: `shop_categories.categories`. */
+    categories?: number | null;
 
-    /**
-     * Filters or criteria associated with the category.
-     */
-    filters: any[]; // Adjust the type based on the specific structure of filters if possible.
+    /** Category filter configuration. Source: nullable JSON `shop_categories.filters`. */
+    filters?: Filter[] | null;
 
-    /**
-     * Notes from the team regarding the category.
-     */
-    note: {
-      user_id: number;
-      user_name: string;
-      body: string;
-      date: Date;
-    }[];
+    /** Internal team notes. Source: nullable JSON `shop_categories.note`; usually not public. */
+    note?: Note[] | null;
+
+    /** Storefront theme code. Source: nullable `shop_categories.theme`. */
+    theme?: string | null;
+
+    /** Page-builder/category augmentation JSON. Source: nullable `shop_categories.augment`. */
+    augment?: Record<string, unknown> | null;
+
+    /** Linked page-builder page. Source: nullable `shop_categories.page_id`. */
+    page_id?: number | null;
+
+    /** Localized category fields. Source: nullable JSON `shop_categories.translations`. */
+    translations?: Translations | null;
+
+    /** Extra category loading rules. Source: nullable JSON `shop_categories.engine`. */
+    engine?: Engine | null;
+
+    /** Soft-delete timestamp when returned. Source: nullable `shop_categories.deleted_at`. */
+    deleted_at?: string | null;
+
+    /** Creation timestamp when returned. Source: `shop_categories.created_at`. */
+    created_at?: string | null;
+
+    /** Last update timestamp when returned. Source: `shop_categories.updated_at`. */
+    updated_at?: string | null;
+
+    /** Parent relation when eager-loaded by backend. */
+    parent?: Category | null;
+
+    /** Child relation when eager-loaded by backend. */
+    childes?: Category[];
   }
 }
-

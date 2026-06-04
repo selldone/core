@@ -13,25 +13,86 @@
  */
 
 /**
- * Represents details of a warehouse used in shipping.
+ * Shop or vendor warehouse / sender address.
+ *
+ * Backend source: `App\Shop\Warehouse\Warehouse`, table `shop_warehouse`.
+ * `Warehouse::GetWarehouse` creates either a shop-level warehouse (`vendor_id = null`) or a vendor-level warehouse.
  */
 export interface Warehouse {
+  /** Warehouse id. Source: `shop_warehouse.id`. */
   id: number;
-  name: string;
-  location?: Warehouse.IGeoLocation;
-  address?: string;
+
+  /** Owning shop id. Source: `shop_warehouse.shop_id`. */
+  shop_id: number;
+
+  /** Vendor id for vendor warehouse, or `null` for shop warehouse. Source: nullable `shop_warehouse.vendor_id`. */
+  vendor_id?: number | null;
+
+  /** Warehouse title, or `null`. Source: nullable `shop_warehouse.title`. */
+  title: string | null;
+
+  /** Country code, or `null`. Source: nullable `shop_warehouse.country`. */
+  country: string | null;
+
+  /** State/province, or `null`. Source: nullable `shop_warehouse.state`. */
+  state: string | null;
+
+  /** State code, or `null`. Source: nullable `shop_warehouse.state_code`. */
+  state_code?: string | null;
+
+  /** City, or `null`. Source: nullable `shop_warehouse.city`. */
+  city: string | null;
+
+  /** Address text, or `null`. Source: nullable `shop_warehouse.address`. */
+  address: string | null;
+
+  /** Geolocation JSON/string decoded by Eloquent cast, or `null`. Source: nullable `shop_warehouse.location`. */
+  location: Warehouse.IGeoLocation | [number, number] | Record<string, unknown> | null;
+
+  /** Building number, or `null`. Source: nullable `shop_warehouse.no`. */
+  no: string | null;
+
+  /** Building unit, or `null`. Source: nullable `shop_warehouse.unit`. */
+  unit: string | null;
+
+  /** Contact/receiver name, or `null`. Source: nullable `shop_warehouse.name`. */
+  name: string | null;
+
+  /** Contact phone, or `null`. Source: nullable `shop_warehouse.phone`. */
+  phone: string | null;
+
+  /** Delivery message, or `null`. Source: nullable `shop_warehouse.message`. */
+  message: string | null;
+
+  /** Postal code, or `null`. Source: nullable `shop_warehouse.postal`. */
+  postal: string | null;
+
+  /** Additional warehouse info. Source: nullable JSON `shop_warehouse.info`. */
+  info?: Record<string, unknown> | null;
+
+  /** Soft-delete timestamp when included. Source: `shop_warehouse.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `shop_warehouse.created_at`. */
+  created_at?: string;
+
+  /** Last update timestamp. Source: `shop_warehouse.updated_at`. */
+  updated_at?: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Vendor relation when eager-loaded. */
+  vendor?: Record<string, unknown> | null;
 }
 
-//█████████████████████████████████████████████████████████████
-//―――――――――――――――― 🦫 Types ――――――――――――――――
-//█████████████████████████████████████████████████████████████
-
 export namespace Warehouse {
-  /**
-   * Represents geographic location coordinates.
-   */
+  /** Geographic coordinates used by warehouse address JSON. */
   export interface IGeoLocation {
-    latitude: number;
-    longitude: number;
+    lat?: number;
+    lng?: number;
+    latitude?: number;
+    longitude?: number;
+    [key: string]: unknown;
   }
 }

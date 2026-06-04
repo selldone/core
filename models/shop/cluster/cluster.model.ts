@@ -14,64 +14,117 @@
 
 export interface Cluster {
   /**
-   * The unique identifier of the cluster.
-   * @type {number}
+   * Cluster id.
+   *
+   * Source: `shop_clusters.id`.
    */
   id: number;
 
   /**
-   * The identifier of the associated shop.
-   * @type {number}
+   * Owning shop id.
+   *
+   * Source: `shop_clusters.shop_id`.
    */
   shop_id: number;
 
   /**
-   * The identifier of the associated user, or null if not assigned.
-   * @type {number | null}
+   * Creator / last editor user id, or `null`.
+   *
+   * Source: nullable `shop_clusters.user_id`.
    */
   user_id: number | null;
 
   /**
-   * The identifier of the parent cluster, or null if there is no parent.
-   * @type {number | null}
+   * Parent cluster id, or `null` for a root cluster.
+   *
+   * Source: nullable `shop_clusters.parent_id`.
    */
   parent_id: number | null;
 
   /**
-   * The name of the cluster.
-   * @type {string}
+   * Cluster name, max 128 chars.
+   *
+   * Source: `shop_clusters.name`.
    */
   name: string;
 
   /**
-   * A description of the cluster, or null if not provided.
-   * @type {string | null}
+   * Cluster description, or `null`.
+   *
+   * Source: nullable `shop_clusters.description`.
    */
   description: string | null;
 
   /**
-   * The path to the cluster's icon image. Supported sizes: 64, 128, original.
-   * @type {string | null}
+   * Cluster icon image path, or `null`.
+   *
+   * Source: nullable `shop_clusters.icon`; supported generated sizes are 64, 128, and original.
    */
   icon: string | null;
 
   /**
-   * The hex color code associated with the cluster.
-   * @type {string | null}
+   * Hex color code, or `null`.
+   *
+   * Source: nullable `shop_clusters.color`, max 9 chars.
    */
   color: string | null;
 
   /**
-   * The timestamp when the cluster was created.
-   * @type {string}
+   * Creation timestamp.
+   *
+   * Source: `shop_clusters.created_at`.
    */
   created_at: string;
 
   /**
-   * The timestamp when the cluster was last updated.
-   * @type {string}
+   * Last update timestamp.
+   *
+   * Source: `shop_clusters.updated_at`.
    */
   updated_at: string;
+
+  /** Owning shop relation when `Cluster::shop()` is eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Creator/editor relation when `Cluster::user()` is eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Parent cluster relation when `Cluster::parent()` is eager-loaded. */
+  parent?: Cluster | null;
+
+  /** Page resources under this cluster. Source relation: `Cluster::pages()`. */
+  pages?: Page[];
+
+  /** Discount-code resources under this cluster. Source relation: `Cluster::discountCodes()`. */
+  discount_codes?: DiscountCode[];
+
+  /** Coupon resources under this cluster. Source relation: `Cluster::coupons()`. */
+  coupons?: Coupon[];
+
+  /** Offer resources under this cluster. Source relation: `Cluster::offers()`. */
+  offers?: Offer[];
+
+  /** Gift-card-type resources under this cluster. Source relation: `Cluster::giftCardTypes()`. */
+  gift_card_types?: GiftCardType[];
+
+  /** Blog resources under this cluster. Source relation: `Cluster::blogs()`. */
+  blogs?: ShopBlog[];
+
+  /** Popup resources under this cluster. Source relation: `Cluster::popups()`. */
+  popups?: Popup[];
+
+  /** Campaign resources under this cluster. Source relation: `Cluster::campaigns()`. */
+  campaigns?: Campaign[];
+
+  /** Email marketing resources under this cluster. Source relation: `Cluster::emails()`. */
+  emails?: EmailMarketing[];
+
+  /** Product/category/affiliate/permission/role resources may be eager-loaded by backend resource endpoints. */
+  products?: Record<string, unknown>[];
+  categories?: Record<string, unknown>[];
+  affiliates?: Record<string, unknown>[];
+  permissions?: Record<string, unknown>[];
+  roles?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████

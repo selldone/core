@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -13,28 +12,62 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {LogisticProfileType} from "../../../../enums/logistic/LogisticProfileType";
+import { LogisticProfileType } from "../../../../enums/logistic/LogisticProfileType";
 
 /**
- * Represents a logistic model with detailed properties including identifiers, timestamps, and logistic-specific information.
+ * Logistic profile attached to products for warranty, return policy, guide, or shipping content.
  *
- * @property {number} id - The unique identifier for the logistic entry.
- * @property {number} shop_id - The identifier for the associated shop.
- * @property {number | null} user_id - The optional identifier for the associated user.
- * @property {LogisticProfileType} type - The type of logistic profile, which determines the logistic's characteristics.
- * @property {string} name - The name of the logistic entry.
- * @property {any} info - Contains additional information like product IDs and languages relevant to the logistic entry.
- * @property {Date} created_at - The timestamp when the logistic entry was created.
- * @property {Date} updated_at - The timestamp when the logistic entry was last updated.
+ * Backend source: `App\Shop\LogisticProfiles\LogisticProfile`, table `logistic_profiles`.
+ * The profile owns article content through `HasArticle`; products reference it through `warranty_id`,
+ * `return_policy_id`, `guide_id`, or `shipping_id`.
  */
-
 export interface LogisticProfile {
+  /** Profile id. Source: `logistic_profiles.id`. */
   id: number;
+
+  /** Owning shop id. Source: `logistic_profiles.shop_id`. */
   shop_id: number;
+
+  /** Creator / last editor user id, or `null`. Source: nullable `logistic_profiles.user_id`. */
   user_id: number | null;
-  type: keyof typeof LogisticProfileType;
+
+  /** Profile type. Backend enum `LogisticProfileType::All`. */
+  type: LogisticProfile.TypeCode;
+
+  /** Profile internal/public name, max 64 chars. Source: `logistic_profiles.name`. */
   name: string;
-  info: any;
-  created_at: Date;
-  updated_at: Date;
+
+  /** Profile metadata such as sample `product_ids` and available `languages`. */
+  info: LogisticProfile.Info | null;
+
+  /** Creation timestamp. Source: `logistic_profiles.created_at`. */
+  created_at: string;
+
+  /** Last update timestamp. Source: `logistic_profiles.updated_at`. */
+  updated_at: string;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown>;
+
+  /** Editor relation when eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Article relation(s) from `HasArticle` when eager-loaded. */
+  article?: Record<string, unknown> | null;
+  articles?: Record<string, unknown>[];
+
+  /** Product relations for the active profile type when loaded by backend. */
+  products?: Record<string, unknown>[];
+}
+
+export namespace LogisticProfile {
+  /** Backend enum values for `logistic_profiles.type`. */
+  export type TypeCode = (typeof LogisticProfileType)[keyof typeof LogisticProfileType]["value"];
+
+  /** JSON payload stored in `logistic_profiles.info`. */
+  export interface Info {
+    product_ids?: number[];
+    languages?: string[];
+    [key: string]: unknown;
+  }
 }
