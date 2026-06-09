@@ -17,15 +17,41 @@ import type {Shop} from "../../models/shop/shop.model";
 import {Currency} from "../../enums/payment/Currency";
 import type {Campaign} from "../../models/shop/campaign/campaign.model";
 
+/**
+ * Helper utilities for campaign analytics, traffic attribution, and payment summaries.
+ */
 export class CampaignHelper {
+  /**
+   * Checks whether a traffic source should be treated as an organic search engine.
+   *
+   * @param {string} net - Traffic source key such as `google` or `direct`.
+   * @returns {boolean} True when the source belongs to known search engines.
+   */
   static isSearch(net: string) {
     return ["google"].includes(net);
   }
 
+  /**
+   * Checks whether a traffic source should be treated as a social network.
+   *
+   * Any source that is neither `direct` nor recognized as search traffic is treated
+   * as a social/referral source in the campaign summary UI.
+   *
+   * @param {string} net - Traffic source key.
+   * @returns {boolean} True when the source is categorized as social traffic.
+   */
   static isSocialNetwork(net: string) {
     return net !== "direct" && !this.isSearch(net);
   }
 
+  /**
+   * Sums payment amounts from multiple currencies into one target currency.
+   *
+   * @param {Shop} shop - Shop containing exchange rates.
+   * @param {keyof typeof Currency} to_currency - Destination currency code.
+   * @param {Record<string, number>} payment - Map of currency code to paid amount.
+   * @returns {number} Total normalized amount in the requested currency.
+   */
   static GetTotalAmount(
     shop: Shop,
     to_currency: keyof typeof Currency,
@@ -41,6 +67,12 @@ export class CampaignHelper {
     return out;
   }
 
+  /**
+   * Calculates the total amount of visits attributed to social sources.
+   *
+   * @param {Campaign} campaign - Campaign analytics payload.
+   * @returns {number} Sum of all social source counters.
+   */
   static GetTotalSocials(campaign: Campaign) {
     let out = 0;
     const social = campaign.social;
@@ -53,25 +85,31 @@ export class CampaignHelper {
     return out;
   }
 
+  /**
+   * Returns only social-source counters, optionally limited to the top items.
+   *
+   * The output preserves the shape expected by charting/analytics widgets.
+   * Sorting depends on array prototype helpers registered elsewhere in the project.
+   *
+   * @param {Campaign} campaign - Campaign analytics payload.
+   * @param {number} [limit=0] - Maximum number of sources to keep. `0` means unlimited.
+   * @returns {Record<string, number>} Social-source counters keyed by source name.
+   */
   static GetSocialsOnly(campaign: Campaign, limit: number = 0) {
     const out: Record<string, number> = {};
     const social = campaign.social;
     if (social) {
-      // 1. Sort values:
       let sorted: { key: string; value: number }[] = [];
       Object.keys(social).forEach((key) => {
-        // 2. Filter only social:
         if (!this.isSocialNetwork(key)) return;
-
         sorted.push({ key: key, value: social[key] });
       });
       sorted.sortByKey("value");
 
-      // 3. Apply limit:
       if (limit) {
         sorted = sorted.limit(limit);
       }
-      // 4. Convert to object:
+
       sorted.forEach(({ key, value }) => {
         out[key] = value;
       });
@@ -79,12 +117,24 @@ export class CampaignHelper {
     return out;
   }
 
+  /**
+   * Returns the number of direct visits.
+   *
+   * @param {Campaign} campaign - Campaign analytics payload.
+   * @returns {number} Direct traffic count.
+   */
   static GetTotalDirects(campaign: Campaign) {
     return campaign.social && campaign.social.direct
       ? campaign.social.direct
       : 0;
   }
 
+  /**
+   * Returns the number of organic-search visits.
+   *
+   * @param {Campaign} campaign - Campaign analytics payload.
+   * @returns {number} Search traffic count.
+   */
   static GetTotalOrganicSearch(campaign: Campaign) {
     let out = 0;
     const social = campaign.social;
@@ -97,6 +147,12 @@ export class CampaignHelper {
     return out;
   }
 
+  /**
+   * Calculates uncategorized traffic by subtracting known buckets from total sessions.
+   *
+   * @param {Campaign} campaign - Campaign analytics payload.
+   * @returns {number} Remaining traffic count, never below zero.
+   */
   static GetTotalOther(campaign: Campaign) {
     const out =
       campaign.sessions -

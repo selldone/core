@@ -15,7 +15,16 @@
 import {Map} from "../../models/shop/map/map.model";
 import {Order} from "../../models";
 
+/**
+ * Helper utilities for working with addresses, static map images, and direction links.
+ */
 export class MapHelper {
+  /**
+   * Builds a readable full address string from an order address object.
+   *
+   * @param {Order.IAddress} info_object - Address payload from an order or checkout form.
+   * @returns {string | null} Localized address string or `null` when base address is missing.
+   */
   static GenerateFullAddressFromMapInfo(info_object: Order.IAddress) {
     if (!info_object || !info_object.address) return null;
 
@@ -37,11 +46,39 @@ export class MapHelper {
     );
   }
 
-  static GetMapImage(lng: number, lat: number, zoom: number,size:string='800x800',style_id:'streets-v11'|'streets-v12'|'dark-v11'|'navigation-day-v1'|'navigation-night-v1'='streets-v11') {
+  /**
+   * Creates a Mapbox static-map image URL.
+   *
+   * @param {number} lng - Longitude.
+   * @param {number} lat - Latitude.
+   * @param {number} zoom - Map zoom level.
+   * @param {string} [size='800x800'] - Static image dimensions in `widthxheight` format.
+   * @param {'streets-v11'|'streets-v12'|'dark-v11'|'navigation-day-v1'|'navigation-night-v1'} [style_id='streets-v11'] - Mapbox style identifier.
+   * @returns {string | null} Mapbox static image URL or `null` when coordinates are invalid.
+   */
+  static GetMapImage(
+    lng: number,
+    lat: number,
+    zoom: number,
+    size: string = '800x800',
+    style_id:
+      | 'streets-v11'
+      | 'streets-v12'
+      | 'dark-v11'
+      | 'navigation-day-v1'
+      | 'navigation-night-v1' = 'streets-v11',
+  ) {
     if (!lng || !lat || !zoom) return null;
     return `https://api.mapbox.com/styles/v1/mapbox/${style_id}/static/${lng},${lat},${zoom},0,0/${size}?access_token=pk.eyJ1IjoicGFqdWhhYW4iLCJhIjoiY2sxaHNtbnU3MDFjcjNta2V0OTZ0d2ExYiJ9.YKRh0EP7NnhbmuSil7AvSw`;
   }
 
+  /**
+   * Builds a Google Maps directions URL for a location.
+   *
+   * @param {Map.ILocation} location - Destination coordinates.
+   * @param {boolean} [travelmode=false] - Travel mode value passed to Google Maps.
+   * @returns {string | null} Google Maps directions URL or `null` when coordinates are missing.
+   */
   static GetMapDirectionUrl(
     location: Map.ILocation,
     travelmode: boolean = false,

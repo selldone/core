@@ -13,7 +13,18 @@
  */
 import {toPng} from "html-to-image";
 
+/**
+ * Helper utilities for capturing screenshots from videos or arbitrary DOM elements.
+ */
 export class Screenshot {
+  /**
+   * Captures the current frame of a video element as a JPEG data URI.
+   *
+   * @param {HTMLVideoElement} video - Source video element.
+   * @param {HTMLImageElement | null} des_image - Optional destination image element to populate.
+   * @param {boolean} flash - Whether to trigger a temporary flash animation on the source.
+   * @returns {string} Captured image as a data URI.
+   */
   static FromVideo(
     video: HTMLVideoElement,
     des_image: HTMLImageElement | null,
@@ -39,6 +50,19 @@ export class Screenshot {
     return dataURI;
   }
 
+  /**
+   * Captures a DOM element as a PNG data URI.
+   *
+   * The helper scales the result down to a maximum width of 400px, skips problematic
+   * nodes such as videos and temporary placeholders, and can optionally remove images.
+   *
+   * @param {HTMLElement} element - Element to capture.
+   * @param {HTMLImageElement | null} [des_image=null] - Optional destination image element.
+   * @param {boolean} [flash=false] - Whether to trigger a flash animation on the element.
+   * @param {number} [depth=10] - Maximum DOM depth to include.
+   * @param {boolean} ignore_imgs - Whether image nodes should be excluded.
+   * @returns {Promise<string>} PNG data URI.
+   */
   static async FromElement(
     element: HTMLElement,
     des_image: HTMLImageElement | null = null,

@@ -16,13 +16,19 @@ import { SubscriptionMode } from "../../enums/subscription/SubscriptionMode";
 import type { Shop } from "../../models/shop/shop.model";
 import type { Product } from "../../models/shop/product/product.model";
 
+/**
+ * Resolves effective ribbon options by combining shop defaults and product overrides.
+ */
 export class RibbonHelper {
   /**
-   * Product needs shipping address.
+   * Determines whether a product requires a shipping address.
    *
-   * @param shop
-   * @param product
-   * @returns {boolean|*}
+   * Subscription modes may explicitly disable shipping support regardless of shop settings.
+   * Product-level ribbon flags override shop defaults.
+   *
+   * @param {Shop} shop - Shop containing default ribbon settings.
+   * @param {Product} product - Product containing optional ribbon overrides.
+   * @returns {boolean | undefined} Effective shipping-address requirement.
    */
   static hasShipping(shop: Shop, product: Product) {
     const shop_ribbon = shop.ribbon;
@@ -30,43 +36,41 @@ export class RibbonHelper {
 
     const mode = product_ribbon?.mode && SubscriptionMode[product_ribbon.mode];
 
-    // ═════════════ Check exception modes ═════════════
     if (!mode?.support_shipping) {
       return false;
     }
 
-    // ══════════ Check Override by product ══════════
     if (typeof product_ribbon?.shipping === "boolean") {
       return product_ribbon.shipping;
     }
-    // ═══════════════════ Default ═══════════════════
     return shop_ribbon?.shipping;
   }
 
   /**
-   * Product needs billing address.
-   * @param shop
-   * @param product
-   * @returns {boolean|*}
+   * Determines whether a product requires a billing address.
+   *
+   * @param {Shop} shop - Shop containing default ribbon settings.
+   * @param {Product} product - Product containing optional ribbon overrides.
+   * @returns {boolean | undefined} Effective billing-address requirement.
    */
   static hasBilling(shop: Shop, product: Product) {
     const shop_ribbon = shop.ribbon;
     const product_ribbon = product.ribbon;
 
-    // ══════════ Check Override by product ══════════
     if (typeof product_ribbon?.billing === "boolean") {
       return product_ribbon.billing;
     }
-    // ═══════════════════ Default ═══════════════════
     return shop_ribbon?.billing;
   }
 
   /**
-   * User can purchase more than one item.
+   * Determines whether quantity selection is allowed for a product.
    *
-   * @param shop
-   * @param product
-   * @returns {boolean|*}
+   * Subscription modes may disable count support regardless of ribbon defaults.
+   *
+   * @param {Shop} shop - Shop containing default ribbon settings.
+   * @param {Product} product - Product containing optional ribbon overrides.
+   * @returns {boolean | undefined} Effective quantity-selection rule.
    */
   static hasCount(shop: Shop, product: Product) {
     const shop_ribbon = shop.ribbon;
@@ -74,19 +78,22 @@ export class RibbonHelper {
 
     const mode = product_ribbon?.mode && SubscriptionMode[product_ribbon.mode];
 
-    // ═════════════ Check exception modes ═════════════
     if (!mode?.support_count) {
       return false;
     }
 
-    // ══════════ Check Override by product ══════════
     if (typeof product_ribbon?.count === "boolean") {
       return product_ribbon.count;
     }
-    // ═══════════════════ Default ═══════════════════
     return shop_ribbon?.count;
   }
 
+  /**
+   * Checks whether a membership product is already subscribed by the customer.
+   *
+   * @param {Product & { subscribed: boolean }} product - Membership-capable product enriched with customer state.
+   * @returns {boolean} True when the product is a membership ribbon and user is subscribed.
+   */
   static isMembershipSubscribed(
     product: Product & { subscribed: boolean /*True if customer subscribed*/ }
   ) {

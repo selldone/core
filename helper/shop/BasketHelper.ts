@@ -19,9 +19,21 @@ import { ProductVariant } from "../../models/shop/product/product_variant.model"
 import { PricingTypes } from "../../enums/product/PricingTypes";
 import { ProductType } from "../../enums/product/ProductType";
 
+/**
+ * Helper utilities for basket calculations and item lookups.
+ */
 export class BasketHelper {
   // ――――――――――――――― Weight ―――――――――――――――
 
+  /**
+   * Calculates the weight of a basket item.
+   *
+   * Variant weight overrides product weight when available.
+   *
+   * @param {BasketItem} item - Basket item.
+   * @param {boolean} [total=true] - When true, multiplies weight by item count.
+   * @returns {number} Item weight.
+   */
   static GetBasketItemWeight(item: BasketItem, total: boolean = true) {
     return (
       (total ? item.count : 1) *
@@ -35,6 +47,12 @@ export class BasketHelper {
     );
   }
 
+  /**
+   * Calculates the total basket weight.
+   *
+   * @param {Basket} basket - Basket model.
+   * @returns {number} Sum of all item weights.
+   */
   static GetTotalBasketItemsWeight(basket: Basket) {
     let sum = 0;
     basket.items.forEach((item) => {
@@ -44,6 +62,17 @@ export class BasketHelper {
   }
 
   // ――――――――――――――― Size ―――――――――――――――
+
+  /**
+   * Returns the size tuple of a basket item.
+   *
+   * Width and length come from the selected variant when present; otherwise product
+   * extra data is used. Height is multiplied by count when `total` is true.
+   *
+   * @param {BasketItem} item - Basket item.
+   * @param {boolean} [total=true] - Whether height should reflect total item count.
+   * @returns {[number, number, number]} Tuple of `[width, length, height]`.
+   */
   static GetBasketItemSize(item: BasketItem, total: boolean = true) {
     let width = 0;
     let length = 0;
@@ -79,6 +108,14 @@ export class BasketHelper {
 
   // ――――――――――――――― Find Item ―――――――――――――――
 
+  /**
+   * Finds an existing basket item for a product and optional variant.
+   *
+   * @param {Basket} basket - Basket model.
+   * @param {Product} product - Product to match.
+   * @param {ProductVariant} currentVariant - Variant to match when applicable.
+   * @returns {BasketItem | undefined} Matching item if found.
+   */
   static FindItem(
     basket: Basket,
     product: Product,
@@ -93,9 +130,10 @@ export class BasketHelper {
   }
 
   /**
-   * It needs pricing by the seller after checkout.
-   * @param basket
-   * @constructor
+   * Checks whether a basket contains a service that still needs seller-side pricing.
+   *
+   * @param {Basket} basket - Basket model.
+   * @returns {boolean} True when the basket is a service basket with non-fixed pricing.
    */
   static IsServiceAndNeedPricing(basket: Basket) {
     return (

@@ -61,6 +61,12 @@ export function GetNameOfColor(color: string | null) {
  * ColorNamer("#3498db"); // Returns "Sky Blue" or similar name
  * ```
  */
+/**
+ * Finds the nearest localized color name for a given hex color.
+ *
+ * @param {string} color - Input hex/rgb color string accepted by chroma.
+ * @returns {string | null} Best matching localized color name.
+ */
 const ColorNamer = function (color: string) {
   const cacheKey = color + window.$language.code;
 
@@ -106,7 +112,20 @@ const ColorNamer = function (color: string) {
   return result;
 };
 
+/**
+ * Helper utilities for extracting and naming colors.
+ */
 export class ColorHelper {
+  /**
+   * Resolves a localized color name from a repository of `{ hex: label }` pairs.
+   *
+   * Exact matches are returned immediately; otherwise the helper computes the nearest
+   * color using chroma distance and caches results per active language.
+   *
+   * @param {{ [key: string]: string }} repository - Localized color-name repository.
+   * @param {string} color - Hex color string.
+   * @returns {string | null} Matching or nearest color name.
+   */
   static getNameOfColor(repository: { [key: string]: string }, color: string) {
     if (!color || !color.startsWith("#") || ![4, 7, 9].includes(color.length))
       return null; // #123 #123456 #123456FF

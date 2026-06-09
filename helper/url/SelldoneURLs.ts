@@ -15,7 +15,16 @@
 import { SetupService } from "../../server/SetupService";
 import { User } from "../../models/user/user.model";
 
+/**
+ * URL helper for Selldone-owned public pages.
+ */
 export class SelldoneURLs {
+  /**
+   * Builds the public profile URL for a Selldoner user.
+   *
+   * @param {User} user - User model containing id and username.
+   * @returns {string} Absolute URL to the user's public profile page.
+   */
   static UserProfilePageUrl(user: User) {
     return `${SetupService.MainServiceUrl()}/selldoners/${user.id}/@${
       user.name

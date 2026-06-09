@@ -12,6 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Canonical header order for vendor CSV files.
+ */
 export const VendorsCsvHeaders = [
   "Name",
   "Description",
@@ -39,6 +42,9 @@ export const VendorsCsvHeaders = [
   "Tax ID",
 ];
 
+/**
+ * Column metadata used by vendor CSV import/export tooling.
+ */
 export const VendorsCsvStyler = {
   Name: {
     type: "text",
@@ -114,7 +120,15 @@ export const VendorsCsvStyler = {
   },
 };
 
+/**
+ * Validation helpers for vendor CSV files.
+ */
 export class VendorsCsvFormat {
+  /**
+   * Checks whether uploaded vendor CSV headers contain the minimum required fields.
+   * @param {string[]} headers - Parsed CSV headers.
+   * @returns {boolean} True when the file is acceptable.
+   */
   static CheckValidFile(headers:string[]) {
     if (!headers) return false;
     return !["Name"].some((it) => {

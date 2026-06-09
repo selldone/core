@@ -14,6 +14,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Canonical header order for category import/export CSV files.
+ */
 export const CategoriesCsvHeaders= [
     "Name",
     "Title",
@@ -22,6 +25,9 @@ export const CategoriesCsvHeaders= [
     "Parent",
 ]
 
+/**
+ * Column metadata used by CSV editors/importers for categories.
+ */
 export const CategoriesCsvStyler= {
 
     Name: {
@@ -44,7 +50,15 @@ export const CategoriesCsvStyler= {
 }
 
 
+/**
+ * Validation helpers for category CSV files.
+ */
 export class CategoriesCsvFormat {
+    /**
+     * Checks whether a CSV header list contains all required category columns.
+     * @param {string[]} headers - Parsed CSV headers.
+     * @returns {boolean} True when all required headers are present.
+     */
     static CheckValidFile(headers:string[]){
         if(!headers)return false;
         return !CategoriesCsvHeaders.some(it=>{

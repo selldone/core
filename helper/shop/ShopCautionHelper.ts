@@ -20,7 +20,16 @@ import {ShopSocial} from "../../models/shop/social/shop-social.model";
 import {Account} from "../../models/account/account.model";
 import {Gateway} from "../../models";
 
+/**
+ * Generates onboarding and configuration cautions for a shop.
+ */
 export class ShopCautionHelper {
+  /**
+   * Builds a prioritized list of caution cards describing missing shop configuration.
+   *
+   * @param {Shop & { domains?: Domain[]; clubs?: Club[]; shop_gateways?: (ShopGateway & { gateway?: Gateway })[]; socials?: ShopSocial[]; accounts?: Account[]; }} shop - Shop object enriched with related records.
+   * @returns {any[] | null} Sorted caution objects, or `null` when i18n is unavailable.
+   */
   static Generate(
     shop: Shop & {
       domains?: Domain[];
@@ -230,6 +239,17 @@ export class ShopCautionHelper {
    * @param score    message must be arrayed!
    * @returns {{score: *, action: *, to: *, type: *, title: *, message: *}}
    * @constructor
+   */
+  /**
+   * Creates a normalized caution object.
+   *
+   * @param {'error' | 'warning' | 'info'} type - Severity.
+   * @param {string} title - Caution title.
+   * @param {string | string[]} message - Message body; can be one string or a checklist.
+   * @param {{ name: string; params?: Record<string, any>; query?: Record<string, any>; } | null} to - Optional navigation target.
+   * @param {String | null} action - Optional CTA label.
+   * @param {number | null} [score=null] - Optional completion score.
+   * @returns {{ type: 'error' | 'warning' | 'info'; title: string; message: string | string[]; to: { name: string; params?: Record<string, any>; query?: Record<string, any>; } | null; action: String | null; score: number | null }} Caution descriptor.
    */
   static Caution(
     type: "error" | "warning" | "info",

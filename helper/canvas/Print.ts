@@ -15,31 +15,29 @@
 import printJS from "print-js";
 
 /**
- * Print element.
- *
+ * Wrapper around `print-js` for printing HTML elements.
  */
 export class Print {
+  /**
+   * Prints a specific DOM element by its id.
+   *
+   * @param {string} element_id - Id of the HTML element to print.
+   * @param {string | null} [header=null] - Optional print header rendered above the content.
+   * @param {number} [maxWidth=800] - Maximum print width in pixels.
+   * @param {string} [documentTitle='Document'] - Title used by the print dialog / generated document.
+   * @returns {void}
+   */
   static PrintElement(
     element_id: string,
     header: string | null = null,
     maxWidth: number = 800,
     documentTitle: string = "Document",
   ) {
-    // Print a specific HTML element
     printJS({
-      // Document source: pdf or image url, html element id or json data object.
       printable: element_id,
-      // Document type.
       type: "html",
-
-      // Optional header to be used with HTML, Image or JSON printing.
-      // It will be placed on the top of the page.
       header: header,
-
-      // Max document width in pixels.
       maxWidth: maxWidth,
-
-      // Document title
       documentTitle: documentTitle,
     });
   }

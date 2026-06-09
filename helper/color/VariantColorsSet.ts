@@ -12,6 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Default palette used for product-variant color suggestions.
+ *
+ * Includes both single-color swatches and slash-separated dual-color combinations.
+ */
 export default [
   "#D32F2F",
   "#C2185B",

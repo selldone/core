@@ -16,7 +16,19 @@ import type {Avocado, Domain, Shop, Vendor} from "../../models";
 import {Slugify} from "../../utils/slugify/slugify";
 import {SetupService} from "../../server";
 
+/**
+ * URL builder utilities for public shop, product, vendor, and campaign pages.
+ */
 export class ShopURLs {
+  /**
+   * Returns the main public URL of a shop.
+   *
+   * Prefers a primary custom domain when present, otherwise falls back to the primary
+   * subdomain or local `@shop-name` route.
+   *
+   * @param {Shop & { domains?: Domain[] }} shop - Shop model with optional domain records.
+   * @returns {string} Absolute shop URL.
+   */
   static MainShopUrl(shop: Shop & { domains?: Domain[] }) {
     if (shop.domains) {
       const domain = shop.domains.find((item) => item.primary);
@@ -35,12 +47,26 @@ export class ShopURLs {
     }
   }
 
+  /**
+   * Builds the vendor landing-page URL inside a shop.
+   *
+   * @param {Shop} shop - Shop model.
+   * @param {Vendor} vendor - Vendor model.
+   * @returns {string | null} Absolute vendor landing-page URL.
+   */
   static GetVendorLandingPageUrl(shop: Shop, vendor: Vendor) {
     if (!shop || !vendor?.id) return null;
     const domain = ShopURLs.MainShopUrl(shop);
     return `${domain}/vendor/@${vendor.slug ? vendor.slug : Slugify.apply(vendor.name)}-${vendor.id}`;
   }
 
+  /**
+   * Builds the vendor listing/profile URL inside a shop.
+   *
+   * @param {Shop} shop - Shop model.
+   * @param {Vendor} vendor - Vendor model.
+   * @returns {string | null} Absolute vendor listing URL.
+   */
   static GetVendorListingPageUrl(shop: Shop, vendor: Vendor) {
     if (!shop || !vendor?.id) return null;
     const domain = ShopURLs.MainShopUrl(shop);
@@ -111,21 +137,42 @@ export class ShopURLs {
   }
 
   //――――――――――――――――――――――――― Hyper ―――――――――――――――――――――――――
+  /**
+   * Returns the public Hyper page URL.
+   * @param {Shop} shop - Shop model.
+   * @returns {string} Absolute Hyper URL.
+   */
   static GetShopHyperUrl(shop: Shop) {
     return ShopURLs.MainShopUrl(shop) + "/hyper";
   }
 
   //――――――――――――――――――――――――― Avocado ―――――――――――――――――――――――――
 
+  /**
+   * Returns the public Avocado page URL.
+   * @param {Shop} shop - Shop model.
+   * @returns {string} Absolute Avocado URL.
+   */
   static GetShopAvocadoUrl(shop: Shop) {
     return ShopURLs.MainShopUrl(shop) + "/avocado";
   }
 
+  /**
+   * Builds the buyer-facing Avocado checkout URL.
+   * @param {Shop} shop - Shop model.
+   * @param {Avocado} avocado - Avocado order/session model.
+   * @returns {string} Absolute Avocado buyer URL.
+   */
   static GetAvocadoBuyerUrl(shop: Shop, avocado: Avocado) {
     return ShopURLs.MainShopUrl(shop) + "/avocado/" + avocado.hash;
   }
 
   //――――――――――――――――――――――――― Instagram ―――――――――――――――――――――――――
+  /**
+   * Returns the public Instagram storefront URL.
+   * @param {Shop} shop - Shop model.
+   * @returns {string} Absolute Instagram storefront URL.
+   */
   static GetShopInstagramUrl(shop: Shop) {
     return ShopURLs.MainShopUrl(shop) + "/instagram";
   }

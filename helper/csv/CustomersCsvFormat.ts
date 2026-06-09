@@ -15,6 +15,9 @@
 import {Currency} from "../../enums/payment/Currency";
 import {Club} from "../../models";
 
+/**
+ * Canonical header order for customer CSV files.
+ */
 export const CustomersCsvHeaders = [
   "Name",
   "Email",
@@ -35,6 +38,9 @@ export const CustomersCsvHeaders = [
   "Postal",
 ];
 
+/**
+ * Column metadata used by customer CSV import/export tooling.
+ */
 export const CustomersCsvStyler = {
   Name: {
     type: "text",
@@ -94,7 +100,15 @@ export const CustomersCsvStyler = {
   },
 };
 
+/**
+ * Validation helpers for customer CSV files.
+ */
 export class CustomersCsvFormat {
+  /**
+   * Checks whether the uploaded CSV contains the minimum required customer fields.
+   * @param {string[]} headers - Parsed CSV headers.
+   * @returns {boolean} True when the file is acceptable.
+   */
   static CheckValidFile(headers:string[]) {
     if (!headers) return false;
     return !["Name", "Email", "Phone", "Level"].some((it) => {

@@ -13,7 +13,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Simple heuristics for scoring common SEO fields.
+ */
 export class SEO {
+  /**
+   * Scores a page title based on its length.
+   *
+   * The heuristic favors titles between 5 and 45 characters.
+   *
+   * @param {string} value - Candidate page title.
+   * @returns {number} Score from 0 to roughly 100.
+   */
   static GetPageTitleScore(value) {
     if (!value) return 0;
     const length = value.length;
@@ -25,6 +36,15 @@ export class SEO {
 
     return score;
   }
+
+  /**
+   * Scores a page URL/slUG based on length.
+   *
+   * The heuristic favors concise URLs between 3 and 16 characters.
+   *
+   * @param {string} value - URL segment or slug.
+   * @returns {number} Score from 0 to roughly 100.
+   */
   static GetPageURLScore(value) {
     if (!value) return 0;
     const length = value.length;
@@ -37,6 +57,14 @@ export class SEO {
     return score;
   }
 
+  /**
+   * Scores a meta description based on length.
+   *
+   * The heuristic favors descriptions between 50 and 150 characters.
+   *
+   * @param {string} value - Meta description text.
+   * @returns {number} Score from 0 to roughly 100.
+   */
   static GetPageDescription(value) {
     if (!value) return 0;
     const length = value.length;
@@ -49,16 +77,23 @@ export class SEO {
     return score;
   }
 
+  /**
+   * Scores click-through-rate against an average benchmark.
+   *
+   * Input is expected as a fraction (for example `0.0191` for 1.91%).
+   *
+   * @param {number} value - CTR as a decimal ratio.
+   * @returns {number} Score capped at 100.
+   */
   static CTRScore(value) {
     if (!value) return 0;
-    // Convert to percent:
     value = value * 100;
 
-    const average = 1.91; // As far as what constitutes a good click through rate, the average is around 1.91%
+    const average = 1.91;
 
     let score = 0;
-    if (score < average) score = (100 * value) / average;
-    else if (score >= average) score = 100;
+    if (value < average) score = (100 * value) / average;
+    else if (value >= average) score = 100;
 
     return score;
   }

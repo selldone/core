@@ -14,16 +14,42 @@
 
 import {delay} from "lodash-es";
 
+/**
+ * FontHelper provides utilities for managing font loading and icon display.
+ *
+ * Handles font readiness notifications to ensure custom fonts and icons
+ * are fully loaded before the UI is fully rendered.
+ */
 export class FontHelper {
   //――――――――――――――――――――――  Font loader listener ――――――――――――――――――――
 
+  /**
+   * Listens for font loading completion and invokes a callback.
+   *
+   * Uses the DOM's Font Loading API (document.fonts.ready) to detect when all fonts
+   * in use by visible text have been loaded. Includes a 20-second fallback timeout
+   * to ensure UI is rendered even if fonts fail to load.
+   *
+   * This is useful for showing icons and styled text that depend on custom fonts.
+   *
+   * @param {(success: boolean) => void} callback - Callback function invoked when fonts are ready.
+   *                                                  Always called with true (success).
+   *
+   * @example
+   * FontHelper.ListenOnFontIconsLoaded(() => {
+   *   console.log("Fonts are ready!");
+   *   // Show icons or styled text that requires fonts
+   * });
+   */
   static ListenOnFontIconsLoaded(callback: (success: boolean) => void) {
+    // Wait for all fonts in visible text to load
     document.fonts.ready.then(function () {
       console.log("⭐ All fonts in use by visible text have loaded.");
 
       if (callback) callback(true);
     });
-    // Force show icons after 10 sec if font not loaded!
+
+    // Force show icons after 20 seconds if fonts not loaded (prevents indefinite wait)
     delay(() => {
       if (callback) callback(true);
     }, 20000);

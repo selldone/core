@@ -12,26 +12,42 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Centralized keys and helpers for backoffice-related localStorage values.
+ */
 export class BackofficeLocalStorages {
+  /**
+   * Default image size used for CDN icon/image helpers in backoffice pages.
+   * The size is reduced when boost mode is enabled to save bandwidth.
+   */
   static IMAGE_SIZE_SMALL: number = localStorage.getItem("boost-mode")
     ? 64
-    : 128; // Can be 64 (low speed networks) or 128;
+    : 128;
 
   /**
-   * Set the boost mode
-   * @param boost_mode
-   * @constructor
+   * Enables or disables boost mode.
+   *
+   * Boost mode persists in localStorage and immediately updates the shared
+   * `IMAGE_SIZE_SMALL` constant used by image helpers.
+   *
+   * @param {boolean} boost_mode - Whether boost mode should be enabled.
+   * @returns {void}
    */
   static SetBoostMode(boost_mode: boolean): void {
     if (boost_mode) localStorage.setItem("boost-mode", "true");
     else localStorage.removeItem("boost-mode");
 
-    // Implement the boost mode:
     this.IMAGE_SIZE_SMALL = boost_mode ? 64 : 128;
   }
 
   // ▀▀▀▀▀▀▀▀▀ Product Cache Tags ▀▀▀▀▀▀▀▀▀
 
+  /**
+   * Reads cached product tags from localStorage.
+   *
+   * @param {string} $localstorage_base_path - Namespace prefix for the current shop/context.
+   * @returns {string[] | null} Cached tags or `null` when nothing is stored.
+   */
   static GetProductCachedTags(
     $localstorage_base_path: string,
   ): string[] | null {
@@ -40,6 +56,16 @@ export class BackofficeLocalStorages {
     return val.split(",");
   }
 
+  /**
+   * Adds product tags to the recent cached-tag list.
+   *
+   * The helper keeps the newest values first, deduplicates them, and limits the list
+   * to the latest 20 entries.
+   *
+   * @param {string} $localstorage_base_path - Namespace prefix for the current shop/context.
+   * @param {string[]} tags - Tags to prepend to the cache.
+   * @returns {void}
+   */
   static SetProductCachedTags(
     $localstorage_base_path: string,
     tags: string[],

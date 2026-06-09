@@ -14,7 +14,17 @@
 
 import {Product, Shop} from "../../models";
 
+/**
+ * Helper for generating embeddable product iframe markup.
+ */
 export class ProductEmbedHelper {
+  /**
+   * Builds an HTML iframe string that renders the embeddable product page.
+   *
+   * @param {Shop} shop - Shop owning the product.
+   * @param {Product} product - Product to embed.
+   * @returns {string} HTML iframe markup pointing to the product embed URL.
+   */
   static ProductIframe(shop: Shop, product: Product) {
     const url = window.URLS.ProductIframeUrl(shop, product);
     return `<iframe src="${url}" style="width:100%; max-width:100%;height: 640px;max-height: 100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;

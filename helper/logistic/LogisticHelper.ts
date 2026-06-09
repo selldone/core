@@ -18,9 +18,20 @@ import { Currency } from "../../enums/payment/Currency";
 import {Shop} from "../../models/shop/shop.model";
 import {Transportation} from "../../models/shop/transportation/transportation.model";
 
+/**
+ * Shipping/logistics helper utilities for basket dimension, distance, and delivery-cost calculations.
+ */
 export class LogisticHelper {
   //―――――――――――――――――――――― Logistic > Basket Helpers ――――――――――――――――――――
 
+  /**
+   * Calculates the total basket weight.
+   *
+   * Variant weight overrides product weight when available.
+   *
+   * @param {*} basket - Basket payload containing `items`.
+   * @returns {number} Total basket weight, or `-1` when basket is missing.
+   */
   static calculateWeightBasket(basket) {
     console.log("----->" + basket);
     if (!basket) return -1;
@@ -40,6 +51,15 @@ export class LogisticHelper {
     return out;
   }
 
+  /**
+   * Calculates the maximum occupied basket dimensions.
+   *
+   * This helper uses the maximum width/length/height found among items rather than a real
+   * packaging algorithm.
+   *
+   * @param {*} basket - Basket payload containing `items`.
+   * @returns {{ width: number; length: number; height: number }} Volume descriptor or `-1` values when basket is missing.
+   */
   static calculateVolumeBasket(basket) {
     let out = { width: -1, length: -1, height: -1 };
     if (!basket) return out;
@@ -62,8 +82,15 @@ export class LogisticHelper {
     return out;
   }
 
+  /**
+   * Calculates the geodesic distance between basket origin and target.
+   *
+   * @param {*} origin - Origin location with `lat` and `lng`.
+   * @param {*} target - Destination location with `lat` and `lng`.
+   * @returns {number} Distance in kilometers, or `-1` when either point is missing.
+   */
   static calculateDistanceBasket(origin, target) {
-    if (!target || !origin) return -1; // Not define warehouse
+    if (!target || !origin) return -1;
 
     let out = this.GPSCalculateDistance(
       origin.lat,
@@ -76,8 +103,17 @@ export class LogisticHelper {
     return out;
   }
 
+  /**
+   * Calculates great-circle distance between two geo points using the Haversine formula.
+   *
+   * @param {number} lat1 - Origin latitude.
+   * @param {number} lon1 - Origin longitude.
+   * @param {number} lat2 - Destination latitude.
+   * @param {number} lon2 - Destination longitude.
+   * @returns {number} Distance in kilometers.
+   */
   static GPSCalculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // km (change this constant to get miles)
+    const R = 6371;
     const dLat = ((lat2 - lat1) * Math.PI) / 180;
     const dLon = ((lon2 - lon1) * Math.PI) / 180;
     const a =
@@ -88,11 +124,23 @@ export class LogisticHelper {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c;
-    // if (d>1) return Math.round(d)+"km";
-    // else if (d<=1) return Math.round(d*1000)+"m";
     return d;
   }
 
+  /**
+   * Calculates shipping cost for a transportation rule.
+   *
+   * The result honors free-shipping thresholds, currency conversion, and target-currency
+   * rounding factors.
+   *
+   * @param {Shop} shop - Shop containing exchange rates.
+   * @param {keyof typeof Currency} to_currency - Currency in which shipping should be returned.
+   * @param {number} distance - Delivery distance in kilometers.
+   * @param {number} weight - Basket weight.
+   * @param {number} basket_total_price - Basket total in target currency.
+   * @param {Transportation} transportation - Transportation pricing rule.
+   * @returns {number | string} Final shipping amount, `-1` for invalid inputs, or localized error string on rate issues.
+   */
   static calculateShipping(
     shop:Shop,
     to_currency:keyof typeof Currency,
@@ -109,11 +157,9 @@ export class LogisticHelper {
     )
       return -1;
 
-    if (transportation.sod) return -1; // پس کرایه
+    if (transportation.sod) return -1;
 
-    // Exchange rate for transportation currency:
     const to_currency_object = Currency[to_currency];
-
     if (!to_currency_object) return "خطا";
 
     const rate = PriceHelper.getBuyRateValue(
@@ -153,7 +199,7 @@ export class LogisticHelper {
       transportation.const * rate +
       distance * transportation.distance_cof * rate +
       weight * transportation.weight_cof * rate +
-      basket_total_price * transportation.price_cof + // Rate affected to basket price!
+      basket_total_price * transportation.price_cof +
       distance * weight * transportation.distance_weight_cof * rate;
 
     console.debug(

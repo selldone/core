@@ -13,7 +13,17 @@
  */
 import {BackofficeLocalStorages} from "../../local-storage";
 
+/**
+ * Helper for resolving delivery-service icon URLs from the CDN.
+ */
 export class DeliveryServiceHelper {
+  /**
+   * Returns the CDN URL for a delivery service icon.
+   *
+   * @param {string | number} delivery_service_id - Delivery-service identifier.
+   * @param {number} [size=BackofficeLocalStorages.IMAGE_SIZE_SMALL] - Requested image size.
+   * @returns {string} CDN URL for the delivery-service icon.
+   */
   static GetDeliveryServiceIconById(
     delivery_service_id: string | number,
     size = BackofficeLocalStorages.IMAGE_SIZE_SMALL,

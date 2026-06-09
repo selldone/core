@@ -43,6 +43,10 @@ import igloo from "./assets/images/028-igloo.svg";
 import sailboat from "./assets/images/029-sailboat.svg";
 import cottage from "./assets/images/030-cottage.svg";
 
+/**
+ * Collection of 30 scenic placeholder images for use throughout the application.
+ * Includes various landscape and nature themes (waterfalls, deserts, lighthouses, etc.)
+ */
 const IMAGES = [
   waterfall,
   desert,
@@ -75,10 +79,52 @@ const IMAGES = [
   sailboat,
   cottage,
 ];
+
+/**
+ * PlaceholderImages provides utilities for selecting placeholder/fallback images.
+ *
+ * Contains a collection of scenic SVG images used as placeholders for missing or
+ * default images in the application. Useful for product listings, user profiles, etc.
+ */
 export class PlaceholderImages {
+  /**
+   * Returns a random placeholder image from the collection.
+   *
+   * Selects a random image from the 30-image collection, useful for generating
+   * varied default images when no specific image is available.
+   *
+   * @returns {string} A placeholder image SVG URL.
+   *
+   * @example
+   * const randomImage = PlaceholderImages.GetRamonImage();
+   * // Returns one of the 30 scenic SVG images randomly
+   */
   static GetRamonImage() {
     return IMAGES[Math.floor(Math.random() * IMAGES.length)];
   }
+
+  /**
+   * Returns a specific placeholder image based on an index.
+   *
+   * Deterministically selects a placeholder image using modulo arithmetic,
+   * ensuring the same ID always returns the same image. Useful for generating
+   * consistent default images for users/products with the same ID.
+   *
+   * @param {number} id - A numeric identifier (e.g., product ID, user ID).
+   * @returns {string} The placeholder image SVG URL corresponding to the index (id % 30).
+   *
+   * @example
+   * PlaceholderImages.GetIDImage(5); // Always returns the 5th image
+   *
+   * @example
+   * // For products with IDs > 30, wraps around:
+   * PlaceholderImages.GetIDImage(35); // Same as GetIDImage(5) - returns 5th image
+   *
+   * @example
+   * // Consistent placeholders for user profiles:
+   * const userId = 42;
+   * const profileImage = PlaceholderImages.GetIDImage(userId); // Always same image for user 42
+   */
   static GetIDImage(id: number) {
     return IMAGES[id % IMAGES.length];
   }

@@ -13,13 +13,36 @@
  */
 import {BackofficeLocalStorages} from "../local-storage";
 
+/**
+ * ShopCategoryHelper provides utilities for managing shop category images and icons.
+ *
+ * Handles retrieval of category icons from CDN with configurable sizing options.
+ */
 export class ShopCategoryHelper {
-   static GetCategoryIconById(
-        category_id: string | number,
-        size = BackofficeLocalStorages.IMAGE_SIZE_SMALL,
-    ) {
-        return window.CDN.GET_CATEGORY_ICON(category_id, size);
-    }
-
+    /**
+     * Retrieves the CDN URL for a category icon.
+     *
+     * Fetches the URL for a category's icon/image from the CDN based on the category ID
+     * and desired size. Icon sizes are predefined constants to optimize caching and performance.
+     *
+     * @param {string | number} category_id - The unique identifier of the category (product category, etc.).
+     * @param {number} [size=BackofficeLocalStorages.IMAGE_SIZE_SMALL] - The desired icon size.
+     *                                                                    Defaults to small size defined in configuration.
+     * @returns {string} The CDN URL for the category icon at the specified size.
+     *
+     * @example
+     * ShopCategoryHelper.GetCategoryIconById(5); // Returns CDN URL for category 5's small icon
+     *
+     * @example
+     * // With custom size
+     * ShopCategoryHelper.GetCategoryIconById(5, BackofficeLocalStorages.IMAGE_SIZE_LARGE);
+     * // Returns CDN URL for category 5's large icon
+     */
+    static GetCategoryIconById(
+         category_id: string | number,
+         size = BackofficeLocalStorages.IMAGE_SIZE_SMALL,
+     ) {
+         return window.CDN.GET_CATEGORY_ICON(category_id, size);
+     }
 
 }

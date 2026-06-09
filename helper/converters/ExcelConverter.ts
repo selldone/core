@@ -13,6 +13,12 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Self-contained Excel XML exporter.
+ *
+ * Produces legacy SpreadsheetML (`.xls`) files directly in the browser without external
+ * XLSX dependencies. Input is expected as a JSON string representing an array of objects.
+ */
 export default (function () {
   let Workbook,
     WorkbookStart = null;
@@ -25,7 +31,15 @@ export default (function () {
     link: HTMLAnchorElement ;
   const columnWidth = 120;
 
+  /**
+   * Converts a JSON payload into SpreadsheetML and triggers an `.xls` download.
+   */
   class ExcelConverter {
+    /**
+     * @param {string} o - JSON string containing an array of objects.
+     * @param {string} title - Output file name without extension.
+     * @param {string} [sheetName='Selldone Data'] - Worksheet name.
+     */
     constructor(o, title, sheetName = "Selldone Data") {
       this.fileName = title;
       this.SheetName = sheetName;
@@ -39,6 +53,10 @@ export default (function () {
       fs = JSON.stringify(respArray).replace(/&/gi, "&amp;");
     }
 
+    /**
+     * Generates the workbook XML and downloads it as an `.xls` file.
+     * @returns {void}
+     */
     downLoad() {
       const Worksheet = myXMLWorkSheet(SheetName, fs);
 

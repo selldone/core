@@ -19,9 +19,21 @@ import {Vendor} from "../../models/shop/vendor/vendor.model";
 import {ExtraPricing} from "../../models/shop/extra-pricing/extra-pricing.model";
 import {VendorProduct} from "../../models";
 
+/**
+ * Helper for resolving quantity-based extra pricing rows.
+ */
 export class ExtraPricingHelper {
-  // ――――――――――――――― Weight ―――――――――――――――
-
+  /**
+   * Returns the applicable list of extra-pricing rules for the current product context.
+   *
+   * Rules can depend on selected variant and/or selected vendor product.
+   * Sorting relies on project-wide array prototype helpers.
+   *
+   * @param {Product & { product_variants?: ProductVariant[]; vendors: Vendor[]; extra_pricings?: ExtraPricing[] }} product - Product with related pricing metadata.
+   * @param {ProductVariant | null} currentVariant - Currently selected variant.
+   * @param {VendorProduct | null} selectedVendorProduct - Currently selected marketplace vendor product.
+   * @returns {ExtraPricing[] | undefined} Matching extra-pricing rules ordered by minimum quantity.
+   */
   static GetListOfExtraPricings(
     product: Product & {
       product_variants?: ProductVariant[];
@@ -31,14 +43,12 @@ export class ExtraPricingHelper {
     currentVariant: ProductVariant | null,
     selectedVendorProduct: VendorProduct | null,
   ) {
-    // Force to select a variant:
     if (product.product_variants?.length && !currentVariant) return [];
-    // Force to select a vendor:
+
     if (product.vendors?.length) {
       if (!selectedVendorProduct) {
         return [];
       }
-      // No need to check variant!
       return product.extra_pricings
         ?.filter((x) => x.vendor_product_id === selectedVendorProduct.id)
         .sortByKey("min", true);
@@ -46,7 +56,9 @@ export class ExtraPricingHelper {
 
     return product.extra_pricings
       ?.filter((x) =>
-        currentVariant && currentVariant.pricing/*Should have pricing independent enable*/ ? x.variant_id === currentVariant.id : !x.variant_id,
+        currentVariant && currentVariant.pricing
+          ? x.variant_id === currentVariant.id
+          : !x.variant_id,
       )
       .filter((x) =>
         selectedVendorProduct
@@ -56,13 +68,19 @@ export class ExtraPricingHelper {
       .sortByKey("min", true);
   }
 
+  /**
+   * Finds the last pricing tier whose minimum quantity is satisfied.
+   *
+   * @param {ExtraPricing[] | null} extra_pricings - Ordered extra-pricing rules.
+   * @param {number} quantity - Requested quantity.
+   * @returns {ExtraPricing | null} Best matching pricing tier or `null` when nothing matches.
+   */
   static FindMatchInList(
     extra_pricings: ExtraPricing[] | null,
     quantity: number,
   ) {
     if (!extra_pricings) return null;
     let out = null;
-    // Find last satisfied pricing (lower price):
     for (let i = 0; i < extra_pricings.length; i++) {
       const extra_pricing = extra_pricings[i];
       if (quantity >= extra_pricing.min) {

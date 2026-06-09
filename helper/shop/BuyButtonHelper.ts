@@ -12,7 +12,19 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Utilities for parsing configurable buy-button labels.
+ */
 export class BuyButtonHelper {
+  /**
+   * Extracts an icon token and plain caption text from a button label.
+   *
+   * The helper expects icon names to be wrapped in curly braces, for example:
+   * `{shopping_cart} Buy now`.
+   *
+   * @param {string} inputString - Raw configurable button caption.
+   * @returns {{ icon: string | null; text: string } | null} Parsed icon/text pair or `null` when input is empty.
+   */
   static ExtractIconCaption(inputString: string) {
     if (!inputString) return null;
 

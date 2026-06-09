@@ -12,7 +12,18 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Tiny wrapper around `console.log` used to centrally disable noisy debug logs.
+ */
 export class CONSOLE {
+   /**
+    * Logs debug arguments only when the internal development flag is enabled.
+    *
+    * The current implementation intentionally never logs because the condition is hardcoded
+    * to `false`. Keeping the wrapper allows re-enabling debug output from one place later.
+    *
+    * @param {...any[]} args - Values that would be forwarded to `console.log`.
+    */
    static log(...args: any[]) {
        // @ts-ignore
        if (/*import.meta?.env?.MODE === 'development' && */false) {

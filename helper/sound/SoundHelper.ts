@@ -15,8 +15,14 @@ export class SoundHelper {
    */
   private static win: HTMLAudioElement | null = null;
 
+  /**
+   * Audio element for the bubble sound effect.
+   */
   private static bubble: HTMLAudioElement | null = null;
 
+  /**
+   * Audio element for the double-bubble sound effect.
+   */
     private static double_bubble: HTMLAudioElement | null = null;
 
   /**
@@ -75,6 +81,10 @@ export class SoundHelper {
     }
   }
 
+  /**
+   * Plays the bubble sound effect.
+   * @returns {Promise<void>} A promise resolved after playback starts.
+   */
   static async playBubble(): Promise<void> {
     try {
       // Load `win` sound only if it hasn't been loaded
@@ -88,7 +98,10 @@ export class SoundHelper {
       console.error(e);
     }
   }
-  // Double
+  /**
+   * Plays the double-bubble sound effect.
+   * @returns {Promise<void>} A promise resolved after playback starts.
+   */
   static async playDoubleBubble(): Promise<void> {
     try {
       // Load `win` sound only if it hasn't been loaded

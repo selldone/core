@@ -46,6 +46,11 @@ export class ShopOptionsHelper {
   }
 
 
+  /**
+   * Returns the shipping restriction option.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {*} Shipping restriction configuration or `false` when unset.
+   */
   static GetShippingRestriction(shop: Shop) {
     const shipping_option =
       shop.options &&
@@ -53,12 +58,22 @@ export class ShopOptionsHelper {
     return shipping_option ? shipping_option.value : false;
   }
 
+  /**
+   * Returns whether AMP pages are enabled.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {*} AMP option value or `false` when unset.
+   */
   static GetAmp(shop: Shop) {
     const amp_option =
       shop.options && shop.options.find((e) => e.code === "amp");
     return amp_option ? amp_option.value : false;
   }
 
+  /**
+   * Returns boost-mode configuration for category/product pages.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {{ product: any; category: any } | *} Boost configuration.
+   */
   static GetBoost(shop: Shop) {
     const boost_option =
       shop.options && shop.options.find((e) => e.code === "boost");
@@ -67,6 +82,11 @@ export class ShopOptionsHelper {
       : { product: null, category: null }; // Default: Smart mode
   }
 
+  /**
+   * Returns configured login methods.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {*} Login-method configuration or `null`.
+   */
   static GetLoginMethods(shop: Shop) {
     const login_option =
       shop.options && shop.options.find((e) => e.code === "login");
@@ -75,6 +95,11 @@ export class ShopOptionsHelper {
 
   // █████████████████████████ Checkout █████████████████████████
 
+  /**
+   * Returns checkout configuration with sensible defaults.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {{ map: boolean; mode: string } | *} Checkout configuration object.
+   */
   static GetCheckout(shop: Shop) {
     const checkout_option =
       shop.options && shop.options.find((e) => e.code === "checkout");
@@ -100,18 +125,34 @@ export class ShopOptionsHelper {
     );
   }
 
+  /**
+   * Determines whether guest payment is enabled without mandatory login.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {boolean} True when fully login-free payment is allowed.
+   */
   static HasGuestPayment(shop: Shop) {
     if (!shop) return false;
     const checkout_option = this.GetCheckout(shop);
     return checkout_option && ["login-free"].includes(checkout_option.mode);
   }
 
+  /**
+   * Determines whether the checkout map should be shown.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {boolean} True when map UI is enabled.
+   */
   static HasMap(shop: Shop) {
     if (!shop) return true;
     const checkout_option = this.GetCheckout(shop);
     return !checkout_option || checkout_option.map === true;
   }
 
+  /**
+   * Determines whether a shipping address must be collected for a product type.
+   * @param {Shop} shop - Shop configuration.
+   * @param {string} type - Product type code.
+   * @returns {boolean | undefined} Effective shipping-address rule.
+   */
   static AskShippingAddress(shop: Shop, type: string) {
     // 🎗️ Subscription:
     if (type === ProductType.SUBSCRIPTION.code) {
@@ -173,6 +214,11 @@ export class ShopOptionsHelper {
   }
 
   // █████████████████████████ Shop Map View █████████████████████████
+  /**
+   * Returns the configured shop-map feature settings.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {{ enable: boolean } | *} Shop-map configuration.
+   */
   static GetShopMap(shop: Shop) {
     const checkout_option =
       shop.options && shop.options.find((e) => e.code === "shop_map");
@@ -205,6 +251,11 @@ export class ShopOptionsHelper {
   }
 
   // █████████████████████████ Custom Orders Labeling █████████████████████████
+  /**
+   * Returns custom labeling overrides for order/billing flows.
+   * @param {Shop} shop - Shop configuration.
+   * @returns {{ mode?: keyof typeof LabelingModes; SM?: string; SV?: string; SF?: string; SS?: string; SN?: string; POS?: string; AVO?: string; HYP?: string; BILL?: string; FUL?: string; VND?: string; }} Labeling configuration.
+   */
   static GetLabeling(shop: Shop): {
     mode?: keyof typeof LabelingModes;
     SM?: string;

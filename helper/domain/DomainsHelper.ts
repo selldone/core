@@ -16,7 +16,21 @@
 import {SetupService} from "../../server/SetupService";
 import {Shop} from "../../models/shop/shop.model";
 
+/**
+ * Helper utilities for building a normalized list of all storefront domains.
+ */
 export class DomainsHelper {
+  /**
+   * Returns the list of domain entries associated with a shop.
+   *
+   * The output can include Selldone default URLs (`/@shop-name` and subdomain URLs)
+   * in addition to the custom domains passed by the backend.
+   *
+   * @param {Shop} shop - Shop model containing local/subdomain metadata.
+   * @param {*} domains - Collection of custom domain records.
+   * @param {boolean} [contains_default_domains=true] - Whether built-in Selldone domains should be included.
+   * @returns {any[]} Normalized list of domain objects used by backoffice/storefront UIs.
+   */
   static GetShopDomains(shop: Shop, domains, contains_default_domains = true) {
     let out = contains_default_domains
       ? [
@@ -32,9 +46,7 @@ export class DomainsHelper {
           },
           {
             url: `https://${shop.name}.${SetupService.ShopsDomain()}`,
-            site_map: `https://${
-              shop.name
-            }.${SetupService.ShopsDomain()}/sitemap`,
+            site_map: `https://${shop.name}.${SetupService.ShopsDomain()}/sitemap`,
             enable: shop.sub ? shop.sub.enable : false,
             indexed: shop.sub ? shop.sub.indexed : false,
             primary: shop.sub ? shop.sub.primary : false,
