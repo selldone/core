@@ -35,11 +35,11 @@ export interface VendorMember {
   /** Permission map stored as nullable JSON `vendor_members.access`. */
   access: VendorMemberTypes.AccessMap | null;
 
-  /** Creation timestamp. Source: `vendor_members.created_at`. */
-  created_at: string;
+  /** Creation timestamp serialized by Laravel. Source: `vendor_members.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `vendor_members.updated_at`. */
-  updated_at: string;
+  /** Last update timestamp serialized by Laravel. Source: `vendor_members.updated_at`. */
+  updated_at?: string | null;
 
   /** Joined user display name returned by member list endpoints. */
   name?: string;
@@ -48,13 +48,13 @@ export interface VendorMember {
   email?: string;
 
   /** Shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Vendor relation when eager-loaded. */
-  vendor?: Record<string, unknown>;
+  vendor?: Record<string, unknown> | null;
 
   /** User relation when eager-loaded. */
-  user?: Record<string, unknown>;
+  user?: Record<string, unknown> | null;
 }
 
 export namespace VendorMemberTypes {
@@ -77,6 +77,21 @@ export namespace VendorMemberTypes {
       boolean
     >
   >;
+
+  /** Stable access key stored inside `vendor_members.access`. */
+  export type AccessKey = keyof AccessMap;
+
+  /** Payload accepted when adding/updating a vendor panel member. */
+  export interface Upsert {
+    /** Target vendor id. */
+    vendor_id: number;
+
+    /** Target user id. */
+    user_id: number;
+
+    /** Permission map keyed by `${REGION}-READ` / `${REGION}-WRITE`. */
+    access?: AccessMap | null;
+  }
 
   /** UI metadata for each backend vendor-member region. */
   export const VendorMemberRegion = {

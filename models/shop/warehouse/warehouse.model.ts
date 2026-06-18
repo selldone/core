@@ -15,7 +15,7 @@
 /**
  * Shop or vendor warehouse / sender address.
  *
- * Backend source: `App\Shop\Warehouse\Warehouse`, table `shop_warehouse`.
+ * Backend source: `App\Storefront\Warehouse\Warehouse`, table `shop_warehouse`.
  * `Warehouse::GetWarehouse` creates either a shop-level warehouse (`vendor_id = null`) or a vendor-level warehouse.
  */
 export interface Warehouse {
@@ -46,8 +46,8 @@ export interface Warehouse {
   /** Address text, or `null`. Source: nullable `shop_warehouse.address`. */
   address: string | null;
 
-  /** Geolocation JSON/string decoded by Eloquent cast, or `null`. Source: nullable `shop_warehouse.location`. */
-  location: Warehouse.IGeoLocation | [number, number] | Record<string, unknown> | null;
+  /** Geolocation JSON decoded by Eloquent cast, or `null`. Source: nullable JSON `shop_warehouse.location`. */
+  location: Warehouse.IGeoLocation | [number, number] | Warehouse.JsonObject | null;
 
   /** Building number, or `null`. Source: nullable `shop_warehouse.no`. */
   no: string | null;
@@ -68,31 +68,79 @@ export interface Warehouse {
   postal: string | null;
 
   /** Additional warehouse info. Source: nullable JSON `shop_warehouse.info`. */
-  info?: Record<string, unknown> | null;
+  info?: Warehouse.JsonObject | null;
 
   /** Soft-delete timestamp when included. Source: `shop_warehouse.deleted_at`. */
   deleted_at?: string | null;
 
-  /** Creation timestamp. Source: `shop_warehouse.created_at`. */
-  created_at?: string;
+  /** Creation timestamp serialized by Laravel. Source: `shop_warehouse.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `shop_warehouse.updated_at`. */
-  updated_at?: string;
+  /** Last update timestamp serialized by Laravel. Source: `shop_warehouse.updated_at`. */
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Vendor relation when eager-loaded. */
   vendor?: Record<string, unknown> | null;
 }
 
 export namespace Warehouse {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSON casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
   /** Geographic coordinates used by warehouse address JSON. */
   export interface IGeoLocation {
     lat?: number;
     lng?: number;
     latitude?: number;
     longitude?: number;
-    [key: string]: unknown;
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** Receiver-info payload produced by `Warehouse::getReceiverInfoForVendor()`. */
+  export interface ReceiverInfo {
+    id: number;
+    title: string | null;
+    country: string | null;
+    state: string | null;
+    city: string | null;
+    address: string | null;
+    location: IGeoLocation | [number, number] | JsonObject | null;
+    no: string | null;
+    unit: string | null;
+    name: string;
+    phone: string | null;
+    message: string | null;
+    postal: string | null;
+  }
+
+  /** Payload accepted when editing warehouse address/contact fields. */
+  export interface Upsert {
+    vendor_id?: number | null;
+    title?: string | null;
+    country?: string | null;
+    state?: string | null;
+    state_code?: string | null;
+    city?: string | null;
+    address?: string | null;
+    location?: IGeoLocation | [number, number] | JsonObject | null;
+    no?: string | null;
+    unit?: string | null;
+    name?: string | null;
+    phone?: string | null;
+    message?: string | null;
+    postal?: string | null;
+    info?: JsonObject | null;
   }
 }

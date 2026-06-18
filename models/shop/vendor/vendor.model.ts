@@ -17,7 +17,7 @@ import type { VendorPricing } from "./vendor_pricing.model";
 /**
  * Marketplace vendor record.
  *
- * Backend source: `App\Shop\Vendors\Vendor`, table `vendors`.
+ * Backend source: `App\Storefront\Vendors\Vendor`, table `vendors`.
  * Main admin controller: `ShopVendorsController`. The Eloquent model hides `note` by default; some admin
  * endpoints call `makeVisible('note')` before returning vendor rows.
  */
@@ -98,10 +98,10 @@ export interface Vendor {
   note?: string | null;
 
   /** Private chat/history JSON. Source: nullable JSON `vendors.chat`. */
-  chat?: Record<string, unknown>[] | Record<string, unknown> | null;
+  chat?: Vendor.JsonArray | Vendor.JsonObject | null;
 
   /** Private integration metadata. Source: nullable JSON `vendors.meta`. */
-  meta?: Record<string, unknown> | null;
+  meta?: Vendor.Meta | null;
 
   /** Whether vendor is registered as a business. Source: `vendors.business`. */
   business?: boolean;
@@ -121,11 +121,14 @@ export interface Vendor {
   /** Soft-delete timestamp. Source: `vendors.deleted_at`. */
   deleted_at?: string | null;
 
-  /** Creation timestamp. Source: `vendors.created_at`. */
-  created_at?: string;
+  /** Creation timestamp serialized by Laravel. Source: `vendors.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `vendors.updated_at`. */
-  updated_at?: string;
+  /** Last update timestamp serialized by Laravel. Source: `vendors.updated_at`. */
+  updated_at?: string | null;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown> | null;
 
   /** Linked user relation when eager-loaded. */
   user?: Record<string, unknown> | null;
@@ -141,6 +144,48 @@ export interface Vendor {
 
   /** Vendor warehouse relation when eager-loaded. */
   warehouse?: Record<string, unknown> | null;
+
+  /** Vendor account relations when `accounts()` is eager-loaded. */
+  accounts?: Record<string, unknown>[];
+
+  /** Vendor payment relations when `payments()` is eager-loaded. */
+  payments?: Record<string, unknown>[];
+
+  /** Vendor order relations when `vendorOrders()` is eager-loaded. */
+  vendor_orders?: Record<string, unknown>[];
+
+  /** Vendor document relations when `documents()` is eager-loaded. */
+  documents?: Record<string, unknown>[];
+
+  /** Vendor analytics rows when `data()` is eager-loaded. */
+  data?: Record<string, unknown>[];
+
+  /** Queued product imports for this vendor when eager-loaded. */
+  import_que_products?: Record<string, unknown>[];
+
+  /** Queued image imports for this vendor when eager-loaded. */
+  import_que_images?: Record<string, unknown>[];
+
+  /** Vendor notification email rows when eager-loaded. */
+  vendor_emails?: Record<string, unknown>[];
+
+  /** Shipping-service assignments owned by this vendor when eager-loaded. */
+  transportation_services?: Record<string, unknown>[];
+
+  /** Courier-person assignments owned by this vendor when eager-loaded. */
+  transportation_persons?: Record<string, unknown>[];
+
+  /** Transportation order rows for this vendor when eager-loaded. */
+  transportation_orders?: Record<string, unknown>[];
+
+  /** Pending member invitations when `memberInvites()` is eager-loaded. */
+  member_invites?: Record<string, unknown>[];
+
+  /** Vendor panel members when `members()` is eager-loaded. */
+  members?: Record<string, unknown>[];
+
+  /** Marketplace shipping boxes owned by this vendor when eager-loaded. */
+  boxes?: Record<string, unknown>[];
 
   /** Count appended by `ShopVendorsController::list` for products updated in the last day. */
   updated_vendor_products?: number;
@@ -169,6 +214,18 @@ export namespace Vendor {
     REJECTED = "REJECTED",
   }
 
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSON casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
   /** Structured bank details retained by `Vendor::FixBankDetail`. */
   export interface BankInfo {
     account_name?: string | null;
@@ -191,9 +248,43 @@ export namespace Vendor {
     shipping_services?: number;
     shipping_couriers?: number;
     products?: number;
-    [key: string]: unknown;
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** Private vendor integration metadata. */
+  export interface Meta extends JsonObject {
+    /** Connected Stripe account id. Backend constant: `META_STRIPE_USER_ID = "stripe_user_id"`. */
+    stripe_user_id?: string | null;
   }
 
   /** Translation payload applied by `HasTranslationTrait`. */
-  export type Translations = Record<string, Record<string, unknown>>;
+  export type Translations = Record<string, JsonObject>;
+
+  /** Payload accepted when creating/updating a marketplace vendor before backend assigns ids/timestamps. */
+  export interface Upsert {
+    invite?: string | null;
+    enable: boolean;
+    access: boolean;
+    user_id?: number | null;
+    name: string;
+    description?: string | null;
+    email?: string | null;
+    address?: string | null;
+    web?: string | null;
+    tel?: string | null;
+    bank?: string | null;
+    bank_info?: BankInfo | null;
+    page_id?: number | null;
+    map_id?: number | null;
+    icon?: string | null;
+    status?: VendorStatus;
+    country?: string | null;
+    state?: string | null;
+    business?: boolean;
+    business_name?: string | null;
+    tax_id?: string | null;
+    pricing_id?: number | null;
+    augment?: Augment[] | null;
+    slug?: string | null;
+  }
 }

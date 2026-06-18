@@ -12,16 +12,16 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Currency} from "../../../enums/payment/Currency";
-import type {Product} from "./product.model";
-import type {ProductImage} from "./product-image.model";
-import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
-import type {VirtualItem} from "../order/basket/virtual_item.model";
+import { Currency } from "../../../enums/payment/Currency";
+import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
+import type { VirtualItem } from "../order/basket/virtual_item.model";
+import type { ProductImage } from "./product-image.model";
+import type { Product } from "./product.model";
 
 /**
  * Physical product variant stored in `shop_product_variant`.
  *
- * Backend source: `App\Shop\Products\ProductVariant`. Storefront product endpoints can return these through the
+ * Backend source: `App\Storefront\Products\ProductVariant`. Storefront product endpoints can return these through the
  * `productVariants` relation. Variant dimension fields are nullable because a shop can define only the dimensions it uses.
  */
 export interface ProductVariant {
@@ -37,7 +37,7 @@ export interface ProductVariant {
    *
    * Source: `shop_product_variant.shop_id`, added after initial schema and backfilled from the parent product.
    */
-  shop_id?: number;
+  shop_id?: number | null;
 
   /**
    * Parent product identifier.
@@ -215,6 +215,13 @@ export interface ProductVariant {
   product?: Product;
 
   /**
+   * Owning shop relation when eager-loaded.
+   *
+   * Source: `ProductVariant::shop()`.
+   */
+  shop?: Record<string, unknown> | null;
+
+  /**
    * Variant image relation when eager-loaded.
    *
    * Source: `ProductVariant::images()` from `shop_product_images.variant_id`.
@@ -282,7 +289,7 @@ export interface ProductVariant {
    *
    * Source: nullable JSON `shop_product_variant.meta`.
    */
-  meta?: Record<string, unknown> | null;
+  meta?: ProductVariant.Meta | null;
 
   /**
    * Extra-pricing rules attached to this variant when eager-loaded.
@@ -304,4 +311,73 @@ export interface ProductVariant {
    * Source: `ProductVariant::vendorProducts()` serialized as `vendor_products`.
    */
   vendor_products?: Record<string, unknown>[];
+}
+
+export namespace ProductVariant {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSON casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Private/integration metadata map stored in `shop_product_variant.meta`. */
+  export interface Meta extends JsonObject {}
+
+  /** Variant dimension code used by product/property-set APIs. */
+  export type DimensionCode = "color" | "style" | "volume" | "weight" | "pack" | "type";
+
+  /** Allowed keys exposed by backend `STRUCTURE` / `CustomStructure()`. */
+  export type StructureKey =
+    | "id"
+    | "product_id"
+    | "sku"
+    | "mpn"
+    | "gtin"
+    | DimensionCode
+    | "pricing"
+    | "price"
+    | "currency"
+    | "commission"
+    | "discount"
+    | "dis_start"
+    | "dis_end"
+    | "quantity"
+    | "image"
+    | "enable"
+    | "lead"
+    | "extra";
+
+  /** Payload accepted when creating/updating a product variant. */
+  export interface Upsert {
+    sku?: string | null;
+    mpn?: string | null;
+    gtin?: string | null;
+    color?: string | null;
+    style?: string | null;
+    volume?: string | null;
+    weight?: string | null;
+    pack?: string | null;
+    type?: string | null;
+    pricing: boolean;
+    price?: number | null;
+    currency: keyof typeof Currency;
+    commission?: number | null;
+    discount?: number | null;
+    quantity?: number | null;
+    image?: string | null;
+    enable?: boolean | null;
+    lead?: number | null;
+    extra?: Product.IExtra | null;
+    dis_start?: string | null;
+    dis_end?: string | null;
+    price_label?: string | null;
+    parent_id?: number | null;
+    meta?: Meta | null;
+  }
 }

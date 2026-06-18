@@ -74,14 +74,14 @@ export interface VendorProduct {
   /** Lead time in hours; `-1` is accepted by update validation. Source: `vendor_products.lead`. */
   lead: number;
 
-  /** Creation timestamp. Source: `vendor_products.created_at`. */
-  created_at: string;
+  /** Creation timestamp serialized by Laravel. Source: `vendor_products.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `vendor_products.updated_at`. */
-  updated_at: string;
+  /** Last update timestamp serialized by Laravel. Source: `vendor_products.updated_at`. */
+  updated_at?: string | null;
 
   /** Shop relation when eager-loaded. */
-  shop?: Shop;
+  shop?: Shop | null;
 
   /** Product relation when eager-loaded. */
   product?: Product | Record<string, unknown>;
@@ -100,4 +100,51 @@ export interface VendorProduct {
 
   /** Legacy camelCase relation alias used by older clients; backend JSON uses `extra_pricings`. */
   extraPricings?: ExtraPricing[];
+}
+
+export namespace VendorProduct {
+  /** Payload accepted when creating a vendor product row before backend assigns ids/timestamps. */
+  export interface Create {
+    /** Product id. */
+    product_id: number;
+
+    /** Optional variant id for variant-specific vendor rows. */
+    variant_id?: number | null;
+
+    /** Vendor id. */
+    vendor_id: number;
+
+    /** Optional linked vendor-pricing plan id. */
+    pricing_id?: number | null;
+
+    /** Whether this vendor row is enabled. */
+    enable: boolean;
+
+    /** Raw vendor price before marketplace pricing. */
+    raw_price: number;
+
+    /** Marketplace-facing price after pricing-plan calculation. */
+    price: number;
+
+    /** Currency code. */
+    currency: string;
+
+    /** Commission amount. */
+    commission?: number;
+
+    /** Discount amount. */
+    discount?: number;
+
+    /** Discount start timestamp. */
+    dis_start?: string | null;
+
+    /** Discount end timestamp. */
+    dis_end?: string | null;
+
+    /** Available quantity. */
+    quantity: number;
+
+    /** Lead time in hours. */
+    lead: number;
+  }
 }

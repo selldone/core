@@ -41,14 +41,14 @@ export interface VendorPricing {
   /** Localized fields keyed by locale. Source: nullable JSON `vendor_pricing.translations`. */
   translations?: VendorPricing.Translations | null;
 
-  /** Creation timestamp. Source: `vendor_pricing.created_at`. */
-  created_at: string;
+  /** Creation timestamp serialized by Laravel. Source: `vendor_pricing.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `vendor_pricing.updated_at`. */
-  updated_at: string;
+  /** Last update timestamp serialized by Laravel. Source: `vendor_pricing.updated_at`. */
+  updated_at?: string | null;
 
   /** Shop relation when `VendorPricing::shop()` is eager-loaded. */
-  shop?: Shop;
+  shop?: Shop | null;
 
   /** Vendor product relation from `vendorProducts()`, serialized as `vendor_products`. */
   vendor_products?: VendorProduct[];
@@ -64,6 +64,30 @@ export interface VendorPricing {
 }
 
 export namespace VendorPricing {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSON casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
   /** Translation payload applied by `HasTranslationTrait`. */
-  export type Translations = Record<string, Record<string, unknown>>;
+  export type Translations = Record<string, JsonObject>;
+
+  /** Payload accepted when creating/updating a vendor pricing plan. */
+  export interface Upsert {
+    /** Pricing plan title. */
+    title: string;
+
+    /** Optional pricing plan description. */
+    description?: string | null;
+
+    /** Commission percent applied to vendor raw price. */
+    commission: number;
+  }
 }
