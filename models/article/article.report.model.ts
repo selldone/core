@@ -14,36 +14,60 @@
 
 export interface ArticleReport {
   /**
-   * Unique identifier of the article.
+   * Primary key of the article report record.
+   *
+   * Backend: `article_reports.id`.
    */
   id: number;
 
+  /**
+   * Reported article ID.
+   *
+   * Backend: required foreign key to `articles.id`.
+   */
   article_id: number;
 
   /**
-   * Reporter user
+   * Reporter user ID.
+   *
+   * Backend: required foreign key to `users.id`.
    */
   user_id: number;
 
   /**
-   * Reason of the report
+   * Reason selected by the reporter.
+   *
+   * Backend enum source: `App\Social\Enums\ReportCategory`.
    */
   category: ArticleReport.CategoryKey;
 
   /**
-   * Delete this article (only by a supervisor or system)
+   * Supervisor/system deletion decision flag.
+   *
+   * Backend column default is `false`; when true the reported article should be
+   * deleted by moderation workflow.
    */
   delete: boolean;
 
   /**
-   * Last updated date of the article.
+   * Last update timestamp from Laravel `timestamps`.
    */
-  updated_at: Date;
+  updated_at: ArticleReport.Timestamp;
 
   /**
-   * Creation date of the article.
+   * Creation timestamp from Laravel `timestamps`.
    */
-  created_at: Date;
+  created_at: ArticleReport.Timestamp;
+
+  /**
+   * Loaded reporter relation, when explicitly included by the API.
+   */
+  user?: Record<string, unknown>;
+
+  /**
+   * Loaded reported article relation, when explicitly included by the API.
+   */
+  article?: Record<string, unknown>;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -51,6 +75,12 @@ export interface ArticleReport {
 //█████████████████████████████████████████████████████████████
 
 export namespace ArticleReport {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
   /**
    * Defines the structure for each article report category.
    */

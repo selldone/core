@@ -13,34 +13,92 @@
  */
 
 export interface CommunityAttachment {
-  /** Unique identifier for the community post file. */
+  /**
+   * Primary key of the community attachment.
+   *
+   * Backend: `community_attaches.id`.
+   */
   id: number;
 
-  /** Identifier for the community this post file belongs to. */
+  /**
+   * Parent community ID.
+   *
+   * Backend: required foreign key to `community.id`.
+   */
   community_id: number;
 
-  /** Identifier for the post this file is associated with. */
+  /**
+   * Parent post ID.
+   *
+   * Backend: required foreign key to `community_posts.id`.
+   */
   post_id: number;
 
-  /** Identifier for the user who uploaded the file. */
+  /**
+   * Uploader user ID.
+   *
+   * Backend: required foreign key to `users.id`.
+   */
   user_id: number;
 
-  /** Size of the file in bytes. */
-  size: string;
+  /**
+   * File size in bytes.
+   *
+   * Backend: unsigned bigint.
+   */
+  size: number;
 
-  /** Name of the file. */
+  /**
+   * Original/display file name.
+   */
   name: string;
 
-  /** Path of the file on storage. */
-  path: number;
+  /**
+   * File path on storage.
+   *
+   * Backend hides this field in serialized responses, so it is present only in
+   * privileged/internal payloads.
+   */
+  path?: string;
 
-  /** Flag indicating whether the file is a virus. */
+  /**
+   * Virus/malware flag set by moderation or scanning workflow.
+   */
   virus: boolean;
+
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at?: CommunityAttachment.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at?: CommunityAttachment.Timestamp;
+
+  /**
+   * Loaded parent community relation, when explicitly included by the API.
+   */
+  community?: Record<string, unknown>;
+
+  /**
+   * Loaded parent post relation, when explicitly included by the API.
+   */
+  post?: Record<string, unknown>;
+
+  /**
+   * Loaded uploader relation, when explicitly included by the API.
+   */
+  user?: Record<string, unknown>;
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace CommunityAttachment {
-
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
 }

@@ -36,11 +36,20 @@ export interface CommunityTopic {
   /** Description for SEO and short description to show. */
   desc: string;
 
-  /** Cover image for the topic. */
-  image: string;
+  /**
+   * Cover image for the topic.
+   *
+   * Backend column is nullable.
+   */
+  image: string | null;
 
-  /** Identifier for the first post content. */
-  post_id: number;
+  /**
+   * First/main post ID for the topic.
+   *
+   * Backend column is nullable because the topic can be created before the
+   * first post is attached or after that post is removed.
+   */
+  post_id: number | null;
 
   /** Admin configuration: No follow flag. */
   nofollow: boolean;
@@ -60,11 +69,19 @@ export interface CommunityTopic {
   /** Admin configuration: No one can send comments. */
   lock_comment: boolean;
 
-  /** Payment: Subscription type for the topic. */
-  subscription: keyof typeof CommunityTopic.SubscriptionTypes;
+  /**
+   * Payment subscription type for paid/private topics.
+   *
+   * Backend enum is nullable.
+   */
+  subscription: CommunityTopic.SubscriptionCode | null;
 
-  /** Payment: Trial type for the topic. */
-  trial: keyof typeof CommunityTopic.TrialTypes;
+  /**
+   * Trial period type for paid/private topics.
+   *
+   * Backend enum is nullable.
+   */
+  trial: CommunityTopic.TrialCode | null;
 
   /** Payment: Price for the topic. */
   price: number;
@@ -84,8 +101,13 @@ export interface CommunityTopic {
   /** Total values: Number of poll answers in the topic. */
   total_polls: number;
 
-  /** Total values: Array of user IDs contributing to the topic. */
-  total_contributors: number[];
+  /**
+   * Derived/legacy contributors summary, when an endpoint includes it.
+   *
+   * This is not a persisted column in `community_topics`; persisted recent
+   * contributor IDs live in `contributors`.
+   */
+  total_contributors?: number[] | null;
 
   /** Total values: Total number of active subscribers. */
   total_subscribers: number;
@@ -96,20 +118,49 @@ export interface CommunityTopic {
   /** Badges: Indicates if the topic is trending. */
   trend: boolean;
 
-  /** Poll: Array of poll objects with id, title, and value. Tips: id starts from 1. */
-  poll: Array<{ id: number; title: string; value: string }>;
+  /**
+   * Poll answer definitions.
+   *
+   * Backend stores this as nullable JSON. Poll IDs start from `1`.
+   */
+  poll: CommunityTopic.Poll[] | null;
 
-  /** Contributors: Array of contributor user IDs. */
-  contributors: number[];
+  /**
+   * Recent contributor user IDs.
+   *
+   * Backend stores this as nullable JSON and caps assignment to a recent set.
+   */
+  contributors: number[] | null;
 
   /** Timestamp for when the topic was deleted, null if not deleted. */
-  deleted_at: string | null;
+  deleted_at?: CommunityTopic.Timestamp | null;
 
   /** Timestamp for when the topic was created. */
-  created_at: string;
+  created_at: CommunityTopic.Timestamp;
 
   /** Timestamp for when the topic was last updated. */
-  updated_at: string;
+  updated_at: CommunityTopic.Timestamp;
+
+  /** Loaded parent community relation, when explicitly included by the API. */
+  community?: Record<string, unknown>;
+
+  /** Loaded category relation, when explicitly included by the API. */
+  category?: Record<string, unknown>;
+
+  /** Loaded creator user relation, when explicitly included by the API. */
+  user?: Record<string, unknown>;
+
+  /** Loaded first/main post relation, when explicitly included by the API. */
+  question?: Record<string, unknown> | null;
+
+  /** Loaded non-question posts relation, when explicitly included by the API. */
+  posts?: Record<string, unknown>[];
+
+  /** Loaded latest answer relation, when explicitly included by the API. */
+  last_answer?: Record<string, unknown> | null;
+
+  /** Loaded current-user topic action relation, when explicitly included. */
+  action?: Record<string, unknown> | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -117,14 +168,33 @@ export interface CommunityTopic {
 //█████████████████████████████████████████████████████████████
 export namespace CommunityTopic {
   /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /** Persisted topic trial codes. */
+  export type TrialCode = "TRIO" | "WEEK" | "MONTH";
+
+  /** Persisted topic subscription codes. */
+  export type SubscriptionCode = "MONTHLY" | "SEASONAL" | "YEARLY" | "LIFETIME";
+
+  /** Poll item persisted in `community_topics.poll`. */
+  export interface Poll {
+    id: number;
+    title: string;
+    value: number;
+  }
+
+  /**
    * Defines the structure of a trial type.
    *
    * - `code`: The unique code representing the type of trial.
    * - `name`: The i18n key associated with the trial for translations.
    * - `days`: The duration of the trial in days.
    */
-  interface ITrialType {
-    code: string;
+  export interface ITrialType {
+    code: TrialCode;
     name: string;
     days: number;
   }
@@ -132,7 +202,7 @@ export namespace CommunityTopic {
   /**
    * Enum for topic trial types with their properties.
    */
-  export const TrialTypes: Record<string, ITrialType> = {
+  export const TrialTypes: Record<TrialCode, ITrialType> = {
     TRIO: {
       code: "TRIO",
       name: "community.trial_type.TRIO",
@@ -156,7 +226,7 @@ export namespace CommunityTopic {
    */
   export type ISubscriptionType = {
     /** The unique code representing the subscription type. */
-    code: string;
+    code: SubscriptionCode;
     /** The name (or translation key) representing the subscription type. */
     name: string;
   };
@@ -165,7 +235,7 @@ export namespace CommunityTopic {
    * An enumeration representing the different types of topic subscriptions.
    * Each subscription type is associated with a unique code and a name.
    */
-  export const SubscriptionTypes: Record<string, ISubscriptionType> = {
+  export const SubscriptionTypes: Record<SubscriptionCode, ISubscriptionType> = {
     MONTHLY: {
       /** The unique code for the monthly subscription type. */
       code: "MONTHLY",

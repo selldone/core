@@ -14,129 +14,234 @@
 
 export interface Article {
   /**
-   * Unique identifier of the article.
+   * Primary key of the article record.
+   *
+   * Backend: `articles.id`.
    */
   id: number;
 
   /**
-   * ID representing the associated shop.
+   * Owning shop ID when the article belongs to a shop-scoped parent.
+   *
+   * Backend: nullable foreign key to `shops.id`. Official Selldone blog/help
+   * articles can have no shop.
    */
-  shop_id: number;
+  shop_id: number | null;
 
   /**
-   * ID of the parent entity.
+   * Polymorphic parent model ID.
+   *
+   * Examples: product ID for `product`, shop blog ID for `shop-blog`, Samin
+   * blog/help ID for official content, company ID for company profiles, or
+   * logistic profile ID for reusable product-detail profile articles.
    */
   parent_id: number;
 
   /**
-   * Type of the parent entity.
+   * Polymorphic parent type stored by Laravel morph map.
+   *
+   * Backend morph map source: `AppServiceProvider`.
    */
   parent_type: Article.TypeValue;
 
   /**
-   * ID of the user associated with the article.
+   * Author user ID.
+   *
+   * Backend: required foreign key to `users.id`.
    */
   user_id: number;
 
   /**
-   * Community name or identifier associated with the article.
+   * Legacy or API-injected community label.
+   *
+   * This is not a persisted column on `articles`; use only when an endpoint
+   * explicitly includes it.
    */
-  community: string;
+  community?: string | null;
 
   /**
-   * Title of the article.
+   * Article title.
+   *
+   * Backend: required string, max length 128.
    */
   title: string;
 
   /**
-   * Body or main content of the article.
+   * Main article body.
+   *
+   * Backend: `mediumText` HTML/content field.
    */
   body: string;
 
   /**
-   * Title to be used for the article's webpage.
+   * SEO/browser page title.
+   *
+   * Backend: nullable string, max length 128. When omitted, backend normally
+   * falls back to `title` during add/update flows.
    */
-  page_title: string;
+  page_title: string | null;
 
   /**
-   * Description of the article.
+   * Short list/search description.
+   *
+   * Backend: required text field, truncated to 256 characters during normal
+   * add/update flows.
    */
   description: string;
 
   /**
-   * Image URL or path associated with the article.
+   * Main image URL or storage path.
+   *
+   * Backend column is nullable. Thumbnail variants may be generated separately
+   * by backend image helpers.
    */
-  image: string;
+  image: string | null;
 
   /**
-   * Power rating or score of the article.
+   * Total power/clap counter.
+   *
+   * Backend default is `0`.
    */
   power: number;
 
   /**
-   * Count of likes the article has received.
+   * Total like counter.
+   *
+   * Backend default is `0`.
    */
   like: number;
 
   /**
-   * Indicates if the article is published.
+   * Whether the article is published.
+   *
+   * Scheduled future articles can be stored with `published = false` until
+   * `schedule_at` is reached.
    */
   published: boolean;
 
   /**
-   * Indicates if the article is private.
+   * Whether the article is private.
+   *
+   * Private articles are not publicly listed and may be limited to publication
+   * or admin contexts.
    */
   private: boolean;
 
   /**
-   * Language of the article.
+   * Article language code.
+   *
+   * Backend enum source: `Languages::AllLanguages` keys.
    */
   lang: string;
 
   /**
-   * Total count of comments on the article.
+   * Cached total comments counter.
+   *
+   * Backend default is `0`.
    */
   comments_count: number;
 
   /**
-   * Count of new comments since the last check.
+   * Cached count of unreviewed/new comments for admin workflows.
+   *
+   * Backend default is `0`.
    */
   new_comments_count: number;
 
   /**
-   * Number of views the article has received.
+   * Article view counter.
+   *
+   * Incremented by backend without touching `updated_at`.
    */
   views: number;
 
   /**
-   * Date and time when the article is scheduled to be published.
+   * Scheduled publish timestamp.
+   *
+   * Backend casts this nullable Carbon column as `datetime`; API payloads
+   * usually serialize it as an ISO datetime string.
    */
-  schedule_at: Date;
+  schedule_at: Article.Timestamp | null;
 
   /**
-   * URL-friendly version of the article's title.
+   * URL-friendly slug.
+   *
+   * Backend column is nullable; backend can regenerate it from `title` when
+   * missing.
    */
-  slug: string;
+  slug: string | null;
 
   /**
-   * FAQs associated with the article.
+   * FAQ entries used to generate FAQ JSON-LD.
+   *
+   * Backend stores this as nullable JSON and casts it to array. Normal
+   * add/update flows sanitize `question` and `answer` fields.
    */
-  faqs: any[]; // You might want to use a more specific type if possible.
+  faqs: Article.Faq[] | null;
 
   /**
-   * Structures or sections of the article.
+   * Structured data payload for article sections or SEO helpers.
+   *
+   * Backend stores this as nullable JSON and casts it to array.
    */
-  structures: any[]; // You might want to use a more specific type if possible.
+  structures: Article.StructurePayload | null;
 
   /**
-   * Last updated date of the article.
+   * Last update timestamp from Laravel `timestamps`.
    */
-  updated_at: Date;
+  updated_at: Article.Timestamp;
 
   /**
-   * Creation date of the article.
+   * Creation timestamp from Laravel `timestamps`.
    */
-  created_at: Date;
+  created_at: Article.Timestamp;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed articles.
+   */
+  deleted_at?: Article.Timestamp | null;
+
+  /**
+   * Loaded author relation, when explicitly included by the API.
+   */
+  user?: Record<string, unknown>;
+
+  /**
+   * Loaded shop relation, when explicitly included by the API.
+   */
+  shop?: Record<string, unknown> | null;
+
+  /**
+   * Loaded polymorphic parent relation, when explicitly included by the API.
+   */
+  parent?: Record<string, unknown> | null;
+
+  /**
+   * Loaded tags relation, when explicitly included by the API.
+   */
+  tags?: Record<string, unknown>[];
+
+  /**
+   * Loaded comments relation, when explicitly included by the API.
+   */
+  comments?: Record<string, unknown>[];
+
+  /**
+   * Loaded report rows relation, when explicitly included by the API.
+   */
+  reports?: Record<string, unknown>[];
+
+  /**
+   * Loaded star rows relation, when explicitly included by the API.
+   */
+  article_stars?: Record<string, unknown>[];
+
+  /**
+   * Loaded AI cached article relation, when explicitly included by the API.
+   */
+  ai_cache_article?: Record<string, unknown> | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -145,10 +250,34 @@ export interface Article {
 
 export namespace Article {
   /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * FAQ item persisted in `articles.faqs`.
+   */
+  export interface Faq {
+    /** Sanitized FAQ question text. */
+    question: string;
+
+    /** Sanitized FAQ answer HTML/text. */
+    answer: string;
+  }
+
+  /**
+   * Structure data payload persisted in `articles.structures`.
+   */
+  export type StructurePayload =
+    | Record<string, unknown>[]
+    | Record<string, unknown>;
+
+  /**
    * Interface representing the structure of each article type.
    */
-  interface IType {
-    code: string;
+  export interface IType {
+    code: TypeValue;
     name: string;
     color: string;
   }
@@ -161,7 +290,19 @@ export namespace Article {
     | "SelldoneHelp"
     | "Product"
     | "Blog"
-    | "Company";
+    | "Company"
+    | "LogisticProfile";
+
+  /**
+   * Persisted Laravel morph-map values accepted by `articles.parent_type`.
+   */
+  export type TypeValue =
+    | "blog"
+    | "help"
+    | "product"
+    | "shop-blog"
+    | "company"
+    | "logistic-profile";
 
   /**
    * Object containing different types of articles.
@@ -199,15 +340,10 @@ export namespace Article {
      */
     Company: { code: "company", name: "", color: "#456" },
 
-    // Uncomment the following line to add BusinessProfile
-    // BusinessProfile: { code: "BusinessProfile", name: "", color: "#456" }
+    /**
+     * Reusable product-detail profile articles, such as warranty, return
+     * policy, guide, or shipping profile content.
+     */
+    LogisticProfile: { code: "logistic-profile", name: "", color: "#607D8B" },
   };
-
-
-  /**
-   * Type representing the union of all possible `code` values in `Type`.
-   */
-  export type TypeValue = typeof Types[TypeKey]['code'];
-
-
 }

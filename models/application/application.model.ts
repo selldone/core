@@ -297,8 +297,13 @@ export namespace Application {
 
   /**
    * Generic JSON object accepted by Laravel JSON casts.
+   *
+   * Defined as an interface instead of `Record<string, JsonValue>` because
+   * recursive JSON aliases through `Record` can trigger TS2456.
    */
-  export type JsonObject = Record<string, JsonValue>;
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
 
   /**
    * Persisted visibility mode values from backend `AppMode`.

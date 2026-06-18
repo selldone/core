@@ -13,97 +13,183 @@
  */
 
 export interface Community {
-  /** Unique identifier for the community */
+  /**
+   * Primary key of the community record.
+   *
+   * Backend: `community.id`.
+   */
   id: number;
 
-  /** Identifier for the associated shop */
-  shop_id: number;
+  /**
+   * Owning shop ID.
+   *
+   * Backend column is nullable and unique. `null` is used for the official
+   * Selldone/global community.
+   */
+  shop_id: number | null;
 
-  /** Identifier for the associated user */
+  /**
+   * Creator/owner user ID.
+   *
+   * Backend: required foreign key to `users.id`.
+   */
   user_id: number;
 
-  /** Name of the community */
+  /**
+   * Unique community username/subdomain-friendly name.
+   *
+   * Backend: required unique string, max length 64.
+   */
   name: string;
 
-  /** Title of the community */
+  /**
+   * Public community title.
+   *
+   * Backend: required string, max length 128.
+   */
   title: string;
 
-  /** Description of the community */
-  desc: string;
-
-  /** Rules of the community */
-  rule: string;
-
-  /** Image associated with the community */
-  image: string;
+  /**
+   * Public community description.
+   *
+   * Backend column is nullable, max length 256.
+   */
+  desc: string | null;
 
   /**
-   * Stage access level determining who can post a new topic.
-   * {@see Community.StageLevel}
+   * Community rules shown to members.
+   *
+   * Backend column is nullable text.
    */
-  stage: keyof typeof Community.StageLevels;
+  rule: string | null;
 
   /**
-   * Determines who can attach files.
-   * {@see Community.AttachmentAccess}
+   * Community image path or URL.
+   *
+   * Backend column is nullable.
    */
-  attachment: keyof typeof Community.AttachmentAccesses;
+  image: string | null;
 
-  /** Allowed file types for attachments */
-  mims: string[];
+  /**
+   * Stage access level determining who can create new topics.
+   *
+   * Backend enum source: `CommunityStageLevel::All`.
+   */
+  stage: Community.StageLevelCode;
+
+  /**
+   * Attachment access level determining who can attach files.
+   *
+   * Backend enum source: `CommunityAttachmentAccess::All`.
+   */
+  attachment: Community.AttachmentAccessValues;
+
+  /**
+   * Allowed MIME types/extensions for attachments.
+   *
+   * Backend stores this as nullable JSON.
+   */
+  mims: string[] | null;
 
   // ⛔ Admin configuration:
 
-  /** Indicates if links should be marked as "nofollow" */
+  /** Whether links should be marked as `nofollow`. */
   nofollow: boolean;
 
-  /** Indicates if topics can be forked */
+  /** Whether topics can be forked/cross-posted. */
   cross: boolean;
 
-  /** Indicates if the community is enabled or not */
+  /** Whether the community is enabled. */
   enable: boolean;
 
   // Total values:
 
-  /** Total number of categories in the community */
+  /** Cached total number of categories in the community. */
   total_categories: number;
 
-  /** Total number of topics in the community */
+  /** Cached total number of topics in the community. */
   total_topics: number;
 
-  /** Total number of posts in the community */
+  /** Cached total number of posts in the community. */
   total_posts: number;
 
-  /** Total number of comments in the community */
+  /** Cached total number of comments in the community. */
   total_comments: number;
 
   // Selldone administrator actions:
 
-  /** Indicates if penalties are applied */
+  /** Whether Selldone administrator penalties are applied. */
   penalty: boolean;
 
   // Access list: (Use to check fast access)
 
-  /** Indicates if the admins list is accessible */
-  admins_list: boolean;
+  /**
+   * Cached admin user IDs for fast access checks.
+   *
+   * Backend stores this as nullable JSON.
+   */
+  admins_list: number[] | null;
 
-  /** Indicates if the moderators list is accessible */
-  moderators_list: boolean;
+  /**
+   * Cached moderator user IDs for fast access checks.
+   *
+   * Backend stores this as nullable JSON.
+   */
+  moderators_list: number[] | null;
 
   // Bot:
 
   /**
-   * Configuration for bots in the community.
-   * Example: Publishing on a Telegram channel.
-   * Note: Telegram channel names are saved without the '@' prefix.
+   * Community bot configuration.
+   *
+   * Backend stores this as nullable JSON. Telegram channel names are stored
+   * without the leading `@`.
    */
-  bots: {
-    Telegram?: {
-      enable: boolean;
-      channel: string;
-      errors: any[];
-    };
-  };
+  bots: Community.Bots | null;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed communities.
+   */
+  deleted_at?: Community.Timestamp | null;
+
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at?: Community.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at?: Community.Timestamp;
+
+  /** Loaded owner user relation, when explicitly included by the API. */
+  user?: Record<string, unknown>;
+
+  /** Loaded shop relation, when explicitly included by the API. */
+  shop?: Record<string, unknown> | null;
+
+  /** Loaded daily data relation, when explicitly included by the API. */
+  data?: Record<string, unknown>[];
+
+  /** Loaded categories relation, when explicitly included by the API. */
+  categories?: Record<string, unknown>[];
+
+  /** Loaded topics relation, when explicitly included by the API. */
+  topics?: Record<string, unknown>[];
+
+  /** Loaded posts relation, when explicitly included by the API. */
+  posts?: Record<string, unknown>[];
+
+  /** Loaded moderators relation, when explicitly included by the API. */
+  moderators?: Record<string, unknown>[];
+
+  /** Loaded bans relation, when explicitly included by the API. */
+  bans?: Record<string, unknown>[];
+
+  /** Loaded comments relation, when explicitly included by the API. */
+  comments?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████
@@ -111,6 +197,30 @@ export interface Community {
 //█████████████████████████████████████████████████████████████
 
 export namespace Community {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Persisted community stage values.
+   */
+  export type StageLevelCode = "PUBLIC" | "PRIVATE" | "VERIFIED";
+
+  /**
+   * Community bot configuration stored in `community.bots`.
+   */
+  export interface Bots {
+    Telegram?: {
+      enable: boolean;
+      channel: string;
+      errors?: Array<string | Record<string, unknown>>;
+    };
+
+    [bot: string]: unknown;
+  }
+
   /**
    * CommunityAttachmentAccess Enum
    *
@@ -122,7 +232,7 @@ export namespace Community {
     VERIFIED = "VERIFIED",
   }
 
-  interface IAttachmentAccess {
+  export interface IAttachmentAccess {
     code: AttachmentAccessValues;
     name: string;
     icon: string;
@@ -166,7 +276,14 @@ export namespace Community {
    * - **PRIVATE**: Only administrators and moderators are granted the privilege to create topics, while other users can only send posts within these created topics.
    * - **VERIFIED**: Administrators, moderators, and users who have been verified or nominated possess the right to create topics. All other members are limited to sending posts within these established topics.
    */
-  export const StageLevels = {
+  export interface IStageLevel {
+    code: StageLevelCode;
+    name: string;
+    icon: string;
+    description: string;
+  }
+
+  export const StageLevels: Record<StageLevelCode, IStageLevel> = {
     PUBLIC: {
       code: "PUBLIC",
       name: "community.stage_level.PUBLIC",
