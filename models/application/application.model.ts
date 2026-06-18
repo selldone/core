@@ -13,174 +13,264 @@
  */
 
 /**
- * Represents an application with various properties and settings.
+ * Developer application listed in the Selldone app marketplace and installable
+ * by shops.
+ *
+ * Backend source: `App\Storefront\Apps\App`, persisted in the `apps` table.
  */
 export interface Application {
   /**
-   * The unique identifier of the application.
-   * @type {number}
+   * Primary key of the app marketplace record.
    */
   id: number;
 
   /**
-   * The unique identifier of the company associated with the application.
-   * @type {number}
+   * Developer company that owns and manages the app.
+   *
+   * Backend: required foreign key to `companies.id`.
    */
   company_id: number;
 
   /**
-   * The mode of the application.
-   * @type {string}
-   * @see Application.AppMode
+   * App visibility mode.
+   *
+   * `TEST` apps are visible only to the owning developer company user,
+   * `ENTERPRISE` apps are visible to assigned shops, and `PUBLIC` apps are
+   * visible in the marketplace when published.
    */
-  mode: string;
+  mode: Application.AppModeCode;
 
   /**
-   * The category of the application.
-   * @type {string}
-   * @see Application.ApplicationCategories
+   * Marketplace category and storefront loading area.
    */
-  category: string;
+  category: Application.ApplicationCategoryCode;
 
   /**
-   * Indicates whether the application is enabled.
-   * @type {boolean}
+   * Internal availability switch.
+   *
+   * Disabled apps should not be used even if they are published.
    */
   enable: boolean;
 
   /**
-   * Indicates whether the application is published.
-   * @type {boolean}
+   * Marketplace visibility flag.
+   *
+   * Public and enterprise app discovery checks this flag in backend availability
+   * queries.
    */
   publish: boolean;
 
   /**
-   * The GitHub repository URL for the application.
-   * @type {string}
+   * Optional source/repository URL shown to maintainers or reviewers.
    */
-  github: string;
+  github: string | null;
 
   /**
-   * The source code of the application.
-   * @type {string}
+   * Stable unique app code used by APIs, OAuth naming, and install flows.
+   *
+   * Backend: unique string, max length 32.
    */
   code: string;
 
   /**
-   * The name of the application.
-   * @type {string}
+   * Short public app display name.
+   *
+   * Backend: string, max length 24.
    */
   name: string;
 
   /**
-   * The unique identifier of the client associated with the application.
-   * @type {number}
+   * Passport OAuth client ID assigned to the app.
+   *
+   * Backend: nullable foreign key to `oauth_clients.id`.
    */
-  client_id: number;
+  client_id: number | null;
 
   /**
-   * The API endpoint for the application.
-   * @type {string}
+   * Binary-collated API key used to build app login/install URLs.
+   *
+   * Backend: unique string, max length 64.
    */
   api: string;
 
   /**
-   * The short public description of the application.
-   * @type {string}
+   * Public marketplace description.
    */
-  description: string;
+  description: string | null;
 
   /**
-   * The detailed public description of the application.
-   * @type {string}
+   * Internal or reviewer note for app administration.
    */
-  note: string;
+  note: string | null;
 
   /**
-   * The rate value of the application, from 1 to 5.
-   * @type {number}
+   * Cached average review score.
+   *
+   * Backend default is `0`; user review rows contribute to this value.
    */
   rate: number;
 
   /**
-   * The total count of rates received by the application.
-   * @type {number}
+   * Number of user reviews contributing to `rate`.
    */
   rate_count: number;
 
   /**
-   * The list of required permissions for the application.
-   * @type {string[]}
+   * Requested app permissions/scopes shown during installation or review.
+   *
+   * Backend stores this as nullable JSON. Existing payloads may be plain scope
+   * strings or richer objects.
    */
-  permissions: string[];
+  permissions: Application.Permission[] | string[] | null;
 
   /**
-   * The URL to the privacy policy of the application.
-   * @type {string}
+   * Privacy-policy URL.
    */
-  privacy: string;
+  privacy: string | null;
 
   /**
-   * The URL to the web page of the application.
-   * @type {string}
+   * Developer or app website URL.
    */
-  web: string;
+  web: string | null;
 
   /**
-   * The public data form of the application. This information is available to the public in the storefront.
-   * @type {object}
-   * @example [{ "name": "public1", "title": "public1", "type": null }, { "name": "public2", "title": "public2", "type": null }]
+   * Public configuration schema/defaults visible to the shop/admin UI.
+   *
+   * Backend stores this as nullable JSON. Common payloads are arrays of form
+   * field definitions.
+   *
+   * @example [{ "name": "public1", "title": "public1", "type": null }]
    */
-  public: object;
+  public: Application.ConfigurationSchema | null;
 
   /**
-   * The private data form of the application. This information is available only to the admin in the dashboard.
-   * @type {object}
-   * @example [{ "name": "private1", "title": "private1", "type": null }, { "name": "private2", "title": "private2", "type": null }]
+   * Private configuration schema/defaults used for server-side app settings.
+   *
+   * Backend stores this as nullable JSON. Common payloads are arrays of form
+   * field definitions.
+   *
+   * @example [{ "name": "private1", "title": "private1", "type": null }]
    */
-  private: object;
+  private: Application.ConfigurationSchema | null;
 
   /**
-   * Additional information about the application.
-   * @type {object}
+   * Runtime/application metadata stored as JSON.
    */
-  info: object;
+  info: Application.JsonValue | null;
 
   /**
-   * The logo of the application.
-   * @type {string}
+   * Marketplace logo path or URL.
    */
-  logo: string;
+  logo: string | null;
 
   /**
-   * The icon of the application.
-   * @type {string}
+   * Small app icon path or URL.
    */
-  icon: string;
+  icon: string | null;
 
   /**
-   * The URL to the application's video.
-   * @type {string}
+   * Optional marketplace demo/video URL.
    */
-  video: string;
+  video: string | null;
 
   /**
-   * The number of installs of the application.
-   * @type {number}
+   * Total install counter.
+   *
+   * Real installs are derived by backend logic from `installs - uninstalls`;
+   * current active installs are tracked separately in `actives`.
    */
   installs: number;
 
   /**
-   * The number of uninstalls of the application.
-   * @type {number}
+   * Total uninstall counter.
    */
   uninstalls: number;
 
   /**
-   * The number of active installations of the application.
-   * @type {number}
+   * Current active install counter maintained by install/enable flows.
    */
   actives: number;
+
+  /**
+   * Alpha release payload.
+   *
+   * Backend stores this as nullable JSON. It can include generated storefront
+   * snippets such as `header` and `body`.
+   */
+  alpha?: Application.ReleasePayload | null;
+
+  /**
+   * Beta release payload.
+   *
+   * Backend stores this as nullable JSON. It can include generated storefront
+   * snippets such as `header` and `body`.
+   */
+  beta?: Application.ReleasePayload | null;
+
+  /**
+   * Production release payload used by storefront snippet generation.
+   *
+   * Backend reads `production.header` and `production.body` when rendering app
+   * snippets for installed shops.
+   */
+  production?: Application.ReleasePayload | null;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed apps.
+   */
+  deleted_at?: Application.Timestamp | null;
+
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at?: Application.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at?: Application.Timestamp;
+
+  /**
+   * Loaded developer company relation, when explicitly included by the API.
+   */
+  company?: Record<string, unknown> | null;
+
+  /**
+   * Loaded Passport OAuth client relation, when explicitly included by the API.
+   */
+  client?: Record<string, unknown> | null;
+
+  /**
+   * Loaded ordered marketplace/gallery images relation.
+   */
+  images?: Record<string, unknown>[];
+
+  /**
+   * Loaded enterprise shop credentials/allow-list relation.
+   */
+  enterprises?: Record<string, unknown>[];
+
+  /**
+   * Loaded paid app items/plans relation.
+   */
+  items?: Record<string, unknown>[];
+
+  /**
+   * Loaded purchase history relation.
+   */
+  purchases?: Record<string, unknown>[];
+
+  /**
+   * Loaded user reviews relation.
+   */
+  reviews?: Record<string, unknown>[];
+
+  /**
+   * Loaded customer-level opt-out/block rows for this app.
+   */
+  shop_app_customer_blocks?: Record<string, unknown>[];
 }
 
 import testImage from "./assets/app-mode/test.svg";
@@ -188,6 +278,91 @@ import enterpriseImage from "./assets/app-mode/enterprise.svg";
 import publicImage from "./assets/app-mode/public.svg";
 
 export namespace Application {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Generic JSON value accepted by Laravel JSON casts.
+   */
+  export type JsonValue =
+    | string
+    | number
+    | boolean
+    | null
+    | JsonObject
+    | JsonValue[];
+
+  /**
+   * Generic JSON object accepted by Laravel JSON casts.
+   */
+  export type JsonObject = Record<string, JsonValue>;
+
+  /**
+   * Persisted visibility mode values from backend `AppMode`.
+   */
+  export type AppModeCode = "TEST" | "ENTERPRISE" | "PUBLIC";
+
+  /**
+   * Persisted marketplace category values from backend `AppCategory`.
+   */
+  export type ApplicationCategoryCode =
+    | "TRACKING"
+    | "PAYMENT"
+    | "SEO"
+    | "CRM"
+    | "TRANSPORTATION"
+    | "AUTOMATION"
+    | "INVENTORY"
+    | "ACCOUNTING"
+    | "MARKETING"
+    | "ADVERTISING"
+    | "STAFF"
+    | "INCENTIVE"
+    | "SHOP";
+
+  /**
+   * Permission payload stored in `apps.permissions`.
+   *
+   * Some API payloads use only scope strings; richer review/install payloads can
+   * use objects with display metadata.
+   */
+  export interface Permission extends JsonObject {
+    code?: string;
+    title?: string;
+    description?: string;
+  }
+
+  /**
+   * App public/private configuration field definition.
+   */
+  export interface ConfigurationField extends JsonObject {
+    name: string;
+    title?: string;
+    type?: string | null;
+  }
+
+  /**
+   * App public/private configuration schema.
+   */
+  export type ConfigurationSchema =
+    | ConfigurationField[]
+    | JsonObject
+    | JsonValue[];
+
+  /**
+   * Release-channel payload stored in `alpha`, `beta`, and `production`.
+   */
+  export interface ReleasePayload extends JsonObject {
+    /** Storefront header snippet template. */
+    header?: string | null;
+
+    /** Storefront body snippet template. */
+    body?: string | null;
+  }
+
   export enum AppVersionType {
     PRODUCTION = "production",
     BETA = "beta",
@@ -201,10 +376,10 @@ export namespace Application {
    * @property {string} code - A unique code identifier for the application mode.
    * @property {string} src - The path to the mode's icon or image. This path is typically obtained using a `require` statement.
    */
-  interface IAppMode {
+  export interface IAppMode {
     title: string;
-    code: string;
-    src: string; // This assumes that require() returns a string path. Adjust if it's different.
+    code: AppModeCode;
+    src: string;
   }
 
   /**
@@ -212,7 +387,7 @@ export namespace Application {
    * This is part of the Selldone open-source library, which enables developers to build custom storefronts and back offices.
    * Each mode is represented as an object conforming to the IAppMode interface.
    */
-  export const AppMode: Record<string, IAppMode> = {
+  export const AppMode: Record<AppModeCode, IAppMode> = {
     TEST: {
       title: "Test",
       code: "TEST",
@@ -237,8 +412,8 @@ export namespace Application {
    * @property {string} name - The name of the application category, typically used for display purposes.
    * @property {string} icon - The icon representing the application category, usually a class name for a font icon.
    */
-  interface IApplicationCategory {
-    code: string;
+  export interface IApplicationCategory {
+    code: ApplicationCategoryCode;
     name: string;
     icon: string;
   }
@@ -248,7 +423,10 @@ export namespace Application {
    * enabling developers to build custom storefronts and back offices.
    * Each category is defined with a unique code, a name for display, and an icon for visual representation.
    */
-  export const ApplicationCategories: Record<string, IApplicationCategory> = {
+  export const ApplicationCategories: Record<
+    ApplicationCategoryCode,
+    IApplicationCategory
+  > = {
     TRACKING: {
       code: "TRACKING",
       name: "global.application_categories.tracking",

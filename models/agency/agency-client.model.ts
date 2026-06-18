@@ -12,72 +12,140 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import type {Agency} from "./agency.model";
+import type {AgencyPlan} from "./agency-plan.model";
+
 export interface AgencyClient {
   /**
-   * Unique identifier for the client.
+   * Primary key of the agency client record.
+   *
+   * Backend: `agency_clients.id`.
    */
   id: number;
 
   /**
-   * Identifier for the associated agency.
+   * Parent agency ID.
+   *
+   * Backend: required foreign key to `agency.id`.
    */
   agency_id: number;
 
   /**
-   * Identifier for the affiliate. This is assigned only when a client is created for the first time.
-   * It indicates who originally introduced this client.
+   * Affiliate ID that originally introduced this client.
+   *
+   * Backend assigns this only on first client creation and keeps it nullable.
    */
   affiliate_id?: number | null;
 
   /**
-   * Identifier for the associated user.
+   * Real Selldone user linked to this partner client.
+   *
+   * Backend: nullable foreign key to `users.id`.
    */
   user_id?: number | null;
 
   /**
-   * The last assigned plan identifier for the client.
+   * Deprecated single-shop link kept for old records.
+   *
+   * Backend marks this field as deprecated and newer logic uses the `shops`
+   * relation instead.
+   *
+   * @deprecated Use the loaded `shops` relation or shop `client_id` instead.
    */
-  plan_id: number;
+  shop_id?: number | null;
 
   /**
-   * The expiration date for the purchased plan. A value of `null` indicates a lifetime deal.
+   * Last activated agency plan ID.
+   *
+   * Backend column is nullable; refunds and ownership transfers may clear it.
    */
-  expire_at?: string | null;
+  plan_id: number | null;
 
   /**
-   * UUID provided by our partners.
+   * Expiration timestamp for the purchased plan.
+   *
+   * `null` means a lifetime deal or no active expiring plan.
+   */
+  expire_at?: AgencyClient.Timestamp | null;
+
+  /**
+   * Partner-issued client UUID.
+   *
+   * Backend stores it as a binary-collated string and enforces uniqueness per
+   * agency.
    */
   uuid: string;
 
   /**
-   * Email used for activation on the partner’s side.
+   * Email used for activation on the partner side.
+   *
+   * Backend lowercases it when creating/finding agency clients.
    */
   email: string;
 
   /**
-   * Count of added free stores.
+   * Extra free stores added on top of the active plan store limit.
    */
   giveaways: number;
 
   /**
-   * Indicates if the entity is in test mode.
-   * For instances created by an agency before transferring to a real client.
+   * Marks test clients created by an agency before transfer to a real customer.
+   *
+   * Backend column default is `false`.
    */
   test: boolean;
 
   /**
-   * Timestamp indicating when the entity was last updated.
+   * Last update timestamp from Laravel `timestamps`.
    */
-  updated_at: string;
+  updated_at: AgencyClient.Timestamp;
 
   /**
-   * Timestamp indicating when the entity was created.
+   * Creation timestamp from Laravel `timestamps`.
    */
-  created_at: string;
+  created_at: AgencyClient.Timestamp;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed clients.
+   */
+  deleted_at?: AgencyClient.Timestamp | null;
+
+  /**
+   * Loaded parent agency relation, when explicitly included by the API.
+   */
+  agency?: Agency;
+
+  /**
+   * Loaded attached user relation, when explicitly included by the API.
+   */
+  user?: Record<string, unknown> | null;
+
+  /**
+   * Loaded last plan relation, when explicitly included by the API.
+   */
+  plan?: AgencyPlan | null;
+
+  /**
+   * Loaded purchase history relation, when explicitly included by the API.
+   */
+  purchases?: Record<string, unknown>[];
+
+  /**
+   * Loaded shops created for this agency client.
+   */
+  shops?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export namespace AgencyClient {}
+export namespace AgencyClient {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+}

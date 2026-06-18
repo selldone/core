@@ -16,89 +16,153 @@ import {Currency} from "../../enums/payment/Currency";
 
 export interface Account {
   /**
-   * Unique identifier for the account.
+   * Primary key of the wallet account.
+   *
+   * Backend: `accounts.id`, auto-incrementing bigint. Production account IDs
+   * start from `1000000`.
    */
   id: number;
 
   /**
-   * ID of the associated user.
+   * Owner user ID.
+   *
+   * Backend: `accounts.user_id`, required foreign key to `users.id`.
    */
   user_id: number;
 
   /**
-   * Account number string.
+   * Public 16-digit wallet account number.
+   *
+   * Backend: `accounts.account_number`, unique string generated without
+   * separators. Use `Account.IsSelldoneAccount` to detect reserved Selldone
+   * storage/sprite accounts.
    */
   account_number: string;
 
   /**
-   * Name associated with the account.
+   * Human-readable account label set by the user or system.
+   *
+   * Backend: `accounts.account_name`, max length 256.
    */
   account_name: string;
 
   /**
-   * Type of the account, e.g., "Single Share".
+   * Ownership type of the wallet account.
+   *
+   * Backend enum: `Single` for a personal wallet account, `Share` for a shared
+   * account.
    */
-  type: string;
+  type: Account.AccountType;
 
   /**
-   * Account status. (Refer to the AccountStatus enumeration for possible values)
+   * Lifecycle and operational state of the account.
+   *
+   * Backend enum: `App\Backoffice\Account\Enums\AccountStatus`.
    */
   status: Account.AccountStatus;
 
   /**
-   * Currency type used in the account. (Refer to the Currency link for details)
+   * Wallet currency code.
+   *
+   * Backend enum source: `Currency::GetCurrenciesList()`. It must match one of
+   * the frontend `Currency` keys.
    */
   currency: keyof typeof Currency;
 
   /**
-   * Current balance of the account.
+   * Total account balance in `currency`.
+   *
+   * This includes locked funds. The spendable amount is `balance - locked`.
    */
   balance: number;
 
   /**
-   * Interest rate applicable to the account.
+   * Interest rate assigned to the account.
+   *
+   * Backend defaults new user accounts to `0`; accounts with no interest keep
+   * this value at zero.
    */
   interest_rate: number;
 
   /**
-   * Overdraft limit or value.
+   * Overdraft allowance in `currency`.
+   *
+   * Backend defaults new user accounts to `0`; accounts without overdraft keep
+   * this value at zero.
    */
   overdraft: number;
 
   /**
-   * Amount of funds that are locked or unavailable.
+   * Amount of the balance reserved for pending operations.
+   *
+   * Backend column default is `0`. Use `balance - locked` for free balance.
    */
   locked: number;
 
   /**
-   * Extra information provided by the user.
+   * User-controlled JSON options for account notifications and future flags.
+   *
+   * Backend: nullable JSON string cast with Laravel `json`. Known keys include
+   * `email` and `notification`; absent/null options mean default notifications
+   * are enabled in backend helpers.
    */
-  options: object;
+  options: Account.Options | null;
 
   /**
-   * ID of the associated company, if any.
+   * Linked billing company ID.
+   *
+   * Backend: nullable foreign key to `companies.id`, removed automatically when
+   * the company is deleted.
    */
   company_id?: number | null;
 
   /**
-   * Subscription UID as defined in the payment service (e.g., Stripe).
+   * Payment-provider subscription UID for automatic wallet charges.
+   *
+   * Backend: nullable string, currently used for Stripe subscription IDs.
    */
   subscription_uid?: string | null;
 
   /**
-   * The last date and time when usage was synchronized with Stripe.
+   * Last time account usage was synchronized with the payment provider.
+   *
+   * Backend casts this Carbon column as `datetime`; API payloads usually
+   * serialize it as an ISO datetime string.
    */
-  usage_sync_at?: Date | null;
+  usage_sync_at?: Account.Timestamp | null;
 
   /**
-   * The last date and time when charges were synchronized with Stripe.
+   * Last time automatic charge state was synchronized with the payment provider.
+   *
+   * Backend casts this Carbon column as `datetime`; API payloads usually
+   * serialize it as an ISO datetime string.
    */
-  charges_sync_at?: Date | null;
+  charges_sync_at?: Account.Timestamp | null;
 
   /**
-   * Extra metadata or information provided by the service.
+   * Service-controlled private metadata.
+   *
+   * Backend: nullable JSONB managed through `HasMeta`, commonly used to keep
+   * provider IDs and internal integration state.
    */
-  meta?: any[] | null; // Adjust the type as per the structure of the metadata
+  meta?: Account.Meta | null;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed accounts.
+   */
+  deleted_at?: Account.Timestamp | null;
+
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at?: Account.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at?: Account.Timestamp;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -106,6 +170,38 @@ export interface Account {
 //█████████████████████████████████████████████████████████████
 
 export namespace Account {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Backend JSON object used for both user options and service metadata.
+   */
+  export type JsonObject = Record<string, unknown>;
+
+  /**
+   * User-facing account options stored in `accounts.options`.
+   */
+  export interface Options extends JsonObject {
+    /** Email notification preference. Missing/null means backend default. */
+    email?: boolean;
+
+    /** In-app notification preference. Missing/null means backend default. */
+    notification?: boolean;
+  }
+
+  /**
+   * Service metadata stored in `accounts.meta`.
+   */
+  export type Meta = JsonObject;
+
+  /**
+   * Account ownership mode persisted in `accounts.type`.
+   */
+  export type AccountType = "Single" | "Share";
+
   export enum AccountStatus {
     /** First step checking account state. */
     Checking = "Checking",
@@ -132,7 +228,13 @@ export namespace Account {
     SelldoneStorage = "SelldoneStorage",
   }
 
-  export function IsSelldoneAccount(account_number: string|null) {
+  /**
+   * Returns true for reserved Selldone system accounts.
+   *
+   * Storage accounts start with `10000000000`; sprite accounts start with
+   * `20000000000`.
+   */
+  export function IsSelldoneAccount(account_number: string | null) {
     return (
       account_number?.startsWith("20000000000") ||
       account_number?.startsWith("10000000000")

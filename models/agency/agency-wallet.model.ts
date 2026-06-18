@@ -13,37 +13,67 @@
  */
 
 import {Currency} from "../../enums/payment/Currency";
+import type {Agency} from "./agency.model";
 
 export interface AgencyWallet {
   /**
-   * Unique identifier for the wallet entry.
+   * Primary key of the agency wallet record.
+   *
+   * Backend: `agency_wallet.id`.
    */
   id: number;
 
   /**
-   * ID of the associated agency.
+   * Parent agency ID.
+   *
+   * Backend: unique foreign key to `agency.id`; each agency has at most one
+   * wallet.
    */
   agency_id: number;
 
   /**
-   * Current balance of the wallet.
+   * Current agency wallet balance in `currency`.
+   *
+   * Backend increments this on agency charges and decrements it when Selldone
+   * applies agency costs.
    */
   balance: number;
 
   /**
-   * Currency type used in the wallet. This is not changeable after creation.
+   * Wallet currency code.
+   *
+   * Backend enum source: `Currency::GetCurrenciesList()`. The currency is not
+   * changeable after wallet creation.
    */
   currency: keyof typeof Currency;
 
   /**
-   * The date and time when the record was last updated.
+   * Last update timestamp from Laravel `timestamps`.
    */
-  updated_at: Date;
+  updated_at: AgencyWallet.Timestamp;
 
   /**
-   * The date and time when the record was created.
+   * Creation timestamp from Laravel `timestamps`.
    */
-  created_at: Date;
+  created_at: AgencyWallet.Timestamp;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed wallets.
+   */
+  deleted_at?: AgencyWallet.Timestamp | null;
+
+  /**
+   * Loaded parent agency relation, when explicitly included by the API.
+   */
+  agency?: Agency;
 }
 
-export namespace AgencyWallet {}
+export namespace AgencyWallet {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+}

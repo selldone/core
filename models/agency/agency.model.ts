@@ -13,147 +13,246 @@
  */
 
 import {Currency} from "../../enums/payment/Currency";
+import type {Account} from "../account/account.model";
+import type {AgencyClient} from "./agency-client.model";
+import type {AgencyPlan} from "./agency-plan.model";
+import type {AgencyWallet} from "./agency-wallet.model";
 
 export interface Agency {
   /**
-   * Unique identifier for the agency.
+   * Primary key of the agency partner record.
+   *
+   * Backend: `agency.id`.
    */
   id: number;
 
   /**
-   * Determines if the agency is enabled or not.
+   * Whether the partner integration is enabled.
+   *
+   * Disabled agencies should not be allowed to issue or redeem partner deals.
    */
   enable: boolean;
 
   /**
-   * Credential username for the agency.
+   * Unique API/login username assigned to the agency.
+   *
+   * Backend: `agency.username`, unique string.
    */
   username: string;
 
   /**
-   * Credential password for the agency.
+   * API/login password for the agency.
+   *
+   * Backend hides this field in serialized Eloquent responses, so it is present
+   * only in create/update payloads or privileged internal responses.
    */
-  password: string;
+  password?: string;
 
   /**
-   * Identifier for the officer who last edited the agency.
+   * Officer user ID that last created or edited the agency.
+   *
+   * Backend: required foreign key to `users.id`.
    */
   officer_id: number;
 
   /**
-   * Identifier for the user attached to the agency (optional).
+   * Optional Selldone user attached to the agency owner account.
+   *
+   * Backend: nullable foreign key to `users.id`.
    */
-  user_id?: number;
+  user_id?: number | null;
 
   /**
-   * Name of the agency.
+   * Public agency or partner name.
    */
   name: string;
 
   /**
-   * URL of the agency.
+   * Public website URL of the agency.
+   *
+   * Backend column is nullable.
    */
-  url: string;
+  url: string | null;
 
   /**
-   * Logo of the agency.
+   * Public logo path or URL.
+   *
+   * Backend column is nullable.
    */
-  logo: string;
+  logo: string | null;
 
   /**
-   * Email associated with the agency.
+   * Contact email used for the agency.
+   *
+   * Backend column is nullable and limited to 100 characters.
    */
-  email: string;
+  email: string | null;
 
   /**
-   * Phone number of the agency.
+   * Contact phone number used for the agency.
+   *
+   * Backend column is nullable and limited to 15 characters.
    */
-  phone: string;
+  phone: string | null;
 
   /**
-   * Number of activations where a user has since purchased a product license and is now looking to activate/redeem.
+   * Number of successful activation events handled for this agency.
    */
   activations: number;
 
   /**
-   * Number of times a user upgrades their license to a larger plan.
+   * Number of successful plan-enhance events handled for this agency.
    */
   enhances: number;
 
   /**
-   * Number of times a user downgrades their license to a smaller plan.
+   * Number of successful plan-reduce events handled for this agency.
    */
   reduces: number;
 
   /**
-   * Number of times a user returns their license for a refund.
+   * Number of refund events handled for this agency.
    */
   refunds: number;
 
   /**
-   * Start date of available API requests.
+   * Start of the valid API request window.
+   *
+   * Backend casts this nullable Carbon column as `datetime`.
    */
-  start_at: Date;
+  start_at: Agency.Timestamp | null;
 
   /**
-   * End date of available API requests.
+   * End of the valid API request window.
+   *
+   * Backend casts this nullable Carbon column as `datetime`.
    */
-  end_at: Date;
+  end_at: Agency.Timestamp | null;
 
   /**
-   * Determines if multiple shops per email are permitted. If false, UUID & Email must have a 1:1 relation.
+   * Allows multiple partner clients/shops to use the same email.
+   *
+   * When false, backend enforces a 1:1 relation between partner UUID and email.
    */
   multi: boolean;
 
   /**
-   * Determines if the system should auto verify user email. Used only by trusted partners.
+   * Auto-verifies user email during agency flows.
+   *
+   * Intended only for trusted partners.
    */
   express: boolean;
 
   /**
-   * Upgrade external link pattern.
+   * External upgrade/change-plan URL pattern.
+   *
+   * Example backend comment: `https://text.com/redemptions/{invoice_uuid}`.
    */
-  redemption: string;
+  redemption: string | null;
 
   /**
-   * Deal page header title.
+   * Optional custom header title for the agency deal page.
    */
-  header?: string;
+  header?: string | null;
 
   /**
-   * Determines if the agency is official for Selldone or a 3rd party partner.
+   * Distinguishes official Selldone agencies from third-party partners.
    */
   official: boolean;
 
   /**
-   * Last update date of the agency.
+   * Last update timestamp from Laravel `timestamps`.
    */
-  updated_at: Date;
+  updated_at: Agency.Timestamp;
 
   /**
-   * Creation date of the agency.
+   * Creation timestamp from Laravel `timestamps`.
    */
-  created_at: Date;
+  created_at: Agency.Timestamp;
 
   /**
-   * Available currencies for affiliate deal purchase.
+   * Currency allow-list for affiliate deal purchases.
+   *
+   * Backend stores this nullable JSON field as an array of currency codes.
    */
-  currencies?: keyof (typeof Currency)[];
+  currencies?: (keyof typeof Currency)[] | null;
 
   /**
-   * Metadata associated with the agency.
+   * Private service metadata for agency integrations.
+   *
+   * Backend: nullable JSONB managed through `HasMeta`. Known metadata includes
+   * `stripe_user_id` for connected Stripe accounts.
    */
-  meta?: Record<string, any>;
+  meta?: Agency.Meta | null;
 
   /**
-   * Account ID associated with the agency.
+   * Linked Selldone wallet account used for partner payments.
+   *
+   * Backend: nullable foreign key to `accounts.id`.
    */
-  account_id?: number;
+  account_id?: number | null;
 
   /**
-   * Maximum number of test shops that can be created by this agency.
+   * Maximum number of test shops that the agency can create.
+   *
+   * Backend column default is `10`.
    */
   test_limit: number;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed agencies.
+   */
+  deleted_at?: Agency.Timestamp | null;
+
+  /**
+   * Loaded wallet relation, when explicitly included by the API.
+   */
+  wallet?: AgencyWallet | null;
+
+  /**
+   * Loaded partner plans relation, when explicitly included by the API.
+   */
+  plans?: AgencyPlan[];
+
+  /**
+   * Loaded partner clients relation, when explicitly included by the API.
+   */
+  clients?: AgencyClient[];
+
+  /**
+   * Loaded linked account relation, when explicitly included by the API.
+   */
+  account?: Account | null;
+
+  /**
+   * Loaded officer user relation, when explicitly included by the API.
+   */
+  officer?: Record<string, unknown>;
+
+  /**
+   * Loaded attached user relation, when explicitly included by the API.
+   */
+  user?: Record<string, unknown> | null;
 }
 
-export namespace Agency {}
+export namespace Agency {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Service metadata stored in `agency.meta`.
+   */
+  export type Meta = Record<string, unknown> & {
+    /**
+     * Stripe connected-account ID granted to the Selldone platform.
+     *
+     * Backend constant: `Agency::META_STRIPE_USER_ID`.
+     */
+    stripe_user_id?: string;
+  };
+}
