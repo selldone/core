@@ -13,70 +13,91 @@
  */
 
 /**
- * Represents a user entity in the system.
+ * Authenticated Selldone user.
+ *
+ * Backend source: `App\User`, table `users`.
+ * The backend stores social-login flags, preferences, interests, source, and meta as JSON-like payloads and
+ * serializes date fields as Laravel timestamps in API responses.
  */
 export class User {
-  /** The unique identifier for the user. */
+  /** User id. Source: `users.id`. */
   id: number;
 
-  /** The user's full name. */
+  /** User full name. Source: `users.name`. */
   name: string;
 
-  /** The user's email address. */
-  email?: string;
+  /** User email address. Source: nullable `users.email`. */
+  email?: string | null;
 
-  /** The user's phone number. */
-  phone?: string;
+  /** User phone number. Source: nullable `users.phone`. */
+  phone?: string | null;
 
-  /** Timestamp when the user verified their email address. */
-  email_verified_at: Date;
+  /** Email verification timestamp. Source: nullable `users.email_verified_at`. */
+  email_verified_at: string | null;
 
-  /** Social login flags for the user. */
-  socials_login?: User.SocialLogin;
+  /** Social login flags for the user. Source: nullable JSON `users.socials_login`. */
+  socials_login?: User.SocialLogin | null;
 
-  /** User preferences settings. */
-  preferences?: User.Preferences;
+  /** User preferences settings. Source: nullable JSON `users.preferences`. */
+  preferences?: User.Preferences | null;
 
-  /** User's interests grouped by categories. */
-  interest: User.Interest;
+  /** User interests grouped by categories. Source: nullable JSON `users.interest`. */
+  interest?: User.Interest | null;
 
-  /** Indicates if the user is subscribed. */
+  /** Whether the user has an active subscription flag. Source: `users.subscribed`. */
   subscribed: boolean;
 
-  /** Timestamp indicating when the user was blocked. */
-  block_at: Date;
+  /** System block timestamp. Source: nullable `users.block_at`. */
+  block_at: string | null;
 
-  /** Duration (in hours) the user was last blocked. Used for calculating the next punishment period. */
+  /** Last block duration in hours; used to calculate next punishment period. */
   block_hours: number;
 
-  /** Ban level for the user. */
-  ban?: User.BanLevels;
+  /** Manual/admin ban level. Source: nullable `users.ban`. */
+  ban?: User.BanLevels | null;
 
-  /** Key-value pairs for storing metadata (private). Used for keeping third-party customer IDs and other values. */
-  meta: { [key: string]: any };
+  /** Private integration metadata. Source: nullable JSON `users.meta`. */
+  meta?: User.Meta | null;
 
-  /** Timestamp when the user was soft deleted. */
-  deleted_at: Date;
+  /** Laravel remember token; usually hidden from public payloads. */
+  remember_token?: string | null;
 
-  /** Timestamp when the user was created. */
-  created_at: Date;
+  /** Verified-user badge flag appended by backend/account resources. */
+  verified?: boolean;
 
-  /** Timestamp when the user was last updated. */
-  updated_at: Date;
+  /** User acquisition source such as joined shop id. */
+  source?: User.JsonObject | null;
 
-  constructor(data: any) {
+  /** Referral user id. Source: nullable `users.referral_id`. */
+  referral_id?: number | null;
+
+  /** Soft-delete timestamp. Source: nullable `users.deleted_at`. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp. Source: `users.created_at`. */
+  created_at?: string | null;
+
+  /** Last update timestamp. Source: `users.updated_at`. */
+  updated_at?: string | null;
+
+  constructor(data: User.Input) {
     this.id = data.id;
     this.name = data.name;
+    this.email = data.email;
     this.phone = data.phone;
-    this.email_verified_at = data.email_verified_at;
+    this.email_verified_at = data.email_verified_at ?? null;
     this.socials_login = data.socials_login;
     this.preferences = data.preferences;
     this.interest = data.interest;
-    this.subscribed = data.subscribed;
-    this.block_at = data.block_at;
-    this.block_hours = data.block_hours;
+    this.subscribed = data.subscribed ?? false;
+    this.block_at = data.block_at ?? null;
+    this.block_hours = data.block_hours ?? 0;
     this.ban = data.ban;
     this.meta = data.meta;
+    this.remember_token = data.remember_token;
+    this.verified = data.verified;
+    this.source = data.source;
+    this.referral_id = data.referral_id;
     this.deleted_at = data.deleted_at;
     this.created_at = data.created_at;
     this.updated_at = data.updated_at;
@@ -84,19 +105,32 @@ export class User {
 }
 
 export namespace User {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by backend JSON casts. Uses an interface to avoid recursive alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by backend JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
   /**
    * Represents the social login flags for a user.
    */
-  export type SocialLogin = {
+  export interface SocialLogin extends JsonObject {
     google?: boolean;
     linkedin?: boolean;
     github?: boolean;
     stripe?: boolean;
-  };
+  }
+
   /**
    * Represents user preferences settings.
    */
-  export type Preferences = {
+  export interface Preferences extends JsonObject {
     level?: User.Preferences.AppLevelKey;
     rating?: number;
     lang?: string;
@@ -106,7 +140,7 @@ export namespace User {
     currency?: string;
     provider?: boolean;
     calendar?: string;
-  };
+  }
 
   export namespace Preferences {
     /**
@@ -187,10 +221,39 @@ export namespace User {
   /**
    * Represents user's interests grouped by categories.
    */
-  export type Interest = {
+  export interface Interest extends JsonObject {
     business?: string[];
     topic?: string[];
-  };
+  }
+
+  /** Private user metadata. Stripe customer ids are stored by currency-specific keys. */
+  export interface Meta extends JsonObject {
+    stripe_customer_id?: string | null;
+  }
+
+  /** Raw user payload accepted by the model constructor. */
+  export interface Input {
+    id: number;
+    name: string;
+    email?: string | null;
+    phone?: string | null;
+    email_verified_at?: string | null;
+    socials_login?: SocialLogin | null;
+    preferences?: Preferences | null;
+    interest?: Interest | null;
+    subscribed?: boolean;
+    block_at?: string | null;
+    block_hours?: number;
+    ban?: BanLevels | null;
+    meta?: Meta | null;
+    remember_token?: string | null;
+    verified?: boolean;
+    source?: JsonObject | null;
+    referral_id?: number | null;
+    deleted_at?: string | null;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
 
   /** Possible ban levels for a user. */
   export enum BanLevels {

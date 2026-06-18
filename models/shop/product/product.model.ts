@@ -12,21 +12,21 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Currency} from "../../../enums/payment/Currency";
-import {SubscriptionMode} from "../../../enums/subscription/SubscriptionMode";
-import type {Category} from "../category/category.model";
-import type {ExtraPricing} from "../extra-pricing/extra-pricing.model";
-import type {PropertySet} from "../property-set/property-set.model";
-import type {ProductContent} from "./product-content.model";
-import type {ProductData} from "./product-data.model";
-import type {ProductFile} from "./product-file.model";
-import type {ProductImage} from "./product-image.model";
-import type {ProductRating} from "./product-rating.model";
-import type {ProductVariant} from "./product_variant.model";
-import type {SubscriptionPrice} from "./subscription_price.model";
+import { Currency } from "../../../enums/payment/Currency";
+import { SubscriptionMode } from "../../../enums/subscription/SubscriptionMode";
+import type { Category } from "../category/category.model";
+import type { ExtraPricing } from "../extra-pricing/extra-pricing.model";
+import type { PropertySet } from "../property-set/property-set.model";
+import type { ProductContent } from "./product-content.model";
+import type { ProductData } from "./product-data.model";
+import type { ProductFile } from "./product-file.model";
+import type { ProductImage } from "./product-image.model";
+import type { ProductRating } from "./product-rating.model";
+import type { ProductVariant } from "./product_variant.model";
+import type { SubscriptionPrice } from "./subscription_price.model";
 
 /**
- * Storefront product model backed by `App\Shop\Products\Product` and table `shop_products`.
+ * Storefront product model backed by `App\Storefront\Products\Product` and table `shop_products`.
  *
  * The backend may return a projection of this model. Fields that are database columns are documented with their source
  * column. Eager-loaded Laravel relations are documented with the snake_case keys used in JSON responses.
@@ -72,7 +72,7 @@ export class Product implements Product.IProduct {
   connect_id?: number | null;
 
   /** Product disadvantages shown in product content. Source: nullable JSON `shop_products.cons`. */
-  cons?: Record<string, string> | null;
+  cons?: Product.TextMap | null;
 
   /** Product price currency. Source: `shop_products.currency`. */
   currency!: keyof typeof Currency;
@@ -108,7 +108,7 @@ export class Product implements Product.IProduct {
   hsn?: string | null;
 
   /** Custom buyer input form structure. Source: nullable JSON/text `shop_products.inputs`. */
-  inputs?: unknown[] | null;
+  inputs?: Product.JsonArray | null;
 
   /** Lead time in hours; `-1` means backend/default behavior. Source: `shop_products.lead`. */
   lead?: number;
@@ -135,7 +135,7 @@ export class Product implements Product.IProduct {
   original?: boolean;
 
   /** Output form/data structure for virtual/file/service fulfillment. Source: nullable JSON/text `shop_products.outputs`. */
-  outputs?: unknown[] | null;
+  outputs?: Product.JsonArray | null;
 
   /** Dropshipping source product id. Source: nullable `shop_products.parent_id`. */
   parent_id?: number | null;
@@ -153,7 +153,7 @@ export class Product implements Product.IProduct {
   pricing?: Product.ProductPricing;
 
   /** Product advantages shown in product content. Source: nullable JSON `shop_products.pros`. */
-  pros?: Record<string, string> | null;
+  pros?: Product.TextMap | null;
 
   /** Available stock quantity; supports fractional units. Source: `shop_products.quantity` cast to float. */
   quantity?: number;
@@ -189,7 +189,7 @@ export class Product implements Product.IProduct {
   sells?: number;
 
   /** Custom dropshipping shipping price map by country code. Source: nullable JSON `shop_products.shipping`. */
-  shipping?: Record<string, number> | null;
+  shipping?: Product.ShippingMap | null;
 
   /** Assigned shipping logistic profile id. Source: nullable `shop_products.shipping_id`. */
   shipping_id?: number | null;
@@ -204,7 +204,7 @@ export class Product implements Product.IProduct {
   spec?: Product.ISpec | null;
 
   /** Display order for specification keys/groups. Source: nullable JSON `shop_products.spec_order`. */
-  spec_order?: Array<string | Record<string, unknown>> | null;
+  spec_order?: Product.SpecOrder | null;
 
   /** Product status. Source: `shop_products.status`. */
   status?: Product.ProductStatus;
@@ -276,7 +276,7 @@ export class Product implements Product.IProduct {
   declare theme?: string | null;
 
   /** Page-builder/product augmentation JSON. Source: nullable JSON `shop_products.augment`. */
-  declare augment?: Record<string, unknown> | null;
+  declare augment?: Product.JsonObject | null;
 
   /** Localized product fields keyed by locale. Source: nullable JSON `shop_products.translations`. */
   declare translations?: Product.Translations | null;
@@ -285,7 +285,7 @@ export class Product implements Product.IProduct {
   declare shortcuts?: number[] | null;
 
   /** Private integration metadata. Source: nullable JSON `shop_products.meta`; `audit` is hidden by backend. */
-  declare meta?: Record<string, unknown> | null;
+  declare meta?: Product.Meta | null;
 
   /** Property set profile id for customized variants/fields. Source: nullable `shop_products.property_set_id`. */
   declare property_set_id?: number | null;
@@ -333,7 +333,7 @@ export class Product implements Product.IProduct {
   declare extra_pricings?: ExtraPricing[];
 
   /** Include/accessory relation when eager-loaded. Source: `Product::includes()` serialized as `includes`. */
-  declare includes?: Record<string, unknown>[];
+  declare includes?: Product.JsonObject[] | null;
 
   /** Subscription price relation when eager-loaded. Source: `Product::subscriptionPrices()` serialized as `subscription_prices`. */
   declare subscription_prices?: SubscriptionPrice[];
@@ -348,10 +348,10 @@ export class Product implements Product.IProduct {
   declare children?: Product[];
 
   /** Marketplace vendor relation when eager-loaded. Source: `Product::vendor()` serialized as `vendor`. */
-  declare vendor?: Record<string, unknown> | null;
+  declare vendor?: Product.JsonObject | null;
 
   /** Marketplace vendor-product rows when eager-loaded. Source: `Product::vendorProducts()` serialized as `vendor_products`. */
-  declare vendor_products?: Record<string, unknown>[];
+  declare vendor_products?: Product.JsonObject[] | null;
 
   constructor(
     data: {
@@ -364,7 +364,28 @@ export class Product implements Product.IProduct {
 }
 
 export namespace Product {
-  /** Product fulfillment type. Source enum: `App\Shop\Products\Enums\ProductType`. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by backend JSON casts. Uses an interface to avoid recursive alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by backend JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Text map used by pros/cons/specification-like fields. */
+  export type TextMap = Record<string, string>;
+
+  /** Dropshipping shipping-price map keyed by country code. */
+  export type ShippingMap = Record<string, number>;
+
+  /** Display order for specification keys/groups. */
+  export type SpecOrder = Array<string | JsonObject>;
+
+  /** Product fulfillment type. Source enum: `App\Storefront\Products\Enums\ProductType`. */
   export enum ProductType {
     PHYSICAL = "PHYSICAL",
     VIRTUAL = "VIRTUAL",
@@ -373,7 +394,7 @@ export namespace Product {
     SUBSCRIPTION = "SUBSCRIPTION",
   }
 
-  /** Variable price input mode. Source enum: `App\Shop\Products\Enums\PriceInputType`. */
+  /** Variable price input mode. Source enum: `App\Storefront\Products\Enums\PriceInputType`. */
   export enum PriceInputType {
     DEFAULT = "default",
     AREA = "area",
@@ -381,7 +402,7 @@ export namespace Product {
     CUSTOM = "custom",
   }
 
-  /** Product pricing strategy. Source enum: `App\Shop\Products\Enums\ProductPricing`. */
+  /** Product pricing strategy. Source enum: `App\Storefront\Products\Enums\ProductPricing`. */
   export enum ProductPricing {
     /** Fixed price used by physical, virtual, file, and service products. */
     FIX = "FIX",
@@ -393,7 +414,7 @@ export namespace Product {
     BID = "BID",
   }
 
-  /** Product condition. Source enum: `App\Shop\Products\Enums\ProductCondition`. */
+  /** Product condition. Source enum: `App\Storefront\Products\Enums\ProductCondition`. */
   export enum ProductCondition {
     NEW = "new",
     REFURBISHED = "refurbished",
@@ -403,7 +424,7 @@ export namespace Product {
     USED_LIKE_NEW = "used_like_new",
   }
 
-  /** Product publication/workflow status. Source enum: `App\Shop\Products\Enums\ProductStatus`. */
+  /** Product publication/workflow status. Source enum: `App\Storefront\Products\Enums\ProductStatus`. */
   export enum ProductStatus {
     Open = "Open",
     Close = "Close",
@@ -421,7 +442,7 @@ export namespace Product {
     /** Whether storefront images should use contain-fit behavior. */
     contain?: boolean;
     /** Backend/storefront themes may add custom style flags. */
-    [key: string]: unknown;
+    [key: string]: JsonValue | undefined;
   }
 
   /** Variant dimensions/options configuration stored on `shop_products.variants`. */
@@ -469,7 +490,7 @@ export namespace Product {
     /** Original source file name. */
     name_src?: string;
     /** Backend can add converter-specific metadata. */
-    [key: string]: unknown;
+    [key: string]: JsonValue | undefined;
   }
 
   /** Physical extra parameters stored in `shop_products.extra` and variant `extra`. */
@@ -483,7 +504,7 @@ export namespace Product {
     /** Weight value in the shop-defined measurement unit. */
     weight?: number;
     /** Backend can add shipping/provider-specific keys. */
-    [key: string]: unknown;
+    [key: string]: JsonValue | undefined;
   }
 
   /** Internal team note stored in `shop_products.note`. */
@@ -499,7 +520,14 @@ export namespace Product {
   }
 
   /** Localized product fields keyed by locale code. */
-  export type Translations = Record<string, Record<string, unknown>>;
+  export type Translations = Record<string, JsonObject>;
+
+  /** Private product integration metadata. Backend hides `audit` by default. */
+  export interface Meta extends JsonObject {
+    stripe_product_id?: string | null;
+    audit?: JsonObject | JsonArray | null;
+    audit_at?: string | null;
+  }
 
   export interface IProduct {
     /** Product id. Source: `shop_products.id`. */
@@ -563,17 +591,17 @@ export namespace Product {
     /** Product specification JSON. Source: nullable `shop_products.spec`. */
     spec?: ISpec | null;
     /** Specification display order. Source: nullable `shop_products.spec_order`. */
-    spec_order?: Array<string | Record<string, unknown>> | null;
+    spec_order?: SpecOrder | null;
     /** Pros map. Source: nullable `shop_products.pros`. */
-    pros?: Record<string, string> | null;
+    pros?: TextMap | null;
     /** Cons map. Source: nullable `shop_products.cons`. */
-    cons?: Record<string, string> | null;
+    cons?: TextMap | null;
     /** Product message. Source: nullable `shop_products.message`. */
     message?: string | null;
     /** Output form/data structure. Source: nullable `shop_products.outputs`. */
-    outputs?: unknown[] | null;
+    outputs?: JsonArray | null;
     /** Buyer input form structure. Source: nullable `shop_products.inputs`. */
-    inputs?: unknown[] | null;
+    inputs?: JsonArray | null;
     /** Variant dimension configuration JSON. Source: nullable `shop_products.variants`. */
     variants?: IVariant[] | null;
     /** Blog/resource URL. Source: nullable `shop_products.blog`. */
@@ -627,7 +655,7 @@ export namespace Product {
     /** Dropshipping enabled flag. Source: `shop_products.reselling`. */
     reselling?: boolean;
     /** Dropshipping shipping costs by country code. Source: nullable JSON `shop_products.shipping`. */
-    shipping?: Record<string, number> | null;
+    shipping?: ShippingMap | null;
     /** Number of reseller shops. Source: `shop_products.reselling_shops`. */
     reselling_shops?: number;
     /** Reseller sales/product count. Source: `shop_products.reselling_count`. */
@@ -667,7 +695,7 @@ export namespace Product {
     /** Theme code. Source: nullable `shop_products.theme`. */
     theme?: string | null;
     /** Product augmentation JSON. Source: nullable JSON `shop_products.augment`. */
-    augment?: Record<string, unknown> | null;
+    augment?: JsonObject | null;
     /** Localized fields. Source: nullable JSON `shop_products.translations`. */
     translations?: Translations | null;
     /** Threshold config. Source: nullable JSON `shop_products.thresholds`. */
@@ -679,7 +707,7 @@ export namespace Product {
     /** Page-builder page id. Source: nullable `shop_products.page_id`. */
     page_id?: number | null;
     /** Private metadata. Source: nullable JSON `shop_products.meta`. */
-    meta?: Record<string, unknown> | null;
+    meta?: Meta | null;
     /** Soft-delete timestamp when returned. Source: `shop_products.deleted_at`. */
     deleted_at?: string | null;
     /** Creation timestamp when returned. Source: `shop_products.created_at`. */
@@ -703,7 +731,7 @@ export namespace Product {
     /** Extra-pricing relation when returned. */
     extra_pricings?: ExtraPricing[];
     /** Include/accessory relation when returned. */
-    includes?: Record<string, unknown>[];
+    includes?: JsonObject[] | null;
     /** Subscription price relation when returned. */
     subscription_prices?: SubscriptionPrice[];
     /** Property set relation when returned. */
@@ -713,9 +741,9 @@ export namespace Product {
     /** Child dropshipping products relation when returned. */
     children?: Product[];
     /** Vendor relation when returned. */
-    vendor?: Record<string, unknown> | null;
+    vendor?: JsonObject | null;
     /** Vendor-product rows when returned. */
-    vendor_products?: Record<string, unknown>[];
+    vendor_products?: JsonObject[] | null;
   }
 
   type IThresholdValue = number | null;
@@ -753,5 +781,5 @@ export namespace Product {
   };
 
   /** Custom product attributes stored in `shop_products.attributes`. */
-  export type IAttributes = Record<string, unknown>;
+  export type IAttributes = JsonObject;
 }

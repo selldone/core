@@ -12,23 +12,68 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Avocado order line item stored in `avocado_items`.
+ *
+ * Backend source: `App\Storefront\Order\Avocado\AvocadoItem`, table `avocado_items`.
+ */
 export interface AvocadoItem {
+  /** Item id. Source: `avocado_items.id`. */
   id: number;
+
+  /** Parent avocado order id. Source: `avocado_items.avocado_id`. */
   avocado_id: number;
-  title: string;
-  message: string;
-  image: string;
-  link: string;
-  status: keyof typeof AvocadoItem.Status;
+
+  /** Item title. Source: nullable `avocado_items.title`. */
+  title: string | null;
+
+  /** Seller/customer message. Source: nullable `avocado_items.message`. */
+  message: string | null;
+
+  /** Image path. Source: nullable `avocado_items.image`. */
+  image: string | null;
+
+  /** External/details link. Source: nullable `avocado_items.link`. */
+  link: string | null;
+
+  /** Item review status. Source: `avocado_items.status`. */
+  status: AvocadoItem.StatusKey;
+
+  /** Requested quantity. Source: `avocado_items.count`. */
   count: number;
-  price: number; // Final Price
-  currency: string; // Currency of user!
+
+  /** Final item price in order currency. Source: `avocado_items.price`. */
+  price: number;
+
+  /** Customer currency code. Source: `avocado_items.currency`. */
+  currency: string;
+
+  /** Creation timestamp serialized by Laravel. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel. */
+  updated_at?: string | null;
+
+  /** Parent avocado relation when eager-loaded. */
+  avocado?: AvocadoItem.JsonObject | null;
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace AvocadoItem {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for eager-loaded relation payloads. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for eager-loaded relation payloads. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
   /**
    * Enumerates the keys for various Avocado item statuses.
    */
@@ -37,7 +82,7 @@ export namespace AvocadoItem {
   /**
    * Describes the structure of each status item.
    */
-  interface IStatus {
+  export interface IStatus {
     /** The unique code representing the status. */
     code: StatusKey;
 
@@ -73,4 +118,15 @@ export namespace AvocadoItem {
       class: "red-flat",
     },
   };
+
+  /** Payload accepted when seller creates/updates an avocado order item. */
+  export interface Upsert {
+    title?: string | null;
+    message?: string | null;
+    image?: string | null;
+    link?: string | null;
+    count?: number;
+    price?: number;
+    status?: StatusKey;
+  }
 }

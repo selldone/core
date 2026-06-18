@@ -12,14 +12,22 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import type {User} from "../../../user/user.model";
-import {OrderTypeCode} from "../../../../enums/order/OrderTypeCode";
-import {Order} from "../order";
+import type { User } from "../../../user/user.model";
+import { OrderTypeCode } from "../../../../enums/order/OrderTypeCode";
+import { Order } from "../order";
+import type { AvocadoItem } from "./avocado.item";
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
-export interface Avocado extends Order.IOrder{
+/**
+ * Avocado custom order stored in `avocado`.
+ *
+ * Backend source: `App\Storefront\Order\Avocado\Avocado`, table `avocado`.
+ * Avocado orders can be started by seller or buyer and may optionally include delivery, receiver info,
+ * morph payment relation, and manually curated `avocado_items`.
+ */
+export interface Avocado extends Order.IOrder {
   /** Unique identifier of the order. */
   id: number;
 
@@ -33,16 +41,28 @@ export interface Avocado extends Order.IOrder{
   shop_id: number;
 
   /** Identifier of the seller associated with the order. */
-  seller_id: number;
+  seller_id: number | null;
 
   /** Identifier of the buyer associated with the order. */
-  buyer_id: number;
+  buyer_id: number | null;
 
   /** Identifier of the customer associated with the order. */
-  customer_id: number;
+  customer_id: number | null;
 
   /** Status of the order. It can be Open, Payed, or Canceled. */
-  status: Avocado.Status;
+  status: Avocado.StatusCode;
+
+  /** Rejection reason code. Source: nullable `avocado.reject`. */
+  reject?: keyof typeof Order.RejectReasons | null;
+
+  /** Rejection timestamp. Source: nullable `avocado.reject_at`. */
+  reject_at?: string | null;
+
+  /** Seller-defined order title. Source: nullable `avocado.title`. */
+  title?: string | null;
+
+  /** Seller-defined order message. Source: nullable `avocado.message`. */
+  message?: string | null;
 
   /** Final price of the order, including shipping costs. */
   price: number;
@@ -63,55 +83,76 @@ export interface Avocado extends Order.IOrder{
   delivery: boolean;
 
   /** Information about the receiver. */
-  receiver_info: Record<string, any>; // Expand this as needed
+  receiver_info: Order.IReceiverInfo | Avocado.JsonObject | null;
 
   /** Price of the delivery. */
   delivery_price: number;
 
   /** State of the delivery. */
-  delivery_state: keyof typeof Avocado.DeliveryStates;
+  delivery_state: Avocado.StateKey;
 
   /** Progress percentage of the order completion. */
   progress: number;
 
   /** Identifier of the payment associated with the order. */
-  payment_id: number;
+  payment_id: number | null;
 
   /** Type of the payment associated with the order. */
-  payment_type: number;
+  payment_type: string | null;
 
   /** Session details associated with the order. */
-  session: Record<string, any>; // Expand this as needed
+  session: Avocado.Session | null;
 
   /** User who made the purchase. Can be nullable. */
-  buyer?: User;
+  buyer?: User | null;
 
   /** This refers to the buyer. */
-  user: User;
+  user?: User | null;
+
+  /** Seller relation when eager-loaded. */
+  seller?: User | null;
+
+  /** Shop relation when eager-loaded. */
+  shop?: Avocado.JsonObject | null;
+
+  /** Customer relation when eager-loaded. */
+  customer?: Avocado.JsonObject | null;
+
+  /** Avocado line items relation when eager-loaded. */
+  items?: AvocadoItem[];
+
+  /** Morph payment relation when eager-loaded. */
+  payment?: Avocado.JsonObject | null;
+
+  /** Gateway transaction morph relation when eager-loaded. */
+  gateway_transaction?: Avocado.JsonObject | null;
+
+  /** Timeline rows when eager-loaded. */
+  timelines?: Avocado.JsonObject[] | null;
 
   /** Timestamp indicating when the order was reserved. */
-  reserved_at: string;
+  reserved_at: string | null;
 
   /** Timestamp indicating when the order was paid. */
-  pay_at: string;
+  pay_at: string | null;
 
   /** Timestamp indicating when the order was delivered. */
-  delivery_at: string;
+  delivery_at: string | null;
 
   /** Timestamp indicating when the order was last updated. */
-  updated_at: string;
+  updated_at?: string | null;
 
   /** Timestamp indicating when the order was created. */
-  created_at: string;
+  created_at?: string | null;
 
-  /** Reason for order rejection. Can be nullable. */
-  reject?: keyof typeof Order.RejectReasons | null;
-
-  /** Timestamp indicating when the order was rejected. Can be nullable. */
-  reject_at?: string;
+  /** Soft-delete timestamp. */
+  deleted_at?: string | null;
 
   /** Indicates the acquisition channel of the order. */
-  channel: string;
+  channel: string | null;
+
+  /** Generated order label. */
+  label?: string | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -119,11 +160,36 @@ export interface Avocado extends Order.IOrder{
 //█████████████████████████████████████████████████████████████
 
 export namespace Avocado {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by backend JSON casts. Uses an interface to avoid recursive alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by backend JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Client/session attribution stored in nullable JSON `avocado.session`. */
+  export interface Session extends JsonObject {
+    ip?: string | null;
+    country?: string | null;
+    country_code?: string | null;
+    os?: string | null;
+    browser?: string | null;
+    device?: string | null;
+  }
+
   export enum Status {
     Open = "Open",
+    Reserved = "Reserved",
     Payed = "Payed",
     Canceled = "Canceled",
   }
+
+  export type StatusCode = `${Status}`;
 
   /**
    * Interface representing the structure of each delivery state.
@@ -177,4 +243,30 @@ export namespace Avocado {
       icon: "fa:fas fa-check-double",
     },
   };
+
+  /** Payload accepted when seller creates a manual avocado order. */
+  export interface SellerCreate {
+    title: string;
+    message?: string | null;
+    raw_price: number;
+    currency: string;
+    delivery: boolean;
+    delivery_price?: number;
+    tax?: number;
+    tax_included?: boolean;
+  }
+
+  /** Editable avocado order fields. */
+  export interface Upsert {
+    title?: string | null;
+    message?: string | null;
+    status?: StatusCode;
+    reject?: string | null;
+    receiver_info?: Order.IReceiverInfo | JsonObject | null;
+    delivery?: boolean;
+    delivery_price?: number;
+    delivery_state?: StateKey;
+    progress?: number;
+    channel?: string | null;
+  }
 }
