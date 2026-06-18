@@ -15,8 +15,9 @@
 /**
  * Image record attached to a storefront product.
  *
- * Backend source: `App\Shop\Products\ProductImages`, table `shop_product_images`.
+ * Backend source: `App\Storefront\Products\ProductImages`, table `shop_product_images`.
  * Storefront product endpoints return this model through the product `images` relation ordered by `order` ascending.
+ * Creating a variant image can also set the variant main `image` when it is currently empty.
  */
 export interface ProductImage {
   /**
@@ -82,6 +83,12 @@ export interface ProductImage {
    */
   alt: string | null;
 
+  /** Product relation when eager-loaded. Source: `ProductImages::product()`. */
+  product?: Record<string, unknown> | null;
+
+  /** Variant relation when eager-loaded. Source: `ProductImages::variant()`. */
+  variant?: Record<string, unknown> | null;
+
   /**
    * Soft-delete timestamp when the backend returns trashed images.
    *
@@ -102,4 +109,42 @@ export interface ProductImage {
    * Source: `shop_product_images.updated_at`.
    */
   updated_at?: string | null;
+}
+
+export namespace ProductImage {
+  /** Payload accepted when creating a product image before backend assigns ids/timestamps. */
+  export interface Create {
+    /** Parent product id. */
+    product_id: number;
+
+    /** Optional variant id when the image belongs to a specific variant. */
+    variant_id?: number | null;
+
+    /** Stored CDN/storage path for the image. */
+    path: string;
+
+    /** Optional gallery sort order. Backend defaults to max order plus one in helper methods. */
+    order?: number;
+
+    /** Uploaded file size in bytes. */
+    size?: number;
+
+    /** Image width in pixels. */
+    width?: number;
+
+    /** Image height in pixels. */
+    height?: number;
+
+    /** Optional alt text. */
+    alt?: string | null;
+  }
+
+  /** Payload used by image order APIs. */
+  export interface SortItem {
+    /** Product image id. */
+    id: number;
+
+    /** New gallery order. */
+    order: number;
+  }
 }

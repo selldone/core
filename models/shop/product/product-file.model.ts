@@ -15,7 +15,9 @@
 /**
  * Downloadable file attached to a product or subscription content item.
  *
- * Backend source: `App\Shop\File\ProductFile`, table `product_files`.
+ * Backend source: `App\Storefront\File\ProductFile`, table `product_files`.
+ * Files are stored on the private disk. `uploading=true` means the file record was created but the backend still needs
+ * to confirm the uploaded object exists.
  */
 export interface ProductFile {
   /** Unique product file identifier. Source: `product_files.id`. */
@@ -51,6 +53,12 @@ export interface ProductFile {
   /** Last download timestamp, or `null` before the first download. Source: nullable `product_files.download_at`. */
   download_at: string | null;
 
+  /** Product relation when eager-loaded. Source: `ProductFile::product()`. */
+  product?: Record<string, unknown> | null;
+
+  /** Subscription/content relation when eager-loaded. Source: `ProductFile::content()`. */
+  content?: Record<string, unknown> | null;
+
   /** Soft-delete timestamp when returned. Source: nullable `product_files.deleted_at`. */
   deleted_at?: string | null;
 
@@ -59,4 +67,36 @@ export interface ProductFile {
 
   /** Last update timestamp serialized by Laravel when included. Source: `product_files.updated_at`. */
   updated_at?: string | null;
+}
+
+export namespace ProductFile {
+  /** Payload accepted when creating a file record before backend assigns ids/timestamps and counters. */
+  export interface Create {
+    /** Parent product id. */
+    product_id: number;
+
+    /** Optional product content id for subscription-content files. */
+    content_id?: number | null;
+
+    /** Whether this file is downloadable as a free sample. */
+    sample?: boolean;
+
+    /** Public file name. */
+    name: string;
+
+    /** Private-disk storage path. */
+    path: string;
+
+    /** File size in kilobytes. */
+    size: number;
+  }
+
+  /** Payload used by sort APIs. */
+  export interface SortItem {
+    /** Product file id. */
+    id: number;
+
+    /** New list order. */
+    order: number;
+  }
 }

@@ -17,7 +17,8 @@ import type {ProductFile} from "./product-file.model";
 /**
  * Subscription/content section attached to a product.
  *
- * Backend source: `App\Shop\Ribbon\ProductContent`, table `product_contents`.
+ * Backend source: `App\Storefront\Ribbon\ProductContent`, table `product_contents`.
+ * Product contents are used mostly for subscription products and can send email updates to subscribed buyers.
  */
 export interface ProductContent {
   /** Unique content identifier. Source: `product_contents.id`. */
@@ -74,9 +75,110 @@ export interface ProductContent {
   /** Attached files when the backend eager-loads `ProductContent::files()`. */
   files?: ProductFile[];
 
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown> | null;
+
+  /** Parent product relation when eager-loaded. */
+  product?: Record<string, unknown> | null;
+
+  /** Officer/user relation when eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Email receiver history relation when eager-loaded. */
+  receivers?: ProductContent.EmailReceiver[];
+
+  /** Buyer ratings relation when eager-loaded. */
+  rates?: ProductContent.Rate[];
+
   /** Creation timestamp serialized by Laravel when included. Source: `product_contents.created_at`. */
   created_at?: string | null;
 
   /** Last update timestamp serialized by Laravel when included. Source: `product_contents.updated_at`. */
   updated_at?: string | null;
+}
+
+export namespace ProductContent {
+  /** Email receiver history row. Backend table: `product_content_receivers`. */
+  export interface EmailReceiver {
+    /** Receiver row id. */
+    id: number;
+
+    /** Parent product content id. */
+    content_id: number;
+
+    /** Subscription basket id. */
+    basket_id: number;
+
+    /** Receiver name, or `null`. */
+    name: string | null;
+
+    /** Receiver email address. */
+    email: string;
+
+    /** Whether the buyer viewed the content email/page. */
+    view: boolean;
+
+    /** Whether the buyer clicked from the content email/page. */
+    click: boolean;
+
+    /** Whether the buyer downloaded at least one file from this content. */
+    download: boolean;
+
+    /** Creation timestamp serialized by Laravel. */
+    created_at?: string | null;
+
+    /** Last update timestamp serialized by Laravel. */
+    updated_at?: string | null;
+  }
+
+  /** Buyer rating row. Backend table: `product_content_rates`. */
+  export interface Rate {
+    /** Rating row id. */
+    id: number;
+
+    /** Parent product content id. */
+    content_id: number;
+
+    /** Buyer user id, or `null` after user deletion. */
+    user_id: number | null;
+
+    /** Rating value stored as unsigned tiny integer. */
+    rate: number;
+
+    /** Optional buyer review text. */
+    review: string | null;
+
+    /** Whether an officer has published the review. */
+    published: boolean;
+
+    /** Officer user id, or `null`. */
+    officer_id: number | null;
+
+    /** Creation timestamp serialized by Laravel. */
+    created_at?: string | null;
+
+    /** Last update timestamp serialized by Laravel. */
+    updated_at?: string | null;
+  }
+
+  /** Payload accepted when creating content before backend assigns ids/timestamps and counters. */
+  export interface Create {
+    /** Parent product id. */
+    product_id: number;
+
+    /** Content title. */
+    title: string;
+
+    /** Optional public short description. */
+    description?: string | null;
+
+    /** Whether backend should send this content by email. */
+    mail: boolean;
+
+    /** Optional email subject. */
+    subject?: string | null;
+
+    /** Optional email body HTML. */
+    body?: string | null;
+  }
 }

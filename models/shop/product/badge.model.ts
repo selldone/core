@@ -15,8 +15,11 @@
 /**
  * Product badge definition owned by a shop.
  *
- * Backend source: `App\Shop\Product\ProductBadge`, table `product_badges`.
- * Controller: `Shop\Product\ProductBadgesController`.
+ * Backend source: `App\Storefront\Product\ProductBadge`, table `product_badges`.
+ * API: `/shops/{shop_id}/badges` and `/shops/{shop_id}/products/{product_id}/badges`.
+ *
+ * Product rows keep selected badge ids in `shop_products.badges` JSONB. The badge itself is reusable per shop and can
+ * be matched to product specs by `pattern`.
  */
 export interface ProductBadge {
   /** Unique product badge identifier. Source: `product_badges.id`. */
@@ -44,5 +47,34 @@ export interface ProductBadge {
   updated_at?: string | null;
 
   /** Shop relation when eager-loaded. Source: `ProductBadge::shop()` serialized as `shop`. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
+}
+
+export namespace ProductBadge {
+  /** Badge id stored in `shop_products.badges`. */
+  export type Id = number;
+
+  /** Payload accepted when creating a badge before backend assigns ids/timestamps. */
+  export interface Create {
+    /** Owning shop id. */
+    shop_id: number;
+
+    /** Badge title. Backend requires at least `title` or `image`. */
+    title?: string | null;
+
+    /** Uploaded badge image path or image value after upload normalization. Backend requires at least `title` or `image`. */
+    image?: string | null;
+
+    /** Optional product spec pattern used for automatic badge assignment. */
+    pattern?: string | null;
+
+    /** Optional external/internal badge link. Backend validates URL on write paths. */
+    link?: string | null;
+  }
+
+  /** Payload accepted when updating a badge. */
+  export type Update = Partial<Omit<Create, "shop_id">>;
+
+  /** Product-level badge selection payload. Passing `null` clears badges in the backend API. */
+  export type ProductBadges = Id[] | null;
 }
