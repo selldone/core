@@ -12,63 +12,179 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Developer/provider request for publishing a Connect integration.
+ *
+ * Backend source: `App\Http\Controllers\Connect\models\ConnectProvider`,
+ * persisted in the `connect_providers` table.
+ */
 export interface ConnectProvider {
-  /** Unique identifier for the connect provider. */
+  /**
+   * Primary key of the connect provider record.
+   *
+   * Backend: `connect_providers.id`.
+   */
   id: number;
 
-  /** ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ Relations ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ */
-  /** User created this (Owner). */
-  user_id: number;
-  /** Linked connect (Add after request verified by SD admin). */
+  /**
+   * Owner user ID.
+   *
+   * Backend column is nullable and uses `nullOnDelete`.
+   */
+  user_id: number | null;
+
+  /**
+   * Linked published connect service ID.
+   *
+   * Backend: nullable foreign key to `connects.id`, set after Selldone approves
+   * and creates the public connect service.
+   */
   connect_id?: number | null;
 
-  /** ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ Officer zone ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ */
-  /** Officer. */
+  /**
+   * Reviewing officer user ID.
+   *
+   * Backend column is nullable and uses `nullOnDelete`.
+   */
   officer_id?: number | null;
-  /** Approved by officer. */
-  approved_at?: string | null;
-  /** Rejected by officer. */
-  rejected_at?: string | null;
-  /** Officer message for provider owner (Reject reason or, ...). */
+
+  /**
+   * Approval timestamp set by the reviewing officer.
+   */
+  approved_at?: ConnectProvider.Timestamp | null;
+
+  /**
+   * Rejection timestamp set by the reviewing officer.
+   */
+  rejected_at?: ConnectProvider.Timestamp | null;
+
+  /**
+   * Officer message for the provider owner.
+   *
+   * Commonly used for rejection reasons or revision requests.
+   */
   officer_message?: string | null;
-  /** User request to review to publish. */
+
+  /**
+   * Whether the provider owner requested review/publish.
+   */
   reviewing: boolean;
 
-  /** ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ Configuration ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ */
-  /** Unique code (After first approve it cannot change). */
-  code: string;
-  /** [Same as connect->name] Name of connect. */
+  /**
+   * Unique provider code.
+   *
+   * Backend column is nullable before generation. After first approval it should
+   * remain stable.
+   */
+  code: string | null;
+
+  /**
+   * Provider/connect display name.
+   */
   name: string;
-  /** [Same as connect->icon] Icon of connect. */
+
+  /**
+   * Provider/connect icon path or name.
+   *
+   * Backend column is nullable.
+   */
   icon?: string | null;
-  /** [Same as connect->enable] Enable/Disable connect service. */
+
+  /**
+   * Whether this provider/connect is enabled.
+   */
   enable: boolean;
-  /** [Same as connect->mode] {@see ConnectMode}. */
-  mode: string;
 
-  /** {name, description, ...} Used to update the linked connect. */
-  info: Array<{ name: string; description: string }>;
-  /** {confirm, read_categories, write_categories, ...} Used to update the linked connect. */
-  config: Array<string>;
+  /**
+   * Provider connect mode.
+   *
+   * Backend enum source: `ConnectMode::All`.
+   */
+  mode: ConnectProvider.ConnectModeValue;
 
-  /** ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ Developer ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ */
-  /** Keep Auth config. */
-  auth: Array<string>;
-  /** Keep API configs. External service calls these endpoints on SD. */
-  apis: Array<string>;
-  /** Keep webhooks configs. We call these endpoints. */
-  webhooks: Array<
-    (typeof ConnectProvider.Webhooks)[keyof typeof ConnectProvider.Webhooks]
-  >;
+  /**
+   * Provider profile/configuration used to create/update the linked connect.
+   *
+   * Backend stores this as nullable JSONB. Common keys include `description`,
+   * `confirm`, and scope booleans.
+   */
+  info: ConnectProvider.ProviderInfo | null;
 
-  /** ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ Statistics ▃▃▃▃▃▃▃▃▃▃▃▃▃▃ */
-  /** Total errors (Reset by user). */
+  /**
+   * Additional connect configuration used during review/publish flows.
+   *
+   * Backend stores this as nullable JSONB.
+   */
+  config: ConnectProvider.ProviderConfig | null;
+
+  /**
+   * Unique secure provider access key.
+   *
+   * Backend: `connect_providers.secret`, unique string. APIs may hide this in
+   * public responses.
+   */
+  secret?: string;
+
+  /**
+   * Authentication configuration.
+   *
+   * Backend stores this as nullable JSONB. `auth.mode` drives whether the
+   * created connect uses OAuth or username/password form fields.
+   */
+  auth: ConnectProvider.AuthConfig | null;
+
+  /**
+   * API configuration. External services call these endpoints on Selldone.
+   *
+   * Backend stores this as nullable JSONB.
+   */
+  apis: ConnectProvider.ApiConfig | null;
+
+  /**
+   * Webhook endpoint configuration. Selldone calls these provider endpoints.
+   *
+   * Backend stores this as nullable JSONB.
+   */
+  webhooks: ConnectProvider.WebhookConfig | null;
+
+  /**
+   * Total provider errors.
+   *
+   * Backend default is `0`; owners can reset this counter.
+   */
   errors: number;
 
-  /** Timestamp for when the connect provider was created. */
-  created_at: string;
-  /** Timestamp for when the connect provider was last updated. */
-  updated_at: string;
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at: ConnectProvider.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at: ConnectProvider.Timestamp;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed providers.
+   */
+  deleted_at?: ConnectProvider.Timestamp | null;
+
+  /** Loaded owner user relation, when explicitly included by the API. */
+  user?: Record<string, unknown> | null;
+
+  /** Loaded reviewing officer relation, when explicitly included by the API. */
+  officer?: Record<string, unknown> | null;
+
+  /** Loaded linked connect relation, when explicitly included by the API. */
+  connect?: Record<string, unknown> | null;
+
+  /** Loaded provider logs relation, when explicitly included by the API. */
+  logs?: Record<string, unknown>[];
+
+  /** Loaded shop connections relation, when explicitly included by the API. */
+  shop_connects?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████
@@ -76,7 +192,26 @@ export interface ConnectProvider {
 //█████████████████████████████████████████████████████████████
 
 export namespace ConnectProvider {
-  type WebhookParamValue =
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Persisted connect mode values shared with the published `Connect` model.
+   */
+  export type ConnectModeValue =
+    | "Migration"
+    | "Dropshipping"
+    | "Marketplace"
+    | "Accounting"
+    | "Other";
+
+  /**
+   * Webhook endpoint keys supported by Connect providers.
+   */
+  export type WebhookParamValue =
     | "notify_shop"
     | "sync_category"
     | "sync_product"
@@ -89,7 +224,7 @@ export namespace ConnectProvider {
   /**
    * Interface representing a webhook.
    */
-  interface IWebhook {
+  export interface IWebhook {
     /** Parameter representing the webhook. */
     param: WebhookParamValue;
 
@@ -169,9 +304,61 @@ export namespace ConnectProvider {
   };
 
   /**
+   * Provider `info` JSON payload.
+   */
+  export interface ProviderInfo {
+    name?: string;
+    description?: string | null;
+    confirm?: boolean;
+    read_categories?: boolean;
+    write_categories?: boolean;
+    read_products?: boolean;
+    write_products?: boolean;
+    read_orders?: boolean;
+    write_orders?: boolean;
+    read_customers?: boolean;
+    write_customers?: boolean;
+    [key: string]: unknown;
+  }
+
+  /**
+   * Provider `config` JSON payload.
+   */
+  export interface ProviderConfig {
+    [key: string]: unknown;
+  }
+
+  /**
+   * Provider authentication JSON payload.
+   */
+  export interface AuthConfig {
+    mode?: AuthMethodKey;
+    [key: string]: unknown;
+  }
+
+  /**
+   * Provider API endpoint JSON payload.
+   */
+  export interface ApiConfig {
+    [key: string]: unknown;
+  }
+
+  /**
+   * Provider webhook endpoint JSON payload.
+   */
+  export type WebhookConfig = Partial<
+    Record<WebhookParamValue | "secret", string>
+  >;
+
+  /**
+   * Type representing the keys of the authentication methods object.
+   */
+  export type AuthMethodKey = "OAuth" | "Password";
+
+  /**
    * Interface representing an authentication method.
    */
-  interface IAuthMethod {
+  export interface IAuthMethod {
     /** Value representing the authentication method. */
     value: AuthMethodKey;
 
@@ -184,11 +371,6 @@ export namespace ConnectProvider {
     /** Icon associated with the authentication method. */
     icon: string;
   }
-
-  /**
-   * Type representing the keys of the authentication methods object.
-   */
-  type AuthMethodKey = "OAuth" | "Password";
 
   /**
    * Constant object containing details for each authentication method.

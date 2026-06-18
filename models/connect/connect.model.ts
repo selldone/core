@@ -15,27 +15,141 @@
 import { ConnectProvider } from "./connect.provider.model";
 
 export interface Connect {
+  /**
+   * Primary key of the connect service.
+   *
+   * Backend: `connects.id`.
+   */
   id: number;
-  user_id: number;
+
+  /**
+   * Last editor user ID.
+   *
+   * Backend column is nullable and uses `nullOnDelete`.
+   */
+  user_id: number | null;
+
+  /**
+   * Stable unique connect code.
+   *
+   * Backend: unique string, max length 32.
+   */
   code: string;
-  mode: keyof typeof Connect.Modes;
+
+  /**
+   * Connect service mode.
+   *
+   * Backend enum source: `ConnectMode::All`.
+   */
+  mode: Connect.ConnectModeValue;
+
+  /**
+   * Public service name.
+   */
   name: string;
+
+  /**
+   * Public service description.
+   *
+   * Backend stores an empty string when no description is provided.
+   */
   description: string;
-  icon: string;
+
+  /**
+   * Icon path/name for the connect service.
+   *
+   * Backend column is nullable.
+   */
+  icon: string | null;
+
+  /**
+   * Whether this connect service is enabled.
+   */
   enable: boolean;
-  form?: any[] | null; // Define a stricter type for the form elements if possible.
+
+  /**
+   * Custom input form used by direct/password setup flows.
+   *
+   * Backend stores this as nullable JSONB.
+   */
+  form?: Connect.FormField[] | null;
+
+  /**
+   * Whether connected orders support a confirmation process.
+   */
   confirm: boolean;
+
+  /** Allows Selldone to read categories from the external provider. */
   read_categories: boolean;
+
+  /** Allows the external provider to read/write linked category information. */
   write_categories: boolean;
+
+  /** Allows Selldone to read products from the external provider. */
   read_products: boolean;
+
+  /** Allows the external provider to read/write linked product information. */
   write_products: boolean;
+
+  /** Allows Selldone to read external orders. */
   read_orders: boolean;
+
+  /** Allows Selldone to send order events to the external provider. */
   write_orders: boolean;
+
+  /** Allows Selldone to read customers from the external provider. */
   read_customers: boolean;
+
+  /** Allows the external provider to read/write linked customer information. */
   write_customers: boolean;
+
+  /**
+   * Whether this service supports shipping-rate calculation.
+   */
   shipping: boolean;
-  created_at: Date;
-  updated_at: Date;
+
+  /**
+   * Direct setup mode.
+   *
+   * `true`: Selldone submits the setup form to create the shop connection.
+   * `false`: user is redirected to the provider authorization/setup URL.
+   */
+  direct_setup: boolean;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed connect services.
+   */
+  deleted_at?: Connect.Timestamp | null;
+
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at: Connect.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at: Connect.Timestamp;
+
+  /** Loaded last editor user relation, when explicitly included by the API. */
+  user?: Record<string, unknown> | null;
+
+  /** Loaded published provider relation, when explicitly included by the API. */
+  provider?: ConnectProvider | null;
+
+  /** Loaded shop connections relation, when explicitly included by the API. */
+  shop_connects?: Record<string, unknown>[];
+
+  /** Loaded connect logs relation, when explicitly included by the API. */
+  logs?: Record<string, unknown>[];
+
+  /** Loaded linked categories relation, when explicitly included by the API. */
+  categories?: Record<string, unknown>[];
+
+  /** Loaded linked products relation, when explicitly included by the API. */
+  products?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████
@@ -43,6 +157,23 @@ export interface Connect {
 //█████████████████████████████████████████████████████████████
 
 export namespace Connect {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Custom form field definition persisted in `connects.form`.
+   */
+  export interface FormField {
+    name: string;
+    title?: string;
+    type?: string | null;
+    value?: unknown;
+    required?: boolean;
+    [key: string]: unknown;
+  }
 
 
 
@@ -50,7 +181,7 @@ export namespace Connect {
   /**
    * Enum representing connect scopes.
    */
-  type ScopeValue =
+  export type ScopeValue =
       | "read_categories"
       | "write_categories"
       | "read_products"
@@ -63,7 +194,7 @@ export namespace Connect {
   /**
    * Interface representing a scope.
    */
-  interface IScope {
+  export interface IScope {
     /** Code representing the scope. */
     code: ScopeValue;
 
@@ -142,7 +273,7 @@ export namespace Connect {
 
 
 
-  type ConnectModeValue =
+  export type ConnectModeValue =
     | "Migration"
     | "Dropshipping"
     | "Marketplace"
@@ -152,7 +283,7 @@ export namespace Connect {
   /**
    * Interface representing a connect mode.
    */
-  interface IConnectMode {
+  export interface IConnectMode {
     /** Code representing the connect mode. */
     code: ConnectModeValue;
 

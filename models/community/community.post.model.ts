@@ -25,41 +25,57 @@ export interface CommunityPost {
   /** Identifier for the user who created the post. */
   user_id: number;
 
-  /** Identifier for cross-referencing. */
-  cross_id: number;
+  /**
+   * Source cross-community ID when the post is sent from another community.
+   *
+   * Backend column is nullable.
+   */
+  cross_id: number | null;
 
   /** The main content of the post. */
   body: string;
 
   /** List of mentioned users or entities. */
-  mentions: string[];
+  mentions: string[] | null;
 
   /** List of tags associated with the post. */
-  tags: string[];
+  tags: string[] | null;
 
   /** Aspect ratio for the associated image or video. */
-  aspect: string;
+  aspect: number | null;
 
   /** URL or path to the associated image. */
-  image: string;
+  image: string | null;
 
   /** URL or path to the associated video. */
-  video: string;
+  video: string | null;
 
   /** URL or path to the associated voice recording. */
-  voice: string;
+  voice: string | null;
 
   /** URL or path to an associated link. */
-  link: string;
+  link: string | null;
 
-  /** Preview details for the associated link. */
-  link_preview: any[]; // Consider defining a more specific type if possible.
+  /**
+   * Preview details for the associated link.
+   *
+   * Backend stores this as nullable JSON.
+   */
+  link_preview: CommunityPost.LinkPreview | null;
 
-  /** Identifier for the associated product. */
-  product_id: number;
+  /**
+   * Linked product ID, when this post embeds a product.
+   *
+   * Backend column is nullable.
+   */
+  product_id: number | null;
 
-  /** Identifier for the associated shop. */
-  shop_id: number;
+  /**
+   * Linked shop ID, usually derived from the linked product.
+   *
+   * Backend column is nullable.
+   */
+  shop_id: number | null;
 
   /** Flag indicating if the post is marked as offensive. */
   offensive: boolean;
@@ -104,10 +120,50 @@ export interface CommunityPost {
   approved: boolean;
 
   /** Timestamp indicating when the post was created. */
-  created_at: string; // Assuming Carbon translates to a JavaScript Date object.
+  created_at: CommunityPost.Timestamp;
 
   /** Timestamp indicating the last update to the post. */
-  updated_at: string; // Same assumption as above.
+  updated_at: CommunityPost.Timestamp;
+
+  /**
+   * Soft-delete timestamp.
+   *
+   * Present only when the backend query includes trashed posts.
+   */
+  deleted_at?: CommunityPost.Timestamp | null;
+
+  /** Loaded parent community relation, when explicitly included by the API. */
+  community?: Record<string, unknown>;
+
+  /** Loaded topic relation, when explicitly included by the API. */
+  topic?: Record<string, unknown>;
+
+  /** Loaded category through topic, when explicitly included by the API. */
+  category?: Record<string, unknown> | null;
+
+  /** Loaded creator user relation, when explicitly included by the API. */
+  user?: Record<string, unknown>;
+
+  /** Loaded main profile relation, when explicitly included by the API. */
+  profile?: Record<string, unknown> | null;
+
+  /** Loaded cross community relation, when explicitly included by the API. */
+  cross?: Record<string, unknown> | null;
+
+  /** Loaded linked product relation, when explicitly included by the API. */
+  product?: Record<string, unknown> | null;
+
+  /** Loaded comments relation, when explicitly included by the API. */
+  comments?: Record<string, unknown>[];
+
+  /** Loaded latest comment relation, when explicitly included by the API. */
+  latest_comment?: Record<string, unknown> | null;
+
+  /** Loaded attachments relation, when explicitly included by the API. */
+  attachments?: Record<string, unknown>[];
+
+  /** Loaded current-user action relation, when explicitly included by the API. */
+  action?: Record<string, unknown> | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -115,10 +171,31 @@ export interface CommunityPost {
 //█████████████████████████████████████████████████████████████
 export namespace CommunityPost {
   /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Link preview metadata stored in `community_posts.link_preview`.
+   */
+  export type LinkPreview =
+    | Record<string, unknown>
+    | Array<Record<string, unknown>>;
+
+  /**
    * Type definition for an individual post action.
    */
-  type IActionType = {
-    code: string;
+  export type PostActionCode =
+    | "comments"
+    | "impressions"
+    | "saves"
+    | "shares"
+    | "embeds"
+    | "reports";
+
+  export type IActionType = {
+    code: PostActionCode;
     name: string;
     icon: string;
   };
@@ -126,7 +203,7 @@ export namespace CommunityPost {
   /**
    * Enumeration of various post actions.
    */
-  export const PostActions: Record<string, IActionType> = {
+  export const PostActions: Record<PostActionCode, IActionType> = {
     /**
      * Represents the comments action on a post.
      */

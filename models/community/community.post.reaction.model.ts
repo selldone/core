@@ -34,14 +34,41 @@ export interface CommunityPostReaction {
   /** Identifier for the user who reacted to the post. */
   user_id: number;
 
-  /** Reaction to the post. */
-  reaction: keyof typeof CommunityPostReaction.Reactions;
+  /**
+   * Reaction to the post.
+   *
+   * Backend enum is nullable so a row can exist only for save/report.
+   */
+  reaction: CommunityPostReaction.ReactionCode | null;
 
   /** Flag indicating whether the post is saved. */
   save: boolean;
 
-  /** Report category for the post. */
-  report: CommunityPostReaction.Reports;
+  /**
+   * Report category for the post.
+   *
+   * Backend enum is nullable so a row can exist only for reaction/save.
+   */
+  report: CommunityPostReaction.Reports | null;
+
+  /**
+   * Creation timestamp from Laravel `timestamps`.
+   */
+  created_at?: CommunityPostReaction.Timestamp;
+
+  /**
+   * Last update timestamp from Laravel `timestamps`.
+   */
+  updated_at?: CommunityPostReaction.Timestamp;
+
+  /** Loaded parent community relation, when explicitly included by the API. */
+  community?: Record<string, unknown>;
+
+  /** Loaded parent post relation, when explicitly included by the API. */
+  post?: Record<string, unknown>;
+
+  /** Loaded reacting user relation, when explicitly included by the API. */
+  user?: Record<string, unknown>;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -49,6 +76,12 @@ export interface CommunityPostReaction {
 //█████████████████████████████████████████████████████████████
 
 export namespace CommunityPostReaction {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
   /**
    * Enum representing report categories for community posts.
    */
@@ -65,6 +98,17 @@ export namespace CommunityPostReaction {
     Infringe = "Infringe",
   }
 
+  /** Persisted post reaction codes. */
+  export type ReactionCode = "LIKE" | "SMILE" | "CLAP" | "IDEA" | "DISAGREE";
+
+  /** Counter column incremented by each post reaction type. */
+  export type ReactionColumn =
+    | "likes"
+    | "smiles"
+    | "claps"
+    | "ideas"
+    | "disagrees";
+
   /**
    * Defines the structure of a post reaction.
    *
@@ -73,17 +117,17 @@ export namespace CommunityPostReaction {
    * - `image`: The path to the image representing the reaction.
    * - `column`: The database column associated with this type of reaction.
    */
-  interface IReaction {
-    code: string;
+  export interface IReaction {
+    code: ReactionCode;
     name: string;
-    image: any; // You might want to specify the exact type here based on your use case
-    column: string;
+    image: string;
+    column: ReactionColumn;
   }
 
   /**
    * Enum for post reactions with their properties.
    */
-  export const Reactions: Record<string, IReaction> = {
+  export const Reactions: Record<ReactionCode, IReaction> = {
     LIKE: {
       code: "LIKE",
       name: "community.post_reaction.LIKE",

@@ -29,10 +29,10 @@ export interface CommunityComment {
   body: string;
 
   /** URL or path to the associated image. */
-  image: string;
+  image: string | null;
 
   /** Identifier for the parent comment, if this is a reply. */
-  parent_id: number;
+  parent_id: number | null;
 
   /** Count of replies to this comment. */
   replies: number;
@@ -50,8 +50,37 @@ export interface CommunityComment {
   offensive: boolean;
 
   /** Timestamp indicating when the post was created. */
-  created_at: string; // Assuming Carbon translates to a JavaScript Date object.
+  created_at: CommunityComment.Timestamp;
 
   /** Timestamp indicating the last update to the post. */
-  updated_at: string; // Same assumption as above.
+  updated_at: CommunityComment.Timestamp;
+
+  /** Loaded parent community relation, when explicitly included by the API. */
+  community?: Record<string, unknown>;
+
+  /** Loaded parent post relation, when explicitly included by the API. */
+  post?: Record<string, unknown>;
+
+  /** Loaded creator user relation, when explicitly included by the API. */
+  user?: Record<string, unknown>;
+
+  /** Loaded parent comment relation, when explicitly included by the API. */
+  parent?: CommunityComment | Record<string, unknown> | null;
+
+  /** Loaded main profile relation, when explicitly included by the API. */
+  profile?: Record<string, unknown> | null;
+
+  /** Loaded comment reactions relation, when explicitly included by the API. */
+  comment_reactions?: Record<string, unknown>[];
+
+  /** Loaded current-user comment action relation, when explicitly included. */
+  action?: Record<string, unknown> | null;
+}
+
+export namespace CommunityComment {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
 }
