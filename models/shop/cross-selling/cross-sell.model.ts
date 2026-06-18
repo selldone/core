@@ -18,7 +18,10 @@ import type { Product } from "../product/product.model";
  * Product cross-sell rule.
  *
  * Backend source: `App\Shop\Products\CrossSelling\CrossSelling`, table `shop_cross_selling`.
- * Managed by `ProductCrossSelling*Controller` and translated by `CrossSellTranslationController`/vendor equivalent.
+ * Managed by `ProductCrossSellingAddController` / `ProductCrossSellingEditController` and translated through
+ * `HasTranslationTrait`.
+ *
+ * The backend enforces one target per source product pair with the unique key `(product_id, target_id)`.
  */
 export interface CrossSelling {
   /** Cross-sell id. Source: `shop_cross_selling.id`. */
@@ -36,23 +39,23 @@ export interface CrossSelling {
   /** Target product id shown as cross-sell. Source: `shop_cross_selling.target_id`. */
   target_id: number;
 
-  /** Discount percent shown/applied for the cross-sell target. Source: `shop_cross_selling.discount`. */
+  /** Discount percent shown/applied for the cross-sell target. Source: unsigned tiny integer `shop_cross_selling.discount`. */
   discount: number;
 
   /** Custom customer-facing message. Source: nullable `shop_cross_selling.message`. */
   message: string | null;
 
-  /** Customer action code. Source enum: `AddToCart` or `ViewProduct`. */
+  /** Customer action code. Source enum `CrossSellActionType`; defaults to `AddToCart`. */
   action: CrossSelling.ActionCode;
 
-  /** Localized fields keyed by locale. Source: nullable JSON `shop_cross_selling.translations`. */
+  /** Localized fields keyed by locale. Source: nullable JSONB `shop_cross_selling.translations`. */
   translations?: CrossSelling.Translations | null;
 
   /** Creation timestamp. Source: `shop_cross_selling.created_at`. */
-  created_at: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_cross_selling.updated_at`. */
-  updated_at: string;
+  updated_at?: string | null;
 
   /** Source product relation when eager-loaded. */
   product?: Product | Record<string, unknown>;
@@ -70,7 +73,6 @@ export interface CrossSelling {
 export namespace CrossSelling {
   /** Backend enum `App\Shop\Products\CrossSelling\enums\CrossSellActionType`. */
   export type ActionCode = "AddToCart" | "ViewProduct";
-
 
   /** Translation payload applied by `HasTranslationTrait`. */
   export type Translations = Record<string, Record<string, unknown>>;

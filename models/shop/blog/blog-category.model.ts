@@ -16,8 +16,10 @@
  * Shop blog category.
  *
  * Backend source: `App\Shop\Blog\ShopBlogCategory`, table `shop_blog_categories`.
- * Managed by `ShopBlogCategoryController`; category names are unique per shop and soft-deleted duplicates are force-deleted
- * before re-creation in `ShopBlogCategory::NewShopBlogCategory`.
+ * Managed by `ShopBlogCategoryController` and `ShopBlogCategory::NewShopBlogCategory`.
+ *
+ * Category names are unique per shop. Before recreating a deleted category with the same name, the backend force-deletes
+ * the trashed row so the unique index can be reused.
  */
 export class BlogCategory implements BlogCategory.IBlogCategory {
   /** Category id. Source: `shop_blog_categories.id`. */
@@ -26,19 +28,19 @@ export class BlogCategory implements BlogCategory.IBlogCategory {
   /** Owning shop id. Source: `shop_blog_categories.shop_id`. */
   shop_id!: number;
 
-  /** Category slug/name, max 64 chars. Source: `shop_blog_categories.category`. */
+  /** Public category name, max 64 chars and unique per shop. Source: `shop_blog_categories.category`. */
   category!: string;
 
   /** Short category description. Source: `shop_blog_categories.description`. */
   description!: string;
 
-  /** Featured/starred category flag. Source: `shop_blog_categories.star` cast to boolean. */
+  /** Featured/starred category flag. Source: `shop_blog_categories.star` cast to boolean, default `false`. */
   star!: boolean;
 
-  /** Aggregated visits of articles in this category. Source: `shop_blog_categories.visits`. */
+  /** Aggregated visits of articles in this category. Source: `shop_blog_categories.visits`, default `0`. */
   visits!: number;
 
-  /** Cached number of blogs in this category. Source: `shop_blog_categories.articles`. */
+  /** Cached number of blogs in this category. Source: `shop_blog_categories.articles`, default `0`. */
   articles!: number;
 
   /** Category icon image path, or `null`. Source: nullable `shop_blog_categories.icon`. */
@@ -48,16 +50,16 @@ export class BlogCategory implements BlogCategory.IBlogCategory {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_blog_categories.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_blog_categories.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Blog relation when `ShopBlogCategory::blogs()` is eager-loaded. */
   blogs?: Record<string, unknown>[];
 
-  /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  /** Owning shop relation when `ShopBlogCategory::shop()` is eager-loaded. */
+  shop?: Record<string, unknown> | null;
 
   constructor(data: BlogCategory.IBlogCategory & Partial<BlogCategory.Relations>) {
     Object.assign(this, data);
@@ -76,13 +78,13 @@ export namespace BlogCategory {
     articles: number;
     icon: string | null;
     deleted_at?: string | null;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Optional eager-loaded relation keys. */
   export interface Relations {
     blogs?: Record<string, unknown>[];
-    shop?: Record<string, unknown>;
+    shop?: Record<string, unknown> | null;
   }
 }

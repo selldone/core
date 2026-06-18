@@ -23,11 +23,20 @@ import iosIcon from "./assets/platforms/apple-b.svg";
 
 export namespace Analytics {
   /**
+   * Supported analytics platform identifiers.
+   *
+   * These are frontend analytics/source labels, not persisted Eloquent model
+   * fields. No matching backend `analytics` model/table exists in the current
+   * backend tree.
+   */
+  export type PlatformCode = "web" | "api" | "android" | "ios";
+
+  /**
    * Describes the structure of a single platform.
    */
-  interface IPlatform {
+  export interface IPlatform {
     /** The unique code identifier for the platform. */
-    code: string;
+    code: PlatformCode;
 
     /** The human-readable title for the platform. */
     title: string;
@@ -44,7 +53,7 @@ export namespace Analytics {
    * - `android`: Represents the Android mobile platform.
    * - `ios`: Represents the iOS mobile platform.
    */
-  export const Platform: Record<string, IPlatform> = {
+  export const Platform: Record<PlatformCode, IPlatform> = {
     web: {
       code: "web",
       title: "Web",
@@ -68,17 +77,24 @@ export namespace Analytics {
   };
 
   /**
-   * Defines the structure for the device type.
-   *
-   * @property {string} code - A unique identifier for the device type.
-   * @property {string} title - The localized key corresponding to the display name of the device type.
-   * @property {string} icon - The FontAwesome icon class representing the device type.
-   * @property {string} color - The hexadecimal color code associated with the device type.
+   * Supported analytics device type identifiers.
    */
-  interface IDeviceType {
-    code: string;
+  export type DeviceTypeCode = "desktop" | "mobile" | "tablet";
+
+  /**
+   * Defines the structure for an analytics device type display item.
+   */
+  export interface IDeviceType {
+    /** Unique identifier for the device type. */
+    code: DeviceTypeCode;
+
+    /** Localized key for the display name. */
     title: string;
+
+    /** FontAwesome icon class for the device type. */
     icon: string;
+
+    /** Hexadecimal color associated with the device type. */
     color: string;
   }
 
@@ -88,7 +104,6 @@ export namespace Analytics {
    * like desktop, mobile, and tablet, and includes icons and
    * colors for visual representation.
    *
-   * @type {DeviceTypeItem[]}
    */
   export const DeviceType: IDeviceType[] = [
     {

@@ -18,7 +18,8 @@ import type { Campaign } from "./campaign.model";
  * UTM link attached to a marketing campaign.
  *
  * Backend source: `App\Shop\Marketing\CampaignLink`, table `shop_campaign_links`.
- * Created by `CampaignLink::NewLink`; counters are updated by campaign/session tracking helpers.
+ * Created by `CampaignLink::NewLink`; counters are updated by campaign/session tracking helpers. The API allows up to
+ * 20 tracking links per campaign.
  */
 export interface CampaignLink {
   /** Campaign link id. Source: `shop_campaign_links.id`. */
@@ -33,10 +34,10 @@ export interface CampaignLink {
   /** UTM medium (`utm_medium`) saved as a backend string, not the SDK UI metadata object. */
   medium: CampaignLink.MediumCode | string;
 
-  /** UTM term (`utm_term`) for paid search keywords, or `null`. */
+  /** UTM term (`utm_term`) for paid search keywords, or `null`. Source: nullable `shop_campaign_links.term`. */
   term: string | null;
 
-  /** UTM content (`utm_content`) for A/B variants, or `null`. */
+  /** UTM content (`utm_content`) for A/B variants, or `null`. Source: nullable `shop_campaign_links.content`. */
   content: string | null;
 
   /** Session count attributed to this link. Source: `shop_campaign_links.sessions`. */
@@ -70,10 +71,10 @@ export interface CampaignLink {
   tablet: number;
 
   /** Creation timestamp. Source: `shop_campaign_links.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_campaign_links.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Parent campaign relation when `CampaignLink::campaign()` is eager-loaded. */
   campaign?: Campaign;
@@ -94,7 +95,7 @@ import videoIcon from "./assets/mediums/video.svg";
 import podcastIcon from "./assets/mediums/podcast.svg";
 
 export namespace CampaignLink {
-  /** Backend `medium` values commonly used by the Selldone UI. The database accepts any string. */
+  /** Backend `medium` values commonly used by the Selldone UI. The database and controller accept any string. */
   export type MediumCode =
     | "Email"
     | "CPC"

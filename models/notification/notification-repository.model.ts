@@ -18,66 +18,124 @@
  * ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
  */
 import {NotificationRepositoryType} from "../../enums/notification/NotificationRepositoryType";
-import { Product } from "../shop/product/product.model";
+import {Product} from "../shop/product/product.model";
 import ProductType = Product.ProductType;
 
+/**
+ * Notification item shown to a user or shop in web applications.
+ *
+ * Backend source: `App\Backoffice\Notification\NotificationRepository`,
+ * persisted in the `notifications_repository` table.
+ */
 export interface NotificationRepository {
   /**
-   * Unique identifier for the notification.
+   * Primary key of the notification repository row.
    */
   id: number;
 
   /**
-   * Identifier for the notifiable entity.
+   * Related notifiable owner ID.
+   *
+   * Backend uses Laravel morphs; common owners are user and shop records.
    */
   notifiable_id: number;
 
   /**
-   * Type of the notifiable entity.
+   * Related notifiable owner type.
+   *
+   * This is an implementation-level Laravel morph type and may be redacted by
+   * some API/MCP outputs.
    */
   notifiable_type: string;
 
   /**
-   * Type of the notification.
+   * Notification type.
+   *
+   * Frontend enum source: `NotificationRepositoryType`; backend enum source:
+   * `NotificationType`.
    */
   type: keyof typeof NotificationRepositoryType;
 
   /**
-   * The message of the notification.
+   * Notification message.
+   *
+   * Backend column is nullable text; some notifications rely mostly on `data`.
    */
-  message: string;
+  message: string | null;
 
   /**
-   * Additional data associated with the notification.
+   * Additional notification payload.
+   *
+   * Backend stores this as nullable JSONB. Known keys below are used by product,
+   * category, note, and timeline mention notifications.
    */
-  data?: {
-    shop?: { id: number; title: string; name: string };
-    user?: { id: number; name: string };
-    basket?: { id: number; type: keyof typeof ProductType };
-  };
+  data?: NotificationRepository.Data | null;
 
   /**
-   * Count of notifications.
+   * Aggregated notification count for the same type/day.
+   *
+   * Backend default is `1`; repeated same-day notifications increment this row.
    */
   count: number;
 
   /**
    * Timestamp indicating when the notification was read.
    */
-  read_at?: string;
+  read_at?: NotificationRepository.Timestamp | null;
 
   /**
-   * Timestamp indicating when the notification was created.
+   * Creation timestamp from Laravel `timestamps`.
    */
-  created_at: string;
+  created_at: NotificationRepository.Timestamp;
 
   /**
-   * Timestamp indicating the last time the notification was updated.
+   * Last update timestamp from Laravel `timestamps`.
    */
-  updated_at: string;
+  updated_at: NotificationRepository.Timestamp;
+
+  /**
+   * Loaded polymorphic notifiable relation, when explicitly included by the API.
+   */
+  notifiable?: Record<string, unknown>;
 }
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
+
+export namespace NotificationRepository {
+  /**
+   * Laravel datetime fields are Carbon instances in PHP and ISO strings in JSON
+   * responses. Some frontend callers hydrate them into `Date` objects.
+   */
+  export type Timestamp = string | Date;
+
+  /**
+   * Common notification JSON payload shape.
+   */
+  export interface Data extends Record<string, unknown> {
+    /** Compact shop payload. */
+    shop?: { id: number; title: string; name: string };
+
+    /** Compact writer/user payload. */
+    user?: { id: number; name: string };
+
+    /** Compact basket payload used by timeline mention notifications. */
+    basket?: { id: number; type: keyof typeof ProductType };
+
+    /** Compact note payload used by note mention notifications. */
+    note?: {
+      id: number;
+      element_id?: number | string | null;
+      target_id?: number | string | null;
+      target_type?: string | null;
+    };
+
+    /** Recent product IDs merged by backend for product notifications. */
+    product_ids?: number[];
+
+    /** Recent category IDs merged by backend for category notifications. */
+    category_ids?: number[];
+  }
+}
 

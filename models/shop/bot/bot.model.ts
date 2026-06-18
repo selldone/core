@@ -48,8 +48,6 @@ export interface Bot {
 
   /** Owning shop relation when eager-loaded. */
   shop?: Record<string, unknown>;
-}
-
 import telegramIcon from "./assets/telegram.svg";
 import slackIcon from "./assets/slack.svg";
 import alexaIcon from "./assets/alexa.svg";
@@ -60,35 +58,60 @@ import microsoftIcon from "./assets/microsoft.svg";
 import twilioIcon from "./assets/twilio.svg";
 import wechatIcon from "./assets/wechat.svg";
 
+}
+
 export namespace Bot {
   /**
-   * UI metadata for a supported shop bot platform.
+   * UI metadata for a dashboard-configurable shop bot platform.
    *
    * Backend source: `App\Http\Controllers\Shop\Bots\enums\AvailableBots` and `bots.driver`.
+   * `DriverValues` includes every backend enum value; `Drivers` lists drivers that currently have bundled dashboard
+   * metadata/assets in this package.
    */
-  interface IShopBot {
+  export interface IShopBot {
+    /** Backend enum value stored in `bots.driver`. */
     driver: DriverValues;
+
+    /** Bundled SVG icon path used by dashboard UI. */
     icon: string;
+
+    /** Human-readable platform name. */
     name: string;
+
+    /** Label for primary credential field stored in `bots.token`. */
     token?: string;
+
+    /** Label for secondary credential field stored in `bots.token2`. */
     token2?: string;
+
+    /** Label for third credential/verification field stored in `bots.token3`. */
     token3?: string;
+
+    /** Optional credential input placeholder. */
     placeholder?: string;
+
+    /** Whether this bot driver is exposed as an available dashboard integration. */
     available: boolean;
+
+    /** Build the public bot webhook URL from shop id and persisted secret. */
     getWebhookURL: (shop_id: string | number, secret: string) => string;
   }
 
+  /** Exact backend enum values from `AvailableBots::AllBots`. */
   export type DriverValues =
-    | "Telegram"
-    | "Slack"
     | "AmazonAlexa"
     | "CiscoSpark"
     | "Facebook"
+    | "Hangouts"
     | "HipChat"
     | "BotFramework"
-    | "Twilio"
-    | "WeChat";
+    | "Slack"
+    | "Telegram"
+    | "TwilioVoice"
+    | "WeChat"
+    | "Flock";
 
+  /** Dashboard metadata for bundled bot integrations. Backend can still contain other `DriverValues`. */
   export const Drivers: IShopBot[] = [
     {
       driver: "Telegram",
@@ -164,9 +187,9 @@ export namespace Bot {
       },
     },
     {
-      driver: "Twilio",
+      driver: "TwilioVoice",
       icon: twilioIcon,
-      name: "Twilio",
+      name: "Twilio Voice",
       token: "Token",
       available: false,
       getWebhookURL: (shop_id: string | number, secret: string) => {

@@ -12,11 +12,34 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * ISO 3166-1 alpha-2 country code.
+ *
+ * Kept as `string` instead of a generated literal union because `Countries` is
+ * intentionally mutable through `country-helper.overwrite()`.
+ */
+export type ICountryCode = string;
+
+/**
+ * Display country item used by storefront/dashboard country pickers.
+ *
+ * This frontend list mirrors ISO 3166-1 alpha-2 style country records. Backend
+ * helper reference: `App\Helper\ISO3166`.
+ */
 export type ICountry = {
-  code: string;
+  /** Two-letter uppercase ISO 3166-1 alpha-2 code. */
+  code: ICountryCode;
+
+  /** English display name. */
   name: string;
 };
 
+/**
+ * Mutable country list used by country helper functions.
+ *
+ * Do not convert this array to `as const`; `overwrite()` updates entries at
+ * runtime for locale/custom display-name overrides.
+ */
 export const Countries: ICountry[] = [
   { code: "AD", name: "Andorra" },
   { code: "AE", name: "United Arab Emirates" },
@@ -269,13 +292,16 @@ export const Countries: ICountry[] = [
   { code: "ZW", name: "Zimbabwe" },
 ];
 
-export type ICountryCode = (typeof Countries)[number]["code"];
-
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace Country {
-  export const EuropeCountriesAlpha2: string[] = [
+  /**
+   * European Union alpha-2 country codes used by tax/VAT-related flows.
+   *
+   * Backend helper equivalent: `ISO3166::EuropeCountriesAlpha2`.
+   */
+  export const EuropeCountriesAlpha2: ICountryCode[] = [
     "AT",
     "BE",
     "BG",

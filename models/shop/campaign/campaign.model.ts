@@ -19,8 +19,11 @@ import type { CampaignLink } from "./campaign-link.model";
  * Shop marketing campaign.
  *
  * Backend source: `App\Shop\Marketing\Campaign`, table `shop_campaigns`.
- * Managed by `CampaignController`; list endpoints return a selected subset and `api_getShopCampaign` may include
- * `page`, `discount_code`, `links`, and filtered analytics `data` outside the model object.
+ * Managed by `CampaignController`.
+ *
+ * Campaign rows store the persisted marketing configuration plus aggregate counters. List endpoints return a selected
+ * subset of columns and `api_getShopCampaign` returns the campaign together with `page`, `discount_code`, `links`, and a
+ * separate filtered analytics `data` array.
  */
 export interface Campaign {
   /** Campaign id. Source: `shop_campaigns.id`. */
@@ -29,10 +32,10 @@ export interface Campaign {
   /** Owning shop id. Source: `shop_campaigns.shop_id`. */
   shop_id: number;
 
-  /** Optional cluster grouping id. Source: nullable `shop_campaigns.cluster_id`. */
+  /** Optional shop cluster grouping id. Added by shop cluster migration; nullable `shop_campaigns.cluster_id`. */
   cluster_id?: number | null;
 
-  /** Campaign display/name key. Source: `shop_campaigns.name`; required by `api_addShopCampaign`. */
+  /** Campaign display name. Source: `shop_campaigns.name`; required by `api_addShopCampaign`. */
   name: string;
 
   /** Whether the campaign is enabled. Source: `shop_campaigns.enable` cast to boolean. */
@@ -47,7 +50,7 @@ export interface Campaign {
   /** Whether the backend auto-applies this campaign to the shop. Source: `shop_campaigns.auto`. */
   auto: boolean;
 
-  /** Banner configuration JSON filtered by `CampaignController::api_addShopCampaign`. */
+  /** Banner configuration JSON filtered by `CampaignController::api_addShopCampaign` allow-list. */
   banner: Campaign.Banner | null;
 
   /** Linked discount code id, or `null`. Source: nullable `shop_campaigns.discount_id`. */
@@ -56,7 +59,7 @@ export interface Campaign {
   /** Linked landing page id, or `null`. Source: nullable `shop_campaigns.page_id`. */
   page_id: number | null;
 
-  /** Notification widget configuration JSON filtered by `CampaignController::api_addShopCampaign`. */
+  /** Notification widget configuration JSON filtered by `CampaignController::api_addShopCampaign` allow-list. */
   notification: Campaign.Notification | null;
 
   /** Total tracked campaign sessions. Source: `shop_campaigns.sessions`. */
@@ -93,10 +96,10 @@ export interface Campaign {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_campaigns.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_campaigns.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Landing page relation when `Campaign::page()` is eager-loaded. */
   page?:
@@ -133,41 +136,101 @@ export interface Campaign {
 }
 
 export namespace Campaign {
-  /** Flexible JSON object saved in `shop_campaigns.banner`. */
+  /** Numeric UI dimensions accepted either as numbers or numeric strings by MCP/API callers. */
+  export type NumericLike = number | string;
+
+  /** Animation payload accepted by campaign banner schema. */
+  export type AnimationPayload =
+    | string
+    | Record<string, unknown>
+    | unknown[]
+    | null;
+
+  /** Campaign banner JSON saved in `shop_campaigns.banner`; unknown keys are stripped by the backend controller. */
   export interface Banner {
-    message?: string;
-    bg?: string;
+    /** Banner text message. */
+    message?: string | null;
+
+    /** Banner background color or style token. */
+    bg?: string | null;
+
+    /** Whether clients should render the banner in dark mode. */
     dark?: boolean;
-    icon_bg?: string;
-    icon?: string;
-    anim_height?: number;
-    anim_width?: number;
-    anim?: string;
-    page_name?: string;
-    bg_image?: string;
+
+    /** Icon background color. */
+    icon_bg?: string | null;
+
+    /** Icon name/path used by the campaign banner. */
+    icon?: string | null;
+
+    /** Animation height. Backend accepts integer, number, or numeric string. */
+    anim_height?: NumericLike | null;
+
+    /** Animation width. Backend accepts integer, number, or numeric string. */
+    anim_width?: NumericLike | null;
+
+    /** Lottie/object/string animation payload. */
+    anim?: AnimationPayload;
+
+    /** Optional attached landing page name/slug shown by clients. */
+    page_name?: string | null;
+
+    /** Banner background image path. */
+    bg_image?: string | null;
+
+    /** Whether the background image should repeat. */
     repeat?: boolean;
-    [key: string]: unknown;
   }
 
-  /** Flexible notification JSON saved in `shop_campaigns.notification`. */
+  /** Campaign notification popup JSON saved in `shop_campaigns.notification`; unknown keys are stripped by the backend. */
   export interface Notification {
-    image?: string;
-    bg?: string;
-    url?: string;
-    color?: string;
-    text_color?: string;
-    message?: string;
-    radius?: number;
-    title?: string;
-    action?: string;
-    width?: number;
-    height?: number;
-    btn_color?: string;
-    btn_text_color?: string;
-    delay?: number;
+    /** Notification foreground image path; upload endpoint can replace this slot. */
+    image?: string | null;
+
+    /** Notification background color/path; upload endpoint can replace this slot when `type=bg`. */
+    bg?: string | null;
+
+    /** Target URL opened by the notification action. */
+    url?: string | null;
+
+    /** Main text color/accent token. */
+    color?: string | null;
+
+    /** Body text color. */
+    text_color?: string | null;
+
+    /** Notification body message. */
+    message?: string | null;
+
+    /** Popup corner radius. Backend accepts integer, number, or numeric string. */
+    radius?: NumericLike | null;
+
+    /** Notification title. */
+    title?: string | null;
+
+    /** Action button label. */
+    action?: string | null;
+
+    /** Popup width. Backend accepts integer, number, or numeric string. */
+    width?: NumericLike | null;
+
+    /** Popup height. Backend accepts integer, number, or numeric string. */
+    height?: NumericLike | null;
+
+    /** Action button background color. */
+    btn_color?: string | null;
+
+    /** Action button text color. */
+    btn_text_color?: string | null;
+
+    /** Display delay in milliseconds/seconds as interpreted by clients. */
+    delay?: NumericLike | null;
+
+    /** Whether the notification popup is enabled. */
     enable?: boolean;
+
+    /** Whether clients should persist dismissal state. */
     persist?: boolean;
-    [key: string]: unknown;
   }
 
   /** Numeric totals keyed by ISO currency code. */
@@ -190,8 +253,9 @@ export namespace Campaign {
     desktop?: number;
     mobile?: number;
     tablet?: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+    campaign?: Campaign | Record<string, unknown> | null;
     [country_or_metric: string]: unknown;
   }
 }

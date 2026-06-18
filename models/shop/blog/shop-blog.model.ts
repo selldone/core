@@ -13,13 +13,15 @@
  */
 
 import type { BlogCategory } from "./blog-category.model";
+import type { Article } from "../../article/article.model";
 
 /**
  * Shop blog entry wrapper.
  *
  * Backend source: `App\Shop\Blog\ShopBlog`, table `shop_blogs`.
  * The article body is attached through `HasArticle` morph relations (`article` / `articles`), while this row stores
- * shop/category/SEO-card metadata. `audit` is hidden by the Eloquent model unless explicitly made visible.
+ * shop/category/cluster placement and SEO-card metadata. `audit` is hidden by the Eloquent model unless explicitly made
+ * visible.
  */
 export interface ShopBlog {
   /** Blog row id. Source: `shop_blogs.id`. */
@@ -31,7 +33,7 @@ export interface ShopBlog {
   /** Blog category id, or `null` for uncategorized blogs. Source: nullable `shop_blogs.category_id`. */
   category_id: number | null;
 
-  /** Optional cluster grouping id. Source: nullable `shop_blogs.cluster_id`. */
+  /** Optional shop cluster grouping id. Added by shop cluster migration; nullable `shop_blogs.cluster_id`. */
   cluster_id?: number | null;
 
   /** SEO audit payload. Source: nullable JSON `shop_blogs.audit`; hidden by default. */
@@ -40,31 +42,31 @@ export interface ShopBlog {
   /** Last SEO audit timestamp. Source: nullable `shop_blogs.audit_at`. */
   audit_at?: string | null;
 
-  /** Cached public title for lists/cards. Source: nullable `shop_blogs.title`. */
+  /** Cached public title for lists/cards. Added by extra columns migration; nullable `shop_blogs.title`. */
   title: string | null;
 
-  /** Cached image path for lists/cards. Source: nullable `shop_blogs.image`. */
+  /** Cached image path for lists/cards. Added by extra columns migration; nullable `shop_blogs.image`. */
   image: string | null;
 
   /** Creation timestamp. Source: `shop_blogs.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_blogs.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
-  /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  /** Owning shop relation when `ShopBlog::shop()` is eager-loaded. */
+  shop?: Record<string, unknown> | null;
 
   /** Blog category relation when eager-loaded. */
   category?: BlogCategory | null;
 
-  /** Primary article morph relation from `HasArticle::article()`. */
-  article?: Record<string, unknown> | null;
+  /** Primary article morph relation from `HasArticle::article()`. Stores the actual blog content. */
+  article?: Article | Record<string, unknown> | null;
 
   /** Article morph collection from `HasArticle::articles()`. */
-  articles?: Record<string, unknown>[];
+  articles?: Array<Article | Record<string, unknown>>;
 
-  /** Cluster relation when loaded by callers. */
+  /** Cluster relation when loaded by callers through `HasClusterTrait`. */
   cluster?: Record<string, unknown> | null;
 }
 

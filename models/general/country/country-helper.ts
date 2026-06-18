@@ -14,11 +14,17 @@
 
 "use strict";
 
-import {Countries, ICountry} from "./country.model"; // Assuming you have a types.ts file which contains the `Country` interface
+import {Countries, ICountry, ICountryCode} from "./country.model";
 
-/** Precompute name and code lookups. */
-const nameMap: { [key: string]: string } = {};
-const codeMap: { [key: string]: string } = {};
+/**
+ * Lowercase country-name to alpha-2 code lookup.
+ */
+const nameMap: Record<string, ICountryCode> = {};
+
+/**
+ * Lowercase alpha-2 code to country-name lookup.
+ */
+const codeMap: Record<string, string> = {};
 
 Countries.forEach(mapCodeAndName);
 
@@ -26,7 +32,7 @@ Countries.forEach(mapCodeAndName);
  * Maps country name to its code and vice versa.
  * @param country - The country object containing name and code.
  */
-function mapCodeAndName(country: ICountry) {
+function mapCodeAndName(country: ICountry): void {
   nameMap[country.name.toLowerCase()] = country.code;
   codeMap[country.code.toLowerCase()] = country.name;
 }
@@ -35,13 +41,17 @@ function mapCodeAndName(country: ICountry) {
  * Overwrite the default countries with provided ones.
  * @param countries - An array of country objects to overwrite.
  */
-export function overwrite(countries: ICountry[]) {
+export function overwrite(countries: ICountry[]): void {
   if (!countries || !countries.length) return;
   countries.forEach(function (country) {
     const foundIndex = Countries.findIndex(function (item) {
       return item.code === country.code;
     });
-    Countries[foundIndex] = country;
+    if (foundIndex >= 0) {
+      Countries[foundIndex] = country;
+    } else {
+      Countries.push(country);
+    }
     mapCodeAndName(country);
   });
 }
@@ -51,7 +61,7 @@ export function overwrite(countries: ICountry[]) {
  * @param name - The country name.
  * @returns - The country code.
  */
-export function getCode(name: string): string | undefined {
+export function getCode(name: string): ICountryCode | undefined {
   return name && nameMap[name.toLowerCase()];
 }
 
@@ -77,7 +87,7 @@ export function getNames(): string[] {
  * Get the list of all country codes.
  * @returns - An array of country codes.
  */
-export function getCodes(): string[] {
+export function getCodes(): ICountryCode[] {
   return Countries.map((country) => country.code);
 }
 
@@ -85,7 +95,7 @@ export function getCodes(): string[] {
  * Get the complete list of country codes.
  * @returns - A map of country codes.
  */
-export function getCodeList(): { [key: string]: string } {
+export function getCodeList(): Record<string, string> {
   return codeMap;
 }
 
@@ -93,7 +103,7 @@ export function getCodeList(): { [key: string]: string } {
  * Get the complete list of country names.
  * @returns - A map of country names.
  */
-export function getNameList(): { [key: string]: string } {
+export function getNameList(): Record<string, ICountryCode> {
   return nameMap;
 }
 
