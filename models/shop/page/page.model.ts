@@ -15,7 +15,7 @@
 /**
  * Shop page-builder page.
  *
- * Backend source: `App\Shop\Pages\Page`, table `pages`.
+ * Backend source: `App\Storefront\Pages\Page`, table `pages`.
  * Managed by `PageBuilder*Controller`; public page endpoints often select only `id`, `content`, `css`, `title`,
  * `name`, `direction`, and `background`. `audit` is hidden by the Eloquent model unless explicitly exposed.
  */
@@ -98,11 +98,11 @@ export interface Page {
   /** Soft-delete timestamp when included. Source: `pages.deleted_at`. */
   deleted_at?: string | null;
 
-  /** Creation timestamp. Source: `pages.created_at`. */
-  created_at?: string;
+  /** Creation timestamp serialized by Laravel. Source: `pages.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `pages.updated_at`. */
-  updated_at?: string;
+  /** Last update timestamp serialized by Laravel. Source: `pages.updated_at`. */
+  updated_at?: string | null;
 
   /** Uploaded image relations when `Page::images()` is eager-loaded. */
   images?: Page.Image[];
@@ -120,10 +120,13 @@ export interface Page {
   notes?: Record<string, unknown>[];
 
   /** Creator relation when eager-loaded. */
-  user?: Record<string, unknown>;
+  user?: Record<string, unknown> | null;
 
   /** Owning shop relation when eager-loaded. */
   shop?: Record<string, unknown> | null;
+
+  /** Cluster relation when eager-loaded through `HasClusterTrait`. */
+  cluster?: Record<string, unknown> | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -284,9 +287,14 @@ export namespace Page {
     id: number;
     page_id: number;
     path: string;
+    size?: number;
+    width?: number;
+    height?: number;
+    alt?: string | null;
+    page?: Page | null;
     deleted_at?: string | null;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Row from `page_videos`. */
@@ -295,9 +303,10 @@ export namespace Page {
     page_id: number;
     path: string;
     size?: number;
+    page?: Page | null;
     deleted_at?: string | null;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
     [key: string]: unknown;
   }
 
@@ -305,10 +314,11 @@ export namespace Page {
   export interface History {
     id: number;
     page_id?: number;
-    content?: IContent | Record<string, unknown>;
+    content?: IContent | Record<string, unknown> | null;
     persistent: boolean;
     user_id?: number | null;
-    created_at?: string;
-    updated_at?: string;
+    page?: Page | null;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 }

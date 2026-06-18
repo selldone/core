@@ -15,8 +15,10 @@
 /**
  * Included-in-the-box content item assignable to products.
  *
- * Backend source: `App\Shop\Products\Includes\ShopInclude`, table `shop_includes`.
+ * Backend source: `App\Storefront\Products\Includes\ShopInclude`, table `shop_includes`.
  * Controllers: `Shop\Product\Includes\ShopIncludes*Controller`.
+ *
+ * Products are connected through `shop_includes_products`; the pivot itself is hidden by the backend model.
  */
 export interface ShopInclude {
   /** Unique include identifier. Source: `shop_includes.id`. */
@@ -52,11 +54,11 @@ export interface ShopInclude {
   /** Custom storefront theme code. Source: nullable `shop_includes.theme`. */
   theme?: string | null;
 
-  /** Page-builder/include augmentation JSON. Source: nullable JSON `shop_includes.augment`. */
-  augment?: Record<string, unknown> | null;
+  /** Page-builder/include augmentation JSON. Source: nullable JSONB `shop_includes.augment`. */
+  augment?: ShopInclude.JsonObject | null;
 
-  /** Localized include fields keyed by locale. Source: nullable JSON `shop_includes.translations`. */
-  translations?: Record<string, Record<string, unknown>> | null;
+  /** Localized include fields keyed by locale. Source: nullable JSONB `shop_includes.translations`. */
+  translations?: Record<string, ShopInclude.JsonObject> | null;
 
   /** Creation timestamp serialized by Laravel when included. Source: `shop_includes.created_at`. */
   created_at?: string | null;
@@ -72,6 +74,43 @@ export interface ShopInclude {
 
   /** Last editor relation when eager-loaded. Source: `ShopInclude::user()` serialized as `user`. */
   user?: Record<string, unknown> | null;
+
+  /** Owning shop relation when eager-loaded. Source: `ShopInclude::shop()` serialized as `shop`. */
+  shop?: Record<string, unknown> | null;
 }
 
-export namespace ShopInclude {}
+export namespace ShopInclude {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSONB casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSONB casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Pivot row from `shop_includes_products` when a backend response exposes pivot details. */
+  export interface ProductPivot {
+    id: number;
+    include_id: number;
+    product_id: number;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  /** Payload accepted when creating or updating an include before backend assigns ids/timestamps. */
+  export interface Upsert {
+    code?: string | null;
+    image?: string | null;
+    title: string;
+    description?: string | null;
+    url?: string | null;
+    path?: string | null;
+    page_id?: number | null;
+    theme?: string | null;
+    augment?: JsonObject | null;
+  }
+}

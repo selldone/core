@@ -12,157 +12,128 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Club} from "../club";
+import { Club } from "../club";
 
 /**
- * Represents a Shop's Customer.
+ * Shop-scoped customer CRM profile.
+ *
+ * Backend source: `App\Storefront\Customer\ShopCustomer`, table `shop_customers`.
+ * A customer row links an optional global user to one shop and stores seller-owned CRM data such as contact snapshots,
+ * segments, address/billing JSON, club level, subscription/access flags, private notes, lifecycle timestamps, and
+ * integration metadata.
  */
 export interface Customer {
-  /**
-   * The unique identifier for the customer.
-   * @type {number}
-   */
+  /** Customer id. Source: `shop_customers.id`. */
   id: number;
 
-  /**
-   * The unique identifier for the shop.
-   * @type {number}
-   */
+  /** Owning shop id. Source: `shop_customers.shop_id`. */
   shop_id: number;
 
-  /**
-   * The unique identifier for the user.
-   * This can be null.
-   * @type {number | null}
-   */
+  /** Linked global user id, or `null` for manually created/imported customers. */
   user_id: number | null;
 
-  /**
-   * The name of the customer.
-   * This can be null.
-   * @type {string | null}
-   */
+  /** Login/source that created the row. Source: `shop_customers.source`, added by source migration. */
+  source: Customer.Source;
+
+  /** Customer display name snapshot for this shop. */
   name: string | null;
 
-  /**
-   * The email of the customer.
-   * This can be null.
-   * @type {string | null}
-   */
+  /** Customer email snapshot for this shop. */
   email: string | null;
 
-  /**
-   * The phone number of the customer.
-   * This can be null.
-   * @type {string | null}
-   */
+  /** Customer phone snapshot for this shop. */
   phone: string | null;
 
-  /**
-   * The segments of the customer.
-   * This can be null.
-   * @type {Array<any> | null}
-   */
-  segments: Array<any> | null;
+  /** Seller-defined lowercase segmentation tags. Source: JSONB `shop_customers.segments`. */
+  segments: string[] | null;
+
+  /** Shipping/contact address payload. Source: JSONB `shop_customers.address`. */
+  address: Customer.Address | null;
+
+  /** Billing address payload. Source: JSONB `shop_customers.billing`. */
+  billing: Customer.Address | null;
 
   /**
-   * The address of the customer.
-   * This can be null.
-   * @type {Array<any> | null}
-   */
-  address: Array<any> | null;
-
-  /**
-   * The billing information of the customer.
-   * This can be null.
-   * @type {Array<any> | null}
-   */
-  billing: Array<any> | null;
-
-  /**
-   * The last country of user activity (Auto set by system when user refreshes shop) ISO alpha-2 (US, UK, ...).
-   * This can be null.
-   * @type {string | null}
+   * Last country of user activity.
+   *
+   * Auto-set by the backend when the user views the shop. ISO alpha-2 country code such as `US`, `DE`, or `AE`.
    * @see OnShopViewJob
    */
   country: string | null;
 
-  /**
-   * The level of the customer.
-   * This can be null.
-   * @type {string | null}
-   * @see ShopCustomerBadgeEnums
-   */
-  level: string | null;
+  /** Customer club/loyalty level. Source enum: `ShopCustomerBadgeEnums::ALL`. */
+  level: Customer.Level | null;
 
-  /**
-   * Whether the customer is subscribed.
-   * @type {boolean}
-   */
+  /** Whether the customer is subscribed to shop marketing/news. */
   subscribed: boolean;
 
-  /**
-   * The currency of the customer's transactions.
-   * @type {string}
-   */
-  currency: string;
+  /** Preferred customer currency for this shop. Nullable in DB, usually populated from shop currency on creation. */
+  currency: string | null;
 
-  /**
-   * The number of chips used by the customer for shop lotteries (chance by each 10x chips).
-   * @type {number}
-   */
+  /** Lottery chips owned by the customer in this shop. Backend spends 10 chips per lottery play. */
   chips: number;
 
-  /**
-   * The last login time of the customer.
-   * @type {Date}
-   */
-  login_at: string;
+  /** Last shop login timestamp, or `null`. */
+  login_at: string | null;
+
+  /** Last shop purchase timestamp, or `null`. */
+  purchase_at: string | null;
+
+  /** Customer birthdate timestamp/date, or `null`. */
+  birthday: string | null;
+
+  /** Customer sex value from personal information, or `null`. */
+  sex: Customer.Sex | null;
 
   /**
-   * The last purchase time of the customer.
-   * @type {Date}
-   */
-  purchase_at: string|null;
-
-  /**
-   * The birthday of the customer.
-   * @type {Date}
-   */
-  birthday: string;
-
-  /**
-   * The sex of the customer.
-   * @type {string}
-   * @see Sex
-   */
-  sex: string;
-
-  /**
-   * Whether the customer has exclusive access to the shop.
-   * @type {boolean}
+   * Customer access flag for private/restricted shop flows.
+   *
+   * In public shops this does not block storefront visibility. In private/restricted shops it gates storefront access
+   * or purchase/authenticated actions according to shop restriction settings.
    */
   access: boolean;
 
-  /**
-   * Whether the customer is banned (cannot post on community and order).
-   * @type {boolean}
-   */
+  /** Whether the customer is banned from shop interactions such as orders/community actions. */
   banned: boolean;
 
-  /**
-   * The seller notes (private).
-   * This can be null.
-   * @type {string | null}
-   */
+  /** Private seller notes; not visible to the customer. */
   notes: string | null;
 
-  /**
-   * Key-value pairs / Meta info (private) / Used to keep 3rd party customer ids and other values (e.g., customer id in Stripe).
-   * This can be null.
-   * @type {Array<any> | null}
-   */
-  meta: Array<any> | null;
+  /** Private integration metadata. Backend currently validates Stripe customer ids by currency key. */
+  meta: Customer.Meta | null;
+
+  /** Creation timestamp serialized by Laravel. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel. */
+  updated_at?: string | null;
+
+  /** Soft-delete timestamp when returned. */
+  deleted_at?: string | null;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown> | null;
+
+  /** Linked global user relation when eager-loaded. */
+  user?: Record<string, unknown> | null;
+
+  /** Online basket relations when eager-loaded. */
+  baskets?: Record<string, unknown>[];
+
+  /** POS basket relations when eager-loaded. */
+  posBaskets?: Record<string, unknown>[];
+
+  /** Club relation matching `level` when eager-loaded. */
+  shopClub?: Record<string, unknown> | null;
+
+  /** Email receiver records when eager-loaded. */
+  emails?: Record<string, unknown>[];
+
+  /** Gift card relations when eager-loaded. */
+  giftCards?: Record<string, unknown>[];
+
+  /** Customer wallet relations when eager-loaded. */
+  wallets?: Record<string, unknown>[];
 }
 
 //█████████████████████████████████████████████████████████████
@@ -174,9 +145,86 @@ export namespace Customer {
     VENDOR = "vendor",
   }
 
+  export type JsonPrimitive = string | number | boolean | null;
 
+  /** JSON object stored by Laravel JSONB casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
 
-  export const Filters ={
+  /** JSON array stored by Laravel JSONB casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Customer club level values stored in `shop_customers.level`. */
+  export type Level = string;
+
+  /** Customer sex values accepted by backend personal information enum. */
+  export type Sex = "Male" | "Female" | "MALE" | "FEMALE" | (string & {});
+
+  /** Address/billing JSON payload. Backend uses the shared address document structure and preserves extra keys. */
+  export interface Address extends JsonObject {
+    country?: string | null;
+    state?: string | null;
+    state_code?: string | null;
+    city?: string | null;
+    address?: string | null;
+    location?: { lng: number; lat: number } | [number, number] | JsonObject | null;
+    no?: string | null;
+    unit?: string | null;
+    name?: string | null;
+    phone?: string | null;
+    message?: string | null;
+    postal?: string | null;
+    business?: boolean | null;
+    custom?: boolean | null;
+    tax_id?: string | null;
+  }
+
+  /** Private integration metadata. */
+  export interface Meta extends JsonObject {
+    /** Stripe customer id metadata keys are stored as `stripe_customer_id_{CURRENCY}`. */
+    [stripeCustomerIdKey: `stripe_customer_id_${string}`]: string | undefined;
+  }
+
+  /** Payload used by seller CRM customer create/update flows. */
+  export interface Upsert {
+    phone?: string | null;
+    email?: string | null;
+    name?: string | null;
+    segments?: string[] | null;
+    currency?: string | null;
+    sex?: Sex | null;
+    birthday?: string | null;
+    level?: Level | null;
+    address?: Address | null;
+    billing?: Address | null;
+    notes?: string | null;
+    meta?: Meta | null;
+  }
+
+  export type FilterCode =
+    | "REGISTER_DATE"
+    | "LAST_BUY_DATE"
+    | "LOGIN_DATE"
+    | "LEVEL"
+    | "SUBSCRIBED"
+    | "NOT_PURCHASED"
+    | "SEX"
+    | "LOCATION"
+    | "LIMIT"
+    | "SEGMENTS";
+
+  export interface FilterDefinition {
+    type: FilterCode;
+    title: string;
+    description: string;
+    icon: string;
+    inputs?: Record<string, unknown>;
+  }
+
+  export const Filters: Record<FilterCode, FilterDefinition> = {
     REGISTER_DATE: {
       type: "REGISTER_DATE",
       title: "user_funnel.REGISTER_DATE.title",

@@ -12,105 +12,237 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Shop transportation/shipping method.
+ *
+ * Backend source: `App\Storefront\Transportation\Transportation`, table `shop_transportation`.
+ * Used by checkout shipping calculation, pickup selection, marketplace direct shipping, courier persons, and external
+ * delivery-service integrations.
+ */
 export interface Transportation {
-  /** Unique identifier for the transportation model */
+  /** Transportation id. Source: `shop_transportation.id`. */
   id: number;
 
-  /** Identifier for the associated shop */
+  /** Owning shop id. */
   shop_id: number;
 
-  /** Type of the transportation */
+  /** Transportation repository/type code, such as pickup or a shipping method key. */
   type: string;
 
-  /** Indicates if the transportation is enabled or not */
+  /** Whether this method is enabled for checkout. */
   enable: boolean;
 
-  /** Distance covered by the transportation */
+  /** Maximum supported distance in meters/kilometers according to backend checkout calculation. */
   distance: number;
 
-  /** Maximum weight the transportation can carry */
+  /** Maximum package weight supported by this method. */
   max_weight: number;
 
-  /** Maximum width of the item for transportation */
+  /** Maximum package width. */
   max_w: number;
 
-  /** Maximum length of the item for transportation */
+  /** Maximum package length. */
   max_l: number;
 
-  /** Maximum height of the item for transportation */
+  /** Maximum package height. */
   max_h: number;
 
-  /**
-   * ETA: the estimated time of arrival.
-   * {@see ETA}
-   */
-  eta?: string;
+  /** ETA mode. Backend defaults to `ETA::WEEKDAY_TIMEFRAME` for new rows when omitted. */
+  eta: string | null;
 
-  /** ETD: the estimated time of departure in hours */
+  /** Estimated time to delivery/departure in hours. */
   etd: number;
 
-  /** Days of operation for the transportation */
-  days: any[];
+  /** Days of operation. Source: array cast from text/json-style storage. */
+  days: Transportation.Day[];
 
-  /** Time spans during which the transportation operates */
-  time_spans: any[];
+  /** Time spans during which the transportation operates. */
+  time_spans: Transportation.TimeSpan[];
 
-  /** Indicates if the transportation operates on holidays or not */
+  /** Whether this method operates on holidays. */
   holidays: boolean;
 
-  /** Currency used for the transportation costs */
+  /** Currency used for shipping cost calculation. */
   currency: string;
 
-  /** Constant value for the transportation cost calculation */
+  /** Constant/fixed amount in shipping cost formula. */
   const: number;
 
-  /** Coefficient for distance in the transportation cost calculation */
+  /** Distance coefficient in shipping cost formula. */
   distance_cof: number;
 
-  /** Coefficient for weight in the transportation cost calculation */
+  /** Weight coefficient in shipping cost formula. */
   weight_cof: number;
 
-  /** Coefficient for price in the transportation cost calculation */
+  /** Basket price coefficient in shipping cost formula. */
   price_cof: number;
 
-  /** Coefficient for distance-weight in the transportation cost calculation */
+  /** Distance-weight coefficient in shipping cost formula. */
   distance_weight_cof: number;
 
-  /** Indicates if free shipping is available */
+  /** Whether free shipping can apply. */
   free_shipping: boolean;
 
-  /** Limit above which free shipping is provided */
+  /** Basket amount limit above which free shipping is provided. */
   free_shipping_limit: number;
 
-  /** Indicates if cash on delivery is available */
+  /** Whether cash on delivery is accepted for this method. */
   cod: boolean;
 
-  /** Indicates if "پس کرایه" (sod) is available */
+  /** Whether shipping-on-delivery/postage due is accepted for this method. */
   sod: boolean;
 
-  /**
-   * Digest of service info.
-   * Contains user IDs, service IDs, errors, and user count.
-   */
-  info: {
-    user_ids: number[];
-    service_ids: number[];
-    errors: any[];
-    users: number;
-  };
+  /** Digest of courier/service info updated by backend relation changes. */
+  info: Transportation.Info | null;
 
-  /** List of pickup addresses for the customer to select from */
-  pickups: any[];
+  /** Pickup addresses for customers to select from. */
+  pickups: Transportation.Pickup[] | null;
 
-  /** Custom public title for the transportation */
-  title: string;
+  /** Custom public title for the transportation method. */
+  title: string | null;
 
-  /** Custom public logo for the transportation */
-  logo: string;
+  /** Custom public logo path. */
+  logo: string | null;
 
   /**
-   * Profiles to keep calculation based on country location.
-   * Can be null.
+   * Location pricing profiles keyed by ISO alpha-2 country code.
+   *
+   * Backend normalizes country/state formula numbers in `SetTransportation()`.
    */
-  profiles?: any[] | null;
+  profiles?: Transportation.Profiles | null;
+
+  /** Whether this method is enabled for marketplace direct vendor shipping. */
+  marketplace?: boolean;
+
+  /** Soft-delete timestamp when returned. */
+  deleted_at?: string | null;
+
+  /** Creation timestamp serialized by Laravel. */
+  created_at?: string | null;
+
+  /** Last update timestamp serialized by Laravel. */
+  updated_at?: string | null;
+
+  /** Owning shop relation when eager-loaded. */
+  shop?: Record<string, unknown> | null;
+
+  /** Courier-person relation rows when eager-loaded. */
+  transportationPersons?: Transportation.Person[];
+
+  /** User rows reached through transportation persons when eager-loaded. */
+  persons?: Record<string, unknown>[];
+
+  /** External delivery-service relation rows when eager-loaded. */
+  transportationServices?: Transportation.Service[];
+
+  /** Delivery service rows reached through transportation services when eager-loaded. */
+  services?: Record<string, unknown>[];
+
+  /** Transportation order rows when eager-loaded. */
+  transportationOrders?: Record<string, unknown>[];
+}
+
+export namespace Transportation {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Day code/value accepted by dashboard transportation forms. */
+  export type Day = string | number;
+
+  /** Delivery time span. */
+  export interface TimeSpan extends JsonObject {
+    start?: string | null;
+    end?: string | null;
+  }
+
+  /** Pickup address payload. */
+  export interface Pickup extends JsonObject {
+    title?: string | null;
+    country?: string | null;
+    state?: string | null;
+    city?: string | null;
+    address?: string | null;
+    location?: { lng: number; lat: number } | [number, number] | JsonObject | null;
+    no?: string | null;
+    unit?: string | null;
+    name?: string | null;
+    phone?: string | null;
+    postal?: string | null;
+  }
+
+  /** Cached info digest updated by `onTransportationPersonChange`, `onTransportationServiceChange`, and `onError`. */
+  export interface Info extends JsonObject {
+    user_ids?: number[];
+    service_ids?: number[];
+    errors?: string[];
+    users?: number;
+  }
+
+  /** Formula values used per country or state. */
+  export interface PriceFormula extends JsonObject {
+    const: number;
+    distance_cof: number;
+    weight_cof: number;
+    distance_weight_cof: number;
+    price_cof: number;
+  }
+
+  /** Country profile with optional state overrides. */
+  export interface Profile extends PriceFormula {
+    states?: Record<string, PriceFormula> | null;
+  }
+
+  /** Profiles keyed by ISO alpha-2 country code. */
+  export type Profiles = Record<string, Profile>;
+
+  /** Courier person assignment row. Backend table: `shop_transportation_persons`. */
+  export interface Person {
+    id: number;
+    transportation_id: number;
+    user_id: number;
+    vendor_id?: number | null;
+    enable: boolean;
+    jobs: number;
+    process: number;
+    success: number;
+    fail: number;
+    duration: number;
+    distance: number;
+    reset_at: string | null;
+    created_at?: string | null;
+    updated_at?: string | null;
+    user?: Record<string, unknown> | null;
+    vendor?: Record<string, unknown> | null;
+  }
+
+  /** External delivery-service assignment row. Backend table: `shop_transportation_services`. */
+  export interface Service {
+    id: number;
+    transportation_id: number;
+    service_id: number;
+    vendor_id?: number | null;
+    enable: boolean;
+    jobs: number;
+    process: number;
+    success: number;
+    fail: number;
+    duration: number;
+    distance: number;
+    reset_at: string | null;
+    livemode: boolean;
+    username?: string | null;
+    password?: string | null;
+    expire_at?: string | null;
+    created_at?: string | null;
+    updated_at?: string | null;
+    deliveryService?: Record<string, unknown> | null;
+    vendor?: Record<string, unknown> | null;
+  }
 }

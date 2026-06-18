@@ -15,7 +15,7 @@
 /**
  * Shop popup-builder popup.
  *
- * Backend source: `App\Shop\Popups\Popup`, table `popups`.
+ * Backend source: `App\Storefront\Popups\Popup`, table `popups`.
  * Managed by `PopupController`; list endpoints may return a compact subset while detail endpoints return the full row
  * and optionally eager-load `notes`.
  */
@@ -95,11 +95,11 @@ export interface Popup {
   /** Soft-delete timestamp when included. Source: `popups.deleted_at`. */
   deleted_at?: string | null;
 
-  /** Creation timestamp. Source: `popups.created_at`. */
-  created_at?: string;
+  /** Creation timestamp serialized by Laravel. Source: `popups.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `popups.updated_at`. */
-  updated_at?: string;
+  /** Last update timestamp serialized by Laravel. Source: `popups.updated_at`. */
+  updated_at?: string | null;
 
   /** Content image relations when `Popup::images()` is eager-loaded. */
   images?: Popup.Image[];
@@ -108,10 +108,13 @@ export interface Popup {
   notes?: Record<string, unknown>[];
 
   /** Creator relation when eager-loaded. */
-  user?: Record<string, unknown>;
+  user?: Record<string, unknown> | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
+
+  /** Cluster relation when eager-loaded through `HasClusterTrait`. */
+  cluster?: Record<string, unknown> | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -167,8 +170,34 @@ export namespace Popup {
     id: number;
     popup_id: number;
     path: string;
+    size?: number;
+    popup?: Popup | null;
     deleted_at?: string | null;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  /** Popup creation/update payload before backend assigns ids/timestamps and visit counters. */
+  export interface Upsert {
+    title?: string | null;
+    published?: boolean;
+    note?: string | null;
+    image?: string | null;
+    direction?: Direction;
+    content?: Content | Record<string, unknown>;
+    transition?: string | null;
+    position?: Position;
+    style?: Style | Record<string, unknown> | unknown[] | null;
+    registered?: FilterState;
+    purchased?: FilterState;
+    sex?: Sex | null;
+    age?: number;
+    levels?: string[] | null;
+    countries?: string[] | null;
+    delay?: number;
+    repeat?: boolean;
+    interval?: number;
+    hide?: number | null;
+    cluster_id?: number | null;
   }
 }

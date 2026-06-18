@@ -19,27 +19,43 @@
 import { Map } from "../map";
 
 export namespace Order {
+  /** Order/basket type values used by process-center and vendor order APIs. */
+  export type Type =
+    | "AVO"
+    | "FUL"
+    | "POS"
+    | "HYP"
+    | "BILL"
+    | "PHYSICAL"
+    | "VIRTUAL"
+    | "FILE"
+    | "SERVICE"
+    | "SUBSCRIPTION";
+
+  /**
+   * Minimal process-center order identity.
+   *
+   * This model is used as a common frontend shape across baskets, POS orders, Avocado, fulfillment, billing, hyper,
+   * and marketplace vendor orders. Full order payloads are modeled in their domain-specific folders.
+   */
   export interface IOrder {
+    /** Order id in its own backend table. */
     id: number;
+
+    /** Owning shop id. */
     shop_id: number;
-    label: string | null; // Custom order ID set by seller configuration.
-    type:
-      | "AVO"
-      | "FUL"
-      | "POS"
-      | "HYP"
-      | "BILL"
-      | "PHYSICAL"
-      | "VIRTUAL"
-      | "FILE"
-      | "SERVICE"
-      | "SUBSCRIPTION";
 
-    vendor_id?: number; // Only in the vendor order! We use this to detect it's a vendor order. The type will be PHYSICAL,VIRTUAL,... same as main basket type.
-    basket_id?: number; // Only in the vendor order!
+    /** Custom order id/label set by seller order-labeling configuration, or `null`. */
+    label: string | null;
 
+    /** Order type. Vendor orders still use product order types such as `PHYSICAL` or `VIRTUAL`. */
+    type: Type;
 
+    /** Vendor id only in marketplace vendor-order payloads. Presence marks the row as a vendor order. */
+    vendor_id?: number | null;
 
+    /** Parent basket id only in marketplace vendor-order payloads. */
+    basket_id?: number | null;
   }
 
   /**
@@ -49,7 +65,7 @@ export namespace Order {
    * @property {string} code - The unique identifier for the reason.
    * @property {string} title - A localization key for the reason's title or description.
    */
-  interface IRejectReason {
+  export interface IRejectReason {
     code: RejectReasonKeys;
     title: string;
   }
@@ -58,7 +74,7 @@ export namespace Order {
    * @typedef { "CantAcceptCOD" | "PaymentReturned" | "PaymentFraud" | "LocationOutOfService" | "UserNotResponding" | "ShopOwnerFault" | "LackOfInventory" | "LegalRestriction" | "PricingFault" | "SystemFault" } RejectReasonKeys
    * Defines the keys for the reject reasons.
    */
-  type RejectReasonKeys =
+  export type RejectReasonKeys =
     | "CantAcceptCOD"
     | "PaymentReturned"
     | "PaymentFraud"
@@ -179,7 +195,7 @@ export namespace Order {
    * @property {number} length - The length of the volume in centimeters.
    * @property {number} height - The height of the volume in centimeters.
    */
-  interface IVolume {
+  export interface IVolume {
     width: number;
     length: number;
     height: number;
