@@ -77,3 +77,40 @@ export namespace CrossSelling {
   /** Translation payload applied by `HasTranslationTrait`. */
   export type Translations = Record<string, Record<string, unknown>>;
 }
+
+export namespace CrossSell {
+  /** JSON primitive accepted by cross-selling configuration payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for offer rules, product maps, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for offer rules, product maps, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact cross-sell projection used by product and basket payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    product_id?: number | null;
+    target_id?: number | null;
+    enable?: boolean;
+    discount?: number | null;
+  }
+
+  /** Safe partial update payload for cross-selling rules. */
+  export interface ApiPatch {
+    product_id?: number | null;
+    target_id?: number | null;
+    enable?: boolean;
+    discount?: number | null;
+    start?: string | null;
+    end?: string | null;
+    rules?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

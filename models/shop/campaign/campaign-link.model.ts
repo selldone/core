@@ -161,3 +161,38 @@ export namespace CampaignLink {
     },
   ];
 }
+
+export namespace CampaignLink {
+  /** JSON primitive accepted by campaign-link tracking payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for UTM, attribution, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for UTM, attribution, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact campaign-link projection used by orders and attribution reports. */
+  export interface CompactProjection {
+    id: number;
+    campaign_id?: number | null;
+    code?: string | null;
+    url?: string | null;
+    visits?: number;
+    buys?: number;
+  }
+
+  /** Safe partial update payload for campaign tracking links. */
+  export interface ApiPatch {
+    campaign_id?: number | null;
+    code?: string | null;
+    url?: string | null;
+    enable?: boolean;
+    utm?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+  }
+}

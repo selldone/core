@@ -259,3 +259,45 @@ export namespace Campaign {
     [country_or_metric: string]: unknown;
   }
 }
+
+export namespace Campaign {
+  /** JSON primitive accepted by campaign metadata and translation payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for campaign targeting, metadata, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for campaign targeting, metadata, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact campaign projection embedded in shop public-info and analytics payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    name?: string | null;
+    code?: string | null;
+    enable?: boolean;
+    start?: string | null;
+    end?: string | null;
+  }
+
+  /** Safe partial update payload for campaign setup and scheduling endpoints. */
+  export interface ApiPatch {
+    title?: string | null;
+    name?: string | null;
+    description?: string | null;
+    code?: string | null;
+    enable?: boolean;
+    start?: string | null;
+    end?: string | null;
+    budget?: number | null;
+    target?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

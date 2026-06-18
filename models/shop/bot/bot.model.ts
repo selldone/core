@@ -235,3 +235,38 @@ export namespace Bot {
     },
   ];
 }
+
+export namespace Bot {
+  /** JSON primitive accepted by bot configuration payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for bot settings, credentials, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for bot settings, credentials, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact bot projection used by shop automation and integration lists. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    name?: string | null;
+    type?: string | null;
+    enable?: boolean;
+    icon?: string | null;
+  }
+
+  /** Safe partial update payload for bot configuration endpoints. */
+  export interface ApiPatch {
+    name?: string | null;
+    enable?: boolean;
+    type?: string | null;
+    token?: string | null;
+    config?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+  }
+}

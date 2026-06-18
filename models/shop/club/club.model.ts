@@ -141,3 +141,42 @@ export namespace Club {
     },
   };
 }
+
+export namespace Club {
+  /** JSON primitive accepted by customer-club configuration payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for club tier rules, rewards, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for club tier rules, rewards, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact club/tier projection used by customer profile and checkout payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    code?: string | null;
+    title?: string | null;
+    level?: number | null;
+    enable?: boolean;
+  }
+
+  /** Safe partial update payload for club tier and reward settings. */
+  export interface ApiPatch {
+    code?: string | null;
+    title?: string | null;
+    description?: string | null;
+    enable?: boolean;
+    level?: number | null;
+    min_purchase?: number | null;
+    discount?: number | null;
+    rules?: ApiJsonObject | null;
+    rewards?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

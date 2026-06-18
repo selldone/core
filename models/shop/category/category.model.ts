@@ -265,3 +265,42 @@ export namespace Category {
     page?: Record<string, unknown> | null;
   }
 }
+
+export namespace Category {
+  /** JSON primitive accepted by category metadata and translation payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for category metadata, engine config, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for category metadata, engine config, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact category projection used by product cards, breadcrumbs, and menus. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    parent_id?: number | null;
+    title?: string | null;
+    slug?: string | null;
+    icon?: string | null;
+  }
+
+  /** Safe partial update payload for category tree and SEO settings. */
+  export interface ApiPatch {
+    parent_id?: number | null;
+    title?: string | null;
+    description?: string | null;
+    slug?: string | null;
+    icon?: string | null;
+    order?: number;
+    enable?: boolean;
+    engine?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}
