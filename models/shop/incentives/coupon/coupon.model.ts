@@ -127,19 +127,22 @@ export interface Coupon {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_coupons.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_coupons.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Daily aggregate rows from `Coupon::data()` when eager-loaded. */
   data?: Coupon.Data[];
 
   /** Coupon order rows when `couponOrders()` is eager-loaded. */
-  coupon_orders?: Record<string, unknown>[];
+  coupon_orders?: Coupon.Order[];
 
   /** Basket relation when coupon orders are eager-loaded. */
   baskets?: Record<string, unknown>[];
+
+  /** POS basket relation when coupon orders are eager-loaded. Source relation: `Coupon::posBaskets()`. */
+  pos_baskets?: Record<string, unknown>[];
 
   /** Virtual item relation when eager-loaded. */
   virtual_items?: Record<string, unknown>[];
@@ -151,6 +154,16 @@ export interface Coupon {
 export namespace Coupon {
   /** Product/category filter map accepted by coupon and offer controllers. */
   export type ProductSelectionMap = Record<string, number[]>;
+
+  /** Customer-club eligibility flags stored directly on incentive rows. */
+  export interface ClubEligibility {
+    no_club: boolean;
+    bronze_club: boolean;
+    silver_club: boolean;
+    gold_club: boolean;
+    platinum_club: boolean;
+    diamond_club: boolean;
+  }
 
   /** Team note object stored in nullable JSON `shop_coupons.note`. */
   export interface Note {
@@ -167,8 +180,23 @@ export namespace Coupon {
     used: number;
     amount_discount: number;
     amount_buy: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  /** Pivot/order row from table `coupon_orders`. */
+  export interface Order {
+    id: number;
+    coupon_id: number;
+    user_id: number | null;
+    order_id: number;
+    order_type: string;
+    amount_discount: number;
+    amount_buy: number;
+    currency: string;
+    payed: boolean;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Translation payload applied by `HasTranslationTrait`. */

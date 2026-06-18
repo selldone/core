@@ -72,16 +72,16 @@ export interface DiscountCode {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_discount_codes.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_discount_codes.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Daily aggregate rows from `DiscountCode::data()` when eager-loaded. */
   data?: DiscountCode.Data[];
 
   /** Discount order rows when `discountOrders()` is eager-loaded. */
-  discount_orders?: Record<string, unknown>[];
+  discount_orders?: DiscountCode.Order[];
 
   /** Basket relation when discount orders are eager-loaded. */
   baskets?: Record<string, unknown>[];
@@ -109,8 +109,23 @@ export namespace DiscountCode {
     used: number;
     amount_discount: number;
     amount_buy: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  /** Pivot/order row from table `discount_orders`. */
+  export interface Order {
+    id: number;
+    discount_id: number;
+    user_id: number | null;
+    order_id: number;
+    order_type: string;
+    amount_discount: number;
+    amount_buy: number;
+    currency: string;
+    payed: boolean;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Translation payload applied by `HasTranslationTrait`. */

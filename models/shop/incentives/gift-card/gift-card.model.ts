@@ -71,10 +71,10 @@ export interface GiftCard {
   note: string | null;
 
   /** Creation timestamp. Source: `shop_gift_cards.created_at`; omitted by storefront list projections. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_gift_cards.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Soft-delete timestamp. Source: `shop_gift_cards.deleted_at`. */
   deleted_at?: string | null;
@@ -83,7 +83,7 @@ export interface GiftCard {
   gift_type?: Pick<GiftCardType, "id" | "title" | "color" | "bg"> | GiftCardType;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Linked virtual item relation when eager-loaded. */
   vitem?: Record<string, unknown> | null;
@@ -95,8 +95,31 @@ export interface GiftCard {
   customer?: Record<string, unknown> | null;
 
   /** Payment/order pivot rows from `GiftCard::giftCardOrders()` when eager-loaded. */
-  gift_card_orders?: Record<string, unknown>[];
+  gift_card_orders?: GiftCard.Order[];
 
   /** Basket relation when gift-card orders are eager-loaded. */
   baskets?: Record<string, unknown>[];
+
+  /** POS basket relation when gift-card orders are eager-loaded. */
+  pos_baskets?: Record<string, unknown>[];
+
+  /** Bill relation when gift-card orders are eager-loaded. */
+  bills?: Record<string, unknown>[];
+
+  /** Avocado order relation when gift-card orders are eager-loaded. */
+  avocados?: Record<string, unknown>[];
+}
+
+export namespace GiftCard {
+  /** Payment/order row from table `gift_cards_orders`. */
+  export interface Order {
+    id: number;
+    gift_id: number;
+    order_id: number;
+    order_type: string;
+    amount: number;
+    wage: number;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
 }

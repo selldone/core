@@ -19,7 +19,7 @@ import type { User } from "../../user/user.model";
  *
  * Backend source: `App\Gateway\GatewayQue`, table `gateway_que`.
  * Created when a gateway transaction is issued and deleted after payment/expiration checks. `transaction_*` and
- * `order_*` are Laravel morph columns.
+ * `order_*` are Laravel morph columns. Queue expiration is calculated from the global gateway `timeout`.
  */
 export interface GatewayQue {
   /** Queue id. Source: `gateway_que.id`. */
@@ -53,10 +53,10 @@ export interface GatewayQue {
   order_type: string;
 
   /** Creation timestamp. Source: `gateway_que.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `gateway_que.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Paying user relation when eager-loaded. */
   user?: User | Record<string, unknown> | null;
@@ -65,8 +65,26 @@ export interface GatewayQue {
   shop?: Record<string, unknown> | null;
 
   /** Gateway transaction morph relation when eager-loaded. */
-  transaction?: Record<string, unknown>;
+  transaction?: GatewayQue.TransactionPayload;
 
   /** Payment order morph relation when eager-loaded. */
-  order?: Record<string, unknown>;
+  order?: GatewayQue.OrderPayload;
+}
+
+export namespace GatewayQue {
+  /** Gateway transaction morph payload; concrete shape depends on gateway driver/currency. */
+  export type TransactionPayload = Record<string, unknown>;
+
+  /** Payable order morph payload such as basket, charge, avocado, hyper, or another buyable model. */
+  export type OrderPayload = Record<string, unknown>;
+
+  /** Report shape returned by `GatewayQue::CheckPendingGatewayQue()`. */
+  export interface PendingCheckReport {
+    total: number;
+    confirmed: number;
+    errors: number;
+    deletes: number;
+    "trace ms": number;
+    "last-error"?: string;
+  }
 }

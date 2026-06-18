@@ -17,7 +17,8 @@
  *
  * Backend source: `App\Shop\Exchanges\ShopExchangeRate`, table `shop_exchange_rates`.
  * The global table `exchange_rates` has the same `from` / `to` / `rate` / `history` structure without `shop_id` and
- * `auto`; this core model is used for shop exchange-rate API payloads.
+ * `auto`; this core model is used for shop exchange-rate API payloads. When `auto` is true, backend correction can
+ * replace `rate` and optionally `history` with Selldone/global exchange-rate values.
  */
 export class ExchangeRate {
   /** Exchange-rate row id. Source: `shop_exchange_rates.id`. */
@@ -42,13 +43,13 @@ export class ExchangeRate {
   auto?: boolean;
 
   /** Historical exchange values, or `null`. Source: nullable JSON `history`. */
-  history?: number[] | null;
+  history?: ExchangeRate.History | null;
 
   /** Creation timestamp. Source: `created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   constructor(
     id: number,
@@ -56,7 +57,7 @@ export class ExchangeRate {
     from: string,
     to: string,
     rate: number,
-    history?: number[] | null,
+    history?: ExchangeRate.History | null,
   ) {
     this.id = id;
     this.user_id = user_id;
@@ -64,5 +65,22 @@ export class ExchangeRate {
     this.to = to;
     this.rate = rate;
     this.history = history;
+  }
+}
+
+export namespace ExchangeRate {
+  /** History payload from `history` jsonb column; global helpers may return arrays or richer keyed payloads. */
+  export type History = number[] | Record<string, number | string | null>;
+
+  /** Minimal write payload accepted by shop exchange-rate setters. */
+  export interface WritePayload {
+    /** Source currency code. */
+    from: string;
+
+    /** Target currency code. */
+    to: string;
+
+    /** Conversion rate from source to target. */
+    rate: number;
   }
 }

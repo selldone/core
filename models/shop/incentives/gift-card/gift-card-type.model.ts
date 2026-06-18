@@ -70,10 +70,10 @@ export interface GiftCardType {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_gift_card_types.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_gift_card_types.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
   shop?: Record<string, unknown> | null;
@@ -84,8 +84,8 @@ export interface GiftCardType {
   /** Generated cards relation when `GiftCardType::giftCards()` is eager-loaded. */
   gift_cards?: Record<string, unknown>[];
 
-  /** Gift-card order relation when eager-loaded. */
-  gift_card_orders?: Record<string, unknown>[];
+  /** Gift-card order relation when eager-loaded through `GiftCardType::giftCardOrders()`. */
+  gift_card_orders?: GiftCardType.Order[];
 
   /** Daily aggregate rows from `GiftCardType::data()` when eager-loaded. */
   data?: GiftCardType.Data[];
@@ -111,8 +111,20 @@ export namespace GiftCardType {
     used: number;
     amount_payed: number;
     buys: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  /** Payment/order row from table `gift_cards_orders`. */
+  export interface Order {
+    id: number;
+    gift_id: number;
+    order_id: number;
+    order_type: string;
+    amount: number;
+    wage: number;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Translation payload applied by `HasTranslationTrait`. */

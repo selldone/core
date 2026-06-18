@@ -97,10 +97,10 @@ export interface Cashback {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_cashbacks.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_cashbacks.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Aggregated daily usage rows when `Cashback::data()` is eager-loaded. */
   data?: Cashback.Data[];
@@ -112,7 +112,7 @@ export interface Cashback {
   pos_baskets?: Record<string, unknown>[];
 
   /** Raw cashback order rows when `cashbackOrders()` is eager-loaded. */
-  cashback_orders?: Record<string, unknown>[];
+  cashback_orders?: Cashback.Order[];
 
   /** Cluster relation when loaded by callers. */
   cluster?: Record<string, unknown> | null;
@@ -121,10 +121,38 @@ export interface Cashback {
 export namespace Cashback {
   /** Team note object stored in nullable JSON `shop_cashbacks.note`. */
   export interface Note {
+    /** User id of the note author. */
     user_id: number;
+
+    /** Display name captured for the note author. */
     user_name: string;
+
+    /** Note body. */
     body: string;
+
+    /** Note timestamp serialized in the JSON payload. */
     date: string;
+  }
+
+  /** Customer-club eligibility flags stored directly on incentive rows. */
+  export interface ClubEligibility {
+    /** Eligible for customers without a club badge. */
+    no_club: boolean;
+
+    /** Eligible for bronze club customers. */
+    bronze_club: boolean;
+
+    /** Eligible for silver club customers. */
+    silver_club: boolean;
+
+    /** Eligible for gold club customers. */
+    gold_club: boolean;
+
+    /** Eligible for platinum club customers. */
+    platinum_club: boolean;
+
+    /** Eligible for diamond club customers. */
+    diamond_club: boolean;
   }
 
   /** Daily aggregate row from table `cashback_data`. */
@@ -134,8 +162,44 @@ export namespace Cashback {
     used: number;
     amount_cashback: number;
     amount_buy: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  /** Pivot/order row from table `cashback_orders`. */
+  export interface Order {
+    /** Cashback order row id. */
+    id: number;
+
+    /** Parent cashback id. */
+    cashback_id: number;
+
+    /** Buyer user id, or `null` for guest flows. */
+    user_id: number | null;
+
+    /** Polymorphic order id. */
+    order_id: number;
+
+    /** Polymorphic order type stored by Laravel morphs. */
+    order_type: string;
+
+    /** Cashback amount charged to the customer wallet. */
+    amount_cashback: number;
+
+    /** Original order amount used for cashback calculation. */
+    amount_buy: number;
+
+    /** Currency code for `amount_cashback` and `amount_buy`. */
+    currency: string;
+
+    /** Whether the related payment/order completed. */
+    paid: boolean;
+
+    /** Creation timestamp. */
+    created_at?: string | null;
+
+    /** Last update timestamp. */
+    updated_at?: string | null;
   }
 
   /** Translation payload applied by `HasTranslationTrait`. */

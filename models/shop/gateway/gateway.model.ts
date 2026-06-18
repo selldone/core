@@ -17,7 +17,8 @@
  *
  * Backend source: `App\Shop\Gateway\Gateway`, table `gateways`.
  * The backend hides `wallet` by default and casts `public`, `private`, `info`, `network`, `theme`, and `actions` from
- * JSON. Shop-specific merchant credentials live in {@link ShopGateway}.
+ * JSON. Shop-specific merchant credentials live in {@link ShopGateway}. Data rows aggregate transaction count,
+ * success count, processed amount, and wage by gateway.
  */
 export class Gateway implements Gateway.IGateway {
   /** Gateway id. Source: `gateways.id`. */
@@ -126,13 +127,16 @@ export class Gateway implements Gateway.IGateway {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `gateways.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `gateways.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Gateway aggregate data rows when `Gateway::data()` is eager-loaded. */
   data?: Gateway.DataRow[];
+
+  /** Gateway transaction rows when dynamic `Gateway::transactions()` relation is eager-loaded. */
+  transactions?: Record<string, unknown>[];
 
   constructor(data: { id: number } & Partial<Gateway.IGateway>) {
     Object.assign(this, data);
@@ -140,8 +144,13 @@ export class Gateway implements Gateway.IGateway {
 }
 
 export namespace Gateway {
-  /** Flexible gateway JSON field shape; schemas differ by payment plugin. */
-  export type JsonPayload = Record<string, unknown> | unknown[];
+  /** Flexible gateway JSON field shape; schemas differ by payment plugin and may be stored in text/json columns. */
+  export type JsonPayload =
+    | Record<string, unknown>
+    | unknown[]
+    | string
+    | number
+    | boolean;
 
   /** Known manual action options stored in `gateways.actions`. */
   export type ActionCode = "refund" | "deliver" | string;
@@ -154,8 +163,8 @@ export namespace Gateway {
     success: number;
     amount: number;
     wage: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   export interface IGateway {
@@ -194,8 +203,9 @@ export namespace Gateway {
     script?: string | null;
     theme?: JsonPayload | null;
     deleted_at?: string | null;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
     data?: DataRow[];
+    transactions?: Record<string, unknown>[];
   }
 }

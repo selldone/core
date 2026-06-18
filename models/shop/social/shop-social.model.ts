@@ -16,7 +16,8 @@
  * Social network link attached to a shop.
  *
  * Backend source: `App\Shop\Social\ShopSocial`, table `shop_socials`.
- * Managed by `ShopSocialsController`; rows are unique by `(shop_id, network)`.
+ * Managed by `ShopSocialsController`; rows are unique by `(shop_id, network)`. `AddSocial()` updates the existing
+ * row for the same network instead of creating duplicates.
  */
 export class ShopSocial implements ShopSocial.IShopSocial {
   /** Social row id. Source: `shop_socials.id`. */
@@ -38,13 +39,13 @@ export class ShopSocial implements ShopSocial.IShopSocial {
   validation_url!: string | null;
 
   /** Creation timestamp. Source: `shop_socials.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_socials.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   constructor(data: Partial<ShopSocial.IShopSocial> & { id?: number; shop_id?: number }) {
     Object.assign(this, data);
@@ -60,8 +61,20 @@ export namespace ShopSocial {
     url: string;
     active: boolean;
     validation_url: string | null;
-    created_at?: string;
-    updated_at?: string;
-    shop?: Record<string, unknown>;
+    created_at?: string | null;
+    updated_at?: string | null;
+    shop?: Record<string, unknown> | null;
+  }
+
+  /** Payload accepted by add/update social-link endpoints. */
+  export interface WritePayload {
+    /** Social network code/name. DB max length is 12 chars. */
+    network: string;
+
+    /** Public social profile URL. */
+    url: string;
+
+    /** Whether this link is active/sticky in UI. */
+    active?: boolean;
   }
 }

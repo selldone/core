@@ -19,7 +19,8 @@ import type { Gateway } from "./gateway.model";
  *
  * Backend source: `App\Shop\Gateway\ShopGateway`, table `shop_gateways`.
  * This row stores merchant credentials/config for a global {@link Gateway}. Sensitive fields may be omitted or
- * redacted by backend endpoints.
+ * redacted by backend endpoints. `SetShopGateway()` restores soft-deleted rows and disables `manual` when the global
+ * gateway does not support seller-side manual confirmation.
  */
 export class ShopGateway implements ShopGateway.IShopGateway {
   /** Shop gateway id. Source: `shop_gateways.id`. */
@@ -76,13 +77,13 @@ export class ShopGateway implements ShopGateway.IShopGateway {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_gateways.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_gateways.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Global gateway relation when eager-loaded. */
   gateway?: Gateway;
@@ -96,8 +97,13 @@ export class ShopGateway implements ShopGateway.IShopGateway {
 }
 
 export namespace ShopGateway {
-  /** Flexible gateway JSON field shape; schemas differ by payment plugin. */
-  export type JsonPayload = Record<string, unknown> | unknown[];
+  /** Flexible gateway JSON field shape; schemas differ by payment plugin and may be stored in text/json columns. */
+  export type JsonPayload =
+    | Record<string, unknown>
+    | unknown[]
+    | string
+    | number
+    | boolean;
 
   /** Shop gateway statistics row from `shop_gateway_data`. */
   export interface DataRow {
@@ -107,8 +113,8 @@ export namespace ShopGateway {
     success: number;
     amount: number;
     wage: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   export interface IShopGateway {
@@ -128,9 +134,9 @@ export namespace ShopGateway {
     meta: Record<string, unknown> | null;
     limit?: number;
     deleted_at?: string | null;
-    created_at?: string;
-    updated_at?: string;
-    shop?: Record<string, unknown>;
+    created_at?: string | null;
+    updated_at?: string | null;
+    shop?: Record<string, unknown> | null;
     gateway?: Gateway;
     data?: DataRow[];
   }

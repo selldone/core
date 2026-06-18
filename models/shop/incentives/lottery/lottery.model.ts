@@ -106,10 +106,13 @@ export interface Lottery {
   deleted_at?: string | null;
 
   /** Creation timestamp. Hidden in some XAPI prize responses. Source: `shop_lotteries.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Hidden in some XAPI prize responses. Source: `shop_lotteries.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
+
+  /** Owning shop relation when `Lottery::shop()` is eager-loaded. */
+  shop?: Record<string, unknown> | null;
 
   /** Product relation when `Lottery::product()` is eager-loaded. */
   product?: Product | Pick<Product, "id" | "title" | "icon" | "type" | "quantity" | "variants"> | null;
@@ -121,13 +124,46 @@ export interface Lottery {
   card_type?: GiftCardType | Pick<GiftCardType, "id" | "color" | "bg" | "amount" | "currency" | "title" | "life"> | null;
 
   /** Lottery order rows when `Lottery::lotteryOrders()` is eager-loaded. */
-  lottery_orders?: Record<string, unknown>[];
+  lottery_orders?: Lottery.Order[];
 
   /** Basket relation when lottery orders are eager-loaded. */
   baskets?: Record<string, unknown>[];
 }
 
 export namespace Lottery {
+  /** Prize fulfillment mode inferred from the configured reward fields. */
+  export type PrizeMode = "amount" | "discount" | "product" | "gift-card";
+
+  /** Customer-club eligibility flags stored directly on lottery rows. */
+  export interface ClubEligibility {
+    no_club: boolean;
+    bronze_club: boolean;
+    silver_club: boolean;
+    gold_club: boolean;
+    platinum_club: boolean;
+    diamond_club: boolean;
+  }
+
+  /** Won/reserved prize row from table `lottery_orders`. */
+  export interface Order {
+    id: number;
+    shop_id: number;
+    lottery_id: number;
+    user_id: number;
+    used: boolean;
+    order_id: number | null;
+    order_type: string | null;
+    amount_discount: number;
+    amount_buy: number;
+    currency: string;
+    payed: boolean;
+    product_id: number | null;
+    variant_id: number | null;
+    card_id: number | null;
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
   /** Translation payload applied by `HasTranslationTrait`. */
   export type Translations = Record<string, Record<string, unknown>>;
 }

@@ -12,6 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Shop bot integration.
+ *
+ * Backend source: `App\Shop\Bots\Bot`, table `bots`.
+ * Driver values are restricted by backend enum `AvailableBots::AllBots`; dashboard metadata is intentionally available
+ * only for drivers that have bundled UI assets in this package.
+ */
 export interface Bot {
   /** Bot id. Source: `bots.id`. */
   id: number;
@@ -41,13 +48,13 @@ export interface Bot {
   calls: number;
 
   /** Creation timestamp. Source: `bots.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `bots.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 }
 
 import telegramIcon from "./assets/telegram.svg";
@@ -110,6 +117,24 @@ export namespace Bot {
     | "TwilioVoice"
     | "WeChat"
     | "Flock";
+
+  /** Exact backend driver list from `AvailableBots::AllBots`, including drivers without bundled dashboard metadata. */
+  export const BackendDrivers: readonly DriverValues[] = [
+    "AmazonAlexa",
+    "CiscoSpark",
+    "Facebook",
+    "Hangouts",
+    "HipChat",
+    "BotFramework",
+    "Slack",
+    "Telegram",
+    "TwilioVoice",
+    "WeChat",
+    "Flock",
+  ];
+
+  /** Backend enum values that do not currently have bundled icon/config metadata in `Drivers`. */
+  export const BackendOnlyDrivers: readonly DriverValues[] = ["Hangouts", "Flock"];
 
   /** Dashboard metadata for bundled bot integrations. Backend can still contain other `DriverValues`. */
   export const Drivers: IShopBot[] = [
