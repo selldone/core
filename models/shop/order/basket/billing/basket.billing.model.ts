@@ -12,16 +12,19 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Warehouse} from "../../../warehouse/warehouse.model";
-import {Customer} from "../../../customer";
-import {Transportation} from "../../../transportation/transportation.model";
+import { Warehouse } from "../../../warehouse/warehouse.model";
+import { Customer } from "../../../customer";
+import { Transportation } from "../../../transportation/transportation.model";
 
 //█████████████████████████████████████████████████████████████
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 
 /**
- * Represents a calculated bill, which is transient and not saved in the database.
+ * Calculated basket bill returned by checkout/order calculation APIs.
+ *
+ * This payload is transient and is not stored as a single database row. It is produced from basket items,
+ * discounts, tax, delivery options, connect shipping rates, and marketplace vendor shipping options.
  */
 export interface IBasketBill {
   /**
@@ -37,7 +40,7 @@ export interface IBasketBill {
   /**
    * The type of the order (e.g., physical, virtual, service, etc.).
    */
-  order_type: string;
+  order_type: BasketBilling.OrderTypeCode;
 
   /**
    * The customer information, including level, last login, and loyalty chips (if any).
@@ -47,7 +50,7 @@ export interface IBasketBill {
   /**
    * The currency of the order.
    */
-  currency: string;
+  currency: BasketBilling.CurrencyCode;
 
   /**
    * The total amount that the customer must pay, including taxes and shipping.
@@ -112,7 +115,7 @@ export interface IBasketBill {
   /**
    * The method used to calculate the delivery price (Auto or Manual).
    */
-  delivery_calculation: string;
+  delivery_calculation: BasketBilling.DeliveryCalculationCode;
 
   /**
    * The total tax applied to the order.
@@ -147,7 +150,7 @@ export interface IBasketBill {
   /**
    * The list of available transportation methods.
    */
-  transportations: Array<Transportation>;
+  transportations: Transportation[];
 
   /**
    * The total additional shipping cost for drop-shipped items.
@@ -212,6 +215,27 @@ export interface IBasketBill {
 }
 
 export namespace BasketBilling {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for provider-specific shipping metadata. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for provider-specific shipping metadata. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Product/order type code returned by basket calculation APIs. */
+  export type OrderTypeCode = "PHYSICAL" | "VIRTUAL" | "FILE" | "SERVICE" | "SUBSCRIPTION" | string;
+
+  /** ISO currency code. */
+  export type CurrencyCode = string;
+
+  /** Delivery calculation strategy used by the backend. */
+  export type DeliveryCalculationCode = "Auto" | "Manual" | "Free" | string;
+
   /**
    * Represents available shipping options provided directly by the shop.
    */
@@ -242,6 +266,9 @@ export namespace BasketBilling {
 
     /** IDs of basket items associated with this shipping method. */
     item_ids: number[];
+
+    /** Additional backend/provider details for this shipping option. */
+    meta?: JsonObject | null;
   }
 
   /**
@@ -262,6 +289,9 @@ export namespace BasketBilling {
 
     /** IDs of basket items that will be shipped by this connect provider. */
     item_ids: number[];
+
+    /** Additional provider payload returned by the connect integration. */
+    meta?: JsonObject | null;
   }
 
   /**
@@ -282,6 +312,9 @@ export namespace BasketBilling {
 
     /** Estimated number of days for delivery (optional). */
     estimated_days?: number | null;
+
+    /** Raw provider payload for this shipping rate, when exposed. */
+    raw?: JsonObject | null;
   }
 
   /**
@@ -314,5 +347,8 @@ export namespace BasketBilling {
 
     /** IDs of basket items associated with this vendor's shipping method. */
     item_ids: number[];
+
+    /** Additional vendor shipping metadata. */
+    meta?: JsonObject | null;
   }
 }

@@ -13,7 +13,10 @@
  */
 
 /**
- * Represents the structure of a basket item return.
+ * Basket item return request stored in `shop_basket_item_return`.
+ *
+ * Backend source: `App\Storefront\Order\Basket\BasketItemReturn`, table `shop_basket_item_return`.
+ * `CreateReturnRequest` creates or updates one return request per basket item and resets its state to `Pending`.
  *
  * @property {number} id - The unique identifier for the basket item return.
  * @property {number} user_id - The identifier of the user who is returning the item.
@@ -34,11 +37,23 @@ export interface BasketItemReturn {
   item_id: number;
   reason: BasketItemReturn.ReasonValues;
   count: number;
-  note: string;
-  state: keyof typeof BasketItemReturn.States;
-  image: string;
-  video: string;
-  voice: string;
+  note: string | null;
+  state: BasketItemReturn.StateKeys;
+  image?: string | null;
+  video?: string | null;
+  voice?: string | null;
+  vendor_id?: number | null;
+  vendor_order_id?: number | null;
+  deleted_at?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+  user?: Record<string, unknown> | null;
+  shop?: Record<string, unknown> | null;
+  basketItem?: Record<string, unknown> | null;
+  basket_item?: Record<string, unknown> | null;
+  vendor?: Record<string, unknown> | null;
+  vendorOrder?: Record<string, unknown> | null;
+  vendor_order?: Record<string, unknown> | null;
 }
 
 export namespace BasketItemReturn {
@@ -50,7 +65,7 @@ export namespace BasketItemReturn {
    * @property {string} icon - The icon associated with the state.
    * @property {string} color - The color code associated with the state.
    */
-  interface IState {
+  export interface IState {
     code: StateKeys;
     name: string;
     icon: string;
@@ -60,7 +75,7 @@ export namespace BasketItemReturn {
   /**
    * Defines the possible keys for return request states.
    */
-  type StateKeys = "Pending" | "Accepted" | "Rejected";
+  export type StateKeys = "Pending" | "Accepted" | "Rejected";
 
   /**
    * Enumerates the possible states for return requests, providing associated metadata.
@@ -98,7 +113,7 @@ export namespace BasketItemReturn {
    * @property {string} value - The unique identifier for the return reason.
    * @property {string} title - The localization key or label for the return reason.
    */
-  interface IReason {
+  export interface IReason {
     value: ReasonValues;
     title: string;
   }
@@ -126,4 +141,15 @@ export namespace BasketItemReturn {
       { value: "U7", title: "global.return_order_reason.physical.U7" },
     ],
   };
+
+  /** Payload accepted when creating or updating a return request from buyer UI. */
+  export interface Upsert {
+    item_id: number;
+    reason: ReasonValues;
+    count: number;
+    note?: string | null;
+    image?: string | null;
+    video?: string | null;
+    voice?: string | null;
+  }
 }

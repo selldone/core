@@ -17,7 +17,7 @@ import type { Coupon } from "../coupon/coupon.model";
 /**
  * Buy/get offer incentive model.
  *
- * Backend source: `App\Shop\Offer\Offer`, table `shop_offers`.
+ * Backend source: `App\Storefront\Offer\Offer`, table `shop_offers`.
  * Admin list/detail is implemented in `OfferController`; create/edit/delete validation is in `OfferEditController`;
  * storefront eligible-offer responses select a public subset of these fields.
  */
@@ -89,34 +89,47 @@ export interface Offer {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_offers.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_offers.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Daily aggregate rows from `Offer::data()` when eager-loaded. */
-  data?: Offer.Data[];
+  data?: Offer.Data[] | null;
 
   /** Offer order rows when `offerOrders()` is eager-loaded. */
-  offer_orders?: Record<string, unknown>[];
+  offer_orders?: Offer.JsonObject[] | null;
 
   /** Basket relation when offer orders are eager-loaded. */
-  baskets?: Record<string, unknown>[];
+  baskets?: Offer.JsonObject[] | null;
 
   /** Virtual item relation when eager-loaded. */
-  virtual_items?: Record<string, unknown>[];
+  virtual_items?: Offer.JsonObject[] | null;
 
   /** Cluster relation when loaded by callers. */
-  cluster?: Record<string, unknown> | null;
+  cluster?: Offer.JsonObject | null;
 }
 
 export namespace Offer {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSON casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
   /** Team note object stored in nullable JSON `shop_offers.note`. */
   export interface Note {
-    user_id: number;
-    user_name: string;
+    user_id?: number | null;
+    user_name?: string | null;
     body: string;
     date: string;
+    [key: string]: JsonValue | undefined;
   }
 
   /** Daily aggregate row from table `offer_data`. */
@@ -126,10 +139,30 @@ export namespace Offer {
     used: number;
     amount_discount: number;
     amount_buy: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Translation payload applied by `HasTranslationTrait`. */
-  export type Translations = Record<string, Record<string, unknown>>;
+  export type Translations = Record<string, JsonObject>;
+
+  /** Payload accepted by offer create/update endpoints before backend assigns counters and timestamps. */
+  export interface Upsert {
+    enable: boolean;
+    max: number;
+    per_order?: number | null;
+    currency: string;
+    start?: string | null;
+    end?: string | null;
+    title: string;
+    description?: string | null;
+    min_quantity?: number | null;
+    min_purchase?: number | null;
+    buy_products?: Coupon.ProductSelectionMap | [] | null;
+    get_products?: Coupon.ProductSelectionMap | [] | null;
+    percent: number;
+    cluster_id?: number | null;
+    note?: Note[] | null;
+    translations?: Translations | null;
+  }
 }

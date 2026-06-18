@@ -77,11 +77,53 @@ export interface DeliveryService {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `delivery_services.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `delivery_services.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Shop-specific service rows when `DeliveryService::transportationServices()` is eager-loaded. */
-  transportation_services?: Record<string, unknown>[];
+  transportation_services?: DeliveryService.JsonObject[] | null;
+}
+
+export namespace DeliveryService {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for eager-loaded relation payloads. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for eager-loaded relation payloads. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Transportation repository code supported by this provider. */
+  export type TransportationType = string;
+
+  /** Provider statistics stored on `delivery_services`. */
+  export interface Stats {
+    fail_calls?: number;
+    jobs?: number;
+    process?: number;
+    success?: number;
+    fail?: number;
+    duration?: number;
+    distance?: number;
+    reset_at?: string | null;
+  }
+
+  /** Payload accepted by backend delivery-service registration helpers. */
+  export interface Upsert extends Stats {
+    code: string;
+    enable: boolean;
+    oauth: boolean;
+    types: TransportationType[];
+    batch: number;
+    name: string;
+    description?: string | null;
+    icon?: string | null;
+    url?: string | null;
+  }
 }
