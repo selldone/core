@@ -385,4 +385,38 @@ export namespace ProductVariant {
     parent_id?: number | null;
     meta?: Meta | null;
   }
+
+  /** Payload accepted by stock-only variant update actions. */
+  export interface StockPatch {
+    quantity?: number;
+    enable?: boolean;
+    lead?: number;
+  }
+
+  /** Payload accepted by price/discount-only variant update actions. */
+  export interface PricePatch {
+    pricing?: boolean;
+    price?: number | null;
+    currency?: keyof typeof Currency;
+    commission?: number | null;
+    discount?: number | null;
+    dis_start?: string | null;
+    dis_end?: string | null;
+    price_label?: string | null;
+  }
+
+  /** Compact variant projection used in order, lottery, and product-card payloads. */
+  export interface Compact {
+    id: number;
+    product_id: number;
+    sku?: string | null;
+    color: string | null;
+    style: string | null;
+    volume: string | null;
+    weight: string | null;
+    pack: string | null;
+    type: string | null;
+    enable: boolean;
+    quantity: number;
+  }
 }

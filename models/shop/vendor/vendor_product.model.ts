@@ -150,4 +150,36 @@ export namespace VendorProduct {
 
   /** Update endpoints accept the same editable fields as create endpoints. */
   export type Upsert = Create;
+
+  /** Payload accepted by fast inventory update actions. */
+  export interface StockPatch {
+    quantity: number;
+    enable?: boolean;
+    lead?: number;
+  }
+
+  /** Payload accepted by fast price/discount update actions. */
+  export interface PricePatch {
+    raw_price?: number | null;
+    price?: number;
+    currency?: string;
+    commission?: number | null;
+    discount?: number | null;
+    dis_start?: string | null;
+    dis_end?: string | null;
+    pricing_id?: number | null;
+  }
+
+  /** Compact vendor-product projection embedded in basket items and product variants. */
+  export interface Compact {
+    id: number;
+    product_id: number;
+    variant_id: number | null;
+    vendor_id: number;
+    enable: boolean;
+    price: number;
+    currency: string;
+    quantity: number;
+    lead: number;
+  }
 }

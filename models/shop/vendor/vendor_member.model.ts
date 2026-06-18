@@ -93,6 +93,22 @@ export namespace VendorMemberTypes {
     access?: AccessMap | null;
   }
 
+  /** Single read/write permission toggle used by member-management UI actions. */
+  export interface AccessPatch {
+    key: AccessKey;
+    value: boolean;
+  }
+
+  /** Compact member projection returned by vendor-member list endpoints. */
+  export interface Compact {
+    id: number;
+    vendor_id: number;
+    user_id: number;
+    name?: string;
+    email?: string;
+    access: AccessMap | null;
+  }
+
   /** UI metadata for each backend vendor-member region. */
   export const VendorMemberRegion = {
     DASHBOARD: {

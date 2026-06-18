@@ -154,6 +154,9 @@ export interface Vendor {
   /** Vendor order relations when `vendorOrders()` is eager-loaded. */
   vendor_orders?: Vendor.JsonObject[] | null;
 
+  /** CamelCase alias for `vendor_orders` used by relation helpers. */
+  vendorOrders?: Vendor.JsonObject[] | null;
+
   /** Vendor document relations when `documents()` is eager-loaded. */
   documents?: Vendor.JsonObject[] | null;
 
@@ -163,11 +166,20 @@ export interface Vendor {
   /** Queued product imports for this vendor when eager-loaded. */
   import_que_products?: Vendor.JsonObject[] | null;
 
+  /** CamelCase alias for `import_que_products`. */
+  importQueProducts?: Vendor.JsonObject[] | null;
+
   /** Queued image imports for this vendor when eager-loaded. */
   import_que_images?: Vendor.JsonObject[] | null;
 
+  /** CamelCase alias for `import_que_images`. */
+  importQueImages?: Vendor.JsonObject[] | null;
+
   /** Vendor notification email rows when eager-loaded. */
   vendor_emails?: Vendor.JsonObject[] | null;
+
+  /** CamelCase alias for `vendor_emails`. */
+  vendorEmails?: Vendor.JsonObject[] | null;
 
   /** Shipping-service assignments owned by this vendor when eager-loaded. */
   transportation_services?: Vendor.JsonObject[] | null;
@@ -180,6 +192,9 @@ export interface Vendor {
 
   /** Pending member invitations when `memberInvites()` is eager-loaded. */
   member_invites?: Vendor.JsonObject[] | null;
+
+  /** CamelCase alias for `member_invites`. */
+  memberInvites?: Vendor.JsonObject[] | null;
 
   /** Vendor panel members when `members()` is eager-loaded. */
   members?: Vendor.JsonObject[] | null;
@@ -199,11 +214,20 @@ export interface Vendor {
   /** Vendor product relation when `vendorProducts()` is eager-loaded. */
   vendor_products?: Vendor.JsonObject[] | null;
 
+  /** CamelCase alias for `vendor_products`. */
+  vendorProducts?: Vendor.JsonObject[] | null;
+
   /** Owned product relation when `ownProducts()` is eager-loaded. */
   own_products?: Vendor.JsonObject[] | null;
 
+  /** CamelCase alias for `own_products`. */
+  ownProducts?: Vendor.JsonObject[] | null;
+
   /** Owned category relation when `ownCategories()` is eager-loaded. */
   own_categories?: Vendor.JsonObject[] | null;
+
+  /** CamelCase alias for `own_categories`. */
+  ownCategories?: Vendor.JsonObject[] | null;
 }
 
 export namespace Vendor {
@@ -291,5 +315,26 @@ export namespace Vendor {
     meta?: Meta | null;
     static?: Static | null;
     translations?: Translations | null;
+  }
+
+  /** Payload accepted by moderation/admin actions that change only vendor status. */
+  export interface StatusPatch {
+    status: VendorStatus;
+    note?: string | null;
+  }
+
+  /** Payload accepted when toggling vendor operational access without editing profile data. */
+  export interface AccessPatch {
+    enable?: boolean;
+    access?: boolean;
+  }
+
+  /** Compact vendor projection used in product and order relation payloads. */
+  export interface Compact {
+    id: number;
+    name: string;
+    icon: string | null;
+    slug?: string | null;
+    status?: VendorStatus;
   }
 }

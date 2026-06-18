@@ -146,4 +146,36 @@ export namespace Warehouse {
     postal?: string | null;
     info?: JsonObject | null;
   }
+
+  /** Payload accepted when updating only warehouse receiver/contact fields. */
+  export interface ReceiverPatch {
+    name?: string | null;
+    phone?: string | null;
+    message?: string | null;
+  }
+
+  /** Payload accepted when updating only warehouse address/location fields. */
+  export interface AddressPatch {
+    country?: string | null;
+    state?: string | null;
+    state_code?: string | null;
+    city?: string | null;
+    address?: string | null;
+    location?: Location | null;
+    no?: string | null;
+    unit?: string | null;
+    postal?: string | null;
+  }
+
+  /** Compact warehouse projection used in checkout shipping-option payloads. */
+  export interface Compact {
+    id: number;
+    vendor_id?: number | null;
+    title: string | null;
+    country: string | null;
+    state: string | null;
+    city: string | null;
+    address: string | null;
+    location: Location | null;
+  }
 }

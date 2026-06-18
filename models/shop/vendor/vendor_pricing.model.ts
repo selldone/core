@@ -93,4 +93,20 @@ export namespace VendorPricing {
     /** Localized title/description payloads keyed by locale. */
     translations?: Translations | null;
   }
+
+  /** Compact pricing projection used inside vendor/vendor-product relation payloads. */
+  export interface Compact {
+    id: number;
+    title: string;
+    commission: number;
+    description?: string | null;
+  }
+
+  /** Payload accepted when only commission or translations are edited. */
+  export interface Patch {
+    title?: string;
+    description?: string | null;
+    commission?: number;
+    translations?: Translations | null;
+  }
 }
