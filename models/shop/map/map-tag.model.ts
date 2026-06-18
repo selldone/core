@@ -15,7 +15,7 @@
 /**
  * Shop map/address tag used by products and vendors.
  *
- * Backend source: `App\Shop\Map\MapTag`, table `shop_map_tags`.
+ * Backend source: `shop_map_tags` migration.
  * Products and vendors reference this row through nullable `map_id` foreign keys.
  */
 export interface MapTag {
@@ -28,25 +28,25 @@ export interface MapTag {
   /** Creator / last editor user id, or `null`. Source: nullable `shop_map_tags.user_id`. */
   user_id: number | null;
 
-  /** Filter tags. Source: nullable JSON `shop_map_tags.tags`. */
-  tags: string[] | null;
+  /** Filter tags used to build location filters. Source: nullable JSONB `shop_map_tags.tags`. */
+  tags: MapTag.Tags;
 
-  /** Address title. Source: `shop_map_tags.title`. */
+  /** Address title. Source: required string `shop_map_tags.title`. */
   title: string;
 
-  /** Country code, or `null`. Source: nullable `shop_map_tags.country` (2 chars). */
+  /** ISO 3166-1 alpha-2 country code, or `null`. Source: nullable `shop_map_tags.country` length 2. */
   country: string | null;
 
-  /** State/province, or `null`. Source: nullable `shop_map_tags.state`. */
+  /** State/province, or `null`. Source: nullable `shop_map_tags.state` length 32. */
   state: string | null;
 
-  /** City, or `null`. Source: nullable `shop_map_tags.city`. */
+  /** City name, or `null`. Source: nullable `shop_map_tags.city` length 128. */
   city: string | null;
 
-  /** Address text. Source: `shop_map_tags.address`. */
+  /** Full address text. Source: required text `shop_map_tags.address`. */
   address: string;
 
-  /** Geolocation JSON payload. Source: `shop_map_tags.location`. */
+  /** Geolocation JSON payload. Source: required JSONB `shop_map_tags.location`. */
   location: MapTag.Location;
 
   /** Building number, or `null`. Source: nullable `shop_map_tags.no`. */
@@ -67,35 +67,53 @@ export interface MapTag {
   /** Postal code, or `null`. Source: nullable `shop_map_tags.postal`. */
   postal: string | null;
 
-  /** Latitude. Source: `shop_map_tags.lat`. */
+  /** Latitude in decimal degrees. Source: required double `shop_map_tags.lat`. */
   lat: number;
 
-  /** Longitude. Source: `shop_map_tags.lng`. */
+  /** Longitude in decimal degrees. Source: required double `shop_map_tags.lng`. */
   lng: number;
 
-  /** Search/delivery range, or `null`. Source: nullable `shop_map_tags.range`. */
+  /** Search/delivery range, or `null`. Source: nullable double `shop_map_tags.range`. */
   range: number | null;
 
-  /** Creation timestamp. Source: `shop_map_tags.created_at`. */
-  created_at?: string;
+  /** Creation timestamp serialized by Laravel. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `shop_map_tags.updated_at`. */
-  updated_at?: string;
+  /** Last update timestamp serialized by Laravel. */
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Editor relation when eager-loaded. */
   user?: Record<string, unknown> | null;
 
-  /** Product relations when `MapTag::products()` is eager-loaded. */
+  /** Product relations when the backend includes products using this map tag. */
   products?: Record<string, unknown>[];
 
-  /** Vendor relations when `MapTag::vendors()` is eager-loaded. */
+  /** Vendor relations when the backend includes vendors using this map tag. */
   vendors?: Record<string, unknown>[];
 }
 
 export namespace MapTag {
-  /** Backend geolocation JSON. Backend accepts an array/object; SDK helpers commonly use lng/lat objects. */
-  export type Location = { lng: number; lat: number } | [number, number] | Record<string, unknown>;
+  /** Filter tags JSONB payload. */
+  export type Tags = string[] | null;
+
+  /** Coordinate object used by Selldone frontend map helpers. */
+  export interface LocationObject {
+    /** Longitude in decimal degrees. */
+    lng: number;
+
+    /** Latitude in decimal degrees. */
+    lat: number;
+
+    /** Additional provider-specific location metadata preserved by JSONB storage. */
+    [key: string]: unknown;
+  }
+
+  /** Backend geolocation JSON. Backend stores JSONB; SDK helpers commonly use lng/lat objects. */
+  export type Location = LocationObject | [number, number] | Record<string, unknown>;
+
+  /** Payload used when creating or updating a map tag before backend assigns ids/timestamps. */
+  export type Upsert = Omit<MapTag, "id" | "created_at" | "updated_at" | "shop" | "user" | "products" | "vendors">;
 }

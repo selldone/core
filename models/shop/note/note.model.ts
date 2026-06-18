@@ -23,6 +23,21 @@ import type { User } from "../../user/user.model";
  * Laravel `nullableMorphs('target')`.
  */
 export namespace Note {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSONB casts. Uses an interface to avoid TS2456 circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue;
+  }
+
+  /** JSON array stored by Laravel JSONB casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Mention payload stored in `notes.mention`. */
+  export type Mention = number | string | JsonObject;
+
   export interface INote {
     /** Note id. Source: `notes.id`. */
     id: number;
@@ -42,11 +57,11 @@ export namespace Note {
     /** Morph target class/type, or `null`. Source: nullable `notes.target_type`. */
     target_type?: string | null;
 
-    /** Note body JSON. Source: required JSON `notes.data`. */
+    /** Note body JSON. Source: required JSONB `notes.data`. */
     data: IData[];
 
-    /** Mentioned user ids or mention payloads, or `null`. Source: nullable JSON `notes.mention`. */
-    mention?: Array<number | string | Record<string, unknown>> | null;
+    /** Mentioned user ids or mention payloads, or `null`. Source: nullable JSONB `notes.mention`. */
+    mention?: Mention[] | null;
 
     /** Whether the note should surface in agency notifications. Source: `notes.agency` cast to boolean. */
     agency: boolean;
@@ -57,11 +72,11 @@ export namespace Note {
     /** Soft-delete timestamp when included. Source: `notes.deleted_at`. */
     deleted_at?: string | null;
 
-    /** Creation timestamp. Source: `notes.created_at`. */
-    created_at?: string;
+    /** Creation timestamp serialized by Laravel. */
+    created_at?: string | null;
 
-    /** Last update timestamp. Source: `notes.updated_at`. */
-    updated_at?: string;
+    /** Last update timestamp serialized by Laravel. */
+    updated_at?: string | null;
 
     /** Associated user relation when eager-loaded. */
     user?: User | Record<string, unknown> | null;
@@ -83,6 +98,21 @@ export namespace Note {
     message: string;
 
     /** Additional editor-specific payload preserved by backend JSON casts. */
-    [key: string]: unknown;
+    [key: string]: JsonValue;
+  }
+
+  /** Payload accepted by `CreateNewNote` before backend assigns ids/timestamps and morph fields. */
+  export interface CreatePayload {
+    /** Page-builder/resource element id, or `null`. */
+    element_id?: string | null;
+
+    /** Rich text note JSON payload. */
+    data: IData[];
+
+    /** Whether the note should be pinned. */
+    pin: boolean;
+
+    /** Mentioned user ids or mention payloads. */
+    mention?: Mention[] | null;
   }
 }

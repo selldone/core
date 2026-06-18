@@ -19,21 +19,49 @@ import mapboxIcon from "./assets/mapbox.svg";
 
 export namespace Map {
   /**
-   * Represents the geographical location with longitude and latitude.
+   * Geographical location stored by map/address helpers.
    *
-   * @property {number} lng - The longitude of the location.
-   * @property {number} lat - The latitude of the location.
+   * Backend map tags store this value in `shop_map_tags.location` as JSONB and duplicate searchable coordinates in
+   * numeric `lat` / `lng` columns.
    */
   export interface ILocation {
+    /** Longitude in decimal degrees. */
     lng: number;
+
+    /** Latitude in decimal degrees. */
     lat: number;
   }
 
-  export const Providers = {
+  /** Tuple form used by some map SDKs: `[lng, lat]`. */
+  export type CoordinatesTuple = [number, number];
+
+  /** Accepted coordinate shape for frontend map widgets. */
+  export type LocationLike = ILocation | CoordinatesTuple;
+
+  /** Supported map provider code. */
+  export type ProviderCode = "Mapbox";
+
+  /** Static metadata used to render provider pickers in the dashboard. */
+  export interface ProviderMeta {
+    /** Stable provider code used by integrations and settings. */
+    code: ProviderCode;
+
+    /** Human-readable provider title. */
+    title: string;
+
+    /** Provider icon asset path resolved by the bundler. */
+    icon: string;
+  }
+
+  /** Available map providers. */
+  export const Providers: Record<ProviderCode, ProviderMeta> = {
     Mapbox: {
       code: "Mapbox",
       title: "Mapbox",
       icon: mapboxIcon,
     },
   };
+
+  /** Default provider used when no provider is explicitly selected. */
+  export const DefaultProvider: ProviderCode = "Mapbox";
 }
