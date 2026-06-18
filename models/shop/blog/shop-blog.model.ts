@@ -71,3 +71,42 @@ export interface ShopBlog {
 }
 
 export namespace ShopBlog {}
+
+export namespace ShopBlog {
+  /** JSON primitive accepted by blog metadata and translation payloads. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for blog metadata, SEO, and relation projections. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for blog metadata, SEO, and relation projections. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Compact blog projection used by blog cards and relation payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    slug?: string | null;
+    image?: string | null;
+    published?: boolean;
+  }
+
+  /** Safe partial update payload for shop blog posts. */
+  export interface ApiPatch {
+    title?: string | null;
+    description?: string | null;
+    body?: string | null;
+    image?: string | null;
+    category_id?: number | null;
+    slug?: string | null;
+    published?: boolean;
+    tags?: string[] | null;
+    meta?: JsonObject | null;
+    translations?: Record<string, JsonObject> | null;
+  }
+}

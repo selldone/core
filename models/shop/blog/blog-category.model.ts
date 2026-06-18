@@ -88,3 +88,38 @@ export namespace BlogCategory {
     shop?: Record<string, unknown> | null;
   }
 }
+
+export namespace BlogCategory {
+  /** JSON primitive accepted by blog category translation/meta payloads. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for translations, metadata, and relation projections. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for translations, metadata, and relation projections. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Compact blog category projection used by blog list/card payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    slug?: string | null;
+    icon?: string | null;
+  }
+
+  /** Safe partial update payload for blog categories. */
+  export interface ApiPatch {
+    title?: string | null;
+    description?: string | null;
+    slug?: string | null;
+    icon?: string | null;
+    parent_id?: number | null;
+    order?: number;
+    translations?: Record<string, JsonObject> | null;
+  }
+}

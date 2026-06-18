@@ -289,3 +289,43 @@ export namespace Company {
     { code: "IP", title: "Intellectual Property documents" },
   ];
 }
+
+export namespace Company {
+  /** JSON primitive accepted by backend company metadata payloads. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for company profile, verification, and relation payloads. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for company profile, verification, and relation payloads. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Compact company projection embedded in shop/account/legal payloads. */
+  export interface CompactProjection {
+    id: number;
+    name?: string | null;
+    title?: string | null;
+    logo?: string | null;
+    country?: string | null;
+    verified?: boolean;
+  }
+
+  /** Safe partial update payload for company legal/profile fields. */
+  export interface ApiPatch {
+    name?: string | null;
+    title?: string | null;
+    description?: string | null;
+    logo?: string | null;
+    country?: string | null;
+    state?: string | null;
+    city?: string | null;
+    address?: string | null;
+    postal?: string | null;
+    tax_id?: string | null;
+    meta?: JsonObject | null;
+  }
+}

@@ -241,3 +241,37 @@ export namespace Guild {
     updated_at?: Timestamp;
   }
 }
+
+export namespace Guild {
+  /** JSON primitive accepted by guild metadata and relation payloads. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for guild settings and eager-loaded relations. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for guild settings and eager-loaded relations. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Compact guild projection used by membership and analytics payloads. */
+  export interface CompactProjection {
+    id: number;
+    name?: string | null;
+    title?: string | null;
+    icon?: string | null;
+    enable?: boolean;
+  }
+
+  /** Safe partial update payload for guild settings. */
+  export interface ApiPatch {
+    name?: string | null;
+    title?: string | null;
+    description?: string | null;
+    icon?: string | null;
+    enable?: boolean;
+    meta?: JsonObject | null;
+  }
+}

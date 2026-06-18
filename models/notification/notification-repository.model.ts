@@ -139,3 +139,37 @@ export namespace NotificationRepository {
   }
 }
 
+
+export namespace NotificationRepository {
+  /** JSON primitive accepted by notification payload metadata. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for repository payloads and relation projections. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for repository payloads and relation projections. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Compact notification repository projection used in list responses. */
+  export interface CompactProjection {
+    id: number;
+    type?: string | null;
+    title?: string | null;
+    code?: string | null;
+    enable?: boolean;
+  }
+
+  /** Safe payload for toggling or editing a notification repository row. */
+  export interface ApiPatch {
+    title?: string | null;
+    description?: string | null;
+    enable?: boolean;
+    channels?: string[] | null;
+    config?: JsonObject | null;
+    meta?: JsonObject | null;
+  }
+}

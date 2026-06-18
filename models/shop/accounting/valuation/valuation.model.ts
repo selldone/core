@@ -140,3 +140,36 @@ export namespace Valuation {
     unavailable?: string[];
   }
 }
+
+export namespace Valuation {
+  /** JSON primitive accepted by valuation structures and conditions. */
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for valuation forms, structures, and condition rules. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array used for valuation forms, structures, and condition rules. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Single valuation input field definition. */
+  export interface FieldDefinition extends JsonObject {
+    key: string;
+    type?: string;
+    label?: string | null;
+    required?: boolean;
+    unit?: string | null;
+  }
+
+  /** Safe partial update payload for valuation forms. */
+  export interface ApiPatch {
+    title?: string | null;
+    description?: string | null;
+    structure?: FieldDefinition[] | JsonObject | null;
+    conditions?: JsonArray | JsonObject | null;
+    enable?: boolean;
+  }
+}
