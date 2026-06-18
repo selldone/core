@@ -15,7 +15,8 @@
 /**
  * Per-shop quota/usage counters.
  *
- * Backend source: table `shop_quota` created by `CreateShopQuotaTable` and extended by product/background-removal/vendor
+ * Backend source: `App\Storefront\Quota\ShopQuota`, table `shop_quota`.
+ * Created by `CreateShopQuotaTable` and extended by product/background-removal/vendor
  * quota migrations. Every `*_max`, `*_extra`, and `*_usage` field is an integer counter with DB default `0` unless
  * documented otherwise in the migration.
  */
@@ -117,12 +118,60 @@ export interface IQuota {
   vendors_extra: number;
   vendors_usage: number;
 
+  /** Owning shop relation when eager-loaded. Source: `ShopQuota::shop()`. */
+  shop?: Record<string, unknown> | null;
+
   /** Quota reset timestamp, or `null`. Source: nullable `shop_quota.reset_date`. */
   reset_date: string | null;
 
-  /** Creation timestamp. Source: `shop_quota.created_at`. */
-  created_at: string;
+  /** Creation timestamp serialized by Laravel. Source: `shop_quota.created_at`. */
+  created_at?: string | null;
 
-  /** Last update timestamp. Source: `shop_quota.updated_at`. */
-  updated_at: string;
+  /** Last update timestamp serialized by Laravel. Source: `shop_quota.updated_at`. */
+  updated_at?: string | null;
+}
+
+export namespace Quota {
+  /** Quota resource names that follow the `{resource}_max`, `{resource}_extra`, `{resource}_usage` pattern. */
+  export type Resource =
+    | "products"
+    | "categories"
+    | "domains"
+    | "discount_codes"
+    | "coupons"
+    | "offers"
+    | "lotteries"
+    | "campaigns"
+    | "affiliates"
+    | "email_campaigns"
+    | "couriers"
+    | "pages"
+    | "popups"
+    | "customers"
+    | "community_posts"
+    | "community_comments"
+    | "online_orders"
+    | "pos_orders"
+    | "blogs"
+    | "ai_tokens"
+    | "bg_remove"
+    | "vendors";
+
+  /** Quota counter suffix. */
+  export type Counter = "max" | "extra" | "usage";
+
+  /** Strongly typed quota counter column name. */
+  export type CounterColumn = `${Resource}_${Counter}`;
+
+  /** Runtime-safe quota counter triplet. */
+  export interface CounterSet {
+    /** Included maximum quota from the current shop license/plan. */
+    max: number;
+
+    /** Extra quota granted by Selldone/admin. */
+    extra: number;
+
+    /** Current usage for the active quota period. */
+    usage: number;
+  }
 }

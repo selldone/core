@@ -12,21 +12,40 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const ReviewsSentiment = {
-    Positive:{
-        code: 'Positive',
-        title: 'Positive',
-        image: require('./assets/Positive.svg'),
-    },
-    Negative:{
-        code: 'Negative',
-        title: 'Negative',
-        image: require('./assets/Negative.svg'),
-    },
-    Neutral:{
-        code: 'Neutral',
-        title: 'Neutral',
-        image: require('./assets/Neutral.svg'),
-    },
+import negativeIcon from "./assets/Negative.svg";
+import neutralIcon from "./assets/Neutral.svg";
+import positiveIcon from "./assets/Positive.svg";
 
+/** Backend review sentiment enum. Source: `App\Storefront\Review\enums\ShopReviewSentiment`. */
+export type ReviewsSentimentCode = "Positive" | "Negative" | "Neutral";
+
+/** UI metadata for one review sentiment value. */
+export interface ReviewsSentimentMeta {
+  /** Backend enum value. */
+  code: ReviewsSentimentCode;
+
+  /** Human-readable title. */
+  title: string;
+
+  /** Sentiment icon asset path resolved by the bundler. */
+  image: string;
 }
+
+/** Review sentiment values used by imported/external shop reviews. */
+export const ReviewsSentiment: Record<ReviewsSentimentCode, ReviewsSentimentMeta> = {
+  Positive: {
+    code: "Positive",
+    title: "Positive",
+    image: positiveIcon,
+  },
+  Negative: {
+    code: "Negative",
+    title: "Negative",
+    image: negativeIcon,
+  },
+  Neutral: {
+    code: "Neutral",
+    title: "Neutral",
+    image: neutralIcon,
+  },
+} as const;

@@ -12,17 +12,41 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export const ReviewsSource = {
-    facebook:{
-        code: 'facebook',
-        title: 'Facebook',
-        image: require('./../../../assets/trademark/facebook.svg'),
-        message:'🚧 Please note that Facebook reviews are not available for all regions. Also Facebook not provide reviewer name and profile picture to us yet.',
-    },
-   google:{
-        code: 'google',
-        title: 'Google',
-        image: require('@selldone/core-js/assets/trademark/google.svg'),
-       message:"🚫 Google provides limited access for authentication of business, we are working on that, so now you will get rate limit error, please try again later.",
-    },
+import facebookIcon from "../../../assets/trademark/facebook.svg";
+import googleIcon from "../../../assets/trademark/google.svg";
+
+/** Backend review source enum. Source: `App\Storefront\Review\enums\ShopReviewSources`. */
+export type ReviewsSourceCode = "facebook" | "google";
+
+/** UI metadata for an external review source. */
+export interface ReviewsSourceMeta {
+  /** Backend enum value stored in `shop_review.source` and `shop_review_tokens.source`. */
+  code: ReviewsSourceCode;
+
+  /** Human-readable source title. */
+  title: string;
+
+  /** Source trademark icon asset path resolved by the bundler. */
+  image: string;
+
+  /** Dashboard note shown before connecting/importing reviews from this source. */
+  message: string;
 }
+
+/** External review sources supported by shop review import/sync workflows. */
+export const ReviewsSource: Record<ReviewsSourceCode, ReviewsSourceMeta> = {
+  facebook: {
+    code: "facebook",
+    title: "Facebook",
+    image: facebookIcon,
+    message:
+      "🚧 Please note that Facebook reviews are not available for all regions. Also Facebook not provide reviewer name and profile picture to us yet.",
+  },
+  google: {
+    code: "google",
+    title: "Google",
+    image: googleIcon,
+    message:
+      "🚫 Google provides limited access for authentication of business, we are working on that, so now you will get rate limit error, please try again later.",
+  },
+} as const;

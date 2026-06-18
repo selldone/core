@@ -12,13 +12,16 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Currency} from "../../../enums/payment/Currency";
+import { Currency } from "../../../enums/payment/Currency";
 
 /**
  * Recurring subscription price attached to a subscription product.
  *
- * Backend source: `App\Shop\Ribbon\SubscriptionPrice`, table `product_subscription_price`.
+ * Backend source: `App\Storefront\Ribbon\SubscriptionPrice`, table `product_subscription_price`.
  * Controllers: `Shop\Ribbon\ShopRibbonProductsController` and subscription purchase controllers.
+ *
+ * Stripe-backed plans store third-party price metadata in `meta`. Basket items reference this row through
+ * `shop_basket_items.subscription_price_id`.
  */
 export interface SubscriptionPrice {
   /** Unique subscription price identifier. Source: `product_subscription_price.id`. */
@@ -57,11 +60,11 @@ export interface SubscriptionPrice {
   /** Gateway code for a gateway that supports subscription payments. Source: `product_subscription_price.gateway_code`. */
   gateway_code: string;
 
-  /** Last status/info returned by third-party subscription provider. Source: nullable JSON `product_subscription_price.info`. */
-  info?: Record<string, unknown> | null;
+  /** Last status/info returned by third-party subscription provider. Source: nullable JSONB `product_subscription_price.info`. */
+  info?: SubscriptionPrice.JsonObject | null;
 
-  /** Private provider metadata such as Stripe price id and live mode. Source: nullable JSON `product_subscription_price.meta`. */
-  meta?: Record<string, unknown> | null;
+  /** Private provider metadata such as Stripe price id and live mode. Source: nullable JSONB `product_subscription_price.meta`. */
+  meta?: SubscriptionPrice.Meta | null;
 
   /** Soft-delete timestamp when returned. Source: nullable `product_subscription_price.deleted_at`. */
   deleted_at?: string | null;
@@ -72,8 +75,11 @@ export interface SubscriptionPrice {
   /** Last update timestamp serialized by Laravel when included. Source: `product_subscription_price.updated_at`. */
   updated_at?: string | null;
 
+  /** Shop relation when eager-loaded. Source: `SubscriptionPrice::shop()` serialized as `shop`. */
+  shop?: Record<string, unknown> | null;
+
   /** Product relation when eager-loaded. Source: `SubscriptionPrice::product()` serialized as `product`. */
-  product?: Record<string, unknown>;
+  product?: Record<string, unknown> | null;
 
   /** User relation when eager-loaded. Source: `SubscriptionPrice::user()` serialized as `user`. */
   user?: Record<string, unknown> | null;
@@ -81,4 +87,55 @@ export interface SubscriptionPrice {
 
 export namespace SubscriptionPrice {
   export type BillingPeriod = "Daily" | "Weekly" | "Monthly" | "Every3Months" | "Every6Months" | "Yearly";
+
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by Laravel JSONB casts. Uses an interface to avoid circular alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by Laravel JSONB casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Provider metadata stored in `meta`. */
+  export interface Meta extends JsonObject {
+    /** Third-party price id. Backend constant: `META_ID = "id"`. */
+    id?: string | null;
+
+    /** Third-party live-mode flag. Backend constant: `META_LIVE_MODE = "livemode"`. */
+    livemode?: boolean | null;
+  }
+
+  /** Payload accepted when creating a subscription price before backend assigns ids/timestamps/provider metadata. */
+  export interface Create {
+    /** Parent subscription product id. */
+    product_id: number;
+
+    /** Whether this price is selectable by customers. */
+    enable: boolean;
+
+    /** Public price title. */
+    title: string;
+
+    /** Optional admin/internal description. */
+    description?: string | null;
+
+    /** Optional SKU for this subscription price. */
+    sku?: string | null;
+
+    /** Recurring amount. */
+    price: number;
+
+    /** Currency code accepted by backend currency enum. */
+    currency: keyof typeof Currency;
+
+    /** Billing period accepted by backend `BillingPeriod::All`. */
+    period: BillingPeriod;
+
+    /** Gateway code for a gateway that supports subscription payments. */
+    gateway_code: string;
+  }
 }
