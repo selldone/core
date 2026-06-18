@@ -48,6 +48,8 @@ export interface Bot {
 
   /** Owning shop relation when eager-loaded. */
   shop?: Record<string, unknown>;
+}
+
 import telegramIcon from "./assets/telegram.svg";
 import slackIcon from "./assets/slack.svg";
 import alexaIcon from "./assets/alexa.svg";
@@ -57,8 +59,6 @@ import hipchatIcon from "./assets/hipchat.svg";
 import microsoftIcon from "./assets/microsoft.svg";
 import twilioIcon from "./assets/twilio.svg";
 import wechatIcon from "./assets/wechat.svg";
-
-}
 
 export namespace Bot {
   /**

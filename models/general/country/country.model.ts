@@ -15,23 +15,78 @@
 /**
  * ISO 3166-1 alpha-2 country code.
  *
- * Kept as `string` instead of a generated literal union because `Countries` is
- * intentionally mutable through `country-helper.overwrite()`.
+ * Kept as `string` instead of a generated literal union because the frontend `Countries`
+ * array is intentionally mutable through `country-helper.overwrite()`, while backend
+ * helpers such as `ISO3166::GetCountryInfo()` also accept arbitrary strings and normalize
+ * them internally.
  */
 export type ICountryCode = string;
+
+/** ISO 3166-1 alpha-3 country code used by backend `App\Helper\ISO3166::countries`. */
+export type ICountryAlpha3Code = string;
+
+/** ISO 3166-1 numeric country code stored as a zero-padded string in backend `ISO3166::countries`. */
+export type ICountryNumericCode = string;
+
+/** ISO 4217 currency code stored in backend country records under `currency`. */
+export type ICountryCurrencyCode = string;
+
+/**
+ * Administrative subdivision/state item when a backend country record exposes a `states` payload.
+ *
+ * The backend helper returns this data as-is from `ISO3166::countries`; different countries may have
+ * different state payload shapes, so the model keeps a safe extensible index signature.
+ */
+export interface ICountryState {
+  /** State/province display name when present. */
+  name?: string;
+
+  /** State/province short code when present. */
+  code?: string;
+
+  /** Backend-specific subdivision fields preserved for callers. */
+  [key: string]: string | number | boolean | null | undefined;
+}
+
+/**
+ * State/subdivision collection returned by `ISO3166::GetCountryStates()`.
+ *
+ * Backend records are not guaranteed to use a single normalized shape, so both keyed maps and arrays are accepted.
+ */
+export type ICountryStates =
+  | Record<string, string | ICountryState>
+  | ICountryState[];
 
 /**
  * Display country item used by storefront/dashboard country pickers.
  *
- * This frontend list mirrors ISO 3166-1 alpha-2 style country records. Backend
- * helper reference: `App\Helper\ISO3166`.
+ * This frontend list mirrors ISO 3166-1 alpha-2 style country records. Backend helper reference:
+ * `App\Helper\ISO3166`.
  */
 export type ICountry = {
-  /** Two-letter uppercase ISO 3166-1 alpha-2 code. */
+  /** Two-letter uppercase ISO 3166-1 alpha-2 code used by frontend helpers. */
   code: ICountryCode;
 
   /** English display name. */
   name: string;
+
+  /** Backend alpha-2 field name when a full `ISO3166::countries` record is passed through. */
+  alpha2?: ICountryCode;
+
+  /** Backend alpha-3 field name when a full `ISO3166::countries` record is passed through. */
+  alpha3?: ICountryAlpha3Code;
+
+  /** Backend numeric ISO code when a full `ISO3166::countries` record is passed through. */
+  numeric?: ICountryNumericCode;
+
+  /** Country currencies from backend `ISO3166::countries[*].currency`. */
+  currency?: ICountryCurrencyCode[];
+
+  /** Country subdivisions from backend `ISO3166::GetCountryStates()`, when available. */
+  states?: ICountryStates | null;
+
+  /** Whether postal/ZIP code input should be skipped for this country. Source: backend `nozip`. */
+  nozip?: boolean;
 };
 
 /**
@@ -297,9 +352,10 @@ export const Countries: ICountry[] = [
 //█████████████████████████████████████████████████████████████
 export namespace Country {
   /**
-   * European Union alpha-2 country codes used by tax/VAT-related flows.
+   * Backend-defined Europe/EU alpha-2 country codes used by tax/VAT-related flows.
    *
    * Backend helper equivalent: `ISO3166::EuropeCountriesAlpha2`.
+   * This list intentionally mirrors backend values instead of independently normalizing EU membership.
    */
   export const EuropeCountriesAlpha2: ICountryCode[] = [
     "AT",
@@ -330,4 +386,38 @@ export namespace Country {
     "SE",
     "CY",
   ];
+
+  /**
+   * Full backend country record shape from `App\Helper\ISO3166::countries`.
+   *
+   * Use this type for API/helper payloads that expose ISO metadata beyond the lightweight frontend picker shape.
+   */
+  export interface ICountryInfo {
+    /** English country name. Source: `ISO3166::countries[*].name`. */
+    name: string;
+
+    /** Two-letter ISO 3166-1 alpha-2 code. Source: `alpha2`. */
+    alpha2: ICountryCode;
+
+    /** Three-letter ISO 3166-1 alpha-3 code. Source: `alpha3`. */
+    alpha3: ICountryAlpha3Code;
+
+    /** Three-digit ISO 3166-1 numeric code, stored as a string to preserve leading zeroes. */
+    numeric: ICountryNumericCode;
+
+    /** ISO 4217 currencies accepted for the country. Source: `currency`. */
+    currency: ICountryCurrencyCode[];
+
+    /** Optional state/province payload. Returned by `ISO3166::GetCountryStates()`. */
+    states?: ICountryStates | null;
+
+    /** Optional backend flag for countries that should not require a postal/ZIP code. */
+    nozip?: boolean;
+
+    /** Additional backend-maintained country metadata preserved for forward compatibility. */
+    [key: string]: unknown;
+  }
+
+  /** Nullable result returned by backend helpers such as `GetCountryInfo()` and `GetCountryByAlpha3()`. */
+  export type NullableCountryInfo = ICountryInfo | null;
 }
