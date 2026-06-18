@@ -17,7 +17,8 @@
  *
  * Backend source: `App\Shop\Menu\ShopMenu`, table `shop_menu`.
  * `ShopMenuController::api_getMenu` usually returns `{ menu, enable, translations }`; full Eloquent rows include
- * `id`, `shop_id`, `type`, timestamps, and optional relations.
+ * `id`, `shop_id`, `type`, timestamps, and optional relations. The backend stores `menu` as text but casts it to array
+ * in `ShopMenu`.
  */
 export interface ShopMenu {
   /** Menu row id. Source: `shop_menu.id`; absent when controller returns only the compact payload. */
@@ -39,13 +40,13 @@ export interface ShopMenu {
   translations?: ShopMenu.Translations | null;
 
   /** Creation timestamp. Source: `shop_menu.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_menu.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Notes morph relation when eager-loaded. */
   notes?: Record<string, unknown>[];
@@ -85,6 +86,12 @@ export namespace ShopMenu {
   /** Backend enum `App\Shop\Menu\enums\ShopMenuType`. */
   export type TypeCode = "HEADER" | "FOOTER";
 
+  /** One footer menu column. */
+  export type FooterColumn = MenuItem[];
+
+  /** Footer payload stored for `type=FOOTER`. */
+  export type FooterPayload = FooterColumn[];
+
   /** Header menu item shape is flexible; controller supports `title`, `type`, `cols`, and generated `categories`. */
   export interface HeaderItem {
     title?: string;
@@ -94,9 +101,21 @@ export namespace ShopMenu {
     [key: string]: unknown;
   }
 
+  /** Header payload stored for `type=HEADER`. */
+  export type HeaderPayload = HeaderItem[];
+
   /** Footer menus are arrays of columns; header menus are arrays of header items. */
-  export type MenuPayload = MenuItem[][] | HeaderItem[];
+  export type MenuPayload = FooterPayload | HeaderPayload;
 
   /** Translation payload passed to `ShopMenu::SetShopMenu`. */
-  export type Translations = Record<string, { menu?: MenuPayload | null; [key: string]: unknown }>;
+  export type Translations = Record<
+    string,
+    {
+      /** Localized menu payload for this locale. */
+      menu?: MenuPayload | null;
+
+      /** Locale-specific metadata preserved by `HasTranslationTrait`. */
+      [key: string]: unknown;
+    }
+  >;
 }

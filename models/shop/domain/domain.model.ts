@@ -17,7 +17,8 @@
  *
  * Backend source: `App\Shop\Domains\Domain`, table `shop_domains`.
  * Managed by `DomainController`, `DomainSettingController`, and domain verification controllers. `debug` is hidden
- * by the Eloquent model unless explicitly exposed to admins.
+ * by the Eloquent model unless explicitly exposed to admins. Approved/enabled domains also synchronize a public shop
+ * OAuth client from model events.
  */
 export class Domain {
   /** Domain id. Source: `shop_domains.id`. */
@@ -36,7 +37,7 @@ export class Domain {
   domain!: string;
 
   /** Domain home target: `null`, a page id encoded as string, or built-in values such as `shop`, `blog`, `avocado`. */
-  home!: string | null;
+  home!: Domain.HomeTarget;
 
   /** Whether DNS/domain ownership has been approved. Source: `shop_domains.approved`. */
   approved!: boolean;
@@ -83,20 +84,20 @@ export class Domain {
   /** Available languages for this domain; `null` means all shop languages. */
   languages?: string[] | null;
 
-  /** Extra metadata from `HasMeta`. Source: nullable JSON `shop_domains.meta`. */
-  meta?: Record<string, unknown> | null;
+  /** Extra metadata from `HasMeta`. Source: nullable JSONB `shop_domains.meta`; model currently has no explicit cast. */
+  meta?: Domain.MetaPayload;
 
   /** Soft-delete timestamp when included. Source: `shop_domains.deleted_at`. */
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_domains.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_domains.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Affiliate relation when eager-loaded. */
   affiliate?: Record<string, unknown> | null;
@@ -107,6 +108,27 @@ export class Domain {
 }
 
 export namespace Domain {
+  /** Domain home target stored in `shop_domains.home`. */
+  export type HomeTarget = string | null;
+
+  /** Domain-level metadata payload used by `HasMeta`; can be raw string when returned before JSON casting. */
+  export type MetaPayload = Record<string, unknown> | string | null;
+
   /** Public certificate fields returned by backend `SSLCertificate::toCertificateInfo()`. */
-  export type CertificateInfo = Record<string, unknown>;
+  export interface CertificateInfo {
+    /** Certificate name parsed from certbot output. */
+    Name?: string | null;
+
+    /** Certificate serial number parsed from certbot output. */
+    "Serial Number"?: string | null;
+
+    /** Certificate key type, for example RSA/ECDSA, parsed from certbot output. */
+    "Key Type"?: string | null;
+
+    /** Domains covered by the certificate as returned by certbot. */
+    Domains?: string | null;
+
+    /** Expiry timestamp serialized from backend Carbon when available. */
+    "Expiry Date"?: string | null;
+  }
 }

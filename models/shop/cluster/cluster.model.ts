@@ -12,6 +12,13 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/**
+ * Shop resource cluster.
+ *
+ * Backend source: `App\Shop\Cluster\Cluster`, table `shop_clusters`.
+ * Clusters group marketing, content, catalog, permission, and incentive resources under a shared `cluster_id` and may
+ * form a parent/child hierarchy. Assignment columns are added to related tables by the shop-cluster migration.
+ */
 export interface Cluster {
   /**
    * Cluster id.
@@ -74,17 +81,17 @@ export interface Cluster {
    *
    * Source: `shop_clusters.created_at`.
    */
-  created_at: string;
+  created_at: string | null;
 
   /**
    * Last update timestamp.
    *
    * Source: `shop_clusters.updated_at`.
    */
-  updated_at: string;
+  updated_at: string | null;
 
   /** Owning shop relation when `Cluster::shop()` is eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Creator/editor relation when `Cluster::user()` is eager-loaded. */
   user?: Record<string, unknown> | null;
@@ -151,6 +158,29 @@ import campaign_image from "./assets/campaign.svg";
 import email_marketing_image from "./assets/email-marketing.svg";
 
 export namespace Cluster {
+  /** Resource collection keys returned by cluster resource endpoints. */
+  export type ResourceKey =
+    | "pages"
+    | "discount_codes"
+    | "coupons"
+    | "offers"
+    | "gift_card_types"
+    | "popups"
+    | "blogs"
+    | "campaigns"
+    | "emails";
+
+  /** Minimal router destination object returned by resource metadata builders. */
+  export interface ResourceRoute {
+    name: string;
+    params?: Record<string, string | number | null>;
+  }
+
+  /**
+   * Dashboard metadata used to render clustered resources.
+   *
+   * This is UI-only metadata; persisted cluster data is defined by the `Cluster` interface above.
+   */
   export const ResourceTypes = {
     PAGE: {
       group_title: "Pages",

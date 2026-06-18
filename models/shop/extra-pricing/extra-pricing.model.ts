@@ -17,6 +17,9 @@
  *
  * Backend source: `App\Shop\Products\ProductExtraPricing`, table `product_extra_pricings`.
  * Controllers: `Shop\Product\ExtraPricing\ProductExtraPricing*Controller`.
+ *
+ * Extra pricing is quantity-based pricing for physical and virtual products only. API writes require `min >= 2`, cap
+ * each product/variant/vendor-product scope at 10 tiers, and reject duplicate `min` values within the same scope.
  */
 export interface ExtraPricing {
   /** Unique extra-pricing identifier. Source: `product_extra_pricings.id`. */
@@ -40,7 +43,7 @@ export interface ExtraPricing {
   /** Linked marketplace pricing model. Source: nullable `product_extra_pricings.pricing_id`. */
   pricing_id?: number | null;
 
-  /** Minimum ordered quantity required for this tier. Source: `product_extra_pricings.min`, default `1`. */
+  /** Minimum ordered quantity required for this tier. Source: `product_extra_pricings.min`, default `1`; API requires `>= 2`. */
   min: number;
 
   /** Final tier price after vendor-pricing calculation if applicable. Source: `product_extra_pricings.price`. */
@@ -55,10 +58,10 @@ export interface ExtraPricing {
   /** Discount amount for this tier. Source: `product_extra_pricings.discount`, default `0`. */
   discount: number;
 
-  /** Discount start timestamp, or `null` when no start is set. Source: nullable `product_extra_pricings.dis_start`. */
+  /** Discount start timestamp, or `null` when no start is set. Source: nullable datetime `product_extra_pricings.dis_start`. */
   dis_start: string | null;
 
-  /** Discount end timestamp, or `null` when no end is set. Source: nullable `product_extra_pricings.dis_end`. */
+  /** Discount end timestamp, or `null` when no end is set. Source: nullable datetime `product_extra_pricings.dis_end`. */
   dis_end: string | null;
 
   /** Creation timestamp serialized by Laravel when included. Source: `product_extra_pricings.created_at`. */
@@ -86,4 +89,34 @@ export interface ExtraPricing {
   pricing?: Record<string, unknown> | null;
 }
 
-export namespace ExtraPricing {}
+export namespace ExtraPricing {
+  /** Payload accepted by add/update endpoints before backend marketplace auto-calculation. */
+  export interface WritePayload {
+    /** Optional product variant id. Omit for product-level tiers. */
+    variant_id?: number | null;
+
+    /** Optional marketplace vendor-product id. Required by the legacy API for marketplace shops. */
+    vendor_product_id?: number | null;
+
+    /** Minimum order quantity that activates this price tier; API requires `>= 2`. */
+    min: number;
+
+    /** Tier price in the product currency. Marketplace products may auto-calculate this from `raw_price`. */
+    price: number;
+
+    /** Marketplace raw vendor price. Required by the legacy API when the shop is a marketplace. */
+    raw_price?: number | null;
+
+    /** Additional commission amount for this tier. Defaults to `0`. */
+    commission?: number | null;
+
+    /** Discount amount for this tier. Defaults to `0`. */
+    discount?: number | null;
+
+    /** Optional discount start timestamp accepted by Laravel date parsing. */
+    dis_start?: string | null;
+
+    /** Optional discount end timestamp; backend requires it after or equal to `dis_start`. */
+    dis_end?: string | null;
+  }
+}

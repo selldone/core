@@ -17,7 +17,8 @@
  *
  * Backend source: `App\Shop\Email\ShopEmail`, table `shop_emails`.
  * Managed by `EmailMarketingController`; list/detail endpoints intentionally omit or hide `html` and `text` in some
- * responses via `makeHidden(['html', 'text'])`.
+ * responses via `makeHidden(['html', 'text'])`. Campaign analytics are stored both on the email row and in daily
+ * `shop_email_data` rows with dynamic country-code columns.
  */
 export interface EmailMarketing {
   /** Email id. Source: `shop_emails.id`. */
@@ -93,10 +94,10 @@ export interface EmailMarketing {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_emails.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_emails.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Approver relation when `ShopEmail::user()` is eager-loaded. */
   user?: Record<string, unknown> | null;
@@ -108,32 +109,152 @@ export interface EmailMarketing {
   data?: EmailMarketing.AnalyticsRow[];
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 }
 
 export namespace EmailMarketing {
   /** Backend enum `App\Shop\Email\enums\EmailApproveStatus`. */
   export type ApproveStatus = "PENDING" | "ACCEPT" | "REJECT";
 
-  /** Email builder JSON is flexible; known keys are read by `ShopEmail::getActions()`. */
+  /** Email builder JSON is flexible; known keys are read by `ShopEmail::getActions()` and the email Blade template. */
   export interface Structure {
-    header?: { action?: ActionPayload; [key: string]: unknown };
-    sections?: Array<Record<string, unknown> & { actions?: ActionPayload[]; action?: ActionPayload }>;
+    /** Maximum email body width. */
+    max_width?: string;
+
+    /** Email page background color. */
+    page_color?: string;
+
+    /** Default section background color. */
+    sections_color?: string;
+
+    /** Primary brand color used by builder templates. */
+    color_1?: string;
+
+    /** Secondary brand color used by builder templates. */
+    color_2?: string;
+
+    /** Google-font title family name. */
     font_title?: string;
+
+    /** Google-font body family name. */
     font_text?: string;
+
+    /** Header block payload. */
+    header?: HeaderStructure | null;
+
+    /** Footer block payload. */
+    footer?: { description?: string | null; [key: string]: unknown } | null;
+
+    /** Ordered content sections. */
+    sections?: EmailSection[];
+
     [key: string]: unknown;
   }
 
-  /** Customer filter JSON item; exact keys are interpreted by `ShopCustomersController::ApplyFilter`. */
-  export type Filter = Record<string, unknown>;
+  /** Header block payload from backend phpstan `EmailHeaderStructure`. */
+  export interface HeaderStructure {
+    bg_image?: string | null;
+    image?: string | null;
+    image_width?: string | null;
+    image_max_width?: string | null;
+    align?: string;
+    title?: string | null;
+    sub_title?: string | null;
+    action?: ActionPayload | null;
+    [key: string]: unknown;
+  }
+
+  /** Customer filter JSON item interpreted by `ShopCustomersController::ApplyFilter`. */
+  export type Filter =
+    | { type: "REGISTER_DATE"; start?: string | null; end?: string | null }
+    | { type: "LAST_BUY_DATE"; start?: string | null; end?: string | null }
+    | { type: "LOGIN_DATE"; start?: string | null; end?: string | null }
+    | { type: "LEVEL"; levels: string[] }
+    | { type: "SUBSCRIBED"; subscribed: boolean }
+    | { type: "NOT_PURCHASED" }
+    | { type: "SEX"; sex: string[] }
+    | { type: "LOCATION"; countries: string[] }
+    | { type: "LIMIT"; limit: number }
+    | { type: "SEGMENTS"; segments: string[]; or?: boolean }
+    | (Record<string, unknown> & { type?: string });
 
   /** Trackable action extracted from the email builder structure. */
   export interface ActionPayload {
     href?: string;
     text?: string;
     tracking?: boolean;
+    dark?: boolean;
+    outline?: boolean;
+    rounded?: boolean;
+    large?: boolean;
+    xlarge?: boolean;
+    depressed?: boolean;
+    color?: string;
     [key: string]: unknown;
   }
+
+  /** Shared known fields for email content sections. */
+  export interface SectionBase {
+    type: string;
+    class?: string;
+    bg_color?: string;
+    bg_image?: string | null;
+    dark?: boolean;
+    align?: string;
+    span?: string | null;
+    title?: string | null;
+    message?: string | null;
+    action?: ActionPayload | null;
+    actions?: ActionPayload[];
+    [key: string]: unknown;
+  }
+
+  /** Text section payload. */
+  export interface TextSection extends SectionBase {
+    type: "text";
+    text?: string | null;
+  }
+
+  /** Image section payload. */
+  export interface ImageSection extends SectionBase {
+    type: "image";
+    image?: string | null;
+    image_max_width?: string | null;
+    image_max_height?: string | null;
+    url?: string | null;
+  }
+
+  /** Product section payload. Product action URLs can be derived by backend `ShopEmail::getActions()`. */
+  export interface ProductSection extends SectionBase {
+    type: "product";
+    product?: number | string | null;
+    reverse?: boolean;
+  }
+
+  /** One column inside a `two-columns` section. */
+  export interface ColumnPayload {
+    title?: string | null;
+    image?: string | null;
+    html?: string | null;
+    align?: string;
+    action?: ActionPayload | null;
+    [key: string]: unknown;
+  }
+
+  /** Two-column section payload. */
+  export interface TwoColumnsSection extends SectionBase {
+    type: "two-columns";
+    s1: ColumnPayload;
+    s2: ColumnPayload;
+  }
+
+  /** Known email section union with an escape hatch for legacy section types. */
+  export type EmailSection =
+    | TextSection
+    | ImageSection
+    | ProductSection
+    | TwoColumnsSection
+    | SectionBase;
 
   /** Action relation rows from `shop_email_actions`. */
   export interface Action {
@@ -142,8 +263,8 @@ export namespace EmailMarketing {
     url: string | null;
     label: string | null;
     clicks: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
   }
 
   /** Analytics rows returned by `ShopEmail::data()`; country columns are dynamic ISO-3166 alpha-2 keys. */
@@ -159,8 +280,9 @@ export namespace EmailMarketing {
     desktop?: number;
     mobile?: number;
     tablet?: number;
-    created_at?: string;
-    updated_at?: string;
+    created_at?: string | null;
+    updated_at?: string | null;
+    email?: EmailMarketing | Record<string, unknown> | null;
     [country_or_metric: string]: unknown;
   }
 }

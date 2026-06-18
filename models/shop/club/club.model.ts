@@ -27,7 +27,8 @@ import diamondOutline from "./assets/customer-levels/diamond-outline.svg";
  * Shop customer-club level configuration.
  *
  * Backend source: `App\Shop\Club\ShopClub`, table `shop_club`.
- * Rows are unique by `(shop_id, level)` and are soft-deleted when disabled/removed.
+ * Rows are unique by `(shop_id, level)` and are soft-deleted when disabled/removed. Club rows define threshold-based
+ * loyalty benefits and discount limits for customer badge levels.
  */
 export interface Club {
   /** Club row id. Source: `shop_club.id`. */
@@ -45,13 +46,13 @@ export interface Club {
   /** Currency code used for monthly/annual thresholds and discount limit. */
   currency: string;
 
-  /** Monthly purchase threshold/amount. Source: `shop_club.monthly`. */
+  /** Monthly purchase threshold/amount. Source: double `shop_club.monthly`, default `0`. */
   monthly: number;
 
-  /** Annual purchase threshold/amount. Source: `shop_club.annually`. */
+  /** Annual purchase threshold/amount. Source: double `shop_club.annually`, default `0`. */
   annually: number;
 
-  /** Discount percent offered to customers in this club. Source: `shop_club.percent`. */
+  /** Discount percent offered to customers in this club. Source: tiny integer `shop_club.percent`, default `0`. */
   percent: number;
 
   /** Discount limit in `currency`; `0` means unlimited. Source: `shop_club.limit`. */
@@ -70,13 +71,13 @@ export interface Club {
   deleted_at?: string | null;
 
   /** Creation timestamp. Source: `shop_club.created_at`. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** Last update timestamp. Source: `shop_club.updated_at`. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown>;
+  shop?: Record<string, unknown> | null;
 
   /** Order history relations when eager-loaded. */
   baskets?: Record<string, unknown>[];
@@ -91,7 +92,23 @@ export namespace Club {
   /** Backend enum values for `shop_club.level`. */
   export type LevelCode = "BRONZE" | "SILVER" | "GOLD" | "PLATINUM" | "DIAMOND";
 
-  export const Levels = {
+  /** UI metadata for one customer-club level. */
+  export interface LevelMeta {
+    /** Backend level code stored in `shop_club.level` and `shop_customers.level`. */
+    code: LevelCode;
+
+    /** Translation key used by dashboards. */
+    name: string;
+
+    /** Filled SVG badge icon. */
+    icon: string;
+
+    /** Outline SVG badge icon. */
+    icon_outline: string;
+  }
+
+  /** Customer-club level metadata keyed by backend level code. */
+  export const Levels: Record<LevelCode, LevelMeta> = {
     BRONZE: {
       code: "BRONZE",
       name: "global.customer_club.bronze",

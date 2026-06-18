@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2023. Selldone® Business OS™
  *
@@ -17,7 +16,9 @@
  * Storefront category record.
  *
  * Backend source: `App\Shop\Category\ShopCategory`, table `shop_categories`.
- * Public storefront category endpoints return these records for shop navigation, category filters, and product listing context.
+ * Public storefront category endpoints return these records for shop navigation, category filters, and product listing
+ * context. Category rows also carry marketplace ownership, connector ownership, cluster grouping, translations, custom
+ * page/theme settings, and denormalized counters.
  */
 export class Category implements Category.ICategory {
   /** Source: `shop_categories.id`. */
@@ -32,7 +33,10 @@ export class Category implements Category.ICategory {
   /** Source: nullable `shop_categories.connect_id`; connect/import provider when present. */
   connect_id: number | null = null;
 
-  /** Source: nullable `shop_categories.name`; unique with `shop_id` when set. */
+  /** Source: nullable `shop_categories.cluster_id`; shop resource cluster when assigned. */
+  cluster_id: number | null = null;
+
+  /** Source: nullable `shop_categories.name`, max 32 chars; unique with `shop_id` when set. */
   name: string | null = null;
 
   /** Source: `shop_categories.order`; lower values sort first. */
@@ -92,11 +96,23 @@ export class Category implements Category.ICategory {
   /** Source: `shop_categories.updated_at`; timestamp serialized by Laravel when included. */
   updated_at?: string | null = null;
 
+  /** Owning shop relation when eager-loaded by `ShopCategory::shop()`; includes soft-deleted shops. */
+  shop?: Record<string, unknown> | null;
+
   /** Parent category relation when eager-loaded by backend. */
   parent?: Category | null;
 
   /** Child category relation when eager-loaded by backend (`ShopCategory::childes`). */
   childes?: Category[];
+
+  /** Product variants through direct category products when `ShopCategory::variants()` is eager-loaded. */
+  variants?: Record<string, unknown>[];
+
+  /** Marketplace vendor relation when `ShopCategory::vendor()` is eager-loaded. */
+  vendor?: Record<string, unknown> | null;
+
+  /** Attached custom page relation when loaded by category/page endpoints. */
+  page?: Record<string, unknown> | null;
 
   constructor(
     data: {
@@ -110,7 +126,22 @@ export class Category implements Category.ICategory {
 
 export namespace Category {
   /** Category filter definition stored in `shop_categories.filters`. Shape is shop-configurable. */
-  export type Filter = Record<string, unknown>;
+  export interface Filter {
+    /** Filter identifier or product-spec key when present. */
+    key?: string;
+
+    /** Customer-facing filter title when present. */
+    title?: string;
+
+    /** Filter type/bucket, for example one of the variant filter buckets in backend `VariantFilterMap`. */
+    type?: string;
+
+    /** Filter values/options generated from product/category metadata. */
+    values?: unknown[];
+
+    /** Backend/frontend may add extra shop-specific filter fields. */
+    [key: string]: unknown;
+  }
 
   /** Internal note entry stored in `shop_categories.note`. */
   export interface Note {
@@ -152,7 +183,10 @@ export namespace Category {
     /** Connect/import provider. Source: nullable `shop_categories.connect_id`. */
     connect_id?: number | null;
 
-    /** Category slug/name, unique per shop when set. Source: nullable `shop_categories.name`. */
+    /** Optional shop resource cluster id. Source: nullable `shop_categories.cluster_id`. */
+    cluster_id?: number | null;
+
+    /** Category slug/name, max 32 chars and unique per shop when set. Source: nullable `shop_categories.name`. */
     name: string | null;
 
     /** Custom sort order. Source: `shop_categories.order`. */
@@ -212,10 +246,22 @@ export namespace Category {
     /** Last update timestamp when returned. Source: `shop_categories.updated_at`. */
     updated_at?: string | null;
 
+    /** Owning shop relation when eager-loaded by backend. */
+    shop?: Record<string, unknown> | null;
+
     /** Parent relation when eager-loaded by backend. */
     parent?: Category | null;
 
     /** Child relation when eager-loaded by backend. */
     childes?: Category[];
+
+    /** Variant relation when eager-loaded by backend. */
+    variants?: Record<string, unknown>[];
+
+    /** Marketplace vendor relation when eager-loaded by backend. */
+    vendor?: Record<string, unknown> | null;
+
+    /** Custom page relation when eager-loaded by backend. */
+    page?: Record<string, unknown> | null;
   }
 }
