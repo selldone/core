@@ -12,6 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Authenticated user account model backed by `App\User`. */
 export * from "./user.model";
+/** Public/profile card model backed by `App\Backoffice\Users\Profile\Profile`. */
 export * from "./user_profile.model";
-

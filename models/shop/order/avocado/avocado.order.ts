@@ -256,6 +256,11 @@ export namespace Avocado {
     tax_included?: boolean;
   }
 
+  /** Payload used when buyer opens or resumes an avocado order. */
+  export interface BuyerOpen {
+    currency: string;
+  }
+
   /** Editable avocado order fields. */
   export interface Upsert {
     title?: string | null;
@@ -268,5 +273,14 @@ export namespace Avocado {
     delivery_state?: StateKey;
     progress?: number;
     channel?: string | null;
+  }
+
+  /** Report shape returned by backend avocado maintenance jobs. */
+  export interface JobReport extends JsonObject {
+    total: number;
+    confirmed?: number;
+    reject?: number;
+    errors?: number;
+    "trace ms"?: number;
   }
 }

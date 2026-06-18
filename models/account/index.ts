@@ -12,4 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./account.model"
+/** Backoffice/storefront account ledger model and account balance metadata. */
+export * from "./account.model";

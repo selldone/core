@@ -12,5 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Connected shop/provider integration instance model. */
 export * from "./connect.model";
+/** Integration provider definition and OAuth/setup metadata model. */
 export * from "./connect.provider.model";

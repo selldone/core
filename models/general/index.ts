@@ -12,4 +12,9 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Analytics summary/series models shared by storefront dashboards. */
 export * from "./analytics";
+/** Country metadata model and typed country-code helpers. */
+export * from "./country/country.model";
+/** Country lookup/helper utilities. */
+export * from "./country/country-helper";

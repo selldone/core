@@ -94,6 +94,12 @@ export class UserProfile {
   /** Following profile relation rows when eager-loaded. */
   following_profiles?: Partial<UserProfile>[] | null;
 
+  /** CamelCase alias for `follower_profiles` used by relation helpers. */
+  followerProfiles?: Partial<UserProfile>[] | null;
+
+  /** CamelCase alias for `following_profiles` used by relation helpers. */
+  followingProfiles?: Partial<UserProfile>[] | null;
+
   constructor(data: UserProfile.Input) {
     this.id = data.id;
     this.user_id = data.user_id;
@@ -122,6 +128,8 @@ export class UserProfile {
     this.followings = data.followings;
     this.follower_profiles = data.follower_profiles;
     this.following_profiles = data.following_profiles;
+    this.followerProfiles = data.followerProfiles;
+    this.followingProfiles = data.followingProfiles;
   }
 }
 
@@ -181,6 +189,8 @@ export namespace UserProfile {
     followings?: JsonObject[] | null;
     follower_profiles?: Partial<UserProfile>[] | null;
     following_profiles?: Partial<UserProfile>[] | null;
+    followerProfiles?: Partial<UserProfile>[] | null;
+    followingProfiles?: Partial<UserProfile>[] | null;
   }
 
   /** Payload accepted when editing a user profile. */

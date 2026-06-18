@@ -12,15 +12,24 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Product badge/label model. */
 export * from "./badge.model";
+/** Main storefront product model backed by `App\Storefront\Products\Product`. */
 export * from "./product.model";
+/** Product comparison row/model. */
 export * from "./product-compare.model";
+/** Product rich content/article block model. */
 export * from "./product-content.model";
+/** Product analytics/data aggregate model. */
 export * from "./product-data.model";
+/** Product downloadable/file attachment model. */
 export * from "./product-file.model";
+/** Product image/gallery model. */
 export * from "./product-image.model";
+/** Product rating aggregate/user-rating model. */
 export * from "./product-rating.model";
+/** Product variant model backed by `shop_product_variant`. */
 export * from "./product_variant.model";
+/** Subscription price/ribbon pricing model. */
 export * from "./subscription_price.model";
-
 

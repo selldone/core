@@ -12,5 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Article/content model used by social, blog, and logistic profile content. */
 export * from "./article.model";
+/** Article report/abuse moderation model. */
 export * from "./article.report.model";

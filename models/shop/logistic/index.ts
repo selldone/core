@@ -12,5 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** External delivery-service provider model backed by `delivery_services`. */
 export * from "./service/logistic-delivery-service.model";
+/** Logistic profile model for warranty, return policy, guide, and shipping content. */
 export * from "./profile/logistic-profile.model";

@@ -12,7 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Marketplace vendor profile model backed by `vendors`. */
 export * from "./vendor.model";
+/** Vendor pricing/commission profile model backed by `vendor_pricing`. */
 export * from "./vendor_pricing.model";
+/** Vendor-specific product offer/inventory model backed by `vendor_products`. */
 export * from "./vendor_product.model";
-
+/** Vendor panel member/access model backed by `vendor_members`. */
+export * from "./vendor_member.model";

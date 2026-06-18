@@ -12,7 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./application.model"
+/** Installed/connected application model and safe JSON payload types. */
+export * from "./application.model";
 
-
-export * from "./executor/storefront/ApplicationExecutorStorefront"
+/** Storefront application event executor and typed `$AppsInterface` bridge. */
+export * from "./executor/storefront/ApplicationExecutorStorefront";

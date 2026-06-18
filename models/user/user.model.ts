@@ -71,6 +71,15 @@ export class User {
   /** Referral user id. Source: nullable `users.referral_id`. */
   referral_id?: number | null;
 
+  /** Profile rows relation when eager-loaded. */
+  profiles?: User.JsonObject[] | null;
+
+  /** Shops owned by this user when eager-loaded. */
+  shops?: User.JsonObject[] | null;
+
+  /** Primary/main profile projection appended by some account/profile APIs. */
+  profile?: User.JsonObject | null;
+
   /** Soft-delete timestamp. Source: nullable `users.deleted_at`. */
   deleted_at?: string | null;
 
@@ -250,6 +259,9 @@ export namespace User {
     verified?: boolean;
     source?: JsonObject | null;
     referral_id?: number | null;
+    profiles?: JsonObject[] | null;
+    shops?: JsonObject[] | null;
+    profile?: JsonObject | null;
     deleted_at?: string | null;
     created_at?: string | null;
     updated_at?: string | null;

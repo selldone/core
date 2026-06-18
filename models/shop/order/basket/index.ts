@@ -12,8 +12,15 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Basket/order aggregate model backed by `shop_basket`. */
 export * from "./basket.model";
+/** Basket line item model backed by `shop_basket_items`. */
 export * from "./basket_item.model";
+/** Basket item return-request model backed by `shop_basket_item_return`. */
 export * from "./basket_item_return.model";
+/** Service product fulfillment item model backed by `shop_sitems`. */
 export * from "./service_item.model";
+/** Virtual product inventory item model backed by `shop_vitems`. */
 export * from "./virtual_item.model";
+/** Transient calculated basket billing payload returned by checkout APIs. */
+export * from "./billing/basket.billing.model";

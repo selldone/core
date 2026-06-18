@@ -177,4 +177,30 @@ export namespace Hyper {
     count: number;
     currency: string;
   }
+
+  /** Calculated bill payload returned by `Hyper::calculateBill()`. */
+  export interface CalculatedBill extends JsonObject {
+    order_code: string;
+    order_id: number;
+    order_type: OrderTypeCode.Hyper;
+    currency: string;
+    sum: number;
+    price: number;
+    items_price: number;
+    items_discount: number;
+    discount: number;
+    delivery_price: number;
+    tax: number;
+    tax_included: boolean;
+    tax_shipping: number;
+  }
+
+  /** Report shape returned by backend hyper maintenance jobs. */
+  export interface JobReport extends JsonObject {
+    total: number;
+    confirmed?: number;
+    "has-payment-que"?: number;
+    errors?: number;
+    "trace ms"?: number;
+  }
 }

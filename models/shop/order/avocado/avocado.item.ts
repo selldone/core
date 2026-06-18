@@ -129,4 +129,13 @@ export namespace AvocadoItem {
     price?: number;
     status?: StatusKey;
   }
+
+  /** Payload accepted when creating an item before backend assigns id/timestamps. */
+  export interface Create {
+    title?: string | null;
+    message?: string | null;
+    image?: string | null;
+    link?: string | null;
+    count?: number;
+  }
 }

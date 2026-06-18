@@ -176,6 +176,39 @@ export class Shop {
 
   shop_exchange_rates?: ExchangeRate[] | null;
 
+  /** Owner user relation when eager-loaded. */
+  user?: Shop.JsonObject | null;
+
+  /** Local custom domain relation when eager-loaded. */
+  local_domain?: Domain | null;
+
+  /** Subdomain relation when eager-loaded. */
+  sub_domain?: Domain | null;
+
+  /** Product/category listing relation used by public shop payloads. */
+  listing?: Shop.JsonObject[] | null;
+
+  /** Active storefront applications loaded by public shop info APIs. */
+  apps?: Shop.JsonObject[] | null;
+
+  /** Enabled public shop gateways loaded by public shop info APIs. */
+  gateways?: Shop.JsonObject[] | null;
+
+  /** Public shop social links relation. */
+  socials?: Shop.JsonObject[] | null;
+
+  /** Public menu relation. */
+  menus?: Shop.JsonObject[] | null;
+
+  /** Active campaign relation when loaded by public shop info APIs. */
+  campaign?: Shop.JsonObject | null;
+
+  /** Community relation when the shop home/community feature is enabled. */
+  community?: Shop.JsonObject | null;
+
+  /** Transportation methods relation when loaded for checkout/public info. */
+  transportations?: Shop.JsonObject[] | null;
+
   /** Private shop metadata. Source: nullable JSON `shops.meta`. */
   meta?: Shop.Meta | null;
 
@@ -369,6 +402,22 @@ export namespace Shop {
     tax?: TaxConfig | null;
     meta?: Meta | null;
     translations?: Translations | null;
+  }
+
+  /** Minimal public shop payload commonly returned by storefront discovery APIs. */
+  export interface PublicSummary {
+    id: number;
+    name: string;
+    title: string | null;
+    description?: string | null;
+    icon?: string | null;
+    fav?: string | null;
+    home?: Home | null;
+    language?: string | null;
+    currencies?: (keyof typeof Currency)[] | null;
+    domain?: string | null;
+    local?: Domain | null;
+    sub?: Domain | null;
   }
 
   export enum Home {

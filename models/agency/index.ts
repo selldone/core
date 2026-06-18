@@ -12,7 +12,11 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-export * from "./agency.model"
-export * from "./agency-client.model"
-export * from "./agency-plan.model"
-export * from "./agency-wallet.model"
+/** Agency profile and ownership model. */
+export * from "./agency.model";
+/** Agency client/shop assignment model. */
+export * from "./agency-client.model";
+/** Agency subscription/plan model. */
+export * from "./agency-plan.model";
+/** Agency wallet and billing balance model. */
+export * from "./agency-wallet.model";
