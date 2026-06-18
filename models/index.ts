@@ -13,17 +13,28 @@
  */
 
 
+/** Account and ledger models used by wallet/accounting APIs. */
 export * from "./account";
+/** Agency, agency client, agency plan, and agency wallet models. */
 export * from "./agency";
+/** Installed application and storefront application-executor models. */
 export * from "./application";
+/** Article/blog authoring models. */
 export * from "./article";
+/** Community, topic, post, comment, attachment, category, and reaction models. */
 export * from "./community";
+/** Company/legal-entity profile models. */
 export * from "./company";
+/** Connect provider and integration models. */
 export * from "./connect";
+/** Shared country, currency, and analytics models. */
 export * from "./general";
+/** Guild/backoffice grouping models. */
 export * from "./guild";
+/** Notification repository models. */
 export * from "./notification";
+/** Storefront shop, product, order, payment, logistics, and marketplace models. */
 export * from "./shop";
+/** User and public profile models. */
 export * from "./user";
-
 

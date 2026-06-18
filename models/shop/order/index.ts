@@ -10,11 +10,17 @@
  * Not just to exist, but to inspire. Like an artist's stroke or a sculptor's chisel, every nuance is deliberate.
  * Our journey is not just about reaching a destination, but about creating a masterpiece.
  * Tread carefully, for you're treading on dreams.
- */
+*/
+/** Shared order primitives, receiver/delivery info, billing info, and status metadata. */
 export * from "./order";
 
+/** Avocado custom-order models. */
 export * from "./avocado";
+/** Basket, basket item, service item, virtual item, return request, and billing models. */
 export * from "./basket";
+/** Payable bill models. */
 export * from "./bill";
+/** Drop-shipping fulfillment models. */
 export * from "./fulfillment";
+/** Hyper checkout order models. */
 export * from "./hyper";

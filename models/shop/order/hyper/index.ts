@@ -12,4 +12,5 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Hyper checkout order aggregate and item projection types. */
 export * from "./hyper.order";

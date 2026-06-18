@@ -12,14 +12,19 @@
  * Tread carefully, for you're treading on dreams.
  */
 
-import {Currency} from "../../enums/payment/Currency";
-import {ExchangeRate} from "./payment/exchange_rate.model";
-import {WeekDays} from "../../enums/logistic/WeekDays";
-import {Domain} from "../../models/shop/domain/domain.model";
-import {ShopLicenseLimits} from "../../enums/shop/ShopLicense";
+import { Currency } from "../../enums/payment/Currency";
+import { ExchangeRate } from "./payment/exchange_rate.model";
+import { WeekDays } from "../../enums/logistic/WeekDays";
+import { Domain } from "./domain/domain.model";
+import { ShopLicenseLimits } from "../../enums/shop/ShopLicense";
 
 /**
- * Represents the main configuration and details for a shop.
+ * Selldone shop tenant and storefront configuration.
+ *
+ * Backend source: `App\Storefront\Shop`, table `shops`.
+ * The backend casts booleans, date fields, and many storefront configuration columns as JSON
+ * (`info`, `support`, `options`, `footer`, `theme`, `hyper`, `avocado`, `ribbon`, `marketplace`,
+ * `currencies`, `countries`, `tax`, `meta`, `agency_meta`, `translations`, `filters`, and `engine`).
  */
 export class Shop {
   /** The unique identifier for the shop. */
@@ -29,25 +34,25 @@ export class Shop {
   name: string | null = null;
 
   /** The unique identifier for the user associated with the shop. */
-  user_id?: number;
+  user_id?: number | null;
 
   /** Represents the shop's homepage configuration. */
   home?: Shop.Home;
 
   /** The default language for the shop. */
-  language?: string;
+  language?: string | null;
 
   /** The title of the shop. */
-  title?: string;
+  title?: string | null;
 
   /** The description of the shop. */
-  description?: string;
+  description?: string | null;
 
   /** The icon associated with the shop. */
-  icon?: string;
+  icon?: string | null;
 
   /** The favorite icon for the shop. */
-  fav?: string;
+  fav?: string | null;
 
   /** Indicates if the shop is official. */
   official?: boolean;
@@ -65,30 +70,16 @@ export class Shop {
   capacity?: number;
 
   /** The expiration date of the shop. */
-  expire_at?: Date;
+  expire_at?: string | null;
 
   /** Additional info about the shop. */
-  info?: {
-    location?: string;
-    daysOpen?: string[];
-    times?: string;
-    address?: string;
-    email?: string;
-    country?: string;
-    postalCode?: string;
-    countryCode?: string;
-    region?: string;
-    locality?: string;
-    days_open?: (keyof typeof WeekDays)[] | null;
-    time_open?: string;
-    time_close?: string;
-  };
+  info?: Shop.Info | null;
 
   /** The support mode for the shop. */
   support_mode?: string; // should be elaborated based on ShopSupportMode
 
   /** Support details. */
-  support?: any[]; // specific type can be added
+  support?: Shop.Support | null;
 
   /** Indicates if the address associated with the shop is verified. */
   address_verified?: boolean;
@@ -106,34 +97,34 @@ export class Shop {
   purge_at?: string;
 
   /** Configuration options for the shop. */
-  options?: Shop.IOption[];
+  options?: Shop.IOption[] | null;
 
   /** The domain associated with the shop. */
-  domain?: string;
+  domain?: string | null;
 
   /** Supported currencies for the shop. */
-  currencies?: (keyof typeof Currency)[];
+  currencies?: (keyof typeof Currency)[] | null;
 
   /** Configuration for the footer of the shop. */
-  footer?: any[]; // specific type can be added
+  footer?: Shop.Footer | null;
 
   /** Theme configuration for the shop. */
   theme?: Shop.ITheme; // specific type can be added
 
   /** Configuration for Avocado form. */
-  avocado?: any[]; // specific type can be added
+  avocado?: Shop.AvocadoConfig | null;
 
   /** Configuration for Hyper. */
-  hyper?: any[]; // specific type can be added
+  hyper?: Shop.HyperConfig | null;
 
   /** Configuration for Ribbon. Its the default behaviour of subscription products. */
   ribbon?: Shop.IRibbon; // specific type can be added
 
   /** Configuration for the marketplace. */
-  marketplace?: any[]; // specific type can be added
+  marketplace?: Shop.MarketplaceConfig | null;
 
   /** The business model of the shop. */
-  model?: string; // should be elaborated based on BusinessModel
+  model?: Shop.BusinessModelCode | null;
 
   /** Domain details for local configuration. */
   local?: Domain | null; // specific type can be added
@@ -145,22 +136,22 @@ export class Shop {
   countries: string[] = [];
 
   /** Information regarding the lottery. */
-  lottery?: string[];
+  lottery?: string[] | null;
 
   /** Tax information for the shop. */
-  tax?: any[]; // specific type can be added
+  tax?: Shop.TaxConfig | null;
 
   /** The creation date of the shop. */
-  created_at?: string;
+  created_at?: string | null;
 
   /** The last updated date for the shop. */
-  updated_at?: string;
+  updated_at?: string | null;
 
   /** The deletion date for the shop. */
-  deleted_at?: string;
+  deleted_at?: string | null;
 
   /** Agency client ID associated with the shop. */
-  client_id?: number;
+  client_id?: number | null;
 
   /** Indicates if the shop operates in dropshipping mode. */
   drop_shipping?: boolean;
@@ -168,13 +159,43 @@ export class Shop {
   /** The number of dropshipping products. */
   dropShipping_products?: number;
 
+  /** Backend snake_case alias for dropshipping products count. */
+  drop_shipping_products?: number;
+
   /** The number of dropshipping products sold. */
   dropShipping_sells?: number;
+
+  /** Backend snake_case alias for dropshipping sales count. */
+  drop_shipping_sells?: number;
 
   /** The dropshipping score for the shop. */
   dropShipping_score?: number;
 
+  /** Backend snake_case alias for dropshipping score. */
+  drop_shipping_score?: number;
+
   shop_exchange_rates?: ExchangeRate[] | null;
+
+  /** Private shop metadata. Source: nullable JSON `shops.meta`. */
+  meta?: Shop.Meta | null;
+
+  /** Agency scoped metadata. Source: nullable JSON `shops.agency_meta`. */
+  agency_meta?: Shop.JsonObject | null;
+
+  /** Localized shop fields keyed by locale. Source: nullable JSON `shops.translations`. */
+  translations?: Shop.Translations | null;
+
+  /** Active layout id for storefront page builder. Source: nullable `shops.layout_id`. */
+  layout_id?: number | null;
+
+  /** Active layout version string. Source: nullable `shops.layout_version`. */
+  layout_version?: string | null;
+
+  /** Storefront listing filters configuration. Source: nullable JSON `shops.filters`. */
+  filters?: Shop.JsonObject | null;
+
+  /** Storefront engine/search configuration. Source: nullable JSON `shops.engine`. */
+  engine?: Shop.JsonObject | null;
 
   constructor(
     data: {
@@ -190,6 +211,49 @@ export class Shop {
 //―――――――――――――――― 🦫 Types ――――――――――――――――
 //█████████████████████████████████████████████████████████████
 export namespace Shop {
+  export type JsonPrimitive = string | number | boolean | null;
+
+  /** JSON object stored by backend JSON casts. Uses an interface to avoid recursive alias errors. */
+  export interface JsonObject {
+    [key: string]: JsonValue | undefined;
+  }
+
+  /** JSON array stored by backend JSON casts. */
+  export interface JsonArray extends Array<JsonValue> {}
+
+  export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+  /** Business model code stored in `shops.model`. */
+  export type BusinessModelCode = "B2C" | "B2B" | "C2C" | "DROPSHIPPING" | string;
+
+  /** Public business/location info stored in `shops.info`. */
+  export interface Info extends JsonObject {
+    location?: string | JsonObject | null;
+    daysOpen?: string[];
+    times?: string | JsonObject | null;
+    address?: string | null;
+    phone?: string | null;
+    email?: string | null;
+    country?: string | null;
+    postalCode?: string | null;
+    postal_code?: string | null;
+    countryCode?: string | null;
+    country_code?: string | null;
+    region?: string | null;
+    locality?: string | null;
+    days_open?: (keyof typeof WeekDays)[] | null;
+    time_open?: string | null;
+    time_close?: string | null;
+  }
+
+  /** Support widget/channel configuration stored in `shops.support`. */
+  export interface Support extends JsonObject {
+    popup?: boolean;
+    email?: string | null;
+    phone?: string | null;
+    chat?: boolean;
+  }
+
   export interface ITheme {
     color_light: string;
     color_dark: string;
@@ -212,24 +276,24 @@ export namespace Shop {
     tablet_f: string;
     pc_f: string;
 
-    static: any | null;
-    hover_actions: any | null;
+    static: JsonValue | null;
+    hover_actions: JsonValue | null;
     only_available: boolean;
     smart_price: boolean;
     order: string[];
-    font_family: any | null;
-    font_res: any | null;
+    font_family: string | JsonObject | null;
+    font_res: string | JsonObject | null;
     reverse_currency: boolean;
-    logo: any | null;
-    logo_w: any | null;
-    logo_h: any | null;
+    logo: string | null;
+    logo_w: string | number | null;
+    logo_h: string | number | null;
     title: string;
-    css: any | null;
+    css: string | null;
   }
 
   export interface IOption {
     code: string;
-    value: any; // This is either an array, boolean, or object. Might need to further sub-divide this type
+    value: JsonValue;
   }
 
   export interface IRibbon {
@@ -237,6 +301,74 @@ export namespace Shop {
     billing?: boolean; // Ask for billing address
     cart?: boolean; // Car mode (add multiple subscription to cart)
     count?: boolean; // User can buy more than one subscription per product.
+  }
+
+  /** Footer sections stored in `shops.footer`. */
+  export type Footer = JsonObject;
+
+  /** Avocado custom-order configuration stored in `shops.avocado`. */
+  export interface AvocadoConfig extends JsonObject {
+    delivery?: boolean;
+    message?: string | null;
+  }
+
+  /** Hyper checkout configuration stored in `shops.hyper`. */
+  export interface HyperConfig extends JsonObject {
+    enable?: boolean;
+  }
+
+  /** Marketplace configuration stored in `shops.marketplace`. */
+  export interface MarketplaceConfig extends JsonObject {
+    mode?: keyof typeof ShopMarketplaceModes | string;
+    product_verification?: boolean;
+    hide_user_info?: boolean;
+    direct_shipping?: boolean;
+    vendors_add_product?: boolean;
+    vendors_add_category?: boolean;
+    vendors_access_listing?: boolean;
+  }
+
+  /** Tax configuration stored in `shops.tax`. */
+  export interface TaxConfig extends JsonObject {
+    included?: boolean;
+    shipping?: boolean;
+  }
+
+  /** Private shop metadata. */
+  export interface Meta extends JsonObject {
+    stripe_account_id?: string | null;
+  }
+
+  /** Translation payload applied by `HasTranslationTrait`. */
+  export type Translations = Record<string, JsonObject>;
+
+  /** Payload accepted by shop create/update flows before backend assigns ids/timestamps. */
+  export interface Upsert {
+    name?: string;
+    title?: string | null;
+    description?: string | null;
+    home?: Home | null;
+    language?: string | null;
+    icon?: string | null;
+    fav?: string | null;
+    active?: boolean;
+    restriction?: string | null;
+    license?: keyof typeof ShopLicenseLimits;
+    info?: Info | null;
+    support_mode?: string | null;
+    support?: Support | null;
+    options?: IOption[] | null;
+    currencies?: (keyof typeof Currency)[] | null;
+    footer?: Footer | null;
+    theme?: Partial<ITheme> | null;
+    avocado?: AvocadoConfig | null;
+    hyper?: HyperConfig | null;
+    ribbon?: IRibbon | null;
+    marketplace?: MarketplaceConfig | null;
+    countries?: string[] | null;
+    tax?: TaxConfig | null;
+    meta?: Meta | null;
+    translations?: Translations | null;
   }
 
   export enum Home {

@@ -12,5 +12,7 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+/** Avocado custom-order line item model. */
 export * from "./avocado.item";
+/** Avocado custom-order aggregate model. */
 export * from "./avocado.order";

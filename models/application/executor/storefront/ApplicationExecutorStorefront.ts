@@ -20,9 +20,9 @@ declare global {
 }
 
 /**
- * Type definition for the listener's callback function.
+ * Listener callback registered by storefront apps.
  */
-type IListenerCallback = (...args: any[]) => void;
+type IListenerCallback = (...args: unknown[]) => void;
 
 /**
  * Type representing the structure of the Listeners object.
@@ -35,10 +35,16 @@ type IListener = {
 // Define the full $AppsInterface type.
 export interface IAppsInterface {
   Listeners: IListener;
+  /**
+   * Register a callback for a storefront application event.
+   */
   addListener: (
     event_name: ApplicationExecutorStorefront.EventsName,
     callback: IListenerCallback,
   ) => void;
+  /**
+   * Remove a previously registered callback from a storefront application event.
+   */
   removeListener: (
     event_name: ApplicationExecutorStorefront.EventsName,
     callback: IListenerCallback,
@@ -61,8 +67,8 @@ export class ApplicationExecutorStorefront {
         /**
          * Adds a listener for a given event.
          *
-         * @param {string} event_name - The name of the event.
-         * @param {Function} callback - The callback function to execute when the event is triggered.
+         * @param event_name - The name of the event.
+         * @param callback - The callback function to execute when the event is triggered.
          */
         addListener: function (
           event_name: ApplicationExecutorStorefront.EventsName,
@@ -76,8 +82,8 @@ export class ApplicationExecutorStorefront {
         /**
          * Removes a listener for a given event.
          *
-         * @param {string} event_name - The name of the event.
-         * @param {Function} callback - The callback function to be removed.
+         * @param event_name - The name of the event.
+         * @param callback - The callback function to be removed.
          */
         removeListener: function (
           event_name: ApplicationExecutorStorefront.EventsName,
@@ -100,16 +106,16 @@ export class ApplicationExecutorStorefront {
   /**
    * Triggers an event, executing all the attached listeners with the provided arguments.
    *
-   * @param {ApplicationExecutorStorefront.EventsName} event_name - The name of the event to trigger.
-   * @param {...any} args - The arguments to pass to the event listeners.
+   * @param event_name - The name of the event to trigger.
+   * @param args - The arguments to pass to the event listeners.
    */
   static TriggerEvent(
     event_name: ApplicationExecutorStorefront.EventsName,
-    ...args: any[]
+    ...args: ApplicationExecutorStorefront.EventArgs
   ) {
     if (window.$AppsInterface.Listeners[event_name]) {
       window.$AppsInterface.Listeners[event_name]!.forEach(
-        (callback: Function) => {
+        (callback: IListenerCallback) => {
           if (callback) callback(...args);
         },
       );
@@ -122,6 +128,41 @@ export class ApplicationExecutorStorefront {
 //█████████████████████████████████████████████████████████████
 
 export namespace ApplicationExecutorStorefront {
+  /**
+   * Page navigation event payload.
+   */
+  export interface ChangePagePayload {
+    to?: string | null;
+    from?: string | null;
+    [key: string]: unknown;
+  }
+
+  /**
+   * User change event payload.
+   */
+  export interface ChangeUserPayload {
+    user?: unknown;
+    [key: string]: unknown;
+  }
+
+  /**
+   * Shop change event payload.
+   */
+  export interface ChangeShopPayload {
+    shop?: unknown;
+    [key: string]: unknown;
+  }
+
+  /**
+   * Union of payloads accepted by storefront app events.
+   */
+  export type EventPayload = ChangePagePayload | ChangeUserPayload | ChangeShopPayload | unknown;
+
+  /**
+   * Event arguments passed to listeners.
+   */
+  export type EventArgs = [payload?: EventPayload, ...extra: unknown[]];
+
   /**
    * Enum representing the names of shop events that can be triggered in the application interface.
    */
