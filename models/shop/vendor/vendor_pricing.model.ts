@@ -19,7 +19,7 @@ import type { VendorProduct } from "./vendor_product.model";
 /**
  * Marketplace pricing model used to calculate vendor product marketplace price from raw vendor price.
  *
- * Backend source: `App\Shop\Vendors\VendorPricing`, table `vendor_pricing`.
+ * Backend source: `App\Storefront\Vendors\VendorPricing`, table `vendor_pricing`.
  * Managed by `ShopVendorPricingController`; add validation allows `commission` from `0..1000` and requires `title`.
  */
 export interface VendorPricing {
@@ -48,7 +48,7 @@ export interface VendorPricing {
   updated_at?: string | null;
 
   /** Shop relation when `VendorPricing::shop()` is eager-loaded. */
-  shop?: Shop | null;
+  shop?: Shop | Record<string, unknown> | null;
 
   /** Vendor product relation from `vendorProducts()`, serialized as `vendor_products`. */
   vendor_products?: VendorProduct[];
@@ -89,5 +89,8 @@ export namespace VendorPricing {
 
     /** Commission percent applied to vendor raw price. */
     commission: number;
+
+    /** Localized title/description payloads keyed by locale. */
+    translations?: Translations | null;
   }
 }

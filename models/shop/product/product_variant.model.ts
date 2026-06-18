@@ -198,21 +198,21 @@ export interface ProductVariant {
    *
    * Source: nullable JSON `shop_product_variant.extra` fixed by backend `ProductExtraParam::Fix`.
    */
-  extra: Product.IExtra | null;
+  extra: Product.IExtra | ProductVariant.JsonObject | null;
 
   /**
    * AR/3D metadata for the variant.
    *
    * Source: nullable JSON `shop_product_variant.ar`.
    */
-  ar: Product.IAR | Record<string, unknown> | null;
+  ar: Product.IAR | ProductVariant.JsonObject | null;
 
   /**
    * Parent product relation when eager-loaded.
    *
    * Source: `ProductVariant::product()`.
    */
-  product?: Product;
+  product?: Product | null;
 
   /**
    * Owning shop relation when eager-loaded.
@@ -310,7 +310,7 @@ export interface ProductVariant {
    *
    * Source: `ProductVariant::vendorProducts()` serialized as `vendor_products`.
    */
-  vendor_products?: Record<string, unknown>[];
+  vendor_products?: ProductVariant.JsonObject[] | null;
 }
 
 export namespace ProductVariant {
@@ -327,7 +327,7 @@ export namespace ProductVariant {
   export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
 
   /** Private/integration metadata map stored in `shop_product_variant.meta`. */
-  export interface Meta extends JsonObject {}
+  export type Meta = JsonObject;
 
   /** Variant dimension code used by product/property-set APIs. */
   export type DimensionCode = "color" | "style" | "volume" | "weight" | "pack" | "type";
@@ -347,11 +347,15 @@ export namespace ProductVariant {
     | "discount"
     | "dis_start"
     | "dis_end"
+    | "price_label"
     | "quantity"
     | "image"
     | "enable"
     | "lead"
-    | "extra";
+    | "extra"
+    | "ar"
+    | "parent_id"
+    | "meta";
 
   /** Payload accepted when creating/updating a product variant. */
   export interface Upsert {
@@ -364,7 +368,7 @@ export namespace ProductVariant {
     weight?: string | null;
     pack?: string | null;
     type?: string | null;
-    pricing: boolean;
+    pricing?: boolean;
     price?: number | null;
     currency: keyof typeof Currency;
     commission?: number | null;
@@ -373,7 +377,8 @@ export namespace ProductVariant {
     image?: string | null;
     enable?: boolean | null;
     lead?: number | null;
-    extra?: Product.IExtra | null;
+    extra?: Product.IExtra | JsonObject | null;
+    ar?: Product.IAR | JsonObject | null;
     dis_start?: string | null;
     dis_end?: string | null;
     price_label?: string | null;

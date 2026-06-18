@@ -22,7 +22,7 @@ import type { VendorPricing } from "./vendor_pricing.model";
 /**
  * Vendor-specific product offer/pricing row.
  *
- * Backend source: `App\Shop\Vendors\VendorProduct`, table `vendor_products`.
+ * Backend source: `App\Storefront\Vendors\VendorProduct`, table `vendor_products`.
  * Managed by `ProductVendorsController`; list endpoints eager-load `vendor`, `variant`, `pricing`, and a compact `product`.
  */
 export interface VendorProduct {
@@ -81,16 +81,16 @@ export interface VendorProduct {
   updated_at?: string | null;
 
   /** Shop relation when eager-loaded. */
-  shop?: Shop | null;
+  shop?: Shop | Record<string, unknown> | null;
 
   /** Product relation when eager-loaded. */
-  product?: Product | Record<string, unknown>;
+  product?: Product | Record<string, unknown> | null;
 
   /** Variant relation when eager-loaded. */
   variant?: ProductVariant | null;
 
   /** Vendor relation when eager-loaded. */
-  vendor?: Pick<Vendor, "id" | "name" | "icon"> | Vendor;
+  vendor?: Pick<Vendor, "id" | "name" | "icon"> | Vendor | null;
 
   /** Pricing relation when eager-loaded. */
   pricing?: VendorPricing | null;
@@ -130,10 +130,10 @@ export namespace VendorProduct {
     currency: string;
 
     /** Commission amount. */
-    commission?: number;
+    commission?: number | null;
 
     /** Discount amount. */
-    discount?: number;
+    discount?: number | null;
 
     /** Discount start timestamp. */
     dis_start?: string | null;
@@ -147,4 +147,7 @@ export namespace VendorProduct {
     /** Lead time in hours. */
     lead: number;
   }
+
+  /** Update endpoints accept the same editable fields as create endpoints. */
+  export type Upsert = Create;
 }

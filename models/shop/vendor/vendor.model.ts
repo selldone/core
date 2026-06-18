@@ -128,64 +128,64 @@ export interface Vendor {
   updated_at?: string | null;
 
   /** Owning shop relation when eager-loaded. */
-  shop?: Record<string, unknown> | null;
+  shop?: Vendor.JsonObject | null;
 
   /** Linked user relation when eager-loaded. */
-  user?: Record<string, unknown> | null;
+  user?: Vendor.JsonObject | null;
 
   /** Landing page relation when eager-loaded. */
-  page?: Record<string, unknown> | null;
+  page?: Vendor.JsonObject | null;
 
   /** Map tag relation when eager-loaded. */
-  map?: Record<string, unknown> | null;
+  map?: Vendor.JsonObject | null;
 
   /** Default pricing relation from `defaultPricing()`, serialized as `default_pricing`. */
   default_pricing?: VendorPricing | null;
 
   /** Vendor warehouse relation when eager-loaded. */
-  warehouse?: Record<string, unknown> | null;
+  warehouse?: Vendor.JsonObject | null;
 
   /** Vendor account relations when `accounts()` is eager-loaded. */
-  accounts?: Record<string, unknown>[];
+  accounts?: Vendor.JsonObject[] | null;
 
   /** Vendor payment relations when `payments()` is eager-loaded. */
-  payments?: Record<string, unknown>[];
+  payments?: Vendor.JsonObject[] | null;
 
   /** Vendor order relations when `vendorOrders()` is eager-loaded. */
-  vendor_orders?: Record<string, unknown>[];
+  vendor_orders?: Vendor.JsonObject[] | null;
 
   /** Vendor document relations when `documents()` is eager-loaded. */
-  documents?: Record<string, unknown>[];
+  documents?: Vendor.JsonObject[] | null;
 
   /** Vendor analytics rows when `data()` is eager-loaded. */
-  data?: Record<string, unknown>[];
+  data?: Vendor.JsonObject[] | null;
 
   /** Queued product imports for this vendor when eager-loaded. */
-  import_que_products?: Record<string, unknown>[];
+  import_que_products?: Vendor.JsonObject[] | null;
 
   /** Queued image imports for this vendor when eager-loaded. */
-  import_que_images?: Record<string, unknown>[];
+  import_que_images?: Vendor.JsonObject[] | null;
 
   /** Vendor notification email rows when eager-loaded. */
-  vendor_emails?: Record<string, unknown>[];
+  vendor_emails?: Vendor.JsonObject[] | null;
 
   /** Shipping-service assignments owned by this vendor when eager-loaded. */
-  transportation_services?: Record<string, unknown>[];
+  transportation_services?: Vendor.JsonObject[] | null;
 
   /** Courier-person assignments owned by this vendor when eager-loaded. */
-  transportation_persons?: Record<string, unknown>[];
+  transportation_persons?: Vendor.JsonObject[] | null;
 
   /** Transportation order rows for this vendor when eager-loaded. */
-  transportation_orders?: Record<string, unknown>[];
+  transportation_orders?: Vendor.JsonObject[] | null;
 
   /** Pending member invitations when `memberInvites()` is eager-loaded. */
-  member_invites?: Record<string, unknown>[];
+  member_invites?: Vendor.JsonObject[] | null;
 
   /** Vendor panel members when `members()` is eager-loaded. */
-  members?: Record<string, unknown>[];
+  members?: Vendor.JsonObject[] | null;
 
   /** Marketplace shipping boxes owned by this vendor when eager-loaded. */
-  boxes?: Record<string, unknown>[];
+  boxes?: Vendor.JsonObject[] | null;
 
   /** Count appended by `ShopVendorsController::list` for products updated in the last day. */
   updated_vendor_products?: number;
@@ -197,13 +197,13 @@ export interface Vendor {
   added_categories?: number;
 
   /** Vendor product relation when `vendorProducts()` is eager-loaded. */
-  vendor_products?: Record<string, unknown>[];
+  vendor_products?: Vendor.JsonObject[] | null;
 
   /** Owned product relation when `ownProducts()` is eager-loaded. */
-  own_products?: Record<string, unknown>[];
+  own_products?: Vendor.JsonObject[] | null;
 
   /** Owned category relation when `ownCategories()` is eager-loaded. */
-  own_categories?: Record<string, unknown>[];
+  own_categories?: Vendor.JsonObject[] | null;
 }
 
 export namespace Vendor {
@@ -286,5 +286,10 @@ export namespace Vendor {
     pricing_id?: number | null;
     augment?: Augment[] | null;
     slug?: string | null;
+    note?: string | null;
+    chat?: JsonArray | JsonObject | null;
+    meta?: Meta | null;
+    static?: Static | null;
+    translations?: Translations | null;
   }
 }

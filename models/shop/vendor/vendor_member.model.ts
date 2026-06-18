@@ -15,7 +15,7 @@
 /**
  * Vendor panel member permission record.
  *
- * Backend source: `App\Shop\Vendors\Member\VendorMember`, table `vendor_members`.
+ * Backend source: `App\Storefront\Vendors\Member\VendorMember`, table `vendor_members`.
  * Access keys are validated in `MyVendorMembersController` from backend enum
  * `App\Shop\Vendors\Member\enums\VendorMemberRegion` plus `-READ` / `-WRITE` suffixes.
  */

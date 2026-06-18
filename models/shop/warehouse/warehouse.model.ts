@@ -47,7 +47,7 @@ export interface Warehouse {
   address: string | null;
 
   /** Geolocation JSON decoded by Eloquent cast, or `null`. Source: nullable JSON `shop_warehouse.location`. */
-  location: Warehouse.IGeoLocation | [number, number] | Warehouse.JsonObject | null;
+  location: Warehouse.Location | null;
 
   /** Building number, or `null`. Source: nullable `shop_warehouse.no`. */
   no: string | null;
@@ -108,6 +108,9 @@ export namespace Warehouse {
     [key: string]: JsonValue | undefined;
   }
 
+  /** Stored geolocation shape accepted by legacy clients and map providers. */
+  export type Location = IGeoLocation | [number, number] | JsonObject;
+
   /** Receiver-info payload produced by `Warehouse::getReceiverInfoForVendor()`. */
   export interface ReceiverInfo {
     id: number;
@@ -116,7 +119,7 @@ export namespace Warehouse {
     state: string | null;
     city: string | null;
     address: string | null;
-    location: IGeoLocation | [number, number] | JsonObject | null;
+    location: Location | null;
     no: string | null;
     unit: string | null;
     name: string;
@@ -134,7 +137,7 @@ export namespace Warehouse {
     state_code?: string | null;
     city?: string | null;
     address?: string | null;
-    location?: IGeoLocation | [number, number] | JsonObject | null;
+    location?: Location | null;
     no?: string | null;
     unit?: string | null;
     name?: string | null;
