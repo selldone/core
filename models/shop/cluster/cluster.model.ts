@@ -499,3 +499,40 @@ export namespace Cluster {
     },
   };
 }
+
+export namespace Cluster {
+  /** JSON primitive accepted by cluster configuration and relation payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for cluster metadata, targeting, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for cluster metadata, targeting, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact cluster projection embedded in products, campaigns, and incentives. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    code?: string | null;
+    enable?: boolean;
+  }
+
+  /** Safe partial update payload for cluster grouping and targeting settings. */
+  export interface ApiPatch {
+    title?: string | null;
+    description?: string | null;
+    code?: string | null;
+    enable?: boolean;
+    color?: string | null;
+    icon?: string | null;
+    rules?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

@@ -120,3 +120,40 @@ export namespace ExtraPricing {
     dis_end?: string | null;
   }
 }
+
+export namespace ExtraPricing {
+  /** JSON primitive accepted by extra-pricing rules and valuation payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for pricing rules, conditions, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for pricing rules, conditions, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact extra-pricing projection embedded in product, variant, and vendor-product payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    price?: number | null;
+    currency?: string | null;
+    enable?: boolean;
+  }
+
+  /** Safe partial update payload for extra-pricing rules. */
+  export interface ApiPatch {
+    title?: string | null;
+    description?: string | null;
+    enable?: boolean;
+    price?: number | null;
+    currency?: string | null;
+    conditions?: ApiJsonArray | ApiJsonObject | null;
+    rules?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

@@ -132,3 +132,40 @@ export namespace Domain {
     "Expiry Date"?: string | null;
   }
 }
+
+export namespace Domain {
+  /** JSON primitive accepted by domain verification and DNS payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for DNS, verification, SSL, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for DNS, verification, SSL, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact domain projection embedded in shop public-info payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    domain?: string | null;
+    enable?: boolean;
+    primary?: boolean;
+    verified?: boolean;
+  }
+
+  /** Safe partial update payload for shop domain configuration. */
+  export interface ApiPatch {
+    domain?: string | null;
+    enable?: boolean;
+    primary?: boolean;
+    verified?: boolean;
+    ssl?: boolean;
+    dns?: ApiJsonObject | null;
+    verification?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+  }
+}

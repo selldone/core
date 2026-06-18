@@ -119,3 +119,42 @@ export namespace ShopMenu {
     }
   >;
 }
+
+export namespace Menu {
+  /** JSON primitive accepted by menu item and translation payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for menu configuration, children, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for menu configuration, children, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact menu projection used by public shop info and navigation payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    type?: string | null;
+    parent_id?: number | null;
+    order?: number;
+  }
+
+  /** Safe partial update payload for menu/navigation configuration. */
+  export interface ApiPatch {
+    title?: string | null;
+    type?: string | null;
+    parent_id?: number | null;
+    url?: string | null;
+    page_id?: number | null;
+    category_id?: number | null;
+    order?: number;
+    enable?: boolean;
+    children?: ApiJsonArray | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

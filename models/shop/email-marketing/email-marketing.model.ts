@@ -286,3 +286,43 @@ export namespace EmailMarketing {
     [country_or_metric: string]: unknown;
   }
 }
+
+export namespace EmailMarketing {
+  /** JSON primitive accepted by email marketing audience and tracking payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for audience, schedule, template, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for audience, schedule, template, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact email marketing projection used by order attribution and campaign lists. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    title?: string | null;
+    subject?: string | null;
+    currency?: string | null;
+    enable?: boolean;
+    sent_at?: string | null;
+  }
+
+  /** Safe partial update payload for email marketing setup and delivery settings. */
+  export interface ApiPatch {
+    title?: string | null;
+    subject?: string | null;
+    body?: string | null;
+    enable?: boolean;
+    currency?: string | null;
+    audience?: ApiJsonObject | null;
+    schedule?: ApiJsonObject | null;
+    template?: ApiJsonObject | null;
+    meta?: ApiJsonObject | null;
+    translations?: Record<string, ApiJsonObject> | null;
+  }
+}

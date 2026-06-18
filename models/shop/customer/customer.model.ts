@@ -331,3 +331,40 @@ export namespace Customer {
   };
 
 }
+
+export namespace Customer {
+  /** JSON primitive accepted by customer metadata and relation payloads. */
+  export type ApiJsonPrimitive = string | number | boolean | null;
+
+  /** JSON object used for customer profile, tags, metrics, and relation projections. */
+  export interface ApiJsonObject {
+    [key: string]: ApiJsonValue | undefined;
+  }
+
+  /** JSON array used for customer profile, tags, metrics, and relation projections. */
+  export interface ApiJsonArray extends Array<ApiJsonValue> {}
+
+  export type ApiJsonValue = ApiJsonPrimitive | ApiJsonObject | ApiJsonArray;
+
+  /** Compact customer projection embedded in order and payment payloads. */
+  export interface CompactProjection {
+    id: number;
+    shop_id?: number;
+    user_id?: number | null;
+    name?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    badge?: string | null;
+  }
+
+  /** Safe partial update payload for shop customer profile and segmentation fields. */
+  export interface ApiPatch {
+    name?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    badge?: string | null;
+    note?: string | null;
+    tags?: string[] | null;
+    meta?: ApiJsonObject | null;
+  }
+}
