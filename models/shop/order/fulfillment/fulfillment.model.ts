@@ -145,6 +145,9 @@ export interface Fulfillment {
 
   /** Basket items assigned to this fulfillment. */
   items?: Partial<BasketItem>[];
+
+  /** Snake-case alias sometimes returned by resource serializers for assigned items. */
+  basket_items?: Partial<BasketItem>[] | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -243,5 +246,14 @@ export namespace Fulfillment {
     cancel_note?: string | null;
     reject_note?: string | null;
     reject?: string | null;
+  }
+
+  /** Payload accepted by prepare/send/delivery action endpoints. */
+  export interface DeliveryAction {
+    delivery_info?: Order.IDeliveryInfo | JsonObject | null;
+    delivery_state?: Order.DeliveryStateCode;
+    officer_id?: number | null;
+    transportation_person_id?: number | null;
+    transportation_service_id?: number | null;
   }
 }

@@ -88,11 +88,20 @@ export interface Bill {
   /** Gift cards used to pay this bill. */
   gift_cards?: Bill.JsonObject[] | null;
 
+  /** CamelCase alias for `gift_cards` used by relation helpers. */
+  giftCards?: Bill.JsonObject[] | null;
+
   /** Gateway queue rows attached to this bill. */
   gateway_ques?: Bill.JsonObject[] | null;
 
+  /** CamelCase alias for `gateway_ques` used by relation helpers. */
+  gatewayQues?: Bill.JsonObject[] | null;
+
   /** Gateway transaction morph relation when eager-loaded. */
   gateway_transaction?: Bill.JsonObject | null;
+
+  /** CamelCase alias for `gateway_transaction` used by relation helpers. */
+  gatewayTransaction?: Bill.JsonObject | null;
 }
 
 //█████████████████████████████████████████████████████████████
@@ -165,5 +174,13 @@ export namespace Bill {
     payment_id?: number | null;
     payment_type?: string | null;
     issued_id?: number | null;
+  }
+
+  /** Payload used by cash/manual payment confirmation actions. */
+  export interface ConfirmPayment {
+    gateway_code?: string | null;
+    payment_id?: number | null;
+    payment_type?: string | null;
+    status?: Extract<StatusKeys, "PAYED" | "CANCELED">;
   }
 }

@@ -99,6 +99,13 @@ export namespace PrintTemplate {
     elements: Element[];
     fonts?: string[] | null;
   }
+
+  /** Compact unique key used by backend validation: one template per shop/type/language. */
+  export interface UniqueKey {
+    shop_id: number;
+    type: PrintTemplateTypes.IType;
+    language?: string | null;
+  }
 }
 
 //█████████████████████████████████████████████████████████████

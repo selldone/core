@@ -145,4 +145,17 @@ export namespace ServiceItem {
     subscription?: number;
     charge?: number;
   }
+
+  /** Payload used by task-only update endpoints. */
+  export interface UpdateTasks {
+    tasks: Task[] | JsonObject | null;
+  }
+
+  /** Compact service scheduling window returned by calendar/service views. */
+  export interface ScheduleWindow extends JsonObject {
+    reserved_at?: string | null;
+    start_at?: string | null;
+    end_at?: string | null;
+    officer_id?: number | null;
+  }
 }

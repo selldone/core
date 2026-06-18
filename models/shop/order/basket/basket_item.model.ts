@@ -94,6 +94,7 @@ export interface BasketItem {
   updated_at?: string | null;
 
   // Relations
+  basket?: BasketItem.JsonObject | null;
   product?: Partial<Product> | null;
   variant?: Partial<ProductVariant> | null;
   returnRequest?: Partial<BasketItemReturn> | null;
@@ -110,6 +111,7 @@ export interface BasketItem {
   vendor_id?: number | null;
   vendor_product_id?: number | null;
   vendor_price?: number | null;
+  vendor?: BasketItem.JsonObject | null;
   vendorProduct?: Partial<VendorProduct> | null;
   vendor_product?: Partial<VendorProduct> | null;
 
@@ -181,5 +183,15 @@ export namespace BasketItem {
     connect_id?: number | null;
     subscription_price_id?: number | null;
     extra_pricing_id?: number | null;
+  }
+
+  /** Uploaded/customer attachment row returned by basket item file relations. */
+  export interface File extends JsonObject {
+    id?: number;
+    item_id?: number;
+    path?: string | null;
+    name?: string | null;
+    size?: number | null;
+    mime?: string | null;
   }
 }

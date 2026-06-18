@@ -84,6 +84,9 @@ export interface VirtualItem {
 
   /** Gateway transaction morph relation when eager-loaded by payment APIs. */
   gateway_transaction?: VirtualItem.JsonObject | null;
+
+  /** CamelCase alias used by some resource transformers for the gateway transaction morph relation. */
+  gatewayTransaction?: VirtualItem.JsonObject | null;
 }
 
 export namespace VirtualItem {
@@ -127,5 +130,11 @@ export namespace VirtualItem {
     user_id?: number | null;
     status?: StatusCode;
     reserved_at?: string | null;
+  }
+
+  /** Payload accepted when updating secure virtual delivery data. */
+  export interface UpdateData {
+    data: Data | JsonArray | string | null;
+    status?: StatusCode;
   }
 }
