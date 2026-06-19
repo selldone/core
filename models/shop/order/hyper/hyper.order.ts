@@ -91,7 +91,7 @@ export interface Hyper extends Order.IOrder {
   updated_at?: string | null;
 
   /** Generated order label. */
-  label?: string | null;
+  label: string | null;
 
   /** Owning shop relation when eager-loaded. */
   shop?: Hyper.JsonObject | null;

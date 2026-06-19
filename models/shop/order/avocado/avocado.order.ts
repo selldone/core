@@ -152,7 +152,7 @@ export interface Avocado extends Order.IOrder {
   channel: string | null;
 
   /** Generated order label. */
-  label?: string | null;
+  label: string | null;
 }
 
 //█████████████████████████████████████████████████████████████

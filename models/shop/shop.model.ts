@@ -326,7 +326,7 @@ export namespace Shop {
 
   export interface IOption {
     code: string;
-    value: JsonValue;
+    value: any;
   }
 
   export interface IRibbon {

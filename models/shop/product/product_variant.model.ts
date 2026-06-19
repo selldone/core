@@ -198,7 +198,7 @@ export interface ProductVariant {
    *
    * Source: nullable JSON `shop_product_variant.extra` fixed by backend `ProductExtraParam::Fix`.
    */
-  extra: Product.IExtra | ProductVariant.JsonObject | null;
+  extra: Product.IExtra | null;
 
   /**
    * AR/3D metadata for the variant.
@@ -377,7 +377,7 @@ export namespace ProductVariant {
     image?: string | null;
     enable?: boolean | null;
     lead?: number | null;
-    extra?: Product.IExtra | JsonObject | null;
+    extra?: Product.IExtra | null;
     ar?: Product.IAR | JsonObject | null;
     dis_start?: string | null;
     dis_end?: string | null;

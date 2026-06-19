@@ -270,8 +270,9 @@ export class ShopOptionsHelper {
     FUL?: string;
     VND?: string;
   } {
-    const labeling_option: undefined | Shop.IOption =
-      shop.options && shop.options.find((e) => e.code === "labeling");
+    const labeling_option: undefined | Shop.IOption = shop.options?.find(
+      (e) => e.code === "labeling",
+    );
     return labeling_option?.value
       ? labeling_option.value
       : {

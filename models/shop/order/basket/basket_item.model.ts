@@ -161,7 +161,7 @@ export namespace BasketItem {
     dim_3?: number;
 
     // Custom pricing with valuation form (input values by user)
-    valuation?: JsonObject;
+    valuation?: Record<string, any>;
 
     // Service preferences:
     period?: string;
