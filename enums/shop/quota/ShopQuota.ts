@@ -27,6 +27,7 @@ interface IQuotaItem {
 // Define the structure for the entire ShopQuota object
 interface IShopQuota {
   Product: IQuotaItem;
+  ListingItem: IQuotaItem;
   Category: IQuotaItem;
   Domain: IQuotaItem;
   DiscountCodes: IQuotaItem;
@@ -57,6 +58,13 @@ const shopQuota: IShopQuota = {
     max: "products_max",
     extra: "products_extra",
     usage: "products_usage",
+  },
+  ListingItem: {
+    title: "Listing Item",
+    icon: "list_alt",
+    max: "listing_items_max",
+    extra: "listing_items_extra",
+    usage: "listing_items_usage",
   },
   Category: {
     title: "Category",

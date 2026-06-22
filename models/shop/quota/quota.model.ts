@@ -16,7 +16,7 @@
  * Per-shop quota/usage counters.
  *
  * Backend source: `App\Storefront\Quota\ShopQuota`, table `shop_quota`.
- * Created by `CreateShopQuotaTable` and extended by product/background-removal/vendor
+ * Created by `CreateShopQuotaTable` and extended by product/background-removal/vendor/listing-item
  * quota migrations. Every `*_max`, `*_extra`, and `*_usage` field is an integer counter with DB default `0` unless
  * documented otherwise in the migration.
  */
@@ -33,6 +33,13 @@ export interface IQuota {
   products_extra: number; // Added extra quota by selldone admin
   /** Current products usage. */
   products_usage: number;
+
+  /** Maximum listing items that can be added per day. */
+  listing_items_max: number;
+  /** Extra listing items granted by Selldone/admin. */
+  listing_items_extra: number;
+  /** Current listing item additions usage. */
+  listing_items_usage: number;
 
   categories_max: number;
   categories_extra: number; // Added extra quota by selldone admin
@@ -135,6 +142,7 @@ export namespace Quota {
   /** Quota resource names that follow the `{resource}_max`, `{resource}_extra`, `{resource}_usage` pattern. */
   export type Resource =
     | "products"
+    | "listing_items"
     | "categories"
     | "domains"
     | "discount_codes"
