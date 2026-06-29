@@ -112,6 +112,37 @@ export class ShopOptionsHelper {
   }
 
   /**
+   * Returns the refund/withdrawal policy configured in shop options.
+   *
+   * This policy is used by storefront order pages to decide whether customers
+   * can request an order withdrawal/refund and to display merchant-provided
+   * refund-policy text.
+   *
+   * Default behavior keeps withdrawal disabled and uses the EU-standard
+   * 14-day withdrawal window when no custom period is configured.
+   *
+   * @param {Shop} shop - Shop configuration.
+   * @returns {{ enable: boolean; days: number; text: string | null }} Refund policy configuration.
+   */
+  static GetRefundPolicy(shop: Shop): {
+    enable: boolean;
+    days: number;
+    text: string | null;
+  } {
+    const refund_policy_option =
+      shop.options && shop.options.find((e) => e.code === "refund_policy");
+    const refund_policy = refund_policy_option?.value;
+
+    return {
+      enable: !!refund_policy?.enable,
+      days: Math.max(1, Number(refund_policy?.days || 14)),
+      text:
+        typeof refund_policy?.text === "string" && refund_policy.text.trim()
+          ? refund_policy.text
+          : null,
+    };
+  }
+  /**
    * Determines if guest checkout is enabled.
    * @param shop The shop object containing configuration options.
    * @returns Boolean indicating if guest checkout is enabled.
