@@ -90,6 +90,7 @@ export const ShopLicenseLimits = {
     cashback: 3,
     thresholdings: 5,
     product_video_limit: 0, // Max number of videos per product
+    "custom-fonts": 1,
   },
 
   STARTUP: {
@@ -117,6 +118,7 @@ export const ShopLicenseLimits = {
     cashback: 10,
     thresholdings: 10,
     product_video_limit: 1,
+    "custom-fonts": 2,
 
   },
 
@@ -145,6 +147,7 @@ export const ShopLicenseLimits = {
     cashback: 50,
     thresholdings: 20,
     product_video_limit: 2,
+    "custom-fonts": 4,
 
   },
 
@@ -173,6 +176,7 @@ export const ShopLicenseLimits = {
     cashback: 1000,
     thresholdings: 100,
     product_video_limit: 3,
+    "custom-fonts": 10,
 
   },
 };

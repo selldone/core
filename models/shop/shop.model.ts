@@ -111,6 +111,9 @@ export class Shop {
   /** Theme configuration for the shop. */
   theme?: Shop.ITheme; // specific type can be added
 
+  /** Shop-managed font families available to the storefront and page builder. */
+  custom_fonts?: Shop.CustomFont[] | null;
+
   /** Configuration for Avocado form. */
   avocado?: Shop.AvocadoConfig | null;
 
@@ -322,6 +325,45 @@ export namespace Shop {
     logo_h: string | number | null;
     title: string;
     css: string | null;
+  }
+
+  export type CustomFontFormat = "woff2" | "woff" | "ttf" | "otf";
+  export type CustomFontStyle = "normal" | "italic";
+
+  export interface CustomFontSource {
+    id: number;
+    format: CustomFontFormat;
+    url: string;
+    original_name?: string | null;
+    mime_type?: string | null;
+    size?: number | null;
+  }
+
+  export interface CustomFontFace {
+    weight: number;
+    style: CustomFontStyle;
+    sources: CustomFontSource[];
+  }
+
+  export interface CustomFont {
+    id: number;
+    shop_id?: number;
+    name: string;
+    family: string;
+    fallback: string;
+    css_declaration: string;
+    css_url?: string | null;
+    faces: CustomFontFace[];
+    created_at?: string | null;
+    updated_at?: string | null;
+  }
+
+  export interface CustomFontQuota {
+    limit: number;
+    used: number;
+    remaining: number;
+    can_add: boolean;
+    max_file_size: number;
   }
 
   export interface IOption {
