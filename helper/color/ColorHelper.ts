@@ -13,19 +13,27 @@
  */
 
 import chroma from "chroma-js";
-import {ILanguage} from "../../enums/language/Language";
-import {isString} from "lodash-es";
+import type { ILanguage } from "../../enums/language/Language";
+import { isString } from "lodash-es";
 
 let COLORS_NAME_CACHE: { [key: string]: string } = {};
 let LAST_LANGUAGE: ILanguage | null = null;
 let COLORS_LANGUAGES_LIST: { name: string; hex: string; distance?: number }[];
 
+const HEX_COLOR_PATTERN = /^#(?:[A-Fa-f0-9]{3}|[A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
+const HEX_COLOR_EXTRACT_PATTERN =
+  /#(?:[A-Fa-f0-9]{8}|[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})(?![A-Fa-f0-9])/g;
+
+function isValidHexColor(color: string): boolean {
+  return HEX_COLOR_PATTERN.test(color);
+}
+
 /**
  * Retrieves the name of a given color by processing its format and mapping it
  * to a name using available color resources.
  *
- * @param color - The color input in string format (e.g., HEX, RGB).
- * @returns The color name if available; otherwise, `null`.
+ * @param color - A string containing one or more hex colors.
+ * @returns The color names, `"-"` when no valid hex color is found, or `null` for an empty input.
  *
  * @example
  * ```typescript
@@ -35,21 +43,23 @@ let COLORS_LANGUAGES_LIST: { name: string; hex: string; distance?: number }[];
 export function GetNameOfColor(color: string | null) {
   if (!color || !isString(color)) return null;
 
-
   const colors = ColorHelper.ExtractColors(color);
+  if (!colors?.length) return "-";
 
-  return colors
-      ?.map((color) =>
-          ColorHelper.getNameOfColor(window.$tm("global.colors") as {}, color),
-      )
-      .join(" / ");
+  const names = colors
+    .map((color) =>
+      ColorHelper.getNameOfColor(window.$tm("global.colors") as {}, color),
+    )
+    .filter((name): name is string => Boolean(name));
+
+  return names.length ? names.join(" / ") : "-";
 }
 
 /**
  * Converts a color into a human-readable name in the user's language.
  * It checks a cache for previously computed results to avoid redundant calculations.
  *
- * @param color - The color in string format (e.g., HEX, RGB).
+ * @param color - A 3, 6, or 8-digit hex color.
  * @returns The color name if identified; otherwise, `null`.
  *
  * @remarks
@@ -64,10 +74,12 @@ export function GetNameOfColor(color: string | null) {
 /**
  * Finds the nearest localized color name for a given hex color.
  *
- * @param {string} color - Input hex/rgb color string accepted by chroma.
+ * @param {string} color - A 3, 6, or 8-digit hex color.
  * @returns {string | null} Best matching localized color name.
  */
 const ColorNamer = function (color: string) {
+  if (!isValidHexColor(color)) return null;
+
   const cacheKey = color + window.$language.code;
 
   if (COLORS_NAME_CACHE[cacheKey]) {
@@ -96,17 +108,16 @@ const ColorNamer = function (color: string) {
         ...item,
         distance: distanceValue,
       };
-    } catch (e) {
-      console.error(e);
+    } catch {
       return {
         ...item,
         distance: Infinity,
       };
     }
-  })
-    .filter((item) => item !== null) // Remove any items that threw an error and returned null
-    .sort((a, b) => a.distance - b.distance)[0].name;
+  }).sort((a, b) => a.distance - b.distance)[0]?.name;
   // console.log("results", color, result);
+
+  if (!result) return null;
 
   COLORS_NAME_CACHE[cacheKey] = result;
   return result;
@@ -127,8 +138,7 @@ export class ColorHelper {
    * @returns {string | null} Matching or nearest color name.
    */
   static getNameOfColor(repository: { [key: string]: string }, color: string) {
-    if (!color || !color.startsWith("#") || ![4, 7, 9].includes(color.length))
-      return null; // #123 #123456 #123456FF
+    if (!color || !isValidHexColor(color)) return null;
     //console.log("getNameOfColor", color);
 
     // Step one: find exact match:
@@ -137,7 +147,9 @@ export class ColorHelper {
     if (LAST_LANGUAGE !== window.$language) {
       COLORS_LANGUAGES_LIST = [];
       Object.keys(repository).forEach((k) => {
-        COLORS_LANGUAGES_LIST.push({ name: repository[k], hex: k });
+        if (isValidHexColor(k)) {
+          COLORS_LANGUAGES_LIST.push({ name: repository[k], hex: k });
+        }
       });
 
       COLORS_NAME_CACHE = {};
@@ -154,7 +166,7 @@ export class ColorHelper {
    * Extracts hex color values from a given string for product variants.
    *
    * @param {string | null} colorString - The input string containing color values. Can be null.
-   * @returns {string[] | null} An array of extracted hex color values, or null if the input is null or contains no matches.
+   * @returns {string[] | null} An array of extracted standard hex color values, or null if the input is empty or contains no matches.
    *
    * @example
    * // Returns ['#fff', '#ff5733']
@@ -169,16 +181,12 @@ export class ColorHelper {
    * ColorExtractor.ExtractColors(null);
    *
    * @example
-   * // Returns []
+   * // Returns null
    * ColorExtractor.ExtractColors('No colors here.');
    */
   static ExtractColors(colorString: string | null) {
     if (!colorString) return null;
     //console.log("ExtractColors", colorString);
-    const regex = /#([A-Fa-f0-9]{3}){1,2}([A-Fa-f0-9]{2})?/g;
-    return colorString.match(regex);
+    return colorString.match(HEX_COLOR_EXTRACT_PATTERN);
   }
-
-
-
 }

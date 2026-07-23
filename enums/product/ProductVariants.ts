@@ -178,7 +178,7 @@ export function GetVariantValueIndexCode(
   if (product?.property_set?.variants?.length && product?.property_set?.variants?.length > 0) {
     const found = product.property_set.variants.find((v) => v.code === code);
     if (found?.values?.length) {
-      console.log("🏳 found.values", found.values, value);
+      //console.log("🏳 found.values", found.values, value);
       const out = found.values.findIndex((v) => v === value); // Correct usage of findIndex
       return out >= 0 ? out : 999; // Push not found to the end!
     }
