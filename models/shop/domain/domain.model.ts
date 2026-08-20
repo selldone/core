@@ -51,6 +51,9 @@ export class Domain {
   /** Whether the domain was added through SSL proxy IPs. Source: `shop_domains.ssl_proxy`. */
   ssl_proxy!: boolean;
 
+  /** Whether storefront hosting and SSL are managed outside Selldone. Source: `shop_domains.externally_hosted`. */
+  externally_hosted!: boolean;
+
   /** Last SSL health-check result. Source: `shop_domains.ssl` cast to boolean. */
   ssl!: boolean;
 
@@ -134,6 +137,9 @@ export namespace Domain {
 }
 
 export namespace Domain {
+  /** Ownership-verification method accepted when adding an externally hosted domain. */
+  export type VerificationMethod = "meta" | "txt";
+
   /** JSON primitive accepted by domain verification and DNS payloads. */
   export type ApiJsonPrimitive = string | number | boolean | null;
 
@@ -155,6 +161,16 @@ export namespace Domain {
     enable?: boolean;
     primary?: boolean;
     verified?: boolean;
+    externally_hosted?: boolean;
+  }
+
+  /** Request payload accepted by the custom-domain add endpoint. */
+  export interface AddPayload {
+    domain: string;
+    ssl_proxy?: boolean;
+    externally_hosted?: boolean;
+    /** Used only when externally_hosted is true. Defaults to meta. */
+    verification_method?: VerificationMethod;
   }
 
   /** Safe partial update payload for shop domain configuration. */
