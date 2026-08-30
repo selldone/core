@@ -268,11 +268,11 @@ export class Eligible {
 
   //――――――――――――――――――― Offer ――――――――――――――――――
   static CanAddNewOffer(shop: Shop, offers_count: number) {
-    return offers_count < ShopLicenseLimits[shop.license!].coupons;
+    return offers_count < ShopLicenseLimits[shop.license!].offers;
   }
 
   static CanEditOffer(shop: Shop, offers_count: number) {
-    return offers_count <= ShopLicenseLimits[shop.license!].coupons;
+    return offers_count <= ShopLicenseLimits[shop.license!].offers;
   }
 
   //――――――――――――――――――― GiftCard ――――――――――――――――――
