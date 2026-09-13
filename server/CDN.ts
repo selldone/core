@@ -189,6 +189,9 @@ export class CDN {
   GET_VIDEO_URL(file_name: string): string | null {
     if (!file_name || !isString(file_name)) return null;
 
+    // Laravel logical public storage may already provide the delivery URL.
+    if (/^https?:\/\//i.test(file_name) || file_name.startsWith("/")) return file_name;
+
     if (this.storage_direct_url && this.storage_direct) {
       return `${this.storage_direct_url}/app/${file_name}`;
     }
