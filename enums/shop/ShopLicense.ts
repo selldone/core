@@ -203,13 +203,10 @@ export class Eligible {
     // Default plan limit:
     let limit = ShopLicenseLimits[shop.license!].domains;
     // Override limit by partners plans:
-    if (
-      shop.agency_client &&
-      shop.agency_client.agency &&
-      shop.agency_client.plan &&
-      shop.agency_client.plan.domains /*null: default mode!*/
-    ) {
-      limit = shop.agency_client.plan.domains;
+    // Match PHP: a stored "0" keeps the default license limit.
+    const partnerLimit = Number(shop.agency_client?.plan?.domains);
+    if (shop.agency_client?.agency && partnerLimit) {
+      limit = partnerLimit;
     }
     return limit;
   }
