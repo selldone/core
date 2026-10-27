@@ -139,12 +139,6 @@ export class GAPI {
     return `${this.selldone_gapi_url}/taxes/${country_code}`;
   }
 
-  //―――――――――――――――――――――― Inline Help (Help Center) ――――――――――――――――――――
-
-  GET_INLINE_HELPS(language: string) {
-    return `${this.selldone_gapi_url}/inline-helps/${language}`;
-  }
-
   //―――――――――――――――――――――― Experts > Public ――――――――――――――――――――
 
   POST_EXPERT_SEND_REQUEST() {
