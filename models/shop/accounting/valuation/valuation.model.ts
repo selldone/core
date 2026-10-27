@@ -36,6 +36,12 @@ export interface Valuation {
   /** Valuation title. Source: `valuations.title`; controller requires string. */
   title: string;
 
+  /** Optional public-storage path for the pricing form's avatar. */
+  icon?: string | null;
+
+  /** Public avatar URL resolved by the server from its configured logical disk. */
+  icon_url?: string | null;
+
   /** Input rows for the pricing/customization form. Source: JSON `valuations.structure`. */
   structure: Valuation.IDataItem[];
 
@@ -50,6 +56,9 @@ export interface Valuation {
 
   /** Product count appended by valuation list/edit controllers via `loadCount('products AS products_count')`. */
   products_count?: number;
+
+  /** At most three assigned product ids for cached thumbnail previews. */
+  product_ids?: number[];
 
   /** Last editor relation when eager-loaded. Source: `Valuation::user()` serialized as `user`. */
   user?: Record<string, unknown> | null;
