@@ -1,6 +1,6 @@
 # Shop daily display data
 
-`normalizeShopDailyData(rows, startExclusive, endInclusive)` projects an authorized, successfully loaded **complete** shop-statistic response into its selected local calendar days. It does not fetch, store or change source records. Generic `TimeSeries` behavior is unchanged.
+`normalizeShopDailyData(rows, startExclusive, endInclusive)` projects an authorized, successfully loaded **complete** shop-statistic response into its selected local calendar days. It does not fetch, store or change source records.
 
 - The start date is excluded; the end date is included. Local `setDate` iteration preserves calendar slots across daylight-saving changes. Generated timestamps use `YYYY-MM-DDT00:00:00`, so parsing cannot shift them to a previous day west of UTC.
 - Keep the first observed row for each local day, using the existing `DateConverter` parser. Return only the selected dates, in order. Recorded rows are shallow copied without changing fields or nested payloads; partial, null, zero and signed values remain intact.
@@ -10,10 +10,12 @@
 
 Callers must distinguish a complete empty array from denied/unloaded data, failed requests and incremental responses. Supply an earlier observed stock baseline when available; never seed historical days from current inventory or a later row.
 
+`TimeSeries.lasDaysDataPack()` initializes each newly observed field before filtering the requested window, so later recorded rows may add timestamps, strings or counters absent from leading display-only days. One-day timestamps remain scalars; longer windows collect strings in arrays. Finance totals still merge by currency, without adding identity fields or late string metadata as amounts.
+
 Run the isolated actual-source checks without an application, network or build:
 
 ```text
 node @selldone/core-js/timeserie/ShopDailyData.test.mjs
 ```
 
-The checks cover exact 0/1/7/30/90-day scopes and offsets, UTC/New York/Berlin/Dubai, DST, stock zero/carry/unknown prefixes, native currencies and signed/null values, first-row deduplication, malformed/outside rows, immutable inputs and idempotency.
+The checks cover exact 0/1/7/30/90-day scopes and offsets, UTC/New York/Berlin/Dubai, DST, stock zero/carry/unknown prefixes, native currencies and signed/null values, first-row deduplication, malformed/outside rows, immutable inputs and idempotency. They also construct the real `TimeSeries` from leading filled days followed by heterogeneous recorded rows and verify day/week aggregation, late keys, currency merges and source immutability.

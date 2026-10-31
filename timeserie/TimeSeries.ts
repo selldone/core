@@ -652,34 +652,29 @@ export class TimeSeries {
 
     const out: Record<string, number | string | []> = {};
 
-    let initialize = false;
-
     this.raw_data.forEach((item) => {
-      // Fill with zero values:
-      if (!initialize) {
-        // Initialize value with first item
-        for (const key in item) {
-          // For date:
-          if (days === 1 && ["created_at", "updated_at"].includes(key)) {
-            // Just for 1 day set date (otherwise it will be array)
-            out[key] = new Date().addDays(-offset).toISOString();
-          }
-          // For strings:
-          else if (
-            typeof item[key] === "string" ||
-            item[key] instanceof String
-          ) {
-            out[key] = [];
-          }
-          //For finances:
-          else if (key === "finances") {
-            out[key] = [];
-          } else {
-            out[key] = 0;
-          }
-          initialize = true;
+      // Later records can include keys omitted from earlier display-only days.
+      for (const key in item) {
+        if (Object.prototype.hasOwnProperty.call(out, key)) continue;
+        // For date:
+        if (days === 1 && ["created_at", "updated_at"].includes(key)) {
+          // Just for 1 day set date (otherwise it will be array)
+          out[key] = new Date().addDays(-offset).toISOString();
         }
-      } // end !initialize
+        // For strings:
+        else if (
+          typeof item[key] === "string" ||
+          item[key] instanceof String
+        ) {
+          out[key] = [];
+        }
+        //For finances:
+        else if (key === "finances") {
+          out[key] = [];
+        } else {
+          out[key] = 0;
+        }
+      }
 
       if (!DateConverter.inDayRange(item.created_at, days, offset)) return;
 
@@ -712,16 +707,19 @@ export class TimeSeries {
               // If find previous value:
               Object.keys(finance).forEach((finance_key) => {
                 const finance_value = found[finance_key];
+                const incoming_value = finance[finance_key];
 
                 if (
                   typeof finance_value === "string" ||
                   finance_value instanceof String ||
+                  typeof incoming_value === "string" ||
+                  incoming_value instanceof String ||
                   IGNORED_KEYS.includes(finance_key)
                 )
                   return; // Dont add string values like currency, created_at & ...!
                 found[finance_key] =
                   (finance_value ? finance_value : 0) +
-                  (finance[finance_key] ? finance[finance_key] : 0);
+                  (incoming_value ? incoming_value : 0);
               });
             } else {
               // Set current value if not exist:

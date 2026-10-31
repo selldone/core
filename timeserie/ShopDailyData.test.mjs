@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import ts from "typescript";
+import { isEmpty } from "lodash-es";
 
 // Execute the actual helper and DateConverter without application bootstrap or APIs.
 const modules = new Map();
@@ -30,6 +31,7 @@ function load(url) {
       String,
       Intl,
       require: (name) => {
+        if (name === "lodash-es") return { isEmpty };
         assert.ok(
           name.startsWith("."),
           "Only local date/source modules are loaded",
@@ -47,6 +49,7 @@ const { normalizeShopDailyData } = load(
 const { DateConverter } = load(
   new URL("../helper/date/DateConverter.ts", import.meta.url),
 );
+const { TimeSeries } = load(new URL("./TimeSeries.ts", import.meta.url));
 const plain = (value) => JSON.parse(JSON.stringify(value));
 const localDate = (day, hour = 0) => new Date(2026, 9, day, hour);
 const dayKey = (date) =>
@@ -336,6 +339,119 @@ try {
   if (originalTimezone === undefined) delete process.env.TZ;
   else process.env.TZ = originalTimezone;
 }
+
+const today = new Date();
+today.setHours(12, 0, 0, 0);
+const daysAgo = (days) => {
+  const date = new Date(today);
+  date.setDate(date.getDate() - days);
+  return date;
+};
+const observations = freeze([
+  {
+    id: 701,
+    shop_id: 3,
+    data_id: 41,
+    created_at: daysAgo(2).toISOString(),
+    updated_at: daysAgo(2).toISOString(),
+    views: 4,
+    late_count: 3,
+    source: "recorded-one",
+    finances: [
+      {
+        id: 9,
+        data_id: 701,
+        currency: "USD",
+        pay: 10,
+        sell: 12,
+        discount: 2,
+        created_at: daysAgo(2).toISOString(),
+        updated_at: daysAgo(2).toISOString(),
+      },
+    ],
+  },
+  {
+    id: 702,
+    shop_id: 3,
+    data_id: 42,
+    created_at: daysAgo(1).toISOString(),
+    updated_at: daysAgo(1).toISOString(),
+    views: 6,
+    late_count: 5,
+    source: "recorded-two",
+    finances: [
+      {
+        id: 10,
+        data_id: 702,
+        currency: "USD",
+        pay: -2,
+        sell: -3,
+        discount: 1,
+        late_amount: 4,
+        created_at: daysAgo(1).toISOString(),
+        updated_at: daysAgo(1).toISOString(),
+      },
+      { id: 11, data_id: 702, currency: "EUR", pay: 7, sell: 8, discount: 1 },
+    ],
+  },
+]);
+const observationsBefore = JSON.stringify(observations);
+const display = normalizeShopDailyData(observations, daysAgo(7), today);
+assert.equal(display[0].updated_at, undefined);
+assert.equal(display[0].id, undefined);
+const series = new TimeSeries(display, "Heterogeneous daily rows", 0, 7);
+const week = series.lastWeekData();
+assert.equal(week.views, 10);
+assert.equal(
+  week.late_count,
+  8,
+  "Later numeric keys are initialized and summed",
+);
+assert.deepEqual(plain(week.source), ["recorded-one", "recorded-two"]);
+assert.deepEqual(
+  plain(week.updated_at),
+  observations.map((row) => row.updated_at),
+);
+assert.equal(
+  week.created_at.length,
+  7,
+  "Multiple-day dates retain their array shape",
+);
+for (const key of ["id", "shop_id", "data_id"]) assert.equal(week[key], 0);
+const usd = week.finances.find((finance) => finance.currency === "USD");
+const eur = week.finances.find((finance) => finance.currency === "EUR");
+assert.deepEqual(
+  [usd.pay, usd.sell, usd.discount, usd.late_amount],
+  [8, 9, 3, 4],
+);
+assert.deepEqual([eur.pay, eur.sell, eur.discount], [7, 8, 1]);
+for (const key of ["id", "data_id", "created_at", "updated_at"])
+  assert.equal(
+    usd[key],
+    undefined,
+    "Late finance identity/metadata is not added as money",
+  );
+const yesterday = series.lasDaysDataPack(1, 1);
+assert.equal(yesterday.created_at, observations[1].created_at);
+assert.equal(yesterday.updated_at, observations[1].updated_at);
+assert.equal(yesterday.views, 6);
+assert.deepEqual(plain(yesterday.source), ["recorded-two"]);
+assert.equal(
+  yesterday.finances[0].updated_at,
+  observations[1].finances[0].updated_at,
+);
+const outside = series.lasDaysDataPack(1, 10);
+assert.equal(outside.views, 0);
+assert.equal(outside.late_count, 0);
+assert.deepEqual(plain(outside.source), []);
+assert.deepEqual(plain(outside.finances), []);
+assert.equal(typeof outside.created_at, "string");
+assert.equal(typeof outside.updated_at, "string");
+assert.equal(
+  JSON.stringify(observations),
+  observationsBefore,
+  "Aggregation preserves frozen source rows",
+);
 console.log(
-  "Shop daily ranges, DST/local dates, event zeros, stock carry, native currencies, partial rows, and immutability passed.",
+  "Shop daily ranges, DST/local dates, event zeros, stock carry, native currencies, partial rows, TimeSeries aggregation, and immutability passed.",
 );
