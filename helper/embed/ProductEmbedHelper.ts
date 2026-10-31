@@ -18,6 +18,18 @@ import {Product, Shop} from "../../models";
  * Helper for generating embeddable product iframe markup.
  */
 export class ProductEmbedHelper {
+  /** Resolve the configured embed host before code is pasted into another website. */
+  static ProductIframeUrl(shop: Shop, product: Product): string {
+    const url = new URL(
+      window.URLS.ProductIframeUrl(shop, product),
+      window.location.origin,
+    );
+    if (url.protocol !== "https:" && url.protocol !== "http:") {
+      throw new Error("Product embeds require an HTTP(S) URL.");
+    }
+    return url.href;
+  }
+
   /**
    * Builds an HTML iframe string that renders the embeddable product page.
    *
@@ -26,7 +38,12 @@ export class ProductEmbedHelper {
    * @returns {string} HTML iframe markup pointing to the product embed URL.
    */
   static ProductIframe(shop: Shop, product: Product) {
-    const url = window.URLS.ProductIframeUrl(shop, product);
-    return `<iframe src="${url}" style="width:100%; max-width:100%;height: 640px;max-height: 100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    const entities: Record<string, string> = {
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    };
+    const escapeAttribute = (value: unknown) =>
+      String(value ?? "").replace(/[&<>"']/g, (character) => entities[character]);
+    const url = ProductEmbedHelper.ProductIframeUrl(shop, product);
+    return `<iframe src="${escapeAttribute(url)}" title="${escapeAttribute(product.title)}" style="width:100%; max-width:100%;height: 640px;max-height: 100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   }
 }

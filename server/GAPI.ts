@@ -101,20 +101,6 @@ export class GAPI {
     return `${this.selldone_gapi_url}/gateways/${currency}`;
   }
 
-  //―――――――――――――――――――――― APIS PLAYGROUND ――――――――――――――――――――
-
-  GET_APIS_OWNER_FOLDERS() {
-    return `${this.selldone_gapi_url}/apps/api/owner`;
-  }
-
-  GET_APIS_OWNER_FOLDER_ITEM(folder: string) {
-    return `${this.selldone_gapi_url}/apps/api/owner/${folder}`;
-  }
-
-  GET_APIS_OWNER_ITEM_DETAIL(folder: string, item: string) {
-    return `${this.selldone_gapi_url}/apps/api/owner/${folder}/${item}`;
-  }
-
   //―――――――――――――――――――――― Official Pages ――――――――――――――――――――
   GET_OFFICIAL_PAGE(language: string, page: string) {
     return `${this.selldone_gapi_url}/official-pages/${language}/${page}`;
