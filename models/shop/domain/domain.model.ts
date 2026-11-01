@@ -75,6 +75,9 @@ export class Domain {
   /** User-provided domain info. Source: nullable JSON `shop_domains.info`. */
   info!: Record<string, unknown> | null;
 
+  /** Last observed delivery provider, projected for Backoffice only; null until checked. */
+  connection_provider?: Domain.ConnectionProvider | null;
+
   /** Admin-only debug details. Source: nullable JSON `shop_domains.debug`; hidden by default. */
   debug?: Record<string, unknown> | null;
 
@@ -111,6 +114,12 @@ export class Domain {
 }
 
 export namespace Domain {
+  export type ConnectionProvider = {
+    id: 'selldone' | 'cloudflare' | 'google_cloud' | 'cloudfront' | 'fastly' | 'akamai' | 'azure' | 'vercel' | 'bunny' | 'arvancloud' | 'unknown';
+    source: 'destination' | 'response_headers';
+    checked_at: string;
+  };
+
   /** Domain home target stored in `shop_domains.home`. */
   export type HomeTarget = string | null;
 

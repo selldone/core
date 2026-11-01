@@ -71,6 +71,7 @@ export class DomainsHelper {
         ssl: item.ssl,
         error: item.error,
         certificate: item.certificate,
+        connection_provider: item.connection_provider ?? null,
       });
     });
 
