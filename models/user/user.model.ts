@@ -148,6 +148,9 @@ export namespace User {
     currency?: string;
     provider?: boolean;
     calendar?: string;
+    /** Personal POS composition, independent of the catalog presentation. */
+    pos_layout?: 'workspace' | 'register-first';
+    pos_catalog_view?: 'grid' | 'list';
     /** Personal backoffice stars; membership never grants shop access. */
     favorite_shop_ids?: number[];
   }
