@@ -32,7 +32,6 @@ const EVENT_KEYS = [
   "hyper_rejects",
   "views",
   "page_views",
-  "amp",
   "new_visitors",
   "returning_visitors",
   "likes",
@@ -112,7 +111,10 @@ export function normalizeShopDailyData(
     const row = recorded.get(cursor.getTime());
     if (row) {
       updateStocks(row);
-      result.push({ ...row });
+      const displayRow = { ...row };
+      // Historical responses can still contain the retired counter.
+      delete displayRow.amp;
+      result.push(displayRow);
       continue;
     }
     // No UTC date-only string: it would parse as the previous local day west of UTC.

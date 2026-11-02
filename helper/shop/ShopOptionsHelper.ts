@@ -59,17 +59,6 @@ export class ShopOptionsHelper {
   }
 
   /**
-   * Returns whether AMP pages are enabled.
-   * @param {Shop} shop - Shop configuration.
-   * @returns {*} AMP option value or `false` when unset.
-   */
-  static GetAmp(shop: Shop) {
-    const amp_option =
-      shop.options && shop.options.find((e) => e.code === "amp");
-    return amp_option ? amp_option.value : false;
-  }
-
-  /**
    * Returns boost-mode configuration for category/product pages.
    * @param {Shop} shop - Shop configuration.
    * @returns {{ product: any; category: any } | *} Boost configuration.

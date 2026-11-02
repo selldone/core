@@ -355,6 +355,7 @@ const observations = freeze([
     created_at: daysAgo(2).toISOString(),
     updated_at: daysAgo(2).toISOString(),
     views: 4,
+    amp: 30,
     late_count: 3,
     source: "recorded-one",
     finances: [
@@ -377,6 +378,7 @@ const observations = freeze([
     created_at: daysAgo(1).toISOString(),
     updated_at: daysAgo(1).toISOString(),
     views: 6,
+    amp: 400,
     late_count: 5,
     source: "recorded-two",
     finances: [
@@ -397,10 +399,15 @@ const observations = freeze([
 ]);
 const observationsBefore = JSON.stringify(observations);
 const display = normalizeShopDailyData(observations, daysAgo(7), today);
+assert.ok(
+  display.every((row) => !Object.hasOwn(row, "amp")),
+  "Recorded and missing days omit the retired AMP counter",
+);
 assert.equal(display[0].updated_at, undefined);
 assert.equal(display[0].id, undefined);
 const series = new TimeSeries(display, "Heterogeneous daily rows", 0, 7);
 const week = series.lastWeekData();
+assert.equal(Object.hasOwn(week, "amp"), false);
 assert.equal(week.views, 10);
 assert.equal(
   week.late_count,
@@ -432,6 +439,7 @@ for (const key of ["id", "data_id", "created_at", "updated_at"])
     "Late finance identity/metadata is not added as money",
   );
 const yesterday = series.lasDaysDataPack(1, 1);
+assert.equal(Object.hasOwn(yesterday, "amp"), false);
 assert.equal(yesterday.created_at, observations[1].created_at);
 assert.equal(yesterday.updated_at, observations[1].updated_at);
 assert.equal(yesterday.views, 6);

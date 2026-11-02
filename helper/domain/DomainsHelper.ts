@@ -43,6 +43,7 @@ export class DomainsHelper {
             official: "local",
             name: `@${shop.name}`,
             ssl: true,
+            layout_summary: shop.local?.layout_summary,
           },
           {
             url: `https://${shop.name}.${SetupService.ShopsDomain()}`,
@@ -53,6 +54,7 @@ export class DomainsHelper {
             official: "sub",
             name: "Sub domain",
             ssl: true,
+            layout_summary: shop.sub?.layout_summary,
           },
         ]
       : [];
@@ -72,6 +74,7 @@ export class DomainsHelper {
         error: item.error,
         certificate: item.certificate,
         connection_provider: item.connection_provider ?? null,
+        layout_summary: item.layout_summary,
       });
     });
 

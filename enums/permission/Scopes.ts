@@ -12,6 +12,8 @@
  * Tread carefully, for you're treading on dreams.
  */
 
+import { getScopeIcon } from "./ScopeIcons";
+
 export const ScopeGroup = {
   Backoffice: {
     title: "scope_group.backoffice.title",
@@ -68,21 +70,21 @@ export const Scopes = {
     group: ScopeGroup.Profile,
     code: "profile",
     name: "scopes.profile.name",
-    icon: "fa:fas fa-id-badge",
+    icon: getScopeIcon("profile"),
     description: "scopes.profile.description",
   },
   phone: {
     group: ScopeGroup.Profile,
     code: "phone",
     name: "scopes.phone.name",
-    icon: "fa:fas fa-phone",
+    icon: getScopeIcon("phone"),
     description: "scopes.phone.description",
   },
   address: {
     group: ScopeGroup.Profile,
     code: "address",
     name: "scopes.address.name",
-    icon: "fa:fas fa-address-book",
+    icon: getScopeIcon("address"),
     description: "scopes.address.description",
   },
 
@@ -91,7 +93,7 @@ export const Scopes = {
     code: "user:profile:write",
     name: "scopes.user:profile:write.name",
     description: "scopes.user:profile:write.description",
-    icon: "user",
+    icon: getScopeIcon("user:profile:write"),
   },
 
   /**
@@ -102,14 +104,14 @@ export const Scopes = {
     code: "vendor-read",
     name: "scopes.vendor-read.name",
     description: "scopes.vendor-read.description",
-    icon: "storefront",
+    icon: getScopeIcon("vendor-read"),
   },
   "vendor-write": {
     group: ScopeGroup.Vendor,
     code: "vendor-write",
     name: "scopes.vendor-write.name",
     description: "scopes.vendor-write.description",
-    icon: "storefront",
+    icon: getScopeIcon("vendor-write"),
   },
 
   /**
@@ -120,14 +122,14 @@ export const Scopes = {
     code: "connect:provider:write",
     name: "scopes.connect:provider:write.name",
     description: "scopes.connect:provider:write.description",
-    icon: "settings_ethernet",
+    icon: getScopeIcon("connect:provider:write"),
   },
   "connect:provider:read": {
     group: ScopeGroup.Connect,
     code: "connect:provider:read",
     name: "scopes.connect:provider:read.name",
     description: "scopes.connect:provider:read.description",
-    icon: "settings_ethernet",
+    icon: getScopeIcon("connect:provider:read"),
   },
 
   /**
@@ -137,21 +139,21 @@ export const Scopes = {
     group: ScopeGroup.Storefront,
     code: "buy",
     name: "scopes.buy.name",
-    icon: "fa:fas fa-shopping-cart",
+    icon: getScopeIcon("buy"),
     description: "scopes.buy.description",
   },
   "order-history": {
     group: ScopeGroup.Storefront,
     code: "order-history",
     name: "scopes.order-history.name",
-    icon: "fa:fas fa-history",
+    icon: getScopeIcon("order-history"),
     description: "scopes.order-history.description",
   },
   "my-gift-cards": {
     group: ScopeGroup.Storefront,
     code: "my-gift-cards",
     name: "scopes.my-gift-cards.name",
-    icon: "fa:fas fa-gift",
+    icon: getScopeIcon("my-gift-cards"),
     description: "scopes.my-gift-cards.description",
   },
 
@@ -163,7 +165,7 @@ export const Scopes = {
     code: "backoffice:notifications",
     name: "scopes.backoffice:notifications.name",
     description: "scopes.backoffice:notifications.description",
-    icon: "notifications",
+    icon: getScopeIcon("backoffice:notifications"),
   },
   /**
    * ━━━━━━━━━━━━━━━ backoffice:shops ━━━━━━━━━━━━━━━
@@ -173,7 +175,7 @@ export const Scopes = {
     code: "backoffice:shop:read",
     name: "scopes.backoffice:shop:read.name",
     description: "scopes.backoffice:shop:read.description",
-    icon: "storefront",
+    icon: getScopeIcon("backoffice:shop:read"),
   },
 
   "backoffice:shop:write": {
@@ -181,7 +183,7 @@ export const Scopes = {
     code: "backoffice:shop:write",
     name: "scopes.backoffice:shop:write.name",
     description: "scopes.backoffice:shop:write.description",
-    icon: "storefront",
+    icon: getScopeIcon("backoffice:shop:write"),
   },
 
   "backoffice:shop:add": {
@@ -189,14 +191,14 @@ export const Scopes = {
     code: "backoffice:shop:add",
     name: "scopes.backoffice:shop:add.name",
     description: "scopes.backoffice:shop:add.description",
-    icon: "storefront",
+    icon: getScopeIcon("backoffice:shop:add"),
   },
   "backoffice:shop:delete": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:shop:delete",
     name: "scopes.backoffice:shop:delete.name",
     description: "scopes.backoffice:shop:delete.description",
-    icon: "storefront",
+    icon: getScopeIcon("backoffice:shop:delete"),
   },
 
   /**
@@ -207,7 +209,7 @@ export const Scopes = {
     code: "articles",
     name: "scopes.articles.name",
     description: "scopes.articles.description",
-    icon: "article",
+    icon: getScopeIcon("articles"),
   },
 
   /**
@@ -218,14 +220,14 @@ export const Scopes = {
     code: "backoffice:wallet:write",
     name: "scopes.backoffice:wallet:write.name",
     description: "scopes.backoffice:wallet:write.description",
-    icon: "account_balance_wallet",
+    icon: getScopeIcon("backoffice:wallet:write"),
   },
   "backoffice:wallet:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:wallet:read",
     name: "scopes.backoffice:wallet:read.name",
     description: "scopes.backoffice:wallet:read.description",
-    icon: "account_balance_wallet",
+    icon: getScopeIcon("backoffice:wallet:read"),
   },
 
   /**
@@ -237,7 +239,7 @@ export const Scopes = {
     code: "backoffice:support-tickets",
     name: "scopes.backoffice:support-tickets.name",
     description: "scopes.backoffice:support-tickets.description",
-    icon: "support_agent",
+    icon: getScopeIcon("backoffice:support-tickets"),
   },
 
   /**
@@ -248,14 +250,14 @@ export const Scopes = {
     code: "backoffice:giftcard:write",
     name: "scopes.backoffice:giftcard:write.name",
     description: "scopes.backoffice:giftcard:write.description",
-    icon: "card_giftcard",
+    icon: getScopeIcon("backoffice:giftcard:write"),
   },
   "backoffice:giftcard:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:giftcard:read",
     name: "scopes.backoffice:giftcard:read.name",
     description: "scopes.backoffice:giftcard:read.description",
-    icon: "card_giftcard",
+    icon: getScopeIcon("backoffice:giftcard:read"),
   },
 
   /**
@@ -266,14 +268,14 @@ export const Scopes = {
     code: "backoffice:faq:write",
     name: "scopes.backoffice:faq:write.name",
     description: "scopes.backoffice:faq:write.description",
-    icon: "quiz",
+    icon: getScopeIcon("backoffice:faq:write"),
   },
   "backoffice:faq:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:faq:read",
     name: "scopes.backoffice:faq:read.name",
     description: "scopes.backoffice:faq:read.description",
-    icon: "quiz",
+    icon: getScopeIcon("backoffice:faq:read"),
   },
 
   /**
@@ -285,14 +287,14 @@ export const Scopes = {
     code: "backoffice:category:write",
     name: "scopes.backoffice:category:write.name",
     description: "scopes.backoffice:category:write.description",
-    icon: "folder_open",
+    icon: getScopeIcon("backoffice:category:write"),
   },
   "backoffice:category:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:category:read",
     name: "scopes.backoffice:category:read.name",
     description: "scopes.backoffice:category:read.description",
-    icon: "folder_open",
+    icon: getScopeIcon("backoffice:category:read"),
   },
 
   /**
@@ -303,14 +305,14 @@ export const Scopes = {
     code: "backoffice:product:write",
     name: "scopes.backoffice:product:write.name",
     description: "scopes.backoffice:product:write.description",
-    icon: "shelves",
+    icon: getScopeIcon("backoffice:product:write"),
   },
   "backoffice:product:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:product:read",
     name: "scopes.backoffice:product:read.name",
     description: "scopes.backoffice:product:read.description",
-    icon: "shelves",
+    icon: getScopeIcon("backoffice:product:read"),
   },
 
   /**
@@ -321,7 +323,7 @@ export const Scopes = {
     code: "backoffice:report:read",
     name: "scopes.backoffice:report:read.name",
     description: "scopes.backoffice:report:read.description",
-    icon: "insights",
+    icon: getScopeIcon("backoffice:report:read"),
   },
 
   /**
@@ -332,14 +334,14 @@ export const Scopes = {
     code: "backoffice:finance:write",
     name: "scopes.backoffice:finance:write.name",
     description: "scopes.backoffice:finance:write.description",
-    icon: "payment",
+    icon: getScopeIcon("backoffice:finance:write"),
   },
   "backoffice:finance:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:finance:read",
     name: "scopes.backoffice:finance:read.name",
     description: "scopes.backoffice:finance:read.description",
-    icon: "payment",
+    icon: getScopeIcon("backoffice:finance:read"),
   },
 
   /**
@@ -350,14 +352,14 @@ export const Scopes = {
     code: "backoffice:page:write",
     name: "scopes.backoffice:page:write.name",
     description: "scopes.backoffice:page:write.description",
-    icon: "architecture",
+    icon: getScopeIcon("backoffice:page:write"),
   },
   "backoffice:page:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:page:read",
     name: "scopes.backoffice:page:read.name",
     description: "scopes.backoffice:page:read.description",
-    icon: "architecture",
+    icon: getScopeIcon("backoffice:page:read"),
   },
 
   /**
@@ -369,14 +371,14 @@ export const Scopes = {
     code: "backoffice:logistic:write",
     name: "scopes.backoffice:logistic:write.name",
     description: "scopes.backoffice:logistic:write.description",
-    icon: "local_shipping",
+    icon: getScopeIcon("backoffice:logistic:write"),
   },
   "backoffice:logistic:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:logistic:read",
     name: "scopes.backoffice:logistic:read.name",
     description: "scopes.backoffice:logistic:read.description",
-    icon: "local_shipping",
+    icon: getScopeIcon("backoffice:logistic:read"),
   },
 
   /**
@@ -387,14 +389,14 @@ export const Scopes = {
     code: "backoffice:staff:write",
     name: "scopes.backoffice:staff:write.name",
     description: "scopes.backoffice:staff:write.description",
-    icon: "badge",
+    icon: getScopeIcon("backoffice:staff:write"),
   },
   "backoffice:staff:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:staff:read",
     name: "scopes.backoffice:staff:read.name",
     description: "scopes.backoffice:staff:read.description",
-    icon: "badge",
+    icon: getScopeIcon("backoffice:staff:read"),
   },
 
   /**
@@ -405,14 +407,14 @@ export const Scopes = {
     code: "backoffice:business-profile:write",
     name: "scopes.backoffice:business-profile:write.name",
     description: "scopes.backoffice:business-profile:write.description",
-    icon: "business",
+    icon: getScopeIcon("backoffice:business-profile:write"),
   },
   "backoffice:business-profile:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:business-profile:read",
     name: "scopes.backoffice:business-profile:read.name",
     description: "scopes.backoffice:business-profile:read.description",
-    icon: "business",
+    icon: getScopeIcon("backoffice:business-profile:read"),
   },
 
   /**
@@ -423,14 +425,14 @@ export const Scopes = {
     code: "backoffice:discount-code:write",
     name: "scopes.backoffice:discount-code:write.name",
     description: "scopes.backoffice:discount-code:write.description",
-    icon: "discount",
+    icon: getScopeIcon("backoffice:discount-code:write"),
   },
   "backoffice:discount-code:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:discount-code:read",
     name: "scopes.backoffice:discount-code:read.name",
     description: "scopes.backoffice:discount-code:read.description",
-    icon: "discount",
+    icon: getScopeIcon("backoffice:discount-code:read"),
   },
 
   /**
@@ -441,14 +443,14 @@ export const Scopes = {
     code: "backoffice:order:read",
     name: "scopes.backoffice:order:read.name",
     description: "scopes.backoffice:order:read.description",
-    icon: "conveyor_belt",
+    icon: getScopeIcon("backoffice:order:read"),
   },
   "backoffice:order:write": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:order:write",
     name: "scopes.backoffice:order:write.name",
     description: "scopes.backoffice:order:write.description",
-    icon: "conveyor_belt",
+    icon: getScopeIcon("backoffice:order:write"),
   },
 
 
@@ -460,14 +462,14 @@ export const Scopes = {
     code: "backoffice:coupon:write",
     name: "scopes.backoffice:coupon:write.name",
     description: "scopes.backoffice:coupon:write.description",
-    icon: "confirmation_number",
+    icon: getScopeIcon("backoffice:coupon:write"),
   },
   "backoffice:coupon:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:coupon:read",
     name: "scopes.backoffice:coupon:read.name",
     description: "scopes.backoffice:coupon:read.description",
-    icon: "confirmation_number",
+    icon: getScopeIcon("backoffice:coupon:read"),
   },
 
   /**
@@ -478,14 +480,14 @@ export const Scopes = {
     code: "backoffice:offer:write",
     name: "scopes.backoffice:offer:write.name",
     description: "scopes.backoffice:offer:write.description",
-    icon: "local_activity",
+    icon: getScopeIcon("backoffice:offer:write"),
   },
   "backoffice:offer:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:offer:read",
     name: "scopes.backoffice:offer:read.name",
     description: "scopes.backoffice:offer:read.description",
-    icon: "local_activity",
+    icon: getScopeIcon("backoffice:offer:read"),
   },
 
   /**
@@ -496,14 +498,14 @@ export const Scopes = {
     code: "backoffice:cashback:write",
     name: "scopes.backoffice:cashback:write.name",
     description: "scopes.backoffice:cashback:write.description",
-    icon: "money",
+    icon: getScopeIcon("backoffice:cashback:write"),
   },
   "backoffice:cashback:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:cashback:read",
     name: "scopes.backoffice:cashback:read.name",
     description: "scopes.backoffice:cashback:read.description",
-    icon: "money",
+    icon: getScopeIcon("backoffice:cashback:read"),
   },
 
   /**
@@ -514,14 +516,14 @@ export const Scopes = {
     code: "backoffice:lottery:write",
     name: "scopes.backoffice:lottery:write.name",
     description: "scopes.backoffice:lottery:write.description",
-    icon: "casino",
+    icon: getScopeIcon("backoffice:lottery:write"),
   },
   "backoffice:lottery:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:lottery:read",
     name: "scopes.backoffice:lottery:read.name",
     description: "scopes.backoffice:lottery:read.description",
-    icon: "casino",
+    icon: getScopeIcon("backoffice:lottery:read"),
   },
   /**
    * ━━━━━━━━━━━━━━━ backoffice:community ━━━━━━━━━━━━━━━
@@ -531,14 +533,14 @@ export const Scopes = {
     code: "backoffice:community:write",
     name: "scopes.backoffice:community:write.name",
     description: "scopes.backoffice:community:write.description",
-    icon: "diversity_2",
+    icon: getScopeIcon("backoffice:community:write"),
   },
   "backoffice:community:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:community:read",
     name: "scopes.backoffice:community:read.name",
     description: "scopes.backoffice:community:read.description",
-    icon: "diversity_2",
+    icon: getScopeIcon("backoffice:community:read"),
   },
   /**
    * ━━━━━━━━━━━━━━━ backoffice:customer ━━━━━━━━━━━━━━━
@@ -548,14 +550,14 @@ export const Scopes = {
     code: "backoffice:customer:write",
     name: "scopes.backoffice:customer:write.name",
     description: "scopes.backoffice:customer:write.description",
-    icon: "groups",
+    icon: getScopeIcon("backoffice:customer:write"),
   },
   "backoffice:customer:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:customer:read",
     name: "scopes.backoffice:customer:read.name",
     description: "scopes.backoffice:customer:read.description",
-    icon: "groups",
+    icon: getScopeIcon("backoffice:customer:read"),
   },
 
   /**
@@ -566,14 +568,14 @@ export const Scopes = {
     code: "backoffice:ribbon:write",
     name: "scopes.backoffice:ribbon:write.name",
     description: "scopes.backoffice:ribbon:write.description",
-    icon: "subscriptions",
+    icon: getScopeIcon("backoffice:ribbon:write"),
   },
   "backoffice:ribbon:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:ribbon:read",
     name: "scopes.backoffice:ribbon:read.name",
     description: "scopes.backoffice:ribbon:read.description",
-    icon: "subscriptions",
+    icon: getScopeIcon("backoffice:ribbon:read"),
   },
 
   /**
@@ -584,14 +586,14 @@ export const Scopes = {
     code: "backoffice:ai:write",
     name: "scopes.backoffice:ai:write.name",
     description: "scopes.backoffice:ai:write.description",
-    icon: "auto_awesome",
+    icon: getScopeIcon("backoffice:ai:write"),
   },
   "backoffice:ai:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:ai:read",
     name: "scopes.backoffice:ai:read.name",
     description: "scopes.backoffice:ai:read.description",
-    icon: "auto_awesome",
+    icon: getScopeIcon("backoffice:ai:read"),
   },
 
   /**
@@ -602,14 +604,14 @@ export const Scopes = {
     code: "backoffice:vendor-payment:write",
     name: "scopes.backoffice:vendor-payment:write.name",
     description: "scopes.backoffice:vendor-payment:write.description",
-    icon: "payment",
+    icon: getScopeIcon("backoffice:vendor-payment:write"),
   },
   "backoffice:vendor-payment:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:vendor-payment:read",
     name: "scopes.backoffice:vendor-payment:read.name",
     description: "scopes.backoffice:vendor-payment:read.description",
-    icon: "payment",
+    icon: getScopeIcon("backoffice:vendor-payment:read"),
   },
 
   /**
@@ -620,14 +622,14 @@ export const Scopes = {
     code: "backoffice:company:read",
     name: "scopes.backoffice:company:read.name",
     description: "scopes.backoffice:company:read.description",
-    icon: "corporate_fare",
+    icon: getScopeIcon("backoffice:company:read"),
   },
   "backoffice:company:write": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:company:write",
     name: "scopes.backoffice:company:write.name",
     description: "scopes.backoffice:company:write.description",
-    icon: "corporate_fare",
+    icon: getScopeIcon("backoffice:company:write"),
   },
 
   /**
@@ -638,14 +640,14 @@ export const Scopes = {
     code: "backoffice:note:read",
     name: "scopes.backoffice:note:read.name",
     description: "scopes.backoffice:note:read.description",
-    icon: "note",
+    icon: getScopeIcon("backoffice:note:read"),
   },
   "backoffice:note:write": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:note:write",
     name: "scopes.backoffice:note:write.name",
     description: "scopes.backoffice:note:write.description",
-    icon: "note",
+    icon: getScopeIcon("backoffice:note:write"),
   },
 
   /**
@@ -656,14 +658,14 @@ export const Scopes = {
     code: "backoffice:affiliate:write",
     name: "scopes.backoffice:affiliate:write.name",
     description: "scopes.backoffice:affiliate:write.description",
-    icon: "handshake",
+    icon: getScopeIcon("backoffice:affiliate:write"),
   },
   "backoffice:affiliate:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:affiliate:read",
     name: "scopes.backoffice:affiliate:read.name",
     description: "scopes.backoffice:affiliate:read.description",
-    icon: "handshake",
+    icon: getScopeIcon("backoffice:affiliate:read"),
   },
 
   /**
@@ -674,14 +676,14 @@ export const Scopes = {
     code: "backoffice:print:write",
     name: "scopes.backoffice:print:write.name",
     description: "scopes.backoffice:print:write.description",
-    icon: "print",
+    icon: getScopeIcon("backoffice:print:write"),
   },
   "backoffice:print:read": {
     group: ScopeGroup.Backoffice,
     code: "backoffice:print:read",
     name: "scopes.backoffice:print:read.name",
     description: "scopes.backoffice:print:read.description",
-    icon: "print",
+    icon: getScopeIcon("backoffice:print:read"),
   },
 
   /**
@@ -692,14 +694,14 @@ export const Scopes = {
     code: "selldone:monetization:read",
     name: "scopes.selldone:monetization:read.name",
     description: "scopes.selldone:monetization:read.description",
-    icon: "savings",
+    icon: getScopeIcon("selldone:monetization:read"),
   },
   "selldone:monetization:write": {
     group: ScopeGroup.Selldone,
     code: "selldone:monetization:write",
     name: "scopes.selldone:monetization:write.name",
     description: "scopes.selldone:monetization:write.description",
-    icon: "savings",
+    icon: getScopeIcon("selldone:monetization:write"),
   },
 
   /**
@@ -711,7 +713,7 @@ export const Scopes = {
     code: "selldone:identification",
     name: "scopes.selldone:identification.name",
     description: "scopes.selldone:identification.description",
-    icon: "fingerprint",
+    icon: getScopeIcon("selldone:identification"),
   },
 
   /**
@@ -722,14 +724,14 @@ export const Scopes = {
     code: "selldone:developer:read",
     name: "scopes.selldone:developer:read.name",
     description: "scopes.selldone:developer:read.description",
-    icon: "api",
+    icon: getScopeIcon("selldone:developer:read"),
   },
   "selldone:developer:write": {
     group: ScopeGroup.Selldone,
     code: "selldone:developer:write",
     name: "scopes.selldone:developer:write.name",
     description: "scopes.selldone:developer:write.description",
-    icon: "api",
+    icon: getScopeIcon("selldone:developer:write"),
   },
 
   /**
@@ -740,14 +742,14 @@ export const Scopes = {
     code: "selldone:token:read",
     name: "scopes.selldone:token:read.name",
     description: "scopes.selldone:token:read.description",
-    icon: "vpn_key",
+    icon: getScopeIcon("selldone:token:read"),
   },
   "selldone:token:write": {
     group: ScopeGroup.Selldone,
     code: "selldone:token:write",
     name: "scopes.selldone:token:write.name",
     description: "scopes.selldone:token:write.description",
-    icon: "vpn_key",
+    icon: getScopeIcon("selldone:token:write"),
   },
 
   /**
@@ -758,7 +760,7 @@ export const Scopes = {
     code: "selldone:security:write",
     name: "scopes.selldone:security:write.name",
     description: "scopes.selldone:security:write.description",
-    icon: "security",
+    icon: getScopeIcon("selldone:security:write"),
   },
 
   /**
@@ -769,13 +771,13 @@ export const Scopes = {
     code: "agency:read",
     name: "scopes.agency:read.name",
     description: "scopes.agency:read.description",
-    icon: "space_dashboard",
+    icon: getScopeIcon("agency:read"),
   },
   "agency:write": {
     group: ScopeGroup.Agency,
     code: "agency:write",
     name: "scopes.agency:write.name",
     description: "scopes.agency:write.description",
-    icon: "space_dashboard",
+    icon: getScopeIcon("agency:write"),
   },
 };
