@@ -78,6 +78,12 @@ export class Domain {
   /** Last observed delivery provider, projected for Backoffice only; null until checked. */
   connection_provider?: Domain.ConnectionProvider | null;
 
+  /** Bounded saved maintenance metadata; contains neither HTML bytes nor a storage path. */
+  maintenance_summary?: Domain.MaintenanceSummary;
+
+  /** Saved loader mode and bounded byte counts; source is only available through an explicit authorized read. */
+  loading_summary?: Domain.LoadingSummary;
+
   /** Admin-only debug details. Source: nullable JSON `shop_domains.debug`; hidden by default. */
   debug?: Record<string, unknown> | null;
 
@@ -114,6 +120,54 @@ export class Domain {
 }
 
 export namespace Domain {
+  export interface LoadingSummary {
+    mode: 'default' | 'custom' | null;
+    has_code: boolean;
+    head_bytes: number | null;
+    body_bytes: number | null;
+    updated_at: string | null;
+    supported: boolean;
+    reason: 'builtin' | 'externally_hosted' | 'migration_required' | 'invalid_configuration' | null;
+  }
+
+  export interface LoadingReadResponse {
+    loading_summary: LoadingSummary;
+    limits: { head_bytes: 15360; body_bytes: 3072 };
+    implementation_guide: string;
+    /** Explicit include_code=true only. Null means saved code is invalid/unavailable; never execute in the operator app. */
+    code?: { head: string; body: string } | null;
+  }
+
+  export interface LoadingUpdateBody {
+    mode?: 'default' | 'custom';
+    /** UTF-8 head <=15,360 bytes. Omit to preserve; null/blank clears. */
+    head?: string | null;
+    /** UTF-8 body <=3,072 bytes. Custom mode requires a nonempty body. Omit to preserve; null/blank clears. */
+    body?: string | null;
+  }
+
+  export interface MaintenanceSummary {
+    enabled: boolean;
+    has_html: boolean;
+    byte_size: number | null;
+    updated_at: string | null;
+    supported: boolean;
+    reason: 'builtin' | 'externally_hosted' | 'migration_required' | 'invalid_reference' | null;
+  }
+
+  export interface MaintenanceReadResponse {
+    maintenance_summary: MaintenanceSummary;
+    /** Returned only when include_html=true; unavailable source remains recoverable by replacement. */
+    html?: string | null;
+    html_unavailable?: boolean;
+  }
+
+  export interface MaintenanceUpdateBody {
+    enabled?: boolean;
+    /** Nonempty UTF-8 HTML, <=40,960 bytes, without NUL. Omission preserves the current file. */
+    html?: string;
+  }
+
   export type ConnectionProvider = {
     id: 'selldone' | 'cloudflare' | 'google_cloud' | 'cloudfront' | 'fastly' | 'akamai' | 'azure' | 'vercel' | 'bunny' | 'arvancloud' | 'unknown';
     source: 'destination' | 'response_headers';

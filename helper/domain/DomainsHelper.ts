@@ -44,6 +44,8 @@ export class DomainsHelper {
             name: `@${shop.name}`,
             ssl: true,
             layout_summary: shop.local?.layout_summary,
+            maintenance_summary: { enabled: false, has_html: false, byte_size: null, updated_at: null, supported: false, reason: 'builtin' },
+            loading_summary: { mode: null, has_code: false, head_bytes: null, body_bytes: null, updated_at: null, supported: false, reason: 'builtin' },
           },
           {
             url: `https://${shop.name}.${SetupService.ShopsDomain()}`,
@@ -55,6 +57,8 @@ export class DomainsHelper {
             name: "Sub domain",
             ssl: true,
             layout_summary: shop.sub?.layout_summary,
+            maintenance_summary: { enabled: false, has_html: false, byte_size: null, updated_at: null, supported: false, reason: 'builtin' },
+            loading_summary: { mode: null, has_code: false, head_bytes: null, body_bytes: null, updated_at: null, supported: false, reason: 'builtin' },
           },
         ]
       : [];
@@ -75,6 +79,8 @@ export class DomainsHelper {
         certificate: item.certificate,
         connection_provider: item.connection_provider ?? null,
         layout_summary: item.layout_summary,
+        maintenance_summary: item.maintenance_summary,
+        loading_summary: item.loading_summary,
       });
     });
 
