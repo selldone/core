@@ -13,12 +13,14 @@
  */
 
 /**
- * Global payment gateway definition.
+ * Global payment gateway: one payment service in one currency.
  *
- * Backend source: `App\Shop\Gateway\Gateway`, table `gateways`.
- * The backend hides `wallet` by default and casts `public`, `private`, `info`, `network`, `theme`, and `actions` from
- * JSON. Shop-specific merchant credentials live in {@link ShopGateway}. Data rows aggregate transaction count,
- * success count, processed amount, and wage by gateway.
+ * Backend source: `App\Storefront\Gateway\Gateway`, table `gateways`.
+ * The table stores only the per-currency operational values (fees, limits, `enable`, images, `wallet`, `network`).
+ * Type, capabilities, labels, timeout, script and the credential field structures are fixed in the payment
+ * service's `GetDefinition()` and appended to every serialized gateway, so the keys below stay available.
+ * The backend hides `wallet` by default. Shop-specific merchant credentials live in {@link ShopGateway}. Data rows
+ * aggregate transaction count, success count, processed amount, and wage by gateway.
  */
 export class Gateway implements Gateway.IGateway {
   /** Gateway id. Source: `gateways.id`. */
@@ -45,53 +47,53 @@ export class Gateway implements Gateway.IGateway {
   /** Whether the gateway is globally enabled. Source: `gateways.enable`. */
   enable!: boolean;
 
-  /** Whether the gateway accepts Selldone service charges. Source: `gateways.charge`. */
+  /** How the service collects money. Appended from the service definition. */
+  type!: Gateway.Type;
+
+  /** Whether the gateway accepts Selldone service charges. Appended from the service definition. */
   charge!: boolean;
 
-  /** Whether the gateway is available in POS. Source: `gateways.pos`. */
+  /** Whether the gateway is available in POS. Appended from the service definition. */
   pos!: boolean;
 
-  /** Whether cash-on-delivery/offline payment is supported. Source: `gateways.cod`. */
+  /** Whether this is the cash-on-delivery gateway of its currency (`type === "cod"`). */
   cod!: boolean;
 
-  /** Whether this is a cash/POS gateway. Source: `gateways.cash`. */
+  /** Whether this is the cash/POS gateway of its currency (`type === "cash"`). */
   cash!: boolean;
 
-  /** Whether direct bank/card payment with receipt upload is supported. Source: `gateways.dir`. */
+  /** Whether this is the direct bank-transfer gateway with receipt upload (`type === "dir"`). */
   dir!: boolean;
 
-  /** Whether the gateway uses Selldone blockchain wallet flow. Source: `gateways.blockchain`. */
+  /** Whether the gateway uses the Selldone blockchain wallet flow (`type === "blockchain"`). */
   blockchain!: boolean;
 
-  /** Whether subscription payments are supported. Source: `gateways.subscription`. */
+  /** Whether subscription payments are supported. Appended from the service definition. */
   subscription!: boolean;
 
-  /** Whether debug/test mode is supported. Source: `gateways.debug`. */
+  /** Whether debug/test mode is supported. Appended from the service definition. */
   debug!: boolean;
 
-  /** Whether seller manual confirmation is supported. Source: `gateways.manual`. */
+  /** Whether authorize-now / capture-later is supported. Appended from the service definition. */
   manual!: boolean;
 
-  /** Manual action options such as `refund` and `deliver`, or `null`. Source: nullable JSON `gateways.actions`. */
-  actions!: Gateway.ActionCode[] | null;
+  /** Manual action options such as `refund` and `delivery`. Appended from the service definition. */
+  actions!: Gateway.ActionCode[];
 
   /** Unique gateway/plugin code, max 16 chars. Source: `gateways.code`. */
   code!: string;
 
-  /** Gateway display name, max 24 chars. Source: `gateways.name`. */
+  /** Translated service name. Appended from `lang/{locale}/gateways.php`. */
   name!: string;
 
-  /** Gateway description, or `null`. Source: nullable text `gateways.description`. */
-  description!: string | null;
+  /** Translated service description. Appended from `lang/{locale}/gateways.php`. */
+  description!: string;
 
-  /** Public credential/config schema. Source: nullable JSON/text `gateways.public`. */
+  /** Public credential field structure (name, title, type, hint); the shop's own values when selected through a shop relation. */
   public!: Gateway.JsonPayload | null;
 
-  /** Private credential/config schema. Source: nullable JSON/text `gateways.private`. */
+  /** Private credential field structure (name, title, type, hint); the shop's own values when selected through a shop relation. */
   private!: Gateway.JsonPayload | null;
-
-  /** Gateway info schema/metadata. Source: nullable JSON/text `gateways.info`. */
-  info!: Gateway.JsonPayload | null;
 
   /** Logo URL/path, or `null`. Source: nullable text `gateways.logo`. */
   logo!: string | null;
@@ -99,16 +101,10 @@ export class Gateway implements Gateway.IGateway {
   /** Icon URL/path, or `null`. Source: nullable text `gateways.icon`. */
   icon!: string | null;
 
-  /** Video URL, or `null`. Source: nullable text `gateways.video`. */
-  video!: string | null;
-
-  /** Gateway public URL/docs URL, or `null`. Source: nullable `gateways.url`. */
+  /** Provider website, or `null`. Appended from the service definition. */
   url!: string | null;
 
-  /** Admin/frontend component URL/name, or `null`. Source: nullable text `gateways.component`. */
-  component!: string | null;
-
-  /** Payment queue timeout in seconds. Source: `gateways.timeout`. */
+  /** Payment timeout in seconds. Appended from the service definition. */
   timeout!: number;
 
   /** Gateway network status payload. Source: nullable JSON `gateways.network` cast by `GatewayNetworkStatus`. */
@@ -117,7 +113,7 @@ export class Gateway implements Gateway.IGateway {
   /** Selldone wallet payload. Source: nullable JSON `gateways.wallet`; hidden by default. */
   wallet?: Gateway.JsonPayload | null;
 
-  /** JavaScript file that must be injected into checkout header, or `null`. */
+  /** JavaScript file that must be injected into checkout header, or `null`. Appended from the service definition. */
   script!: string | null;
 
   /** Gateway theme payload used when passed to shop gateways. Source: nullable JSON `gateways.theme` cast. */
@@ -152,8 +148,11 @@ export namespace Gateway {
     | number
     | boolean;
 
-  /** Known manual action options stored in `gateways.actions`. */
-  export type ActionCode = "refund" | "deliver" | string;
+  /** How a payment service collects money (`App\Gateway\enums\GatewayType`). */
+  export type Type = "online" | "cod" | "cash" | "dir" | "blockchain";
+
+  /** Known manual action options declared by the service definition. */
+  export type ActionCode = "refund" | "delivery" | string;
 
   /** Gateway statistics row from `gateway_data`. */
   export interface DataRow {
@@ -176,6 +175,7 @@ export namespace Gateway {
     min?: number;
     max?: number;
     enable?: boolean;
+    type?: Type;
     charge?: boolean;
     pos?: boolean;
     cod?: boolean;
@@ -191,12 +191,9 @@ export namespace Gateway {
     description?: string | null;
     public?: JsonPayload | null;
     private?: JsonPayload | null;
-    info?: JsonPayload | null;
     logo?: string | null;
     icon?: string | null;
-    video?: string | null;
     url?: string | null;
-    component?: string | null;
     timeout?: number;
     network?: JsonPayload | null;
     wallet?: JsonPayload | null;
