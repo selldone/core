@@ -375,8 +375,7 @@ export abstract class APIAbstract {
           console.debug("❌ Request canceled:", error.message);
           throw undefined; // Important to not call then! then() is for success response only.
         } else {
-          // Handle other errors
-          console.error("❌ Other errors:", error);
+          // The caller or unhandled-rejection handler owns error reporting.
           throw error; // <- Propagate the error for further chaining
         }
       });
