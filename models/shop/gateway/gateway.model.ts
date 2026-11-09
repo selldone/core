@@ -95,10 +95,17 @@ export class Gateway implements Gateway.IGateway {
   /** Private credential field structure (name, title, type, hint); the shop's own values when selected through a shop relation. */
   private!: Gateway.JsonPayload | null;
 
-  /** Logo URL/path, or `null`. Source: nullable text `gateways.logo`. */
+  /**
+   * Company logo image path, or `null`. Source: nullable text `gateways.logo`.
+   * No thumbnails exist: the Admin upload stores only the original, so use `getShopImagePath(logo)` without a size.
+   */
   logo!: string | null;
 
-  /** Icon URL/path, or `null`. Source: nullable text `gateways.icon`. */
+  /**
+   * Gateway icon image path, or `null`. Source: nullable text `gateways.icon`.
+   * No thumbnails exist: the Admin upload stores only the original, so use `getShopImagePath(icon)` without a size
+   * (a sized URL such as `…png64.png` is missing on direct storage and renders blank).
+   */
   icon!: string | null;
 
   /** Provider website, or `null`. Appended from the service definition. */
