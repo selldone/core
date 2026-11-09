@@ -209,3 +209,28 @@ export function GenerateProductThresholdsConditions(
 
   return conditions;
 }
+
+/**
+ * The condition whose message the storefront shows: the first one, in order, that both the sales and the
+ * stock match. Shared by the storefront and the product editor's preview so both always agree.
+ *
+ * @param conditions - Ordered conditions, e.g. from `GenerateProductThresholdsConditions`.
+ * @param quantity - Available stock.
+ * @param sells - Total sales.
+ * @returns The first matching condition, or `null` when none matches.
+ */
+export function FindProductThresholdCondition(
+  conditions: IThresholdCondition[] | null | undefined,
+  quantity: number,
+  sells: number,
+): IThresholdCondition | null {
+  for (const condition of conditions || []) {
+    const isSellsInRange =
+      condition.minSales == null || sells > condition.minSales;
+    const isQuantityInRange =
+      (condition.minQuantity == null || quantity >= condition.minQuantity) &&
+      (condition.maxQuantity == null || quantity <= condition.maxQuantity);
+    if (isSellsInRange && isQuantityInRange) return condition;
+  }
+  return null;
+}
