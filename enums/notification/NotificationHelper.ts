@@ -17,7 +17,7 @@ import { CompileMarkdown } from "../../helper/html/HtmlHelper";
 import type { NotificationRepository } from "../../models/notification/notification-repository.model";
 
 export class NotificationHelper {
-  constructor() {}
+  constructor(private readonly context?: { $t: (key: string) => string }) {}
 
   getIcon(notification: NotificationRepository) {
     const icon = NotificationRepositoryType[notification.type]?.icon;
@@ -27,13 +27,16 @@ export class NotificationHelper {
   getTitle(notification: NotificationRepository) {
     const obj = NotificationRepositoryType[notification.type];
     if (!obj || !obj.title) return CompileMarkdown(notification.message);
-    return window.$t(obj.title);
+    return this.context ? this.context.$t(obj.title) : window.$t(obj.title);
   }
 
   getDescription(notification: NotificationRepository) {
     const obj = NotificationRepositoryType[notification.type];
     if (!obj || !obj.description) return "";
-    let out = window.$t(obj.description) as string;
+    // Lazy-loaded Storefront modules can replace window.$t inside Backoffice.
+    let out = (this.context
+      ? this.context.$t(obj.description)
+      : window.$t(obj.description)) as string;
 
     const data = notification.data;
 
@@ -78,5 +81,5 @@ export class NotificationHelper {
 }
 
 // Usage:
-// const helper = new NotificationHelper(yourTranslationFunction, NotificationRepositoryType);
+// const helper = new NotificationHelper(component);
 // helper.getIcon(notification);

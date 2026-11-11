@@ -34,6 +34,12 @@ export class GAPI {
     return `${this.selldone_gapi_url}/privacy`;
   }
 
+  //―――――――――――――――――――――― Legal documents ――――――――――――――――――――
+
+  GET_LEGAL_DOCUMENT(resource: "privacy" | "terms") {
+    return `${this.selldone_gapi_url}/legal/${resource}`;
+  }
+
   //―――――――――――――――――――――― User ――――――――――――――――――――
 
   GET_ARTICLE(type: string, article_id: number) {

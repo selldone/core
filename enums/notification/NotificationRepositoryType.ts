@@ -31,8 +31,8 @@ interface INotificationType {
  */
 const NEW_PRODUCT: INotificationType = {
   code: "NEW_PRODUCT",
-  title: "Add New Products",
-  description: "{count}x new products have been added in {data.shop.title}.",
+  title: "notification_repository_menu.types.product_title",
+  description: "notification_repository_menu.types.product_description",
   icon: "library_add",
   to: (notification) => {
     const date = notification.created_at?.convertToLocalDate();
@@ -56,8 +56,8 @@ const NEW_PRODUCT: INotificationType = {
  */
 const NEW_CATEGORY: INotificationType = {
   code: "NEW_CATEGORY",
-  title: "Add New Categories",
-  description: "{count}x new categories have been added in {data.shop.title}.",
+  title: "notification_repository_menu.types.category_title",
+  description: "notification_repository_menu.types.category_description",
   icon: "create_new_folder",
   color: "#1976D2",
 };
@@ -67,7 +67,7 @@ const NEW_CATEGORY: INotificationType = {
 const MENTION_NOTE: INotificationType = {
   code: "MENTION_NOTE",
   title: null, // Show original message!
-  description: "{data.user.name} Mention you in a note.",
+  description: "notification_repository_menu.types.note_description",
   icon: "sticky_note_2",
   to: (notification) => {
     const shop = notification.data?.shop;
@@ -110,7 +110,7 @@ const MENTION_TIMELINE: INotificationType = {
   code: "MENTION_TIMELINE",
   title: null, // Show original message!
   description:
-    "{data.user.name} Mention you in an order [{data.basket.type}-{data.basket.id}].",
+    "notification_repository_menu.types.timeline_description",
   icon: "shopping_bag",
   to: (notification) => {
     const basket = notification.data?.basket;
