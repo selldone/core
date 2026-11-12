@@ -164,9 +164,6 @@ export class Product implements Product.IProduct {
   /** Total number of buyer ratings. Source: `shop_products.rate_count`, default `0`. */
   rate_count?: number;
 
-  /** Repository source product id. Source: nullable `shop_products.repository_id`. */
-  repository_id?: number | null;
-
   /** Whether this product can be resold by middle sellers. Source: `shop_products.reselling`. */
   reselling?: boolean;
 
@@ -662,8 +659,6 @@ export namespace Product {
     reselling_count?: number;
     /** Dropshipping source product id. Source: nullable `shop_products.parent_id`. */
     parent_id?: number | null;
-    /** Repository source id. Source: nullable `shop_products.repository_id`. */
-    repository_id?: number | null;
     /** Connect provider id. Source: nullable `shop_products.connect_id`. */
     connect_id?: number | null;
     /** Warranty profile id. Source: nullable `shop_products.warranty_id`. */

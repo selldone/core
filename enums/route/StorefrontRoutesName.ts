@@ -25,7 +25,6 @@ export enum StorefrontRoutesName {
   MAP_PRODUCTS_PAGE = "ShopMap",
 
   CUSTOM_HOME_PAGE = "CustomHomePage",
-  INSTAGRAM_PAGE = "InstagramPage",
 
   SHOP_PAGE = "ShopPage",
 

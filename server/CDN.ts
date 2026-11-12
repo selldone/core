@@ -100,8 +100,12 @@ export class CDN {
       return file_name;
     }
 
+    if (file_name.includes(":")) return null;
+
+    // Ordinary originals resolve their logical storage disk through the server.
     if (
       (!size || this.storage_direct_thumbnails) &&
+      (size !== null || file_name.endsWith(".svg")) &&
       this.storage_direct_url &&
       this.storage_direct
     ) {
@@ -110,19 +114,8 @@ export class CDN {
       // Replace _ to slash (File format save in DB to real path)
       file_name = file_name.replace(/_/gi, "/");
 
-      if (file_name.startsWith("repository:")) {
-        // Handle repository files address
-        file_name = file_name.replace("repository:", "");
-        return `${this.storage_direct_url}/repository/${file_name}`;
-      } else if (file_name.startsWith("instagram:")) {
-        // Handle repository files address
-        file_name = file_name.replace("instagram:", "");
-        return `${this.storage_direct_url}/instagram/${file_name}`;
-      } else {
-        // Handle normal files address
-        file_name = file_name + (size ? `${size}.png` : "");
-        return `${this.storage_direct_url}/app/${file_name}`;
-      }
+      file_name = file_name + (size ? `${size}.png` : "");
+      return `${this.storage_direct_url}/app/${file_name}`;
     } else {
       return (
         `${this.shop_cdn_images}/${file_name}` +

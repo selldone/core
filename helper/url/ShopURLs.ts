@@ -167,15 +167,5 @@ export class ShopURLs {
     return ShopURLs.MainShopUrl(shop) + "/avocado/" + avocado.hash;
   }
 
-  //――――――――――――――――――――――――― Instagram ―――――――――――――――――――――――――
-  /**
-   * Returns the public Instagram storefront URL.
-   * @param {Shop} shop - Shop model.
-   * @returns {string} Absolute Instagram storefront URL.
-   */
-  static GetShopInstagramUrl(shop: Shop) {
-    return ShopURLs.MainShopUrl(shop) + "/instagram";
-  }
-
 
 }
