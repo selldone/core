@@ -34,13 +34,18 @@ function fixture(overrides = {}) {
   }, overrides);
 }
 
-test("ordinary originals use the storage resolver without changing their stored reference", () => {
+test("ordinary originals retain canonical app paths and their original format", () => {
   const cdn = fixture();
   for (const extension of ["webp", "jpg", "png"]) {
     const path = `shops_88_products_photo.${extension}`;
-    assert.equal(cdn.GET_SHOP_IMAGE_PATH(path), `${cdn.shop_cdn_images}/${path}`);
-    assert.equal(cdn.GET_SHOP_IMAGE_PATH(path, null), `${cdn.shop_cdn_images}/${path}`);
+    const expected = `https://cdn.selldone.com/app/shops/88/products/photo.${extension}`;
+    assert.equal(cdn.GET_SHOP_IMAGE_PATH(path), expected);
+    assert.equal(cdn.GET_SHOP_IMAGE_PATH(path, null), expected);
   }
+  assert.equal(
+    cdn.GET_SHOP_IMAGE_PATH("shops_88_products_photowebpca20442f198602d7df0389b5659c763a.webp"),
+    "https://cdn.selldone.com/app/shops/88/products/photowebpca20442f198602d7df0389b5659c763a.webp",
+  );
 });
 
 test("sized thumbnails retain their direct URL and respect the configured thumbnail mode", () => {
@@ -48,7 +53,7 @@ test("sized thumbnails retain their direct URL and respect the configured thumbn
   assert.equal(fixture().GET_SHOP_IMAGE_PATH(path, 128), "https://cdn.selldone.com/app/shops/88/products/photo.webp128.png");
   const cdn = fixture({ storage_direct_thumbnails: false });
   assert.equal(cdn.GET_SHOP_IMAGE_PATH(path, 128), `${cdn.shop_cdn_images}/${path}?size=128`);
-  assert.equal(cdn.GET_SHOP_IMAGE_PATH(path), `${cdn.shop_cdn_images}/${path}`);
+  assert.equal(cdn.GET_SHOP_IMAGE_PATH(path), "https://cdn.selldone.com/app/shops/88/products/photo.webp");
 });
 
 test("retired and unknown storage schemes do not produce image URLs", () => {

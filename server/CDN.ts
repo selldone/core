@@ -102,10 +102,9 @@ export class CDN {
 
     if (file_name.includes(":")) return null;
 
-    // Ordinary originals resolve their logical storage disk through the server.
+    // Preserve the established direct URL for original images and thumbnails.
     if (
       (!size || this.storage_direct_thumbnails) &&
-      (size !== null || file_name.endsWith(".svg")) &&
       this.storage_direct_url &&
       this.storage_direct
     ) {
