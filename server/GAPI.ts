@@ -170,15 +170,6 @@ export class GAPI {
     return `${this.selldone_gapi_url}/apps/${app_code}/comments`;
   }
 
-  //―――――――――――――――――――――― Guild ――――――――――――――――――――
-  GET_CHECK_GUILD_NAME_AVAILABLE() {
-    return `${this.selldone_gapi_url}/guild/name-check`;
-  }
-
-  GET_PUBLIC_GUILD(guild_name: string) {
-    return `${this.selldone_gapi_url}/guilds/${guild_name}`;
-  }
-
   //―――――――――――――――――――――― Form ――――――――――――――――――――
   GET_FORM(code: string) {
     return `${this.selldone_gapi_url}/forms/${code}`;

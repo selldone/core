@@ -27,9 +27,9 @@ export class SetupService {
     name: string,
     default_val?: T,
   ): T | string {
-    const meta: HTMLMetaElement | null = document.head.querySelector(
+    const meta: HTMLMetaElement | null = document.head?.querySelector(
       `meta[name="${name}"]`,
-    );
+    ) ?? null;
 
     const dynamic_config_val =
       window.selldone_config &&

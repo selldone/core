@@ -29,8 +29,6 @@ export * from "./company";
 export * from "./connect";
 /** Shared country, currency, and analytics models. */
 export * from "./general";
-/** Guild/backoffice grouping models. */
-export * from "./guild";
 /** Notification repository models. */
 export * from "./notification";
 /** Storefront shop, product, order, payment, logistics, and marketplace models. */
