@@ -6,7 +6,7 @@
     "declaration": true,                      // Generates corresponding '.d.ts' file
 
     "importHelpers": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "noEmitOnError": false,
     "composite": true,
@@ -20,8 +20,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "downlevelIteration": true,
     "lib": [
       "esnext",
       "dom",
