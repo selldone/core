@@ -145,24 +145,6 @@
     ],
     "mcp": [
       "M7 4a3 3 0 0 1 4 0l9 9a3 3 0 0 1-4 4l-5-5M4 7a3 3 0 0 0 0 4l5 5M7 14l-3 3 4 4M10 11l4 4M15 6l3-3"
-    ],
-    "status": [
-      "M3 12h4l3-8 4 16 3-8h4"
-    ],
-    "marketing": [
-      "M3 10h5l12-6v16L8 14H3zM7 14l2 7h4l-2-6"
-    ],
-    "setup": [
-      "M14 4a6 6 0 0 0-7 7L3 15a3 3 0 0 0 4 4l4-4a6 6 0 0 0 8-7l-4 4-4-4 4-4Z"
-    ],
-    "showcase": [
-      "M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM3 16l5-5 4 4 3-3 6 6M15 7h.01"
-    ],
-    "layout": [
-      "M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM3 9h18M9 9v12"
-    ],
-    "intelligence": [
-      "M3 19v-5M8 19V9M13 19V5M18 19v-7M17 3l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"
     ]
   },
   "operations": {
@@ -498,65 +480,6 @@
     },
     "mcp:use": {
       "glyph": "mcp"
-    },
-    "admin-mcp:use": {
-      "glyph": "mcp"
-    },
-    "admin-mcp:status:read": {
-      "glyph": "status",
-      "operation": "read"
-    },
-    "admin-mcp:content:read": {
-      "glyph": "article",
-      "operation": "read"
-    },
-    "admin-mcp:content:propose": {
-      "glyph": "article",
-      "operation": "propose"
-    },
-    "admin-mcp:technical:read": {
-      "glyph": "developer",
-      "operation": "read"
-    },
-    "admin-mcp:technical:write": {
-      "glyph": "developer",
-      "operation": "write"
-    },
-    "admin-mcp:marketing:read": {
-      "glyph": "marketing",
-      "operation": "read"
-    },
-    "admin-mcp:marketing:propose": {
-      "glyph": "marketing",
-      "operation": "propose"
-    },
-    "admin-mcp:setup-service:read": {
-      "glyph": "setup",
-      "operation": "read"
-    },
-    "admin-mcp:setup-service:write": {
-      "glyph": "setup",
-      "operation": "write"
-    },
-    "admin-mcp:showcase:read": {
-      "glyph": "showcase",
-      "operation": "read"
-    },
-    "admin-mcp:showcase:write": {
-      "glyph": "showcase",
-      "operation": "write"
-    },
-    "admin-mcp:official-layout:read": {
-      "glyph": "layout",
-      "operation": "read"
-    },
-    "admin-mcp:official-layout:write": {
-      "glyph": "layout",
-      "operation": "write"
-    },
-    "admin-mcp:customer-intelligence:read": {
-      "glyph": "intelligence",
-      "operation": "read"
     },
     "backoffice:reviews:write": {
       "glyph": "reviews",

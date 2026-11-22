@@ -1,6 +1,6 @@
 import catalog from "./scope-icons.json";
 
-/** The same checked-in catalog is rendered by Laravel authorization views. */
+/** Shared glyphs for public permission scopes. */
 export const ScopeIconCatalog = catalog;
 
 export function getScopeIcon(scope: string): string {
