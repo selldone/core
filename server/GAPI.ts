@@ -126,6 +126,16 @@ export class GAPI {
     return `${this.selldone_gapi_url}/gateways`;
   }
 
+  //―――――――――――――――――――――― SMS providers (public catalog) ――――――――――――――――――――
+  GET_SMS_PROVIDERS() {
+    return `${this.selldone_gapi_url}/integrations/sms`;
+  }
+
+  //―――――――――――――――――――――― Email providers (public catalog) ――――――――――――――――――――
+  GET_EMAIL_PROVIDERS() {
+    return `${this.selldone_gapi_url}/integrations/email`;
+  }
+
   //―――――――――――――――――――――― All Taxes ――――――――――――――――――――
   GET_TAXES(country_code: string) {
     return `${this.selldone_gapi_url}/taxes/${country_code}`;
