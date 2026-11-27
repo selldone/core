@@ -40,6 +40,12 @@ export class GAPI {
     return `${this.selldone_gapi_url}/legal/${resource}`;
   }
 
+  //―――――――――――――――――――――― Selldone status ――――――――――――――――――――
+
+  GET_SYSTEM_STATUS() {
+    return `${this.selldone_gapi_url}/system-status`;
+  }
+
   //―――――――――――――――――――――― User ――――――――――――――――――――
 
   GET_ARTICLE(type: string, article_id: number) {
